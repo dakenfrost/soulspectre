@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Archivio Subconscio</title>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header {
+            padding: 100px 20px;
+            text-align: center;
+            border-bottom: 1px solid #333;
+            width: 100%;
+        }
+        h1 {
+            letter-spacing: 10px;
+            font-size: 3rem;
+            margin: 0;
+            color: #fff;
+            text-transform: uppercase;
+        }
+        .tagline {
+            font-style: italic;
+            color: #888;
+            margin-top: 10px;
+        }
+        main {
+            max-width: 800px;
+            padding: 50px 20px;
+        }
+        .manifesto {
+            background: #222;
+            padding: 30px;
+            border-left: 4px solid #444;
+            margin-bottom: 50px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            width: 100%;
+        }
+        .card {
+            border: 1px solid #333;
+            padding: 20px;
+            transition: 0.3s;
+            text-decoration: none;
+            color: inherit;
+        }
+        .card:hover {
+            border-color: #666;
+            background: #252525;
+        }
+        .card h2 {
+            margin-top: 0;
+            color: #fff;
+        }
+        footer {
+            margin-top: 100px;
+            padding: 20px;
+            font-size: 0.8rem;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>SOULSPECTRE</h1>
+    <p class="tagline">L'eco delle ideologie nel vuoto dell'anima.</p>
+</header>
+
+<main>
+    <section class="manifesto">
+        <p><strong>Protocollo di Accesso:</strong> Questo database non è per i deboli di spirito. Qui le correnti del pensiero umano hanno smesso di essere astrazioni per diventare gerarchie di potere. Esplora le fazioni, cataloga le unità, accetta l'inevitabile.</p>
+    </section>
+
+    <div class="grid">
+        <a href="fazioni/storia.html" class="card">
+            <h2>Il Fondamento</h2>
+            <p>La genesi dello Spettro e la cronologia della distorsione.</p>
+        </a>
+        <a href="fazioni/lista.html" class="card">
+            <h2>Le Egemonie</h2>
+            <p>I blocchi ideologici in perenne collisione.</p>
+        </a>
+        <a href="unita/database.html" class="card">
+            <h2>L'Arsenale</h2>
+            <p>Indice sistematico delle unità militari e metafisiche.</p>
+        </a>
+    </div>
+</main>
+
+<footer>
+    &copy; 2026 SOULSPECTRE - Archivio Chiuso.
+</footer>
+
+</body>
+</html>
