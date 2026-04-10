@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SOULSPECTRE | Valkyrion Lore</title>
+    <title>SOULSPECTRE | Cronache dell'Impero Valkyrion</title>
     <style>
         body {
             color: #e0e0e0;
@@ -15,6 +15,7 @@
             align-items: center;
         }
 
+        /* SFONDO E OVERLAY COERENTI */
         #bg-image {
             position: fixed;
             top: 0;
@@ -41,7 +42,7 @@
             padding: 60px 20px 30px 20px;
             text-align: center;
             width: 100%;
-            max-width: 900px;
+            max-width: 1100px;
         }
 
         h1 {
@@ -62,25 +63,49 @@
         }
 
         main {
-            max-width: 850px;
+            max-width: 1100px; /* Allargato per il layout diviso */
             padding: 40px 20px;
             width: 100%;
-            background: rgba(15, 15, 15, 0.6);
-            backdrop-filter: blur(5px);
+            position: relative;
+        }
+
+        /* SEZIONI DIVISE PER EVENTO (IMMAGINE SX, TESTO DX) */
+        .split-section {
+            display: flex;
+            gap: 40px;
+            align-items: stretch; /* Allinea in altezza */
+            margin-bottom: 60px; /* Spazio tra gli eventi */
+            background: rgba(15, 15, 15, 0.7);
+            backdrop-filter: blur(8px);
             border: 1px solid rgba(255,255,255,0.05);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-            margin-bottom: 50px;
+            border-left: 3px solid #5c9ce6;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .section-image {
+            flex: 0 0 45%; /* Occupa il 45% dello spazio totale */
+        }
+
+        .section-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Gestisce le proporzioni */
+        }
+
+        .section-text {
+            flex: 1; /* Occupa lo spazio rimanente */
+            padding: 35px;
         }
 
         h2 {
-            color: #5c9ce6;
+            color: #fff;
             letter-spacing: 2px;
             text-transform: uppercase;
-            border-bottom: 1px solid rgba(92, 156, 230, 0.3);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
             padding-bottom: 10px;
-            margin-top: 60px;
-            margin-bottom: 30px;
-            font-size: 2rem;
+            margin-top: 0;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
         }
 
         p {
@@ -94,16 +119,17 @@
             color: #5c9ce6;
         }
 
+        /* STILE DELLE CITAZIONI DENTRO IL TESTO */
         .quote {
             font-style: italic;
             color: #aaa;
             border-left: 3px solid #5c9ce6;
             padding-left: 20px;
-            margin: 40px 0;
+            margin: 30px 0;
             background: rgba(0, 0, 0, 0.4);
-            padding: 25px;
-            font-size: 1.15rem;
-            box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+            padding: 20px;
+            font-size: 1.1rem;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.5);
         }
 
         .quote-author {
@@ -113,17 +139,6 @@
             color: #5c9ce6;
             font-weight: bold;
             font-style: normal;
-        }
-
-        .lore-img {
-            width: 100%;
-            height: auto;
-            border: 1px solid rgba(255,255,255,0.1);
-            border-bottom: 3px solid #5c9ce6;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.7);
-            margin: 40px 0;
-            border-radius: 2px;
-            display: block;
         }
 
         .back-link {
@@ -143,6 +158,21 @@
             color: #5c9ce6;
             text-shadow: 0 0 10px rgba(92, 156, 230, 0.4);
         }
+
+        /* MEDIA QUERY PER MOBILE */
+        @media (max-width: 950px) {
+            .split-section {
+                flex-direction: column; /* Impila verticalmente */
+            }
+            .section-image {
+                flex: 1 1 100%;
+                width: 100%;
+                height: 300px; /* Altezza fissa su mobile per l'immagine */
+            }
+            .section-text {
+                border-top: 1px solid rgba(255,255,255,0.1);
+            }
+        }
     </style>
 </head>
 <body>
@@ -151,84 +181,121 @@
 <div id="overlay"></div>
 
 <header>
-    <h1>Faction Lore</h1>
-    <div class="subtitle">The Valkyrion Historical Archives</div>
+    <h1>Cronache dell'Impero</h1>
+    <div class="subtitle">Archivi Storici di Padineon</div>
 </header>
 
 <main>
-    <p>In this section, we explore the faction’s lore, analyzing its history, culture, and relationships with other factions.</p>
-
-    <h2>The Founding of the Empire</h2>
-    
-    <p>Much has been lost in forgotten books, but it is said that the current Ruler possesses writings about the Founder himself, as well as diaries of former rulers. These claims remain speculative, however, as they have never been officially confirmed.</p>
-    
-    <p>What is taught in history classes is that the Founder appeared suddenly as a wanderer in a small village, visibly shocked and disoriented. After adapting to life there, he gradually and significantly improved the quality of life in the settlement through innovative ideas in organization and technology, which quickly transformed the village into a small city. Despite this, he consistently declined any leadership role, claiming he was simply "not interested."</p>
-
-    <img src="../img/valkyrion_lore_1_arrival.png" alt="The Founder arrives at the village" class="lore-img">
-    
-    <p>One day, the city was attacked by brigands who believed it to be easy prey. They were swiftly defeated and taken prisoner. Once captured, however, the people fell victim to their own sense of superiority. The brigands pleaded to be allowed to join the city, claiming they had been "forced into thievery because there was no other choice." The citizens—accustomed to progress and goodwill—forgot a crucial truth: not all people will turn good, and many will deceive.</p>
-    
-    <p>The Founder strongly opposed their release and acceptance into the community, stating that <strong>"their eyes are the same as those of the people in my old life."</strong> The mayor and his councilors dismissed this as baseless accusation and ordered the Founder imprisoned.</p>
-    
-    <p>That very night, the brigands revealed their true nature. The records are unclear on the exact events, but it is said that several people were killed and that some women disappeared or were left gravely wounded. Seeing fires rise from the city, the Founder broke free from his cell and witnessed the horrors of that night firsthand. He hunted down the brigands, killing those he found and declaring them "not redeemable."</p>
-    
-    <img src="../img/valkyrion_lore_2_tragedy.png" alt="The Night of Tragedy" class="lore-img">
-
-    <p>What remained was the ruin of the city he had worked so hard to build—destroyed by a single mistake. From that moment, he is said to have uttered only three words: <strong>"Never again"</strong>. This event will be remember as the Night of Tragedy in the history.</p>
-    
-    <p>The Founder confronted the mayor, who refused to take responsibility, blaming the councilors instead. As they turned on one another in a game of accusations, the Founder proclaimed himself the new mayor. Many opposed him, but others supported him, remembering his contributions since his arrival. This conflict escalated into a brief civil war, one that ended quickly—his power was on an entirely different scale.</p>
-    
-    <div class="quote">
-        "If you had this much power, why didn’t you protect us?"<br>
-        "I can’t protect you from yourselves."
-        <span class="quote-author">— Final exchange between a dying opponent and the Founder</span>
-    </div>
-    
-    <p>Most who resisted his takeover were imprisoned, while those who conspired or attempted to incite rebellion were executed. A new age began. To many, the Founder became a Savior; to others, a Tyrant. Those who held the latter view were either exiled or quietly disappeared.</p>
-    
-    <p>What is certain is that the small city became the present capital, Padineon, and under the Founder’s guidance the realm expanded—both by establishing new settlements and by absorbing other cities into his rule. Some call this period a golden age of renewal and progress; others remember it as an age of repression. Regardless, the Empire prospered.</p>
-    
-    <p>Advisors close to the Founder later wrote that his eyes always seemed empty, as if he looked upon the world out of duty rather than genuine spirit.</p>
-    
-    <p>After a hundred years, the Founder grew old and ill. Lying on his deathbed, he is said to have whispered, <strong>"No. This cannot be the end. I refuse."</strong> He laid down his armor, set aside his sword, and placed the crown upon his most trusted commander, saying:</p>
-    
-    <div class="quote">
-        "Do not forget. Do not forget the mud and the pain we come from. Do not leave anyone abandoned, because in the dark we are all piles of dust."
-        <span class="quote-author">— The Founder's final decree</span>
+    <div class="split-section" style="border: none; background: rgba(15,15,15,0.5); backdrop-filter: none;">
+        <div class="section-text" style="padding: 20px;">
+            <p>In questa sezione esploriamo la lore della fazione, analizzando la sua storia, la cultura e le relazioni con le altre fazioni.</p>
+        </div>
     </div>
 
-    <img src="../img/valkyrion_lore_3_departure.png" alt="The old Founder departs" class="lore-img">
-    
-    <p>After this, the Founder vanished forever. No one knows where he went, but his spiritual legacy endured, carrying his will forward through the people of the world.</p>
-
-    <h2>The Dark Years</h2>
-    
-    <p>In the history of the continent, there is a period well known to all as the "Dark Years." The Emperor of that time, Celid, was an honorable Paladin, married to a beautiful woman named Aerin. This union was welcomed with joy, as Celid was regarded as a sensitive and deeply caring individual. Unfortunately, tragedy soon followed.</p>
-    
-    <p>A terrible plague spread across the continent. Those infected developed severe coughing and excruciating pain, and the disease was easily transmitted through skin contact, causing it to spread at an alarming rate. Sadly, Aerin herself became infected. She was bedridden, suffering constantly. While magicians and physicians desperately searched for a cure, Celid never left her side, holding her hand and witnessing her agony, seemingly immune to the plague due to his exceptional constitution as Emperor.</p>
-    
-    <p>Despite every effort, no cure was found in time. Aerin died screaming in pain in Celid’s arms. His greatest strength—his sensitivity—became his undoing. Something within him shattered. Celid came to believe that those afflicted by the plague should be killed as swiftly as possible, to spare them the torment of a slow and agonizing death like the one Aerin had endured. He held her hand, watched her struggle, and felt something inside him snap: the man who had lived to protect others now saw only one solution: <strong>mercy through death</strong>.</p>
-    
-    <img src="../img/valkyrion_lore_4_aerin.png" alt="Celid holding Aerin's hand" class="lore-img">
-
-    <p>Thus began a crusade to exterminate all the infected, including those in other kingdoms, in the name of the "greater good" and the mercy of sparing them suffering. This marked the first documented loophole in the Founder’s Will: if an Emperor genuinely believes that their actions serve the well-being of the people, the Will does not restrain them.</p>
-    
-    <p>Nearby kingdoms soon formed an alliance to stop Valkyrion and marched against the Emperor. Along the way, they were joined by rebels from within the Empire itself—officers and soldiers who opposed the brutal actions of their ruler.</p>
-    
-    <p>The decisive battle took place at Padineon, where a coalition of different races and kingdoms confronted Celid. Most believed the battle to be hopeless. Yet an unexpected turn occurred: the majority of the souls bound within the sacred sword refused to strike the rebels, for they too rejected the Emperor’s will.</p>
-    
-    <p>Weakened and abandoned by the very power he wielded, Celid was defeated. In his final moments, he questioned why others refused to "save" the plague victims as he had tried to do, why they would allow them to suffer. With bitter defiance, he placed the crown upon the commander leading the rebellion.</p>
-    
-    <div class="quote">
-        "See if you can do better than I did."
-        <span class="quote-author">— Celid, placing the crown upon his conqueror</span>
+    <div class="split-section">
+        <div class="section-image">
+            <img src="../img/valkyrion_lore_1_arrival.png" alt="Il Fondatore arriva al villaggio">
+        </div>
+        <div class="section-text">
+            <h2>La Fondazione dell'Impero</h2>
+            <p>Molto è andato perduto in libri dimenticati, ma si dice che l'attuale Sovrano possieda scritti dello stesso Fondatore, così come diari dei sovrani precedenti. Queste affermazioni rimangono speculative, tuttavia, poiché non sono mai state confermate ufficialmente.</p>
+            
+            <p>Ciò che viene insegnato nelle lezioni di storia è che il Fondatore apparve improvvisamente come un viandante in un piccolo villaggio, visibilmente scosso e disorientato. Dopo essersi adattato alla vita lì, migliorò gradualmente e significativamente la qualità della vita nell'insediamento attraverso idee innovative nell'organizzazione e nella tecnologia, che trasformarono rapidamente il villaggio in una piccola città. Nonostante ciò, rifiutò costantemente qualsiasi ruolo di leadership, affermando di essere semplicemente "non interessato".</p>
+        </div>
     </div>
 
-    <img src="../img/valkyrion_lore_5_crown.png" alt="Celid's crown falling to the ground" class="lore-img">
-    
-    <p>The aftermath left deep scars in the Empire’s relations with neighboring nations. Many remember the atrocities of those years, while others recall that even within Valkyrion, officers rose against their own ruler—proof that not all were complicit. One truth, however, became undeniable: <strong>the Founder’s Will was not infallible.</strong></p>
+    <div class="split-section">
+        <div class="section-image">
+            <img src="../img/valkyrion_lore_2_tragedy.png" alt="La Notte della Tragedia">
+        </div>
+        <div class="section-text">
+            <h2>La Notte della Tragedia</h2>
+            <p>Un giorno, la città fu attaccata da briganti che la credevano una preda facile. Furono rapidamente sconfitti e fatti prigionieri. Una volta catturati, tuttavia, la gente cadde vittima del proprio senso di superiorità. I briganti implorarono di essere ammessi in città, sostenendo di essere stati "costretti al furto perché non c'era altra scelta". I cittadini—abituati al progresso e alla buona volontà—dimenticarono una verità cruciale: non tutte le persone diventeranno buone, e molte inganneranno.</p>
+            
+            <p>Il Fondatore si oppose fermamente al loro rilascio e alla loro accettazione nella comunità, affermando che <strong>"i loro occhi sono gli stessi della gente della mia vecchia vita."</strong> Il sindaco e i suoi consiglieri respinsero questa accusa come infondata e ordinarono l'imprigionamento del Fondatore.</p>
+            
+            <p>Quella notte stessa, i briganti rivelarono la loro vera natura. I resoconti non sono chiari sugli eventi esatti, ma si dice che diverse persone furono uccise e che alcune donne scomparvero o furono lasciate gravemente ferite. Vedendo alzarsi i fuochi dalla città, il Fondatore si liberò dalla sua cella e assistette in prima persona agli orrori di quella notte. Cacciò i briganti, uccidendo quelli che trovò e dichiarandoli "non redimibili".</p>
+            
+            <p>Ciò che rimase fu la rovina della città che aveva lavorato così duramente per costruire—distrutta da un singolo errore. Da quel momento, si dice che abbia pronunciato solo tre parole: <strong>"Mai più"</strong>. Questo evento sarà ricordato come la Notte della Tragedia nella storia.</p>
+        </div>
+    </div>
 
-    <a href="valkyrion.html" class="back-link">← Return to Valkyrion Overview</a>
+    <div class="split-section">
+        <div class="section-text" style="border-right: 1px solid rgba(255,255,255,0.05);">
+            <p>Il Fondatore affrontò il sindaco, che si rifiutò di assumersi la responsabilità, incolpando invece i consiglieri. Mentre si rivoltavano l'uno contro l'altro in un gioco di accuse, il Fondatore si proclamò nuovo sindaco. Molti si opposero a lui, ma altri lo sostennero, ricordando i suoi contributi dal suo arrivo. Questo conflitto si intensificò in una breve guerra civile, che terminò rapidamente—il suo potere era su una scala completamente diversa.</p>
+            
+            <div class="quote">
+                "Se avevi tutto questo potere, perché non ci hai protetto?"<br>
+                "Non posso proteggervi da voi stessi."
+                <span class="quote-author">— Ultimo scambio tra un oppositore morente e il Fondatore</span>
+            </div>
+            
+            <p>La maggior parte di coloro che resistettero alla sua presa di potere furono imprigionati, mentre coloro che cospirarono o tentarono di incitare alla ribellione furono giustiziati. Iniziò una nuova era. Per molti, il Fondatore divenne un Salvatore; per altri, un Tiranno. Coloro che sostenevano quest'ultima visione furono esiliati o scomparvero silenziosamente.</p>
+            
+            <p>Ciò che è certo è che la piccola città divenne l'attuale capitale, Padineon, e sotto la guida del Fondatore il reame si espanse—sia stabilendo nuovi insediamenti, sia assorbendo altre città sotto il suo dominio. Alcuni chiamano questo periodo un'età d'oro di rinnovamento e progresso; altri lo ricordano come un'era di repressione. Indipendentemente da ciò, l'Impero prosperò.</p>
+            
+            <p>I consiglieri vicini al Fondatore scrissero in seguito che i suoi occhi sembravano sempre vuoti, come se guardasse il mondo per dovere piuttosto che per spirito genuino.</p>
+        </div>
+    </div>
+
+    <div class="split-section">
+        <div class="section-image">
+            <img src="../img/valkyrion_lore_3_departure.png" alt="Il Fondatore anziano parte">
+        </div>
+        <div class="section-text">
+            <h2>L'Eredità del Fondatore</h2>
+            <p>Dopo cent'anni, il Fondatore invecchiò e si ammalò. Giaciuto sul letto di morte, si dice che abbia sussurrato: <strong>"No. Questa non può essere la fine. Rifiuto."</strong> Depose la sua armatura, mise da parte la sua spada e pose la corona sul suo comandante più fidato, dicendo:</p>
+            
+            <div class="quote">
+                "Non dimenticate. Non dimenticate il fango e il dolore da cui proveniamo. Non lasciate nessuno abbandonato, perché nell'oscurità siamo tutti mucchi di polvere."
+                <span class="quote-author">— Ultimo decreto del Fondatore</span>
+            </div>
+            
+            <p>Dopodiché, il Fondatore svanì per sempre. Nessuno sa dove sia andato, ma la sua eredità spirituale perdurò, portando avanti la sua volontà attraverso la gente del mondo.</p>
+        </div>
+    </div>
+
+    <div class="split-section">
+        <div class="section-image">
+            <img src="../img/valkyrion_lore_4_aerin.png" alt="Celid tiene la mano di Aerin">
+        </div>
+        <div class="section-text">
+            <h2>Gli Anni Bui: Celid e Aerin</h2>
+            <p>Nella storia del continente, c'è un periodo ben noto a tutti come gli "Anni Bui." L'Imperatore di quel tempo, Celid, era un onorevole Paladino, sposato con una bellissima donna di nome Aerin. Questa unione fu accolta con gioia, poiché Celid era considerato un individuo sensibile e profondamente premuroso. Sfortunatamente, la tragedia seguì presto.</p>
+            
+            <p>Una terribile piaga si diffuse nel continente. Coloro che venivano infettati sviluppavano tosse grave e dolore atroce, e la malattia si trasmetteva facilmente attraverso il contatto cutaneo, causandone la diffusione a un ritmo allarmante. Purtroppo, la stessa Aerin rimase infetta. Fu costretta a letto, soffrendo costantemente. Mentre maghi e medici cercavano disperatamente una cura, Celid non lasciò mai il suo fianco, tenendole la mano e assistendo alla sua agonia, apparentemente immune alla piaga a causa della sua eccezionale costituzione come Imperatore.</p>
+        </div>
+    </div>
+
+    <div class="split-section">
+        <div class="section-text" style="border-right: 1px solid rgba(255,255,255,0.05);">
+            <p>Nonostante ogni sforzo, non fu trovata alcuna cura in tempo. Aerin morì urlando dal dolore tra le braccia di Celid. La sua più grande forza—la sua sensibilità—divenne la sua rovina. Qualcosa dentro di lui si spezzò. Celid arrivò a credere che coloro afflitti dalla piaga dovessero essere uccisi il più rapidamente possibile, per risparmiare loro il tormento di una morte lenta e agonizzante come quella che Aerin aveva sopportato. Le tenne la mano, guardò la sua lotta e sentì qualcosa dentro di lui cedere: l'uomo che aveva vissuto per proteggere gli altri vedeva ora una sola soluzione: <strong>pietà attraverso la morte</strong>.</p>
+            
+            <p>Iniziò così una crociata per sterminare tutti gli infetti, inclusi quelli in altri regni, in nome del "bene supremo" e della pietà di risparmiare loro la sofferenza. Questo segnò la prima scappatoia documentata nella Volontà del Fondatore: se un Imperatore crede genuinamente che le sue azioni servano al benessere della gente, la Volontà non lo trattiene.</p>
+            
+            <p>I regni vicini formarono presto un'alleanza per fermare Valkyrion e marciarono contro l'Imperatore. Lungo la strada, si unirono a loro ribelli dall'interno dell'Impero stesso—ufficiali e soldati che si opponevano alle azioni brutali del loro sovrano.</p>
+        </div>
+    </div>
+
+    <div class="split-section">
+        <div class="section-image">
+            <img src="../img/valkyrion_lore_5_crown.png" alt="La corona di Celid cade al suolo">
+        </div>
+        <div class="section-text">
+            <p>La battaglia decisiva ebbe luogo a Padineon, dove una coalizione di diverse razze e regni affrontò Celid. La maggior parte credeva che la battaglia fosse senza speranza. Eppure, si verificò una svolta inaspettata: la maggior parte delle anime vincolate all'interno della spada sacra rifiutò di colpire i ribelli, poiché anch'esse rifiutavano la volontà dell'Imperatore.</p>
+            
+            <p>Indebolito e abbandonato dallo stesso potere che brandiva, Celid fu sconfitto. Nei suoi momenti finali, si chiese perché gli altri si rifiutassero di "salvare" le vittime della piaga come lui aveva cercato di fare, perché permettessero loro di soffrire. Con amara sfida, pose la corona sul comandante che guidava la ribellione.</p>
+            
+            <div class="quote">
+                "Vedete se riuscite a fare meglio di quanto ho fatto io."
+                <span class="quote-author">— Celid, ponendo la corona sul suo conquistatore</span>
+            </div>
+            
+            <p>Le conseguenze lasciarono profonde cicatrici nelle relazioni dell'Impero con le nazioni vicine. Molti ricordano le atrocità di quegli anni, mentre altri ricordano che persino all'interno di Valkyrion, gli ufficiali insorsero contro il proprio sovrano—prova che non tutti erano complici. Una verità, tuttavia, divenne innegabile: <strong>la Volontà del Fondatore non era infallibile.</strong></p>
+        </div>
+    </div>
+
+    <a href="valkyrion.html" class="back-link">← Torna alla Panoramica</a>
 </main>
 
 </body>
