@@ -21,7 +21,7 @@
             padding: 60px 20px 30px 20px;
             text-align: center;
             width: 100%;
-            max-width: 900px;
+            max-width: 1100px;
         }
         h1 {
             letter-spacing: 8px;
@@ -39,40 +39,26 @@
             letter-spacing: 2px;
         }
 
-        /* IMMAGINE CENTRALE */
-        .hero-section {
-            width: 100%;
-            max-width: 800px;
-            margin: 0 auto 40px auto;
-            text-align: center;
-        }
-        .hero-image {
-            max-width: 100%;
-            height: auto;
-            border: 1px solid #333;
-            border-bottom: 3px solid #5c9ce6;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
-            border-radius: 4px;
-        }
-
+        /* STRUTTURA PRINCIPALE ALLARGATA PER IL LAYOUT AFFIANCATO */
         main {
-            max-width: 800px;
+            max-width: 1100px;
             padding: 0 20px 50px 20px;
             width: 100%;
         }
 
-        /* LA CITAZIONE */
+        /* LA CITAZIONE (CENTRALE) */
         .quote {
             font-style: italic;
             color: #aaa;
             border-left: 3px solid #5c9ce6;
             padding-left: 20px;
-            margin: 0 0 50px 0;
+            margin: 0 auto 50px auto;
             background: #151515;
             padding: 25px;
             font-size: 1.1rem;
             line-height: 1.8;
             box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+            max-width: 900px;
         }
         .quote-author {
             display: block;
@@ -83,14 +69,36 @@
             font-style: normal;
         }
 
-        /* SEZIONI TESTUALI */
-        .manifesto {
+        /* LAYOUT DIVISO (IMMAGINE + TESTO) */
+        .split-layout {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+            margin-bottom: 60px;
+        }
+        
+        /* COLONNA SINISTRA: IMMAGINE */
+        .split-image {
+            flex: 0 0 45%; /* Occupa il 45% dello spazio totale */
+        }
+        .split-image img {
+            width: 100%;
+            height: auto;
+            border: 1px solid #333;
+            border-bottom: 3px solid #5c9ce6;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+            border-radius: 4px;
+        }
+
+        /* COLONNA DESTRA: TESTO E LORE */
+        .split-text {
+            flex: 1; /* Occupa lo spazio rimanente */
             background: #111;
             padding: 35px;
-            margin-bottom: 50px;
             border: 1px solid #222;
+            border-left: 2px solid #333;
         }
-        .manifesto h2 {
+        .split-text h2 {
             color: #fff;
             margin-top: 0;
             font-size: 1.5rem;
@@ -98,24 +106,24 @@
             padding-bottom: 10px;
             letter-spacing: 1px;
         }
-        .manifesto h2.tactics-title {
+        .split-text h2.tactics-title {
             margin-top: 40px;
             color: #5c9ce6;
         }
-        .manifesto p {
+        .split-text p {
             color: #ccc;
             font-size: 1.05rem;
             line-height: 1.8;
             margin-bottom: 20px;
         }
-        .manifesto strong {
+        .split-text strong {
             color: #5c9ce6;
         }
 
         /* GRIGLIA NAVIGAZIONE */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
             width: 100%;
         }
@@ -160,6 +168,21 @@
         .back-link:hover {
             color: #5c9ce6;
         }
+
+        /* LA MEDIA QUERY: IL TRUCCO PER IL MOBILE */
+        @media (max-width: 850px) {
+            .split-layout {
+                flex-direction: column; /* Su schermi piccoli, impila dall'alto in basso */
+            }
+            .split-image {
+                flex: 1 1 100%;
+                width: 100%;
+            }
+            .split-text {
+                border-left: none;
+                border-top: 2px solid #333;
+            }
+        }
     </style>
 </head>
 <body>
@@ -169,43 +192,26 @@
     <div class="tagline">Disillusioned knights fighting for what they believe is right.</div>
 </header>
 
-<div class="hero-section">
-    <img src="../img/valkyrion_hero.jpg" alt="Valkyrion Knight" class="hero-image">
-</div>
-
 <main>
     <div class="quote">
         "Justice, might.—It is right that what is just should be obeyed; it is necessary that what is strongest should be obeyed. Justice without might is helpless; might without justice is tyrannical. We must then combine justice and might, and for this end make what is just strong, or what is strong just."
         <span class="quote-author">— Blaise Pascal, Pensées</span>
     </div>
 
-    <section class="manifesto">
-        <h2>The Imperial Core</h2>
-        <p>The Valkyrion Empire was born from a Founder who realized that honor cannot precede reason. They strive to be just, even fully knowing the world will not allow it. Their existence is a constant, necessary compromise between their moral compass and their brutal survival.</p>
+    <div class="split-layout">
         
-        <p>At the pinnacle of this civilization stands the <strong>Emperor</strong>, a demi-god figure who inherits the Will of the Founder and exercises absolute mastery over the soul. The Emperor does not merely rule; they act as the spiritual and neurological anchor for the entire Empire, binding the collective will into a singular, undeniable force.</p>
+        <div class="split-image">
+            <img src="../img/valkyrion_hero.jpg" alt="Valkyrion Knight">
+        </div>
 
-        <h2 class="tactics-title">Tactical Doctrine</h2>
-        <p>On the battlefield, the Empire operates as a cohesive, unbreakable unit. Their forces boast a highly balanced roster characterized by exceptional healing support and divine arts. By design and doctrine, they are unparalleled experts in the <strong>eradication of demonic entities</strong>, bringing the light of reason and the crushing weight of steel to the darkest corners of the world.</p>
-    </section>
+        <div class="split-text">
+            <h2>The Imperial Core</h2>
+            <p>The Valkyrion Empire was born from a Founder who realized that honor cannot precede reason. They strive to be just, even fully knowing the world will not allow it. Their existence is a constant, necessary compromise between their moral compass and their brutal survival.</p>
+            
+            <p>At the pinnacle of this civilization stands the <strong>Emperor</strong>, a demi-god figure who inherits the Will of the Founder and exercises absolute mastery over the soul. The Emperor does not merely rule; they act as the spiritual and neurological anchor for the entire Empire, binding the collective will into a singular, undeniable force.</p>
 
-    <div class="grid">
-        <a href="valkyrion_lore.html" class="card">
-            <h3>Lore</h3>
-            <p>The Night of Tragedy, the Founder's Will, and the Dark Years.</p>
-        </a>
-        <a href="valkyrion_culture.html" class="card">
-            <h3>Culture</h3>
-            <p>The pragmatic morality and the burden of those who come after.</p>
-        </a>
-        <a href="../unita/valkyrion_roster.html" class="card">
-            <h3>Units</h3>
-            <p>The Four Orders: Sword, Light, Knowledge, and Engineering.</p>
-        </a>
+            <h2 class="tactics-title">Tactical Doctrine</h2>
+            <p>On the battlefield, the Empire operates as a cohesive, unbreakable unit. Their forces boast a highly balanced roster characterized by exceptional healing support and divine arts. By design and doctrine, they are unparalleled experts in the <strong>eradication of demonic entities</strong>, bringing the light of reason and the crushing weight of steel to the darkest corners of the world.</p>
+        </div>
+
     </div>
-
-    <a href="../index.html" class="back-link">← Return to the Central Archive</a>
-</main>
-
-</body>
-</html>
