@@ -142,10 +142,10 @@
             color: #5c9ce6;
         }
 
-        /* I BOTTONI INTEGRATI - ORA A GRIGLIA 2x2 CON IMMAGINI */
+        /* I BOTTONI INTEGRATI - ORA A GRIGLIA 2x2 CON GRANDI IMMAGINI TESSERA */
         .action-buttons {
             display: grid;
-            grid-template-columns: repeat(2, 1fr); /* Cambiato da 3 a 2 per fare 2 file da 2 */
+            grid-template-columns: repeat(2, 1fr);
             gap: 15px;
             margin-top: auto; 
             padding-top: 30px;
@@ -157,7 +157,7 @@
             align-items: center;
             justify-content: center;
             border: 1px solid rgba(255,255,255,0.1);
-            padding: 20px 10px;
+            padding: 10px; /* Ridotto il padding per massimizzare lo spazio per l'icona */
             text-align: center;
             text-decoration: none;
             color: #fff;
@@ -165,7 +165,8 @@
             transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
-            font-size: 1rem;
+            font-size: 1.1rem; /* Leggermente più grande per il testo principale */
+            border-radius: 4px; /* Un tocco di smussatura */
         }
         .btn-nav:hover {
             border-color: #5c9ce6;
@@ -174,26 +175,35 @@
             box-shadow: 0 5px 15px rgba(92, 156, 230, 0.2);
         }
         
-        /* Stile per le icone dei bottoni */
-        .btn-icon {
-            width: 50px;
-            height: 50px;
-            margin-bottom: 15px;
-            object-fit: contain;
-            opacity: 0.8;
-            transition: opacity 0.3s ease;
-        }
-        .btn-nav:hover .btn-icon {
-            opacity: 1; /* L'icona si illumina quando ci passi sopra */
+        /* Stile per le icone dei bottoni - Grandi e dominanti */
+        .btn-icon-wrapper {
+            width: 90%; /* Occupa la maggior parte della larghezza del pulsante */
+            height: 90px; /* Altezza definita per centrare l'icona verticalmente */
+            margin-bottom: 10px; /* Spazio prima del testo */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden; /* Nasconde l'eccesso se l'icona è troppo grande */
         }
 
-        .btn-nav span {
+        .btn-icon {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain; /* Mantiene le proporzioni senza tagliare */
+            opacity: 0.8;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn-nav:hover .btn-icon {
+            opacity: 1; /* L'icona si illumina al passaggio del mouse */
+            transform: scale(1.05); /* Un leggero effetto di ingrandimento */
+        }
+
+        .btn-label {
             display: block;
-            color: #888;
-            font-size: 0.8rem;
-            margin-top: 5px;
-            text-transform: none;
-            letter-spacing: 0;
+            margin-top: 0;
+            color: #fff;
+            letter-spacing: 1.5px;
         }
 
         .back-link {
@@ -224,6 +234,9 @@
             }
             .action-buttons {
                 grid-template-columns: 1fr; /* Su cellulare impilati in colonna */
+            }
+            .btn-icon-wrapper {
+                height: 120px; /* Icone ancora più grandi su mobile per facilità di tocco */
             }
         }
     </style>
@@ -261,20 +274,28 @@
 
             <div class="action-buttons">
                 <a href="valkyrion_lore.html" class="btn-nav">
-                    <img src="../img/icon_lore.png" alt="Lore Icon" class="btn-icon">
-                    Lore <span>The Dark Years</span>
+                    <div class="btn-icon-wrapper">
+                        <img src="../img/icon_lore.png" alt="Lore Icon" class="btn-icon">
+                    </div>
+                    <span class="btn-label">Lore</span>
                 </a>
                 <a href="valkyrion_culture.html" class="btn-nav">
-                    <img src="../img/icon_culture.png" alt="Culture Icon" class="btn-icon">
-                    Culture <span>Pragmatic Morality</span>
+                    <div class="btn-icon-wrapper">
+                        <img src="../img/icon_culture.png" alt="Culture Icon" class="btn-icon">
+                    </div>
+                    <span class="btn-label">Culture</span>
                 </a>
                 <a href="valkyrion_leader.html" class="btn-nav">
-                    <img src="../img/icon_leader.png" alt="Leader Icon" class="btn-icon">
-                    Leader <span>The Demi-God</span>
+                    <div class="btn-icon-wrapper">
+                        <img src="../img/icon_leader.png" alt="Leader Icon" class="btn-icon">
+                    </div>
+                    <span class="btn-label">Leader</span>
                 </a>
                 <a href="../unita/valkyrion_roster.html" class="btn-nav">
-                    <img src="../img/icon_units.png" alt="Units Icon" class="btn-icon">
-                    Units <span>The Four Orders</span>
+                    <div class="btn-icon-wrapper">
+                        <img src="../img/icon_units.png" alt="Units Icon" class="btn-icon">
+                    </div>
+                    <span class="btn-label">Units</span>
                 </a>
             </div>
         </div>
