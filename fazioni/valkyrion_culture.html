@@ -68,7 +68,7 @@
             position: relative;
         }
 
-        /* SEZIONI DIVISE PER EVENTO */
+        /* SEZIONI DIVISE PER EVENTO (Standard) */
         .split-section {
             display: flex;
             gap: 40px;
@@ -96,6 +96,29 @@
             padding: 35px;
         }
 
+        /* NUOVA SEZIONE A LARGHEZZA INTERA (Per immagini panoramiche/complesse) */
+        .full-width-section {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin-bottom: 60px; 
+            background: rgba(15, 15, 15, 0.7);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-left: 3px solid #5c9ce6;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            padding: 35px;
+        }
+
+        .full-width-image img {
+            width: 100%;
+            height: auto; /* Mantiene le proporzioni originali senza tagliare */
+            border: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 3px solid #5c9ce6;
+            border-radius: 4px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+
         h2 {
             color: #fff;
             letter-spacing: 2px;
@@ -116,27 +139,6 @@
 
         strong {
             color: #5c9ce6;
-        }
-
-        .quote {
-            font-style: italic;
-            color: #aaa;
-            border-left: 3px solid #5c9ce6;
-            padding-left: 20px;
-            margin: 30px 0;
-            background: rgba(0, 0, 0, 0.4);
-            padding: 20px;
-            font-size: 1.1rem;
-            box-shadow: inset 0 0 15px rgba(0,0,0,0.5);
-        }
-
-        .quote-author {
-            display: block;
-            margin-top: 15px;
-            font-size: 0.95rem;
-            color: #5c9ce6;
-            font-weight: bold;
-            font-style: normal;
         }
 
         .back-link {
@@ -191,7 +193,7 @@
 
     <div class="split-section">
         <div class="section-image">
-            <img src="../img/valkyrion_culture_1_ideals.png" alt="Valkyrion Diplomatic Relations">
+            <img src="../img/valkyrion_culture_1_ideals.png" alt="Valkyrion Citizens Welcoming">
         </div>
         <div class="section-text">
             <h2>Live and Let Live</h2>
@@ -227,11 +229,8 @@
         </div>
     </div>
 
-    <div class="split-section">
-        <div class="section-image">
-            <img src="../img/valkyrion_culture_4_orders.png" alt="The Four Major Orders">
-        </div>
-        <div class="section-text">
+    <div class="full-width-section">
+        <div class="section-text" style="padding: 0;">
             <h2>The Martial Orders</h2>
             <p>The Valkyrion warrior ranks are divided into four major orders:</p>
             
@@ -241,6 +240,9 @@
             <strong>Order of Engineering</strong> – Experts in technology who develop advanced weapons to deal damage from afar.</p>
             
             <p>Those who join a warrior order begin as basic apprentices. Advancement through the ranks depends on individual skill, experience, and proven worth. Each order offers different combat approaches, resulting in various specializations. Recruits choose a specialization early on, but may change it later in order to gain a deeper understanding of their order’s teachings. Rare individuals who master all specializations within an order are known as Champions—a title earned by very few, due to the immense effort and dedication required.</p>
+        </div>
+        <div class="full-width-image">
+            <img src="../img/valkyrion_culture_4_orders.jpg" alt="The Four Major Orders">
         </div>
     </div>
 
