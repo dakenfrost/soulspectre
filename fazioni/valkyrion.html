@@ -5,129 +5,166 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOULSPECTRE | Valkyrion Empire</title>
     <style>
+        /* CSS STRUTTURALE E VISIVO */
         body {
-            background-color: #1a1a1a;
-            color: #e0e0e0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
             margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #e0e0e0;
+            background-color: #050505; /* Fallback se l'immagine non carica */
+            overflow-x: hidden;
+        }
+
+        /* L'IMMAGINE DI SFONDO FISSA */
+        #bg-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url('../img/valkyrion_bg.jpeg'); /* Percorso della tua immagine */
+            background-size: cover;
+            background-position: center;
+            z-index: -2;
+        }
+
+        /* IL FILTRO OSCURANTE (OVERLAY) */
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(to bottom, rgba(15, 15, 15, 0.85), rgba(10, 20, 35, 0.95)); /* Gradiente verso il nero-blu */
+            z-index: -1;
+        }
+
+        /* SCHERMATA INIZIALE (SYNC) */
+        #intro-screen {
+            height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
+            transition: opacity 1.5s ease;
+            z-index: 10;
         }
-        header {
-            padding: 80px 20px 40px 20px;
-            text-align: center;
-            border-bottom: 1px solid #333;
-            width: 100%;
-            max-width: 900px;
-        }
-        h1 {
-            letter-spacing: 8px;
-            font-size: 2.8rem;
-            margin: 0;
+
+        #intro-screen h1 {
+            letter-spacing: 10px;
+            font-size: 2rem;
             color: #fff;
+            margin-bottom: 40px;
             text-transform: uppercase;
         }
-        .tagline {
+
+        .sync-btn {
+            padding: 15px 40px;
+            border: 1px solid #5c9ce6; /* Blu Anima */
+            background: transparent;
+            color: #5c9ce6;
             font-size: 1.2rem;
-            color: #5c9ce6; /* Blu Anima */
-            margin-top: 15px;
-            font-weight: 300;
-            letter-spacing: 1px;
-            text-shadow: 0 0 10px rgba(92, 156, 230, 0.2); /* Leggero bagliore etereo */
-        }
-        main {
-            max-width: 800px;
-            padding: 50px 20px;
-            width: 100%;
-        }
-        .manifesto {
-            background: #222;
-            padding: 30px;
-            border-left: 4px solid #5c9ce6; /* Blu Anima */
-            margin-bottom: 60px;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #ccc;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 25px;
-            width: 100%;
-        }
-        .card {
-            border: 1px solid #333;
-            padding: 25px;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: inherit;
-            background: linear-gradient(145deg, #1f1f1f, #151515);
-            text-align: center;
-        }
-        .card:hover {
-            border-color: #5c9ce6; /* Blu Anima */
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(92, 156, 230, 0.1); /* Bagliore blu in hover */
-        }
-        .card h2 {
-            margin-top: 0;
-            color: #fff;
-            font-size: 1.4rem;
-            letter-spacing: 2px;
+            cursor: pointer;
+            letter-spacing: 3px;
             text-transform: uppercase;
-            border-bottom: 1px solid #333;
-            padding-bottom: 10px;
+            transition: all 0.3s ease;
+            box-shadow: inset 0 0 10px rgba(92, 156, 230, 0.1);
         }
-        .card p {
-            color: #888;
-            font-size: 0.95rem;
-            margin-bottom: 0;
+
+        .sync-btn:hover {
+            background: rgba(92, 156, 230, 0.15);
+            box-shadow: 0 0 20px rgba(92, 156, 230, 0.6);
+            color: #fff;
         }
-        .back-link {
-            display: inline-block;
-            margin-top: 40px;
-            color: #666;
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.3s;
+
+        /* CONTENUTO PRINCIPALE (INIZIALMENTE NASCOSTO) */
+        #main-content {
+            display: none; /* Nascosto da JS */
+            opacity: 0;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px 20px;
+            transition: opacity 2s ease;
         }
-        .back-link:hover {
-            color: #5c9ce6; /* Blu Anima */
-        }
+
+        /* STILI DELLA PAGINA (I vecchi stili riadattati) */
+        header { text-align: center; margin-bottom: 50px; width: 100%; max-width: 900px; }
+        .title { letter-spacing: 8px; font-size: 3rem; margin: 0; color: #fff; text-transform: uppercase; }
+        .tagline { font-size: 1.2rem; color: #5c9ce6; margin-top: 15px; font-weight: 300; letter-spacing: 1px; text-shadow: 0 0 10px rgba(92, 156, 230, 0.3); }
+        .manifesto { max-width: 800px; background: rgba(20, 20, 20, 0.7); padding: 30px; border-left: 4px solid #5c9ce6; margin-bottom: 60px; font-size: 1.1rem; line-height: 1.8; color: #ccc; backdrop-filter: blur(5px); border-radius: 0 5px 5px 0; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; width: 100%; max-width: 800px; }
+        .card { border: 1px solid rgba(255,255,255,0.1); padding: 25px; transition: all 0.3s ease; text-decoration: none; color: inherit; background: rgba(25, 25, 25, 0.6); text-align: center; backdrop-filter: blur(5px); }
+        .card:hover { border-color: #5c9ce6; transform: translateY(-5px); box-shadow: 0 10px 20px rgba(92, 156, 230, 0.15); background: rgba(30, 30, 30, 0.8); }
+        .card h2 { margin-top: 0; color: #fff; font-size: 1.4rem; letter-spacing: 2px; text-transform: uppercase; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; }
+        .card p { color: #aaa; font-size: 0.95rem; margin-bottom: 0; }
+        .back-link { display: inline-block; margin-top: 50px; color: #888; text-decoration: none; font-size: 0.9rem; transition: color 0.3s; }
+        .back-link:hover { color: #5c9ce6; }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>Valkyrion Empire</h1>
-    <div class="tagline">Disillusioned knights fighting for what they believe is right.</div>
-</header>
+    <div id="bg-image"></div>
+    <div id="overlay"></div>
 
-<main>
-    <section class="manifesto">
-        <p>The Valkyrion Empire was born from a Founder who realized that honor cannot precede reason. They strive to be just, even fully knowing the world will not allow it. Their existence is a constant, necessary compromise between their moral compass and their brutal survival.</p>
-    </section>
-
-    <div class="grid">
-        <a href="valkyrion_lore.html" class="card">
-            <h2>Lore</h2>
-            <p>The Night of Tragedy, the Founder's Will, and the Dark Years.</p>
-        </a>
-        <a href="valkyrion_culture.html" class="card">
-            <h2>Culture</h2>
-            <p>The pragmatic morality and the burden of those who come after.</p>
-        </a>
-        <a href="../unita/valkyrion_roster.html" class="card">
-            <h2>Units</h2>
-            <p>The Four Orders: Sword, Light, Knowledge, and Engineering.</p>
-        </a>
+    <div id="intro-screen">
+        <h1>Valkyrion Terminal</h1>
+        <button class="sync-btn" onclick="startSync()">Inizia Sincronizzazione</button>
     </div>
 
-    <a href="../index.html" class="back-link">← Return to the Central Archive</a>
-</main>
+    <div id="main-content">
+        <header>
+            <h2 class="title">Valkyrion Empire</h2>
+            <div class="tagline">Disillusioned knights fighting for what they believe is right.</div>
+        </header>
+
+        <section class="manifesto">
+            <p>The Valkyrion Empire was born from a Founder who realized that honor cannot precede reason. They strive to be just, even fully knowing the world will not allow it. Their existence is a constant, necessary compromise between their moral compass and their brutal survival.</p>
+        </section>
+
+        <div class="grid">
+            <a href="valkyrion_lore.html" class="card">
+                <h2>Lore</h2>
+                <p>The Night of Tragedy, the Founder's Will, and the Dark Years.</p>
+            </a>
+            <a href="valkyrion_culture.html" class="card">
+                <h2>Culture</h2>
+                <p>The pragmatic morality and the burden of those who come after.</p>
+            </a>
+            <a href="../unita/valkyrion_roster.html" class="card">
+                <h2>Units</h2>
+                <p>The Four Orders: Sword, Light, Knowledge, and Engineering.</p>
+            </a>
+        </div>
+
+        <a href="../index.html" class="back-link">← Return to the Central Archive</a>
+    </div>
+
+    <script>
+        function startSync() {
+            // 1. Sfuma la schermata iniziale
+            const introScreen = document.getElementById('intro-screen');
+            introScreen.style.opacity = '0';
+            
+            setTimeout(() => {
+                // 2. Nascondi l'intro e prepara il contenuto principale
+                introScreen.style.display = 'none';
+                const mainContent = document.getElementById('main-content');
+                mainContent.style.display = 'flex';
+                
+                // Forza un ridisegno del browser per far funzionare l'animazione di entrata
+                void mainContent.offsetWidth; 
+                
+                // 3. Sfuma in entrata la fazione
+                mainContent.style.opacity = '1';
+            }, 1500); // Aspetta 1.5 secondi per dare drammaticità
+
+            // 4. Fai partire l'audio (Decommenta quando avrai il file pronto)
+            /*
+            const audio = document.getElementById('bg-music');
+            audio.volume = 0.4; // Volume al 40% per non assordare l'utente
+            audio.play().catch(e => console.log("L'audio non è stato trovato o è bloccato dal browser."));
+            */
+        }
+    </script>
 
 </body>
 </html>
