@@ -6,7 +6,6 @@
     <title>SOULSPECTRE | Valkyrion Lore</title>
     <style>
         body {
-            background-color: #1a1a1a;
             color: #e0e0e0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.8;
@@ -15,79 +14,145 @@
             flex-direction: column;
             align-items: center;
         }
-        header {
-            padding: 60px 20px;
-            text-align: center;
-            background: linear-gradient(to bottom, #151515, #1a1a1a);
-            width: 100%;
-            border-bottom: 1px solid #333;
+
+        #bg-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url('../img/valkyrion_bg.jpeg'); 
+            background-size: cover;
+            background-position: center;
+            z-index: -2;
         }
+
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(to bottom, rgba(10, 10, 12, 0.90), rgba(5, 5, 5, 0.98)); 
+            z-index: -1;
+        }
+
+        header {
+            padding: 60px 20px 30px 20px;
+            text-align: center;
+            width: 100%;
+            max-width: 900px;
+        }
+
         h1 {
             letter-spacing: 5px;
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             margin: 0;
             color: #fff;
             text-transform: uppercase;
+            text-shadow: 0 0 15px rgba(92, 156, 230, 0.5);
         }
+
+        .subtitle {
+            color: #5c9ce6;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            margin-top: 10px;
+            text-transform: uppercase;
+        }
+
+        main {
+            max-width: 850px;
+            padding: 40px 20px;
+            width: 100%;
+            background: rgba(15, 15, 15, 0.6);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            margin-bottom: 50px;
+        }
+
         h2 {
             color: #5c9ce6;
             letter-spacing: 2px;
             text-transform: uppercase;
-            border-bottom: 1px solid #333;
+            border-bottom: 1px solid rgba(92, 156, 230, 0.3);
             padding-bottom: 10px;
             margin-top: 60px;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
+            font-size: 2rem;
         }
-        main {
-            max-width: 800px;
-            padding: 40px 20px;
-            width: 100%;
-        }
+
         p {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             color: #ccc;
-            font-size: 1.05rem;
+            font-size: 1.1rem;
+            text-align: justify;
         }
+
+        strong {
+            color: #5c9ce6;
+        }
+
         .quote {
             font-style: italic;
             color: #aaa;
             border-left: 3px solid #5c9ce6;
             padding-left: 20px;
             margin: 40px 0;
-            background: #222;
+            background: rgba(0, 0, 0, 0.4);
             padding: 25px;
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
         }
+
         .quote-author {
             display: block;
             margin-top: 15px;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: #5c9ce6;
             font-weight: bold;
             font-style: normal;
         }
-        strong {
-            color: #5c9ce6;
+
+        .lore-img {
+            width: 100%;
+            height: auto;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 3px solid #5c9ce6;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.7);
+            margin: 40px 0;
+            border-radius: 2px;
+            display: block;
         }
+
         .back-link {
-            display: inline-block;
+            display: block;
+            text-align: center;
             margin-top: 60px;
             color: #666;
             text-decoration: none;
+            font-size: 1rem;
+            letter-spacing: 1px;
             transition: color 0.3s;
-            margin-bottom: 50px;
-            font-size: 1.1rem;
+            padding: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
         }
+
         .back-link:hover {
             color: #5c9ce6;
+            text-shadow: 0 0 10px rgba(92, 156, 230, 0.4);
         }
     </style>
 </head>
 <body>
 
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
 <header>
     <h1>Faction Lore</h1>
+    <div class="subtitle">The Valkyrion Historical Archives</div>
 </header>
 
 <main>
@@ -98,6 +163,8 @@
     <p>Much has been lost in forgotten books, but it is said that the current Ruler possesses writings about the Founder himself, as well as diaries of former rulers. These claims remain speculative, however, as they have never been officially confirmed.</p>
     
     <p>What is taught in history classes is that the Founder appeared suddenly as a wanderer in a small village, visibly shocked and disoriented. After adapting to life there, he gradually and significantly improved the quality of life in the settlement through innovative ideas in organization and technology, which quickly transformed the village into a small city. Despite this, he consistently declined any leadership role, claiming he was simply "not interested."</p>
+
+    <img src="../img/valkyrion_lore_1_arrival.png" alt="The Founder arrives at the village" class="lore-img">
     
     <p>One day, the city was attacked by brigands who believed it to be easy prey. They were swiftly defeated and taken prisoner. Once captured, however, the people fell victim to their own sense of superiority. The brigands pleaded to be allowed to join the city, claiming they had been "forced into thievery because there was no other choice." The citizens—accustomed to progress and goodwill—forgot a crucial truth: not all people will turn good, and many will deceive.</p>
     
@@ -105,6 +172,8 @@
     
     <p>That very night, the brigands revealed their true nature. The records are unclear on the exact events, but it is said that several people were killed and that some women disappeared or were left gravely wounded. Seeing fires rise from the city, the Founder broke free from his cell and witnessed the horrors of that night firsthand. He hunted down the brigands, killing those he found and declaring them "not redeemable."</p>
     
+    <img src="../img/valkyrion_lore_2_tragedy.png" alt="The Night of Tragedy" class="lore-img">
+
     <p>What remained was the ruin of the city he had worked so hard to build—destroyed by a single mistake. From that moment, he is said to have uttered only three words: <strong>"Never again"</strong>. This event will be remember as the Night of Tragedy in the history.</p>
     
     <p>The Founder confronted the mayor, who refused to take responsibility, blaming the councilors instead. As they turned on one another in a game of accusations, the Founder proclaimed himself the new mayor. Many opposed him, but others supported him, remembering his contributions since his arrival. This conflict escalated into a brief civil war, one that ended quickly—his power was on an entirely different scale.</p>
@@ -127,6 +196,8 @@
         "Do not forget. Do not forget the mud and the pain we come from. Do not leave anyone abandoned, because in the dark we are all piles of dust."
         <span class="quote-author">— The Founder's final decree</span>
     </div>
+
+    <img src="../img/valkyrion_lore_3_departure.png" alt="The old Founder departs" class="lore-img">
     
     <p>After this, the Founder vanished forever. No one knows where he went, but his spiritual legacy endured, carrying his will forward through the people of the world.</p>
 
@@ -138,6 +209,8 @@
     
     <p>Despite every effort, no cure was found in time. Aerin died screaming in pain in Celid’s arms. His greatest strength—his sensitivity—became his undoing. Something within him shattered. Celid came to believe that those afflicted by the plague should be killed as swiftly as possible, to spare them the torment of a slow and agonizing death like the one Aerin had endured. He held her hand, watched her struggle, and felt something inside him snap: the man who had lived to protect others now saw only one solution: <strong>mercy through death</strong>.</p>
     
+    <img src="../img/valkyrion_lore_4_aerin.png" alt="Celid holding Aerin's hand" class="lore-img">
+
     <p>Thus began a crusade to exterminate all the infected, including those in other kingdoms, in the name of the "greater good" and the mercy of sparing them suffering. This marked the first documented loophole in the Founder’s Will: if an Emperor genuinely believes that their actions serve the well-being of the people, the Will does not restrain them.</p>
     
     <p>Nearby kingdoms soon formed an alliance to stop Valkyrion and marched against the Emperor. Along the way, they were joined by rebels from within the Empire itself—officers and soldiers who opposed the brutal actions of their ruler.</p>
@@ -150,6 +223,8 @@
         "See if you can do better than I did."
         <span class="quote-author">— Celid, placing the crown upon his conqueror</span>
     </div>
+
+    <img src="../img/valkyrion_lore_5_crown.png" alt="Celid's crown falling to the ground" class="lore-img">
     
     <p>The aftermath left deep scars in the Empire’s relations with neighboring nations. Many remember the atrocities of those years, while others recall that even within Valkyrion, officers rose against their own ruler—proof that not all were complicit. One truth, however, became undeniable: <strong>the Founder’s Will was not infallible.</strong></p>
 
