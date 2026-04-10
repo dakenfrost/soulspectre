@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SOULSPECTRE | Valkyrion Empire</title>
+    <title>SOULSPECTRE | Impero Valkyrion</title>
     <style>
         body {
             color: #e0e0e0;
@@ -142,66 +142,76 @@
             color: #5c9ce6;
         }
 
-        /* I BOTTONI INTEGRATI */
+        /* I NUOVI BOTTONI: COLONNA VERTICALE DI TESSERE QUADRATE */
         .action-buttons {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            display: flex;
+            flex-direction: column; /* Colonna verticale */
             gap: 15px;
             margin-top: auto; 
             padding-top: 30px;
             border-top: 1px solid rgba(255,255,255,0.1);
         }
+
         .btn-nav {
+            position: relative;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
+            /* Dimensione quadrata fissa (es. 110px) */
+            width: 110px;
+            height: 110px;
             border: 1px solid rgba(255,255,255,0.1);
-            padding: 15px 10px; 
-            text-align: center;
             text-decoration: none;
-            color: #fff;
-            background: rgba(10, 10, 10, 0.6);
-            transition: all 0.3s ease;
-            letter-spacing: 1.5px;
-            font-size: 1.2rem;
+            overflow: hidden; 
             border-radius: 4px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            margin: 0 auto; /* Centra il bottone quadrato orizzontalmente */
         }
-        .btn-nav:hover {
-            border-color: #5c9ce6;
-            background: rgba(92, 156, 230, 0.15);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(92, 156, 230, 0.2);
+
+        .btn-nav .btn-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Copre tutta l'area quadrata */
+            z-index: 1;
+            transition: transform 0.5s ease;
+        }
+
+        .btn-nav::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.8) 100%);
+            z-index: 2;
+            transition: background 0.3s ease;
         }
 
         .btn-label {
-            display: block;
-            margin-bottom: 12px; /* Spazio tra il testo in alto e l'icona in basso */
+            position: relative;
+            z-index: 3; 
             color: #fff;
-            font-weight: 600;
-        }
-        
-        /* Stile per le icone dei bottoni */
-        .btn-icon-wrapper {
-            width: 90%; 
-            height: 90px; 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden; 
+            font-size: 1.2rem; /* Leggermente più piccolo per adattarsi al quadrato */
+            font-weight: bold;
+            letter-spacing: 1.5px;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.9); 
         }
 
-        .btn-icon {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain; 
-            opacity: 0.8;
-            transition: opacity 0.3s ease, transform 0.3s ease;
+        .btn-nav:hover {
+            border-color: #5c9ce6;
+            box-shadow: 0 5px 20px rgba(92, 156, 230, 0.3);
+            transform: translateY(-3px);
         }
-
-        .btn-nav:hover .btn-icon {
-            opacity: 1; 
-            transform: scale(1.05); 
+        .btn-nav:hover .btn-bg {
+            transform: scale(1.1); 
+        }
+        .btn-nav:hover::after {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.6) 100%); 
         }
 
         .back-link {
@@ -231,10 +241,13 @@
                 border-top: 2px solid #5c9ce6;
             }
             .action-buttons {
-                grid-template-columns: 1fr; 
+                flex-direction: row; /* Torna a riga su mobile per risparmiare spazio verticale */
+                justify-content: center;
+                gap: 10px;
             }
-            .btn-icon-wrapper {
-                height: 120px; 
+            .btn-nav {
+                width: 90px; /* Dimensioni ridotte su mobile */
+                height: 90px;
             }
         }
     </style>
@@ -272,28 +285,23 @@
 
             <div class="action-buttons">
                 <a href="valkyrion_lore.html" class="btn-nav">
+                    <img src="../img/icon_lore.png" alt="" class="btn-bg">
                     <span class="btn-label">Lore</span>
-                    <div class="btn-icon-wrapper">
-                        <img src="../img/icon_lore.png" alt="Lore Icon" class="btn-icon">
-                    </div>
                 </a>
+                
                 <a href="valkyrion_culture.html" class="btn-nav">
+                    <img src="../img/icon_culture.png" alt="" class="btn-bg">
                     <span class="btn-label">Culture</span>
-                    <div class="btn-icon-wrapper">
-                        <img src="../img/icon_culture.png" alt="Culture Icon" class="btn-icon">
-                    </div>
                 </a>
+                
                 <a href="valkyrion_leader.html" class="btn-nav">
+                    <img src="../img/icon_leader.png" alt="" class="btn-bg">
                     <span class="btn-label">Leader</span>
-                    <div class="btn-icon-wrapper">
-                        <img src="../img/icon_leader.png" alt="Leader Icon" class="btn-icon">
-                    </div>
                 </a>
+                
                 <a href="../unita/valkyrion_roster.html" class="btn-nav">
+                    <img src="../img/icon_units.png" alt="" class="btn-bg">
                     <span class="btn-label">Units</span>
-                    <div class="btn-icon-wrapper">
-                        <img src="../img/icon_units.png" alt="Units Icon" class="btn-icon">
-                    </div>
                 </a>
             </div>
         </div>
