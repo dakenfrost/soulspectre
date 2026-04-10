@@ -3,168 +3,209 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SOULSPECTRE | CIAO ILARIA Valkyrion Empire</title>
+    <title>SOULSPECTRE | Valkyrion Empire</title>
     <style>
-        /* CSS STRUTTURALE E VISIVO */
         body {
-            margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0d0d0d;
             color: #e0e0e0;
-            background-color: #050505; /* Fallback se l'immagine non carica */
-            overflow-x: hidden;
-        }
-
-        /* L'IMMAGINE DI SFONDO FISSA */
-        #bg-image {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-image: url('../img/valkyrion_bg.jpeg'); /* Percorso della tua immagine */
-            background-size: cover;
-            background-position: center;
-            z-index: -2;
-        }
-
-        /* IL FILTRO OSCURANTE (OVERLAY) */
-        #overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: linear-gradient(to bottom, rgba(15, 15, 15, 0.85), rgba(10, 20, 35, 0.95)); /* Gradiente verso il nero-blu */
-            z-index: -1;
-        }
-
-        /* SCHERMATA INIZIALE (SYNC) */
-        #intro-screen {
-            height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            transition: opacity 1.5s ease;
-            z-index: 10;
         }
-
-        #intro-screen h1 {
-            letter-spacing: 10px;
-            font-size: 2rem;
+        
+        /* HEADER PRINCIPALE */
+        header {
+            padding: 60px 20px 30px 20px;
+            text-align: center;
+            width: 100%;
+            max-width: 900px;
+        }
+        h1 {
+            letter-spacing: 8px;
+            font-size: 3rem;
+            margin: 0;
             color: #fff;
-            margin-bottom: 40px;
             text-transform: uppercase;
+            text-shadow: 0 0 15px rgba(92, 156, 230, 0.4);
         }
-
-        .sync-btn {
-            padding: 15px 40px;
-            border: 1px solid #5c9ce6; /* Blu Anima */
-            background: transparent;
-            color: #5c9ce6;
+        .tagline {
             font-size: 1.2rem;
-            cursor: pointer;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
-            box-shadow: inset 0 0 10px rgba(92, 156, 230, 0.1);
+            color: #5c9ce6; /* Blu Anima */
+            margin-top: 10px;
+            font-weight: 300;
+            letter-spacing: 2px;
         }
 
-        .sync-btn:hover {
-            background: rgba(92, 156, 230, 0.15);
-            box-shadow: 0 0 20px rgba(92, 156, 230, 0.6);
+        /* IMMAGINE CENTRALE */
+        .hero-section {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+            text-align: center;
+        }
+        .hero-image {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #333;
+            border-bottom: 3px solid #5c9ce6;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+            border-radius: 4px;
+        }
+
+        main {
+            max-width: 800px;
+            padding: 0 20px 50px 20px;
+            width: 100%;
+        }
+
+        /* LA CITAZIONE */
+        .quote {
+            font-style: italic;
+            color: #aaa;
+            border-left: 3px solid #5c9ce6;
+            padding-left: 20px;
+            margin: 0 0 50px 0;
+            background: #151515;
+            padding: 25px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+        }
+        .quote-author {
+            display: block;
+            margin-top: 15px;
+            font-size: 0.95rem;
+            color: #5c9ce6;
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        /* SEZIONI TESTUALI */
+        .manifesto {
+            background: #111;
+            padding: 35px;
+            margin-bottom: 50px;
+            border: 1px solid #222;
+        }
+        .manifesto h2 {
             color: #fff;
+            margin-top: 0;
+            font-size: 1.5rem;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            letter-spacing: 1px;
+        }
+        .manifesto h2.tactics-title {
+            margin-top: 40px;
+            color: #5c9ce6;
+        }
+        .manifesto p {
+            color: #ccc;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        .manifesto strong {
+            color: #5c9ce6;
         }
 
-        /* CONTENUTO PRINCIPALE (INIZIALMENTE NASCOSTO) */
-        #main-content {
-            display: none; /* Nascosto da JS */
-            opacity: 0;
-            flex-direction: column;
-            align-items: center;
-            padding: 50px 20px;
-            transition: opacity 2s ease;
+        /* GRIGLIA NAVIGAZIONE */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            width: 100%;
         }
-
-        /* STILI DELLA PAGINA (I vecchi stili riadattati) */
-        header { text-align: center; margin-bottom: 50px; width: 100%; max-width: 900px; }
-        .title { letter-spacing: 8px; font-size: 3rem; margin: 0; color: #fff; text-transform: uppercase; }
-        .tagline { font-size: 1.2rem; color: #5c9ce6; margin-top: 15px; font-weight: 300; letter-spacing: 1px; text-shadow: 0 0 10px rgba(92, 156, 230, 0.3); }
-        .manifesto { max-width: 800px; background: rgba(20, 20, 20, 0.7); padding: 30px; border-left: 4px solid #5c9ce6; margin-bottom: 60px; font-size: 1.1rem; line-height: 1.8; color: #ccc; backdrop-filter: blur(5px); border-radius: 0 5px 5px 0; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; width: 100%; max-width: 800px; }
-        .card { border: 1px solid rgba(255,255,255,0.1); padding: 25px; transition: all 0.3s ease; text-decoration: none; color: inherit; background: rgba(25, 25, 25, 0.6); text-align: center; backdrop-filter: blur(5px); }
-        .card:hover { border-color: #5c9ce6; transform: translateY(-5px); box-shadow: 0 10px 20px rgba(92, 156, 230, 0.15); background: rgba(30, 30, 30, 0.8); }
-        .card h2 { margin-top: 0; color: #fff; font-size: 1.4rem; letter-spacing: 2px; text-transform: uppercase; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; }
-        .card p { color: #aaa; font-size: 0.95rem; margin-bottom: 0; }
-        .back-link { display: inline-block; margin-top: 50px; color: #888; text-decoration: none; font-size: 0.9rem; transition: color 0.3s; }
-        .back-link:hover { color: #5c9ce6; }
+        .card {
+            border: 1px solid #333;
+            padding: 25px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            background: linear-gradient(145deg, #1a1a1a, #111);
+            text-align: center;
+        }
+        .card:hover {
+            border-color: #5c9ce6;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(92, 156, 230, 0.15);
+        }
+        .card h3 {
+            margin-top: 0;
+            color: #fff;
+            font-size: 1.4rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+        }
+        .card p {
+            color: #888;
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+        
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 50px;
+            color: #666;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+        .back-link:hover {
+            color: #5c9ce6;
+        }
     </style>
 </head>
 <body>
 
-    <div id="bg-image"></div>
-    <div id="overlay"></div>
+<header>
+    <h1>Valkyrion Empire</h1>
+    <div class="tagline">Disillusioned knights fighting for what they believe is right.</div>
+</header>
 
-    <div id="intro-screen">
-        <h1>Valkyrion Terminal</h1>
-        <button class="sync-btn" onclick="startSync()">Inizia Sincronizzazione</button>
+<div class="hero-section">
+    <img src="../img/valkyrion_hero.jpg" alt="Valkyrion Knight" class="hero-image">
+</div>
+
+<main>
+    <div class="quote">
+        "Justice, might.—It is right that what is just should be obeyed; it is necessary that what is strongest should be obeyed. Justice without might is helpless; might without justice is tyrannical. We must then combine justice and might, and for this end make what is just strong, or what is strong just."
+        <span class="quote-author">— Blaise Pascal, Pensées</span>
     </div>
 
-    <div id="main-content">
-        <header>
-            <h2 class="title">Valkyrion Empire</h2>
-            <div class="tagline">Disillusioned knights fighting for what they believe is right AND TO SAY HELLO TO ILARIA AND MAMMA GIOVANNA.</div>
-        </header>
+    <section class="manifesto">
+        <h2>The Imperial Core</h2>
+        <p>The Valkyrion Empire was born from a Founder who realized that honor cannot precede reason. They strive to be just, even fully knowing the world will not allow it. Their existence is a constant, necessary compromise between their moral compass and their brutal survival.</p>
+        
+        <p>At the pinnacle of this civilization stands the <strong>Emperor</strong>, a demi-god figure who inherits the Will of the Founder and exercises absolute mastery over the soul. The Emperor does not merely rule; they act as the spiritual and neurological anchor for the entire Empire, binding the collective will into a singular, undeniable force.</p>
 
-        <section class="manifesto">
-            <p>The Valkyrion Empire was born from a Founder who realized that honor cannot precede reason. They strive to be just, even fully knowing the world will not allow it. Their existence is a constant, necessary compromise between their moral compass and their brutal survival.</p>
-        </section>
+        <h2 class="tactics-title">Tactical Doctrine</h2>
+        <p>On the battlefield, the Empire operates as a cohesive, unbreakable unit. Their forces boast a highly balanced roster characterized by exceptional healing support and divine arts. By design and doctrine, they are unparalleled experts in the <strong>eradication of demonic entities</strong>, bringing the light of reason and the crushing weight of steel to the darkest corners of the world.</p>
+    </section>
 
-        <div class="grid">
-            <a href="valkyrion_lore.html" class="card">
-                <h2>Lore</h2>
-                <p>The Night of Tragedy, the Founder's Will, and the Dark Years.</p>
-            </a>
-            <a href="valkyrion_culture.html" class="card">
-                <h2>Culture</h2>
-                <p>The pragmatic morality and the burden of those who come after.</p>
-            </a>
-            <a href="../unita/valkyrion_roster.html" class="card">
-                <h2>Units</h2>
-                <p>The Four Orders: Sword, Light, Knowledge, and Engineering.</p>
-            </a>
-        </div>
-
-        <a href="../index.html" class="back-link">← Return to the Central Archive</a>
+    <div class="grid">
+        <a href="valkyrion_lore.html" class="card">
+            <h3>Lore</h3>
+            <p>The Night of Tragedy, the Founder's Will, and the Dark Years.</p>
+        </a>
+        <a href="valkyrion_culture.html" class="card">
+            <h3>Culture</h3>
+            <p>The pragmatic morality and the burden of those who come after.</p>
+        </a>
+        <a href="../unita/valkyrion_roster.html" class="card">
+            <h3>Units</h3>
+            <p>The Four Orders: Sword, Light, Knowledge, and Engineering.</p>
+        </a>
     </div>
 
-    <script>
-        function startSync() {
-            // 1. Sfuma la schermata iniziale
-            const introScreen = document.getElementById('intro-screen');
-            introScreen.style.opacity = '0';
-            
-            setTimeout(() => {
-                // 2. Nascondi l'intro e prepara il contenuto principale
-                introScreen.style.display = 'none';
-                const mainContent = document.getElementById('main-content');
-                mainContent.style.display = 'flex';
-                
-                // Forza un ridisegno del browser per far funzionare l'animazione di entrata
-                void mainContent.offsetWidth; 
-                
-                // 3. Sfuma in entrata la fazione
-                mainContent.style.opacity = '1';
-            }, 1500); // Aspetta 1.5 secondi per dare drammaticità
-
-            // 4. Fai partire l'audio (Decommenta quando avrai il file pronto)
-            /*
-            const audio = document.getElementById('bg-music');
-            audio.volume = 0.4; // Volume al 40% per non assordare l'utente
-            audio.play().catch(e => console.log("L'audio non è stato trovato o è bloccato dal browser."));
-            */
-        }
-    </script>
+    <a href="../index.html" class="back-link">← Return to the Central Archive</a>
+</main>
 
 </body>
 </html>
