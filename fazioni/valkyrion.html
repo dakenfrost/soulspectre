@@ -142,14 +142,17 @@
             color: #5c9ce6;
         }
 
-        /* I NUOVI BOTTONI: COLONNA VERTICALE DI TESSERE QUADRATE */
+        /* IL NUOVO LAYOUT: GRIGLIA QUADRATA DESKTOP */
         .action-buttons {
-            display: flex;
-            flex-direction: column; /* Colonna verticale */
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 2 colonne */
+            grid-template-rows: repeat(2, 1fr); /* 2 righe */
             gap: 15px;
             margin-top: auto; 
             padding-top: 30px;
             border-top: 1px solid rgba(255,255,255,0.1);
+            justify-items: center; /* Centra orizzontalmente i bottoni all'interno delle celle */
+            align-items: center; /* Centra verticalmente i bottoni all'interno delle celle */
         }
 
         .btn-nav {
@@ -157,16 +160,16 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            /* Dimensione quadrata fissa (es. 110px) */
-            width: 110px;
-            height: 110px;
+            /* Dimensione fissa molto più grande per desktop: 180px x 180px */
+            width: 180px;
+            height: 180px;
             border: 1px solid rgba(255,255,255,0.1);
             text-decoration: none;
             overflow: hidden; 
             border-radius: 4px;
             transition: all 0.3s ease;
             box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-            margin: 0 auto; /* Centra il bottone quadrato orizzontalmente */
+            margin: 0; /* Rimosso margin: 0 auto; per non interferire con justify-items */
         }
 
         .btn-nav .btn-bg {
@@ -175,7 +178,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Copre tutta l'area quadrata */
+            object-fit: cover; /* Copre tutta l'area tagliando gli eccessi */
             z-index: 1;
             transition: transform 0.5s ease;
         }
@@ -196,10 +199,11 @@
             position: relative;
             z-index: 3; 
             color: #fff;
-            font-size: 1.2rem; /* Leggermente più piccolo per adattarsi al quadrato */
+            font-size: 1.4rem;
             font-weight: bold;
-            letter-spacing: 1.5px;
+            letter-spacing: 2px;
             text-shadow: 0 2px 5px rgba(0,0,0,0.9); 
+            text-transform: none; /* Mantieni capitalizzazione normale (Lore, not LORE) */
         }
 
         .btn-nav:hover {
@@ -241,13 +245,13 @@
                 border-top: 2px solid #5c9ce6;
             }
             .action-buttons {
-                flex-direction: row; /* Torna a riga su mobile per risparmiare spazio verticale */
-                justify-content: center;
+                grid-template-columns: 1fr; /* 1 colonna mobile per l'usabilità */
+                grid-template-rows: repeat(4, 1fr); /* 4 righe mobile */
                 gap: 10px;
             }
             .btn-nav {
-                width: 90px; /* Dimensioni ridotte su mobile */
-                height: 90px;
+                width: 100%; /* Occupa tutta la larghezza mobile disponibile */
+                height: 150px; /* Più alto per mobile per facilità di tocco */
             }
         }
     </style>
