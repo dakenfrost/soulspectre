@@ -142,7 +142,7 @@
             color: #5c9ce6;
         }
 
-        /* I BOTTONI INTEGRATI - ORA A GRIGLIA 2x2 CON GRANDI IMMAGINI TESSERA */
+        /* I BOTTONI INTEGRATI */
         .action-buttons {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -157,16 +157,15 @@
             align-items: center;
             justify-content: center;
             border: 1px solid rgba(255,255,255,0.1);
-            padding: 10px; /* Ridotto il padding per massimizzare lo spazio per l'icona */
+            padding: 15px 10px; 
             text-align: center;
             text-decoration: none;
             color: #fff;
             background: rgba(10, 10, 10, 0.6);
             transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 1.1rem; /* Leggermente più grande per il testo principale */
-            border-radius: 4px; /* Un tocco di smussatura */
+            letter-spacing: 1.5px;
+            font-size: 1.2rem;
+            border-radius: 4px;
         }
         .btn-nav:hover {
             border-color: #5c9ce6;
@@ -174,36 +173,35 @@
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(92, 156, 230, 0.2);
         }
+
+        .btn-label {
+            display: block;
+            margin-bottom: 12px; /* Spazio tra il testo in alto e l'icona in basso */
+            color: #fff;
+            font-weight: 600;
+        }
         
-        /* Stile per le icone dei bottoni - Grandi e dominanti */
+        /* Stile per le icone dei bottoni */
         .btn-icon-wrapper {
-            width: 90%; /* Occupa la maggior parte della larghezza del pulsante */
-            height: 90px; /* Altezza definita per centrare l'icona verticalmente */
-            margin-bottom: 10px; /* Spazio prima del testo */
+            width: 90%; 
+            height: 90px; 
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden; /* Nasconde l'eccesso se l'icona è troppo grande */
+            overflow: hidden; 
         }
 
         .btn-icon {
             max-width: 100%;
             max-height: 100%;
-            object-fit: contain; /* Mantiene le proporzioni senza tagliare */
+            object-fit: contain; 
             opacity: 0.8;
             transition: opacity 0.3s ease, transform 0.3s ease;
         }
 
         .btn-nav:hover .btn-icon {
-            opacity: 1; /* L'icona si illumina al passaggio del mouse */
-            transform: scale(1.05); /* Un leggero effetto di ingrandimento */
-        }
-
-        .btn-label {
-            display: block;
-            margin-top: 0;
-            color: #fff;
-            letter-spacing: 1.5px;
+            opacity: 1; 
+            transform: scale(1.05); 
         }
 
         .back-link {
@@ -233,10 +231,10 @@
                 border-top: 2px solid #5c9ce6;
             }
             .action-buttons {
-                grid-template-columns: 1fr; /* Su cellulare impilati in colonna */
+                grid-template-columns: 1fr; 
             }
             .btn-icon-wrapper {
-                height: 120px; /* Icone ancora più grandi su mobile per facilità di tocco */
+                height: 120px; 
             }
         }
     </style>
@@ -274,28 +272,28 @@
 
             <div class="action-buttons">
                 <a href="valkyrion_lore.html" class="btn-nav">
+                    <span class="btn-label">Lore</span>
                     <div class="btn-icon-wrapper">
                         <img src="../img/icon_lore.png" alt="Lore Icon" class="btn-icon">
                     </div>
-                    <span class="btn-label">Lore</span>
                 </a>
                 <a href="valkyrion_culture.html" class="btn-nav">
+                    <span class="btn-label">Culture</span>
                     <div class="btn-icon-wrapper">
                         <img src="../img/icon_culture.png" alt="Culture Icon" class="btn-icon">
                     </div>
-                    <span class="btn-label">Culture</span>
                 </a>
                 <a href="valkyrion_leader.html" class="btn-nav">
+                    <span class="btn-label">Leader</span>
                     <div class="btn-icon-wrapper">
                         <img src="../img/icon_leader.png" alt="Leader Icon" class="btn-icon">
                     </div>
-                    <span class="btn-label">Leader</span>
                 </a>
                 <a href="../unita/valkyrion_roster.html" class="btn-nav">
+                    <span class="btn-label">Units</span>
                     <div class="btn-icon-wrapper">
                         <img src="../img/icon_units.png" alt="Units Icon" class="btn-icon">
                     </div>
-                    <span class="btn-label">Units</span>
                 </a>
             </div>
         </div>
