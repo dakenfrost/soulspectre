@@ -13,10 +13,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            /* Rimosso il background solido, usiamo i layer sottostanti */
         }
         
-        /* L'IMMAGINE DI SFONDO FISSA */
         #bg-image {
             position: fixed;
             top: 0;
@@ -29,7 +27,6 @@
             z-index: -2;
         }
 
-        /* IL FILTRO OSCURANTE SULLO SFONDO */
         #overlay {
             position: fixed;
             top: 0;
@@ -40,13 +37,12 @@
             z-index: -1;
         }
 
-        /* HEADER PRINCIPALE */
         header {
             padding: 60px 20px 30px 20px;
             text-align: center;
             width: 100%;
             max-width: 1100px;
-            position: relative; /* Assicura che stia sopra lo sfondo */
+            position: relative; 
         }
         h1 {
             letter-spacing: 8px;
@@ -64,7 +60,6 @@
             letter-spacing: 2px;
         }
 
-        /* STRUTTURA PRINCIPALE */
         main {
             max-width: 1100px;
             padding: 0 20px 50px 20px;
@@ -72,15 +67,14 @@
             position: relative;
         }
 
-        /* CITAZIONE CENTRALE */
         .quote {
             font-style: italic;
             color: #aaa;
             border-left: 3px solid #5c9ce6;
             padding-left: 20px;
             margin: 0 auto 50px auto;
-            background: rgba(15, 15, 15, 0.7); /* Traslucido */
-            backdrop-filter: blur(8px); /* Effetto vetro opaco */
+            background: rgba(15, 15, 15, 0.7); 
+            backdrop-filter: blur(8px); 
             padding: 25px;
             font-size: 1.1rem;
             line-height: 1.8;
@@ -96,32 +90,29 @@
             font-style: normal;
         }
 
-        /* LAYOUT DIVISO */
         .split-layout {
             display: flex;
             gap: 40px;
-            align-items: stretch; /* Allinea in altezza */
+            align-items: stretch; 
         }
         
-        /* SINISTRA: IMMAGINE */
         .split-image {
             flex: 0 0 45%; 
         }
         .split-image img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Gestisce le proporzioni */
+            object-fit: cover; 
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-bottom: 3px solid #5c9ce6;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
             border-radius: 4px;
         }
 
-        /* DESTRA: TESTO E BOTTONI */
         .split-text {
             flex: 1; 
-            background: rgba(15, 15, 15, 0.8); /* Traslucido per far vedere lo sfondo */
-            backdrop-filter: blur(10px); /* Effetto vetro sfocato */
+            background: rgba(15, 15, 15, 0.8); 
+            backdrop-filter: blur(10px); 
             padding: 35px;
             border: 1px solid rgba(255,255,255,0.05);
             border-left: 2px solid #5c9ce6;
@@ -151,18 +142,22 @@
             color: #5c9ce6;
         }
 
-        /* I BOTTONI INTEGRATI */
+        /* I BOTTONI INTEGRATI - ORA A GRIGLIA 2x2 CON IMMAGINI */
         .action-buttons {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr); /* Cambiato da 3 a 2 per fare 2 file da 2 */
             gap: 15px;
             margin-top: auto; 
             padding-top: 30px;
             border-top: 1px solid rgba(255,255,255,0.1);
         }
         .btn-nav {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             border: 1px solid rgba(255,255,255,0.1);
-            padding: 15px 10px;
+            padding: 20px 10px;
             text-align: center;
             text-decoration: none;
             color: #fff;
@@ -170,7 +165,7 @@
             transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
-            font-size: 0.95rem;
+            font-size: 1rem;
         }
         .btn-nav:hover {
             border-color: #5c9ce6;
@@ -178,10 +173,24 @@
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(92, 156, 230, 0.2);
         }
+        
+        /* Stile per le icone dei bottoni */
+        .btn-icon {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 15px;
+            object-fit: contain;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+        .btn-nav:hover .btn-icon {
+            opacity: 1; /* L'icona si illumina quando ci passi sopra */
+        }
+
         .btn-nav span {
             display: block;
             color: #888;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             margin-top: 5px;
             text-transform: none;
             letter-spacing: 0;
@@ -201,7 +210,6 @@
             text-shadow: 0 0 10px rgba(92, 156, 230, 0.4);
         }
 
-        /* MEDIA QUERY (MOBILE) */
         @media (max-width: 900px) {
             .split-layout {
                 flex-direction: column;
@@ -215,7 +223,7 @@
                 border-top: 2px solid #5c9ce6;
             }
             .action-buttons {
-                grid-template-columns: 1fr; 
+                grid-template-columns: 1fr; /* Su cellulare impilati in colonna */
             }
         }
     </style>
@@ -252,9 +260,22 @@
             <p>On the battlefield, the Empire operates as a cohesive, unbreakable unit. Their forces boast a highly balanced roster characterized by exceptional healing support and divine arts. By design and doctrine, they are unparalleled experts in the <strong>eradication of demonic entities</strong>, bringing the light of reason and the crushing weight of steel to the darkest corners of the world.</p>
 
             <div class="action-buttons">
-                <a href="valkyrion_lore.html" class="btn-nav">Lore <span>The Dark Years</span></a>
-                <a href="valkyrion_culture.html" class="btn-nav">Culture <span>Pragmatic Morality</span></a>
-                <a href="../unita/valkyrion_roster.html" class="btn-nav">Units <span>The Four Orders</span></a>
+                <a href="valkyrion_lore.html" class="btn-nav">
+                    <img src="../img/icon_lore.png" alt="Lore Icon" class="btn-icon">
+                    Lore <span>The Dark Years</span>
+                </a>
+                <a href="valkyrion_culture.html" class="btn-nav">
+                    <img src="../img/icon_culture.png" alt="Culture Icon" class="btn-icon">
+                    Culture <span>Pragmatic Morality</span>
+                </a>
+                <a href="valkyrion_leader.html" class="btn-nav">
+                    <img src="../img/icon_leader.png" alt="Leader Icon" class="btn-icon">
+                    Leader <span>The Demi-God</span>
+                </a>
+                <a href="../unita/valkyrion_roster.html" class="btn-nav">
+                    <img src="../img/icon_units.png" alt="Units Icon" class="btn-icon">
+                    Units <span>The Four Orders</span>
+                </a>
             </div>
         </div>
 
