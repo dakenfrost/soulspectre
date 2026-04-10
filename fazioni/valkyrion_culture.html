@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Valkyrion Culture</title>
+    <style>
+        body {
+            color: #e0e0e0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #bg-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url('../img/valkyrion_bg.jpeg'); 
+            background-size: cover;
+            background-position: center;
+            z-index: -2;
+        }
+
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(to bottom, rgba(10, 10, 12, 0.90), rgba(5, 5, 5, 0.98)); 
+            z-index: -1;
+        }
+
+        header {
+            padding: 60px 20px 30px 20px;
+            text-align: center;
+            width: 100%;
+            max-width: 1100px;
+        }
+
+        h1 {
+            letter-spacing: 5px;
+            font-size: 2.8rem;
+            margin: 0;
+            color: #fff;
+            text-transform: uppercase;
+            text-shadow: 0 0 15px rgba(92, 156, 230, 0.5);
+        }
+
+        .subtitle {
+            color: #5c9ce6;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            margin-top: 10px;
+            text-transform: uppercase;
+        }
+
+        main {
+            max-width: 1100px; 
+            padding: 40px 20px;
+            width: 100%;
+            position: relative;
+        }
+
+        /* SEZIONI DIVISE PER EVENTO */
+        .split-section {
+            display: flex;
+            gap: 40px;
+            align-items: stretch; 
+            margin-bottom: 60px; 
+            background: rgba(15, 15, 15, 0.7);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-left: 3px solid #5c9ce6;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .section-image {
+            flex: 0 0 45%; 
+        }
+
+        .section-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+        }
+
+        .section-text {
+            flex: 1; 
+            padding: 35px;
+        }
+
+        h2 {
+            color: #fff;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 10px;
+            margin-top: 0;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+        }
+
+        p {
+            margin-bottom: 25px;
+            color: #ccc;
+            font-size: 1.1rem;
+            text-align: justify;
+        }
+
+        strong {
+            color: #5c9ce6;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #aaa;
+            border-left: 3px solid #5c9ce6;
+            padding-left: 20px;
+            margin: 30px 0;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 20px;
+            font-size: 1.1rem;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.5);
+        }
+
+        .quote-author {
+            display: block;
+            margin-top: 15px;
+            font-size: 0.95rem;
+            color: #5c9ce6;
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 60px;
+            color: #666;
+            text-decoration: none;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+            padding: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .back-link:hover {
+            color: #5c9ce6;
+            text-shadow: 0 0 10px rgba(92, 156, 230, 0.4);
+        }
+
+        @media (max-width: 950px) {
+            .split-section {
+                flex-direction: column; 
+            }
+            .section-image {
+                flex: 1 1 100%;
+                width: 100%;
+                height: 300px; 
+            }
+            .section-text {
+                border-top: 1px solid rgba(255,255,255,0.1);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<header>
+    <h1>Faction Culture</h1>
+    <div class="subtitle">Pragmatic Morality & The Greater Family</div>
+</header>
+
+<main>
+    <div class="split-section" style="border: none; background: rgba(15,15,15,0.5); backdrop-filter: none; box-shadow: none; margin-bottom: 30px;">
+        <div class="section-text" style="padding: 20px; text-align: center;">
+            <p style="text-align: center; margin: 0;">An in-depth look at the societal norms, governance, and philosophical burdens carried by the citizens of the Empire.</p>
+        </div>
+    </div>
+
+    <div class="split-section">
+        <div class="section-image">
+            <img src="../img/valkyrion_culture_1_ideals.png" alt="Valkyrion Diplomatic Relations">
+        </div>
+        <div class="section-text">
+            <h2>Live and Let Live</h2>
+            <p>The Valkyrion Empire is over five hundred years old. While it is mainly a human-oriented empire, it does not shy away from other races; in fact, they are warmly welcomed as new "family members." The main creed of Valkyrion society is <strong>"live and let live,"</strong> and for this reason the Empire strives to maintain good diplomatic relations with all other factions—unless they are clearly hostile, either toward Valkyrion itself or toward another faction without clear justification. In such cases, Valkyrion forces will often rush to aid the victims of aggression.</p>
+            
+            <p>They value honor, justice, loyalty, and goodness. While other factions may see this as naïve, Valkyrion takes great pride in upholding these ideals in a world that often rewards only those who deceive or conquer others. However, these values are not followed to a fanatical extreme: <strong>when survival is at stake, they hold less weight.</strong> In a true do-or-die situation, even the most honorable knight will not hesitate to fight dirty in order to survive.</p>
+        </div>
+    </div>
+
+    <div class="split-section">
+        <div class="section-image">
+            <img src="../img/valkyrion_culture_2_society.png" alt="Valkyrion Citizens and Squires">
+        </div>
+        <div class="section-text">
+            <h2>Ex Tenebris Veritas</h2>
+            <p>For ordinary citizens, the main law enforced is simple: treat others fairly and do not cause unnecessary harm. Warriors of Valkyrion, however, follow an additional guiding principle passed down from the Founder: <strong>"ex tenebris veritas,"</strong> an ancient phrase meaning "from shadows comes truth." Difficulties and suffering are seen as obstacles to overcome—trials that strengthen those who endure them. The Founder also taught that there is no light without darkness, no hope without despair, and no strength without weakness, drawing parallels to a form of yin and yang. Unfortunately, ancient texts are unclear on the deeper meaning he truly intended.</p>
+            
+            <p>Every child is required to attend school from an early age and remains in education until the age of eighteen. Schools focus on general knowledge, but place particular emphasis on the development of emotional intelligence, which is considered essential for living a balanced and fulfilling life. Upon reaching adulthood, citizens may choose to work—either privately or in government service—or join the warrior ranks, often beginning their journey as squires.</p>
+        </div>
+    </div>
+
+    <div class="split-section">
+        <div class="section-image">
+            <img src="../img/valkyrion_culture_3_governance.png" alt="The Ruler and the Overseers">
+        </div>
+        <div class="section-text">
+            <h2>The Weight of Governance</h2>
+            <p>At the pinnacle of Valkyrion society stands the Ruler: the Empress or Emperor, depending on the era. The Ruler is said to be <strong>bound to the Founder</strong> in some way, not always by blood, but by will, inheriting the mission of bringing peace and prosperity to the people. The Ruler governs the capital city, Padineon, directly, while appointing an "Overseer" for each other city. Overseers are not chosen for their wealth or combat prowess; instead, they are personally tested by the Ruler. The nature of this test remains a closely guarded secret.</p>
+            
+            <p>Each Overseer forms a council to manage their city. While they are free to choose their own advisors, most councils include at least a military advisor, an economic advisor, and a "Voice of the People"—a citizen elected by the population to represent their concerns, requests, and proposals.</p>
+            
+            <p>Although Overseers act as the Ruler’s right hand, there exists another class of officials known as "The Voice of the Empress/Emperor." These individuals answer only to the Ruler and are not bound by local laws. They are typically war heroes or people of exceptional knowledge, faith, or power. Each of them usually leads a small group, known as a "party," tasked with carrying out special missions.</p>
+        </div>
+    </div>
+
+    <div class="split-section">
+        <div class="section-image">
+            <img src="../img/valkyrion_culture_4_orders.png" alt="The Four Major Orders">
+        </div>
+        <div class="section-text">
+            <h2>The Martial Orders</h2>
+            <p>The Valkyrion warrior ranks are divided into four major orders:</p>
+            
+            <p><strong>Order of the Sword</strong> – Fighters specialized in melee combat, serving as frontline soldiers.<br>
+            <strong>Order of the Light</strong> – Disciples of holy arts who follow the teachings of their god.<br>
+            <strong>Order of Knowledge</strong> – Masters of the arcane, primarily focused on the study and use of magic.<br>
+            <strong>Order of Engineering</strong> – Experts in technology who develop advanced weapons to deal damage from afar.</p>
+            
+            <p>Those who join a warrior order begin as basic apprentices. Advancement through the ranks depends on individual skill, experience, and proven worth. Each order offers different combat approaches, resulting in various specializations. Recruits choose a specialization early on, but may change it later in order to gain a deeper understanding of their order’s teachings. Rare individuals who master all specializations within an order are known as Champions—a title earned by very few, due to the immense effort and dedication required.</p>
+        </div>
+    </div>
+
+    <div class="split-section">
+        <div class="section-image">
+            <img src="../img/valkyrion_culture_5_graveyard.png" alt="The Graveyard and the Ghost Swords">
+        </div>
+        <div class="section-text">
+            <h2>The Anti-Nihilist Burden</h2>
+            <p>The faction is primarily <strong>Lawful Good</strong> in alignment and strives to behave in an honest and genuine way, unless survival is at stake—because being Good is not meant to be synonymous with being naïve or foolish (the Night of Tragedy is always remembered).</p>
+            
+            <p>One of the core philosophies of this culture is that every living being is part of a greater family: all are brothers and sisters. As such, the faction is extremely welcoming toward other races and factions. This friendly attitude, however, is not naïve. Even within a family there can be bad apples, and sometimes—painful as it may be—it is necessary to step up and punish those "siblings" who actively seek to harm innocents. For this reason, the faction is very likely to intervene if another power starts a war or commits the slaughter of innocents.</p>
+            
+            <p>From an early age, what is taught in schools is the importance of living a fulfilling life while avoiding harm to others. This principle represents the core teaching and core value of the culture. It reflects their anti-nihilist worldview: <strong>if we are all piles of dust destined to die, then why not try to make this mortal life a little more enjoyable for everyone, so that all may have a good time while it lasts?</strong></p>
+            
+            <p>Following this utilitarian logic, there is a strong respect for the future and for those who will come after. One common motto among soldiers is <strong>"For those who come after"</strong>. This is not meant as a form of martyrdom, but rather as an expression of responsibility: they believe they are doing their part to forge a clearer path for future generations, trying to leave the world in a better state than they found it.</p>
+            
+            <p>With such respect for the future comes an equally strong respect for the past. The dead are remembered with deep gratitude, as they are seen as the foundation upon which society stands. Once each year, the Ruler visits the capital’s graveyard to pray for the souls of the dead—both for those who wish to find peace in the afterlife, and for those who still possess the will to fight, inviting them to join their cause through the haunting power of the ghost-enhanced sword. Their names may be forgotten, but the value of their existence is forever carved into the hearts of the living.</p>
+        </div>
+    </div>
+
+    <div class="split-section">
+        <div class="section-image">
+            <img src="../img/valkyrion_culture_6_alliances.png" alt="Uneasy Alliances">
+        </div>
+        <div class="section-text">
+            <h2>Diplomacy and Gray Areas</h2>
+            <p>Being Lawful Good allows the faction to easily cooperate with other Lawful or Good factions, while relationships with Evil or Chaotic ones are far more difficult. Chaotic Evil factions, in particular, are almost impossible to cooperate with—unless an even greater evil threatens all sides.</p>
+            
+            <p>Ironically, there is a historical precedent for alliances even with Devils (Lawful Evil). While dangerous, Devils rarely act through open hostility or chaotic conquest. They tend to pursue stability for their own ends and share a deep respect for rules, contracts, and promises.</p>
+            
+            <p>While these are the general cultural principles, each Ruler interprets them differently. Some believe violence should always be the last resort, while others argue that crushing an uprising early may ultimately save more lives in the long run.</p>
+            
+            <p>The Will of the Founder prevents Rulers from becoming openly evil or selfish, but many <strong>gray areas and loopholes exist</strong>—and these have caused more than a few problems throughout history.</p>
+        </div>
+    </div>
+
+    <a href="valkyrion.html" class="back-link">← Return to Valkyrion Overview</a>
+</main>
+
+</body>
+</html>
