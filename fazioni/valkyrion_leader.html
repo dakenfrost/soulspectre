@@ -337,6 +337,7 @@
             gap: 25px;
         }
 
+        /* STILE AGGIORNATO PER LE SKILL CON ICONE */
         .skill-card {
             background: rgba(20, 20, 20, 0.8);
             border: 1px solid rgba(255,255,255,0.05);
@@ -357,15 +358,33 @@
 
         .skill-header {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            align-items: center; /* Allineamento verticale automatico per icona e titolo */
             border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding-bottom: 15px;
-            margin-bottom: 15px;
+            padding-bottom: 20px; /* Aumentato padding per accomodare l'icona */
+            margin-bottom: 20px;
+        }
+
+        /* STILE PER LO SPAZIO DELL'ICONA "QUADRATINO" */
+        .skill-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 4px;
+            object-fit: cover;
+            border: 2px solid rgba(92, 156, 230, 0.4);
+            margin-right: 20px;
+            background-color: rgba(0, 0, 0, 0.2); /* Sfondo in caso non ci sia l'immagine */
+            box-shadow: 0 0 10px rgba(92, 156, 230, 0.3); /* Un bagliore blu luminoso */
+        }
+
+        /* Contenitore per allineare titolo e tipo verticalmente a destra dell'icona */
+        .skill-title-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .skill-title {
-            margin: 0;
+            margin: 0 0 5px 0;
             color: #fff;
             font-size: 1.4rem;
             letter-spacing: 1px;
@@ -380,6 +399,8 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             color: #aaa;
+            margin: 0;
+            align-self: flex-start; /* Allinea a sinistra */
         }
 
         .skill-type.base { background: rgba(158, 158, 158, 0.2); color: #ccc; }
@@ -445,6 +466,7 @@
             .skills-grid { grid-template-columns: 1fr; }
             .stats-box { flex-direction: column; gap: 20px; }
             .carousel-item { flex: 0 0 150px; height: 150px; }
+            .skill-icon { width: 60px; height: 60px; margin-right: 15px; } /* Più piccola su mobile */
         }
     </style>
 </head>
@@ -461,7 +483,7 @@
 <main>
 
     <div class="intro-banner">
-        <img src="../img/valkyrion_emperor_banner.jpg" alt="Valkyrion Emperor / Empress">
+        <img src="../img/valkyrion_emperor_banner.png" alt="Valkyrion Emperor / Empress Banner">
     </div>
 
     <div class="split-section">
@@ -530,15 +552,14 @@
                     <div class="item-caption">Combat Stance</div>
                 </div>
 
-                </div>
+            </div>
             <button class="nav-arrow next">&#8250;</button>
         </div>
         <div class="carousel-indicators">
             <div class="indicator-dot active"></div>
             <div class="indicator-dot"></div>
             <div class="indicator-dot"></div>
-            
-            </div>
+        </div>
     </div>
 
 
@@ -579,8 +600,11 @@
             
             <div class="skill-card">
                 <div class="skill-header">
-                    <h3 class="skill-title">Blazing Punishment</h3>
-                    <span class="skill-type base">Base Skill</span>
+                    <img src="../img/valkyrion_skill_icon_blazing.png" alt="Blazing Punishment Icon" class="skill-icon">
+                    <div class="skill-title-container">
+                        <h3 class="skill-title">Blazing Punishment</h3>
+                        <span class="skill-type base">Base Skill</span>
+                    </div>
                 </div>
                 <div class="skill-desc">
                     <p>The Ruler slashes forward with the greatsword, unleashing a wave of blue flames.</p>
@@ -594,8 +618,11 @@
 
             <div class="skill-card">
                 <div class="skill-header">
-                    <h3 class="skill-title">Eyes of Final Judgement</h3>
-                    <span class="skill-type active">Active Skill</span>
+                    <img src="../img/valkyrion_skill_icon_eyes.png" alt="Eyes of Final Judgement Icon" class="skill-icon">
+                    <div class="skill-title-container">
+                        <h3 class="skill-title">Eyes of Final Judgement</h3>
+                        <span class="skill-type active">Active Skill</span>
+                    </div>
                 </div>
                 <div class="skill-desc">
                     <p>The Ruler gazes directly into the souls of their enemies. Stealth and concealment offer no protection.</p>
@@ -615,8 +642,11 @@
 
             <div class="skill-card">
                 <div class="skill-header">
-                    <h3 class="skill-title">Will of the Founder</h3>
-                    <span class="skill-type passive">Passive</span>
+                    <img src="../img/valkyrion_skill_icon_will.png" alt="Will of the Founder Icon" class="skill-icon">
+                    <div class="skill-title-container">
+                        <h3 class="skill-title">Will of the Founder</h3>
+                        <span class="skill-type passive">Passive</span>
+                    </div>
                 </div>
                 <div class="skill-desc">
                     <p>The Founder’s will flows through the Ruler, making them unyielding.</p>
@@ -630,8 +660,11 @@
 
             <div class="skill-card ultimate">
                 <div class="skill-header">
-                    <h3 class="skill-title" style="color: #FFD700;">Voice of the Forgotten</h3>
-                    <span class="skill-type ultimate">Ultimate</span>
+                    <img src="../img/valkyrion_skill_icon_voice.png" alt="Voice of the Forgotten Icon" class="skill-icon" style="border-color: rgba(255, 215, 0, 0.4); box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);">
+                    <div class="skill-title-container">
+                        <h3 class="skill-title" style="color: #FFD700;">Voice of the Forgotten</h3>
+                        <span class="skill-type ultimate">Ultimate</span>
+                    </div>
                 </div>
                 <div class="skill-desc">
                     <p>The Ruler plants Dimenticatione into the ground, allowing the bound spirits to manifest.</p>
