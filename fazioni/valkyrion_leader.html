@@ -68,6 +68,27 @@
             position: relative;
         }
 
+        /* GRANDE BANNER INTRODUTTIVO */
+        .intro-banner {
+            width: 100%;
+            max-width: 1100px;
+            height: auto;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 3px solid #5c9ce6;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 40px;
+            display: block;
+        }
+
+        .intro-banner img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            display: block;
+        }
+
         /* MODULO NARRATIVO (SPLIT LAYOUT) */
         .split-section {
             display: flex;
@@ -159,7 +180,7 @@
         }
 
         .carousel-item {
-            flex: 0 0 200px; /* Larghezza delle miniature nel carosello */
+            flex: 0 0 200px; 
             height: 200px;
             border: 1px solid rgba(255,255,255,0.1);
             border-radius: 4px;
@@ -438,6 +459,11 @@
 </header>
 
 <main>
+
+    <div class="intro-banner">
+        <img src="../img/valkyrion_emperor_banner.jpg" alt="Valkyrion Emperor / Empress">
+    </div>
+
     <div class="split-section">
         <div class="section-image">
             <img src="../img/valkyrion_leader_1_ascension.png" alt="The Ruler's Ascension">
