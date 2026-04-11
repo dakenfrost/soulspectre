@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | The Ruler</title>
+    <style>
+        body {
+            color: #e0e0e0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #bg-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url('../img/valkyrion_bg.jpeg'); 
+            background-size: cover;
+            background-position: center;
+            z-index: -2;
+        }
+
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(to bottom, rgba(10, 10, 12, 0.90), rgba(5, 5, 5, 0.98)); 
+            z-index: -1;
+        }
+
+        header {
+            padding: 60px 20px 30px 20px;
+            text-align: center;
+            width: 100%;
+            max-width: 1100px;
+        }
+
+        h1 {
+            letter-spacing: 5px;
+            font-size: 2.8rem;
+            margin: 0;
+            color: #fff;
+            text-transform: uppercase;
+            text-shadow: 0 0 15px rgba(92, 156, 230, 0.5);
+        }
+
+        .subtitle {
+            color: #5c9ce6;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            margin-top: 10px;
+            text-transform: uppercase;
+        }
+
+        main {
+            max-width: 1100px; 
+            padding: 40px 20px;
+            width: 100%;
+            position: relative;
+        }
+
+        /* MODULO NARRATIVO (SPLIT LAYOUT) */
+        .split-section {
+            display: flex;
+            gap: 40px;
+            align-items: stretch; 
+            margin-bottom: 60px; 
+            background: rgba(15, 15, 15, 0.7);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-left: 3px solid #5c9ce6;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .section-image {
+            flex: 0 0 45%; 
+        }
+
+        .section-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+        }
+
+        .section-text {
+            flex: 1; 
+            padding: 35px;
+        }
+
+        h2 {
+            color: #fff;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 10px;
+            margin-top: 0;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+        }
+
+        p {
+            margin-bottom: 25px;
+            color: #ccc;
+            font-size: 1.1rem;
+            text-align: justify;
+        }
+
+        strong {
+            color: #5c9ce6;
+        }
+
+        /* MODULO TATTICO: STATISTICHE E ABILITA' */
+        .tactical-module {
+            margin-top: 80px;
+            border-top: 2px solid #5c9ce6;
+            padding-top: 40px;
+        }
+
+        .tactical-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .tactical-header h2 {
+            border: none;
+            display: inline-block;
+            font-size: 2.2rem;
+            text-shadow: 0 0 15px rgba(92, 156, 230, 0.6);
+            margin-bottom: 5px;
+        }
+
+        /* BOX STATISTICHE */
+        .stats-box {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            background: linear-gradient(145deg, rgba(20,20,25,0.9), rgba(10,10,12,0.9));
+            border: 1px solid rgba(92, 156, 230, 0.3);
+            border-radius: 4px;
+            padding: 25px;
+            margin-bottom: 50px;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.8), 0 10px 20px rgba(0,0,0,0.5);
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 10px 20px;
+        }
+
+        .stat-label {
+            display: block;
+            color: #888;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
+
+        .stat-value {
+            display: block;
+            color: #fff;
+            font-size: 1.8rem;
+            font-weight: bold;
+            font-family: monospace;
+            text-shadow: 0 0 10px rgba(255,255,255,0.3);
+        }
+
+        .stat-value.hp { color: #4CAF50; text-shadow: 0 0 10px rgba(76, 175, 80, 0.4); }
+        .stat-value.atk { color: #f44336; text-shadow: 0 0 10px rgba(244, 67, 54, 0.4); }
+        .stat-value.tier { color: #FFD700; text-shadow: 0 0 10px rgba(255, 215, 0, 0.4); }
+
+        /* GRIGLIA ABILITA' */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 25px;
+        }
+
+        .skill-card {
+            background: rgba(20, 20, 20, 0.8);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-left: 4px solid #333;
+            padding: 25px;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            border-left-color: #5c9ce6;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+
+        .skill-card.ultimate {
+            border-left-color: #FFD700; /* Oro per la Ultimate */
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+        }
+
+        .skill-title {
+            margin: 0;
+            color: #fff;
+            font-size: 1.4rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .skill-type {
+            font-size: 0.8rem;
+            padding: 4px 8px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 2px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #aaa;
+        }
+
+        .skill-type.base { background: rgba(158, 158, 158, 0.2); color: #ccc; }
+        .skill-type.active { background: rgba(33, 150, 243, 0.2); color: #64B5F6; }
+        .skill-type.passive { background: rgba(76, 175, 80, 0.2); color: #81C784; }
+        .skill-type.ultimate { background: rgba(255, 215, 0, 0.2); color: #FFD700; }
+
+        .skill-desc {
+            color: #bbb;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .skill-desc ul {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+
+        .skill-desc li {
+            margin-bottom: 8px;
+        }
+
+        /* HIGHLIGHTS DI COMBATTIMENTO */
+        .dmg-phys { color: #ff8a65; font-weight: bold; }
+        .dmg-soul { color: #64b5f6; font-weight: bold; text-shadow: 0 0 5px rgba(100,181,246,0.5); }
+        .dmg-mind { color: #ba68c8; font-weight: bold; }
+        .status-stun { color: #ffd54f; font-weight: bold; }
+
+        .game-over-warning {
+            text-align: center;
+            color: #f44336;
+            margin-top: 50px;
+            padding: 20px;
+            border: 1px dashed rgba(244, 67, 54, 0.5);
+            background: rgba(244, 67, 54, 0.05);
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 60px;
+            color: #666;
+            text-decoration: none;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+            padding: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .back-link:hover {
+            color: #5c9ce6;
+            text-shadow: 0 0 10px rgba(92, 156, 230, 0.4);
+        }
+
+        @media (max-width: 950px) {
+            .split-section { flex-direction: column; }
+            .section-image { flex: 1 1 100%; width: 100%; height: 300px; }
+            .section-text { border-top: 1px solid rgba(255,255,255,0.1); }
+            .skills-grid { grid-template-columns: 1fr; }
+            .stats-box { flex-direction: column; gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<header>
+    <h1>The Empress / Emperor</h1>
+    <div class="subtitle">The Demigod Ruler of Valkyrion</div>
+</header>
+
+<main>
+    <div class="split-section">
+        <div class="section-image">
+            <img src="../img/valkyrion_leader_1_ascension.png" alt="The Ruler's Ascension">
+        </div>
+        <div class="section-text">
+            <h2>The Weight of the Crown</h2>
+            <p>The Ruler of the Valkyrion Empire is chosen as heir by their predecessor. They do not need to be blood-related; instead, they are selected primarily for their character, or in some cases even summoned through unknown magic. Once they wear the crown, their hair turns dark blue and their eyes ignite with blue flames, as if they inherit the strength and will of the Founder himself.</p>
+            
+            <p>Some past rulers were openly opposed to the Empire before their ascension, yet once they inherited the "Will," they found themselves unable to act against it and were compelled to strive to improve the Empire instead. A few attempted to resist actively, but even the fiercest opponents eventually became passive, at best ruling with apathy until their own demise.</p>
+        </div>
+    </div>
+
+    <div class="split-section">
+        <div class="section-text" style="border-right: 1px solid rgba(255,255,255,0.05);">
+            <h2>Legendary Artifacts</h2>
+            <p>The Empress/Emperor’s gear consists of three legendary artifacts:</p>
+            <ul>
+                <li><strong>Crown of the Will</strong> – An apparently unbreakable relic (despite numerous attempts to destroy it).</li>
+                <li><strong>Armor of Vows</strong> – A golden armor, nearly indestructible.</li>
+                <li><strong>Dimenticatione</strong> – A massive greatsword wreathed in blue flames.</li>
+            </ul>
+            <p>Legends claim that the sword’s name comes from an ancient language spoken by the Founder and means <strong>"The Forgotten"</strong>. Some past rulers reported hearing whispers from forgotten spirits, murmuring <em>"Remember us. Remember that we once existed."</em></p>
+            <p>It is said that the Ruler’s duty is not only to give voice to the living, but also to those who have lost theirs, so that such tragedies never occur again. The more the Ruler’s will resonates with these spirits, the stronger the blade becomes. The flame of Dimenticatione burns only those it is meant to burn; it is not indiscriminate destruction, but rather a manifestation of will—one that endures despite all.</p>
+        </div>
+        <div class="section-image">
+            <img src="../img/valkyrion_leader_2_artifacts.png" alt="Legendary Valkyrion Artifacts">
+        </div>
+    </div>
+
+    <div class="split-section">
+        <div class="section-image">
+            <img src="../img/valkyrion_leader_3_demigod.png" alt="The Demigod Ruler">
+        </div>
+        <div class="section-text">
+            <h2>Role and Power</h2>
+            <p>The Ruler is bound by law to never leave the capital city, likely a decree rooted in the Founder’s memory of the night of tragedy that shaped his resolve unless there is a catastrophic threat. Despite this limitation, their martial strength is unmatched and they are able to cast spells from extremely far to support their allies.</p>
+            
+            <p>Wielding near-godlike power, they are often considered demigods—and not without reason. They are masters of both martial and magical arts, making them a terrifying foe on the battlefield.</p>
+        </div>
+    </div>
+
+    <div class="tactical-module">
+        <div class="tactical-header">
+            <h2>Combat Interface</h2>
+            <div class="subtitle">Entity Registry: Alpha</div>
+        </div>
+
+        <div class="stats-box">
+            <div class="stat-item">
+                <span class="stat-label">Classification</span>
+                <span class="stat-value tier">Ruler</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Hit Points</span>
+                <span class="stat-value hp">900</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Attack Power</span>
+                <span class="stat-value atk">200</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Initiative</span>
+                <span class="stat-value">40</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Armor Mitigation</span>
+                <span class="stat-value">40%</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Immunities</span>
+                <span class="stat-value dmg-soul">Soul</span> <span style="color:#fff">&</span> <span class="stat-value dmg-mind">Mind</span>
+            </div>
+        </div>
+
+        <div class="skills-grid">
+            
+            <div class="skill-card">
+                <div class="skill-header">
+                    <h3 class="skill-title">Blazing Punishment</h3>
+                    <span class="skill-type base">Base Skill</span>
+                </div>
+                <div class="skill-desc">
+                    <p>The Ruler slashes forward with the greatsword, unleashing a wave of blue flames.</p>
+                    <ul>
+                        <li>Deals 50% <span class="dmg-phys">Physical</span> damage to all enemies in front of the unit.</li>
+                        <li>Deals 50% <span class="dmg-soul">Soul</span> damage to all enemies in a frontal area.</li>
+                        <li>Area-of-effect attack.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-header">
+                    <h3 class="skill-title">Eyes of Final Judgement</h3>
+                    <span class="skill-type active">Active Skill</span>
+                </div>
+                <div class="skill-desc">
+                    <p>The Ruler gazes directly into the souls of their enemies. Stealth and concealment offer no protection.</p>
+                    <ul>
+                        <li>Deals 25% <span class="dmg-soul">Soul</span> damage to all enemies.</li>
+                        <li>For the next 2 turns, affected enemies take the same amount of <span class="dmg-soul">Soul</span> damage again at the start of their turn.</li>
+                        <li>Applies <span class="status-stun">Stun</span> based on enemy tier:
+                            <ul>
+                                <li><strong>Tier 1–3:</strong> <span class="status-stun">Stunned</span> for 2 turns</li>
+                                <li><strong>Tier 4 & Officers:</strong> <span class="status-stun">Stunned</span> for 1 turn</li>
+                                <li><strong>Tier 5:</strong> Immune to stun</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-header">
+                    <h3 class="skill-title">Will of the Founder</h3>
+                    <span class="skill-type passive">Passive</span>
+                </div>
+                <div class="skill-desc">
+                    <p>The Founder’s will flows through the Ruler, making them unyielding.</p>
+                    <ul>
+                        <li>Immune to <strong>control effects</strong> (stun, fear, mind control), unless immunity is negated or bypassed.</li>
+                        <li>Restores <span class="hp">20% of maximum HP</span> at the start of each turn.</li>
+                        <li><strong>Damage Bonus:</strong> For every 10% HP missing, skill damage increases by 10%. (Maximum bonus: +90% damage when below 10% HP).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="skill-card ultimate">
+                <div class="skill-header">
+                    <h3 class="skill-title" style="color: #FFD700;">Voice of the Forgotten</h3>
+                    <span class="skill-type ultimate">Ultimate</span>
+                </div>
+                <div class="skill-desc">
+                    <p>The Ruler plants Dimenticatione into the ground, allowing the bound spirits to manifest.</p>
+                    <ul>
+                        <li>Summons <strong>5 Forgotten Ghosts</strong> around the Ruler.</li>
+                        <li>Each Ghost inherits 30% of the Ruler’s base stats.</li>
+                        <li><strong>Ghost abilities:</strong>
+                            <ul>
+                                <li><strong>Soul Strike:</strong> Basic ranged <span class="dmg-soul">Soul</span> damage attack.</li>
+                                <li><strong>Soul Drain:</strong> Melee <span class="dmg-soul">Soul</span> attack that steals HP and <span class="dmg-mind">Mind Paralyzes</span> the target for 1 turn.</li>
+                            </ul>
+                        </li>
+                        <li><em>Cooldown: 3 turns</em></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="game-over-warning">
+            ⚠ Warning: Should the Empress or Emperor fall, the Valkyrion Empire is doomed, and the player immediately loses the game.
+        </div>
+
+    </div>
+
+    <a href="valkyrion.html" class="back-link">← Return to Valkyrion Overview</a>
+</main>
+
+</body>
+</html>
