@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Order of Knowledge</title>
+    <style>
+        body {
+            color: #e0e0e0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #bg-image {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background-image: url('../../img/valkyrion_bg.jpeg'); 
+            background-size: cover;
+            background-position: center;
+            z-index: -2;
+        }
+
+        #overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background: linear-gradient(to bottom, rgba(10, 5, 15, 0.92), rgba(5, 5, 5, 0.98)); 
+            z-index: -1;
+        }
+
+        header {
+            padding: 60px 20px 30px 20px;
+            text-align: center;
+            width: 100%;
+            max-width: 1100px;
+        }
+
+        h1 {
+            letter-spacing: 5px;
+            font-size: 2.8rem;
+            margin: 0;
+            color: #fff;
+            text-transform: uppercase;
+            text-shadow: 0 0 15px rgba(171, 71, 188, 0.6);
+        }
+
+        .subtitle {
+            color: #ab47bc;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            margin-top: 10px;
+            text-transform: uppercase;
+        }
+
+        main {
+            max-width: 1100px; 
+            padding: 40px 20px;
+            width: 100%;
+            position: relative;
+        }
+
+        .intro-banner {
+            width: 100%;
+            height: auto;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 3px solid #ab47bc;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 40px;
+            display: block;
+        }
+
+        .intro-banner img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .lore-section {
+            background: rgba(10, 5, 15, 0.7);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-left: 3px solid #ab47bc;
+            padding: 35px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-bottom: 40px;
+        }
+
+        .lore-section h2 {
+            color: #fff;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 10px;
+            margin-top: 0;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+        }
+
+        .lore-section p { margin-bottom: 20px; color: #ccc; font-size: 1.1rem; text-align: justify; }
+        .lore-section strong { color: #ab47bc; }
+
+        .tree-section {
+            width: 100%;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            margin-bottom: 60px;
+            background: #0a0a0c;
+        }
+
+        .tree-section img { width: 100%; height: auto; display: block; }
+
+        .unit-list-header { text-align: center; margin-bottom: 30px; }
+        .unit-list-header h2 {
+            border: none;
+            display: inline-block;
+            font-size: 2.2rem;
+            text-shadow: 0 0 15px rgba(171, 71, 188, 0.6);
+            margin-bottom: 5px;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .unit-list { display: flex; flex-direction: column; gap: 20px; margin-bottom: 60px; }
+
+        .unit-row {
+            display: flex;
+            align-items: center;
+            background: linear-gradient(to right, rgba(20,10,25,0.9), rgba(10,5,15,0.8));
+            border: 1px solid rgba(255,255,255,0.05);
+            border-left: 4px solid #ab47bc;
+            padding: 20px;
+            border-radius: 4px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .unit-row:hover { transform: translateX(5px); box-shadow: 0 5px 20px rgba(0,0,0,0.6); }
+
+        .unit-row.t-1 { border-left-color: #b0bec5; } 
+        .unit-row.t-2 { border-left-color: #81c784; } 
+        .unit-row.t-3 { border-left-color: #64b5f6; } 
+        .unit-row.t-4 { border-left-color: #ba68c8; } 
+        .unit-row.t-5 { border-left-color: #ffb300; } 
+        .unit-row.t-officer { border-left-color: #ffd700; } 
+
+        .portrait-container {
+            position: relative;
+            flex: 0 0 100px;
+            width: 100px;
+            height: 100px;
+            margin-right: 25px;
+            border-radius: 4px;
+            border: 2px solid rgba(255,255,255,0.1);
+            overflow: hidden;
+            background: #000;
+        }
+
+        /* CLASSE MODULARE PER RITRATTI LARGHI (es. Magus, Draghi) */
+        .portrait-container.wide {
+            flex: 0 0 180px;
+            width: 180px;
+        }
+
+        .portrait-container img {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            object-position: top center;
+        }
+
+        .portrait-anim { animation: crossfade 8s infinite; }
+
+        @keyframes crossfade {
+            0%, 40% { opacity: 0; }
+            50%, 90% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        .unit-info { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+        .unit-name { font-size: 1.5rem; color: #fff; margin: 0 0 5px 0; text-transform: uppercase; letter-spacing: 1px; }
+        .unit-tier { font-size: 0.85rem; color: #888; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
+        
+        .color-t1 { color: #b0bec5; font-weight: bold; }
+        .color-t2 { color: #81c784; font-weight: bold; }
+        .color-t3 { color: #64b5f6; font-weight: bold; }
+        .color-t4 { color: #ba68c8; font-weight: bold; }
+        .color-t5 { color: #ffb300; font-weight: bold; text-shadow: 0 0 5px rgba(255,179,0,0.5); }
+        .color-officer { color: #ffd700; font-weight: bold; text-shadow: 0 0 5px rgba(255,215,0,0.5); }
+
+        .unit-desc {
+            color: #bbb;
+            font-size: 1rem;
+            margin: 0;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2; 
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .unit-action { flex: 0 0 auto; margin-left: 20px; }
+
+        .btn-tactical {
+            display: inline-block;
+            background: rgba(171, 71, 188, 0.1);
+            color: #ab47bc;
+            border: 1px solid #ab47bc;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-tactical:hover {
+            background: #ab47bc;
+            color: #fff;
+            box-shadow: 0 0 15px rgba(171, 71, 188, 0.4);
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 40px;
+            color: #666;
+            text-decoration: none;
+            padding: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .back-link:hover {
+            color: #ab47bc;
+            text-shadow: 0 0 10px rgba(171, 71, 188, 0.4);
+        }
+
+        @media (max-width: 800px) {
+            .unit-row { flex-direction: column; text-align: center; padding: 30px 20px; }
+            .portrait-container { margin: 0 0 20px 0; width: 120px; height: 120px; }
+            .portrait-container.wide { width: 100%; height: auto; aspect-ratio: 16/9; }
+            .unit-action { margin: 20px 0 0 0; width: 100%; }
+            .btn-tactical { display: block; width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<header>
+    <h1>Order of Knowledge</h1>
+    <div class="subtitle">Masters of the Arcane & Tactical Academia</div>
+</header>
+
+<main>
+    <div class="intro-banner">
+        <img src="../../img/valkyrion_knowledge_intro.png" alt="Order of Knowledge - Mage Tower">
+    </div>
+
+    <div class="lore-section">
+        <h2>The Scholars of War</h2>
+        <p>Nearly all books and magical tomes are held by the wise <strong>Order of Knowledge</strong>. Operating from the colossal Mage Tower and the Great Library, these wizards, witches, and arcane scholars harness magical energies to manipulate the battlefield.</p>
+        <p>All students begin as <strong>Apprentices</strong>, traditionally diverging by gender. Males, possessing raw structured power, focus on scholastic casting to become <strong>Mages</strong> and eventually <strong>Thaumaturges</strong>. Females, naturally attuned to complex energies, become <strong>Witches</strong> and <strong>Hexarchs</strong>, specializing in weakening and impairing adversaries. The rare individuals who master both schools through reversible alchemical processes merge into a dual-entity known as a <strong>Magus</strong>.</p>
+        <p>However, a secluded sect exists within the Great Library. Composed entirely of female scholars, this militant wing treats history and mathematics as weapons. Starting as <strong>Glossants</strong>, they apply combat awareness and predictive magic to fight on the frontlines. As they advance, they diverge into evasive <strong>Strategists</strong> or heavily armored <strong>Retaliators</strong>, culminating in the peerless <strong>Archons</strong>.</p>
+    </div>
+
+    <div class="tree-section">
+        <img src="../../img/valkyrion_knowledge_tree.png" alt="Evolution Tree - Knowledge">
+    </div>
+
+    <div class="unit-list-header">
+        <h2>Active Roster</h2>
+    </div>
+
+    <div class="unit-list">
+
+        <div class="unit-row t-officer">
+            <div class="portrait-container">
+                <img src="../../img/valkyrion_summoner_m_portrait.jpg" alt="Summoner M">
+                <img src="../../img/valkyrion_summoner_f_portrait.jpg" alt="Summoner F" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Summoner</h3>
+                <div class="unit-tier">Classification: <span class="color-officer">Officer</span></div>
+                <p class="unit-desc">Tactical conjurers who materialize swords and massive Golem Knights. Their ability to dynamically create offensive and defensive assets makes them invaluable commanders.</p>
+            </div>
+            <div class="unit-action">
+                <a href="valkyrion_summoner.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+        
+        <div class="unit-row t-1">
+            <div class="portrait-container">
+                <img src="../../img/valkyrion_apprentice_m_portrait.jpg" alt="Apprentice M">
+                <img src="../../img/valkyrion_apprentice_f_portrait.jpg" alt="Apprentice F" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Apprentice</h3>
+                <div class="unit-tier">Classification: <span class="color-t1">Tier 1</span></div>
+                <p class="unit-desc">Young aspirants learning the fundamentals of arcane channeling. They utilize basic elemental strikes to hit multiple enemies simultaneously.</p>
+            </div>
+            <div class="unit-action">
+                <a href="valkyrion_apprentice.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-1">
+            <div class="portrait-container">
+                <img src="../../img/valkyrion_glossant_portrait.jpg" alt="Glossant">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Glossant</h3>
+                <div class="unit-tier">Classification: <span class="color-t1">Tier 1</span></div>
+                <p class="unit-desc">Avid readers of history and war tactics within the Great Library. They apply their studies to create a fast-paced, flexible frontline combat style.</p>
+            </div>
+            <div class="unit-action">
+                <a href="valkyrion_glossant.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-2">
+            <div class="portrait-container">
+                <img src="../../img/valkyrion_mage_portrait.jpg" alt="Mage">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Mage</h3>
+                <div class="unit-tier">Classification: <span class="color-t2">Tier 2</span></div>
+                <p class="unit-desc">Male scholars who maximize structured magical damage. They focus on raw destructive output through concentrated fire and air spells.</p>
+            </div>
+            <div class="unit-action">
+                <a href="valkyrion_mage.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-2">
+            <div class="portrait-container">
+                <img src="../../img/valkyrion_witch_portrait.jpg" alt="Witch">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Witch</h3>
+                <div class="unit-tier">Classification: <span class="color-t2">Tier 2</span></div>
+                <p class="unit-desc">Female scholars attuned to primal energies. They utilize natural magic to unleash toxic roots and impair the enemy's vital functions.</p>
+            </div>
+            <div class="unit-action">
+                <a href="valkyrion_witch.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-2">
+            <div class="portrait-container">
+                <img src="../../img/valkyrion_prescient_portrait.jpg" alt="Prescient">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Prescient</h3>
+                <div class="unit-tier">Classification: <span class="color-t2">Tier 2</span></div>
+                <p class="unit-desc">Expert Glossants who utilize magical circlets to process battlefield data, reading opponent movements to become formidable, agile fighters.</p>
+            </div>
+            <div class="unit-action">
+                <a href="valkyrion_prescient.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-3">
+            <div class="portrait-container">
+                <img src="../../img/valkyrion_wizard_portrait.jpg" alt="Wizard">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Wizard</h3>
+                <div class="unit-tier">Classification: <span class="color-t3">Tier 3</span></div>
+                <p class="unit-desc">Advanced Mages who have learned to conjure structural arcane armor, protecting their weak physical defenses while maintaining heavy bombardment.</p>
+            </div>
+            <div class="unit-action">
+                <a href="valkyrion_wizard.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-3">
+            <div class="portrait-container">
+                <img src="../../img/valkyrion_sorceress_portrait.jpg" alt="Sorceress">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Sorceress</h3>
+                <div class="unit-tier">Classification: <span class="color-t3">Tier 3</span></div>
+                <p class="unit-desc">Experienced Witches possessing intensive knowledge of dark elements. They blind and debilitate enemy lines, weakening their offensive potential.</p>
+            </div>
+            <div class="unit-action">
+                <a href="valkyrion_sorceress.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-3">
+            <div class="portrait-container">
+                <img src="../../img/valkyrion_strategist_portrait.jpg" alt="Strategist">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Strategist</h3>
+                <div class="unit-tier">Classification: <span class="color-t3">Tier 3</span></div>
+                <p class="unit-desc">Prescients with extensive knowledge of warfare. They dictate the flow of battle, deploying complex strategies and evading strikes through predictive calculation.</p>
+            </div>
+            <div class="unit-action">
+                <a href="valkyrion_strategist.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-3">
+            <div class="portrait-container">
+                <img src="../../img/valkyrion_retaliator_portrait.jpg" alt="Retaliator">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Retaliator</h3>
+                <div class="unit-tier">Classification: <span class="color-t3">Tier 3</span></div>
+                <p class="unit-desc">Prescients who apply knowledge to metallurgy. Instead of dodging, they channel kinetic force through reinforced armor to unleash brutal counterattacks.</p>
+            </div>
+            <div class="unit-action">
+                <a href="valkyrion_retaliator.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-4">
+            <div class="portrait-container">
+                <img src="../../img/valkyrion_thaumaturge_portrait.jpg" alt="Thaumaturge">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Thaumaturge</h3>
+                <div class="unit-tier">Classification: <span class="color-t4">Tier 4</span></div>
+                <p class="unit-desc">The peak of structured magic. Capable of conjuring impossible spells, they rain pure destruction and meteor storms upon the adversary.</p>
+            </div>
+            <div class="unit-action">
+                <a href="valkyrion_thaumaturge.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-4">
+            <div class="portrait-container">
+                <img src="../../img/valkyrion_hexarch_portrait.jpg" alt="Hexarch">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Hexarch</h3>
+                <div class="unit-tier">Classification: <span class="color-t4">Tier 4</span></div>
+                <p class="unit-desc">The absolute masters of nature and curses. Their hexes bypass magical resistances, draining the life and accuracy from entire enemy formations.</p>
+            </div>
+            <div class="unit-action">
+                <a href="valkyrion_hexarch.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-4">
+            <div class="portrait-container">
+                <img src="../../img/valkyrion_enlightened_portrait.jpg" alt="Enlightened">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Enlightened</h3>
+                <div class="unit-tier">Classification: <span class="color-t4">Tier 4</span></div>
+                <p class="unit-desc">Master Strategists with absolute tactical awareness. Their precognitive abilities make them virtually untouchable on the frontlines.</p>
+            </div>
+            <div class="unit-action">
+                <a href="valkyrion_enlightened.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-4">
+            <div class="portrait-container">
+                <img src="../../img/valkyrion_vindicator_portrait.jpg" alt="Vindicator">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Vindicator</h3>
+                <div class="unit-tier">Classification: <span class="color-t4">Tier 4</span></div>
+                <p class="unit-desc">Walking fortresses of the Great Library. Clad in spiked, magically-enhanced plating, they return passive kinetic damage to any who dare strike them.</p>
+            </div>
+            <div class="unit-action">
+                <a href="valkyrion_vindicator.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-5">
+            <div class="portrait-container wide">
+                <img src="../../img/valkyrion_magus_portrait.png" alt="Magus (Twin Entity)">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Magus</h3>
+                <div class="unit-tier">Classification: <span class="color-t5">Tier 5 (Champion)</span></div>
+                <p class="unit-desc">A single soul controlling both a male and female body simultaneously. They wield absolute mastery over both structured and natural magic, obliterating all resistances.</p>
+            </div>
+            <div class="unit-action">
+                <a href="valkyrion_magus.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-5">
+            <div class="portrait-container">
+                <img src="../../img/valkyrion_archon_portrait.jpg" alt="Archon">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Archon</h3>
+                <div class="unit-tier">Classification: <span class="color-t5">Tier 5 (Champion)</span></div>
+                <p class="unit-desc">The martial apex of the Great Library. Master of both predictive evasion and kinetic armor, they deploy flawless tactics and devastating shockwaves.</p>
+            </div>
+            <div class="unit-action">
+                <a href="valkyrion_archon.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+    </div>
+
+    <a href="../../factions/valkyrion_roster.html" class="back-link">← Return to Military Roster</a>
+</main>
+
+</body>
+</html>
