@@ -68,7 +68,6 @@
             position: relative;
         }
 
-        /* MODULO BANNER INTRODUTTIVO */
         .intro-banner {
             width: 100%;
             height: auto;
@@ -87,7 +86,6 @@
             display: block;
         }
 
-        /* MODULO TESTUALE (LORE) */
         .lore-section {
             background: rgba(15, 15, 15, 0.7);
             backdrop-filter: blur(8px);
@@ -120,7 +118,6 @@
             color: #5c9ce6;
         }
 
-        /* MODULO ALBERO DELLE EVOLUZIONI */
         .tree-section {
             width: 100%;
             border: 1px solid rgba(255,255,255,0.1);
@@ -137,7 +134,6 @@
             display: block;
         }
 
-        /* LAYOUT LISTA UNITA' (RIGHE ORIZZONTALI) */
         .unit-list-header {
             text-align: center;
             margin-bottom: 30px;
@@ -169,18 +165,20 @@
             border-left: 4px solid #5c9ce6;
             padding: 20px;
             border-radius: 4px;
-            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         .unit-row:hover {
             transform: translateX(5px);
-            border-left-color: #FFD700;
             box-shadow: 0 5px 20px rgba(0,0,0,0.6);
         }
 
-        .unit-row.officer {
-            border-left-color: #FFD700; 
-        }
+        .unit-row.t-1 { border-left-color: #b0bec5; } 
+        .unit-row.t-2 { border-left-color: #81c784; } 
+        .unit-row.t-3 { border-left-color: #64b5f6; } 
+        .unit-row.t-4 { border-left-color: #ba68c8; } 
+        .unit-row.t-5 { border-left-color: #ffb300; } 
+        .unit-row.t-officer { border-left-color: #ffd700; } 
 
         .unit-portrait {
             flex: 0 0 100px;
@@ -216,14 +214,12 @@
             margin-bottom: 10px;
         }
 
-        .unit-tier span {
-            color: #5c9ce6;
-            font-weight: bold;
-        }
-
-        .unit-row.officer .unit-tier span {
-            color: #FFD700;
-        }
+        .unit-tier .color-t1 { color: #b0bec5; font-weight: bold; }
+        .unit-tier .color-t2 { color: #81c784; font-weight: bold; }
+        .unit-tier .color-t3 { color: #64b5f6; font-weight: bold; }
+        .unit-tier .color-t4 { color: #ba68c8; font-weight: bold; }
+        .unit-tier .color-t5 { color: #ffb300; font-weight: bold; text-shadow: 0 0 5px rgba(255,179,0,0.5); }
+        .unit-tier .color-officer { color: #ffd700; font-weight: bold; text-shadow: 0 0 5px rgba(255,215,0,0.5); }
 
         .unit-desc {
             color: #bbb;
@@ -315,7 +311,7 @@
 
 <main>
     <div class="intro-banner">
-        <img src="../../img/valkyrion_sword_intro.jpg" alt="Order of the Sword - Protectors & Purgers">
+        <img src="../../img/valkyrion_sword_intro.png" alt="Order of the Sword - Protectors & Purgers">
     </div>
 
     <div class="lore-section">
@@ -327,7 +323,7 @@
     </div>
 
     <div class="tree-section">
-        <img src="../../img/valkyrion_sword_tree.jpg" alt="Evolution Tree">
+        <img src="../../img/valkyrion_sword_tree.png" alt="Evolution Tree">
     </div>
 
     <div class="unit-list-header">
@@ -335,12 +331,24 @@
     </div>
 
     <div class="unit-list">
+
+        <div class="unit-row t-officer">
+            <img src="../../img/valkyrion_hero_portrait.jpg" alt="Hero" class="unit-portrait">
+            <div class="unit-info">
+                <h3 class="unit-name">Hero</h3>
+                <div class="unit-tier">Classification: <span class="color-officer">Officer</span></div>
+                <p class="unit-desc">Veteran warriors hand-picked by the Ruler. They excel in frontline combat and serve as central commanders, bolstering morale and coordinating allied formations.</p>
+            </div>
+            <div class="unit-action">
+                <a href="valkyrion_hero.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
         
-        <div class="unit-row">
+        <div class="unit-row t-1">
             <img src="../../img/valkyrion_squire_portrait.jpg" alt="Squire" class="unit-portrait">
             <div class="unit-info">
                 <h3 class="unit-name">Squire</h3>
-                <div class="unit-tier">Classification: <span>Tier 1</span></div>
+                <div class="unit-tier">Classification: <span class="color-t1">Tier 1</span></div>
                 <p class="unit-desc">The entry rank for all who wish to join the Order of Swords. Well-balanced fighters equipped with chainmail, forming the solid backbone of the infantry lines.</p>
             </div>
             <div class="unit-action">
@@ -348,15 +356,111 @@
             </div>
         </div>
 
-        <div class="unit-row officer">
-            <img src="../../img/valkyrion_hero_portrait.jpg" alt="Hero" class="unit-portrait">
+        <div class="unit-row t-2">
+            <img src="../../img/valkyrion_witch_hunter_portrait.jpg" alt="Witch Hunter" class="unit-portrait">
             <div class="unit-info">
-                <h3 class="unit-name">Hero</h3>
-                <div class="unit-tier">Classification: <span>Officer</span></div>
-                <p class="unit-desc">Veteran warriors hand-picked by the Ruler. They excel in frontline combat and serve as central commanders, bolstering morale and coordinating allied formations.</p>
+                <h3 class="unit-name">Witch Hunter</h3>
+                <div class="unit-tier">Classification: <span class="color-t2">Tier 2</span></div>
+                <p class="unit-desc">Inquisitors who favor wit over brute strength. Subjected to mental trials, they possess strong resistance to mind-altering spells and hunt corrupt beings hiding in society.</p>
             </div>
             <div class="unit-action">
-                <a href="valkyrion_hero.html" class="btn-tactical">View Data</a>
+                <a href="valkyrion_witch_hunter.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-2">
+            <img src="../../img/valkyrion_knight_portrait.jpg" alt="Knight" class="unit-portrait">
+            <div class="unit-info">
+                <h3 class="unit-name">Knight</h3>
+                <div class="unit-tier">Classification: <span class="color-t2">Tier 2</span></div>
+                <p class="unit-desc">Squires who advance into the Knighthood. Geared with heavy armor and displaying advanced martial arts, they are vowed to protect the weak and smite evil.</p>
+            </div>
+            <div class="unit-action">
+                <a href="valkyrion_knight.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-3">
+            <img src="../../img/valkyrion_monster_hunter_portrait.jpg" alt="Monster Hunter" class="unit-portrait">
+            <div class="unit-info">
+                <h3 class="unit-name">Monster Hunter</h3>
+                <div class="unit-tier">Classification: <span class="color-t3">Tier 3</span></div>
+                <p class="unit-desc">Master Witch Hunters equipped to face supernatural threats like vampires and werewolves. Their specialized silver blades and skills bypass enemy immunities.</p>
+            </div>
+            <div class="unit-action">
+                <a href="valkyrion_monster_hunter.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-3">
+            <img src="../../img/valkyrion_crusader_portrait.jpg" alt="Crusader" class="unit-portrait">
+            <div class="unit-info">
+                <h3 class="unit-name">Crusader</h3>
+                <div class="unit-tier">Classification: <span class="color-t3">Tier 3</span></div>
+                <p class="unit-desc">Knights focused entirely on judgment. Empowered by holy fervor, they specialize in delivering swift, merciless punishment and radiant damage to evildoers.</p>
+            </div>
+            <div class="unit-action">
+                <a href="valkyrion_crusader.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-3">
+            <img src="../../img/valkyrion_paladin_portrait.jpg" alt="Paladin" class="unit-portrait">
+            <div class="unit-info">
+                <h3 class="unit-name">Paladin</h3>
+                <div class="unit-tier">Classification: <span class="color-t3">Tier 3</span></div>
+                <p class="unit-desc">Holy warriors devoted to protecting the innocent. They wield massive shields to interpose themselves between danger and their allies, absorbing lethal strikes.</p>
+            </div>
+            <div class="unit-action">
+                <a href="valkyrion_paladin.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-4">
+            <img src="../../img/valkyrion_inquisitor_portrait.jpg" alt="Inquisitor" class="unit-portrait">
+            <div class="unit-info">
+                <h3 class="unit-name">Inquisitor</h3>
+                <div class="unit-tier">Classification: <span class="color-t4">Tier 4</span></div>
+                <p class="unit-desc">Hunters who have endured the darkest horrors. Possessing exceptional mental fortitude and mastery over forbidden arts, they bind enemies in chains for final judgment.</p>
+            </div>
+            <div class="unit-action">
+                <a href="valkyrion_inquisitor.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-4">
+            <img src="../../img/valkyrion_holy_avenger_portrait.jpg" alt="Holy Avenger" class="unit-portrait">
+            <div class="unit-info">
+                <h3 class="unit-name">Holy Avenger</h3>
+                <div class="unit-tier">Classification: <span class="color-t4">Tier 4</span></div>
+                <p class="unit-desc">The most zealous of Crusaders, fueled by righteous fury. They strike down enemies with relentless aggression while calling upon divine power to heal allies.</p>
+            </div>
+            <div class="unit-action">
+                <a href="valkyrion_holy_avenger.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-4">
+            <img src="../../img/valkyrion_guardian_portrait.jpg" alt="Guardian" class="unit-portrait">
+            <div class="unit-info">
+                <h3 class="unit-name">Guardian</h3>
+                <div class="unit-tier">Classification: <span class="color-t4">Tier 4</span></div>
+                <p class="unit-desc">Unshakeable bulwarks blessed with regenerative magic. They dedicate their lives to shielding allies from catastrophic harm with unbreakable divine protection.</p>
+            </div>
+            <div class="unit-action">
+                <a href="valkyrion_guardian.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-5">
+            <img src="../../img/valkyrion_knight_of_dusk_portrait.jpg" alt="Knight of Dusk" class="unit-portrait">
+            <div class="unit-info">
+                <h3 class="unit-name">Knight of Dusk</h3>
+                <div class="unit-tier">Classification: <span class="color-t5">Tier 5 (Champion)</span></div>
+                <p class="unit-desc">Rare champions mastering fury, defense, and discipline. They are the final hope in the darkest hour—an unyielding light forged in shadow that refuses to be changed by the world.</p>
+            </div>
+            <div class="unit-action">
+                <a href="valkyrion_knight_of_dusk.html" class="btn-tactical">View Data</a>
             </div>
         </div>
 
