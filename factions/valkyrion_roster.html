@@ -5,242 +5,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOULSPECTRE | Valkyrion Roster</title>
     <style>
-    body {
-        color: #e0e0e0;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        line-height: 1.8;
-        margin: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+        body {
+            color: #e0e0e0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-    #bg-image {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background-image: url('../img/valkyrion_bg.jpeg'); 
-        background-size: cover;
-        background-position: center;
-        z-index: -2;
-    }
+        #bg-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url('../img/valkyrion_bg.jpeg'); 
+            background-size: cover;
+            background-position: center;
+            z-index: -2;
+        }
 
-    #overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background: linear-gradient(to bottom, rgba(10, 10, 12, 0.90), rgba(5, 5, 5, 0.98)); 
-        z-index: -1;
-    }
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(to bottom, rgba(10, 10, 12, 0.90), rgba(5, 5, 5, 0.98)); 
+            z-index: -1;
+        }
 
-    header {
-        padding: 60px 20px 30px 20px;
-        text-align: center;
-        width: 100%;
-        max-width: 1100px;
-    }
+        header {
+            padding: 60px 20px 30px 20px;
+            text-align: center;
+            width: 100%;
+            max-width: 1100px;
+        }
 
-    h1 {
-        letter-spacing: 5px;
-        font-size: 2.8rem;
-        margin: 0;
-        color: #fff;
-        text-transform: uppercase;
-        text-shadow: 0 0 15px rgba(92, 156, 230, 0.5);
-    }
+        h1 {
+            letter-spacing: 5px;
+            font-size: 2.8rem;
+            margin: 0;
+            color: #fff;
+            text-transform: uppercase;
+            text-shadow: 0 0 15px rgba(92, 156, 230, 0.5);
+        }
 
-    .subtitle {
-        color: #5c9ce6;
-        font-size: 1.1rem;
-        letter-spacing: 2px;
-        margin-top: 10px;
-        text-transform: uppercase;
-    }
+        .subtitle {
+            color: #5c9ce6;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            margin-top: 10px;
+            text-transform: uppercase;
+        }
 
-    main {
-        max-width: 1100px; 
-        padding: 40px 20px;
-        width: 100%;
-        position: relative;
-    }
+        main {
+            max-width: 1100px; 
+            padding: 40px 20px;
+            width: 100%;
+            position: relative;
+        }
 
-    .intro-text {
-        text-align: center;
-        font-size: 1.2rem;
-        color: #ccc;
-        margin-bottom: 50px;
-        background: rgba(15, 15, 15, 0.6);
-        backdrop-filter: blur(5px);
-        border: 1px solid rgba(255,255,255,0.05);
-        padding: 20px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    }
+        .intro-text {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #ccc;
+            margin-bottom: 50px;
+            background: rgba(15, 15, 15, 0.6);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
 
-    /* GRIGLIA DEGLI ORDINI MILITARI */
-    .roster-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-        gap: 30px;
-        margin-bottom: 60px;
-    }
-
-    .order-card {
-        position: relative;
-        height: 250px;
-        border: 1px solid rgba(255,255,255,0.1);
-        border-bottom: 3px solid #5c9ce6;
-        border-radius: 4px;
-        overflow: hidden;
-        display: flex;
-        /* MODIFICA: Allinea il contenuto in basso anziché al centro */
-        align-items: flex-end; 
-        justify-content: center;
-        text-decoration: none;
-        transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.6);
-        /* AGGIUNTA: Spazio dal bordo inferiore */
-        padding-bottom: 20px; 
-        box-sizing: border-box; /* Assicura che il padding non alteri l'altezza */
-    }
-
-    .order-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 35px rgba(92, 156, 230, 0.3);
-        border-bottom-color: #FFD700;
-    }
-
-    .order-bg {
-        position: absolute;
-        top: 0; left: 0; right: 0; bottom: 0;
-        background-size: cover;
-        background-position: center;
-        transition: transform 0.5s ease;
-        z-index: 1;
-    }
-
-    .order-card:hover .order-bg {
-        transform: scale(1.05);
-    }
-
-    .order-overlay {
-        position: absolute;
-        top: 0; left: 0; right: 0; bottom: 0;
-        /* MODIFICA: Gradiente scuro solo in basso per il testo, trasparente in alto per i volti */
-        background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 30%, rgba(0,0,0,0) 100%);
-        z-index: 2;
-        transition: background 0.3s ease;
-    }
-
-    .order-card:hover .order-overlay {
-        background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 30%, rgba(0,0,0,0) 100%);
-    }
-
-    .order-title {
-        position: relative;
-        z-index: 3;
-        color: #fff;
-        /* MODIFICA: Dimensione leggermente ridotta per l'ancoraggio in basso */
-        font-size: 1.6rem; 
-        text-transform: uppercase;
-        letter-spacing: 3px;
-        text-shadow: 0 2px 10px rgba(0,0,0,1);
-        margin: 0;
-        text-align: center;
-        /* AGGIUNTA: Assicura che il testo non tocchi i bordi laterali */
-        padding: 0 15px; 
-        width: 100%;
-    }
-
-    /* CARD PER "OTHERS" (Stile leggermente diverso per staccare) */
-    .others-card {
-        grid-column: 1 / -1; /* Occupa tutta la larghezza disponibile */
-        height: 200px;
-        border-bottom-color: #888;
-    }
-
-    .others-card:hover {
-        border-bottom-color: #ccc;
-        box-shadow: 0 15px 35px rgba(255, 255, 255, 0.1);
-    }
-
-    .back-link {
-        display: block;
-        text-align: center;
-        margin-top: 40px;
-        color: #666;
-        text-decoration: none;
-        font-size: 1rem;
-        letter-spacing: 1px;
-        transition: color 0.3s;
-        padding: 20px;
-        border-top: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .back-link:hover {
-        color: #5c9ce6;
-        text-shadow: 0 0 10px rgba(92, 156, 230, 0.4);
-    }
-
-    @media (max-width: 950px) {
-        .roster-grid { grid-template-columns: 1fr; }
-        .order-card { height: 200px; padding-bottom: 15px; }
-        .order-title { font-size: 1.4rem; letter-spacing: 2px; }
-    }
-    </style>
-</head>
-<body>
-
-<div id="bg-image"></div>
-<div id="overlay"></div>
-
-<header>
-    <h1>Military Roster</h1>
-    <div class="subtitle">The Martial Forces of the Empire</div>
-</header>
-
-<main>
-    <div class="intro-text">
-        Access the tactical database. Select a Military Order to review its combat doctrine, structure, and active units.
-    </div>
-
-    <div class="roster-grid">
-        <a href="valkyrion_order_sword.html" class="order-card">
-            <div class="order-bg" style="background-image: url('../img/valkyrion_roster_sword.jpg');"></div>
-            <div class="order-overlay"></div>
-            <h2 class="order-title">Order of the Sword</h2>
-        </a>
-
-        <a href="valkyrion_order_light.html" class="order-card">
-            <div class="order-bg" style="background-image: url('../img/valkyrion_roster_light.jpg');"></div>
-            <div class="order-overlay"></div>
-            <h2 class="order-title">Order of the Light</h2>
-        </a>
-
-        <a href="valkyrion_order_knowledge.html" class="order-card">
-            <div class="order-bg" style="background-image: url('../img/valkyrion_roster_knowledge.jpg');"></div>
-            <div class="order-overlay"></div>
-            <h2 class="order-title">Order of Knowledge</h2>
-        </a>
-
-        <a href="valkyrion_order_engineering.html" class="order-card">
-            <div class="order-bg" style="background-image: url('../img/valkyrion_roster_engineering.jpg');"></div>
-            <div class="order-overlay"></div>
-            <h2 class="order-title">Order of Engineering</h2>
-        </a>
-
-        <a href="valkyrion_others.html" class="order-card others-card">
-            <div class="order-bg" style="background-image: url('../img/valkyrion_roster_others.jpg');"></div>
-            <div class="order-overlay"></div>
-            <h2 class="order-title">Auxiliaries & Others</h2>
-        </a>
-    </div>
-
-    <a href="../factions/valkyrion.html" class="back-link">← Return to Valkyrion Overview</a>
-</main>
-
-</body>
-</html>
+        /* GRIGLIA DEGLI ORDINI MILITARI */
+        .roster-grid
