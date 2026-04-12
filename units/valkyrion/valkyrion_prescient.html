@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Prescient</title>
+    <style>
+        body {
+            color: #e0e0e0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #bg-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url('../../img/valkyrion_bg.jpeg'); 
+            background-size: cover;
+            background-position: center;
+            z-index: -2;
+        }
+
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(to bottom, rgba(15, 5, 20, 0.92), rgba(5, 5, 5, 0.98)); 
+            z-index: -1;
+        }
+
+        header {
+            padding: 60px 20px 30px 20px;
+            text-align: center;
+            width: 100%;
+            max-width: 1100px;
+        }
+
+        h1 {
+            letter-spacing: 5px;
+            font-size: 2.8rem;
+            margin: 0;
+            color: #fff;
+            text-transform: uppercase;
+            text-shadow: 0 0 15px rgba(171, 71, 188, 0.6);
+        }
+
+        .subtitle {
+            color: #ab47bc;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            margin-top: 10px;
+            text-transform: uppercase;
+        }
+
+        main {
+            max-width: 1100px; 
+            padding: 40px 20px;
+            width: 100%;
+            position: relative;
+        }
+
+        .intro-banner {
+            width: 100%;
+            border: 1px solid rgba(171, 71, 188, 0.2);
+            border-bottom: 3px solid #ab47bc;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+
+        .intro-banner img {
+            width: 100%;
+            display: block;
+        }
+
+        .split-section {
+            display: flex;
+            gap: 40px;
+            align-items: stretch; 
+            margin-bottom: 60px; 
+            background: rgba(15, 5, 20, 0.75);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-left: 3px solid #ab47bc;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .section-image-container {
+            position: relative;
+            flex: 0 0 40%;
+            overflow: hidden;
+            aspect-ratio: 3 / 4;
+        }
+
+        .section-image-container img {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover; 
+            object-position: top center; 
+        }
+
+        .section-text { flex: 1; padding: 35px; }
+        h2 { color: #fff; letter-spacing: 2px; text-transform: uppercase; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; margin-top: 0; margin-bottom: 25px; font-size: 1.8rem; }
+        p { margin-bottom: 25px; color: #ccc; font-size: 1.1rem; text-align: justify; }
+
+        .tactical-module { border-top: 2px solid #ab47bc; padding-top: 40px; margin-bottom: 60px; }
+
+        .stats-box {
+            display: flex;
+            justify-content: center; 
+            gap: 30px;
+            flex-wrap: wrap;
+            background: linear-gradient(145deg, rgba(25,10,35,0.9), rgba(10,5,15,0.9));
+            border: 1px solid rgba(171, 71, 188, 0.3);
+            border-radius: 4px;
+            padding: 25px;
+            margin-bottom: 50px;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.8), 0 10px 20px rgba(0,0,0,0.5);
+        }
+
+        .stat-item { text-align: center; padding: 10px 15px; }
+        .stat-label { display: block; color: #888; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px; }
+        .stat-value { display: block; color: #fff; font-size: 1.8rem; font-weight: bold; font-family: monospace; }
+        
+        .stat-value.hp { color: #4CAF50; }
+        .stat-value.atk { color: #f44336; }
+        .stat-value.dodge { color: #4dd0e1; }
+        .stat-value.t-2 { color: #81c784; }
+
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 25px; }
+        .skill-card { background: rgba(20, 10, 25, 0.8); border: 1px solid rgba(255,255,255,0.05); border-left: 4px solid #333; padding: 25px; transition: transform 0.2s ease; }
+        .skill-card:hover { transform: translateY(-5px); border-left-color: #ab47bc; }
+
+        .skill-header { display: flex; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; margin-bottom: 15px; }
+        .skill-icon { width: 70px; height: 70px; border-radius: 4px; object-fit: cover; border: 2px solid rgba(171, 71, 188, 0.3); margin-right: 15px; background-color: rgba(0, 0, 0, 0.2); }
+        .skill-title { margin: 0; color: #fff; font-size: 1.3rem; text-transform: uppercase; }
+        .skill-type { font-size: 0.75rem; padding: 2px 6px; background: rgba(255,255,255,0.1); border-radius: 2px; text-transform: uppercase; align-self: flex-start; margin-top: 5px; }
+        
+        .skill-type.base { color: #ccc; }
+        .skill-type.active { color: #64B5F6; }
+        
+        .skill-desc { color: #bbb; font-size: 0.95rem; }
+        .dmg-phys { color: #ff8a65; font-weight: bold; }
+        .buff-stance { color: #4dd0e1; font-weight: bold; }
+
+        .portrait-gallery-module { background: rgba(15, 5, 20, 0.7); border: 1px solid rgba(255,255,255,0.05); border-left: 3px solid #ab47bc; padding: 35px; margin-bottom: 40px; }
+        .carousel-container { position: relative; width: 100%; overflow: hidden; display: flex; align-items: center; }
+        .carousel-track { display: flex; gap: 15px; transition: transform 0.3s ease; }
+        .carousel-item { flex: 0 0 200px; height: 200px; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; }
+        .carousel-item img { width: 100%; height: 100%; object-fit: cover; }
+        .nav-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(15,5,20,0.9); border: 1px solid #ab47bc; color: #ab47bc; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; z-index: 3; }
+        .prev { left: 10px; } .next { right: 10px; }
+
+        .back-link { display: block; text-align: center; margin-top: 60px; color: #666; text-decoration: none; padding: 20px; border-top: 1px solid rgba(255,255,255,0.1); }
+        .back-link:hover { color: #ab47bc; }
+
+        @media (max-width: 950px) {
+            .split-section { flex-direction: column; }
+            .section-image-container { flex: 1 1 100%; height: 500px; }
+            .skills-grid { grid-template-columns: 1fr; }
+            .stats-box { flex-direction: column; gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<header>
+    <h1>Prescient</h1>
+    <div class="subtitle">Order of Knowledge - Tier 2</div>
+</header>
+
+<main>
+    <div class="intro-banner">
+        <img src="../../img/valkyrion_prescient_banner.png" alt="Prescient Banner">
+    </div>
+
+    <div class="split-section">
+        <div class="section-image-container">
+            <img src="../../img/valkyrion_prescient_f_combat.jpg" alt="Prescient Combat">
+        </div>
+        <div class="section-text">
+            <h2>The Predictive Duelist</h2>
+            <p>Glossants who demonstrate an exceptional aptitude for tactical analysis are equipped with highly specialized magic circlets. These arcane devices allow them to process battle telemetry in real-time, ascending to the rank of Prescient.</p>
+            <p>They do not rely on heavy armor or brute force; instead, they read the micro-movements of their opponents to predict strikes before they are fully executed. This makes them formidable, agile fighters capable of slipping through attacks to deliver devastating ripostes.</p>
+        </div>
+    </div>
+
+    <div class="tactical-module">
+        <div class="tactical-header">
+            <h2 style="border:none; text-align:center">Combat Interface</h2>
+        </div>
+
+        <div class="stats-box">
+            <div class="stat-item"><span class="stat-label">Tier</span><span class="stat-value t-2">2</span></div>
+            <div class="stat-item"><span class="stat-label">Hit Points</span><span class="stat-value hp">140</span></div>
+            <div class="stat-item"><span class="stat-label">Attack</span><span class="stat-value atk">40</span></div>
+            <div class="stat-item"><span class="stat-label">Initiative</span><span class="stat-value">55</span></div>
+            <div class="stat-item"><span class="stat-label">Dodge</span><span class="stat-value dodge">5%</span></div>
+        </div>
+
+        <div class="skills-grid">
+            <div class="skill-card">
+                <div class="skill-header">
+                    <img src="../../img/valkyrion_skill_icon_piercing_slash.png" alt="Piercing Slash" class="skill-icon">
+                    <div class="skill-title-container"><h3 class="skill-title">Piercing Slash</h3><span class="skill-type base">Base Skill</span></div>
+                </div>
+                <div class="skill-desc">A surgically precise strike targeting known anatomical vulnerabilities. Deals <span class="dmg-phys">Physical</span> damage to an enemy.</div>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-header">
+                    <img src="../../img/valkyrion_skill_icon_counter_strike.png" alt="Counter Strike" class="skill-icon">
+                    <div class="skill-title-container"><h3 class="skill-title">Counter Strike</h3><span class="skill-type active">Skill</span></div>
+                </div>
+                <div class="skill-desc">Assumes a calculated defensive posture. Gains the <span class="buff-stance">"Counter Stance"</span> buff for 3 turns. Upon being attacked, the buff is removed to <strong>completely dodge the hit</strong> and automatically retaliate, dealing <strong>200% of attack</strong> as <span class="dmg-phys">Physical</span> damage.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="portrait-gallery-module">
+        <div class="carousel-container">
+            <button class="nav-arrow prev">&#8249;</button>
+            <div class="carousel-track">
+                <div class="carousel-item active"><img src="../../img/valkyrion_prescient_extra_1.jpg" alt="Art 1"></div>
+                <div class="carousel-item"><img src="../../img/valkyrion_prescient_extra_2.jpg" alt="Art 2"></div>
+            </div>
+            <button class="nav-arrow next">&#8250;</button>
+        </div>
+    </div>
+
+    <a href="valkyrion_order_knowledge.html" class="back-link">← Return to Order of Knowledge</a>
+</main>
+
+<script>
+    const track = document.querySelector('.carousel-track');
+    let items = Array.from(track.children);
+    let currentIndex = 0;
+    const moveToItem = (index) => {
+        const itemWidth = items[0].getBoundingClientRect().width;
+        track.style.transform = `translateX(-${(itemWidth + 15) * index}px)`;
+        currentIndex = index;
+    }
+    document.querySelector('.next').addEventListener('click', () => currentIndex < items.length - 1 ? moveToItem(currentIndex + 1) : moveToItem(0));
+    document.querySelector('.prev').addEventListener('click', () => currentIndex > 0 ? moveToItem(currentIndex - 1) : moveToItem(items.length - 1));
+</script>
+</body>
+</html>
