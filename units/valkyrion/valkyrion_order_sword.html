@@ -180,7 +180,6 @@
         .unit-row.t-5 { border-left-color: #ffb300; } 
         .unit-row.t-officer { border-left-color: #ffd700; } 
 
-        /* MODULO RITRATTO ANIMATO */
         .portrait-container {
             position: relative;
             flex: 0 0 100px;
@@ -284,9 +283,6 @@
             margin-top: 40px;
             color: #666;
             text-decoration: none;
-            font-size: 1rem;
-            letter-spacing: 1px;
-            transition: color 0.3s;
             padding: 20px;
             border-top: 1px solid rgba(255,255,255,0.1);
         }
@@ -297,26 +293,10 @@
         }
 
         @media (max-width: 800px) {
-            .unit-row {
-                flex-direction: column;
-                text-align: center;
-                align-items: center;
-                padding: 30px 20px;
-            }
-            .portrait-container {
-                margin: 0 0 20px 0;
-                width: 120px;
-                height: 120px;
-            }
-            .unit-action {
-                margin: 20px 0 0 0;
-                width: 100%;
-            }
-            .btn-tactical {
-                display: block;
-                width: 100%;
-                box-sizing: border-box;
-            }
+            .unit-row { flex-direction: column; text-align: center; padding: 30px 20px; }
+            .portrait-container { margin: 0 0 20px 0; width: 120px; height: 120px; }
+            .unit-action { margin: 20px 0 0 0; width: 100%; }
+            .btn-tactical { display: block; width: 100%; }
         }
     </style>
 </head>
@@ -332,7 +312,7 @@
 
 <main>
     <div class="intro-banner">
-        <img src="../../img/valkyrion_sword_intro.png" alt="Order of the Sword - Protectors & Purgers">
+        <img src="../../img/valkyrion_sword_intro.png" alt="Order of the Sword - Banner">
     </div>
 
     <div class="lore-section">
@@ -385,21 +365,6 @@
 
         <div class="unit-row t-2">
             <div class="portrait-container">
-                <img src="../../img/valkyrion_witch_hunter_m_portrait.jpg" alt="Witch Hunter M">
-                <img src="../../img/valkyrion_witch_hunter_f_portrait.jpg" alt="Witch Hunter F" class="portrait-anim">
-            </div>
-            <div class="unit-info">
-                <h3 class="unit-name">Witch Hunter</h3>
-                <div class="unit-tier">Classification: <span class="color-t2">Tier 2</span></div>
-                <p class="unit-desc">Inquisitors who favor wit over brute strength. Subjected to mental trials, they possess strong resistance to mind-altering spells and hunt corrupt beings hiding in society.</p>
-            </div>
-            <div class="unit-action">
-                <a href="valkyrion_witch_hunter.html" class="btn-tactical">View Data</a>
-            </div>
-        </div>
-
-        <div class="unit-row t-2">
-            <div class="portrait-container">
                 <img src="../../img/valkyrion_knight_m_portrait.jpg" alt="Knight M">
                 <img src="../../img/valkyrion_knight_f_portrait.jpg" alt="Knight F" class="portrait-anim">
             </div>
@@ -413,18 +378,18 @@
             </div>
         </div>
 
-        <div class="unit-row t-3">
+        <div class="unit-row t-2">
             <div class="portrait-container">
-                <img src="../../img/valkyrion_monster_hunter_m_portrait.jpg" alt="Monster Hunter M">
-                <img src="../../img/valkyrion_monster_hunter_f_portrait.jpg" alt="Monster Hunter F" class="portrait-anim">
+                <img src="../../img/valkyrion_witch_hunter_m_portrait.jpg" alt="Witch Hunter M">
+                <img src="../../img/valkyrion_witch_hunter_f_portrait.jpg" alt="Witch Hunter F" class="portrait-anim">
             </div>
             <div class="unit-info">
-                <h3 class="unit-name">Monster Hunter</h3>
-                <div class="unit-tier">Classification: <span class="color-t3">Tier 3</span></div>
-                <p class="unit-desc">Master Witch Hunters equipped to face supernatural threats like vampires and werewolves. Their specialized silver blades and skills bypass enemy immunities.</p>
+                <h3 class="unit-name">Witch Hunter</h3>
+                <div class="unit-tier">Classification: <span class="color-t2">Tier 2</span></div>
+                <p class="unit-desc">Inquisitors who favor wit over brute strength. Subjected to mental trials, they possess strong resistance to mind-altering spells and hunt corrupt beings.</p>
             </div>
             <div class="unit-action">
-                <a href="valkyrion_monster_hunter.html" class="btn-tactical">View Data</a>
+                <a href="valkyrion_witch_hunter.html" class="btn-tactical">View Data</a>
             </div>
         </div>
 
@@ -436,7 +401,7 @@
             <div class="unit-info">
                 <h3 class="unit-name">Crusader</h3>
                 <div class="unit-tier">Classification: <span class="color-t3">Tier 3</span></div>
-                <p class="unit-desc">Knights focused entirely on judgment. Empowered by holy fervor, they specialize in delivering swift, merciless punishment and radiant damage to evildoers.</p>
+                <p class="unit-desc">Knights focused entirely on judgment. Empowered by holy fervor, they specialize in delivering swift, merciless punishment and radiant damage.</p>
             </div>
             <div class="unit-action">
                 <a href="valkyrion_crusader.html" class="btn-tactical">View Data</a>
@@ -451,25 +416,25 @@
             <div class="unit-info">
                 <h3 class="unit-name">Paladin</h3>
                 <div class="unit-tier">Classification: <span class="color-t3">Tier 3</span></div>
-                <p class="unit-desc">Holy warriors devoted to protecting the innocent. They wield massive shields to interpose themselves between danger and their allies, absorbing lethal strikes.</p>
+                <p class="unit-desc">Holy warriors devoted to protecting the innocent. They wield massive shields to interpose themselves between danger and their allies.</p>
             </div>
             <div class="unit-action">
                 <a href="valkyrion_paladin.html" class="btn-tactical">View Data</a>
             </div>
         </div>
 
-        <div class="unit-row t-4">
+        <div class="unit-row t-3">
             <div class="portrait-container">
-                <img src="../../img/valkyrion_inquisitor_m_portrait.jpg" alt="Inquisitor M">
-                <img src="../../img/valkyrion_inquisitor_f_portrait.jpg" alt="Inquisitor F" class="portrait-anim">
+                <img src="../../img/valkyrion_monster_hunter_m_portrait.jpg" alt="Monster Hunter M">
+                <img src="../../img/valkyrion_monster_hunter_f_portrait.jpg" alt="Monster Hunter F" class="portrait-anim">
             </div>
             <div class="unit-info">
-                <h3 class="unit-name">Inquisitor</h3>
-                <div class="unit-tier">Classification: <span class="color-t4">Tier 4</span></div>
-                <p class="unit-desc">Hunters who have endured the darkest horrors. Possessing exceptional mental fortitude and mastery over forbidden arts, they bind enemies in chains for final judgment.</p>
+                <h3 class="unit-name">Monster Hunter</h3>
+                <div class="unit-tier">Classification: <span class="color-t3">Tier 3</span></div>
+                <p class="unit-desc">Master Witch Hunters equipped to face supernatural threats. Their specialized silver blades and skills bypass enemy immunities.</p>
             </div>
             <div class="unit-action">
-                <a href="valkyrion_inquisitor.html" class="btn-tactical">View Data</a>
+                <a href="valkyrion_monster_hunter.html" class="btn-tactical">View Data</a>
             </div>
         </div>
 
@@ -481,7 +446,7 @@
             <div class="unit-info">
                 <h3 class="unit-name">Holy Avenger</h3>
                 <div class="unit-tier">Classification: <span class="color-t4">Tier 4</span></div>
-                <p class="unit-desc">The most zealous of Crusaders, fueled by righteous fury. They strike down enemies with relentless aggression while calling upon divine power to heal allies.</p>
+                <p class="unit-desc">The most zealous of Crusaders, fueled by righteous fury. They strike down enemies with relentless aggression while healing allies.</p>
             </div>
             <div class="unit-action">
                 <a href="valkyrion_holy_avenger.html" class="btn-tactical">View Data</a>
@@ -496,10 +461,25 @@
             <div class="unit-info">
                 <h3 class="unit-name">Guardian</h3>
                 <div class="unit-tier">Classification: <span class="color-t4">Tier 4</span></div>
-                <p class="unit-desc">Unshakeable bulwarks blessed with regenerative magic. They dedicate their lives to shielding allies from catastrophic harm with unbreakable divine protection.</p>
+                <p class="unit-desc">Unshakeable bulwarks blessed with regenerative magic. They dedicate their lives to shielding allies with unbreakable divine protection.</p>
             </div>
             <div class="unit-action">
                 <a href="valkyrion_guardian.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-4">
+            <div class="portrait-container">
+                <img src="../../img/valkyrion_inquisitor_m_portrait.jpg" alt="Inquisitor M">
+                <img src="../../img/valkyrion_inquisitor_f_portrait.jpg" alt="Inquisitor F" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Inquisitor</h3>
+                <div class="unit-tier">Classification: <span class="color-t4">Tier 4</span></div>
+                <p class="unit-desc">Hunters who have endured the darkest horrors. Possessing exceptional mental fortitude, they bind enemies in chains for final judgment.</p>
+            </div>
+            <div class="unit-action">
+                <a href="valkyrion_inquisitor.html" class="btn-tactical">View Data</a>
             </div>
         </div>
 
@@ -511,7 +491,7 @@
             <div class="unit-info">
                 <h3 class="unit-name">Knight of Dusk</h3>
                 <div class="unit-tier">Classification: <span class="color-t5">Tier 5 (Champion)</span></div>
-                <p class="unit-desc">Rare champions mastering fury, defense, and discipline. They are the final hope in the darkest hour—an unyielding light forged in shadow that refuses to be changed by the world.</p>
+                <p class="unit-desc">Rare champions mastering fury, defense, and discipline. They are the final hope in the darkest hour—an unyielding light forged in shadow.</p>
             </div>
             <div class="unit-action">
                 <a href="valkyrion_knight_of_dusk.html" class="btn-tactical">View Data</a>
