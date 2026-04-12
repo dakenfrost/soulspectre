@@ -180,15 +180,36 @@
         .unit-row.t-5 { border-left-color: #ffb300; } 
         .unit-row.t-officer { border-left-color: #ffd700; } 
 
-        .unit-portrait {
+        /* MODULO RITRATTO ANIMATO */
+        .portrait-container {
+            position: relative;
             flex: 0 0 100px;
             width: 100px;
             height: 100px;
             margin-right: 25px;
             border-radius: 4px;
             border: 2px solid rgba(255,255,255,0.1);
-            object-fit: cover;
+            overflow: hidden;
             background: #000;
+        }
+
+        .portrait-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .portrait-anim {
+            animation: crossfade 8s infinite;
+        }
+
+        @keyframes crossfade {
+            0%, 40% { opacity: 0; }
+            50%, 90% { opacity: 1; }
+            100% { opacity: 0; }
         }
 
         .unit-info {
@@ -282,7 +303,7 @@
                 align-items: center;
                 padding: 30px 20px;
             }
-            .unit-portrait {
+            .portrait-container {
                 margin: 0 0 20px 0;
                 width: 120px;
                 height: 120px;
@@ -311,7 +332,7 @@
 
 <main>
     <div class="intro-banner">
-        <img src="../../img/valkyrion_sword_intro.png" alt="Order of the Sword - Protectors & Purgers">
+        <img src="../../img/valkyrion_sword_intro.jpg" alt="Order of the Sword - Protectors & Purgers">
     </div>
 
     <div class="lore-section">
@@ -323,7 +344,7 @@
     </div>
 
     <div class="tree-section">
-        <img src="../../img/valkyrion_sword_tree.png" alt="Evolution Tree">
+        <img src="../../img/valkyrion_sword_tree.jpg" alt="Evolution Tree">
     </div>
 
     <div class="unit-list-header">
@@ -333,7 +354,10 @@
     <div class="unit-list">
 
         <div class="unit-row t-officer">
-            <img src="../../img/valkyrion_hero_portrait.jpg" alt="Hero" class="unit-portrait">
+            <div class="portrait-container">
+                <img src="../../img/valkyrion_hero_m_portrait.jpg" alt="Hero M">
+                <img src="../../img/valkyrion_hero_f_portrait.jpg" alt="Hero F" class="portrait-anim">
+            </div>
             <div class="unit-info">
                 <h3 class="unit-name">Hero</h3>
                 <div class="unit-tier">Classification: <span class="color-officer">Officer</span></div>
@@ -345,7 +369,10 @@
         </div>
         
         <div class="unit-row t-1">
-            <img src="../../img/valkyrion_squire_portrait.jpg" alt="Squire" class="unit-portrait">
+            <div class="portrait-container">
+                <img src="../../img/valkyrion_squire_m_portrait.jpg" alt="Squire M">
+                <img src="../../img/valkyrion_squire_f_portrait.jpg" alt="Squire F" class="portrait-anim">
+            </div>
             <div class="unit-info">
                 <h3 class="unit-name">Squire</h3>
                 <div class="unit-tier">Classification: <span class="color-t1">Tier 1</span></div>
@@ -357,7 +384,10 @@
         </div>
 
         <div class="unit-row t-2">
-            <img src="../../img/valkyrion_witch_hunter_portrait.jpg" alt="Witch Hunter" class="unit-portrait">
+            <div class="portrait-container">
+                <img src="../../img/valkyrion_witch_hunter_m_portrait.jpg" alt="Witch Hunter M">
+                <img src="../../img/valkyrion_witch_hunter_f_portrait.jpg" alt="Witch Hunter F" class="portrait-anim">
+            </div>
             <div class="unit-info">
                 <h3 class="unit-name">Witch Hunter</h3>
                 <div class="unit-tier">Classification: <span class="color-t2">Tier 2</span></div>
@@ -369,7 +399,10 @@
         </div>
 
         <div class="unit-row t-2">
-            <img src="../../img/valkyrion_knight_portrait.jpg" alt="Knight" class="unit-portrait">
+            <div class="portrait-container">
+                <img src="../../img/valkyrion_knight_m_portrait.jpg" alt="Knight M">
+                <img src="../../img/valkyrion_knight_f_portrait.jpg" alt="Knight F" class="portrait-anim">
+            </div>
             <div class="unit-info">
                 <h3 class="unit-name">Knight</h3>
                 <div class="unit-tier">Classification: <span class="color-t2">Tier 2</span></div>
@@ -381,7 +414,10 @@
         </div>
 
         <div class="unit-row t-3">
-            <img src="../../img/valkyrion_monster_hunter_portrait.jpg" alt="Monster Hunter" class="unit-portrait">
+            <div class="portrait-container">
+                <img src="../../img/valkyrion_monster_hunter_m_portrait.jpg" alt="Monster Hunter M">
+                <img src="../../img/valkyrion_monster_hunter_f_portrait.jpg" alt="Monster Hunter F" class="portrait-anim">
+            </div>
             <div class="unit-info">
                 <h3 class="unit-name">Monster Hunter</h3>
                 <div class="unit-tier">Classification: <span class="color-t3">Tier 3</span></div>
@@ -393,7 +429,10 @@
         </div>
 
         <div class="unit-row t-3">
-            <img src="../../img/valkyrion_crusader_portrait.jpg" alt="Crusader" class="unit-portrait">
+            <div class="portrait-container">
+                <img src="../../img/valkyrion_crusader_m_portrait.jpg" alt="Crusader M">
+                <img src="../../img/valkyrion_crusader_f_portrait.jpg" alt="Crusader F" class="portrait-anim">
+            </div>
             <div class="unit-info">
                 <h3 class="unit-name">Crusader</h3>
                 <div class="unit-tier">Classification: <span class="color-t3">Tier 3</span></div>
@@ -405,7 +444,10 @@
         </div>
 
         <div class="unit-row t-3">
-            <img src="../../img/valkyrion_paladin_portrait.jpg" alt="Paladin" class="unit-portrait">
+            <div class="portrait-container">
+                <img src="../../img/valkyrion_paladin_m_portrait.jpg" alt="Paladin M">
+                <img src="../../img/valkyrion_paladin_f_portrait.jpg" alt="Paladin F" class="portrait-anim">
+            </div>
             <div class="unit-info">
                 <h3 class="unit-name">Paladin</h3>
                 <div class="unit-tier">Classification: <span class="color-t3">Tier 3</span></div>
@@ -417,7 +459,10 @@
         </div>
 
         <div class="unit-row t-4">
-            <img src="../../img/valkyrion_inquisitor_portrait.jpg" alt="Inquisitor" class="unit-portrait">
+            <div class="portrait-container">
+                <img src="../../img/valkyrion_inquisitor_m_portrait.jpg" alt="Inquisitor M">
+                <img src="../../img/valkyrion_inquisitor_f_portrait.jpg" alt="Inquisitor F" class="portrait-anim">
+            </div>
             <div class="unit-info">
                 <h3 class="unit-name">Inquisitor</h3>
                 <div class="unit-tier">Classification: <span class="color-t4">Tier 4</span></div>
@@ -429,7 +474,10 @@
         </div>
 
         <div class="unit-row t-4">
-            <img src="../../img/valkyrion_holy_avenger_portrait.jpg" alt="Holy Avenger" class="unit-portrait">
+            <div class="portrait-container">
+                <img src="../../img/valkyrion_holy_avenger_m_portrait.jpg" alt="Holy Avenger M">
+                <img src="../../img/valkyrion_holy_avenger_f_portrait.jpg" alt="Holy Avenger F" class="portrait-anim">
+            </div>
             <div class="unit-info">
                 <h3 class="unit-name">Holy Avenger</h3>
                 <div class="unit-tier">Classification: <span class="color-t4">Tier 4</span></div>
@@ -441,7 +489,10 @@
         </div>
 
         <div class="unit-row t-4">
-            <img src="../../img/valkyrion_guardian_portrait.jpg" alt="Guardian" class="unit-portrait">
+            <div class="portrait-container">
+                <img src="../../img/valkyrion_guardian_m_portrait.jpg" alt="Guardian M">
+                <img src="../../img/valkyrion_guardian_f_portrait.jpg" alt="Guardian F" class="portrait-anim">
+            </div>
             <div class="unit-info">
                 <h3 class="unit-name">Guardian</h3>
                 <div class="unit-tier">Classification: <span class="color-t4">Tier 4</span></div>
@@ -453,7 +504,10 @@
         </div>
 
         <div class="unit-row t-5">
-            <img src="../../img/valkyrion_knight_of_dusk_portrait.jpg" alt="Knight of Dusk" class="unit-portrait">
+            <div class="portrait-container">
+                <img src="../../img/valkyrion_knight_of_dusk_m_portrait.jpg" alt="Knight of Dusk M">
+                <img src="../../img/valkyrion_knight_of_dusk_f_portrait.jpg" alt="Knight of Dusk F" class="portrait-anim">
+            </div>
             <div class="unit-info">
                 <h3 class="unit-name">Knight of Dusk</h3>
                 <div class="unit-tier">Classification: <span class="color-t5">Tier 5 (Champion)</span></div>
