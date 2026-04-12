@@ -87,6 +87,7 @@
             display: block;
         }
 
+        /* MODULO SEZIONE SPLIT ANIMATA */
         .split-section {
             display: flex;
             gap: 40px;
@@ -99,15 +100,32 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        .section-image {
-            flex: 0 0 40%; 
+        .section-image-container {
+            position: relative;
+            flex: 0 0 40%;
+            overflow: hidden;
         }
 
-        .section-image img {
+        .section-image-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             object-fit: cover; 
             object-position: top center; 
+        }
+
+        /* L'immagine animata di combattimento */
+        .combat-anim {
+            animation: crossfade-combat 8s infinite;
+        }
+
+        /* Stesso ciclo dei ritratti: 8 sec, 4 sec visibile, 4 sec invisibile */
+        @keyframes crossfade-combat {
+            0%, 40% { opacity: 0; }
+            50%, 90% { opacity: 1; }
+            100% { opacity: 0; }
         }
 
         .section-text {
@@ -182,7 +200,7 @@
         .stat-value.hp { color: #4CAF50; }
         .stat-value.atk { color: #f44336; }
         .stat-value.t-2 { color: #81c784; } 
-        .stat-value.immunity { color: #ba68c8; font-size: 1.4rem; } /* Font leggermente ridotto per testo testuale lungo */
+        .stat-value.immunity { color: #ba68c8; font-size: 1.4rem; } 
 
         .skills-grid {
             display: grid;
@@ -317,7 +335,7 @@
 
         @media (max-width: 950px) {
             .split-section { flex-direction: column; }
-            .section-image { flex: 1 1 100%; height: 400px; }
+            .section-image-container { flex: 1 1 100%; height: 400px; }
             .skills-grid { grid-template-columns: 1fr; }
             .stats-box { flex-direction: column; gap: 20px; }
         }
@@ -339,8 +357,9 @@
     </div>
 
     <div class="split-section">
-        <div class="section-image">
-            <img src="../../img/valkyrion_witch_hunter_combat.jpg" alt="Witch Hunter in Action">
+        <div class="section-image-container">
+            <img src="../../img/valkyrion_witch_hunter_m_combat.jpg" alt="Witch Hunter M Combat">
+            <img src="../../img/valkyrion_witch_hunter_f_combat.jpg" alt="Witch Hunter F Combat" class="combat-anim">
         </div>
         <div class="section-text">
             <h2>Mind Over Might</h2>
