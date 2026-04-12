@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Order of Light</title>
+    <style>
+        body {
+            color: #e0e0e0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #bg-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url('../../img/valkyrion_bg.jpeg'); 
+            background-size: cover;
+            background-position: center;
+            z-index: -2;
+        }
+
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(to bottom, rgba(12, 10, 5, 0.90), rgba(5, 5, 5, 0.98)); 
+            z-index: -1;
+        }
+
+        header {
+            padding: 60px 20px 30px 20px;
+            text-align: center;
+            width: 100%;
+            max-width: 1100px;
+        }
+
+        h1 {
+            letter-spacing: 5px;
+            font-size: 2.8rem;
+            margin: 0;
+            color: #fff;
+            text-transform: uppercase;
+            text-shadow: 0 0 15px rgba(255, 213, 79, 0.4);
+        }
+
+        .subtitle {
+            color: #ffd54f;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            margin-top: 10px;
+            text-transform: uppercase;
+        }
+
+        main {
+            max-width: 1100px; 
+            padding: 40px 20px;
+            width: 100%;
+            position: relative;
+        }
+
+        .intro-banner {
+            width: 100%;
+            height: auto;
+            border: 1px solid rgba(255, 213, 79, 0.1);
+            border-bottom: 3px solid #ffd54f;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 40px;
+            display: block;
+        }
+
+        .intro-banner img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .lore-section {
+            background: rgba(15, 12, 10, 0.7);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 213, 79, 0.05);
+            border-left: 3px solid #ffd54f;
+            padding: 35px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-bottom: 40px;
+        }
+
+        .lore-section h2 {
+            color: #fff;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 10px;
+            margin-top: 0;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+        }
+
+        .lore-section p {
+            margin-bottom: 20px;
+            color: #ccc;
+            font-size: 1.1rem;
+            text-align: justify;
+        }
+
+        .lore-section strong {
+            color: #ffd54f;
+        }
+
+        .tree-section {
+            width: 100%;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            margin-bottom: 60px;
+            background: #0a0a0c;
+        }
+
+        .tree-section img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .unit-list-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .unit-list-header h2 {
+            border: none;
+            display: inline-block;
+            font-size: 2.2rem;
+            text-shadow: 0 0 15px rgba(255, 213, 79, 0.4);
+            margin-bottom: 5px;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .unit-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+
+        .unit-row {
+            display: flex;
+            align-items: center;
+            background: linear-gradient(to right, rgba(25,22,20,0.9), rgba(15,15,15,0.8));
+            border: 1px solid rgba(255,255,255,0.05);
+            border-left: 4px solid #ffd54f;
+            padding: 20px;
+            border-radius: 4px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .unit-row:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.6);
+        }
+
+        /* Colori Tier */
+        .unit-row.t-1 { border-left-color: #b0bec5; } 
+        .unit-row.t-2 { border-left-color: #81c784; } 
+        .unit-row.t-3 { border-left-color: #64b5f6; } 
+        .unit-row.t-4 { border-left-color: #ba68c8; } 
+        .unit-row.t-5 { border-left-color: #ffb300; } 
+        .unit-row.t-officer { border-left-color: #ffd700; } 
+
+        .portrait-container {
+            position: relative;
+            flex: 0 0 100px;
+            width: 100px;
+            height: 100px;
+            margin-right: 25px;
+            border-radius: 4px;
+            border: 2px solid rgba(255, 213, 79, 0.2);
+            overflow: hidden;
+            background: #000;
+        }
+
+        .portrait-container img {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+        }
+
+        .portrait-anim { animation: crossfade 8s infinite; }
+
+        @keyframes crossfade {
+            0%, 40% { opacity: 0; }
+            50%, 90% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        .unit-info { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+        .unit-name { font-size: 1.5rem; color: #fff; margin: 0 0 5px 0; text-transform: uppercase; letter-spacing: 1px; }
+        .unit-tier { font-size: 0.85rem; color: #888; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
+        
+        /* Utility colori Tier nel testo */
+        .color-t1 { color: #b0bec5; font-weight: bold; }
+        .color-t2 { color: #81c784; font-weight: bold; }
+        .color-t3 { color: #64b5f6; font-weight: bold; }
+        .color-t4 { color: #ba68c8; font-weight: bold; }
+        .color-t5 { color: #ffb300; font-weight: bold; text-shadow: 0 0 5px rgba(255,179,0,0.5); }
+        .color-officer { color: #ffd700; font-weight: bold; text-shadow: 0 0 5px rgba(255,215,0,0.5); }
+
+        .unit-desc {
+            color: #bbb;
+            font-size: 1rem;
+            margin: 0;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2; 
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .unit-action { flex: 0 0 auto; margin-left: 20px; }
+
+        .btn-tactical {
+            display: inline-block;
+            background: rgba(255, 213, 79, 0.05);
+            color: #ffd54f;
+            border: 1px solid #ffd54f;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-tactical:hover {
+            background: #ffd54f;
+            color: #000;
+            box-shadow: 0 0 15px rgba(255, 213, 79, 0.4);
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 40px;
+            color: #666;
+            text-decoration: none;
+            padding: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        @media (max-width: 800px) {
+            .unit-row { flex-direction: column; text-align: center; padding: 30px 20px; }
+            .portrait-container { margin: 0 0 20px 0; width: 120px; height: 120px; }
+            .unit-action { margin: 20px 0 0 0; width: 100%; }
+            .btn-tactical { display: block; width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<header>
+    <h1>Order of Light</h1>
+    <div class="subtitle">Emissaries of the Divine Will</div>
+</header>
+
+<main>
+    <div class="intro-banner">
+        <img src="../../img/valkyrion_light_intro.png" alt="Order of Light - Cathedral">
+    </div>
+
+    <div class="lore-section">
+        <h2>Spiritual Vanguard</h2>
+        <p>The Order of Light is composed of fervent believers, convinced that they are the messengers of God's divine plan. Every city in the Empire hosts a <strong>Basilica</strong>, while the capital is dominated by the Great Cathedral, the pulsating heart of holiness.</p>
+        <p>Recruits start as <strong>Acolytes</strong>, studying scriptures and basic healing. Their path then forks: many become <strong>Priests</strong> and eventually <strong>Bishops</strong> to guide communities, while those who master the eradication of the profane become <strong>Exorcists</strong> and <strong>Abolishers</strong>.</p>
+        <p>Some choose a life of meditation in monasteries, becoming <strong>Seers</strong> and <strong>Oracles</strong>, capable of perceiving the divine design through a mystical connection. Those who transcend mortal limits through total mastery of divine power eventually ascend to the rank of <strong>Angel</strong>.</p>
+        <p>Leading the Order on the battlefield are the <strong>Chaplains</strong>, Officers who combine clerical devotion with martial prowess, wielding hammers to deliver judgment.</p>
+    </div>
+
+    <div class="tree-section">
+        <img src="../../img/valkyrion_light_tree.png" alt="Evolution Tree - Light">
+    </div>
+
+    <div class="unit-list-header">
+        <h2>Active Roster</h2>
+    </div>
+
+    <div class="unit-list">
+
+        <div class="unit-row t-officer">
+            <div class="portrait-container">
+                <img src="../../img/valkyrion_chaplain_m_portrait.jpg" alt="Chaplain M">
+                <img src="../../img/valkyrion_chaplain_f_portrait.jpg" alt="Chaplain F" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Chaplain</h3>
+                <div class="unit-tier">Classification: <span class="color-officer">Officer</span></div>
+                <p class="unit-desc">Envoys of the Ruler and proficient fighters. They smite heathens with hammers while sustaining allies with their holy presence.</p>
+            </div>
+            <div class="unit-action">
+                <a href="valkyrion_chaplain.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+        
+        <div class="unit-row t-1">
+            <div class="portrait-container">
+                <img src="../../img/valkyrion_acolyte_m_portrait.jpg" alt="Acolyte M">
+                <img src="../../img/valkyrion_acolyte_f_portrait.png" alt="Acolyte F" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Acolyte</h3>
+                <div class="unit-tier">Classification: <span class="color-t1">Tier 1</span></div>
+                <p class="unit-desc">Initiates who join the Order to learn the fundamentals of God’s teachings and basic restorative arts.</p>
+            </div>
+            <div class="unit-action">
+                <a href="valkyrion_acolyte.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-2">
+            <div class="portrait-container">
+                <img src="../../img/valkyrion_priest_m_portrait.jpg" alt="Priest M">
+                <img src="../../img/valkyrion_priest_f_portrait.jpg" alt="Priest F" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Priest</h3>
+                <div class="unit-tier">Classification: <span class="color-t2">Tier 2</span></div>
+                <p class="unit-desc">Experienced initiates focused on clerical duties and advanced healing techniques to support the wounded.</p>
+            </div>
+            <div class="unit-action">
+                <a href="valkyrion_priest.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-2">
+            <div class="portrait-container">
+                <img src="../../img/valkyrion_seer_m_portrait.jpg" alt="Seer M">
+                <img src="../../img/valkyrion_seer_f_portrait.jpg" alt="Seer F" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Seer</h3>
+                <div class="unit-tier">Classification: <span class="color-t2">Tier 2</span></div>
+                <p class="unit-desc">Meditative recruits who study the future to answer God's call, utilizing divine precognition on the battlefield.</p>
+            </div>
+            <div class="unit-action">
+                <a href="valkyrion_seer.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-3">
+            <div class="portrait-container">
+                <img src="../../img/valkyrion_bishop_m_portrait.jpg" alt="Bishop M">
+                <img src="../../img/valkyrion_bishop_f_portrait.jpg" alt="Bishop F" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Bishop</h3>
+                <div class="unit-tier">Classification: <span class="color-t3">Tier 3</span></div>
+                <p class="unit-desc">Spiritual leaders who master "Healing Echoes", allowing their prayers to bounce between multiple allies.</p>
+            </div>
+            <div class="unit-action">
+                <a href="valkyrion_bishop.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-3">
+            <div class="portrait-container">
+                <img src="../../img/valkyrion_exorcist_m_portrait.jpg" alt="Exorcist M">
+                <img src="../../img/valkyrion_exorcist_f_portrait.jpg" alt="Exorcist F" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Exorcist</h3>
+                <div class="unit-tier">Classification: <span class="color-t3">Tier 3</span></div>
+                <p class="unit-desc">Combat clerics specialized in eradicating Devils, Demons, and Undead through the absolute power of Light.</p>
+            </div>
+            <div class="unit-action">
+                <a href="valkyrion_exorcist.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-3">
+            <div class="portrait-container">
+                <img src="../../img/valkyrion_oracle_m_portrait.jpg" alt="Oracle M">
+                <img src="../../img/valkyrion_oracle_f_portrait.jpg" alt="Oracle F" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Oracle</h3>
+                <div class="unit-tier">Classification: <span class="color-t3">Tier 3</span></div>
+                <p class="unit-desc">Mystics with high precognition. They can dodge and immediately counter melee attacks with divine reckoning.</p>
+            </div>
+            <div class="unit-action">
+                <a href="valkyrion_oracle.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-4">
+            <div class="portrait-container">
+                <img src="../../img/valkyrion_primarch_m_portrait.jpg" alt="Primarch M">
+                <img src="../../img/valkyrion_primarch_f_portrait.jpg" alt="Primarch F" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Primarch</h3>
+                <div class="unit-tier">Classification: <span class="color-t4">Tier 4</span></div>
+                <p class="unit-desc">Beacons of hope who create sanctuaries of light, automatically healing and purifying allies in critical condition.</p>
+            </div>
+            <div class="unit-action">
+                <a href="valkyrion_primarch.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-4">
+            <div class="portrait-container">
+                <img src="../../img/valkyrion_abolisher_m_portrait.jpg" alt="Abolisher M">
+                <img src="../../img/valkyrion_abolisher_f_portrait.jpg" alt="Abolisher F" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Abolisher</h3>
+                <div class="unit-tier">Classification: <span class="color-t4">Tier 4</span></div>
+                <p class="unit-desc">The bane of evil entities. Their absolute light scorches, blinds, and burns unholy creatures from a long range.</p>
+            </div>
+            <div class="unit-action">
+                <a href="valkyrion_abolisher.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-4">
+            <div class="portrait-container">
+                <img src="../../img/valkyrion_herald_m_portrait.jpg" alt="Herald M">
+                <img src="../../img/valkyrion_herald_f_portrait.jpg" alt="Herald F" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Herald</h3>
+                <div class="unit-tier">Classification: <span class="color-t4">Tier 4</span></div>
+                <p class="unit-desc">Emissaries with divine traits. They unleash rays of light in a line and counter melee strikes with devastating speed.</p>
+            </div>
+            <div class="unit-action">
+                <a href="valkyrion_herald.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-5">
+            <div class="portrait-container">
+                <img src="../../img/valkyrion_angel_m_portrait.jpg" alt="Angel M">
+                <img src="../../img/valkyrion_angel_f_portrait.jpg" alt="Angel F" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Angel</h3>
+                <div class="unit-tier">Classification: <span class="color-t5">Tier 5 (Champion)</span></div>
+                <p class="unit-desc">Divine beings that work miracles. They can resurrect fallen allies and cleanse the world with spears of pure light.</p>
+            </div>
+            <div class="unit-action">
+                <a href="valkyrion_angel.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+    </div>
+
+    <a href="../../factions/valkyrion_roster.html" class="back-link">← Return to Military Roster</a>
+</main>
+
+</body>
+</html>
