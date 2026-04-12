@@ -87,6 +87,7 @@
             display: block;
         }
 
+        /* MODULO SEZIONE SPLIT ANIMATA */
         .split-section {
             display: flex;
             gap: 40px;
@@ -99,15 +100,31 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        .section-image {
-            flex: 0 0 40%; 
+        .section-image-container {
+            position: relative;
+            flex: 0 0 40%;
+            overflow: hidden;
+            aspect-ratio: 3 / 4;
         }
 
-        .section-image img {
+        .section-image-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             object-fit: cover; 
             object-position: top center; 
+        }
+
+        .combat-anim {
+            animation: crossfade-combat 8s infinite;
+        }
+
+        @keyframes crossfade-combat {
+            0%, 40% { opacity: 0; }
+            50%, 90% { opacity: 1; }
+            100% { opacity: 0; }
         }
 
         .section-text {
@@ -319,7 +336,10 @@
 
         @media (max-width: 950px) {
             .split-section { flex-direction: column; }
-            .section-image { flex: 1 1 100%; height: 400px; }
+            .section-image-container {
+                flex: 1 1 100%;
+                height: 500px;
+            }
             .skills-grid { grid-template-columns: 1fr; }
             .stats-box { flex-direction: column; gap: 20px; }
         }
@@ -341,8 +361,9 @@
     </div>
 
     <div class="split-section">
-        <div class="section-image">
-            <img src="../../img/valkyrion_hero_combat.png" alt="Hero in Action">
+        <div class="section-image-container">
+            <img src="../../img/valkyrion_hero_m_combat.png" alt="Hero M Combat">
+            <img src="../../img/valkyrion_hero_f_combat.png" alt="Hero F Combat" class="combat-anim">
         </div>
         <div class="section-text">
             <h2>The Veteran Commander</h2>
@@ -408,7 +429,7 @@
         </div>
     </div>
 
-    <a href="valkyrion_roster.html" class="back-link">← Return to Units Roster</a>
+    <a href="valkyrion_order_sword.html" class="back-link">← Return to Order of the Sword</a>
 </main>
 
 <script>
