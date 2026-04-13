@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Imperial Infrastructure</title>
+    <style>
+        body {
+            color: #e0e0e0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        #bg-image {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background-image: url('../img/valkyrion_bg.jpeg'); 
+            background-size: cover;
+            background-position: center;
+            z-index: -2;
+        }
+
+        #overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background: linear-gradient(to bottom, rgba(10, 10, 12, 0.9), rgba(5, 5, 5, 0.98)); 
+            z-index: -1;
+        }
+
+        header {
+            padding: 60px 20px 30px 20px;
+            text-align: center;
+            width: 100%;
+            max-width: 1100px;
+        }
+
+        h1 {
+            letter-spacing: 5px;
+            font-size: 2.5rem;
+            margin: 0;
+            color: #fff;
+            text-transform: uppercase;
+            text-shadow: 0 0 15px rgba(92, 156, 230, 0.6);
+        }
+
+        .subtitle {
+            color: #5c9ce6;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            margin-top: 10px;
+            text-transform: uppercase;
+        }
+
+        main {
+            max-width: 1200px; 
+            padding: 40px 20px;
+            width: 100%;
+        }
+
+        h2.section-title {
+            border-bottom: 2px solid #5c9ce6;
+            padding-bottom: 10px;
+            margin-top: 60px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .level-group {
+            margin-top: 30px;
+        }
+
+        .level-label {
+            background: rgba(92, 156, 230, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: #5c9ce6;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        /* GRID LAYOUT */
+        .building-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .building-card {
+            background: rgba(20, 20, 25, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            gap: 15px;
+            padding: 15px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .building-card:hover {
+            border-color: #5c9ce6;
+            background: rgba(30, 30, 40, 0.8);
+            transform: translateY(-3px);
+        }
+
+        .building-img {
+            width: 100px;
+            height: 100px;
+            flex-shrink: 0;
+            border-radius: 4px;
+            object-fit: cover;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .building-info {
+            flex: 1;
+        }
+
+        .building-name {
+            display: block;
+            font-size: 1.15rem;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .building-cost {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-family: monospace;
+            font-size: 1rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .currency-icon {
+            width: 16px;
+            height: 16px;
+            object-fit: contain;
+        }
+
+        .cost-gold { color: #ffd700; }
+        .cost-platinum { color: #e5e4e2; text-shadow: 0 0 5px rgba(255,255,255,0.3); }
+
+        .building-effect {
+            font-size: 0.9rem;
+            color: #aaa;
+            line-height: 1.4;
+        }
+
+        /* STRUTTURA SPECIALE PLATINO */
+        .card-platinum {
+            border: 1px solid rgba(229, 228, 226, 0.2);
+            box-shadow: 0 0 15px rgba(255,255,255,0.05);
+        }
+
+        .upgrade-note {
+            display: block;
+            margin-top: 5px;
+            font-size: 0.8rem;
+            color: #e5e4e2;
+            font-style: italic;
+        }
+
+        .province-card { border-left: 4px solid #4dd0e1; }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 60px;
+            color: #666;
+            text-decoration: none;
+            padding: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        .back-link:hover { color: #5c9ce6; }
+
+        @media (max-width: 600px) {
+            .building-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<header>
+    <h1>Imperial Infrastructure</h1>
+    <div class="subtitle">Foundation of the Empire's Might</div>
+</header>
+
+<main>
+
+    <h2 class="section-title">Capital Buildings</h2>
+    
+    <div class="level-group">
+        <div class="level-label">Level 1 - Core Advancements</div>
+        <div class="building-grid">
+            <div class="building-card">
+                <img src="../img/building_armory.jpg" class="building-img" alt="">
+                <div class="building-info">
+                    <span class="building-name">Armory</span>
+                    <span class="building-cost cost-gold">400 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
+                    <span class="building-effect">Enables Squire upgrade to <strong>Knight</strong>.</span>
+                </div>
+            </div>
+            <div class="building-card">
+                <img src="../img/building_inquisition.jpg" class="building-img" alt="">
+                <div class="building-info">
+                    <span class="building-name">Inquisition</span>
+                    <span class="building-cost cost-gold">400 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
+                    <span class="building-effect">Enables Squire upgrade to <strong>Witch Hunter</strong>.</span>
+                </div>
+            </div>
+            <div class="building-card">
+                <img src="../img/building_church.jpg" class="building-img" alt="">
+                <div class="building-info">
+                    <span class="building-name">Church</span>
+                    <span class="building-cost cost-gold">400 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
+                    <span class="building-effect">Enables Acolyte upgrade to <strong>Priest</strong>.</span>
+                </div>
+            </div>
+            <div class="building-card">
+                <img src="../img/building_monastery.jpg" class="building-img" alt="">
+                <div class="building-info">
+                    <span class="building-name">Monastery</span>
+                    <span class="building-cost cost-gold">400 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
+                    <span class="building-effect">Enables Acolyte upgrade to <strong>Seer</strong>.</span>
+                </div>
+            </div>
+            <div class="building-card">
+                <img src="../img/building_mage_tower.jpg" class="building-img" alt="">
+                <div class="building-info">
+                    <span class="building-name">Mage Tower</span>
+                    <span class="building-cost cost-gold">400 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
+                    <span class="building-effect">Enables Apprentice upgrade to <strong>Mage</strong>.</span>
+                </div>
+            </div>
+            <div class="building-card">
+                <img src="../img/building_witch_huts.jpg" class="building-img" alt="">
+                <div class="building-info">
+                    <span class="building-name">Witch Huts</span>
+                    <span class="building-cost cost-gold">400 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
+                    <span class="building-effect">Enables Apprentice upgrade to <strong>Witch</strong>.</span>
+                </div>
+            </div>
+            <div class="building-card">
+                <img src="../img/building_expanded_library.jpg" class="building-img" alt="">
+                <div class="building-info">
+                    <span class="building-name">Expanded Library</span>
+                    <span class="building-cost cost-gold">400 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
+                    <span class="building-effect">Enables Glossant upgrade to <strong>Prescient</strong>.</span>
+                </div>
+            </div>
+            <div class="building-card">
+                <img src="../img/building_shooting_range.jpg" class="building-img" alt="">
+                <div class="building-info">
+                    <span class="building-name">Shooting Range</span>
+                    <span class="building-cost cost-gold">400 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
+                    <span class="building-effect">Enables Archer upgrade to <strong>Crossbowman</strong>.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="level-group">
+        <div class="level-label">Level 2 - Specialized Orders</div>
+        <div class="building-grid">
+            <div class="building-card">
+                <img src="../img/building_holy_statue.jpg" class="building-img" alt="">
+                <div class="building-info">
+                    <span class="building-name">Holy Statue</span>
+                    <span class="building-cost cost-gold">800 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
+                    <span class="building-effect">Knight $\to$ <strong>Crusader</strong>.</span>
+                </div>
+            </div>
+            <div class="building-card">
+                <img src="../img/building_blacksmith.jpg" class="building-img" alt="">
+                <div class="building-info">
+                    <span class="building-name">Blacksmith</span>
+                    <span class="building-cost cost-gold">800 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
+                    <span class="building-effect">Knight $\to$ <strong>Paladin</strong>.</span>
+                </div>
+            </div>
+            <div class="building-card">
+                <img src="../img/building_guild.jpg" class="building-img" alt="">
+                <div class="building-info">
+                    <span class="building-name">Guild</span>
+                    <span class="building-cost cost-gold">800 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
+                    <span class="building-effect">Witch Hunter $\to$ <strong>Monster Hunter</strong>.</span>
+                </div>
+            </div>
+            <div class="building-card">
+                <img src="../img/building_basilica.jpg" class="building-img" alt="">
+                <div class="building-info">
+                    <span class="building-name">Basilica</span>
+                    <span class="building-cost cost-gold">800 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
+                    <span class="building-effect">Priest $\to$ <strong>Bishop</strong>.</span>
+                </div>
+            </div>
+            <div class="building-card">
+                <img src="../img/building_holy_office.jpg" class="building-img" alt="">
+                <div class="building-info">
+                    <span class="building-name">Holy Office</span>
+                    <span class="building-cost cost-gold">800 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
+                    <span class="building-effect">Priest $\to$ <strong>Exorcist</strong>.</span>
+                </div>
+            </div>
+            <div class="building-card">
+                <img src="../img/building_monastery_garden.jpg" class="building-img" alt="">
+                <div class="building-info">
+                    <span class="building-name">Monastery Garden</span>
+                    <span class="building-cost cost-gold">800 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
+                    <span class="building-effect">Seer $\to$ <strong>Oracle</strong>.</span>
+                </div>
+            </div>
+            <div class="building-card">
+                <img src="../img/building_wizard_tower.jpg" class="building-img" alt="">
+                <div class="building-info">
+                    <span class="building-name">Wizard Tower</span>
+                    <span class="building-cost cost-gold">800 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
+                    <span class="building-effect">Mage $\to$ <strong>Wizard</strong>.</span>
+                </div>
+            </div>
+            <div class="building-card">
+                <img src="../img/building_witch_conclave.jpg" class="building-img" alt="">
+                <div class="building-info">
+                    <span class="building-name">Witch Conclave</span>
+                    <span class="building-cost cost-gold">800 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
+                    <span class="building-effect">Witch $\to$ <strong>Sorceress</strong>.</span>
+                </div>
+            </div>
+            <div class="building-card">
+                <img src="../img/building_war_room.jpg" class="building-img" alt="">
+                <div class="building-info">
+                    <span class="building-name">War Room</span>
+                    <span class="building-cost cost-gold">800 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
+                    <span class="building-effect">Prescient $\to$ <strong>Strategist</strong>.</span>
+                </div>
+            </div>
+            <div class="building-card">
+                <img src="../img/building_arcane_forge.jpg" class="building-img" alt="">
+                <div class="building-info">
+                    <span class="building-name">Arcane Forge</span>
+                    <span class="building-cost cost-gold">800 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
+                    <span class="building-effect">Prescient $\to$ <strong>Retaliator</strong>.</span>
+                </div>
+            </div>
+            <div class="building-card">
+                <img src="../img/building_workshop.jpg" class="building-img" alt="">
+                <div class="building-info">
+                    <span class="building-name">Workshop</span>
+                    <span class="building-cost cost-gold">800 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
+                    <span class="building-effect">Crossbowman $\to$ <strong>Arbalester</strong>.</span>
+                </div>
+            </div>
+            <div class="building-card">
+                <img src="../img/building_gunsmith.jpg" class="building-img" alt="">
+                <div class="building-info">
+                    <span class="building-name">Gunsmith</span>
+                    <span class="building-cost cost-gold">800 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
+                    <span class="building-effect">Crossbowman $\to$ <strong>Marksman</strong>.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="level-group">
+        <div class="level-label">Level 3 - Elite Sanctuaries</div>
+        <div class="building-grid">
+            <div class="building-card">
+                <img src="../img/building_divine_monument.jpg" class="building-img" alt="">
+                <div class="building-info">
+                    <span class="building-name">Divine Monument</span>
+                    <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
+                    <span class="building-effect">Crusader $\to$ <strong>Holy Avenger</strong>.</span>
+                </div>
+            </div>
+            <div class="building-card">
+                <img src="../img/building_guardian_statue.jpg" class="building-img" alt="">
+                <div class="building-info">
+                    <span class="building-name">Guardian Statue</span>
+                    <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
+                    <span class="building-effect">Paladin $\to$ <strong>Guardian</strong>.</span>
+                </div>
+            </div>
+            <div class="building-card">
+                <img src="../img/building_torture_chamber.jpg" class="building-img" alt="">
+                <div class="building-info">
+                    <span class="building-name">Torture Chamber</span>
+                    <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
+                    <span class="building-effect">Monster Hunter $\to$ <strong>Inquisitor</strong>.</span>
+                </div>
+            </div>
+            <div class="building-card">
+                <img src="../img/building_cathedral.jpg" class="building-img" alt="">
+                <div class="building-info">
+                    <span class="building-name">Cathedral</span>
+                    <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
+                    <span class="building-effect">Bishop $\to$ <strong>Primarch</strong>.</span>
+                </div>
+            </div>
+            <div class="building-card">
+                <img src="../img/building_forbidden_library.jpg" class="building-img" alt="">
+                <div class="building-info">
+                    <span class="building-name">Forbidden Library</span>
+                    <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
+                    <span class="building-effect">Exorcist $\to$ <strong>Abolisher</strong>.</span>
+                </div>
+            </div>
+            <div class="building-card">
+                <img src="../img/building_sanctuary.jpg" class="building-img" alt="">
+                <div class="building-info">
+                    <span class="building-name">Sanctuary</span>
+                    <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
+                    <span class="building-effect">Oracle $\to$ <strong>Herald</strong>.</span>
+                </div>
+            </div>
+            <div class="building-card">
+                <img src="../img/building_wizard_council.jpg" class="building-img" alt="">
+                <div class="building-info">
+                    <span class="building-name">Wizard Council</span>
+                    <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
+                    <span class="building-effect">Wizard $\to$ <strong>Thaumaturge</strong>.</span>
+                </div>
+            </div>
+            <div class="building-card">
+                <img src="../img/building_secret_garden.jpg" class="building-img" alt="">
+                <div class="building-info">
+                    <span class="building-name">Secret Garden</span>
+                    <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
+                    <span class="building-effect">Sorceress $\to$ <strong>Hexarch</strong>.</span>
+                </div>
+            </div>
+            <div class="building-card">
+                <img src="../img/building_ancient_books.jpg" class="building-img" alt="">
+                <div class="building-info">
+                    <span class="building-name">Ancient Books Room</span>
+                    <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
+                    <span class="building-effect">Strategist $\to$ <strong>Enlightened</strong>.</span>
+                </div>
+            </div>
+            <div class="building-card">
+                <img src="../img/building_runic_forge.jpg" class="building-img" alt="">
+                <div class="building-info">
+                    <span class="building-name">Runic Forge</span>
+                    <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
+                    <span class="building-effect">Retaliator $\to$ <strong>Vindicator</strong>.</span>
+                </div>
+            </div>
+            <div class="building-card">
+                <img src="../img/building_advanced_workshop.jpg" class="building-img" alt="">
+                <div class="building-info">
+                    <span class="building-name">Advanced Workshop</span>
+                    <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
+                    <span class="building-effect">Arbalester $\to$ <strong>Engineer</strong>.</span>
+                </div>
+            </div>
+            <div class="building-card">
+                <img src="../img/building_marksman_range.jpg" class="building-img" alt="">
+                <div class="building-info">
+                    <span class="building-name">Long-distance Range</span>
+                    <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
+                    <span class="building-effect">Marksman $\to$ <strong>Sharpshooter</strong>.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="level-group">
+        <div class="level-label" style="background:rgba(229,228,226,0.15); color:#e5e4e2;">Level 4 - Champion Ascensions</div>
+        <div class="building-grid">
+            <div class="building-card card-platinum">
+                <img src="../img/building_mausoleum.jpg" class="building-img" alt="">
+                <div class="building-info">
+                    <span class="building-name">Mausoleum</span>
+                    <span class="building-cost cost-platinum">10 <img src="../img/icon_platinum.png" class="currency-icon" alt=""></span>
+                    <span class="building-effect">Unlocks T4 $\to$ <strong>Knight of Dusk</strong>.</span>
+                    <span class="upgrade-note">Upgrade cost: 5 Platinum <img src="../img/icon_platinum.png" class="currency-icon" alt=""></span>
+                </div>
+            </div>
+            <div class="building-card card-platinum">
+                <img src="../img/building_divine_altar.jpg" class="building-img" alt="">
+                <div class="building-info">
+                    <span class="building-name">Divine Altar</span>
+                    <span class="building-cost cost-platinum">10 <img src="../img/icon_platinum.png" class="currency-icon" alt=""></span>
+                    <span class="building-effect">Unlocks T4 $\to$ <strong>Angel</strong>.</span>
+                    <span class="upgrade-note">Upgrade cost: 5 Platinum <img src="../img/icon_platinum.png" class="currency-icon" alt=""></span>
+                </div>
+            </div>
+            <div class="building-card card-platinum">
+                <img src="../img/building_rebirth_portal.jpg" class="building-img" alt="">
+                <div class="building-info">
+                    <span class="building-name">Rebirth Portal</span>
+                    <span class="building-cost cost-platinum">10 <img src="../img/icon_platinum.png" class="currency-icon" alt=""></span>
+                    <span class="building-effect">Unlocks T4 $\to$ <strong>Magus</strong>.</span>
+                    <span class="upgrade-note">Upgrade cost: 5 Platinum <img src="../img/icon_platinum.png" class="currency-icon" alt=""></span>
+                </div>
+            </div>
+            <div class="building-card card-platinum">
+                <img src="../img/building_forgotten_room.jpg" class="building-img" alt="">
+                <div class="building-info">
+                    <span class="building-name">Forgotten Room</span>
+                    <span class="building-cost cost-platinum">10 <img src="../img/icon_platinum.png" class="currency-icon" alt=""></span>
+                    <span class="building-effect">Unlocks T4 $\to$ <strong>Archon</strong>.</span>
+                    <span class="upgrade-note">Upgrade cost: 5 Platinum <img src="../img/icon_platinum.png" class="currency-icon" alt=""></span>
+                </div>
+            </div>
+            <div class="building-card card-platinum">
+                <img src="../img/building_founder_workshop.jpg" class="building-img" alt="">
+                <div class="building-info">
+                    <span class="building-name">Founder Workshop</span>
+                    <span class="building-cost cost-platinum">10 <img src="../img/icon_platinum.png" class="currency-icon" alt=""></span>
+                    <span class="building-effect">Unlocks T4 $\to$ <strong>Dragoon</strong>.</span>
+                    <span class="upgrade-note">Upgrade cost: 5 Platinum <img src="../img/icon_platinum.png" class="currency-icon" alt=""></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="section-title">Capital Utility</h2>
+    <div class="building-grid">
+        <div class="building-card">
+            <img src="../img/building_hospital.jpg" class="building-img" alt="">
+            <div class="building-info">
+                <span class="building-name">Hospital</span>
+                <span class="building-cost cost-gold">800 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
+                <span class="building-effect">Increase HP regeneration by <strong>30%</strong> at the end of each turn.</span>
+            </div>
+        </div>
+        <div class="building-card">
+            <img src="../img/building_university.jpg" class="building-img" alt="">
+            <div class="building-info">
+                <span class="building-name">University</span>
+                <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
+                <span class="building-effect">Increase XP gain by an additional <strong>10%</strong>.</span>
+            </div>
+        </div>
+        <div class="building-card">
+            <img src="../img/building_channeling_stone.jpg" class="building-img" alt="">
+            <div class="building-info">
+                <span class="building-name">Channeling Stone</span>
+                <span class="building-cost cost-gold">3200 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
+                <span class="building-effect">Reduce Mana cost of all spells by <strong>10%</strong>.</span>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="section-title">Province Buildings</h2>
+    <div class="building-grid">
+        <div class="building-card province-card">
+            <img src="../img/building_heavy_walls.jpg" class="building-img" alt="">
+            <div class="building-info">
+                <span class="building-name">Heavy Walls</span>
+                <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
+                <span class="building-effect">Reduce damage taken from units in the province by a <strong>flat 5</strong>.</span>
+            </div>
+        </div>
+        <div class="building-card province-card">
+            <img src="../img/building_trenches.jpg" class="building-img" alt="">
+            <div class="building-info">
+                <span class="building-name">Defensive Trenches</span>
+                <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
+                <span class="building-effect">Reduce damage taken from attacks during the enemy turn by <strong>10%</strong>.</span>
+            </div>
+        </div>
+        <div class="building-card province-card">
+            <img src="../img/building_holy_shrine.jpg" class="building-img" alt="">
+            <div class="building-info">
+                <span class="building-name">Holy Shrine</span>
+                <span class="building-cost cost-gold">3200 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
+                <span class="building-effect">Increase healing received by units in the province by <strong>20%</strong>.</span>
+            </div>
+        </div>
+    </div>
+
+    <a href="valkyrion_main.html" class="back-link">← Return to Valkyrion Empire</a>
+</main>
+
+</body>
+</html>
