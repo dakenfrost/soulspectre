@@ -70,14 +70,9 @@
             text-transform: uppercase;
             letter-spacing: 3px;
             font-size: 1.8rem;
-            display: flex;
-            align-items: center;
-            gap: 15px;
         }
 
-        .level-group {
-            margin-top: 30px;
-        }
+        .level-group { margin-top: 30px; }
 
         .level-label {
             background: rgba(92, 156, 230, 0.2);
@@ -90,7 +85,6 @@
             display: inline-block;
         }
 
-        /* GRID LAYOUT */
         .building-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -115,25 +109,15 @@
         }
 
         .building-img {
-            width: 100px;
-            height: 100px;
+            width: 90px; height: 90px;
             flex-shrink: 0;
             border-radius: 4px;
             object-fit: cover;
             border: 1px solid rgba(255,255,255,0.1);
         }
 
-        .building-info {
-            flex: 1;
-        }
-
-        .building-name {
-            display: block;
-            font-size: 1.15rem;
-            font-weight: bold;
-            color: #fff;
-            margin-bottom: 5px;
-        }
+        .building-info { flex: 1; }
+        .building-name { display: block; font-size: 1.1rem; font-weight: bold; color: #fff; margin-bottom: 5px; }
 
         .building-cost {
             display: flex;
@@ -145,51 +129,24 @@
             margin-bottom: 8px;
         }
 
-        .currency-icon {
-            width: 16px;
-            height: 16px;
-            object-fit: contain;
-        }
-
+        .currency-icon { width: 16px; height: 16px; vertical-align: middle; }
         .cost-gold { color: #ffd700; }
-        .cost-platinum { color: #e5e4e2; text-shadow: 0 0 5px rgba(255,255,255,0.3); }
+        .cost-platinum { color: #e5e4e2; }
 
-        .building-effect {
-            font-size: 0.9rem;
-            color: #aaa;
-            line-height: 1.4;
-        }
+        .building-effect { font-size: 0.9rem; color: #aaa; line-height: 1.4; }
+        .building-effect strong { color: #fff; }
 
-        /* STRUTTURA SPECIALE PLATINO */
-        .card-platinum {
-            border: 1px solid rgba(229, 228, 226, 0.2);
-            box-shadow: 0 0 15px rgba(255,255,255,0.05);
-        }
-
-        .upgrade-note {
-            display: block;
-            margin-top: 5px;
-            font-size: 0.8rem;
-            color: #e5e4e2;
-            font-style: italic;
-        }
+        .card-platinum { border: 1px solid rgba(229, 228, 226, 0.3); box-shadow: 0 0 15px rgba(255,255,255,0.05); }
+        .upgrade-note { display: block; margin-top: 5px; font-size: 0.8rem; color: #e5e4e2; font-style: italic; }
 
         .province-card { border-left: 4px solid #4dd0e1; }
 
         .back-link {
-            display: block;
-            text-align: center;
-            margin-top: 60px;
-            color: #666;
-            text-decoration: none;
-            padding: 20px;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            display: block; text-align: center; margin-top: 60px; color: #666; text-decoration: none; padding: 20px; border-top: 1px solid rgba(255,255,255,0.1);
         }
         .back-link:hover { color: #5c9ce6; }
 
-        @media (max-width: 600px) {
-            .building-grid { grid-template-columns: 1fr; }
-        }
+        @media (max-width: 600px) { .building-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -199,7 +156,7 @@
 
 <header>
     <h1>Imperial Infrastructure</h1>
-    <div class="subtitle">Foundation of the Empire's Might</div>
+    <div class="subtitle">Logistics and Progression of the Founder</div>
 </header>
 
 <main>
@@ -207,14 +164,14 @@
     <h2 class="section-title">Capital Buildings</h2>
     
     <div class="level-group">
-        <div class="level-label">Level 1 - Core Advancements</div>
+        <div class="level-label">Level 1 - Recruitment Centers</div>
         <div class="building-grid">
             <div class="building-card">
                 <img src="../img/building_armory.jpg" class="building-img" alt="">
                 <div class="building-info">
                     <span class="building-name">Armory</span>
                     <span class="building-cost cost-gold">400 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
-                    <span class="building-effect">Enables Squire upgrade to <strong>Knight</strong>.</span>
+                    <span class="building-effect">Enables Squire → <strong>Knight</strong>.</span>
                 </div>
             </div>
             <div class="building-card">
@@ -222,7 +179,7 @@
                 <div class="building-info">
                     <span class="building-name">Inquisition</span>
                     <span class="building-cost cost-gold">400 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
-                    <span class="building-effect">Enables Squire upgrade to <strong>Witch Hunter</strong>.</span>
+                    <span class="building-effect">Enables Squire → <strong>Witch Hunter</strong>.</span>
                 </div>
             </div>
             <div class="building-card">
@@ -230,7 +187,7 @@
                 <div class="building-info">
                     <span class="building-name">Church</span>
                     <span class="building-cost cost-gold">400 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
-                    <span class="building-effect">Enables Acolyte upgrade to <strong>Priest</strong>.</span>
+                    <span class="building-effect">Enables Acolyte → <strong>Priest</strong>.</span>
                 </div>
             </div>
             <div class="building-card">
@@ -238,7 +195,7 @@
                 <div class="building-info">
                     <span class="building-name">Monastery</span>
                     <span class="building-cost cost-gold">400 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
-                    <span class="building-effect">Enables Acolyte upgrade to <strong>Seer</strong>.</span>
+                    <span class="building-effect">Enables Acolyte → <strong>Seer</strong>.</span>
                 </div>
             </div>
             <div class="building-card">
@@ -246,7 +203,7 @@
                 <div class="building-info">
                     <span class="building-name">Mage Tower</span>
                     <span class="building-cost cost-gold">400 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
-                    <span class="building-effect">Enables Apprentice upgrade to <strong>Mage</strong>.</span>
+                    <span class="building-effect">Enables Apprentice → <strong>Mage</strong>.</span>
                 </div>
             </div>
             <div class="building-card">
@@ -254,7 +211,7 @@
                 <div class="building-info">
                     <span class="building-name">Witch Huts</span>
                     <span class="building-cost cost-gold">400 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
-                    <span class="building-effect">Enables Apprentice upgrade to <strong>Witch</strong>.</span>
+                    <span class="building-effect">Enables Apprentice → <strong>Witch</strong>.</span>
                 </div>
             </div>
             <div class="building-card">
@@ -262,7 +219,7 @@
                 <div class="building-info">
                     <span class="building-name">Expanded Library</span>
                     <span class="building-cost cost-gold">400 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
-                    <span class="building-effect">Enables Glossant upgrade to <strong>Prescient</strong>.</span>
+                    <span class="building-effect">Enables Glossant → <strong>Prescient</strong>.</span>
                 </div>
             </div>
             <div class="building-card">
@@ -270,21 +227,21 @@
                 <div class="building-info">
                     <span class="building-name">Shooting Range</span>
                     <span class="building-cost cost-gold">400 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
-                    <span class="building-effect">Enables Archer upgrade to <strong>Crossbowman</strong>.</span>
+                    <span class="building-effect">Enables Archer → <strong>Crossbowman</strong>.</span>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="level-group">
-        <div class="level-label">Level 2 - Specialized Orders</div>
+        <div class="level-label">Level 2 - Specialized Paths</div>
         <div class="building-grid">
             <div class="building-card">
                 <img src="../img/building_holy_statue.jpg" class="building-img" alt="">
                 <div class="building-info">
                     <span class="building-name">Holy Statue</span>
                     <span class="building-cost cost-gold">800 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
-                    <span class="building-effect">Knight $\to$ <strong>Crusader</strong>.</span>
+                    <span class="building-effect">Knight → <strong>Crusader</strong>.</span>
                 </div>
             </div>
             <div class="building-card">
@@ -292,7 +249,7 @@
                 <div class="building-info">
                     <span class="building-name">Blacksmith</span>
                     <span class="building-cost cost-gold">800 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
-                    <span class="building-effect">Knight $\to$ <strong>Paladin</strong>.</span>
+                    <span class="building-effect">Knight → <strong>Paladin</strong>.</span>
                 </div>
             </div>
             <div class="building-card">
@@ -300,7 +257,7 @@
                 <div class="building-info">
                     <span class="building-name">Guild</span>
                     <span class="building-cost cost-gold">800 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
-                    <span class="building-effect">Witch Hunter $\to$ <strong>Monster Hunter</strong>.</span>
+                    <span class="building-effect">Witch Hunter → <strong>Monster Hunter</strong>.</span>
                 </div>
             </div>
             <div class="building-card">
@@ -308,7 +265,7 @@
                 <div class="building-info">
                     <span class="building-name">Basilica</span>
                     <span class="building-cost cost-gold">800 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
-                    <span class="building-effect">Priest $\to$ <strong>Bishop</strong>.</span>
+                    <span class="building-effect">Priest → <strong>Bishop</strong>.</span>
                 </div>
             </div>
             <div class="building-card">
@@ -316,7 +273,7 @@
                 <div class="building-info">
                     <span class="building-name">Holy Office</span>
                     <span class="building-cost cost-gold">800 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
-                    <span class="building-effect">Priest $\to$ <strong>Exorcist</strong>.</span>
+                    <span class="building-effect">Priest → <strong>Exorcist</strong>.</span>
                 </div>
             </div>
             <div class="building-card">
@@ -324,7 +281,7 @@
                 <div class="building-info">
                     <span class="building-name">Monastery Garden</span>
                     <span class="building-cost cost-gold">800 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
-                    <span class="building-effect">Seer $\to$ <strong>Oracle</strong>.</span>
+                    <span class="building-effect">Seer → <strong>Oracle</strong>.</span>
                 </div>
             </div>
             <div class="building-card">
@@ -332,7 +289,7 @@
                 <div class="building-info">
                     <span class="building-name">Wizard Tower</span>
                     <span class="building-cost cost-gold">800 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
-                    <span class="building-effect">Mage $\to$ <strong>Wizard</strong>.</span>
+                    <span class="building-effect">Mage → <strong>Wizard</strong>.</span>
                 </div>
             </div>
             <div class="building-card">
@@ -340,7 +297,7 @@
                 <div class="building-info">
                     <span class="building-name">Witch Conclave</span>
                     <span class="building-cost cost-gold">800 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
-                    <span class="building-effect">Witch $\to$ <strong>Sorceress</strong>.</span>
+                    <span class="building-effect">Witch → <strong>Sorceress</strong>.</span>
                 </div>
             </div>
             <div class="building-card">
@@ -348,7 +305,7 @@
                 <div class="building-info">
                     <span class="building-name">War Room</span>
                     <span class="building-cost cost-gold">800 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
-                    <span class="building-effect">Prescient $\to$ <strong>Strategist</strong>.</span>
+                    <span class="building-effect">Prescient → <strong>Strategist</strong>.</span>
                 </div>
             </div>
             <div class="building-card">
@@ -356,7 +313,7 @@
                 <div class="building-info">
                     <span class="building-name">Arcane Forge</span>
                     <span class="building-cost cost-gold">800 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
-                    <span class="building-effect">Prescient $\to$ <strong>Retaliator</strong>.</span>
+                    <span class="building-effect">Prescient → <strong>Retaliator</strong>.</span>
                 </div>
             </div>
             <div class="building-card">
@@ -364,7 +321,7 @@
                 <div class="building-info">
                     <span class="building-name">Workshop</span>
                     <span class="building-cost cost-gold">800 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
-                    <span class="building-effect">Crossbowman $\to$ <strong>Arbalester</strong>.</span>
+                    <span class="building-effect">Crossbowman → <strong>Arbalester</strong>.</span>
                 </div>
             </div>
             <div class="building-card">
@@ -372,7 +329,7 @@
                 <div class="building-info">
                     <span class="building-name">Gunsmith</span>
                     <span class="building-cost cost-gold">800 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
-                    <span class="building-effect">Crossbowman $\to$ <strong>Marksman</strong>.</span>
+                    <span class="building-effect">Crossbowman → <strong>Marksman</strong>.</span>
                 </div>
             </div>
         </div>
@@ -386,7 +343,7 @@
                 <div class="building-info">
                     <span class="building-name">Divine Monument</span>
                     <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
-                    <span class="building-effect">Crusader $\to$ <strong>Holy Avenger</strong>.</span>
+                    <span class="building-effect">Crusader → <strong>Holy Avenger</strong>.</span>
                 </div>
             </div>
             <div class="building-card">
@@ -394,7 +351,7 @@
                 <div class="building-info">
                     <span class="building-name">Guardian Statue</span>
                     <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
-                    <span class="building-effect">Paladin $\to$ <strong>Guardian</strong>.</span>
+                    <span class="building-effect">Paladin → <strong>Guardian</strong>.</span>
                 </div>
             </div>
             <div class="building-card">
@@ -402,7 +359,7 @@
                 <div class="building-info">
                     <span class="building-name">Torture Chamber</span>
                     <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
-                    <span class="building-effect">Monster Hunter $\to$ <strong>Inquisitor</strong>.</span>
+                    <span class="building-effect">Monster Hunter → <strong>Inquisitor</strong>.</span>
                 </div>
             </div>
             <div class="building-card">
@@ -410,7 +367,7 @@
                 <div class="building-info">
                     <span class="building-name">Cathedral</span>
                     <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
-                    <span class="building-effect">Bishop $\to$ <strong>Primarch</strong>.</span>
+                    <span class="building-effect">Bishop → <strong>Primarch</strong>.</span>
                 </div>
             </div>
             <div class="building-card">
@@ -418,7 +375,7 @@
                 <div class="building-info">
                     <span class="building-name">Forbidden Library</span>
                     <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
-                    <span class="building-effect">Exorcist $\to$ <strong>Abolisher</strong>.</span>
+                    <span class="building-effect">Exorcist → <strong>Abolisher</strong>.</span>
                 </div>
             </div>
             <div class="building-card">
@@ -426,7 +383,7 @@
                 <div class="building-info">
                     <span class="building-name">Sanctuary</span>
                     <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
-                    <span class="building-effect">Oracle $\to$ <strong>Herald</strong>.</span>
+                    <span class="building-effect">Oracle → <strong>Herald</strong>.</span>
                 </div>
             </div>
             <div class="building-card">
@@ -434,7 +391,7 @@
                 <div class="building-info">
                     <span class="building-name">Wizard Council</span>
                     <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
-                    <span class="building-effect">Wizard $\to$ <strong>Thaumaturge</strong>.</span>
+                    <span class="building-effect">Wizard → <strong>Thaumaturge</strong>.</span>
                 </div>
             </div>
             <div class="building-card">
@@ -442,7 +399,7 @@
                 <div class="building-info">
                     <span class="building-name">Secret Garden</span>
                     <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
-                    <span class="building-effect">Sorceress $\to$ <strong>Hexarch</strong>.</span>
+                    <span class="building-effect">Sorceress → <strong>Hexarch</strong>.</span>
                 </div>
             </div>
             <div class="building-card">
@@ -450,7 +407,7 @@
                 <div class="building-info">
                     <span class="building-name">Ancient Books Room</span>
                     <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
-                    <span class="building-effect">Strategist $\to$ <strong>Enlightened</strong>.</span>
+                    <span class="building-effect">Strategist → <strong>Enlightened</strong>.</span>
                 </div>
             </div>
             <div class="building-card">
@@ -458,7 +415,7 @@
                 <div class="building-info">
                     <span class="building-name">Runic Forge</span>
                     <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
-                    <span class="building-effect">Retaliator $\to$ <strong>Vindicator</strong>.</span>
+                    <span class="building-effect">Retaliator → <strong>Vindicator</strong>.</span>
                 </div>
             </div>
             <div class="building-card">
@@ -466,30 +423,30 @@
                 <div class="building-info">
                     <span class="building-name">Advanced Workshop</span>
                     <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
-                    <span class="building-effect">Arbalester $\to$ <strong>Engineer</strong>.</span>
+                    <span class="building-effect">Arbalester → <strong>Engineer</strong>.</span>
                 </div>
             </div>
             <div class="building-card">
                 <img src="../img/building_marksman_range.jpg" class="building-img" alt="">
                 <div class="building-info">
-                    <span class="building-name">Long-distance Range</span>
+                    <span class="building-name">Long-distance Shooting Range</span>
                     <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
-                    <span class="building-effect">Marksman $\to$ <strong>Sharpshooter</strong>.</span>
+                    <span class="building-effect">Marksman → <strong>Sharpshooter</strong>.</span>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="level-group">
-        <div class="level-label" style="background:rgba(229,228,226,0.15); color:#e5e4e2;">Level 4 - Champion Ascensions</div>
+        <div class="level-label" style="background:rgba(229,228,226,0.15); color:#e5e4e2;">Level 4 - Champion Vaults</div>
         <div class="building-grid">
             <div class="building-card card-platinum">
                 <img src="../img/building_mausoleum.jpg" class="building-img" alt="">
                 <div class="building-info">
                     <span class="building-name">Mausoleum</span>
                     <span class="building-cost cost-platinum">10 <img src="../img/icon_platinum.png" class="currency-icon" alt=""></span>
-                    <span class="building-effect">Unlocks T4 $\to$ <strong>Knight of Dusk</strong>.</span>
-                    <span class="upgrade-note">Upgrade cost: 5 Platinum <img src="../img/icon_platinum.png" class="currency-icon" alt=""></span>
+                    <span class="building-effect">Unlocks T4 → <strong>Knight of Dusk</strong>.</span>
+                    <span class="upgrade-note">Upgrade: 5 Platinum <img src="../img/icon_platinum.png" class="currency-icon" alt=""></span>
                 </div>
             </div>
             <div class="building-card card-platinum">
@@ -497,8 +454,8 @@
                 <div class="building-info">
                     <span class="building-name">Divine Altar</span>
                     <span class="building-cost cost-platinum">10 <img src="../img/icon_platinum.png" class="currency-icon" alt=""></span>
-                    <span class="building-effect">Unlocks T4 $\to$ <strong>Angel</strong>.</span>
-                    <span class="upgrade-note">Upgrade cost: 5 Platinum <img src="../img/icon_platinum.png" class="currency-icon" alt=""></span>
+                    <span class="building-effect">Unlocks T4 → <strong>Angel</strong>.</span>
+                    <span class="upgrade-note">Upgrade: 5 Platinum <img src="../img/icon_platinum.png" class="currency-icon" alt=""></span>
                 </div>
             </div>
             <div class="building-card card-platinum">
@@ -506,8 +463,8 @@
                 <div class="building-info">
                     <span class="building-name">Rebirth Portal</span>
                     <span class="building-cost cost-platinum">10 <img src="../img/icon_platinum.png" class="currency-icon" alt=""></span>
-                    <span class="building-effect">Unlocks T4 $\to$ <strong>Magus</strong>.</span>
-                    <span class="upgrade-note">Upgrade cost: 5 Platinum <img src="../img/icon_platinum.png" class="currency-icon" alt=""></span>
+                    <span class="building-effect">Unlocks T4 → <strong>Magus</strong>.</span>
+                    <span class="upgrade-note">Upgrade: 5 Platinum <img src="../img/icon_platinum.png" class="currency-icon" alt=""></span>
                 </div>
             </div>
             <div class="building-card card-platinum">
@@ -515,8 +472,8 @@
                 <div class="building-info">
                     <span class="building-name">Forgotten Room</span>
                     <span class="building-cost cost-platinum">10 <img src="../img/icon_platinum.png" class="currency-icon" alt=""></span>
-                    <span class="building-effect">Unlocks T4 $\to$ <strong>Archon</strong>.</span>
-                    <span class="upgrade-note">Upgrade cost: 5 Platinum <img src="../img/icon_platinum.png" class="currency-icon" alt=""></span>
+                    <span class="building-effect">Unlocks T4 → <strong>Archon</strong>.</span>
+                    <span class="upgrade-note">Upgrade: 5 Platinum <img src="../img/icon_platinum.png" class="currency-icon" alt=""></span>
                 </div>
             </div>
             <div class="building-card card-platinum">
@@ -524,8 +481,8 @@
                 <div class="building-info">
                     <span class="building-name">Founder Workshop</span>
                     <span class="building-cost cost-platinum">10 <img src="../img/icon_platinum.png" class="currency-icon" alt=""></span>
-                    <span class="building-effect">Unlocks T4 $\to$ <strong>Dragoon</strong>.</span>
-                    <span class="upgrade-note">Upgrade cost: 5 Platinum <img src="../img/icon_platinum.png" class="currency-icon" alt=""></span>
+                    <span class="building-effect">Unlocks T4 → <strong>Dragoon</strong>.</span>
+                    <span class="upgrade-note">Upgrade: 5 Platinum <img src="../img/icon_platinum.png" class="currency-icon" alt=""></span>
                 </div>
             </div>
         </div>
@@ -538,7 +495,7 @@
             <div class="building-info">
                 <span class="building-name">Hospital</span>
                 <span class="building-cost cost-gold">800 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
-                <span class="building-effect">Increase HP regeneration by <strong>30%</strong> at the end of each turn.</span>
+                <span class="building-effect">Increase health regeneration by <strong>30%</strong> at turn end.</span>
             </div>
         </div>
         <div class="building-card">
@@ -546,7 +503,7 @@
             <div class="building-info">
                 <span class="building-name">University</span>
                 <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
-                <span class="building-effect">Increase XP gain by an additional <strong>10%</strong>.</span>
+                <span class="building-effect">Increase XP gain by additional <strong>10%</strong>.</span>
             </div>
         </div>
         <div class="building-card">
@@ -554,7 +511,7 @@
             <div class="building-info">
                 <span class="building-name">Channeling Stone</span>
                 <span class="building-cost cost-gold">3200 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
-                <span class="building-effect">Reduce Mana cost of all spells by <strong>10%</strong>.</span>
+                <span class="building-effect">Reduce Mana cost of spells by <strong>10%</strong>.</span>
             </div>
         </div>
     </div>
@@ -566,7 +523,7 @@
             <div class="building-info">
                 <span class="building-name">Heavy Walls</span>
                 <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
-                <span class="building-effect">Reduce damage taken from units in the province by a <strong>flat 5</strong>.</span>
+                <span class="building-effect">Reduce damage taken in province by a <strong>flat 5</strong>.</span>
             </div>
         </div>
         <div class="building-card province-card">
@@ -574,7 +531,7 @@
             <div class="building-info">
                 <span class="building-name">Defensive Trenches</span>
                 <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
-                <span class="building-effect">Reduce damage taken from attacks during the enemy turn by <strong>10%</strong>.</span>
+                <span class="building-effect">Reduce damage taken from units in province attacked in enemy turn by <strong>10%</strong>.</span>
             </div>
         </div>
         <div class="building-card province-card">
@@ -582,7 +539,7 @@
             <div class="building-info">
                 <span class="building-name">Holy Shrine</span>
                 <span class="building-cost cost-gold">3200 <img src="../img/icon_gold.png" class="currency-icon" alt=""></span>
-                <span class="building-effect">Increase healing received by units in the province by <strong>20%</strong>.</span>
+                <span class="building-effect">Increase healing received by units in province by <strong>20%</strong>.</span>
             </div>
         </div>
     </div>
