@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Imperial Spells</title>
+    <style>
+        body {
+            color: #e0e0e0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        #bg-image {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background-image: url('../img/valkyrion_bg.jpeg'); 
+            background-size: cover;
+            background-position: center;
+            z-index: -2;
+        }
+
+        #overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background: linear-gradient(to bottom, rgba(10, 10, 12, 0.9), rgba(5, 5, 5, 0.98)); 
+            z-index: -1;
+        }
+
+        header {
+            padding: 60px 20px 30px 20px;
+            text-align: center;
+            width: 100%;
+            max-width: 1100px;
+        }
+
+        h1 {
+            letter-spacing: 5px;
+            font-size: 2.5rem;
+            margin: 0;
+            color: #fff;
+            text-transform: uppercase;
+            text-shadow: 0 0 15px rgba(92, 156, 230, 0.6);
+        }
+
+        .subtitle {
+            color: #5c9ce6;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            margin-top: 10px;
+            text-transform: uppercase;
+        }
+
+        main {
+            max-width: 1100px; 
+            padding: 40px 20px;
+            width: 100%;
+        }
+
+        .spell-category {
+            margin-bottom: 50px;
+            background: rgba(15, 15, 15, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .level-header {
+            padding: 15px 25px;
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            border-bottom: 2px solid rgba(255,255,255,0.1);
+        }
+
+        /* Colorazione Livelli */
+        .lv-1 { background: rgba(176, 190, 197, 0.15); color: #b0bec5; border-bottom-color: #b0bec5; }
+        .lv-2 { background: rgba(129, 199, 132, 0.15); color: #81c784; border-bottom-color: #81c784; }
+        .lv-3 { background: rgba(100, 181, 246, 0.15); color: #64b5f6; border-bottom-color: #64b5f6; }
+        .lv-4 { background: rgba(186, 104, 200, 0.15); color: #ba68c8; border-bottom-color: #ba68c8; }
+        .lv-5 { background: rgba(255, 179, 0, 0.15); color: #ffb300; border-bottom-color: #ffb300; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th {
+            padding: 12px 25px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            color: #888;
+            letter-spacing: 1px;
+            background: rgba(0,0,0,0.2);
+        }
+
+        td {
+            padding: 15px 25px;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+            vertical-align: middle;
+        }
+
+        tr:last-child td { border-bottom: none; }
+        tr:hover td { background: rgba(92, 156, 230, 0.05); }
+
+        .spell-icon-cell { width: 60px; text-align: center; }
+        .spell-icon { width: 40px; height: 40px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.1); }
+
+        .mana-cost {
+            font-family: monospace;
+            color: #4dd0e1;
+            font-weight: bold;
+            font-size: 1.1rem;
+            width: 100px;
+        }
+
+        .spell-name {
+            color: #fff;
+            font-weight: bold;
+            font-size: 1.1rem;
+            width: 250px;
+        }
+
+        .spell-effect {
+            color: #ccc;
+            font-size: 0.95rem;
+        }
+
+        .stack-info {
+            color: #ba68c8;
+            font-size: 0.8rem;
+            font-style: italic;
+            display: block;
+            margin-top: 4px;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 40px;
+            color: #666;
+            text-decoration: none;
+            padding: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .back-link:hover { color: #5c9ce6; }
+
+        @media (max-width: 800px) {
+            .mana-cost, .spell-icon-cell { display: none; }
+            .spell-name { width: auto; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<header>
+    <h1>Imperial Spells</h1>
+    <div class="subtitle">Arcane Arts of the Founder's Will</div>
+</header>
+
+<main>
+
+    <div class="spell-category">
+        <div class="level-header lv-1">Level 1 Spells</div>
+        <table>
+            <thead>
+                <tr>
+                    <th class="spell-icon-cell">Icon</th>
+                    <th>Mana</th>
+                    <th>Name</th>
+                    <th>Effect</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/lv1_spell_icon.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">200</td>
+                    <td class="spell-name">Lesser Healing</td>
+                    <td class="spell-effect">Heals 25 HP to selected party.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/lv1_spell_icon.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">200</td>
+                    <td class="spell-name">Thunderstrike</td>
+                    <td class="spell-effect">Deals 15 Air damage to target enemy party.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/lv1_spell_icon.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">200</td>
+                    <td class="spell-name">Lesser Empower</td>
+                    <td class="spell-effect">Selected party gains +5% damage this turn.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/lv1_spell_icon.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">200</td>
+                    <td class="spell-name">Lesser Armor</td>
+                    <td class="spell-effect">Selected party gains +5% armor this turn.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/lv1_spell_icon.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">200</td>
+                    <td class="spell-name">Call to Arms</td>
+                    <td class="spell-effect">Summons a group of 6 Valkyrion Peasants. They are dismissed at end of turn.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/lv1_spell_icon.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">200</td>
+                    <td class="spell-name">Quick Steps</td>
+                    <td class="spell-effect">Adds 20% movement to selected party.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="spell-category">
+        <div class="level-header lv-2">Level 2 Spells</div>
+        <table>
+            <tbody>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/lv2_spell_icon.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">400</td>
+                    <td class="spell-name">Thunderstorm</td>
+                    <td class="spell-effect">Deals 25 Air damage to target enemy party.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/lv2_spell_icon.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">400</td>
+                    <td class="spell-name">Air Ward</td>
+                    <td class="spell-effect">Selected party gains protection to Air for this turn.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/lv2_spell_icon.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">400</td>
+                    <td class="spell-name">Stern Gaze</td>
+                    <td class="spell-effect">Selected enemy party gets -5% damage for this turn.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/lv2_spell_icon.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">400</td>
+                    <td class="spell-name">Hawkeye Eyes</td>
+                    <td class="spell-effect">Selected party gains +5% accuracy this turn.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/lv2_spell_icon.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">400</td>
+                    <td class="spell-name">Healing</td>
+                    <td class="spell-effect">Heals 50 HP to selected party.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/lv2_spell_icon.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">400</td>
+                    <td class="spell-name">Swiftness</td>
+                    <td class="spell-effect">Adds 40% movement speed to selected party.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="spell-category">
+        <div class="level-header lv-3">Level 3 Spells</div>
+        <table>
+            <tbody>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/lv3_spell_icon.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">800</td>
+                    <td class="spell-name">Soul Ward</td>
+                    <td class="spell-effect">Selected party gains protection to Soul for this turn.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/lv3_spell_icon.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">800</td>
+                    <td class="spell-name">Mind Ward</td>
+                    <td class="spell-effect">Selected party gains protection to Mind for this turn.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/lv3_spell_icon.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">800</td>
+                    <td class="spell-name">Summon Guardian Golem</td>
+                    <td class="spell-effect">Summons a Guardian Golem. It is dismissed at end of turn.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/lv3_spell_icon.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">800</td>
+                    <td class="spell-name">Blur</td>
+                    <td class="spell-effect">Selected enemy target gets -5% accuracy for this turn.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/lv3_spell_icon.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">800</td>
+                    <td class="spell-name">Fire Ward</td>
+                    <td class="spell-effect">Selected party gains protection to Fire for this turn.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/lv3_spell_icon.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">800</td>
+                    <td class="spell-name">Rebirth</td>
+                    <td class="spell-effect">Revives the first dead unit in selected party.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="spell-category">
+        <div class="level-header lv-4">Level 4 Spells</div>
+        <table>
+            <tbody>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/lv4_spell_icon.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">1600</td>
+                    <td class="spell-name">Soul Flames</td>
+                    <td class="spell-effect">Deals 40 Soul damage to target enemy party.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/lv4_spell_icon.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">1600</td>
+                    <td class="spell-name">Enhance Reflexes</td>
+                    <td class="spell-effect">Selected party gets +5% dodge this turn.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/lv4_spell_icon.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">1600</td>
+                    <td class="spell-name">Forced March</td>
+                    <td class="spell-effect">Adds 60% movement speed to selected party.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/lv4_spell_icon.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">1600</td>
+                    <td class="spell-name">Greater Armor</td>
+                    <td class="spell-effect">Selected party gains +10% armor this turn. <span class="stack-info">Stackable with Lesser Armor</span></td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/lv4_spell_icon.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">1600</td>
+                    <td class="spell-name">Greater Empower</td>
+                    <td class="spell-effect">Selected party gains +10% damage this turn. <span class="stack-info">Stackable with Lesser Empower</span></td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/lv4_spell_icon.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">1600</td>
+                    <td class="spell-name">Greater Healing</td>
+                    <td class="spell-effect">Heals 100 HP to selected party.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="spell-category">
+        <div class="level-header lv-5">Level 5 Spells</div>
+        <table>
+            <tbody>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/lv5_spell_icon.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">3200</td>
+                    <td class="spell-name">Abyss Gaze</td>
+                    <td class="spell-effect">Selected enemy party gets -10% damage for this turn. <span class="stack-info">Stackable with Stern Gaze</span></td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/lv5_spell_icon.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">3200</td>
+                    <td class="spell-name">Pinpoint Accuracy</td>
+                    <td class="spell-effect">Selected party gains +5% accuracy this turn. <span class="stack-info">Stackable with Hawkeye Eyes</span></td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/lv5_spell_icon.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">3200</td>
+                    <td class="spell-name">Divine Healing</td>
+                    <td class="spell-effect">Heals 150 HP to selected party.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/lv5_spell_icon.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">3200</td>
+                    <td class="spell-name">Summon Revenant</td>
+                    <td class="spell-effect">Summons a Revenant. It is dismissed at end of turn.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/lv5_spell_icon.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">3200</td>
+                    <td class="spell-name">Summon Archangel</td>
+                    <td class="spell-effect">Summons an Archangel. It is dismissed at end of turn.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/lv5_spell_icon.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">3200</td>
+                    <td class="spell-name">Divine Toughness</td>
+                    <td class="spell-effect">Selected party reduces damage taken by a flat 5 for this turn.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <a href="valkyrion_main.html" class="back-link">← Return to Valkyrion Empire</a>
+</main>
+
+</body>
+</html>
