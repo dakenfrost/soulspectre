@@ -3,105 +3,196 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SOULSPECTRE | Archivio Subconscio</title>
+    <title>SOULSPECTRE | Archivio Centrale</title>
     <style>
         body {
-            background-color: #1a1a1a;
+            background-color: #0a0a0a;
             color: #e0e0e0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
             margin: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
+            min-height: 100vh;
         }
+
+        #bg-image {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background-image: url('img/homepage_bg.jpg'); 
+            background-size: cover;
+            background-position: center;
+            z-index: -2;
+        }
+
+        #overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background: radial-gradient(circle, rgba(20, 20, 25, 0.7) 0%, rgba(5, 5, 5, 0.95) 100%); 
+            z-index: -1;
+        }
+
         header {
-            padding: 100px 20px;
+            padding: 80px 20px 40px 20px;
             text-align: center;
-            border-bottom: 1px solid #333;
             width: 100%;
         }
-        h1 {
-            letter-spacing: 10px;
-            font-size: 3rem;
-            margin: 0;
-            color: #fff;
-            text-transform: uppercase;
+
+        .logo-container img {
+            max-width: 500px;
+            width: 90%;
+            filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.1));
         }
+
         .tagline {
-            font-style: italic;
+            letter-spacing: 4px;
+            font-size: 1rem;
             color: #888;
-            margin-top: 10px;
+            text-transform: uppercase;
+            margin-top: 20px;
         }
+
         main {
-            max-width: 800px;
-            padding: 50px 20px;
+            width: 100%;
+            max-width: 1000px;
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
-        .manifesto {
-            background: #222;
-            padding: 30px;
-            border-left: 4px solid #444;
-            margin-bottom: 50px;
-        }
-        .grid {
+
+        /* GRID LAYOUT PER I 4 BOTTONI PRINCIPALI */
+        .main-nav {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
             width: 100%;
         }
-        .card {
-            border: 1px solid #333;
-            padding: 20px;
-            transition: 0.3s;
+
+        .nav-card {
+            position: relative;
+            height: 250px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
             text-decoration: none;
-            color: inherit;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
-        .card:hover {
-            border-color: #666;
-            background: #252525;
+
+        .nav-card .card-bg {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            z-index: 1;
+            transition: transform 0.6s ease;
+            filter: grayscale(30%);
         }
-        .card h2 {
-            margin-top: 0;
+
+        .nav-card::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.8) 100%);
+            z-index: 2;
+            transition: background 0.3s ease;
+        }
+
+        .card-label {
+            position: relative;
+            z-index: 3;
             color: #fff;
+            font-size: 2rem;
+            font-weight: bold;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.8);
         }
+
+        /* HOVER EFFECTS */
+        .nav-card:hover {
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.7);
+        }
+
+        .nav-card:hover .card-bg {
+            transform: scale(1.08);
+            filter: grayscale(0%);
+        }
+
+        .nav-card:hover::after {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.6) 100%);
+        }
+
         footer {
-            margin-top: 100px;
-            padding: 20px;
+            padding: 40px 20px;
+            text-align: center;
+            width: 100%;
             font-size: 0.8rem;
-            color: #555;
+            color: #444;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 768px) {
+            .main-nav {
+                grid-template-columns: 1fr;
+            }
+            .nav-card {
+                height: 180px;
+            }
+            .card-label {
+                font-size: 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
 
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
 <header>
-    <h1>SOULSPECTRE</h1>
-    <p class="tagline">L'eco delle ideologie nel vuoto dell'anima.</p>
+    <div class="logo-container">
+        <img src="img/soulspectre_logo.png" alt="SOULSPECTRE LOGO">
+    </div>
+    <p class="tagline">Ideological Echoes in the Void</p>
 </header>
 
 <main>
-    <section class="manifesto">
-        <p><strong>Protocollo di Accesso:</strong> Questo database non è per i deboli di spirito. Qui le correnti del pensiero umano hanno smesso di essere astrazioni per diventare gerarchie di potere. Esplora le factions, cataloga le unità, accetta l'inevitabile.</p>
-    </section>
+    <div class="main-nav">
+        <a href="gameplay/mechanics.html" class="nav-card">
+            <img src="img/btn_gameplay.jpg" class="card-bg" alt="">
+            <span class="card-label">Gameplay</span>
+        </a>
 
-    <div class="grid">
-        <a href="factions/storia.html" class="card">
-            <h2>Il Fondamento</h2>
-            <p>La genesi dello Spettro e la cronologia della distorsione.</p>
+        <a href="factions/index.html" class="nav-card">
+            <img src="img/btn_factions.jpg" class="card-bg" alt="">
+            <span class="card-label">Factions</span>
         </a>
-        <a href="factions/valkyrion.html" class="card">
-            <h2>Le Egemonie</h2>
-            <p>I blocchi ideologici in perenne collisione.</p>
+
+        <a href="campaigns/map.html" class="nav-card">
+            <img src="img/btn_campaigns.jpg" class="card-bg" alt="">
+            <span class="card-label">Campaigns</span>
         </a>
-        <a href="unita/database.html" class="card">
-            <h2>L'Arsenale</h2>
-            <p>Indice sistematico delle unità militari e metafisiche.</p>
+
+        <a href="about/creators.html" class="nav-card">
+            <img src="img/btn_creators.jpg" class="card-bg" alt="">
+            <span class="card-label">Creators</span>
         </a>
     </div>
 </main>
 
 <footer>
-    &copy; 2026 SOULSPECTRE - Archivio Chiuso.
+    &copy; 2026 SOULSPECTRE PROJECT - ALL RIGHTS RESERVED - TERMINAL ACCESS GRANTED
 </footer>
 
 </body>
