@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SOULSPECTRE | Fazioni</title>
+    <title>SOULSPECTRE | Factions</title>
     <style>
         body {
             background-color: #0a0a0a;
@@ -47,6 +47,7 @@
             color: #fff;
             text-transform: uppercase;
             margin: 0;
+            text-shadow: 0 0 15px rgba(255,255,255,0.1);
         }
 
         main {
@@ -58,7 +59,7 @@
             align-items: flex-start;
         }
 
-        /* LISTA FAZIONI */
+        /* FACTION LIST */
         .faction-list {
             flex: 0 0 40%;
             display: flex;
@@ -186,7 +187,7 @@
 
     <div class="preview-panel" id="panel">
         <div id="default-content" class="placeholder-text">
-            Seleziona un'entità per avviare la scansione dei dati...
+            Select an entity to initiate data scan...
         </div>
         <div id="active-content" style="display: none;">
             <img id="preview-img" src="" alt="Faction Preview">
@@ -204,12 +205,12 @@
     const data = {
         valkyrion: {
             title: "Valkyrion Empire",
-            desc: "Un'egemonia d'acciaio e intelletto. Hanno compreso che la sopravvivenza non ammette errori morali. La loro dottrina si basa sulla preveggenza tattica e sulla neutralizzazione sistematica delle minacce tramite arti arcane e precisione militare.",
+            desc: "A hegemony of steel and intellect. They understand that survival permits no moral errors. Their doctrine relies on tactical foresight and the systematic neutralization of threats through arcane arts and military precision.",
             img: "../img/faction_preview_valkyrion.jpg"
         },
         forgotten: {
             title: "The Forgotten",
-            desc: "Anomalie sistematiche provenienti da un passato cancellato. Entità che manipolano il tempo e il decadimento, operando fuori dalla logica convenzionale. Se i Valkyrion sono la Ragione, i Forgotten sono il Vuoto che attende di divorarla.",
+            desc: "Systemic anomalies from a purged past. Entities that manipulate time and decay, operating outside conventional logic. If the Valkyrion represent Reason, the Forgotten are the Void waiting to consume it.",
             img: "../img/faction_preview_forgotten.jpg"
         }
     };
@@ -231,7 +232,7 @@
     }
 
     function resetPreview() {
-        // Lasciamo l'ultima fazione visualizzata per una navigazione più fluida
+        // Keeps the last viewed faction for smoother navigation
     }
 </script>
 
