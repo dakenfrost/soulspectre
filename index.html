@@ -5,6 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOULSPECTRE | Archivio Centrale</title>
     <style>
+        /* FONT INTEGRATION - EXOCET SYSTEM */
+        @font-face {
+            font-family: 'Exocet-Heavy';
+            src: url('fonts/exocet_heavy.woff') format('woff');
+            font-weight: bold;
+        }
+
+        @font-face {
+            font-family: 'Exocet-Light';
+            src: url('fonts/exocet_light.woff') format('woff');
+            font-weight: normal;
+        }
+
         body {
             background-color: #0a0a0a;
             color: #e0e0e0;
@@ -47,6 +60,7 @@
         }
 
         .tagline {
+            font-family: 'Exocet-Light', serif; /* Un tocco di classe per la tagline */
             letter-spacing: 4px;
             font-size: 1rem;
             color: #888;
@@ -64,7 +78,6 @@
             justify-content: center;
         }
 
-        /* GRID LAYOUT PER I 4 BOTTONI PRINCIPALI */
         .main-nav {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -110,11 +123,11 @@
             position: relative;
             z-index: 3;
             color: #fff;
-            font-size: 2rem;
-            font-weight: bold;
-            letter-spacing: 3px;
+            font-family: 'Exocet-Heavy', serif; /* Font richiesto applicato qui */
+            font-size: 2.2rem;
+            letter-spacing: 4px;
             text-transform: uppercase;
-            text-shadow: 0 4px 10px rgba(0,0,0,0.8);
+            text-shadow: 0 4px 10px rgba(0,0,0,0.9), 0 0 15px rgba(255,255,255,0.2);
         }
 
         /* HOVER EFFECTS */
@@ -129,8 +142,9 @@
             filter: grayscale(0%);
         }
 
-        .nav-card:hover::after {
-            background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.6) 100%);
+        .nav-card:hover .card-label {
+            color: #5c9ce6; /* Un leggero bagliore blu al passaggio */
+            text-shadow: 0 0 20px rgba(92, 156, 230, 0.6);
         }
 
         footer {
@@ -143,15 +157,9 @@
         }
 
         @media (max-width: 768px) {
-            .main-nav {
-                grid-template-columns: 1fr;
-            }
-            .nav-card {
-                height: 180px;
-            }
-            .card-label {
-                font-size: 1.5rem;
-            }
+            .main-nav { grid-template-columns: 1fr; }
+            .nav-card { height: 180px; }
+            .card-label { font-size: 1.6rem; }
         }
     </style>
 </head>
