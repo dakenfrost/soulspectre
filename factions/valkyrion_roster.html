@@ -100,6 +100,7 @@
             box-sizing: border-box; 
         }
 
+        /* Hover per card attive */
         .order-card:not(.locked-card):hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 35px rgba(92, 156, 230, 0.3);
@@ -141,11 +142,11 @@
             width: 100%;
         }
 
-        /* STILE PER CARD BLOCCATA */
+        /* CARD BLOCCATA */
         .locked-card {
             cursor: not-allowed;
             border-bottom-color: #444;
-            filter: grayscale(1);
+            filter: grayscale(1) contrast(0.8);
             opacity: 0.6;
         }
 
@@ -153,15 +154,13 @@
             color: #888;
         }
 
+        /* OTHERS CARD (Normalizzata) */
         .others-card {
-            grid-column: 1 / -1; 
-            height: 200px;
             border-bottom-color: #888;
         }
 
         .others-card:hover {
             border-bottom-color: #ccc;
-            box-shadow: 0 15px 35px rgba(255, 255, 255, 0.1);
         }
 
         .back-link {
@@ -205,25 +204,25 @@
     </div>
 
     <div class="roster-grid">
-        <a href="../units/valkyrion/valkyrion_order_sword.html" class="order-card">
+        <a href="../units/valkyrion_order_sword.html" class="order-card">
             <div class="order-bg" style="background-image: url('../img/valkyrion_roster_sword.jpg');"></div>
             <div class="order-overlay"></div>
             <h2 class="order-title">Order of the Sword</h2>
         </a>
 
-        <a href="../units/valkyrion/valkyrion_order_light.html" class="order-card">
+        <a href="../units/valkyrion_order_light.html" class="order-card">
             <div class="order-bg" style="background-image: url('../img/valkyrion_roster_light.jpg');"></div>
             <div class="order-overlay"></div>
             <h2 class="order-title">Order of the Light</h2>
         </a>
 
-        <a href="../units/valkyrion/valkyrion_order_knowledge.html" class="order-card">
+        <a href="../units/valkyrion_order_knowledge.html" class="order-card">
             <div class="order-bg" style="background-image: url('../img/valkyrion_roster_knowledge.jpg');"></div>
             <div class="order-overlay"></div>
             <h2 class="order-title">Order of Knowledge</h2>
         </a>
 
-        <a href="../units/valkyrion/valkyrion_order_engineering.html" class="order-card">
+        <a href="../units/valkyrion_order_engineering.html" class="order-card">
             <div class="order-bg" style="background-image: url('../img/valkyrion_roster_engineering.jpg');"></div>
             <div class="order-overlay"></div>
             <h2 class="order-title">Order of Engineering</h2>
@@ -238,7 +237,7 @@
         <a href="valkyrion_others.html" class="order-card others-card">
             <div class="order-bg" style="background-image: url('../img/valkyrion_roster_others.png');"></div>
             <div class="order-overlay"></div>
-            <h2 class="order-title">Auxiliaries & Others</h2>
+            <h2 class="order-title">Others</h2>
         </a>
     </div>
 
