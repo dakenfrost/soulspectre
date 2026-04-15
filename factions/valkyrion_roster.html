@@ -17,10 +17,8 @@
 
         #bg-image {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
             background-image: url('../img/valkyrion_bg.jpeg'); 
             background-size: cover;
             background-position: center;
@@ -29,10 +27,8 @@
 
         #overlay {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
             background: linear-gradient(to bottom, rgba(10, 10, 12, 0.90), rgba(5, 5, 5, 0.98)); 
             z-index: -1;
         }
@@ -80,7 +76,6 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        /* GRIGLIA DEGLI ORDINI MILITARI */
         .roster-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
@@ -105,7 +100,7 @@
             box-sizing: border-box; 
         }
 
-        .order-card:hover {
+        .order-card:not(.locked-card):hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 35px rgba(92, 156, 230, 0.3);
             border-bottom-color: #FFD700;
@@ -120,21 +115,16 @@
             z-index: 1;
         }
 
-        .order-card:hover .order-bg {
+        .order-card:not(.locked-card):hover .order-bg {
             transform: scale(1.05);
         }
 
         .order-overlay {
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            /* Modifica drastica: scuro solo per il 35% inferiore, il resto è trasparente */
             background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 35%);
             z-index: 2;
             transition: background 0.3s ease;
-        }
-
-        .order-card:hover .order-overlay {
-            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 30%);
         }
 
         .order-title {
@@ -144,7 +134,6 @@
             font-size: 1.6rem; 
             text-transform: uppercase;
             letter-spacing: 3px;
-            /* Ombra rinforzata per contrastare sui fondi chiari */
             text-shadow: 0 2px 4px rgba(0,0,0,1), 0 0 10px rgba(0,0,0,0.8);
             margin: 0;
             text-align: center;
@@ -152,7 +141,18 @@
             width: 100%;
         }
 
-        /* CARD PER "OTHERS" */
+        /* STILE PER CARD BLOCCATA */
+        .locked-card {
+            cursor: not-allowed;
+            border-bottom-color: #444;
+            filter: grayscale(1);
+            opacity: 0.6;
+        }
+
+        .locked-card .order-title {
+            color: #888;
+        }
+
         .others-card {
             grid-column: 1 / -1; 
             height: 200px;
@@ -228,6 +228,12 @@
             <div class="order-overlay"></div>
             <h2 class="order-title">Order of Engineering</h2>
         </a>
+
+        <div class="order-card locked-card">
+            <div class="order-bg" style="background-image: url('../img/valkyrion_roster_hybrids.jpg');"></div>
+            <div class="order-overlay"></div>
+            <h2 class="order-title">Hybrid Units (Locked)</h2>
+        </div>
 
         <a href="valkyrion_others.html" class="order-card others-card">
             <div class="order-bg" style="background-image: url('../img/valkyrion_roster_others.jpg');"></div>
