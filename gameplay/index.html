@@ -46,6 +46,7 @@
             color: #fff;
             text-transform: uppercase;
             margin: 0;
+            text-shadow: 0 0 15px rgba(92, 156, 230, 0.3);
         }
 
         main {
@@ -84,12 +85,13 @@
             border-left: 4px solid #5c9ce6;
             transform: translateX(10px);
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            color: #5c9ce6;
         }
 
         /* PREVIEW PANEL */
         .preview-panel {
             flex: 1;
-            background: rgba(10, 10, 12, 0.9);
+            background: rgba(10, 10, 12, 0.95);
             border: 1px solid rgba(255, 255, 255, 0.05);
             min-height: 550px;
             position: sticky;
@@ -101,9 +103,11 @@
 
         #preview-img {
             width: 100%;
-            height: 300px;
+            height: 320px;
             object-fit: cover;
             border-bottom: 1px solid rgba(255,255,255,0.1);
+            filter: brightness(0.8);
+            transition: filter 0.3s ease;
         }
 
         .preview-content { padding: 35px; }
@@ -111,13 +115,13 @@
         #preview-title {
             font-size: 1.8rem;
             margin: 0 0 15px 0;
-            color: #5c9ce6;
+            color: #fff;
             text-transform: uppercase;
             letter-spacing: 2px;
         }
 
         #preview-desc {
-            color: #ccc;
+            color: #aaa;
             font-size: 1.1rem;
             line-height: 1.8;
             margin: 0;
@@ -132,9 +136,11 @@
             font-style: italic;
             text-align: center;
             padding: 40px;
+            font-size: 1.2rem;
         }
 
         .back-link {
+            display: block;
             margin: 40px 0;
             color: #666;
             text-decoration: none;
@@ -142,6 +148,7 @@
             text-transform: uppercase;
             font-size: 0.9rem;
             letter-spacing: 2px;
+            text-align: center;
         }
 
         .back-link:hover { color: #fff; }
@@ -149,6 +156,7 @@
         @media (max-width: 900px) {
             main { flex-direction: column; }
             .system-list, .preview-panel { width: 100%; position: static; }
+            .preview-panel { min-height: auto; }
         }
     </style>
 </head>
@@ -190,27 +198,27 @@
     const data = {
         basics: {
             title: "The Basics",
-            desc: "Understand the core loop of SOULSPECTRE. Learn about turn-based movement, combat encounters, and the primary objective of your faction's campaign.",
+            desc: "The core loop of SOULSPECTRE. From Capital management and Party formation to turn-based engagement logic and the absolute conditions for victory.",
             img: "../img/game_preview_basics.jpg"
         },
         map: {
             title: "Map & Resources",
-            desc: "Navigate the world map. Manage Gold for recruitment, Mana for arcane spells, and the rare Platinum for Tier 4-5 elite infrastructure.",
+            desc: "Global navigation and economic protocols. Manage the flow of Gold, Mana, and Platinum across the Spectre-torn territories.",
             img: "../img/game_preview_map.jpg"
         },
         cities: {
             title: "Cities & Influence",
-            desc: "Expand your reach. Manage your Capital's tech tree and establish specialized Provinces to project influence and secure vital territory.",
+            desc: "Infrastructure management and territorial expansion. Upgrade your Capital's technology and secure Provinces to project your faction's power.",
             img: "../img/game_preview_cities.jpg"
         },
         officers: {
             title: "Officers & Parties",
-            desc: "The heart of your army. Heroes lead parties of up to 6 units. Customize their skills, manage their inventory, and master squad composition.",
+            desc: "The martial core. Command unique leaders and organize specialized squads of up to 6 units to execute precise tactical maneuvers.",
             img: "../img/game_preview_officers.jpg"
         },
         progression: {
             title: "Progression & Power",
-            desc: "Master the Rogue-lite 'Power' system. Gain permanent upgrades through dungeons and trials to face the escalating threats of the Spectre.",
+            desc: "The evolution of lethality. Master the Rogue-lite 'Power' system and the Awakening trials to achieve permanent tactical superiority.",
             img: "../img/game_preview_progression.jpg"
         }
     };
