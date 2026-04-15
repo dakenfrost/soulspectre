@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Systems & Doctrine</title>
+    <style>
+        body {
+            background-color: #0a0a0a;
+            color: #e0e0e0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        #bg-image {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background-image: url('../img/homepage_bg.jpg'); 
+            background-size: cover;
+            background-position: center;
+            z-index: -2;
+        }
+
+        #overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background: linear-gradient(135deg, rgba(15,15,20,0.95) 0%, rgba(5,5,5,0.98) 100%); 
+            z-index: -1;
+        }
+
+        header {
+            padding: 60px 20px;
+            text-align: center;
+            width: 100%;
+        }
+
+        h1 {
+            letter-spacing: 6px;
+            font-size: 2.5rem;
+            color: #fff;
+            text-transform: uppercase;
+            margin: 0;
+        }
+
+        main {
+            display: flex;
+            width: 90%;
+            max-width: 1200px;
+            gap: 40px;
+            margin-bottom: 50px;
+            align-items: flex-start;
+        }
+
+        /* SYSTEM LIST */
+        .system-list {
+            flex: 0 0 40%;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .system-btn {
+            background: rgba(25, 25, 30, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .system-btn:hover {
+            background: rgba(40, 40, 55, 0.9);
+            border-left: 4px solid #5c9ce6;
+            transform: translateX(10px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        /* PREVIEW PANEL */
+        .preview-panel {
+            flex: 1;
+            background: rgba(10, 10, 12, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            min-height: 550px;
+            position: sticky;
+            top: 40px;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+        }
+
+        #preview-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .preview-content { padding: 35px; }
+
+        #preview-title {
+            font-size: 1.8rem;
+            margin: 0 0 15px 0;
+            color: #5c9ce6;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        #preview-desc {
+            color: #ccc;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        .placeholder-text {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 550px;
+            color: #444;
+            font-style: italic;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .back-link {
+            margin: 40px 0;
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+        }
+
+        .back-link:hover { color: #fff; }
+
+        @media (max-width: 900px) {
+            main { flex-direction: column; }
+            .system-list, .preview-panel { width: 100%; position: static; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<header>
+    <h1>Strategic Doctrine</h1>
+</header>
+
+<main>
+    <div class="system-list">
+        <a href="basics.html" class="system-btn" onmouseover="updatePreview('basics')">The Basics</a>
+        <a href="map_resources.html" class="system-btn" onmouseover="updatePreview('map')">Map & Resources</a>
+        <a href="cities.html" class="system-btn" onmouseover="updatePreview('cities')">Cities & Influence</a>
+        <a href="officers.html" class="system-btn" onmouseover="updatePreview('officers')">Officers & Parties</a>
+        <a href="progression.html" class="system-btn" onmouseover="updatePreview('progression')">Progression & Power</a>
+    </div>
+
+    <div class="preview-panel" id="panel">
+        <div id="default-content" class="placeholder-text">
+            Hover over a system to decrypt tactical data...
+        </div>
+        <div id="active-content" style="display: none;">
+            <img id="preview-img" src="" alt="System Preview">
+            <div class="preview-content">
+                <h2 id="preview-title"></h2>
+                <p id="preview-desc"></p>
+            </div>
+        </div>
+    </div>
+</main>
+
+<a href="../index.html" class="back-link">← Return to Main Hub</a>
+
+<script>
+    const data = {
+        basics: {
+            title: "The Basics",
+            desc: "Understand the core loop of SOULSPECTRE. Learn about turn-based movement, combat encounters, and the primary objective of your faction's campaign.",
+            img: "../img/game_preview_basics.jpg"
+        },
+        map: {
+            title: "Map & Resources",
+            desc: "Navigate the world map. Manage Gold for recruitment, Mana for arcane spells, and the rare Platinum for Tier 4-5 elite infrastructure.",
+            img: "../img/game_preview_map.jpg"
+        },
+        cities: {
+            title: "Cities & Influence",
+            desc: "Expand your reach. Manage your Capital's tech tree and establish specialized Provinces to project influence and secure vital territory.",
+            img: "../img/game_preview_cities.jpg"
+        },
+        officers: {
+            title: "Officers & Parties",
+            desc: "The heart of your army. Heroes lead parties of up to 6 units. Customize their skills, manage their inventory, and master squad composition.",
+            img: "../img/game_preview_officers.jpg"
+        },
+        progression: {
+            title: "Progression & Power",
+            desc: "Master the Rogue-lite 'Power' system. Gain permanent upgrades through dungeons and trials to face the escalating threats of the Spectre.",
+            img: "../img/game_preview_progression.jpg"
+        }
+    };
+
+    const defaultContent = document.getElementById('default-content');
+    const activeContent = document.getElementById('active-content');
+    const pTitle = document.getElementById('preview-title');
+    const pDesc = document.getElementById('preview-desc');
+    const pImg = document.getElementById('preview-img');
+
+    function updatePreview(key) {
+        const info = data[key];
+        pTitle.innerText = info.title;
+        pDesc.innerText = info.desc;
+        pImg.src = info.img;
+        
+        defaultContent.style.display = 'none';
+        activeContent.style.display = 'block';
+    }
+</script>
+
+</body>
+</html>
