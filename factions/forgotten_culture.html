@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Forgotten Culture</title>
+    <style>
+        body {
+            color: #e0e0e0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #bg-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url('../img/forgotten_bg.jpg'); 
+            background-size: cover;
+            background-position: center;
+            z-index: -2;
+        }
+
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(to bottom, rgba(5, 12, 8, 0.90), rgba(3, 8, 5, 0.98)); 
+            z-index: -1;
+        }
+
+        header {
+            padding: 60px 20px 30px 20px;
+            text-align: center;
+            width: 100%;
+            max-width: 1100px;
+        }
+
+        h1 {
+            letter-spacing: 5px;
+            font-size: 2.8rem;
+            margin: 0;
+            color: #fff;
+            text-transform: uppercase;
+            text-shadow: 0 0 15px rgba(92, 184, 138, 0.5);
+        }
+
+        .subtitle {
+            color: #5cb88a;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            margin-top: 10px;
+            text-transform: uppercase;
+        }
+
+        main {
+            max-width: 1100px; 
+            padding: 40px 20px;
+            width: 100%;
+            position: relative;
+        }
+
+        .split-section {
+            display: flex;
+            gap: 40px;
+            align-items: stretch; 
+            margin-bottom: 60px; 
+            background: rgba(10, 18, 12, 0.7);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-left: 3px solid #5cb88a;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .section-image {
+            flex: 0 0 45%; 
+        }
+
+        .section-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+        }
+
+        .section-text {
+            flex: 1; 
+            padding: 35px;
+        }
+
+        .full-width-section {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin-bottom: 60px; 
+            background: rgba(10, 18, 12, 0.7);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-left: 3px solid #5cb88a;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            padding: 35px;
+        }
+
+        .full-width-image img {
+            width: 100%;
+            height: auto;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 3px solid #5cb88a;
+            border-radius: 4px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+
+        h2 {
+            color: #fff;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 10px;
+            margin-top: 0;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+        }
+
+        p {
+            margin-bottom: 25px;
+            color: #ccc;
+            font-size: 1.1rem;
+            text-align: justify;
+        }
+
+        strong {
+            color: #5cb88a;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #aaa;
+            border-left: 3px solid #5cb88a;
+            padding: 20px;
+            margin: 30px 0;
+            background: rgba(0, 0, 0, 0.4);
+            font-size: 1.1rem;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.5);
+        }
+
+        .three-rules {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .rule-card {
+            background: rgba(0,0,0,0.4);
+            border-left: 3px solid #5cb88a;
+            padding: 15px 20px;
+        }
+
+        .rule-title {
+            color: #5cb88a;
+            font-weight: bold;
+            font-size: 1.05rem;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 60px;
+            color: #666;
+            text-decoration: none;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+            padding: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .back-link:hover {
+            color: #5cb88a;
+            text-shadow: 0 0 10px rgba(92, 184, 138, 0.4);
+        }
+
+        @media (max-width: 950px) {
+            .split-section {
+                flex-direction: column; 
+            }
+            .section-image {
+                flex: 1 1 100%;
+                width: 100%;
+                height: 300px; 
+            }
+            .section-text {
+                border-top: 1px solid rgba(255,255,255,0.1);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<header>
+    <h1>Faction Culture</h1>
+    <div class="subtitle">The Beauty in Living</div>
+</header>
+
+<main>
+    <div class="split-section" style="border: none; background: rgba(10,18,12,0.5); backdrop-filter: none; box-shadow: none; margin-bottom: 30px;">
+        <div class="section-text" style="padding: 20px; text-align: center;">
+            <p style="text-align: center; margin: 0;">A society where the living and the undead breathe together, governed not by fear or force, but by the shared, desperate will to exist.</p>
+        </div>
+    </div>
+
+    <!-- SECTION 1: Day and Night -->
+    <div class="split-section">
+        <div class="section-image">
+            <img src="../img/forgotten_culture_1_daynight.png" alt="Day and Night in the Empire">
+        </div>
+        <div class="section-text">
+            <h2>Day and Night</h2>
+            <p>The city never sleeps, but it breathes in two tempos. The coexistence of the living and the undead has created a social system based on natural shifts that maximize productivity without oppression.</p>
+            <p><strong>The Breath of the Sun:</strong> During the day, activities are primarily managed by living citizens and the Amber Souls, who draw strength from the light. Markets are bustling, schools are open, and traditional agricultural activities take place.</p>
+            <p><strong>The Breath of the Moon:</strong> When the living go to sleep, the city changes its face. The undead do not require sleep, but rather periods of meditation. The night is dedicated to heavy labor, construction, surveillance, and magical arts. Will-o'-the-wisp lanterns are lit and the noise drops, replaced by a diligent and efficient silence.</p>
+        </div>
+    </div>
+
+    <!-- SECTION 2: Population and Identity -->
+    <div class="split-section">
+        <div class="section-image">
+            <img src="../img/forgotten_culture_2_population.png" alt="Citizens of the Empire">
+        </div>
+        <div class="section-text">
+            <h2>Identity and Purpose</h2>
+            <p>Citizens are born , or reborn , <strong>nameless.</strong> Identity is not a gift, but an achievement. At birth, a single directive is whispered to them, serving as a moral compass for their entire existence:</p>
+            <div class="quote">
+                "Do what you like, and contribute to the Empire."
+            </div>
+            <p>Apathy is the true enemy. No one desires idleness; on the contrary, every citizen , living or undead , seeks to contribute to the best of their abilities toward the common goal. A fundamental aspect of their magical biology is <strong>Ethereal Hunger:</strong> even the undead must feed. Not on flesh or blood out of bestial craving, but on food to fuel the ethereal energies that bind their soul to the body. This biological cycle has allowed for perfect integration with the living, creating a mixed and functioning society with shared agricultural and culinary supply chains.</p>
+        </div>
+    </div>
+
+    <!-- SECTION 3: Politics & Theocracy -->
+    <div class="split-section">
+        <div class="section-image">
+            <img src="../img/forgotten_culture_3_council.png" alt="The Council of Whispers">
+        </div>
+        <div class="section-text">
+            <h2>Politics & Silent Theocracy</h2>
+            <p>The Empire is, paradoxically, an autonomous democracy devoid of tyranny, yet it lives in the shadow of a superior and tangible entity: <strong>Malicott, the Forgotten Goddess.</strong> In the social hierarchy, the most valued traits are not brute strength or magical power, but the virtues of the soul: Pride, Kindness, Nobility, Courage, Loyalty, Resilience, and the Spirit of Sacrifice.</p>
+            <p>All citizens pursue a single, deafening collective direction: <strong>We Want to Live.</strong> This will is so ironclad that it often manifests as defensive aggression; when diplomacy fails, the Forgotten cling to existence with a ferocity that only those who have already faced death can possess.</p>
+            <p>Though without any obligation, Malicott cares about the progress of her people. In times of need, she acts as a psychic conduit with the most valiant individuals of the kingdom during what is known as <strong>The Council of Whispers.</strong> During this episode, no one speaks, but everyone projects their intentions and motivations. Democracy here is not <em>"the majority wins"</em> , but <strong>"harmony prevails."</strong></p>
+        </div>
+    </div>
+
+    <!-- SECTION 4: The Three Rules -->
+    <div class="split-section">
+        <div class="section-image">
+            <img src="../img/forgotten_culture_4_rules.png" alt="The Unwritten Laws">
+        </div>
+        <div class="section-text">
+            <h2>The Unwritten Laws</h2>
+            <p>There are no prisons, no lawyers, no judges. And yet, the crime rate is nearly zero. Because in a society where death has already been defeated, the worst penalty is not execution, but <strong>Isolation from the Connection.</strong> Though unwritten, every citizen instinctively knows the Three Invisible Rules from the moment of their rebirth:</p>
+            <div class="three-rules">
+                <div class="rule-card">
+                    <span class="rule-title">The Weight of the Step</span>
+                    Every action must lighten the burden of another, not add to it.
+                </div>
+                <div class="rule-card">
+                    <span class="rule-title">Blood is Sacred, Aether is Shared</span>
+                    It is forbidden to waste vital resources or to feed on another citizen.
+                </div>
+                <div class="rule-card">
+                    <span class="rule-title">The Truth of the Tree</span>
+                    You cannot lie about your intentions, because the aura of Merit does not lie.
+                </div>
+            </div>
+            <p>Punishment , the <strong>White Exile</strong> , is absolute social invisibility. The Mother Tree withdraws its empathetic connection. Citizens instinctively begin to ignore the guilty, not out of malice, but as if they had become a ghost to ghosts. This absolute loneliness drives the culprit to either redeem themselves with a spectacular act of generosity, or flee into madness and permanent death beyond the Empire's borders.</p>
+        </div>
+    </div>
+
+    <!-- SECTION 5: Economy of Merit -->
+    <div class="split-section">
+        <div class="section-image">
+            <img src="../img/forgotten_culture_5_merchant.jpg" alt="The Night of the Golden Merchant">
+        </div>
+        <div class="section-text">
+            <h2>Economy of Merit</h2>
+            <p>There is no minted currency that can be hoarded to generate passive power. The economy is based on <strong>Seeds of Merit</strong> , not physical objects, but a sort of "magical reputation" tracked by the Mother Tree. Those who contribute emanate a subtle aura, visible to others, but not gathered if the action is done out of pure selfishness.</p>
+            <p>Those with a strong aura gain priority access to rare resources, better weapons, or luxury housing. Exchange is free: a Mailform blacksmith gives a weapon to a warrior not because he is paid, but because he knows that warrior will protect the forge. It is barter based on <strong>immediate trust.</strong></p>
+            <p>The most illustrative case of this system is the story of <strong>Marly</strong>, an immigrant human merchant who secretly hoarded hundreds of divine swords. No guards came to his door. One morning, the baker simply didn't see him. People walked around him as one avoids a rock in the road. The roots of the Mother Tree grew overnight to seal his warehouse , not by force, but simply by reclaiming the wood. Three days of total invisibility in a crowd reduced him to desperation. On the fourth day, he brought every sword back to the central square, one by one, weeping. Only when he placed down the last sword did a child hand him an apple. <em>He had returned to existence.</em></p>
+        </div>
+    </div>
+
+    <!-- SECTION 6: Management of the People -->
+    <div class="full-width-section">
+        <div class="section-text" style="padding: 0;">
+            <h2>Management of the People</h2>
+            <p>Lacking an oppressive central government, the Empire manages itself like a biological organism. Citizens are divided by function into four major groups:</p>
+            <p><strong>The Root Weavers</strong> (Logistics & Agriculture) , Composed of the living and the Root-boned. They manage the cultivation of normal food and the synthesis of Ethereal Nectar to feed the undead. They are responsible for subsistence.</p>
+            <p><strong>The Silent Bulwark</strong> (Defense & Order) , Primarily composed of the Ash Shells. Not a police force patrolling for fines, but a rapid reaction force that intervenes only in cases of external threat or severe internal violence, utilizing the full mobility of their bodies.</p>
+            <p><strong>The Choir of Memory</strong> (Education & Culture) , Ghosts and elderly living. They maintain history, teach the newborns how the Empire works, and manage the theaters where memories of past lives are shared as a form of entertainment and communal lesson.</p>
+            <p><strong>The Forgers of Sorrow</strong> (Crafting & Industry) , The almost exclusive domain of the Mailform. They build infrastructure and weapons. Being tireless and devoid of emotional distractions, their production is considered flawless , a perfection born from dedication, not indifference.</p>
+        </div>
+        <div class="full-width-image">
+            <img src="../img/forgotten_culture_6_groups.png" alt="The Four Groups of the Empire">
+        </div>
+    </div>
+
+    <a href="forgotten.html" class="back-link">← Return to the Forgotten Overview</a>
+</main>
+
+</body>
+</html>

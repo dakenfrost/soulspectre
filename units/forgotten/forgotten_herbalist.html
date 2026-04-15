@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Herbalist</title>
+    <style>
+        body{color:#e0e0e0;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;line-height:1.8;margin:0;display:flex;flex-direction:column;align-items:center;}
+        #bg-image{position:fixed;top:0;left:0;width:100vw;height:100vh;background-image:url('../../img/forgotten_bg.jpg');background-size:cover;background-position:center;z-index:-2;}
+        #overlay{position:fixed;top:0;left:0;width:100vw;height:100vh;background:linear-gradient(to bottom,rgba(5,12,8,0.90),rgba(3,8,5,0.98));z-index:-1;}
+        header{padding:60px 20px 30px;text-align:center;width:100%;max-width:1100px;}
+        h1{letter-spacing:5px;font-size:2.8rem;margin:0;color:#fff;text-transform:uppercase;text-shadow:0 0 15px rgba(92,184,138,0.5);}
+        .subtitle{color:#81c784;font-size:1.1rem;letter-spacing:2px;margin-top:10px;text-transform:uppercase;}
+        main{max-width:1100px;padding:40px 20px;width:100%;}
+        .intro-banner{width:100%;border:1px solid rgba(255,255,255,0.1);border-bottom:3px solid #81c784;box-shadow:0 10px 30px rgba(0,0,0,0.8);border-radius:4px;overflow:hidden;margin-bottom:40px;}
+        .intro-banner img{width:100%;height:auto;display:block;}
+        .split-section{display:flex;gap:40px;align-items:stretch;margin-bottom:60px;background:rgba(10,18,12,0.7);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.05);border-left:3px solid #81c784;box-shadow:0 10px 30px rgba(0,0,0,0.5);}
+        .section-image-container{position:relative;flex:0 0 38%;overflow:hidden;min-height:380px;}
+        .section-image-container img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:top center;}
+        .combat-anim{animation:crossfade-combat 8s infinite;}
+        @keyframes crossfade-combat{0%,40%{opacity:0}50%,90%{opacity:1}100%{opacity:0}}
+        .section-text{flex:1;padding:35px;}
+        h2{color:#fff;letter-spacing:2px;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:10px;margin-top:0;margin-bottom:25px;font-size:1.8rem;}
+        p{margin-bottom:20px;color:#ccc;font-size:1.1rem;text-align:justify;}
+        strong{color:#5cb88a;}em{color:#aaa;font-style:italic;}
+        .tactical-module{border-top:2px solid #81c784;padding-top:40px;margin-bottom:60px;}
+        .tactical-header{text-align:center;margin-bottom:40px;}
+        .tactical-header h2{border:none;font-size:2.2rem;text-shadow:0 0 15px rgba(129,199,132,0.4);}
+        .stats-box{display:flex;justify-content:center;flex-wrap:wrap;background:linear-gradient(145deg,rgba(10,18,12,0.9),rgba(5,10,7,0.9));border:1px solid rgba(129,199,132,0.3);border-radius:4px;padding:25px 10px;margin-bottom:50px;box-shadow:inset 0 0 20px rgba(0,0,0,0.8);}
+        .stat-item{text-align:center;padding:10px 30px;border-right:1px solid rgba(255,255,255,0.1);}
+        .stat-item:last-child{border-right:none;}
+        .stat-label{display:block;color:#888;font-size:0.8rem;text-transform:uppercase;letter-spacing:2px;margin-bottom:8px;}
+        .stat-value{display:block;color:#fff;font-size:1.8rem;font-weight:bold;font-family:monospace;}
+        .stat-value.hp{color:#4CAF50;}.stat-value.atk{color:#ef5350;}.stat-value.tier{color:#81c784;}
+        .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:25px;}
+        .skill-card{background:rgba(10,18,12,0.8);border:1px solid rgba(255,255,255,0.05);border-left:4px solid #333;padding:25px;transition:transform 0.2s ease;}
+        .skill-card:hover{transform:translateY(-5px);}
+        .skill-card.sk-base{border-left-color:#666;}.skill-card.sk-active{border-left-color:#4dd0e1;}.skill-card.sk-passive{border-left-color:#a5d6a7;}
+        .skill-header{display:flex;align-items:center;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:15px;margin-bottom:15px;gap:15px;}
+        .skill-icon{width:70px;height:70px;border-radius:4px;object-fit:cover;border:2px solid rgba(129,199,132,0.4);flex-shrink:0;background:rgba(0,0,0,0.3);}
+        .skill-title-container{flex:1;}
+        .skill-title{margin:0 0 6px;color:#fff;font-size:1.2rem;text-transform:uppercase;letter-spacing:1px;}
+        .skill-type{font-size:0.72rem;padding:2px 8px;border-radius:2px;text-transform:uppercase;letter-spacing:1px;display:inline-block;}
+        .skill-type.base{color:#9e9e9e;background:rgba(158,158,158,0.1);border:1px solid rgba(158,158,158,0.3);}
+        .skill-type.active{color:#4dd0e1;background:rgba(77,208,225,0.1);border:1px solid rgba(77,208,225,0.3);}
+        .skill-type.passive{color:#a5d6a7;background:rgba(165,214,167,0.1);border:1px solid rgba(165,214,167,0.3);}
+        .skill-desc{color:#bbb;font-size:0.95rem;line-height:1.7;}
+        .dmg-earth{color:#a5d6a7;font-weight:bold;}.heal-tag{color:#69f0ae;font-weight:bold;}
+        .portrait-gallery-module{background:rgba(10,18,12,0.7);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.05);border-left:3px solid #81c784;padding:35px;margin-bottom:40px;}
+        .gallery-header{margin-top:0;margin-bottom:25px;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:10px;}
+        .carousel-wrap{position:relative;overflow:hidden;}
+        .carousel-track{display:flex;gap:15px;transition:transform 0.35s ease;padding:5px 2px;}
+        .carousel-item{flex:0 0 200px;height:260px;border:1px solid rgba(255,255,255,0.1);border-radius:4px;overflow:hidden;background:#000;}
+        .carousel-item img{width:100%;height:100%;object-fit:cover;object-position:top center;}
+        .carousel-nav{display:flex;justify-content:center;gap:20px;margin-top:20px;}
+        .nav-btn{background:rgba(10,18,12,0.9);border:1px solid #81c784;color:#81c784;width:44px;height:44px;border-radius:50%;cursor:pointer;font-size:1.2rem;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
+        .nav-btn:hover{background:#81c784;color:#000;}
+        .back-link{display:block;text-align:center;margin-top:40px;color:#555;text-decoration:none;padding:25px;border-top:1px solid rgba(255,255,255,0.08);letter-spacing:1px;transition:color 0.3s;}
+        .back-link:hover{color:#5cb88a;}
+        @media(max-width:900px){.split-section{flex-direction:column}.section-image-container{height:400px;flex:unset}.skills-grid{grid-template-columns:1fr}}
+    </style>
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+<header>
+    <h1>Herbalist</h1>
+    <div class="subtitle">Tier 3 , Nature Path</div>
+</header>
+<main>
+    <div class="intro-banner"><img src="../../img/forgotten_herbalist_banner.png" alt="Herbalist Banner"></div>
+    <div class="split-section">
+        <div class="section-image-container">
+            <img src="../../img/forgotten_herbalist_f_combat.jpg" alt="Herbalist F">
+            <img src="../../img/forgotten_herbalist_m_combat.jpg" alt="Herbalist M" class="combat-anim">
+        </div>
+        <div class="section-text">
+            <h2>The Science of Staying Alive</h2>
+            <p>The Herbalist is the applied science wing of the Linfa branch. Where the Vestal works on the spiritual and the Priestess on the divine, the Herbalist works on <strong>the chemical, the botanical, the empirical.</strong> She keeps notes. She records what dosages worked and which ones didn't. She has killed more enemies with incorrect poultices than with weapons , by accident, then later on purpose.</p>
+            <p>In the Economy of Merit, the Herbalist occupies the seat of the researcher , one of the highest-valued roles in the Empire. Their knowledge compounds. Each battle adds to a body of practical medicine that the Empire couldn't have developed in a hundred years of peace, simply because there wasn't enough trauma volume to collect the data from.</p>
+            <p>Their form retains a laboratory quality: small glass tubes of colored fluid attached to a bandolier, hands that never stop moving, a posture of perpetual slight-forward lean. They smell of green things and copper. <em>It is a surprisingly reassuring smell.</em></p>
+        </div>
+    </div>
+    <div class="tactical-module">
+        <div class="tactical-header"><h2>Tactical Data</h2></div>
+        <div class="stats-box">
+            <div class="stat-item"><span class="stat-label">HP</span><span class="stat-value hp">160</span></div>
+            <div class="stat-item"><span class="stat-label">ATK</span><span class="stat-value atk">60</span></div>
+            <div class="stat-item"><span class="stat-label">INI</span><span class="stat-value">70</span></div>
+            <div class="stat-item"><span class="stat-label">Tier</span><span class="stat-value tier">3</span></div>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-card sk-base">
+                <div class="skill-header">
+                    <img src="../../img/forgotten_skill_salvia_natura.png" alt="" class="skill-icon">
+                    <div class="skill-title-container"><h3 class="skill-title">Nature's Sage</h3><span class="skill-type base">Base</span></div>
+                </div>
+                <div class="skill-desc">Hurls a volatile botanical compound at an enemy, dealing <span class="dmg-earth">Earth</span> damage and applying a <strong>Nature Regen</strong> tag to the nearest ally , <span class="heal-tag">healing 4% of their maximum HP per turn for 3 turns</span>. The same plant heals one and corrodes another. The Herbalist calls this elegant.</div>
+            </div>
+            <div class="skill-card sk-active">
+                <div class="skill-header">
+                    <img src="../../img/forgotten_skill_pozione_primordiale.png" alt="" class="skill-icon">
+                    <div class="skill-title-container"><h3 class="skill-title">Primordial Potion</h3><span class="skill-type active">Active</span></div>
+                </div>
+                <div class="skill-desc">Administers a powerful distillate derived from pure sap root to a single allied unit, <span class="heal-tag">restoring 35% of their maximum HP</span> instantly. If the target is below 25% HP, the effect is increased to <strong>50%</strong>. The formula took twelve engagements to perfect , it is not available for enemies.</div>
+            </div>
+            <div class="skill-card sk-passive">
+                <div class="skill-header">
+                    <img src="../../img/forgotten_skill_rigoglio.png" alt="" class="skill-icon">
+                    <div class="skill-title-container"><h3 class="skill-title">Flourish</h3><span class="skill-type passive">Passive</span></div>
+                </div>
+                <div class="skill-desc">The Herbalist's ambient botanical field permeates the formation. All allied units <span class="heal-tag">regenerate 3% of their maximum HP</span> at the start of each turn. Units currently under a Regen HoT effect benefit from an additional <strong>+1% stacked regen</strong>. The battlefield is a garden, and the Herbalist keeps it growing.</div>
+            </div>
+        </div>
+    </div>
+    <div class="portrait-gallery-module">
+        <h2 class="gallery-header">Gallery</h2>
+        <div class="carousel-wrap">
+            <div class="carousel-track" id="carouselTrack">
+                <div class="carousel-item"><img src="../../img/forgotten_herbalist_f_portrait.jpg" alt="Portrait F"></div>
+                <div class="carousel-item"><img src="../../img/forgotten_herbalist_m_portrait.jpg" alt="Portrait M"></div>
+            </div>
+        </div>
+        <div class="carousel-nav">
+            <button class="nav-btn" id="prevBtn">&#8592;</button>
+            <button class="nav-btn" id="nextBtn">&#8594;</button>
+        </div>
+    </div>
+    <a href="forgotten_order_linfa.html" class="back-link">← Return to Ombre della Linfa</a>
+</main>
+<script>
+    const track=document.getElementById('carouselTrack');const items=track.querySelectorAll('.carousel-item');let current=0;
+    function update(){track.style.transform=`translateX(-${current*(items[0].offsetWidth+15)}px)`;}
+    document.getElementById('nextBtn').addEventListener('click',()=>{if(current<items.length-1){current++;update();}});
+    document.getElementById('prevBtn').addEventListener('click',()=>{if(current>0){current--;update();}});
+</script>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Ombre della Linfa</title>
+    <style>
+        body { color:#e0e0e0; font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif; line-height:1.8; margin:0; display:flex; flex-direction:column; align-items:center; }
+        #bg-image { position:fixed;top:0;left:0;width:100vw;height:100vh;background-image:url('../../img/forgotten_bg.jpg');background-size:cover;background-position:center;z-index:-2; }
+        #overlay { position:fixed;top:0;left:0;width:100vw;height:100vh;background:linear-gradient(to bottom,rgba(5,12,8,0.90),rgba(3,8,5,0.98));z-index:-1; }
+        header { padding:60px 20px 30px;text-align:center;width:100%;max-width:1100px; }
+        h1 { letter-spacing:5px;font-size:2.8rem;margin:0;color:#fff;text-transform:uppercase;text-shadow:0 0 15px rgba(92,184,138,0.5); }
+        .subtitle { color:#5cb88a;font-size:1.1rem;letter-spacing:2px;margin-top:10px;text-transform:uppercase; }
+        main { max-width:1100px;padding:40px 20px;width:100%; }
+        .intro-banner { width:100%;height:auto;border:1px solid rgba(255,255,255,0.1);border-bottom:3px solid #5cb88a;box-shadow:0 10px 30px rgba(0,0,0,0.8);border-radius:4px;overflow:hidden;margin-bottom:40px;display:block; }
+        .intro-banner img { width:100%;height:auto;display:block; }
+        .lore-section { background:rgba(10,18,12,0.7);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.05);border-left:3px solid #5cb88a;padding:35px;box-shadow:0 10px 30px rgba(0,0,0,0.5);margin-bottom:40px; }
+        .lore-section h2 { color:#fff;letter-spacing:2px;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:10px;margin-top:0;margin-bottom:25px;font-size:1.8rem; }
+        .lore-section p { margin-bottom:20px;color:#ccc;font-size:1.1rem;text-align:justify; }
+        .lore-section strong { color:#5cb88a; }
+        .lore-section em { color:#aaa;font-style:italic; }
+        .tree-section { width:100%;border:1px solid rgba(255,255,255,0.1);border-radius:4px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,0.6);margin-bottom:60px;background:#050d07; }
+        .tree-section img { width:100%;height:auto;display:block; }
+        .unit-list-header { text-align:center;margin-bottom:30px; }
+        .unit-list-header h2 { border:none;display:inline-block;font-size:2.2rem;text-shadow:0 0 15px rgba(92,184,138,0.6);margin-bottom:5px;color:#fff;text-transform:uppercase;letter-spacing:2px; }
+        .unit-list { display:flex;flex-direction:column;gap:20px;margin-bottom:60px; }
+        .unit-row { display:flex;align-items:center;background:linear-gradient(to right,rgba(10,18,12,0.9),rgba(5,10,7,0.8));border:1px solid rgba(255,255,255,0.05);border-left:4px solid #5cb88a;padding:20px;border-radius:4px;transition:transform 0.2s ease,box-shadow 0.2s ease;box-shadow:0 3px 10px rgba(0,0,0,0.5); }
+        .unit-row:hover { transform:translateX(5px);box-shadow:0 5px 20px rgba(0,0,0,0.6); }
+        .unit-row.t-officer { border-left-color:#ffd700; }
+        .unit-row.t-1 { border-left-color:#e0e0e0; }
+        .unit-row.t-2 { border-left-color:#4dd0e1; }
+        .unit-row.t-3 { border-left-color:#81c784; }
+        .unit-row.t-4 { border-left-color:#ffb300; }
+        .unit-row.t-5 { border-left-color:#ce93d8; }
+        .portrait-container { position:relative;flex:0 0 100px;width:100px;height:100px;margin-right:25px;border-radius:4px;border:2px solid rgba(255,255,255,0.1);overflow:hidden;background:#000; }
+        .portrait-container img { position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:top center; }
+        .portrait-anim { animation:crossfade 8s infinite; }
+        @keyframes crossfade { 0%,40%{opacity:0} 50%,90%{opacity:1} 100%{opacity:0} }
+        .unit-info { flex:1;display:flex;flex-direction:column;justify-content:center; }
+        .unit-name { font-size:1.5rem;color:#fff;margin:0 0 5px;text-transform:uppercase;letter-spacing:1px; }
+        .unit-tier { font-size:0.85rem;color:#888;text-transform:uppercase;letter-spacing:2px;margin-bottom:10px; }
+        .color-officer { color:#ffd700;font-weight:bold;text-shadow:0 0 5px rgba(255,215,0,0.5); }
+        .color-t1 { color:#e0e0e0;font-weight:bold; }
+        .color-t2 { color:#4dd0e1;font-weight:bold; }
+        .color-t3 { color:#81c784;font-weight:bold; }
+        .color-t4 { color:#ffb300;font-weight:bold; }
+        .color-t5 { color:#ce93d8;font-weight:bold;text-shadow:0 0 5px rgba(206,147,216,0.5); }
+        .unit-desc { color:#bbb;font-size:1rem;margin:0;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden; }
+        .unit-action { flex:0 0 auto;margin-left:20px; }
+        .btn-tactical { display:inline-block;background:rgba(92,184,138,0.1);color:#5cb88a;border:1px solid #5cb88a;padding:12px 24px;text-decoration:none;font-weight:bold;text-transform:uppercase;letter-spacing:1px;border-radius:2px;transition:all 0.3s ease; }
+        .btn-tactical:hover { background:#5cb88a;color:#fff;box-shadow:0 0 15px rgba(92,184,138,0.5); }
+        .back-link { display:block;text-align:center;margin-top:40px;color:#666;text-decoration:none;padding:20px;border-top:1px solid rgba(255,255,255,0.1);transition:color 0.3s; }
+        .back-link:hover { color:#5cb88a; }
+        @media (max-width:800px) { .unit-row{flex-direction:column;text-align:center;padding:30px 20px} .portrait-container{margin:0 0 20px;width:120px;height:120px} .unit-action{margin:20px 0 0;width:100%} .btn-tactical{display:block;width:100%;box-sizing:border-box;text-align:center} }
+    </style>
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+<header>
+    <h1>Ombre della Linfa</h1>
+    <div class="subtitle">Surgeons of the Soul</div>
+</header>
+<main>
+    <div class="intro-banner">
+        <img src="../../img/forgotten_linfa_intro.png" alt="Ombre della Linfa Banner">
+    </div>
+    <div class="lore-section">
+        <h2>The Pain is Only Information</h2>
+        <p>The Ombre della Linfa are the field surgeons and life distributors of the Empire , custodians of its vital reserves. However, in the pragmatic framework of the Forgotten, "healing" is not a gentle act. It is a <strong>brutal redistribution of vital resources.</strong></p>
+        <p>Malicott creates these beings not from solid wood or ash, but using her own Sap, interwoven with the shadow matter typical of ghosts. The result is a humanoid creature that appears to be made of viscous ink and dark bioluminescence. They have no bones; their form is sustained only by the surface tension of magic and willpower. They <strong>never touch the ground</strong>, floating a few centimetres above it at all times.</p>
+        <p>Blood does not flow within them , <em>they are</em> the blood. When wounded, they do not bleed: they lose cohesion, evaporating into curls of sweet-smelling smoke. Their two evolutionary paths diverge on a fundamental philosophical axis: those who find purpose through <strong>spiritual guidance</strong> move toward becoming anchors of the soul, while those drawn to the wisdom of the natural world become masters of organic alchemy and life itself.</p>
+    </div>
+    <div class="tree-section">
+        <img src="../../img/forgotten_linfa_tree.png" alt="Linfa Evolution Tree">
+    </div>
+    <div class="unit-list-header"><h2>Active Roster</h2></div>
+    <div class="unit-list">
+        <div class="unit-row t-officer">
+            <div class="portrait-container">
+                <img src="../../img/forgotten_priestess_f_portrait.jpg" alt="Priestess F">
+                <img src="../../img/forgotten_priestess_m_portrait.jpg" alt="Priestess M" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Priestess</h3>
+                <div class="unit-tier">Classification: <span class="color-officer">Officer</span></div>
+                <p class="unit-desc">Devoted commanders who channel Malicott's divine grace into the battlefield. Their presence alone steadies fractured souls and reinvigorates failing vital energies.</p>
+            </div>
+            <div class="unit-action"><a href="forgotten_priestess.html" class="btn-tactical">View Data</a></div>
+        </div>
+        <div class="unit-row t-1">
+            <div class="portrait-container">
+                <img src="../../img/forgotten_wisps_portrait.jpg" alt="Will-o'-the-Wisps">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Will-o'-the-Wisps</h3>
+                <div class="unit-tier">Classification: <span class="color-t1">Tier 1</span></div>
+                <p class="unit-desc">The earliest manifestation of the Linfa soul , a flickering mote of light that already burns with the will to sustain others, even before it has learned its own name.</p>
+            </div>
+            <div class="unit-action"><a href="forgotten_wisps.html" class="btn-tactical">View Data</a></div>
+        </div>
+        <div class="unit-row t-2">
+            <div class="portrait-container">
+                <img src="../../img/forgotten_spirit_guide_portrait.jpg" alt="Spirit Guide">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Spirit Guide</h3>
+                <div class="unit-tier">Classification: <span class="color-t2">Tier 2</span> , Spirit Path</div>
+                <p class="unit-desc">Ghostly figures who have learned to navigate the space between life and death. They guide lost souls back to the living and shield allies from spiritual harm.</p>
+            </div>
+            <div class="unit-action"><a href="forgotten_spirit_guide.html" class="btn-tactical">View Data</a></div>
+        </div>
+        <div class="unit-row t-2">
+            <div class="portrait-container">
+                <img src="../../img/forgotten_inherited_f_portrait.jpg" alt="Inherited F">
+                <img src="../../img/forgotten_inherited_m_portrait.jpg" alt="Inherited M" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Inherited</h3>
+                <div class="unit-tier">Classification: <span class="color-t2">Tier 2</span> , Nature Path</div>
+                <p class="unit-desc">Those who have inherited fragments of ancestral botanical knowledge. They begin to feel the language of roots and plants as an extension of themselves.</p>
+            </div>
+            <div class="unit-action"><a href="forgotten_inherited.html" class="btn-tactical">View Data</a></div>
+        </div>
+        <div class="unit-row t-3">
+            <div class="portrait-container">
+                <img src="../../img/forgotten_vestal_portrait.jpg" alt="Vestal">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Vestal</h3>
+                <div class="unit-tier">Classification: <span class="color-t3">Tier 3</span> , Spirit Path</div>
+                <p class="unit-desc">Devoted keepers of the soul-flame. They maintain the spiritual integrity of the group, purifying corruption and anchoring allies who are slipping toward final death.</p>
+            </div>
+            <div class="unit-action"><a href="forgotten_vestal.html" class="btn-tactical">View Data</a></div>
+        </div>
+        <div class="unit-row t-3">
+            <div class="portrait-container">
+                <img src="../../img/forgotten_herbalist_f_portrait.jpg" alt="Herbalist F">
+                <img src="../../img/forgotten_herbalist_m_portrait.jpg" alt="Herbalist M" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Herbalist</h3>
+                <div class="unit-tier">Classification: <span class="color-t3">Tier 3</span> , Nature Path</div>
+                <p class="unit-desc">Masters of organic restoration. They brew ethereal concoctions mid-battle and coax life from the soil itself to replenish their allies' vital energies.</p>
+            </div>
+            <div class="unit-action"><a href="forgotten_herbalist.html" class="btn-tactical">View Data</a></div>
+        </div>
+        <div class="unit-row t-4">
+            <div class="portrait-container">
+                <img src="../../img/forgotten_valkyrie_guardian_portrait.jpg" alt="Valkyrie Guardian">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Valkyrie Guardian</h3>
+                <div class="unit-tier">Classification: <span class="color-t4">Tier 4</span> , Spirit Path</div>
+                <p class="unit-desc">Divine custodians who have earned Malicott's wings. They soar above the battlefield, channelling the goddess's grace to intercept lethal attacks and revive fallen companions.</p>
+            </div>
+            <div class="unit-action"><a href="forgotten_valkyrie_guardian.html" class="btn-tactical">View Data</a></div>
+        </div>
+        <div class="unit-row t-4">
+            <div class="portrait-container">
+                <img src="../../img/forgotten_elf_alchemist_f_portrait.jpg" alt="Elf Alchemist F">
+                <img src="../../img/forgotten_elf_alchemist_m_portrait.jpg" alt="Elf Alchemist M" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Elf Alchemist</h3>
+                <div class="unit-tier">Classification: <span class="color-t4">Tier 4</span> , Nature Path</div>
+                <p class="unit-desc">Elven souls who have fully recovered their identity and turned their ancestral bond with nature into the art of transmutation , turning poison into remedy and death into rebirth.</p>
+            </div>
+            <div class="unit-action"><a href="forgotten_elf_alchemist.html" class="btn-tactical">View Data</a></div>
+        </div>
+        <div class="unit-row t-5">
+            <div class="portrait-container">
+                <img src="../../img/forgotten_emissary_f_portrait.jpg" alt="Emissary F">
+                <img src="../../img/forgotten_emissary_m_portrait.jpg" alt="Emissary M" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Emissary</h3>
+                <div class="unit-tier">Classification: <span class="color-t5">Tier 5 , Champion</span></div>
+                <p class="unit-desc">Beings who have unified the spirit path and the nature path into a single, luminous truth. They are Malicott's voice made flesh , life itself given conscious form.</p>
+            </div>
+            <div class="unit-action"><a href="forgotten_emissary.html" class="btn-tactical">View Data</a></div>
+        </div>
+    </div>
+    <a href="../../factions/forgotten_roster.html" class="back-link">← Return to the Roster</a>
+</main>
+</body>
+</html>

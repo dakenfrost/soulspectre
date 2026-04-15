@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Justiciar</title>
+    <style>
+        body{color:#e0e0e0;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;line-height:1.8;margin:0;display:flex;flex-direction:column;align-items:center;}
+        #bg-image{position:fixed;top:0;left:0;width:100vw;height:100vh;background-image:url('../../img/forgotten_bg.jpg');background-size:cover;background-position:center;z-index:-2;}
+        #overlay{position:fixed;top:0;left:0;width:100vw;height:100vh;background:linear-gradient(to bottom,rgba(5,12,8,0.90),rgba(3,8,5,0.98));z-index:-1;}
+        header{padding:60px 20px 30px;text-align:center;width:100%;max-width:1100px;}
+        h1{letter-spacing:5px;font-size:2.8rem;margin:0;color:#fff;text-transform:uppercase;text-shadow:0 0 15px rgba(92,184,138,0.5);}
+        .subtitle{color:#81c784;font-size:1.1rem;letter-spacing:2px;margin-top:10px;text-transform:uppercase;}
+        main{max-width:1100px;padding:40px 20px;width:100%;}
+        .intro-banner{width:100%;border:1px solid rgba(255,255,255,0.1);border-bottom:3px solid #81c784;box-shadow:0 10px 30px rgba(0,0,0,0.8);border-radius:4px;overflow:hidden;margin-bottom:40px;}
+        .intro-banner img{width:100%;height:auto;display:block;}
+        .split-section{display:flex;gap:40px;align-items:stretch;margin-bottom:60px;background:rgba(10,18,12,0.7);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.05);border-left:3px solid #81c784;box-shadow:0 10px 30px rgba(0,0,0,0.5);}
+        .section-image-container{position:relative;flex:0 0 38%;overflow:hidden;min-height:380px;}
+        .section-image-container img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:top center;}
+        .section-text{flex:1;padding:35px;}
+        h2{color:#fff;letter-spacing:2px;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:10px;margin-top:0;margin-bottom:25px;font-size:1.8rem;}
+        p{margin-bottom:20px;color:#ccc;font-size:1.1rem;text-align:justify;}
+        strong{color:#5cb88a;}em{color:#aaa;font-style:italic;}
+        .tactical-module{border-top:2px solid #81c784;padding-top:40px;margin-bottom:60px;}
+        .tactical-header{text-align:center;margin-bottom:40px;}
+        .tactical-header h2{border:none;font-size:2.2rem;}
+        .stats-box{display:flex;justify-content:center;flex-wrap:wrap;background:linear-gradient(145deg,rgba(10,18,12,0.9),rgba(5,10,7,0.9));border:1px solid rgba(129,199,132,0.2);border-radius:4px;padding:25px 10px;margin-bottom:50px;box-shadow:inset 0 0 20px rgba(0,0,0,0.8);}
+        .stat-item{text-align:center;padding:10px 30px;border-right:1px solid rgba(255,255,255,0.1);}
+        .stat-item:last-child{border-right:none;}
+        .stat-label{display:block;color:#888;font-size:0.8rem;text-transform:uppercase;letter-spacing:2px;margin-bottom:8px;}
+        .stat-value{display:block;color:#fff;font-size:1.8rem;font-weight:bold;font-family:monospace;}
+        .stat-value.hp{color:#4CAF50;}.stat-value.atk{color:#ef5350;}.stat-value.tier{color:#81c784;}
+        .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:25px;}
+        .skill-card{background:rgba(10,18,12,0.8);border:1px solid rgba(255,255,255,0.05);border-left:4px solid #333;padding:25px;transition:transform 0.2s ease;}
+        .skill-card:hover{transform:translateY(-5px);}
+        .skill-card.sk-base{border-left-color:#666;}.skill-card.sk-active{border-left-color:#4dd0e1;}.skill-card.sk-passive{border-left-color:#a5d6a7;}
+        .skill-header{display:flex;align-items:center;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:15px;margin-bottom:15px;gap:15px;}
+        .skill-icon{width:70px;height:70px;border-radius:4px;object-fit:cover;border:2px solid rgba(129,199,132,0.4);flex-shrink:0;background:rgba(0,0,0,0.3);}
+        .skill-title-container{flex:1;}
+        .skill-title{margin:0 0 6px;color:#fff;font-size:1.2rem;text-transform:uppercase;letter-spacing:1px;}
+        .skill-type{font-size:0.72rem;padding:2px 8px;border-radius:2px;text-transform:uppercase;letter-spacing:1px;display:inline-block;}
+        .skill-type.base{color:#9e9e9e;background:rgba(158,158,158,0.1);border:1px solid rgba(158,158,158,0.3);}
+        .skill-type.active{color:#4dd0e1;background:rgba(77,208,225,0.1);border:1px solid rgba(77,208,225,0.3);}
+        .skill-type.passive{color:#a5d6a7;background:rgba(165,214,167,0.1);border:1px solid rgba(165,214,167,0.3);}
+        .skill-desc{color:#bbb;font-size:0.95rem;line-height:1.7;}
+        .dmg-phys{color:#ff8a65;font-weight:bold;}
+        .portrait-gallery-module{background:rgba(10,18,12,0.7);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.05);border-left:3px solid #81c784;padding:35px;margin-bottom:40px;}
+        .gallery-header{margin-top:0;margin-bottom:25px;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:10px;}
+        .carousel-wrap{position:relative;overflow:hidden;}
+        .carousel-track{display:flex;gap:15px;transition:transform 0.35s ease;padding:5px 2px;}
+        .carousel-item{flex:0 0 200px;height:260px;border:1px solid rgba(255,255,255,0.1);border-radius:4px;overflow:hidden;background:#000;}
+        .carousel-item img{width:100%;height:100%;object-fit:cover;object-position:top center;}
+        .carousel-nav{display:flex;justify-content:center;gap:20px;margin-top:20px;}
+        .nav-btn{background:rgba(10,18,12,0.9);border:1px solid #81c784;color:#81c784;width:44px;height:44px;border-radius:50%;cursor:pointer;font-size:1.2rem;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
+        .nav-btn:hover{background:#81c784;color:#000;}
+        .back-link{display:block;text-align:center;margin-top:40px;color:#555;text-decoration:none;padding:25px;border-top:1px solid rgba(255,255,255,0.08);letter-spacing:1px;transition:color 0.3s;}
+        .back-link:hover{color:#5cb88a;}
+        @media(max-width:900px){.split-section{flex-direction:column}.section-image-container{height:400px;flex:unset}.skills-grid{grid-template-columns:1fr}}
+    </style>
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+<header>
+    <h1>Justiciar</h1>
+    <div class="subtitle">Tier 3 , Custodian Path</div>
+</header>
+<main>
+    <div class="intro-banner"><img src="../../img/forgotten_justiciar_banner.png" alt="Justiciar Banner"></div>
+    <div class="split-section">
+        <div class="section-image-container">
+            <img src="../../img/forgotten_justiciar_combat.jpg" alt="Justiciar">
+        </div>
+        <div class="section-text">
+            <h2>Law That Stays</h2>
+            <p>The Justiciars were enforcement officers in the old empire before its fall , not soldiers, but the bodies of the legal system that went into the field when a legal system needed physical expression. They served writs. They maintained order at borders. They stopped things that needed stopping, using <strong>proportional force first and whatever followed proportional force if required.</strong> They understood legal authority as a physical posture, and they held that posture for thirty years each, on average, before dying in the line of it.</p>
+            <p>In undeath they find that the standards of the old legal system no longer apply , there is no law to enforce, no writs to serve, no territory that recognizes their authority. What remains is the posture itself: the way of standing that communicates <em>this far, no further,</em> and the training to back it up. Malicott finds this useful. The Sentinelle find it stabilizing. Having a Justiciar in the formation is like having a wall that occasionally points where the wall should be positioned.</p>
+            <p>They are the backbone of the Custodian path's protective function , more mobile than the T4 Valkyrie Lancer but less individually powerful, compensating with an ability to cover multiple formation members simultaneously and an almost aesthetic distaste for being moved from a position they have committed to holding.</p>
+        </div>
+    </div>
+    <div class="tactical-module">
+        <div class="tactical-header"><h2>Tactical Data</h2></div>
+        <div class="stats-box">
+            <div class="stat-item"><span class="stat-label">HP</span><span class="stat-value hp">165</span></div>
+            <div class="stat-item"><span class="stat-label">ATK</span><span class="stat-value atk">70</span></div>
+            <div class="stat-item"><span class="stat-label">INI</span><span class="stat-value">68</span></div>
+            <div class="stat-item"><span class="stat-label">Tier</span><span class="stat-value tier">3</span></div>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-card sk-base">
+                <div class="skill-header">
+                    <img src="../../img/forgotten_skill_colpo_difensivo.png" alt="" class="skill-icon">
+                    <div class="skill-title-container"><h3 class="skill-title">Defensive Strike</h3><span class="skill-type base">Base</span></div>
+                </div>
+                <div class="skill-desc">A controlled enforcement strike dealing <span class="dmg-phys">Physical</span> damage while simultaneously raising a <strong>defensive absorb shield worth 12% of max HP</strong>. The attack and the defense are performed as a single trained motion , the Justiciar strikes while anchoring the position. The shield lasts until end of next turn.</div>
+            </div>
+            <div class="skill-card sk-active">
+                <div class="skill-header">
+                    <img src="../../img/forgotten_skill_interposizione.png" alt="" class="skill-icon">
+                    <div class="skill-title-container"><h3 class="skill-title">Interposition</h3><span class="skill-type active">Active</span></div>
+                </div>
+                <div class="skill-desc">The Justiciar reads the battlefield and steps into the killing line before the attack arrives. <strong>The next hit directed at the lowest-HP ally is absorbed at 50% of its value by the Justiciar instead.</strong> The other 50% still reaches the original target. This interception persists for 2 turns or until triggered. The Justiciar has made worse decisions for worse reasons.</div>
+            </div>
+            <div class="skill-card sk-passive">
+                <div class="skill-header">
+                    <img src="../../img/forgotten_skill_copertura_ferro.png" alt="" class="skill-icon">
+                    <div class="skill-title-container"><h3 class="skill-title">Iron Cover</h3><span class="skill-type passive">Passive</span></div>
+                </div>
+                <div class="skill-desc">All allied units positioned directly adjacent to the Justiciar receive a persistent <strong>+15% DEF</strong> from her coverage. The Justiciar herself has her own incoming critical strike damage reduced by <strong>-25%</strong> , she has seen critical strikes coming before and has learned to present the least available angle.</div>
+            </div>
+        </div>
+    </div>
+    <div class="portrait-gallery-module">
+        <h2 class="gallery-header">Gallery</h2>
+        <div class="carousel-wrap">
+            <div class="carousel-track" id="carouselTrack">
+                <div class="carousel-item"><img src="../../img/forgotten_justiciar_portrait.jpg" alt="Portrait"></div>
+            </div>
+        </div>
+        <div class="carousel-nav">
+            <button class="nav-btn" id="prevBtn">&#8592;</button>
+            <button class="nav-btn" id="nextBtn">&#8594;</button>
+        </div>
+    </div>
+    <a href="forgotten_order_sentinelle.html" class="back-link">← Return to Sentinelle delle Ceneri</a>
+</main>
+<script>
+    const track=document.getElementById('carouselTrack');const items=track.querySelectorAll('.carousel-item');let current=0;
+    function update(){track.style.transform=`translateX(-${current*(items[0].offsetWidth+15)}px)`;}
+    document.getElementById('nextBtn').addEventListener('click',()=>{if(current<items.length-1){current++;update();}});
+    document.getElementById('prevBtn').addEventListener('click',()=>{if(current>0){current--;update();}});
+</script>
+</body>
+</html>

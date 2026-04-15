@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Forgotten Lore</title>
+    <style>
+        body {
+            color: #e0e0e0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #bg-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url('../img/forgotten_bg.jpg'); 
+            background-size: cover;
+            background-position: center;
+            z-index: -2;
+        }
+
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(to bottom, rgba(5, 12, 8, 0.90), rgba(3, 8, 5, 0.98)); 
+            z-index: -1;
+        }
+
+        header {
+            padding: 60px 20px 30px 20px;
+            text-align: center;
+            width: 100%;
+            max-width: 1100px;
+        }
+
+        h1 {
+            letter-spacing: 5px;
+            font-size: 2.8rem;
+            margin: 0;
+            color: #fff;
+            text-transform: uppercase;
+            text-shadow: 0 0 15px rgba(92, 184, 138, 0.5);
+        }
+
+        .subtitle {
+            color: #5cb88a;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            margin-top: 10px;
+            text-transform: uppercase;
+        }
+
+        main {
+            max-width: 1100px; 
+            padding: 40px 20px;
+            width: 100%;
+            position: relative;
+        }
+
+        .split-section {
+            display: flex;
+            gap: 40px;
+            align-items: stretch; 
+            margin-bottom: 60px; 
+            background: rgba(10, 18, 12, 0.7);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-left: 3px solid #5cb88a;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .section-image {
+            flex: 0 0 45%; 
+        }
+
+        .section-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+        }
+
+        .section-text {
+            flex: 1; 
+            padding: 35px;
+        }
+
+        h2 {
+            color: #fff;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 10px;
+            margin-top: 0;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+        }
+
+        p {
+            margin-bottom: 25px;
+            color: #ccc;
+            font-size: 1.1rem;
+            text-align: justify;
+        }
+
+        strong {
+            color: #5cb88a;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #aaa;
+            border-left: 3px solid #5cb88a;
+            padding: 20px;
+            margin: 30px 0;
+            background: rgba(0, 0, 0, 0.4);
+            font-size: 1.1rem;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.5);
+        }
+
+        .quote-author {
+            display: block;
+            margin-top: 15px;
+            font-size: 0.95rem;
+            color: #5cb88a;
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 60px;
+            color: #666;
+            text-decoration: none;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+            padding: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .back-link:hover {
+            color: #5cb88a;
+            text-shadow: 0 0 10px rgba(92, 184, 138, 0.4);
+        }
+
+        @media (max-width: 950px) {
+            .split-section {
+                flex-direction: column; 
+            }
+            .section-image {
+                flex: 1 1 100%;
+                width: 100%;
+                height: 300px; 
+            }
+            .section-text {
+                border-top: 1px solid rgba(255,255,255,0.1);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<header>
+    <h1>Faction Lore</h1>
+    <div class="subtitle">The Historical Archives of the Forgotten</div>
+</header>
+
+<main>
+    <div class="split-section" style="border: none; background: rgba(10,18,12,0.5); backdrop-filter: none; box-shadow: none; margin-bottom: 30px;">
+        <div class="section-text" style="padding: 20px; text-align: center;">
+            <p style="text-align: center; margin: 0;">The history of the Forgotten is not written in conquest or triumph, but in survival , a long, silent struggle to exist in a world that feared what it could not understand.</p>
+        </div>
+    </div>
+
+    <!-- SECTION 1: Origins -->
+    <div class="split-section">
+        <div class="section-image">
+            <img src="../img/forgotten_lore_1_origins.png" alt="Origins of the Empire">
+        </div>
+        <div class="section-text">
+            <h2>Origins</h2>
+            <p>The origins of the Empire of the Forgotten are lost in the mists of time; there is no certain date of its founding, as if the nation itself emerged from nothingness , or perhaps from a collective memory rejected by others. There is no Founder myth, no single conquering hero. There is only the quiet pulse of the Mother Tree, Malicott, and the slow gathering of souls around her roots.</p>
+            <p>This is a society unique in its kind, populated entirely by the undead, the resurrected, and a mosaic of living immigrants who have found refuge within its walls. The Empire maintains active diplomatic relations with other factions, earning respect and renown not through force, but through <strong>countless acts of charity and support</strong> for struggling peoples.</p>
+            <p>Their alignment is <strong>Lawful Neutral</strong>. They are not "Good" in the classical sense , they welcome the souls of saints and assassins without moral distinction regarding their past. They are not "Evil," as they reject gratuitous cruelty. They are Lawful because the entire society is built upon one absolute code: <strong>The Right to Life.</strong></p>
+        </div>
+    </div>
+
+    <!-- SECTION 2: First Gifts and Rejection -->
+    <div class="split-section">
+        <div class="section-image">
+            <img src="../img/forgotten_lore_2_rejection.png" alt="The First Gifts and the Rejection">
+        </div>
+        <div class="section-text">
+            <h2>The First Gifts and the Rejection</h2>
+            <p>In the early centuries, the first undead awakened by Malicott had no nation. They wandered as nomads, seeking to integrate. Naively, they believed their existence was a miracle to be shared. Chronicles tell of the <strong>Vallefiore episode</strong>, a human village struck by an incurable plague.</p>
+            <p>A group of the first Forgotten arrived at the village gates bearing medicines created with their own lifeblood, offering to work the infected fields at night , as they were immune to the disease. The desperate villagers accepted the help. But when the plague ended and they saw their saviors in the sunlight, <em>"stitched bodies, pale flesh, glassy eyes"</em>, horror overtook gratitude.</p>
+            <p>They called them <strong>"Monsters."</strong> They caught them by surprise and burned them in the town square , the very one the undead themselves had rebuilt. The Forgotten could not defend themselves; they died wondering why their help had bred hatred.</p>
+        </div>
+    </div>
+
+    <!-- SECTION 3: The Bullying of Noble Nations -->
+    <div class="split-section">
+        <div class="section-image">
+            <img src="../img/forgotten_lore_3_bullying.png" alt="The Bullying of Noble Nations">
+        </div>
+        <div class="section-text">
+            <h2>The Bullying of Noble Nations</h2>
+            <p>For centuries, the great civilizations of Light and Order used the lands where the Forgotten gathered as a physical and moral dumping ground. What passed for diplomacy was nothing more than open exploitation.</p>
+            <p>Neighboring kingdoms would send their young squires to hunt the dead as <strong>Training Crusades</strong> , a rite of passage. Killing a Forgotten was not considered murder, but sport. Criminals, the terminally ill, and the mad were thrown across the borders into the lands of the Forgotten, following the logic that:</p>
+            <div class="quote">
+                "Trash belongs with trash."
+            </div>
+            <p>For generations, Malicott counseled patience. Her children endured, continued to offer help, and continued to be burned for it. But patience, even for a goddess, has a threshold.</p>
+        </div>
+    </div>
+
+    <!-- SECTION 4: The Night of Closed Doors -->
+    <div class="split-section">
+        <div class="section-image">
+            <img src="../img/forgotten_lore_4_walls.png" alt="The Night of Closed Doors">
+        </div>
+        <div class="section-text">
+            <h2>The Night of Closed Doors</h2>
+            <p>Malicott's patience ran out when a neighboring kingdom attempted to use holy magic to purify the entire forest where her children hid. It was in that moment that the Empire stopped trying to be Good and <strong>became Lawful.</strong> Malicott gave a simultaneous telepathic order to all her children:</p>
+            <div class="quote">
+                "Do not be monsters, be Walls."
+            </div>
+            <p>When the purifying army arrived, it didn't find weeping victims. It found a wall of bodies. They defeated the invader , not with sadism, but with a surgical and terrifying efficiency. They dismembered the enemy soldiers and used their bones to build the first true fortification of the capital.</p>
+            <p>That act of defensive brutality shocked the world. The Forgotten sent a single message to the other nations, written in the black sap of trees:</p>
+            <div class="quote">
+                "We wanted to be your brothers and you burned us. Now we will be your neighbors, and you will respect us. Do not ask us for mercy anymore, ask us only for pacts , we love life as you do."
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 5: The Great Experiment -->
+    <div class="split-section">
+        <div class="section-image">
+            <img src="../img/forgotten_lore_5_experiment.png" alt="The Great Experiment">
+        </div>
+        <div class="section-text">
+            <h2>The Great Experiment</h2>
+            <p>The secret history of the Empire revolves around two ancient races: the <strong>Elves</strong> and the <strong>Valkyries.</strong> For centuries it was believed they were separate events, but the truth is that both were part of a single, desperate Experiment in Hybridization , deemed impossible by the gods themselves. Malicott made it possible.</p>
+            <p>The Elves were afflicted by the <strong>Silver Rust</strong>, a disease that disintegrated the soul. To save them, Malicott ordered the Mailform to physically exterminate the elves before the disease erased their spirits , preserving the souls intact at the cost of the bodies. Concurrently, Malicott welcomed the Valkyries, warriors banished from Valhalla, who arrived bringing martial power but no homeland.</p>
+            <p>The true experiment was the <strong>fusion of the two bloodlines.</strong> Malicott hybridized the intact and powerful souls of the saved Elves with the divine, resilient bodies of the fallen Valkyries. This alchemical process created a new supreme lineage: beings possessing the magical grace and sensitivity of elves, combined with the martial power and physical endurance of valkyries. These hybrids are <strong>immune to the Silver Rust.</strong> They are the pinnacle of evolution in the Empire , living proof that Malicott can rewrite the laws of life and death.</p>
+        </div>
+    </div>
+
+    <!-- SECTION 6: The Famine -->
+    <div class="split-section">
+        <div class="section-image">
+            <img src="../img/forgotten_lore_6_famine.png" alt="The Famine and the Granary">
+        </div>
+        <div class="section-text">
+            <h2>The Famine & The Granary of a Thousand Victims</h2>
+            <p>About a century ago, due to human infiltrators tipping off other empires, the Empire could no longer produce the <strong>Ethereal Nectar</strong> required to feed the undead. The population began to fade, dying definitively from magical starvation. Malicott was suffering. At the same time, on the Empire's borders, a war of attrition raged between two human kingdoms , thousands dying of disease, infection, and starvation in the trenches, with no one winning.</p>
+            <p>The Council of Whispers made a decision driven by the ironclad logic of survival. The Empire intervened. Not to bring peace , to survive. In a single night, troops abducted entire legions of wounded and dying soldiers from both sides, along with villages of starving civilians. They were brought inside the Empire.</p>
+            <p>The Mailform built enormous structures called <strong>Greenhouses.</strong> The prisoners were put into a magically induced coma , kept in suspension between life and death , while the Mother Tree extended its roots to drain their life force, distilling the aether needed to feed the citizens. When the famine ended, the survivors were returned to the borders: alive, but prematurely aged and hollowed out.</p>
+            <div class="quote">
+                "You were leaving them to die in the mud, wasting their existence for a useless war. To you, they were scrap. We killed no one who wasn't already condemned by your negligence. We took their remaining time , time that you had thrown away , and we used it to save an entire people. It is not cruelty. It is efficiency. We do not waste life, not even when it belongs to others."
+                <span class="quote-author">, Official diplomatic response of the Empire</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 7: Crimson Judgment -->
+    <div class="split-section">
+        <div class="section-image">
+            <img src="../img/forgotten_lore_7_crimson.png" alt="The Crimson Judgment">
+        </div>
+        <div class="section-text">
+            <h2>The Crimson Judgment</h2>
+            <p>The coexistence of good and evil souls creates inevitable tensions. The most dramatic episode was the trial of <strong>Kael</strong>, an Amber Soul who in life had been a ruthless serial killer, and <strong>Valerius</strong>, an Ethereal Fighter who had been a holy judge. Valerius, upon recovering his memories, recognized Kael's soul from his aura and attempted to execute him in the square, shouting that:</p>
+            <div class="quote">
+                "Evil does not deserve the bread of the Empire."
+            </div>
+            <p>Kael, to defend himself, used forbidden lethal techniques, severely wounding the judge. The people were divided. It was the intervention of a Mailform that restored order with a ruling that set a permanent precedent for the Empire:</p>
+            <div class="quote">
+                "Kael defended his life, which is sacred to Malicott. Valerius sought death, which is the enemy of Malicott. Here we do not judge the past, but the useful present."
+                <span class="quote-author">, The Mailform Arbiter's ruling</span>
+            </div>
+            <p>Kael was spared but forced to use his skills only in external suicide missions. Valerius was demoted until he learned that the justice of the Empire , survival , supersedes human morality. This event definitively sanctioned the <strong>pragmatic neutrality</strong> of the faction.</p>
+        </div>
+    </div>
+
+    <a href="forgotten.html" class="back-link">← Return to the Forgotten Overview</a>
+</main>
+
+</body>
+</html>

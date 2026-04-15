@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Malicott, the Root Mother</title>
+    <style>
+        body {
+            color: #e0e0e0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #bg-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url('../img/forgotten_bg.jpg'); 
+            background-size: cover;
+            background-position: center;
+            z-index: -2;
+        }
+
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(to bottom, rgba(5, 12, 8, 0.90), rgba(3, 8, 5, 0.98)); 
+            z-index: -1;
+        }
+
+        header {
+            padding: 60px 20px 30px 20px;
+            text-align: center;
+            width: 100%;
+            max-width: 1100px;
+        }
+
+        h1 {
+            letter-spacing: 5px;
+            font-size: 2.8rem;
+            margin: 0;
+            color: #fff;
+            text-transform: uppercase;
+            text-shadow: 0 0 15px rgba(92, 184, 138, 0.5);
+        }
+
+        .subtitle {
+            color: #5cb88a;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            margin-top: 10px;
+            text-transform: uppercase;
+        }
+
+        main {
+            max-width: 1100px; 
+            padding: 40px 20px;
+            width: 100%;
+            position: relative;
+        }
+
+        .intro-banner {
+            width: 100%;
+            max-width: 1100px;
+            height: auto;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 3px solid #5cb88a;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 40px;
+            display: block;
+        }
+
+        .intro-banner img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            display: block;
+        }
+
+        .split-section {
+            display: flex;
+            gap: 40px;
+            align-items: stretch; 
+            margin-bottom: 60px; 
+            background: rgba(10, 18, 12, 0.7);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-left: 3px solid #5cb88a;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .section-image {
+            flex: 0 0 45%; 
+        }
+
+        .section-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+        }
+
+        .section-text {
+            flex: 1; 
+            padding: 35px;
+        }
+
+        .full-width-section {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin-bottom: 60px; 
+            background: rgba(10, 18, 12, 0.7);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-left: 3px solid #5cb88a;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            padding: 35px;
+        }
+
+        .full-width-image img {
+            width: 100%;
+            height: auto;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 3px solid #5cb88a;
+            border-radius: 4px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+
+        h2 {
+            color: #fff;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 10px;
+            margin-top: 0;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+        }
+
+        p {
+            margin-bottom: 25px;
+            color: #ccc;
+            font-size: 1.1rem;
+            text-align: justify;
+        }
+
+        strong {
+            color: #5cb88a;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #aaa;
+            border-left: 3px solid #5cb88a;
+            padding: 20px;
+            margin: 30px 0;
+            background: rgba(0, 0, 0, 0.4);
+            font-size: 1.1rem;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.5);
+        }
+
+        .quote-author {
+            display: block;
+            margin-top: 15px;
+            font-size: 0.95rem;
+            color: #5cb88a;
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        .pact-phases {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .pact-phase {
+            background: rgba(0,0,0,0.4);
+            border-left: 3px solid #5cb88a;
+            padding: 15px 20px;
+        }
+
+        .phase-label {
+            color: #5cb88a;
+            font-weight: bold;
+            font-size: 1.05rem;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 60px;
+            color: #666;
+            text-decoration: none;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+            padding: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .back-link:hover {
+            color: #5cb88a;
+            text-shadow: 0 0 10px rgba(92, 184, 138, 0.4);
+        }
+
+        /* SECTION IMAGE CONTAINER (animated crossfade) */
+        .section-image-container {
+            position: relative;
+            flex: 0 0 38%;
+            overflow: hidden;
+        }
+        .section-image-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+        }
+        .combat-anim {
+            animation: crossfade-combat 8s infinite;
+        }
+        @keyframes crossfade-combat {
+            0%, 40% { opacity: 0; }
+            50%, 90% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        /* PORTRAIT GALLERY */
+        .portrait-gallery-module {
+            background: rgba(10, 18, 12, 0.7);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-left: 3px solid #5cb88a;
+            padding: 35px;
+            margin-bottom: 60px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .gallery-header {
+            margin-top: 0;
+            margin-bottom: 25px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 10px;
+        }
+        .carousel-wrap {
+            position: relative;
+            overflow: hidden;
+        }
+        .carousel-track {
+            display: flex;
+            gap: 15px;
+            transition: transform 0.35s ease;
+            padding: 5px 2px;
+        }
+        .carousel-item {
+            flex: 0 0 200px;
+            height: 260px;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            background: #000;
+            transition: border-color 0.3s ease, transform 0.3s ease;
+        }
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+        }
+        .carousel-item:hover {
+            border-color: #5cb88a;
+            transform: translateY(-5px);
+        }
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .nav-btn {
+            background: rgba(10, 18, 12, 0.9);
+            border: 1px solid #5cb88a;
+            color: #5cb88a;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+        .nav-btn:hover {
+            background: #5cb88a;
+            color: #fff;
+        }
+
+        /* TACTICAL MODULE */
+        .tactical-module {
+            border-top: 2px solid #5cb88a;
+            padding-top: 40px;
+            margin-bottom: 60px;
+        }
+        .tactical-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .tactical-header h2 {
+            border: none;
+            display: inline-block;
+            font-size: 2.2rem;
+            text-shadow: 0 0 15px rgba(92, 184, 138, 0.5);
+            margin-bottom: 5px;
+        }
+        .stats-box {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            background: linear-gradient(145deg, rgba(10, 18, 12, 0.9), rgba(5, 10, 7, 0.9));
+            border: 1px solid rgba(92, 184, 138, 0.3);
+            border-radius: 4px;
+            padding: 25px 10px;
+            margin-bottom: 50px;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.8), 0 10px 20px rgba(0,0,0,0.5);
+        }
+        .stat-item {
+            text-align: center;
+            padding: 10px 30px;
+            border-right: 1px solid rgba(255,255,255,0.1);
+        }
+        .stat-item:last-child {
+            border-right: none;
+        }
+        .stat-label {
+            display: block;
+            color: #888;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+        .stat-value {
+            display: block;
+            color: #fff;
+            font-size: 1.8rem;
+            font-weight: bold;
+            font-family: monospace;
+        }
+        .stat-value.hp { color: #4CAF50; }
+        .stat-value.atk { color: #ef5350; }
+        .stat-value.unique { color: #5cb88a; }
+
+        /* SKILLS */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+            gap: 25px;
+        }
+        .skill-card {
+            background: rgba(10, 18, 12, 0.8);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-left: 4px solid #333;
+            padding: 25px;
+            transition: transform 0.2s ease;
+        }
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+        .skill-card.sk-base  { border-left-color: #666; }
+        .skill-card.sk-active { border-left-color: #4dd0e1; }
+        .skill-card.sk-passive { border-left-color: #a5d6a7; }
+        .skill-card.sk-ultimate { border-left-color: #ce93d8; }
+        .skill-header {
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+            gap: 15px;
+        }
+        .skill-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 4px;
+            object-fit: cover;
+            border: 2px solid rgba(92, 184, 138, 0.4);
+            flex-shrink: 0;
+            background: rgba(0,0,0,0.3);
+        }
+        .skill-title-container {
+            flex: 1;
+        }
+        .skill-title {
+            margin: 0 0 6px;
+            color: #fff;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .skill-type {
+            font-size: 0.72rem;
+            padding: 2px 8px;
+            border-radius: 2px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+        }
+        .skill-type.base     { color: #9e9e9e; background: rgba(158,158,158,0.1); border: 1px solid rgba(158,158,158,0.3); }
+        .skill-type.active   { color: #4dd0e1; background: rgba(77,208,225,0.1);  border: 1px solid rgba(77,208,225,0.3); }
+        .skill-type.passive  { color: #a5d6a7; background: rgba(165,214,167,0.1); border: 1px solid rgba(165,214,167,0.3); }
+        .skill-type.ultimate { color: #ce93d8; background: rgba(206,147,216,0.1); border: 1px solid rgba(206,147,216,0.3); }
+        .skill-desc {
+            color: #bbb;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        .dmg-light  { color: #fff176; font-weight: bold; }
+        .dmg-pure   { color: #e0e0e0; font-weight: bold; }
+        .dmg-mind   { color: #f48fb1; font-weight: bold; }
+        .dmg-earth  { color: #a5d6a7; font-weight: bold; }
+        .spore-tag  { color: #5cb88a; font-weight: bold; }
+
+        /* GAME OVER WARNING */
+        .game-over-warning {
+            text-align: center;
+            color: #f44336;
+            margin-top: 50px;
+            padding: 20px;
+            border: 1px dashed rgba(244, 67, 54, 0.5);
+            background: rgba(244, 67, 54, 0.05);
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 950px) {
+            .split-section {
+                flex-direction: column; 
+            }
+            .section-image {
+                flex: 1 1 100%;
+                width: 100%;
+                height: 300px; 
+            }
+            .section-image-container {
+                height: 400px;
+                flex: unset;
+            }
+            .section-text {
+                border-top: 1px solid rgba(255,255,255,0.1);
+            }
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<header>
+    <h1>Malicott</h1>
+    <div class="subtitle">The Root Mother , Patroness of Second Chances</div>
+</header>
+
+<main>
+
+    <div class="intro-banner">
+        <img src="../img/forgotten_leader_malicott.jpg" alt="Malicott, the Root Mother">
+    </div>
+
+    <!-- SECTION 1: Who is Malicott -->
+    <div class="split-section">
+        <div class="section-image">
+            <img src="../img/forgotten_leader_1_tree.png" alt="The Mother Tree">
+        </div>
+        <div class="section-text">
+            <h2>The Root Mother</h2>
+            <p>Malicott was once a traditional deity , now she has become something different: an ancient, biological, and silent entity. She appears as a <strong>Colossal Tree, white as pure light,</strong> unmoving at the center of the capital. She does not rule by decree, she does not speak, and she does not interact with the people on a daily basis.</p>
+            <p>Her greatest power is to halt the total extinction of a race. She does not merely save single individuals; she preserves the culture, historical memory, and essence of entire peoples , good or evil as they may be , provided they demonstrate valor and a profound reverence for nature. It is hypothesized that Malicott feeds on the pure willpower of the saved peoples, their successes, and their self-awareness.</p>
+            <p>With parts of her own body , fallen branches, leaves, bark , rendered divine by her essence, her artisans forge sacred weapons. Malicott acts out of a sense of <strong>cosmic justice with a fierce maternal attachment.</strong></p>
+        </div>
+    </div>
+
+    <!-- SECTION 2: The Shadow of the Mother -->
+    <div class="split-section">
+        <div class="section-image">
+            <img src="../img/forgotten_leader_2_shadow.png" alt="The Shadow of the Mother">
+        </div>
+        <div class="section-text">
+            <h2>The Shadow of the Mother</h2>
+            <p>Malicott does not directly intervene in minor skirmishes. However, when one of her summons or champions uses their ultimate move or supreme power, <strong>for an instant, the gigantic shadow of Malicott appears behind them.</strong></p>
+            <p>It is the image of a proud mother watching her children triumph , smiling not out of cruelty, but because that necessary violence guarantees survival. It is a reminder to all who witness it: the Empire does not stand alone. It never has.</p>
+        </div>
+    </div>
+
+    <!-- SECTION 3: The Mailform -->
+    <div class="split-section">
+        <div class="section-image">
+            <img src="../img/forgotten_leader_3_mailform.png" alt="The Mailform">
+        </div>
+        <div class="section-text">
+            <h2>The Mailform: The Firstborn</h2>
+            <p>Before the Empire was what it is today, when Malicott was still a Goddess at the height of her powers, she created the <strong>Mailform.</strong> The name echoes that of the Mother, as they are her direct and original creation. Unlike current citizens (who are resurrected), the Mailform were born alive and possessed biological bodies , a unique trait that allowed them to survive the millennia and procreate naturally.</p>
+            <p>They are considered <strong>Demigods of Ingenuity.</strong> They possess no innate magic, but their understanding of matter is absolute. They are the only ones capable of carving Malicott's sacred wood and forging it into divine weapons and armor for the militia.</p>
+            <p>Their philosophy is one of radical pacifism. A Mailform will never draw a weapon to wound. Their art is creation, not destruction , and therefore they never participate in battles, limiting themselves to arming those who must defend the Empire.</p>
+        </div>
+    </div>
+
+    <!-- SECTION 4: The Ritual of Birth -->
+    <div class="split-section">
+        <div class="section-image">
+            <img src="../img/forgotten_leader_4_rebirth.png" alt="The Ritual of Birth">
+        </div>
+        <div class="section-text">
+            <h2>The Ritual of Birth</h2>
+            <p>Procreation in the Empire is both biological and mystical. Every new citizen is generated directly by the Mother Tree , Malicott's physical body. It is not a sudden event: the entire Empire <strong>"feels"</strong> when a new life is about to arrive.</p>
+            <p>The Tree begins to pulse and telepathically broadcasts to all inhabitants the most significant memories and purest emotions of the soul about to be resurrected , though faces are obscured and unclear. It is a moment of <strong>collective joy</strong> that boosts the population's morale, allowing them to prepare a welcome, clothing, and weapons for the newcomer.</p>
+            <p>The ritual culminates at the center of the Tree, where enormous roots open like a sacred womb. Attending citizens must voluntarily donate a small part of their ethereal energy , a communal sacrifice that fuels the new life. When the roots are about to unseal, Malicott's original figure briefly appears, bowing to the kingdom in gratitude. Once the roots part, the <strong>"New Possibility"</strong> emerges.</p>
+        </div>
+    </div>
+
+    <!-- SECTION 5: Mystery of the Face -->
+    <div class="split-section">
+        <div class="section-image">
+            <img src="../img/forgotten_leader_5_face.png" alt="The Mystery of the Face">
+        </div>
+        <div class="section-text">
+            <h2>The Mystery of the Face</h2>
+            <p>A peculiar aspect of the ritual is <strong>visual anonymity.</strong> Throughout the entire gestation process within the roots, the unborn's body is wrapped in a membrane of diaphanous bark and pulsing light. The faces in its memories are completely unrecognizable , devoid of defined features, like uncarved clay statues.</p>
+            <p>It is said that in this phase, the soul is still deciding how to present itself to the world and not to reveal its origins. It is only at the <strong>exact moment of the first breath</strong> that the unique and definitive identity of the new life is revealed.</p>
+        </div>
+    </div>
+
+    <!-- SECTION 6: The Pact -->
+    <div class="split-section">
+        <div class="section-image">
+            <img src="../img/forgotten_leader_6_pact.png" alt="The Dialogue of the Grafting">
+        </div>
+        <div class="section-text">
+            <h2>The Dialogue of the Grafting</h2>
+            <p>What happens in the exact moment between definitive death and rebirth? It is not an automatic process. It is a <strong>contract.</strong></p>
+            <p>When a soul dies and is intercepted in time by Malicott's power, it does not wake immediately in a new body. It finds itself in the <strong>Limbo of the Roots</strong> , a dark, warm, and humid space, similar to the inside of a seed buried underground. Here, time does not exist. The soul is alone with the voice of Malicott.</p>
+            <p>The spiritual dialogue always occurs in three phases:</p>
+            <div class="pact-phases">
+                <div class="pact-phase">
+                    <span class="phase-label">The Offer of Peace</span>
+                    Malicott shows the soul the sweetness of eternal oblivion , rest, the end of pain. Many souls accept this and vanish into peace, never becoming citizens.
+                </div>
+                <div class="pact-phase">
+                    <span class="phase-label">The Provocation</span>
+                    To those who hesitate, Malicott asks like a mother: <em>"Have you finished your journey?"</em>
+                </div>
+                <div class="pact-phase">
+                    <span class="phase-label">The Pact</span>
+                    If the soul responds with desire or a desperate "No," Malicott proposes the exchange: <em>"I will give you a second chance for your will. But there is a price to pay."</em>
+                </div>
+            </div>
+            <p>Agreeing carries heavy consequences: <strong>no third chances</strong> , failure or betrayal causes the soul to be permanently consumed. Those who return also lose all conscious memory of their first existence. The only memory that survives, vivid and indelible like a scar, is the exact instant of the pact itself.</p>
+        </div>
+    </div>
+
+    <!-- SECTION 7: Posthumous Rejection -->
+    <div class="split-section">
+        <div class="section-image">
+            <img src="../img/forgotten_leader_7_rejection.png" alt="The Posthumous Rejection">
+        </div>
+        <div class="section-text">
+            <h2>The Posthumous Rejection</h2>
+            <p>There is a rare and terrifying case. Some souls say "Yes" to Malicott solely out of fear , without a true will to live. When these spirits are placed into a new body, the <strong>rejection is immediate.</strong> The body does not animate. The soul remains trapped in immobile flesh, conscious but paralyzed, until it goes mad and is absorbed by the Mother Tree as pure, raw nourishment.</p>
+            <div class="quote">
+                "Do not ask for life if you have no intention of using it."
+            </div>
+            <p>This grim fate serves as the Empire's most powerful unspoken teaching , that the gift of a second chance demands more than desperation. It demands <strong>will.</strong></p>
+        </div>
+    </div>
+
+    <!-- SECTION: Malicott as Player Character -->
+    <div class="split-section">
+        <div class="section-image-container" style="min-height:400px;">
+            <img src="../img/forgotten_malicott_combat.jpg" alt="Malicott combat">
+            <img src="../img/forgotten_malicott_combat_alt.jpg" alt="Malicott alternate" class="combat-anim">
+        </div>
+        <div class="section-text">
+            <h2>The Mother Who Commands</h2>
+            <p>Malicott is not a general. She is a <strong>mother who forgot how to stop creating.</strong> Every soldier in the Empire of the Forgotten passed through her hands , not as clay, but as something more precious: a soul that deserved a second chance. She knows each one of them. She remembers the moment they woke up, the fear in their eyes, the way they held their hands to check whether they still had them. She carries all of them.</p>
+            <p>On the battlefield, Malicott fights with the same intent with which she heals , with <strong>extreme precision and no sentiment.</strong> She does not mourn losses mid-combat, because she knows grief is a luxury for after. She uses a Sap Whip, a living weapon grown from the ligaments of the Mother Tree, that leaves Spore marks on every enemy it touches , invisible seeds waiting to be detonated.</p>
+            <p>Her ultimate technique, <em>The Curse of the Gift</em>, is whispered with dread across the Forgotten. When she activates it, the earth itself answers. Roots breach the surface with the patience of centuries, and every enemy who falls below the threshold she sets becomes one with the soil. What she takes, she returns to her own.</p>
+        </div>
+    </div>
+
+    <!-- PORTRAIT GALLERY -->
+    <div class="portrait-gallery-module">
+        <h2 class="gallery-header">Gallery</h2>
+        <div class="carousel-wrap">
+            <div class="carousel-track" id="carouselTrack">
+                <div class="carousel-item"><img src="../img/forgotten_malicott_portrait_1.jpg" alt="Malicott Portrait 1"></div>
+                <div class="carousel-item"><img src="../img/forgotten_malicott_portrait_2.jpg" alt="Malicott Portrait 2"></div>
+                <div class="carousel-item"><img src="../img/forgotten_malicott_portrait_3.jpg" alt="Malicott Portrait 3"></div>
+                <div class="carousel-item"><img src="../img/forgotten_malicott_portrait_4.jpg" alt="Malicott Portrait 4"></div>
+            </div>
+        </div>
+        <div class="carousel-nav">
+            <button class="nav-btn" id="prevBtn">&#8592;</button>
+            <button class="nav-btn" id="nextBtn">&#8594;</button>
+        </div>
+    </div>
+
+    <!-- TACTICAL MODULE -->
+    <div class="tactical-module">
+        <div class="tactical-header">
+            <h2>Tactical Data</h2>
+            <div class="subtitle">Entity Registry: Player Character</div>
+        </div>
+        <div class="stats-box">
+            <div class="stat-item"><span class="stat-label">HP</span><span class="stat-value hp">850</span></div>
+            <div class="stat-item"><span class="stat-label">ATK</span><span class="stat-value atk">120</span></div>
+            <div class="stat-item"><span class="stat-label">INI</span><span class="stat-value">80</span></div>
+            <div class="stat-item"><span class="stat-label">Class</span><span class="stat-value unique">Player</span></div>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-card sk-base">
+                <div class="skill-header">
+                    <img src="../img/forgotten_skill_frusta_linfa.png" alt="" class="skill-icon">
+                    <div class="skill-title-container">
+                        <h3 class="skill-title">Sap Lash</h3>
+                        <span class="skill-type base">Base Attack</span>
+                    </div>
+                </div>
+                <div class="skill-desc">Malicott strikes all enemies in the frontline with her living Sap Whip, dealing <span class="dmg-light">Light</span> damage. Each enemy struck carries a <span class="spore-tag">Spore</span> , an invisible seed that allies can detect and stack additional marks onto over 3 turns. The more Spores present on a target, the greater the potential of the next detonation.</div>
+            </div>
+            <div class="skill-card sk-active">
+                <div class="skill-header">
+                    <img src="../img/forgotten_skill_giudizio_anima.png" alt="" class="skill-icon">
+                    <div class="skill-title-container">
+                        <h3 class="skill-title">Soul's Judgement</h3>
+                        <span class="skill-type active">Active &mdash; Requires Spores</span>
+                    </div>
+                </div>
+                <div class="skill-desc">Malicott detonates the Spores inside a target, triggering an explosion of roots from within. Deals <span class="dmg-pure">Pure</span> damage consuming all accumulated Spores. A portion of damage is drained and converted into healing for the nearest wounded ally. <strong>CC scaling:</strong> T1–T2 targets with 1–2 Spores become Slowed (1 turn); T3–T4 targets with 3+ Spores become Immobilized (1 turn); T5 targets: each Spore consumed instead heals a different allied unit.</div>
+            </div>
+            <div class="skill-card sk-passive">
+                <div class="skill-header">
+                    <img src="../img/forgotten_skill_ombra_madre.png" alt="" class="skill-icon">
+                    <div class="skill-title-container">
+                        <h3 class="skill-title">The Mother's Shadow</h3>
+                        <span class="skill-type passive">Passive</span>
+                    </div>
+                </div>
+                <div class="skill-desc">Whenever an allied unit uses an Ultimate ability or lands a Critical Hit, Malicott's shadow stretches toward them unbidden. It manifests as a protective shell absorbing damage equal to <strong>15%</strong> of Malicott's maximum HP, and charges her next attack with +25% damage. The shadow cannot be maintained on more than one ally at a time , it moves like protection should: where it is needed most.</div>
+            </div>
+            <div class="skill-card sk-ultimate">
+                <div class="skill-header">
+                    <img src="../img/forgotten_skill_maledizione_dono.png" alt="" class="skill-icon">
+                    <div class="skill-title-container">
+                        <h3 class="skill-title">The Curse of the Gift</h3>
+                        <span class="skill-type ultimate">Ultimate</span>
+                    </div>
+                </div>
+                <div class="skill-desc">Malicott slows all enemies by <strong>40%</strong> in a wide AoE for 2 turns, and opens the ground. Any enemy that reaches 25% HP or below is immediately executed , <em>consumed by roots</em>. For each enemy consumed or killed during this ability: a living allied unit restores <strong>20% HP</strong>, and one fallen allied unit can be resurrected with <strong>35% HP</strong>. The resurrection effect may trigger only once per battle. The gift carries its own curse: life given is life owed.</div>
+            </div>
+        </div>
+
+        <div class="game-over-warning">
+            &#9888; Warning: Should Malicott fall in battle, the Empire of the Forgotten is lost, and the player immediately loses the game.
+        </div>
+    </div>
+
+    <a href="forgotten.html" class="back-link">← Return to the Forgotten Overview</a>
+</main>
+
+<script>
+    const track = document.getElementById('carouselTrack');
+    const items = track.querySelectorAll('.carousel-item');
+    let current = 0;
+    function update() { track.style.transform = `translateX(-${current * (items[0].offsetWidth + 15)}px)`; }
+    document.getElementById('nextBtn').addEventListener('click', () => { if (current < items.length - 1) { current++; update(); } });
+    document.getElementById('prevBtn').addEventListener('click', () => { if (current > 0) { current--; update(); } });
+</script>
+</body>
+</html>

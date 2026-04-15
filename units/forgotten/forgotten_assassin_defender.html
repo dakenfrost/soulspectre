@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Assassin Defender of the Peoples</title>
+    <style>
+        body{color:#e0e0e0;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;line-height:1.8;margin:0;display:flex;flex-direction:column;align-items:center;}
+        #bg-image{position:fixed;top:0;left:0;width:100vw;height:100vh;background-image:url('../../img/forgotten_bg.jpg');background-size:cover;background-position:center;z-index:-2;}
+        #overlay{position:fixed;top:0;left:0;width:100vw;height:100vh;background:linear-gradient(to bottom,rgba(5,12,8,0.90),rgba(3,8,5,0.98));z-index:-1;}
+        header{padding:60px 20px 30px;text-align:center;width:100%;max-width:1100px;}
+        h1{letter-spacing:4px;font-size:2.2rem;margin:0;color:#fff;text-transform:uppercase;text-shadow:0 0 20px rgba(206,147,216,0.7);}
+        .subtitle{color:#ce93d8;font-size:1.1rem;letter-spacing:2px;margin-top:10px;text-transform:uppercase;}
+        main{max-width:1100px;padding:40px 20px;width:100%;}
+        .intro-banner{width:100%;border:1px solid rgba(255,255,255,0.1);border-bottom:3px solid #ce93d8;box-shadow:0 10px 40px rgba(0,0,0,0.9);border-radius:4px;overflow:hidden;margin-bottom:40px;}
+        .intro-banner img{width:100%;height:auto;display:block;}
+        .split-section{display:flex;gap:40px;align-items:stretch;margin-bottom:60px;background:rgba(10,18,12,0.7);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.05);border-left:3px solid #ce93d8;box-shadow:0 10px 30px rgba(0,0,0,0.5);}
+        .section-image-container{position:relative;flex:0 0 38%;overflow:hidden;min-height:380px;}
+        .section-image-container img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:top center;}
+        .combat-anim{animation:crossfade-combat 8s infinite;}
+        @keyframes crossfade-combat{0%,40%{opacity:0}50%,90%{opacity:1}100%{opacity:0}}
+        .section-text{flex:1;padding:35px;}
+        h2{color:#fff;letter-spacing:2px;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:10px;margin-top:0;margin-bottom:25px;font-size:1.8rem;}
+        p{margin-bottom:20px;color:#ccc;font-size:1.1rem;text-align:justify;}
+        strong{color:#5cb88a;}em{color:#aaa;font-style:italic;}
+        .immunity-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
+        .immunity-tag{background:rgba(206,147,216,0.12);border:1px solid rgba(206,147,216,0.4);color:#ce93d8;padding:4px 12px;border-radius:2px;font-size:0.75rem;text-transform:uppercase;letter-spacing:1px;}
+        .tactical-module{border-top:2px solid #ce93d8;padding-top:40px;margin-bottom:60px;}
+        .tactical-header{text-align:center;margin-bottom:40px;}
+        .tactical-header h2{border:none;font-size:2.2rem;text-shadow:0 0 20px rgba(206,147,216,0.5);}
+        .stats-box{display:flex;justify-content:center;flex-wrap:wrap;background:linear-gradient(145deg,rgba(10,18,12,0.9),rgba(5,10,7,0.9));border:1px solid rgba(206,147,216,0.3);border-radius:4px;padding:25px 10px;margin-bottom:50px;box-shadow:inset 0 0 20px rgba(0,0,0,0.8),0 0 30px rgba(206,147,216,0.05);}
+        .stat-item{text-align:center;padding:10px 25px;border-right:1px solid rgba(255,255,255,0.1);}
+        .stat-item:last-child{border-right:none;}
+        .stat-label{display:block;color:#888;font-size:0.8rem;text-transform:uppercase;letter-spacing:2px;margin-bottom:8px;}
+        .stat-value{display:block;color:#fff;font-size:1.8rem;font-weight:bold;font-family:monospace;}
+        .stat-value.hp{color:#4CAF50;}.stat-value.atk{color:#ef5350;}.stat-value.armor{color:#80cbc4;}.stat-value.tier{color:#ce93d8;text-shadow:0 0 10px rgba(206,147,216,0.5);}
+        .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:25px;}
+        .skill-card{background:rgba(10,18,12,0.8);border:1px solid rgba(255,255,255,0.05);border-left:4px solid #333;padding:25px;transition:transform 0.2s ease;}
+        .skill-card:hover{transform:translateY(-5px);}
+        .skill-card.sk-base{border-left-color:#666;}.skill-card.sk-active{border-left-color:#4dd0e1;}.skill-card.sk-passive{border-left-color:#a5d6a7;}
+        .skill-header{display:flex;align-items:center;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:15px;margin-bottom:15px;gap:15px;}
+        .skill-icon{width:70px;height:70px;border-radius:4px;object-fit:cover;border:2px solid rgba(206,147,216,0.4);flex-shrink:0;background:rgba(0,0,0,0.3);}
+        .skill-title-container{flex:1;}
+        .skill-title{margin:0 0 6px;color:#fff;font-size:1.2rem;text-transform:uppercase;letter-spacing:1px;}
+        .skill-type{font-size:0.72rem;padding:2px 8px;border-radius:2px;text-transform:uppercase;letter-spacing:1px;display:inline-block;}
+        .skill-type.base{color:#9e9e9e;background:rgba(158,158,158,0.1);border:1px solid rgba(158,158,158,0.3);}
+        .skill-type.active{color:#4dd0e1;background:rgba(77,208,225,0.1);border:1px solid rgba(77,208,225,0.3);}
+        .skill-type.passive{color:#a5d6a7;background:rgba(165,214,167,0.1);border:1px solid rgba(165,214,167,0.3);}
+        .skill-desc{color:#bbb;font-size:0.95rem;line-height:1.7;}
+        .dmg-phys{color:#ff8a65;font-weight:bold;}.dmg-light{color:#fff176;font-weight:bold;}.dmg-mind{color:#f48fb1;font-weight:bold;}
+        .portrait-gallery-module{background:rgba(10,18,12,0.7);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.05);border-left:3px solid #ce93d8;padding:35px;margin-bottom:40px;}
+        .gallery-header{margin-top:0;margin-bottom:25px;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:10px;}
+        .carousel-wrap{position:relative;overflow:hidden;}
+        .carousel-track{display:flex;gap:15px;transition:transform 0.35s ease;padding:5px 2px;}
+        .carousel-item{flex:0 0 200px;height:260px;border:1px solid rgba(255,255,255,0.1);border-radius:4px;overflow:hidden;background:#000;}
+        .carousel-item img{width:100%;height:100%;object-fit:cover;object-position:top center;}
+        .carousel-nav{display:flex;justify-content:center;gap:20px;margin-top:20px;}
+        .nav-btn{background:rgba(10,18,12,0.9);border:1px solid #ce93d8;color:#ce93d8;width:44px;height:44px;border-radius:50%;cursor:pointer;font-size:1.2rem;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
+        .nav-btn:hover{background:#ce93d8;color:#000;}
+        .back-link{display:block;text-align:center;margin-top:40px;color:#555;text-decoration:none;padding:25px;border-top:1px solid rgba(255,255,255,0.08);letter-spacing:1px;transition:color 0.3s;}
+        .back-link:hover{color:#5cb88a;}
+        @media(max-width:900px){.split-section{flex-direction:column}.section-image-container{height:400px;flex:unset}.skills-grid{grid-template-columns:1fr}}
+    </style>
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+<header>
+    <h1>Assassin Defender of the Peoples</h1>
+    <div class="subtitle">Tier 5 , Champion , Combattenti Arborei</div>
+</header>
+<main>
+    <div class="intro-banner"><img src="../../img/forgotten_assassin_defender_banner.png" alt="Assassin Defender Banner"></div>
+    <div class="split-section">
+        <div class="section-image-container">
+            <img src="../../img/forgotten_assassin_defender_f_combat.jpg" alt="Assassin Defender F">
+            <img src="../../img/forgotten_assassin_defender_m_combat.jpg" alt="Assassin Defender M" class="combat-anim">
+        </div>
+        <div class="section-text">
+            <h2>Two Lives, One Purpose</h2>
+            <p>There is no record of the process by which a Defender path and an Assassin path converge. It should not be possible , they are opposite philosophies, opposite body modifications, opposite combat instincts. And yet. There are those who surpass the barrier of duality and become something that has no precedent in the Empire's taxonomy.</p>
+            <p>The <strong>Assassin Defender of the Peoples</strong> carries the love of the Valkyrie and the precision of the Elf Assassin simultaneously, without contradiction. They are the largest unit in the Arborei branch and the fastest. They stand in front of others and slip through shadows in the same breath. In their presence, the rest of the formation breathes differently , deeper, calmer, as if they have taken the weight of everyone's fear and metabolized it into something useful.</p>
+            <p>They are <em>immune</em> to Mind, Soul, Light, Earth, and Air damage. These are not resistances , these are closed doors. What was created from the merging of a Valkyrie and an Elf cannot be divided against itself again.</p>
+            <div class="immunity-list">
+                <span class="immunity-tag">Immune: Mind</span>
+                <span class="immunity-tag">Immune: Soul</span>
+                <span class="immunity-tag">Immune: Light</span>
+                <span class="immunity-tag">Immune: Earth</span>
+                <span class="immunity-tag">Immune: Air</span>
+            </div>
+        </div>
+    </div>
+    <div class="tactical-module">
+        <div class="tactical-header"><h2>Tactical Data</h2></div>
+        <div class="stats-box">
+            <div class="stat-item"><span class="stat-label">HP</span><span class="stat-value hp">300</span></div>
+            <div class="stat-item"><span class="stat-label">ATK</span><span class="stat-value atk">100</span></div>
+            <div class="stat-item"><span class="stat-label">INI</span><span class="stat-value">50</span></div>
+            <div class="stat-item"><span class="stat-label">Armor</span><span class="stat-value armor">25%</span></div>
+            <div class="stat-item"><span class="stat-label">Tier</span><span class="stat-value tier">Champion</span></div>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-card sk-base">
+                <div class="skill-header">
+                    <img src="../../img/forgotten_skill_colpo_simbiosi.png" alt="" class="skill-icon">
+                    <div class="skill-title-container"><h3 class="skill-title">Symbiosis Strike</h3><span class="skill-type base">Base Attack</span></div>
+                </div>
+                <div class="skill-desc">Strikes <strong>3 random enemies</strong> simultaneously with combined <span class="dmg-phys">Physical</span> + <span class="dmg-light">Light</span> damage. Penetrates <strong>25% Armor</strong> on each strike. The symbiosis between the two paths makes this attack simultaneously heavy and precise , each target is hit differently, denying positional clustering as a defense.</div>
+            </div>
+            <div class="skill-card sk-active">
+                <div class="skill-header">
+                    <img src="../../img/forgotten_skill_ricordi_strazianti.png" alt="" class="skill-icon">
+                    <div class="skill-title-container"><h3 class="skill-title">Harrowing Memories</h3><span class="skill-type active">Active</span></div>
+                </div>
+                <div class="skill-desc">Channels the harrowing weight of two remembered deaths into a psychic assault on a single target. Deals <span class="dmg-mind">Mind</span> damage and inflicts <strong>Fear</strong> , the target flees combat for 1 turn and cannot be controlled by its commanders. Additionally reduces the entire enemy squad's <strong>Morale by 20</strong>, weakening their resistance to routing.</div>
+            </div>
+            <div class="skill-card sk-passive">
+                <div class="skill-header">
+                    <img src="../../img/forgotten_skill_controllo_battaglia.png" alt="" class="skill-icon">
+                    <div class="skill-title-container"><h3 class="skill-title">Battle Control</h3><span class="skill-type passive">Passive</span></div>
+                </div>
+                <div class="skill-desc">All allied units gain <strong>+20% Armor</strong>. For each T3-or-lower unit in the Allied formation, all units recover an additional <strong>+5% HP</strong> per turn. When any allied unit falls in battle, the Assassin Defender immediately resurrects them with <strong>30% HP</strong>. This resurrection effect has a <strong>2-turn cooldown</strong> , the battle must breathe before it can be defied again.</div>
+            </div>
+        </div>
+    </div>
+    <div class="portrait-gallery-module">
+        <h2 class="gallery-header">Gallery</h2>
+        <div class="carousel-wrap">
+            <div class="carousel-track" id="carouselTrack">
+                <div class="carousel-item"><img src="../../img/forgotten_assassin_defender_f_portrait.jpg" alt="Portrait F"></div>
+                <div class="carousel-item"><img src="../../img/forgotten_assassin_defender_m_portrait.jpg" alt="Portrait M"></div>
+                <div class="carousel-item"><img src="../../img/forgotten_assassin_defender_extra_1.jpg" alt="Extra 1"></div>
+            </div>
+        </div>
+        <div class="carousel-nav">
+            <button class="nav-btn" id="prevBtn">&#8592;</button>
+            <button class="nav-btn" id="nextBtn">&#8594;</button>
+        </div>
+    </div>
+    <a href="forgotten_order_arborei.html" class="back-link">← Return to Combattenti Arborei</a>
+</main>
+<script>
+    const track=document.getElementById('carouselTrack');const items=track.querySelectorAll('.carousel-item');let current=0;
+    function update(){track.style.transform=`translateX(-${current*(items[0].offsetWidth+15)}px)`;}
+    document.getElementById('nextBtn').addEventListener('click',()=>{if(current<items.length-1){current++;update();}});
+    document.getElementById('prevBtn').addEventListener('click',()=>{if(current>0){current--;update();}});
+</script>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Combattenti Arborei</title>
+    <style>
+        body { color:#e0e0e0; font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif; line-height:1.8; margin:0; display:flex; flex-direction:column; align-items:center; }
+        #bg-image { position:fixed;top:0;left:0;width:100vw;height:100vh;background-image:url('../../img/forgotten_bg.jpg');background-size:cover;background-position:center;z-index:-2; }
+        #overlay { position:fixed;top:0;left:0;width:100vw;height:100vh;background:linear-gradient(to bottom,rgba(5,12,8,0.90),rgba(3,8,5,0.98));z-index:-1; }
+        header { padding:60px 20px 30px;text-align:center;width:100%;max-width:1100px; }
+        h1 { letter-spacing:5px;font-size:2.8rem;margin:0;color:#fff;text-transform:uppercase;text-shadow:0 0 15px rgba(92,184,138,0.5); }
+        .subtitle { color:#5cb88a;font-size:1.1rem;letter-spacing:2px;margin-top:10px;text-transform:uppercase; }
+        main { max-width:1100px;padding:40px 20px;width:100%; }
+        .intro-banner { width:100%;height:auto;border:1px solid rgba(255,255,255,0.1);border-bottom:3px solid #5cb88a;box-shadow:0 10px 30px rgba(0,0,0,0.8);border-radius:4px;overflow:hidden;margin-bottom:40px;display:block; }
+        .intro-banner img { width:100%;height:auto;display:block; }
+        .lore-section { background:rgba(10,18,12,0.7);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.05);border-left:3px solid #5cb88a;padding:35px;box-shadow:0 10px 30px rgba(0,0,0,0.5);margin-bottom:40px; }
+        .lore-section h2 { color:#fff;letter-spacing:2px;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:10px;margin-top:0;margin-bottom:25px;font-size:1.8rem; }
+        .lore-section p { margin-bottom:20px;color:#ccc;font-size:1.1rem;text-align:justify; }
+        .lore-section strong { color:#5cb88a; }
+        .tree-section { width:100%;border:1px solid rgba(255,255,255,0.1);border-radius:4px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,0.6);margin-bottom:60px;background:#050d07; }
+        .tree-section img { width:100%;height:auto;display:block; }
+        .unit-list-header { text-align:center;margin-bottom:30px; }
+        .unit-list-header h2 { border:none;display:inline-block;font-size:2.2rem;text-shadow:0 0 15px rgba(92,184,138,0.6);margin-bottom:5px;color:#fff;text-transform:uppercase;letter-spacing:2px; }
+        .unit-list { display:flex;flex-direction:column;gap:20px;margin-bottom:60px; }
+        .unit-row { display:flex;align-items:center;background:linear-gradient(to right,rgba(10,18,12,0.9),rgba(5,10,7,0.8));border:1px solid rgba(255,255,255,0.05);border-left:4px solid #5cb88a;padding:20px;border-radius:4px;transition:transform 0.2s ease,box-shadow 0.2s ease;box-shadow:0 3px 10px rgba(0,0,0,0.5); }
+        .unit-row:hover { transform:translateX(5px);box-shadow:0 5px 20px rgba(0,0,0,0.6); }
+        .unit-row.t-officer { border-left-color:#ffd700; }
+        .unit-row.t-1 { border-left-color:#e0e0e0; }
+        .unit-row.t-2 { border-left-color:#4dd0e1; }
+        .unit-row.t-3 { border-left-color:#81c784; }
+        .unit-row.t-4 { border-left-color:#ffb300; }
+        .unit-row.t-5 { border-left-color:#ce93d8; }
+        .portrait-container { position:relative;flex:0 0 100px;width:100px;height:100px;margin-right:25px;border-radius:4px;border:2px solid rgba(255,255,255,0.1);overflow:hidden;background:#000; }
+        .portrait-container img { position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:top center; }
+        .portrait-anim { animation:crossfade 8s infinite; }
+        @keyframes crossfade { 0%,40%{opacity:0} 50%,90%{opacity:1} 100%{opacity:0} }
+        .unit-info { flex:1;display:flex;flex-direction:column;justify-content:center; }
+        .unit-name { font-size:1.5rem;color:#fff;margin:0 0 5px;text-transform:uppercase;letter-spacing:1px; }
+        .unit-tier { font-size:0.85rem;color:#888;text-transform:uppercase;letter-spacing:2px;margin-bottom:10px; }
+        .color-officer { color:#ffd700;font-weight:bold;text-shadow:0 0 5px rgba(255,215,0,0.5); }
+        .color-t1 { color:#e0e0e0;font-weight:bold; }
+        .color-t2 { color:#4dd0e1;font-weight:bold; }
+        .color-t3 { color:#81c784;font-weight:bold; }
+        .color-t4 { color:#ffb300;font-weight:bold;text-shadow:0 0 5px rgba(255,179,0,0.4); }
+        .color-t5 { color:#ce93d8;font-weight:bold;text-shadow:0 0 5px rgba(206,147,216,0.5); }
+        .unit-desc { color:#bbb;font-size:1rem;margin:0;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden; }
+        .unit-action { flex:0 0 auto;margin-left:20px; }
+        .btn-tactical { display:inline-block;background:rgba(92,184,138,0.1);color:#5cb88a;border:1px solid #5cb88a;padding:12px 24px;text-decoration:none;font-weight:bold;text-transform:uppercase;letter-spacing:1px;border-radius:2px;transition:all 0.3s ease; }
+        .btn-tactical:hover { background:#5cb88a;color:#fff;box-shadow:0 0 15px rgba(92,184,138,0.5); }
+        .back-link { display:block;text-align:center;margin-top:40px;color:#666;text-decoration:none;padding:20px;border-top:1px solid rgba(255,255,255,0.1);transition:color 0.3s; }
+        .back-link:hover { color:#5cb88a; }
+        @media (max-width:800px) { .unit-row{flex-direction:column;text-align:center;padding:30px 20px} .portrait-container{margin:0 0 20px;width:120px;height:120px} .unit-action{margin:20px 0 0;width:100%} .btn-tactical{display:block;width:100%;box-sizing:border-box;text-align:center} }
+    </style>
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+<header>
+    <h1>Combattenti Arborei</h1>
+    <div class="subtitle">The Melee Vanguard</div>
+</header>
+<main>
+    <div class="intro-banner">
+        <img src="../../img/forgotten_arborei_intro.png" alt="Combattenti Arborei Banner">
+    </div>
+    <div class="lore-section">
+        <h2>The Nightmare of Heavy Infantry</h2>
+        <p>The Combattenti Arborei are the Empire's feared frontline , the incarnation of nature tearing through stone. Their hybrid bodies seem carved from ancient, weathered wood, yet their outlines shimmer and vibrate like a desert mirage. They do not exist on a single plane: they phase between the material world and the ethereal, a biological trait that makes them simultaneously harder to kill and harder to understand.</p>
+        <p>In the <strong>Economy of Merit</strong>, the Arborei are regarded with reverence mixed with awe. During the Breath of the Moon, they often stand as silent sentinels on the rooftops and walls , statues watching over the sleeping living, embodying Malicott's promise: <em>"We Want to Live,"</em> at any cost.</p>
+        <p>Their evolution follows two divergent paths shaped by the soul's instinct. Those who embrace protection grow heavier, more immovable , their ethereal form hardening into something that refuses to yield. Those whose spirit turns inward toward speed and shadow shed their form entirely, becoming predators moving between worlds. Both paths converge only in the <strong>Assassin Defender of the Peoples</strong>, a being that has transcended both natures and become something new entirely.</p>
+    </div>
+    <div class="tree-section">
+        <img src="../../img/forgotten_arborei_tree.png" alt="Arborei Evolution Tree">
+    </div>
+    <div class="unit-list-header"><h2>Active Roster</h2></div>
+    <div class="unit-list">
+        <div class="unit-row t-officer">
+            <div class="portrait-container">
+                <img src="../../img/forgotten_patrol_f_portrait.jpg" alt="Patrol F">
+                <img src="../../img/forgotten_patrol_m_portrait.jpg" alt="Patrol M" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Patrol</h3>
+                <div class="unit-tier">Classification: <span class="color-officer">Officer</span></div>
+                <p class="unit-desc">Warriors of unknown origin. They've earned deep esteem among the undead and know how to lead troops to victory through coordinated positioning.</p>
+            </div>
+            <div class="unit-action"><a href="forgotten_patrol.html" class="btn-tactical">View Data</a></div>
+        </div>
+        <div class="unit-row t-1">
+            <div class="portrait-container">
+                <img src="../../img/forgotten_ethereal_swordsman_f_portrait.jpg" alt="Ethereal Swordsman F">
+                <img src="../../img/forgotten_ethereal_swordsman_m_portrait.jpg" alt="Ethereal Swordsman M" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Ethereal Swordsman</h3>
+                <div class="unit-tier">Classification: <span class="color-t1">Tier 1</span></div>
+                <p class="unit-desc">The newly born, or those who have not yet experienced the Arborei path. They have nothing but a wooden sword. Fragile, defensive, and highly mobile.</p>
+            </div>
+            <div class="unit-action"><a href="forgotten_ethereal_swordsman.html" class="btn-tactical">View Data</a></div>
+        </div>
+        <div class="unit-row t-2">
+            <div class="portrait-container">
+                <img src="../../img/forgotten_frontline_defender_portrait.jpg" alt="Frontline Defender">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Frontline Defender</h3>
+                <div class="unit-tier">Classification: <span class="color-t2">Tier 2</span> , Defender Path</div>
+                <p class="unit-desc">Those who have grown familiar with great shields and long weapons. Fully arboreal yet ethereal, they bear the blows of adversaries on behalf of the group. They have wings, but can only glide.</p>
+            </div>
+            <div class="unit-action"><a href="forgotten_frontline_defender.html" class="btn-tactical">View Data</a></div>
+        </div>
+        <div class="unit-row t-2">
+            <div class="portrait-container">
+                <img src="../../img/forgotten_shadow_combatant_f_portrait.jpg" alt="Shadow Combatant F">
+                <img src="../../img/forgotten_shadow_combatant_m_portrait.jpg" alt="Shadow Combatant M" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Shadow Combatant</h3>
+                <div class="unit-tier">Classification: <span class="color-t2">Tier 2</span> , Assassin Path</div>
+                <p class="unit-desc">Those who have grown familiar with small blades. They begin to lose their arboreal form, recalling the grace and symbiosis of a past life , but not yet who they were.</p>
+            </div>
+            <div class="unit-action"><a href="forgotten_shadow_combatant.html" class="btn-tactical">View Data</a></div>
+        </div>
+        <div class="unit-row t-3">
+            <div class="portrait-container">
+                <img src="../../img/forgotten_squire_homeland_portrait.jpg" alt="Squire of the Homeland">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Squire of the Homeland</h3>
+                <div class="unit-tier">Classification: <span class="color-t3">Tier 3</span> , Defender Path</div>
+                <p class="unit-desc">They remember the thrill of the skies. Incorruptible protectors of humanity, still ethereal but shed of the arboreal form. They defend the Empire with unwavering loyalty.</p>
+            </div>
+            <div class="unit-action"><a href="forgotten_squire_homeland.html" class="btn-tactical">View Data</a></div>
+        </div>
+        <div class="unit-row t-3">
+            <div class="portrait-container">
+                <img src="../../img/forgotten_assassin_trees_f_portrait.jpg" alt="Assassin of the Trees F">
+                <img src="../../img/forgotten_assassin_trees_m_portrait.jpg" alt="Assassin of the Trees M" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Assassin of the Trees</h3>
+                <div class="unit-tier">Classification: <span class="color-t3">Tier 3</span> , Assassin Path</div>
+                <p class="unit-desc">They remember pointed ears, tranquility, the forests. They have nearly lost the arboreal form entirely but still do not remember who they are.</p>
+            </div>
+            <div class="unit-action"><a href="forgotten_assassin_trees.html" class="btn-tactical">View Data</a></div>
+        </div>
+        <div class="unit-row t-4">
+            <div class="portrait-container">
+                <img src="../../img/forgotten_valkyrie_defender_portrait.jpg" alt="Valkyrie Defender">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Valkyrie Defender of the Homeland</h3>
+                <div class="unit-tier">Classification: <span class="color-t4">Tier 4</span> , Defender Path</div>
+                <p class="unit-desc">They took flight. They traded long weapons for colossal axes. Malicott granted them a feather from her own wings , and with it, the power to truly soar and fight for their kin.</p>
+            </div>
+            <div class="unit-action"><a href="forgotten_valkyrie_defender.html" class="btn-tactical">View Data</a></div>
+        </div>
+        <div class="unit-row t-4">
+            <div class="portrait-container">
+                <img src="../../img/forgotten_elf_assassin_f_portrait.jpg" alt="Elf Assassin F">
+                <img src="../../img/forgotten_elf_assassin_m_portrait.jpg" alt="Elf Assassin M" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Elf Assassin</h3>
+                <div class="unit-tier">Classification: <span class="color-t4">Tier 4</span> , Assassin Path</div>
+                <p class="unit-desc">They finally remember who they are. Claws replace blades. No arboreal form remains. They have accepted their role as the weapons of their bloodline.</p>
+            </div>
+            <div class="unit-action"><a href="forgotten_elf_assassin.html" class="btn-tactical">View Data</a></div>
+        </div>
+        <div class="unit-row t-5">
+            <div class="portrait-container">
+                <img src="../../img/forgotten_assassin_defender_f_portrait.jpg" alt="Assassin Defender F">
+                <img src="../../img/forgotten_assassin_defender_m_portrait.jpg" alt="Assassin Defender M" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Assassin Defender of the Peoples</h3>
+                <div class="unit-tier">Classification: <span class="color-t5">Tier 5 , Champion</span></div>
+                <p class="unit-desc">Those who have surpassed the barrier of possibility. Neither forest-kin nor sky-warrior, but the love of both lives within them. A new bloodline, born from the merger of two souls.</p>
+            </div>
+            <div class="unit-action"><a href="forgotten_assassin_defender.html" class="btn-tactical">View Data</a></div>
+        </div>
+    </div>
+    <a href="../../factions/forgotten_roster.html" class="back-link">← Return to the Roster</a>
+</main>
+</body>
+</html>

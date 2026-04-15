@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Sentinelle d'Ambra</title>
+    <style>
+        body { color:#e0e0e0; font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif; line-height:1.8; margin:0; display:flex; flex-direction:column; align-items:center; }
+        #bg-image { position:fixed;top:0;left:0;width:100vw;height:100vh;background-image:url('../../img/forgotten_bg.jpg');background-size:cover;background-position:center;z-index:-2; }
+        #overlay { position:fixed;top:0;left:0;width:100vw;height:100vh;background:linear-gradient(to bottom,rgba(5,12,8,0.90),rgba(3,8,5,0.98));z-index:-1; }
+        header { padding:60px 20px 30px;text-align:center;width:100%;max-width:1100px; }
+        h1 { letter-spacing:5px;font-size:2.8rem;margin:0;color:#fff;text-transform:uppercase;text-shadow:0 0 15px rgba(92,184,138,0.5); }
+        .subtitle { color:#5cb88a;font-size:1.1rem;letter-spacing:2px;margin-top:10px;text-transform:uppercase; }
+        main { max-width:1100px;padding:40px 20px;width:100%; }
+        .intro-banner { width:100%;height:auto;border:1px solid rgba(255,255,255,0.1);border-bottom:3px solid #5cb88a;box-shadow:0 10px 30px rgba(0,0,0,0.8);border-radius:4px;overflow:hidden;margin-bottom:40px;display:block; }
+        .intro-banner img { width:100%;height:auto;display:block; }
+        .lore-section { background:rgba(10,18,12,0.7);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.05);border-left:3px solid #5cb88a;padding:35px;box-shadow:0 10px 30px rgba(0,0,0,0.5);margin-bottom:40px; }
+        .lore-section h2 { color:#fff;letter-spacing:2px;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:10px;margin-top:0;margin-bottom:25px;font-size:1.8rem; }
+        .lore-section p { margin-bottom:20px;color:#ccc;font-size:1.1rem;text-align:justify; }
+        .lore-section strong { color:#5cb88a; }
+        .tree-section { width:100%;border:1px solid rgba(255,255,255,0.1);border-radius:4px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,0.6);margin-bottom:60px;background:#050d07; }
+        .tree-section img { width:100%;height:auto;display:block; }
+        .unit-list-header { text-align:center;margin-bottom:30px; }
+        .unit-list-header h2 { border:none;display:inline-block;font-size:2.2rem;text-shadow:0 0 15px rgba(92,184,138,0.6);margin-bottom:5px;color:#fff;text-transform:uppercase;letter-spacing:2px; }
+        .unit-list { display:flex;flex-direction:column;gap:20px;margin-bottom:60px; }
+        .unit-row { display:flex;align-items:center;background:linear-gradient(to right,rgba(10,18,12,0.9),rgba(5,10,7,0.8));border:1px solid rgba(255,255,255,0.05);border-left:4px solid #5cb88a;padding:20px;border-radius:4px;transition:transform 0.2s ease,box-shadow 0.2s ease;box-shadow:0 3px 10px rgba(0,0,0,0.5); }
+        .unit-row:hover { transform:translateX(5px);box-shadow:0 5px 20px rgba(0,0,0,0.6); }
+        .unit-row.t-officer { border-left-color:#ffd700; }
+        .unit-row.t-1 { border-left-color:#e0e0e0; }
+        .unit-row.t-2 { border-left-color:#4dd0e1; }
+        .unit-row.t-3 { border-left-color:#81c784; }
+        .unit-row.t-4 { border-left-color:#ffb300; }
+        .unit-row.t-5 { border-left-color:#ce93d8; }
+        .portrait-container { position:relative;flex:0 0 100px;width:100px;height:100px;margin-right:25px;border-radius:4px;border:2px solid rgba(255,255,255,0.1);overflow:hidden;background:#000; }
+        .portrait-container img { position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:top center; }
+        .portrait-anim { animation:crossfade 8s infinite; }
+        @keyframes crossfade { 0%,40%{opacity:0} 50%,90%{opacity:1} 100%{opacity:0} }
+        .unit-info { flex:1;display:flex;flex-direction:column;justify-content:center; }
+        .unit-name { font-size:1.5rem;color:#fff;margin:0 0 5px;text-transform:uppercase;letter-spacing:1px; }
+        .unit-tier { font-size:0.85rem;color:#888;text-transform:uppercase;letter-spacing:2px;margin-bottom:10px; }
+        .color-officer { color:#ffd700;font-weight:bold;text-shadow:0 0 5px rgba(255,215,0,0.5); }
+        .color-t1 { color:#e0e0e0;font-weight:bold; }
+        .color-t2 { color:#4dd0e1;font-weight:bold; }
+        .color-t3 { color:#81c784;font-weight:bold; }
+        .color-t4 { color:#ffb300;font-weight:bold; }
+        .color-t5 { color:#ce93d8;font-weight:bold;text-shadow:0 0 5px rgba(206,147,216,0.5); }
+        .unit-desc { color:#bbb;font-size:1rem;margin:0;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden; }
+        .unit-action { flex:0 0 auto;margin-left:20px; }
+        .btn-tactical { display:inline-block;background:rgba(92,184,138,0.1);color:#5cb88a;border:1px solid #5cb88a;padding:12px 24px;text-decoration:none;font-weight:bold;text-transform:uppercase;letter-spacing:1px;border-radius:2px;transition:all 0.3s ease; }
+        .btn-tactical:hover { background:#5cb88a;color:#fff;box-shadow:0 0 15px rgba(92,184,138,0.5); }
+        .back-link { display:block;text-align:center;margin-top:40px;color:#666;text-decoration:none;padding:20px;border-top:1px solid rgba(255,255,255,0.1);transition:color 0.3s; }
+        .back-link:hover { color:#5cb88a; }
+        @media (max-width:800px) { .unit-row{flex-direction:column;text-align:center;padding:30px 20px} .portrait-container{margin:0 0 20px;width:120px;height:120px} .unit-action{margin:20px 0 0;width:100%} .btn-tactical{display:block;width:100%;box-sizing:border-box;text-align:center} }
+    </style>
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+<header>
+    <h1>Sentinelle d'Ambra</h1>
+    <div class="subtitle">Eyes That Never Blink</div>
+</header>
+<main>
+    <div class="intro-banner">
+        <img src="../../img/forgotten_sentinelle_intro.png" alt="Sentinelle d'Ambra Banner">
+    </div>
+    <div class="lore-section">
+        <h2>The Arrow Already Left a Minute Ago</h2>
+        <p>The Sentinelle d'Ambra are not mere skeletal archers. They are the result of an alchemical and spiritual process aimed at preserving the soul in its purest, most static form. They are born from the souls of those defined in life by patience, observation, and the ability to see beyond: snipers, watchmen, astronomers, and artists obsessed with detail.</p>
+        <p>While the Arborei are raw wood and the Shadows are dark fluid, the Sentinelle are <strong>Living Gems.</strong> Their bodies are composed of a translucent resin, as hard as diamond yet warm to the touch, secreted by the Mother Tree. Inside this golden, semi-transparent shell, the original skeleton or the soul's shadow is often visible , suspended like a prehistoric insect trapped for eternity.</p>
+        <p>They are creatures of <strong>terrifying beauty.</strong> They never need to blink, and their eyes are prismatic lenses capable of seeing thermal and magical spectra across kilometers of distance. Their two evolutionary paths diverge on method: the <strong>Custodian path</strong> favors control, suppression, and aerial domination; the <strong>Archer path</strong> favors patience, precision, and the singular perfect shot. Both paths converge in the Eye of the Forest, a being for whom the act of seeing and the act of shooting have become a single, indivisible breath.</p>
+    </div>
+    <div class="tree-section">
+        <img src="../../img/forgotten_sentinelle_tree.png" alt="Sentinelle Evolution Tree">
+    </div>
+    <div class="unit-list-header"><h2>Active Roster</h2></div>
+    <div class="unit-list">
+        <div class="unit-row t-officer">
+            <div class="portrait-container">
+                <img src="../../img/forgotten_noble_f_portrait.jpg" alt="Noble F">
+                <img src="../../img/forgotten_noble_m_portrait.jpg" alt="Noble M" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Noble</h3>
+                <div class="unit-tier">Classification: <span class="color-officer">Officer</span></div>
+                <p class="unit-desc">Commanders whose authority was forged in aristocratic halls and reborn in the amber of Malicott's grace. They coordinate ranged formations with cold precision.</p>
+            </div>
+            <div class="unit-action"><a href="forgotten_noble.html" class="btn-tactical">View Data</a></div>
+        </div>
+        <div class="unit-row t-1">
+            <div class="portrait-container">
+                <img src="../../img/forgotten_amber_caster_f_portrait.jpg" alt="Amber Caster F">
+                <img src="../../img/forgotten_amber_caster_m_portrait.jpg" alt="Amber Caster M" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Amber Caster</h3>
+                <div class="unit-tier">Classification: <span class="color-t1">Tier 1</span></div>
+                <p class="unit-desc">The earliest form of the Sentinella , a soul freshly encased in amber resin, still learning to see the world through prismatic eyes and channel energy into a basic ranged attack.</p>
+            </div>
+            <div class="unit-action"><a href="forgotten_amber_caster.html" class="btn-tactical">View Data</a></div>
+        </div>
+        <div class="unit-row t-2">
+            <div class="portrait-container">
+                <img src="../../img/forgotten_custodian_f_portrait.jpg" alt="Custodian F">
+                <img src="../../img/forgotten_custodian_m_portrait.jpg" alt="Custodian M" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Custodian</h3>
+                <div class="unit-tier">Classification: <span class="color-t2">Tier 2</span> , Custodian Path</div>
+                <p class="unit-desc">Those who feel the pull toward control and suppression. They combine magical shots with tactical positioning, locking down enemies and protecting key positions.</p>
+            </div>
+            <div class="unit-action"><a href="forgotten_custodian.html" class="btn-tactical">View Data</a></div>
+        </div>
+        <div class="unit-row t-2">
+            <div class="portrait-container">
+                <img src="../../img/forgotten_archer_f_portrait.jpg" alt="Archer F">
+                <img src="../../img/forgotten_archer_m_portrait.jpg" alt="Archer M" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Archer</h3>
+                <div class="unit-tier">Classification: <span class="color-t2">Tier 2</span> , Sniper Path</div>
+                <p class="unit-desc">Those who feel the pull toward patience and precision. They wait. They breathe. They release. Each arrow is not fired , it is placed.</p>
+            </div>
+            <div class="unit-action"><a href="forgotten_archer.html" class="btn-tactical">View Data</a></div>
+        </div>
+        <div class="unit-row t-3">
+            <div class="portrait-container">
+                <img src="../../img/forgotten_justiciar_portrait.jpg" alt="Justiciar">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Justiciar</h3>
+                <div class="unit-tier">Classification: <span class="color-t3">Tier 3</span> , Custodian Path</div>
+                <p class="unit-desc">Enforcers of order from above. They bind enemies in place with enchanted shots, creating lanes of control that funnel the enemy's advance into prepared kill zones.</p>
+            </div>
+            <div class="unit-action"><a href="forgotten_justiciar.html" class="btn-tactical">View Data</a></div>
+        </div>
+        <div class="unit-row t-3">
+            <div class="portrait-container">
+                <img src="../../img/forgotten_marksman_f_portrait.jpg" alt="Marksman F">
+                <img src="../../img/forgotten_marksman_m_portrait.jpg" alt="Marksman M" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Marksman</h3>
+                <div class="unit-tier">Classification: <span class="color-t3">Tier 3</span> , Sniper Path</div>
+                <p class="unit-desc">Sharpshooters whose amber eyes see through terrain, illusion, and armor. They eliminate high-value targets across distances that should make the shot impossible.</p>
+            </div>
+            <div class="unit-action"><a href="forgotten_marksman.html" class="btn-tactical">View Data</a></div>
+        </div>
+        <div class="unit-row t-4">
+            <div class="portrait-container">
+                <img src="../../img/forgotten_valkyrie_lancer_f_portrait.jpg" alt="Valkyrie Lancer F">
+                <img src="../../img/forgotten_valkyrie_lancer_m_portrait.jpg" alt="Valkyrie Lancer M" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Valkyrie Lancer</h3>
+                <div class="unit-tier">Classification: <span class="color-t4">Tier 4</span> , Custodian Path</div>
+                <p class="unit-desc">They earned Malicott's wings and traded bows for lances. They dive at devastating angles, combining aerial mobility with the suppressive authority of their former path.</p>
+            </div>
+            <div class="unit-action"><a href="forgotten_valkyrie_lancer.html" class="btn-tactical">View Data</a></div>
+        </div>
+        <div class="unit-row t-4">
+            <div class="portrait-container">
+                <img src="../../img/forgotten_elf_sniper_f_portrait.jpg" alt="Elf Sniper F">
+                <img src="../../img/forgotten_elf_sniper_m_portrait.jpg" alt="Elf Sniper M" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Elf Sniper</h3>
+                <div class="unit-tier">Classification: <span class="color-t4">Tier 4</span> , Sniper Path</div>
+                <p class="unit-desc">Elves who remember who they are , and realize that their ancient patience was always training for this. Their phantom shots ignore cover, distance, and conventional physics.</p>
+            </div>
+            <div class="unit-action"><a href="forgotten_elf_sniper.html" class="btn-tactical">View Data</a></div>
+        </div>
+        <div class="unit-row t-5">
+            <div class="portrait-container">
+                <img src="../../img/forgotten_eye_forest_f_portrait.jpg" alt="Eye of the Forest F">
+                <img src="../../img/forgotten_eye_forest_m_portrait.jpg" alt="Eye of the Forest M" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Eye of the Forest</h3>
+                <div class="unit-tier">Classification: <span class="color-t5">Tier 5 , Champion</span></div>
+                <p class="unit-desc">The ultimate expression of the Sentinella. Seeing and shooting are one. Control and precision are one. They do not aim at enemies , the entire battlefield is their target.</p>
+            </div>
+            <div class="unit-action"><a href="forgotten_eye_forest.html" class="btn-tactical">View Data</a></div>
+        </div>
+    </div>
+    <a href="../../factions/forgotten_roster.html" class="back-link">← Return to the Roster</a>
+</main>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Forgotten Roster</title>
+    <style>
+        body {
+            color: #e0e0e0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #bg-image {
+            position: fixed; top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background-image: url('../img/forgotten_bg.jpg');
+            background-size: cover; background-position: center; z-index: -2;
+        }
+        #overlay {
+            position: fixed; top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background: linear-gradient(to bottom, rgba(5,12,8,0.90), rgba(3,8,5,0.98));
+            z-index: -1;
+        }
+        header { padding: 60px 20px 30px; text-align: center; width: 100%; max-width: 1100px; }
+        h1 { letter-spacing: 5px; font-size: 2.8rem; margin: 0; color: #fff; text-transform: uppercase; text-shadow: 0 0 15px rgba(92,184,138,0.5); }
+        .subtitle { color: #5cb88a; font-size: 1.1rem; letter-spacing: 2px; margin-top: 10px; text-transform: uppercase; }
+        main { max-width: 1100px; padding: 40px 20px; width: 100%; }
+        .intro-text {
+            text-align: center; font-size: 1.1rem; color: #ccc; margin-bottom: 50px;
+            background: rgba(10,18,12,0.6); backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.05); padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .roster-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 30px; margin-bottom: 60px;
+        }
+        .order-card {
+            position: relative; height: 250px;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 3px solid #5cb88a;
+            border-radius: 4px; overflow: hidden;
+            display: flex; align-items: flex-end; justify-content: center;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.6); padding-bottom: 20px; box-sizing: border-box;
+        }
+        .order-card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(92,184,138,0.3); border-bottom-color: #a5d6a7; }
+        .order-bg { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-size: cover; background-position: center; transition: transform 0.5s ease; z-index: 1; }
+        .order-card:hover .order-bg { transform: scale(1.05); }
+        .order-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 35%); z-index: 2; transition: background 0.3s ease; }
+        .order-card:hover .order-overlay { background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 30%); }
+        .order-title { position: relative; z-index: 3; color: #fff; font-size: 1.6rem; text-transform: uppercase; letter-spacing: 3px; text-shadow: 0 2px 4px rgba(0,0,0,1), 0 0 10px rgba(0,0,0,0.8); margin: 0; text-align: center; padding: 0 15px; width: 100%; }
+        .malicott-card { grid-column: 1 / -1; height: 200px; border-bottom-color: #5cb88a; }
+        .back-link { display: block; text-align: center; margin-top: 40px; color: #666; text-decoration: none; font-size: 1rem; letter-spacing: 1px; transition: color 0.3s; padding: 20px; border-top: 1px solid rgba(255,255,255,0.1); }
+        .back-link:hover { color: #5cb88a; }
+        @media (max-width: 950px) { .roster-grid { grid-template-columns: 1fr; } .order-card { height: 200px; } }
+    </style>
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+<header>
+    <h1>Military Roster</h1>
+    <div class="subtitle">The Four Branches of the Forgotten</div>
+</header>
+<main>
+    <div class="intro-text">
+        Select a Branch to access its doctrine, evolution tree, and active unit roster. Citizens born for the defense of the Empire assume specific forms based on their spiritual nature , the body is merely the vessel the Mother Tree has prepared for the soul.
+    </div>
+    <div class="roster-grid">
+        <a href="../units/forgotten/forgotten_order_arborei.html" class="order-card">
+            <div class="order-bg" style="background-image: url('../img/forgotten_roster_arborei.jpg');"></div>
+            <div class="order-overlay"></div>
+            <h2 class="order-title">Combattenti Arborei</h2>
+        </a>
+        <a href="../units/forgotten/forgotten_order_linfa.html" class="order-card">
+            <div class="order-bg" style="background-image: url('../img/forgotten_roster_linfa.jpg');"></div>
+            <div class="order-overlay"></div>
+            <h2 class="order-title">Ombre della Linfa</h2>
+        </a>
+        <a href="../units/forgotten/forgotten_order_araldi.html" class="order-card">
+            <div class="order-bg" style="background-image: url('../img/forgotten_roster_araldi.jpg');"></div>
+            <div class="order-overlay"></div>
+            <h2 class="order-title">Araldi della Polvere</h2>
+        </a>
+        <a href="../units/forgotten/forgotten_order_sentinelle.html" class="order-card">
+            <div class="order-bg" style="background-image: url('../img/forgotten_roster_sentinelle.jpg');"></div>
+            <div class="order-overlay"></div>
+            <h2 class="order-title">Sentinelle d'Ambra</h2>
+        </a>
+        <a href="../units/forgotten/forgotten_malicott.html" class="order-card malicott-card">
+            <div class="order-bg" style="background-image: url('../img/forgotten_leader_malicott.jpg');"></div>
+            <div class="order-overlay"></div>
+            <h2 class="order-title">Malicott , The Root Mother</h2>
+        </a>
+    </div>
+    <a href="forgotten.html" class="back-link">← Return to the Forgotten Overview</a>
+</main>
+</body>
+</html>

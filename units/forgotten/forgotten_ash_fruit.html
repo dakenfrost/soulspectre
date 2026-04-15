@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Ash Fruit</title>
+    <style>
+        body{color:#e0e0e0;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;line-height:1.8;margin:0;display:flex;flex-direction:column;align-items:center;}
+        #bg-image{position:fixed;top:0;left:0;width:100vw;height:100vh;background-image:url('../../img/forgotten_bg.jpg');background-size:cover;background-position:center;z-index:-2;}
+        #overlay{position:fixed;top:0;left:0;width:100vw;height:100vh;background:linear-gradient(to bottom,rgba(5,12,8,0.90),rgba(3,8,5,0.98));z-index:-1;}
+        header{padding:60px 20px 30px;text-align:center;width:100%;max-width:1100px;}
+        h1{letter-spacing:5px;font-size:2.8rem;margin:0;color:#fff;text-transform:uppercase;text-shadow:0 0 15px rgba(92,184,138,0.5);}
+        .subtitle{color:#e0e0e0;font-size:1.1rem;letter-spacing:2px;margin-top:10px;text-transform:uppercase;}
+        main{max-width:1100px;padding:40px 20px;width:100%;}
+        .intro-banner{width:100%;border:1px solid rgba(255,255,255,0.1);border-bottom:3px solid #e0e0e0;box-shadow:0 10px 30px rgba(0,0,0,0.8);border-radius:4px;overflow:hidden;margin-bottom:40px;}
+        .intro-banner img{width:100%;height:auto;display:block;}
+        .split-section{display:flex;gap:40px;align-items:stretch;margin-bottom:60px;background:rgba(10,18,12,0.7);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.05);border-left:3px solid #e0e0e0;box-shadow:0 10px 30px rgba(0,0,0,0.5);}
+        .section-image-container{position:relative;flex:0 0 38%;overflow:hidden;min-height:380px;}
+        .section-image-container img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;}
+        .section-text{flex:1;padding:35px;}
+        h2{color:#fff;letter-spacing:2px;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:10px;margin-top:0;margin-bottom:25px;font-size:1.8rem;}
+        p{margin-bottom:20px;color:#ccc;font-size:1.1rem;text-align:justify;}
+        strong{color:#5cb88a;}em{color:#aaa;font-style:italic;}
+        .tactical-module{border-top:2px solid #e0e0e0;padding-top:40px;margin-bottom:60px;}
+        .tactical-header{text-align:center;margin-bottom:40px;}
+        .tactical-header h2{border:none;font-size:2.2rem;}
+        .stats-box{display:flex;justify-content:center;flex-wrap:wrap;background:linear-gradient(145deg,rgba(10,18,12,0.9),rgba(5,10,7,0.9));border:1px solid rgba(224,224,224,0.2);border-radius:4px;padding:25px 10px;margin-bottom:50px;box-shadow:inset 0 0 20px rgba(0,0,0,0.8);}
+        .stat-item{text-align:center;padding:10px 30px;border-right:1px solid rgba(255,255,255,0.1);}
+        .stat-item:last-child{border-right:none;}
+        .stat-label{display:block;color:#888;font-size:0.8rem;text-transform:uppercase;letter-spacing:2px;margin-bottom:8px;}
+        .stat-value{display:block;color:#fff;font-size:1.8rem;font-weight:bold;font-family:monospace;}
+        .stat-value.hp{color:#4CAF50;}.stat-value.atk{color:#ef5350;}.stat-value.tier{color:#e0e0e0;}
+        .skills-grid{display:grid;grid-template-columns:1fr;gap:25px;}
+        .skill-card{background:rgba(10,18,12,0.8);border:1px solid rgba(255,255,255,0.05);border-left:4px solid #666;padding:25px;transition:transform 0.2s ease;}
+        .skill-card:hover{transform:translateY(-5px);}
+        .skill-header{display:flex;align-items:center;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:15px;margin-bottom:15px;gap:15px;}
+        .skill-icon{width:70px;height:70px;border-radius:4px;object-fit:cover;border:2px solid rgba(224,224,224,0.3);flex-shrink:0;background:rgba(0,0,0,0.3);}
+        .skill-title-container{flex:1;}
+        .skill-title{margin:0 0 6px;color:#fff;font-size:1.2rem;text-transform:uppercase;letter-spacing:1px;}
+        .skill-type{font-size:0.72rem;padding:2px 8px;border-radius:2px;text-transform:uppercase;letter-spacing:1px;display:inline-block;}
+        .skill-type.base{color:#9e9e9e;background:rgba(158,158,158,0.1);border:1px solid rgba(158,158,158,0.3);}
+        .skill-desc{color:#bbb;font-size:0.95rem;line-height:1.7;}
+        .dmg-light{color:#fff176;font-weight:bold;}.dmg-fire{color:#ff7043;font-weight:bold;}
+        .portrait-gallery-module{background:rgba(10,18,12,0.7);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.05);border-left:3px solid #e0e0e0;padding:35px;margin-bottom:40px;}
+        .gallery-header{margin-top:0;margin-bottom:25px;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:10px;}
+        .carousel-wrap{position:relative;overflow:hidden;}
+        .carousel-track{display:flex;gap:15px;transition:transform 0.35s ease;padding:5px 2px;}
+        .carousel-item{flex:0 0 200px;height:260px;border:1px solid rgba(255,255,255,0.1);border-radius:4px;overflow:hidden;background:#000;}
+        .carousel-item img{width:100%;height:100%;object-fit:cover;}
+        .carousel-nav{display:flex;justify-content:center;gap:20px;margin-top:20px;}
+        .nav-btn{background:rgba(10,18,12,0.9);border:1px solid #e0e0e0;color:#e0e0e0;width:44px;height:44px;border-radius:50%;cursor:pointer;font-size:1.2rem;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
+        .nav-btn:hover{background:#e0e0e0;color:#000;}
+        .back-link{display:block;text-align:center;margin-top:40px;color:#555;text-decoration:none;padding:25px;border-top:1px solid rgba(255,255,255,0.08);letter-spacing:1px;transition:color 0.3s;}
+        .back-link:hover{color:#5cb88a;}
+        @media(max-width:900px){.split-section{flex-direction:column}.section-image-container{height:400px;flex:unset}}
+    </style>
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+<header>
+    <h1>Ash Fruit</h1>
+    <div class="subtitle">Tier 1 , Araldi della Cenere</div>
+</header>
+<main>
+    <div class="intro-banner"><img src="../../img/forgotten_ash_fruit_banner.png" alt="Ash Fruit Banner"></div>
+    <div class="split-section">
+        <div class="section-image-container">
+            <img src="../../img/forgotten_ash_fruit_combat.jpg" alt="Ash Fruit">
+        </div>
+        <div class="section-text">
+            <h2>First Ignition</h2>
+            <p>They look like they are made of charcoal. A fine, granular surface that sheds grey-white particles when they move , the way old embers release their final heat. Their eyes are the only part that remain warm: two small points of amber light in an otherwise ashen face that has not yet learned what it is becoming.</p>
+            <p>The Ash Fruits were not born into magic. In life, most were ordinary people who had ordinary proximity to fires , blacksmiths, glass-blowers, torch-lighters, those who tended hearths through long winters. <strong>They understood fire before they could command it.</strong> The sap simply remembered what their hands already knew and extended that knowledge inward.</p>
+            <p>They are the first entry point into the Araldi system, and they carry the particular dignity of any first step: tentative, necessary, <em>impossible to skip.</em> The mages who become Seraph-class can trace their power lineage directly back to the moment an Ash Fruit launched its first unremarkable spark across a battlefield and something in the chain reaction began.</p>
+        </div>
+    </div>
+    <div class="tactical-module">
+        <div class="tactical-header"><h2>Tactical Data</h2></div>
+        <div class="stats-box">
+            <div class="stat-item"><span class="stat-label">HP</span><span class="stat-value hp">60</span></div>
+            <div class="stat-item"><span class="stat-label">ATK</span><span class="stat-value atk">30</span></div>
+            <div class="stat-item"><span class="stat-label">INI</span><span class="stat-value">85</span></div>
+            <div class="stat-item"><span class="stat-label">Tier</span><span class="stat-value tier">1</span></div>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <div class="skill-header">
+                    <img src="../../img/forgotten_skill_scintilla.png" alt="" class="skill-icon">
+                    <div class="skill-title-container"><h3 class="skill-title">Spark</h3><span class="skill-type base">Base</span></div>
+                </div>
+                <div class="skill-desc">Releases a small concentrated spark of <span class="dmg-light">Light</span>-infused <span class="dmg-fire">Fire</span> energy at the nearest enemy. The damage is modest , but the Ash Fruit has the highest Initiative of the entire branch. It strikes first, and the first strike often decides who flinches. <strong>5% chance to apply Burning for 1 turn</strong>.</div>
+            </div>
+        </div>
+    </div>
+    <div class="portrait-gallery-module">
+        <h2 class="gallery-header">Gallery</h2>
+        <div class="carousel-wrap">
+            <div class="carousel-track" id="carouselTrack">
+                <div class="carousel-item"><img src="../../img/forgotten_ash_fruit_portrait.jpg" alt="Portrait"></div>
+            </div>
+        </div>
+        <div class="carousel-nav">
+            <button class="nav-btn" id="prevBtn">&#8592;</button>
+            <button class="nav-btn" id="nextBtn">&#8594;</button>
+        </div>
+    </div>
+    <a href="forgotten_order_araldi.html" class="back-link">← Return to Araldi della Cenere</a>
+</main>
+<script>
+    const track=document.getElementById('carouselTrack');const items=track.querySelectorAll('.carousel-item');let current=0;
+    function update(){if(items.length>0)track.style.transform=`translateX(-${current*(items[0].offsetWidth+15)}px)`;}
+    document.getElementById('nextBtn').addEventListener('click',()=>{if(current<items.length-1){current++;update();}});
+    document.getElementById('prevBtn').addEventListener('click',()=>{if(current>0){current--;update();}});
+</script>
+</body>
+</html>
