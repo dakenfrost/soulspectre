@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SOULSPECTRE | Strategic Doctrine</title>
+    <title>SOULSPECTRE | The Basics</title>
     <style>
         body {
             background-color: #0a0a0a;
@@ -40,10 +40,11 @@
             width: 100%;
         }
 
-        .logo-small img {
-            max-width: 400px;
-            width: 80%;
-            filter: drop-shadow(0 0 20px rgba(92, 156, 230, 0.3));
+        /* LOGO GIGANTE COME IN INDEX.HTML */
+        .logo-container img {
+            max-width: 800px;
+            width: 90%;
+            filter: drop-shadow(0 0 30px rgba(92, 156, 230, 0.2));
         }
 
         h1 {
@@ -52,7 +53,6 @@
             color: #fff;
             text-transform: uppercase;
             margin: 10px 0;
-            text-shadow: 0 0 15px rgba(255,255,255,0.1);
         }
 
         main {
@@ -62,21 +62,20 @@
             flex-grow: 1;
         }
 
-        /* GRIGLIA SISTEMI GAMEPLAY */
-        .system-grid {
+        /* GRIGLIA A 3 COLONNE (PER LE 6 BASI) */
+        .basics-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
             width: 100%;
         }
 
-        .system-card {
+        .basic-card {
             position: relative;
-            height: 280px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            height: 350px; /* Più altezza per contenere il testo */
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 4px;
             overflow: hidden;
-            text-decoration: none;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
@@ -84,70 +83,49 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.6);
         }
 
-        .system-card .card-bg {
+        .card-bg {
             position: absolute;
             top: 0; left: 0;
             width: 100%; height: 100%;
             object-fit: cover;
             z-index: 1;
+            filter: brightness(0.4) grayscale(20%);
             transition: transform 0.6s ease;
-            filter: grayscale(40%) brightness(0.7);
         }
 
-        .system-card::after {
+        .basic-card:hover .card-bg {
+            transform: scale(1.05);
+            filter: brightness(0.6) grayscale(0%);
+        }
+
+        .basic-card::after {
             content: '';
             position: absolute;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.9) 90%);
+            background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.95) 100%);
             z-index: 2;
         }
 
-        .card-info {
+        .card-content {
             position: relative;
             z-index: 3;
             padding: 25px;
-            transition: transform 0.3s ease;
         }
 
-        .card-info h2 {
-            color: #fff;
+        .card-content h2 {
+            color: #5c9ce6;
             font-size: 1.5rem;
-            margin: 0;
+            margin: 0 0 10px 0;
             text-transform: uppercase;
             letter-spacing: 2px;
-            text-shadow: 0 2px 10px rgba(0,0,0,1);
         }
 
-        .card-info p {
-            color: #888;
-            font-size: 0.9rem;
-            margin: 5px 0 0 0;
-            opacity: 0;
-            transform: translateY(10px);
-            transition: all 0.3s ease;
-        }
-
-        /* HOVER EFFECTS */
-        .system-card:hover {
-            border-color: rgba(92, 156, 230, 0.5);
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.8);
-        }
-
-        .system-card:hover .card-bg {
-            transform: scale(1.1);
-            filter: grayscale(0%) brightness(0.9);
-        }
-
-        .system-card:hover .card-info p {
-            opacity: 1;
-            transform: translateY(0);
+        .card-content p {
             color: #ccc;
-        }
-
-        .system-card:hover h2 {
-            color: #5c9ce6;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 0;
         }
 
         .back-link {
@@ -164,8 +142,12 @@
 
         .back-link:hover { color: #fff; }
 
-        @media (max-width: 768px) {
-            .system-grid { grid-template-columns: 1fr; }
+        @media (max-width: 1100px) {
+            .basics-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 700px) {
+            .basics-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -175,60 +157,70 @@
 <div id="overlay"></div>
 
 <header>
-    <div class="logo-small">
+    <div class="logo-container">
         <img src="../img/soulspectre_logo.png" alt="SOULSPECTRE LOGO">
     </div>
-    <h1>Strategic Doctrine</h1>
+    <h1>The Basics</h1>
 </header>
 
 <main>
-    <div class="system-grid">
-        <a href="basics.html" class="system-card">
-            <img src="../img/btn_basics.png" class="card-bg" alt="">
-            <div class="card-info">
-                <h2>The Basics</h2>
-                <p>Core loops, turns, and victory conditions.</p>
+    <div class="basics-grid">
+        
+        <div class="basic-card">
+            <img src="../img/basics_capital.jpg" class="card-bg" alt="">
+            <div class="card-content">
+                <h2>The Capital</h2>
+                <p>Your starting base. Produces resources each turn. Defended by your Leader. Its loss results in a Game Over.</p>
             </div>
-        </a>
+        </div>
 
-        <a href="map_resources.html" class="system-card">
-            <img src="../img/btn_map.png" class="card-bg" alt="">
-            <div class="card-info">
-                <h2>Map & Resources</h2>
-                <p>Global navigation and economy management.</p>
+        <div class="basic-card">
+            <img src="../img/basics_party.jpg" class="card-bg" alt="">
+            <div class="card-content">
+                <h2>The Party</h2>
+                <p>Requires an Officer as leader (customizable name). Parties consist of the leader plus up to 5 additional members.</p>
             </div>
-        </a>
+        </div>
 
-        <a href="cities.html" class="system-card">
-            <img src="../img/btn_cities.png" class="card-bg" alt="">
-            <div class="card-info">
-                <h2>Cities & Influence</h2>
-                <p>Capital upgrades and province control.</p>
+        <div class="basic-card">
+            <img src="../img/basics_combat.jpg" class="card-bg" alt="">
+            <div class="card-content">
+                <h2>The Combat System</h2>
+                <p>Turn-based party vs party. Highest initiative acts first. Battle ends when one party is totally annihilated.</p>
             </div>
-        </a>
+        </div>
 
-        <a href="officers.html" class="system-card">
-            <img src="../img/btn_officers.png" class="card-bg" alt="">
-            <div class="card-info">
-                <h2>Officers & Parties</h2>
-                <p>Hero leadership and squad composition.</p>
+        <div class="basic-card">
+            <img src="../img/basics_provinces.jpg" class="card-bg" alt="">
+            <div class="card-content">
+                <h2>Provinces</h2>
+                <p>Control cities to harvest resources. Many points are guarded and require military victory to acquire.</p>
             </div>
-        </a>
+        </div>
 
-        <a href="progression.html" class="system-card">
-            <img src="../img/btn_progression.png" class="card-bg" alt="">
-            <div class="card-info">
-                <h2>Progression & Power</h2>
-                <p>Rogue-lite elements and permanent upgrades.</p>
+        <div class="basic-card">
+            <img src="../img/basics_awakening.jpg" class="card-bg" alt="">
+            <div class="card-content">
+                <h2>Awakening</h2>
+                <p>Clearing specific dungeons increases Awakening level. Each level grants one out of three unique passive skills.</p>
             </div>
-        </a>
+        </div>
+
+        <div class="basic-card">
+            <img src="../img/basics_victory.jpg" class="card-bg" alt="">
+            <div class="card-content">
+                <h2>Victory</h2>
+                <p>Achieve specific campaign goals or eliminate all other factions by destroying their Capitals.</p>
+            </div>
+        </div>
+
     </div>
 </main>
 
-<a href="../index.html" class="back-link">← Return to Main Archive</a>
+<a href="index.html" class="back-link">← Return to Strategic Doctrine</a>
 
 <footer>
-    &copy; 2026 SOULSPECTRE PROJECT - SYSTEM HUB UPDATED
+    &copy; 2026 SOULSPECTRE PROJECT - SYSTEM RE-ALIGNED
 </footer>
 
 </body>
