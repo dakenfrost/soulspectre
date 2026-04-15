@@ -30,108 +30,118 @@
             position: fixed;
             top: 0; left: 0;
             width: 100vw; height: 100vh;
-            background: radial-gradient(circle, rgba(15, 15, 20, 0.8) 0%, rgba(5, 5, 5, 0.98) 100%); 
+            background: linear-gradient(135deg, rgba(15,15,20,0.95) 0%, rgba(5,5,5,0.98) 100%); 
             z-index: -1;
         }
 
         header {
-            padding: 60px 20px 20px 20px;
+            padding: 60px 20px;
             text-align: center;
             width: 100%;
         }
 
-        /* LOGO GIGANTE COME IN INDEX.HTML */
-        .logo-container img {
-            max-width: 800px;
-            width: 90%;
-            filter: drop-shadow(0 0 30px rgba(92, 156, 230, 0.2));
-        }
-
         h1 {
-            letter-spacing: 5px;
-            font-size: 2rem;
+            letter-spacing: 6px;
+            font-size: 2.5rem;
             color: #fff;
             text-transform: uppercase;
-            margin: 10px 0;
+            margin: 0;
+            text-shadow: 0 0 15px rgba(92, 156, 230, 0.3);
         }
 
         main {
-            width: 95%;
-            max-width: 1400px;
-            padding: 40px 20px;
-            flex-grow: 1;
+            display: flex;
+            width: 90%;
+            max-width: 1200px;
+            gap: 40px;
+            margin-bottom: 50px;
+            align-items: flex-start;
         }
 
-        /* GRIGLIA A 3 COLONNE (PER LE 6 BASI) */
-        .basics-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-            width: 100%;
-        }
-
-        .basic-card {
-            position: relative;
-            height: 350px; /* Più altezza per contenere il testo */
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 4px;
-            overflow: hidden;
+        /* SYSTEM LIST */
+        .system-list {
+            flex: 0 0 40%;
             display: flex;
             flex-direction: column;
-            justify-content: flex-end;
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            gap: 15px;
         }
 
-        .card-bg {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            object-fit: cover;
-            z-index: 1;
-            filter: brightness(0.4) grayscale(20%);
-            transition: transform 0.6s ease;
-        }
-
-        .basic-card:hover .card-bg {
-            transform: scale(1.05);
-            filter: brightness(0.6) grayscale(0%);
-        }
-
-        .basic-card::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.95) 100%);
-            z-index: 2;
-        }
-
-        .card-content {
-            position: relative;
-            z-index: 3;
+        .system-btn {
+            background: rgba(25, 25, 30, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.05);
             padding: 25px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
         }
 
-        .card-content h2 {
+        .system-btn:hover {
+            background: rgba(40, 40, 55, 0.9);
+            border-left: 4px solid #5c9ce6;
+            transform: translateX(10px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
             color: #5c9ce6;
-            font-size: 1.5rem;
-            margin: 0 0 10px 0;
+        }
+
+        /* PREVIEW PANEL */
+        .preview-panel {
+            flex: 1;
+            background: rgba(10, 10, 12, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            min-height: 550px;
+            position: sticky;
+            top: 40px;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+        }
+
+        #preview-img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            filter: brightness(0.8);
+        }
+
+        .preview-content { padding: 35px; }
+
+        #preview-title {
+            font-size: 1.8rem;
+            margin: 0 0 15px 0;
+            color: #fff;
             text-transform: uppercase;
             letter-spacing: 2px;
         }
 
-        .card-content p {
+        #preview-desc {
             color: #ccc;
-            font-size: 0.95rem;
-            line-height: 1.6;
+            font-size: 1.1rem;
+            line-height: 1.8;
             margin: 0;
+        }
+
+        .placeholder-text {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 550px;
+            color: #444;
+            font-style: italic;
+            text-align: center;
+            padding: 40px;
+            font-size: 1.2rem;
         }
 
         .back-link {
             display: block;
-            margin: 60px 0;
-            color: #555;
+            margin: 40px 0;
+            color: #666;
             text-decoration: none;
             transition: color 0.3s;
             text-transform: uppercase;
@@ -142,12 +152,10 @@
 
         .back-link:hover { color: #fff; }
 
-        @media (max-width: 1100px) {
-            .basics-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-
-        @media (max-width: 700px) {
-            .basics-grid { grid-template-columns: 1fr; }
+        @media (max-width: 900px) {
+            main { flex-direction: column; }
+            .system-list, .preview-panel { width: 100%; position: static; }
+            .preview-panel { min-height: auto; }
         }
     </style>
 </head>
@@ -157,71 +165,85 @@
 <div id="overlay"></div>
 
 <header>
-    <div class="logo-container">
-        <img src="../img/soulspectre_logo.png" alt="SOULSPECTRE LOGO">
-    </div>
     <h1>The Basics</h1>
 </header>
 
 <main>
-    <div class="basics-grid">
-        
-        <div class="basic-card">
-            <img src="../img/basics_capital.jpg" class="card-bg" alt="">
-            <div class="card-content">
-                <h2>The Capital</h2>
-                <p>Your starting base. Produces resources each turn. Defended by your Leader. Its loss results in a Game Over.</p>
+    <div class="system-list">
+        <a href="#" class="system-btn" onmouseover="updatePreview('capital')">The Capital</a>
+        <a href="#" class="system-btn" onmouseover="updatePreview('party')">The Party</a>
+        <a href="#" class="system-btn" onmouseover="updatePreview('combat')">The Combat System</a>
+        <a href="#" class="system-btn" onmouseover="updatePreview('provinces')">Provinces</a>
+        <a href="#" class="system-btn" onmouseover="updatePreview('awakening')">Awakening</a>
+        <a href="#" class="system-btn" onmouseover="updatePreview('victory')">Victory</a>
+    </div>
+
+    <div class="preview-panel" id="panel">
+        <div id="default-content" class="placeholder-text">
+            Hover over a basic system to access tactical records...
+        </div>
+        <div id="active-content" style="display: none;">
+            <img id="preview-img" src="" alt="System Preview">
+            <div class="preview-content">
+                <h2 id="preview-title"></h2>
+                <p id="preview-desc"></p>
             </div>
         </div>
-
-        <div class="basic-card">
-            <img src="../img/basics_party.jpg" class="card-bg" alt="">
-            <div class="card-content">
-                <h2>The Party</h2>
-                <p>Requires an Officer as leader (customizable name). Parties consist of the leader plus up to 5 additional members.</p>
-            </div>
-        </div>
-
-        <div class="basic-card">
-            <img src="../img/basics_combat.jpg" class="card-bg" alt="">
-            <div class="card-content">
-                <h2>The Combat System</h2>
-                <p>Turn-based party vs party. Highest initiative acts first. Battle ends when one party is totally annihilated.</p>
-            </div>
-        </div>
-
-        <div class="basic-card">
-            <img src="../img/basics_provinces.jpg" class="card-bg" alt="">
-            <div class="card-content">
-                <h2>Provinces</h2>
-                <p>Control cities to harvest resources. Many points are guarded and require military victory to acquire.</p>
-            </div>
-        </div>
-
-        <div class="basic-card">
-            <img src="../img/basics_awakening.jpg" class="card-bg" alt="">
-            <div class="card-content">
-                <h2>Awakening</h2>
-                <p>Clearing specific dungeons increases Awakening level. Each level grants one out of three unique passive skills.</p>
-            </div>
-        </div>
-
-        <div class="basic-card">
-            <img src="../img/basics_victory.jpg" class="card-bg" alt="">
-            <div class="card-content">
-                <h2>Victory</h2>
-                <p>Achieve specific campaign goals or eliminate all other factions by destroying their Capitals.</p>
-            </div>
-        </div>
-
     </div>
 </main>
 
 <a href="index.html" class="back-link">← Return to Strategic Doctrine</a>
 
-<footer>
-    &copy; 2026 SOULSPECTRE PROJECT - SYSTEM RE-ALIGNED
-</footer>
+<script>
+    const data = {
+        capital: {
+            title: "The Capital",
+            desc: "Your primary starting base and economic heart. The capital produces a base amount of resources each turn and serves as the only hub where you can construct structures and form new parties. It is permanently defended by your Leader, making it exceptionally difficult to conquer; however, its fall results in an immediate game over.",
+            img: "../img/basics_capital.jpg"
+        },
+        party: {
+            title: "The Party",
+            desc: "The fundamental unit of military mobilization. Each party requires an officer to act as the party leader, whom you can name according to your preference. A party configuration can range from a solo leader to a full squad with up to 5 additional party members, for a maximum of 6 units per group.",
+            img: "../img/basics_party.jpg"
+        },
+        combat: {
+            title: "The Combat System",
+            desc: "Turn-based tactical engagements between two opposing parties. At the start of each turn, the unit with the highest initiative acts first and selects one of its available skills. In the event of identical initiative values, the acting order is determined randomly. The battle concludes only when one party is totally annihilated.",
+            img: "../img/basics_combat.jpg"
+        },
+        provinces: {
+            title: "Provinces",
+            desc: "Regional territories outside the capital. Each province contains its own 'city', and establishing control over it allows you to harvest additional resources for your faction. Be advised: specific resources may be guarded by hostile enemies that must be defeated before you can successfully acquire the assets.",
+            img: "../img/basics_provinces.jpg"
+        },
+        awakening: {
+            title: "Awakening",
+            desc: "A progression system tied to the mastery of your leaders. Clearing specific dungeons increases the level of Awakening for your officers. Each new Awakening level allows you to select one out of three additional passive skills, such as increased attack power or bonus elemental damage.",
+            img: "../img/basics_awakening.jpg"
+        },
+        victory: {
+            title: "Victory",
+            desc: "While specific campaigns may dictate unique objectives, the standard path to victory involves total faction dominance. In normal mode, a faction wins once all other competing factions have been defeated and their respective capitals have been destroyed.",
+            img: "../img/basics_victory.jpg"
+        }
+    };
+
+    const defaultContent = document.getElementById('default-content');
+    const activeContent = document.getElementById('active-content');
+    const pTitle = document.getElementById('preview-title');
+    const pDesc = document.getElementById('preview-desc');
+    const pImg = document.getElementById('preview-img');
+
+    function updatePreview(key) {
+        const info = data[key];
+        pTitle.innerText = info.title;
+        pDesc.innerText = info.desc;
+        pImg.src = info.img;
+        
+        defaultContent.style.display = 'none';
+        activeContent.style.display = 'block';
+    }
+</script>
 
 </body>
 </html>
