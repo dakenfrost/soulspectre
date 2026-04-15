@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SOULSPECTRE | Basics</title>
+    <title>SOULSPECTRE | Strategic Doctrine</title>
     <style>
         body {
             background-color: #0a0a0a;
@@ -30,7 +30,7 @@
             position: fixed;
             top: 0; left: 0;
             width: 100vw; height: 100vh;
-            background: rgba(5, 5, 5, 0.92); 
+            background: radial-gradient(circle, rgba(15, 15, 20, 0.8) 0%, rgba(5, 5, 5, 0.98) 100%); 
             z-index: -1;
         }
 
@@ -40,74 +40,120 @@
             width: 100%;
         }
 
+        .logo-small img {
+            max-width: 400px;
+            width: 80%;
+            filter: drop-shadow(0 0 20px rgba(92, 156, 230, 0.3));
+        }
+
         h1 {
-            letter-spacing: 4px;
-            font-size: 2.5rem;
+            letter-spacing: 5px;
+            font-size: 2rem;
             color: #fff;
             text-transform: uppercase;
-            margin: 0;
+            margin: 10px 0;
+            text-shadow: 0 0 15px rgba(255,255,255,0.1);
         }
 
         main {
-            width: 90%;
-            max-width: 900px;
-            padding: 40px 0;
+            width: 95%;
+            max-width: 1400px;
+            padding: 40px 20px;
+            flex-grow: 1;
         }
 
-        .basics-container {
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-        }
-
-        .slide-card {
-            background: rgba(20, 20, 25, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-left: 4px solid #5c9ce6;
+        /* GRIGLIA SISTEMI GAMEPLAY */
+        .system-grid {
             display: grid;
-            grid-template-columns: 300px 1fr;
-            min-height: 250px;
-            overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-        }
-
-        .slide-img {
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
             width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            border-right: 1px solid rgba(255,255,255,0.1);
         }
 
-        .slide-info {
-            padding: 30px;
+        .system-card {
+            position: relative;
+            height: 280px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 4px;
+            overflow: hidden;
+            text-decoration: none;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-end;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
         }
 
-        .slide-info h2 {
-            margin: 0 0 15px 0;
+        .system-card .card-bg {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            z-index: 1;
+            transition: transform 0.6s ease;
+            filter: grayscale(40%) brightness(0.7);
+        }
+
+        .system-card::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.9) 90%);
+            z-index: 2;
+        }
+
+        .card-info {
+            position: relative;
+            z-index: 3;
+            padding: 25px;
+            transition: transform 0.3s ease;
+        }
+
+        .card-info h2 {
             color: #fff;
+            font-size: 1.5rem;
+            margin: 0;
             text-transform: uppercase;
             letter-spacing: 2px;
-            font-size: 1.5rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,1);
         }
 
-        .slide-info p {
-            margin: 0;
+        .card-info p {
+            color: #888;
+            font-size: 0.9rem;
+            margin: 5px 0 0 0;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+
+        /* HOVER EFFECTS */
+        .system-card:hover {
+            border-color: rgba(92, 156, 230, 0.5);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+        }
+
+        .system-card:hover .card-bg {
+            transform: scale(1.1);
+            filter: grayscale(0%) brightness(0.9);
+        }
+
+        .system-card:hover .card-info p {
+            opacity: 1;
+            transform: translateY(0);
             color: #ccc;
-            line-height: 1.7;
-            font-size: 1.05rem;
         }
 
-        .highlight { color: #5c9ce6; font-weight: bold; }
-        .important { color: #FFD700; font-weight: bold; }
+        .system-card:hover h2 {
+            color: #5c9ce6;
+        }
 
         .back-link {
             display: block;
             margin: 60px 0;
-            color: #666;
+            color: #555;
             text-decoration: none;
             transition: color 0.3s;
             text-transform: uppercase;
@@ -118,9 +164,8 @@
 
         .back-link:hover { color: #fff; }
 
-        @media (max-width: 800px) {
-            .slide-card { grid-template-columns: 1fr; }
-            .slide-img { height: 200px; }
+        @media (max-width: 768px) {
+            .system-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -130,67 +175,60 @@
 <div id="overlay"></div>
 
 <header>
-    <h1>The Basics</h1>
+    <div class="logo-small">
+        <img src="../img/soulspectre_logo.png" alt="SOULSPECTRE LOGO">
+    </div>
+    <h1>Strategic Doctrine</h1>
 </header>
 
 <main>
-    <div class="basics-container">
-        
-        <div class="slide-card">
-            <div class="slide-img" style="background-image: url('../img/basics_capital.jpg');"></div>
-            <div class="slide-info">
-                <h2>The Capital</h2>
-                <p>Your starting base. It produces a base amount of resources each turn and allows you to build structures and form parties. The capital is defended by your <span class="highlight">Leader</span>, making it extremely hard to conquer, but its loss results in a <span class="important">Game Over</span>.</p>
+    <div class="system-grid">
+        <a href="basics.html" class="system-card">
+            <img src="../img/btn_basics.png" class="card-bg" alt="">
+            <div class="card-info">
+                <h2>The Basics</h2>
+                <p>Core loops, turns, and victory conditions.</p>
             </div>
-        </div>
+        </a>
 
-        <div class="slide-card">
-            <div class="slide-img" style="background-image: url('../img/basics_party.jpg');"></div>
-            <div class="slide-info">
-                <h2>The Party</h2>
-                <p>Each party requires an <span class="highlight">Officer</span> as leader, whom you can name as you wish. A party can be composed of just the leader or include up to <span class="highlight">5 additional members</span> for a total of 6 units.</p>
+        <a href="map_resources.html" class="system-card">
+            <img src="../img/btn_map.png" class="card-bg" alt="">
+            <div class="card-info">
+                <h2>Map & Resources</h2>
+                <p>Global navigation and economy management.</p>
             </div>
-        </div>
+        </a>
 
-        <div class="slide-card">
-            <div class="slide-img" style="background-image: url('../img/basics_combat.jpg');"></div>
-            <div class="slide-info">
-                <h2>The Combat System</h2>
-                <p>Battles are turn-based encounters between two parties. The unit with the <span class="highlight">highest Initiative</span> acts first and selects a skill. If initiative is tied, the order is random. The battle ends when one party is <span class="important">totally annihilated</span>.</p>
+        <a href="cities.html" class="system-card">
+            <img src="../img/btn_cities.png" class="card-bg" alt="">
+            <div class="card-info">
+                <h2>Cities & Influence</h2>
+                <p>Capital upgrades and province control.</p>
             </div>
-        </div>
+        </a>
 
-        <div class="slide-card">
-            <div class="slide-img" style="background-image: url('../img/basics_provinces.jpg');"></div>
-            <div class="slide-info">
-                <h2>Provinces</h2>
-                <p>Each province has its own city. Controlling it allows you to harvest additional resources. Be aware: some resources may be guarded by enemies that must be defeated before you can acquire the assets.</p>
+        <a href="officers.html" class="system-card">
+            <img src="../img/btn_officers.png" class="card-bg" alt="">
+            <div class="card-info">
+                <h2>Officers & Parties</h2>
+                <p>Hero leadership and squad composition.</p>
             </div>
-        </div>
+        </a>
 
-        <div class="slide-card">
-            <div class="slide-img" style="background-image: url('../img/basics_awakening.jpg');"></div>
-            <div class="slide-info">
-                <h2>Awakening</h2>
-                <p>Clearing specific dungeons will increase the <span class="highlight">Awakening level</span> of your officers. Each level lets you select one of three <span class="highlight">passive skills</span>, providing bonuses such as increased attack or additional elemental damage.</p>
+        <a href="progression.html" class="system-card">
+            <img src="../img/btn_progression.png" class="card-bg" alt="">
+            <div class="card-info">
+                <h2>Progression & Power</h2>
+                <p>Rogue-lite elements and permanent upgrades.</p>
             </div>
-        </div>
-
-        <div class="slide-card">
-            <div class="slide-img" style="background-image: url('../img/basics_victory.jpg');"></div>
-            <div class="slide-info">
-                <h2>Victory</h2>
-                <p>Campaigns often have specific goals, but in normal mode, a faction wins once all other factions are defeated and their <span class="important">capitals are destroyed</span>.</p>
-            </div>
-        </div>
-
+        </a>
     </div>
-
-    <a href="index.html" class="back-link">← Return to Strategic Doctrine</a>
 </main>
 
+<a href="../index.html" class="back-link">← Return to Main Archive</a>
+
 <footer>
-    &copy; 2026 SOULSPECTRE PROJECT - DATA UPDATED
+    &copy; 2026 SOULSPECTRE PROJECT - SYSTEM HUB UPDATED
 </footer>
 
 </body>
