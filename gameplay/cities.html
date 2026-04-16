@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Cities & Influence</title>
+    <style>
+        :root {
+            --bg-color: #0a0a0a;
+            --text-main: #e0e0e0;
+            --gold: #ffd700;
+            --mana: #5c9ce6;
+            --platinum: #e5e4e2;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --panel-bg: rgba(15, 15, 20, 0.85);
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        #bg-image {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background-image: url('../img/homepage_bg.jpg'); 
+            background-size: cover;
+            background-position: center;
+            z-index: -2;
+        }
+
+        #overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background: linear-gradient(135deg, rgba(10,10,15,0.95) 0%, rgba(5,5,5,0.98) 100%); 
+            z-index: -1;
+        }
+
+        header {
+            padding: 60px 20px;
+            text-align: center;
+            width: 100%;
+        }
+
+        h1 {
+            letter-spacing: 6px;
+            font-size: 2.5rem;
+            color: #fff;
+            text-transform: uppercase;
+            margin: 0;
+            text-shadow: 0 0 15px rgba(92, 156, 230, 0.3);
+            border-bottom: 2px solid var(--border-color);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        main {
+            width: 90%;
+            max-width: 1200px;
+            margin: 40px auto;
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+        }
+
+        /* Alternating Row Structure */
+        .content-row {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .content-row.reverse {
+            flex-direction: row-reverse;
+        }
+
+        /* Text Panel */
+        .text-panel {
+            flex: 1;
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            padding: 40px;
+            border-radius: 4px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+            line-height: 1.6;
+        }
+
+        .text-panel h2 {
+            color: #fff;
+            margin-top: 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        /* Image Panel */
+        .image-panel {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-panel img {
+            width: 100%;
+            max-width: 600px;
+            border: 2px solid #333;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            filter: brightness(0.85) contrast(1.1);
+            transition: filter 0.3s ease;
+        }
+
+        .image-panel img:hover {
+            filter: brightness(1) contrast(1.1);
+        }
+
+        /* Formatting Classes */
+        .gold { color: var(--gold); font-weight: bold; }
+        .mana { color: var(--mana); font-weight: bold; }
+        
+        ul.data-list {
+            list-style-type: square;
+            padding-left: 20px;
+        }
+
+        ul.data-list li {
+            margin-bottom: 10px;
+            color: #ccc;
+        }
+
+        ul.data-list li strong {
+            color: #fff;
+        }
+
+        .highlight { color: #88c0d0; font-weight: bold; }
+
+        .back-link {
+            display: block;
+            margin: 20px auto 60px auto;
+            color: #888;
+            text-decoration: none;
+            transition: color 0.3s;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+
+        .back-link:hover { color: #fff; }
+
+        @media (max-width: 900px) {
+            .content-row, .content-row.reverse {
+                flex-direction: column;
+            }
+            .text-panel, .image-panel {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<header>
+    <h1>Cities & Influence</h1>
+</header>
+
+<main>
+    <div class="content-row">
+        <div class="image-panel">
+            <img src="../img/city_conquest.jpg" alt="City Conquest and Influence">
+        </div>
+        <div class="text-panel">
+            <h2>Influence & Conquest</h2>
+            <p>Each City, including the Capital, projects a territorial Zone of Influence. Any resource-producing Point of Interest within this zone that has been cleared of hostile forces will generate continuous income for the city's owner.</p>
+            <p>To conquer a City, a player must enter it with their active party. If the City is undefended, it is captured automatically until another faction claims it. If an enemy garrison is present, the defending party must be entirely defeated in combat before control changes hands.</p>
+        </div>
+    </div>
+
+    <div class="content-row reverse">
+        <div class="image-panel">
+            <img src="../img/cities_levels.jpg" alt="Settlement Tiers">
+        </div>
+        <div class="text-panel">
+            <h2>Settlement Tiers & Defenses</h2>
+            <p>Cities are categorized into different tiers. Higher-tier settlements increase the maximum size of the defending garrison and provide substantial defensive bonuses to units stationed within:</p>
+            <ul class="data-list">
+                <li><strong>Lv1: Encampment</strong> - Garrison Size: 2 | Base Armor Bonus: <span class="highlight">+5%</span></li>
+                <li><strong>Lv2: Village</strong> - Garrison Size: 3 | Base Armor Bonus: <span class="highlight">+10%</span></li>
+                <li><strong>Lv3: Town</strong> - Garrison Size: 4 | Base Armor Bonus: <span class="highlight">+15%</span></li>
+                <li><strong>Lv4: City</strong> - Garrison Size: 5 | Base Armor Bonus: <span class="highlight">+20%</span></li>
+                <li><strong>Lv5: Metropolis</strong> - Garrison Size: 6 | Base Armor Bonus: <span class="highlight">+25%</span></li>
+                <li><strong>Capital</strong> - Garrison Size: 6 | Base Armor Bonus: <span class="highlight">+30%</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="content-row">
+        <div class="image-panel">
+            <img src="../img/city_types.jpg" alt="City Specializations">
+        </div>
+        <div class="text-panel">
+            <h2>Provincial Specializations</h2>
+            <p>Beyond their tier, provincial cities possess distinct specializations that grant the occupying faction unique strategic advantages:</p>
+            <ul class="data-list">
+                <li><strong>Trade City:</strong> Generates supplemental <span class="gold">Gold</span> scaling with the city's level.</li>
+                <li><strong>Arcane City:</strong> Generates supplemental <span class="mana">Mana</span> scaling with the city's level.</li>
+                <li><strong>Fortress City:</strong> Allied parties operating within its Zone of Influence receive an additional base Armor bonus.</li>
+                <li><strong>Barbarian City:</strong> Allied parties operating within its Zone of Influence receive an additional base Damage bonus.</li>
+                <li><strong>Librarian City:</strong> Allied parties operating within its Zone of Influence gain bonus Experience.</li>
+                <li><strong>Chaos City:</strong> Continuously spawns hostile encounters within its territory every X turns.</li>
+                <li><strong>Mercenary City:</strong> A rare settlement that permits the recruitment of random cross-faction units in exchange for <span class="gold">Gold</span>.</li>
+            </ul>
+        </div>
+    </div>
+</main>
+
+<a href="index.html" class="back-link">← Return to Main Doctrine</a>
+
+</body>
+</html>
