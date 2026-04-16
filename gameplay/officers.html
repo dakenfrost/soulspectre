@@ -10,6 +10,7 @@
             --text-main: #e0e0e0;
             --accent-blue: #5c9ce6;
             --accent-red: #d04b4b;
+            --gold: #ffd700;
             --border-color: rgba(255, 255, 255, 0.1);
             --panel-bg: rgba(15, 15, 20, 0.85);
         }
@@ -64,20 +65,33 @@
 
         main {
             width: 90%;
-            max-width: 1000px; /* Ridotto leggermente per leggibilità del testo full-width */
+            max-width: 1200px;
             margin: 40px auto;
             display: flex;
             flex-direction: column;
+            gap: 60px;
+        }
+
+        /* Alternating Row Structure */
+        .content-row {
+            display: flex;
+            align-items: center;
             gap: 40px;
         }
 
+        .content-row.reverse {
+            flex-direction: row-reverse;
+        }
+
+        /* Text Panel */
         .text-panel {
+            flex: 1;
             background: var(--panel-bg);
             border: 1px solid var(--border-color);
             padding: 40px;
             border-radius: 4px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.6);
-            line-height: 1.7;
+            line-height: 1.6;
         }
 
         .text-panel h2 {
@@ -92,16 +106,41 @@
 
         .text-panel h3 {
             color: var(--accent-blue);
-            margin-top: 30px;
+            margin-top: 25px;
             text-transform: uppercase;
-            letter-spacing: 1px;
             font-size: 1.1rem;
+            letter-spacing: 1px;
         }
 
+        /* Image Panel */
+        .image-panel {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-panel img {
+            width: 100%;
+            max-width: 600px;
+            border: 2px solid #333;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            filter: brightness(0.85) contrast(1.1);
+            transition: filter 0.3s ease;
+        }
+
+        .image-panel img:hover {
+            filter: brightness(1) contrast(1.1);
+        }
+
+        /* Formatting Classes */
+        .gold { color: var(--gold); font-weight: bold; }
+        .warning { color: var(--accent-red); font-weight: bold; }
+        .highlight { color: #88c0d0; font-weight: bold; }
+        
         ul.data-list {
             list-style-type: square;
             padding-left: 20px;
-            margin-bottom: 20px;
         }
 
         ul.data-list li {
@@ -111,18 +150,6 @@
 
         ul.data-list li strong {
             color: #fff;
-        }
-
-        .warning {
-            color: var(--accent-red);
-            font-weight: bold;
-        }
-
-        .note {
-            font-style: italic;
-            color: #888;
-            margin-top: 15px;
-            display: block;
         }
 
         .back-link {
@@ -138,6 +165,15 @@
         }
 
         .back-link:hover { color: #fff; }
+
+        @media (max-width: 900px) {
+            .content-row, .content-row.reverse {
+                flex-direction: column;
+            }
+            .text-panel, .image-panel {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -150,36 +186,50 @@
 </header>
 
 <main>
-    <div class="text-panel">
-        <h2>Leadership & Party Dynamics</h2>
-        <p>Officers serve as the primary commanders of your active parties. Each Officer can lead a base of 3 to 5 units, scaling entirely on their Leadership stat. A faction is strictly limited to a maximum of 5 active Officers at any given time.</p>
-        <p>Officers can equip gear and unlock additional equipment slots as they progress. This gear enhances base statistics, grants specific elemental protections, or unlocks unique tactical skills.</p>
-        
-        <h3>Casualties and Resurrection</h3>
-        <p>If an Officer falls in battle, their surviving party will suffer a 50% movement speed penalty on the global map until the commander is resurrected. Fallen Officers can be revived at any controlled City, provided at least one member of their party survived the encounter. <span class="warning">If the entire party is annihilated, all members—including the Officer—are permanently lost.</span></p>
+    <div class="content-row">
+        <div class="image-panel">
+            <img src="../img/officer_leadership.jpg" alt="Officer Leadership and Gear">
+        </div>
+        <div class="text-panel">
+            <h2>Leadership & Party Dynamics</h2>
+            <p>Officers serve as the primary commanders of your active parties. Each Officer can lead a base of 3 to 5 units, scaling entirely on their Leadership stat. A faction is strictly limited to a maximum of 5 active Officers at any given time.</p>
+            <p>Officers can equip gear and unlock additional equipment slots as they progress. This gear enhances base statistics, grants specific elemental protections, or unlocks unique tactical skills.</p>
+            
+            <h3>Casualties and Resurrection</h3>
+            <p>If an Officer falls in battle, their surviving party will suffer a 50% movement speed penalty on the global map until the commander is resurrected. Fallen Officers can be revived at any controlled City, provided at least one member of their party survived the encounter. <span class="warning">If the entire party is annihilated, all members—including the Officer—are permanently lost.</span></p>
+        </div>
     </div>
 
-    <div class="text-panel">
-        <h2>Progression & Stat Growth</h2>
-        <p>Officers and units incapable of further evolution (either due to missing infrastructure or having reached their maximum tier) experience fixed stat growth upon leveling up. They gain Health Points (HP) and Attack equal to 50% of their base Tier 1 stats.</p>
-        <p><em>Example:</em> An Officer with a base of 150 HP and 50 Attack will gain 75 HP and 25 Attack per level. Note that high-tier units calculate this bonus based strictly on their original Tier 1 form (e.g., a Tier 4 unit whose Tier 1 form had 25 Attack will gain 13 Attack per level, rounded up).</p>
+    <div class="content-row reverse">
+        <div class="image-panel">
+            <img src="../img/officer_stats.jpg" alt="Officer Progression and Leveling">
+        </div>
+        <div class="text-panel">
+            <h2>Progression & Stat Growth</h2>
+            <p>Officers and units incapable of further evolution experience fixed stat growth upon leveling up. They gain Health Points (HP) and Attack equal to 50% of their base Tier 1 stats.</p>
+            <p><em>Example:</em> An Officer with 150 HP and 50 Attack at Tier 1 will gain 75 HP and 25 Attack per level. High-tier units calculate this bonus based strictly on their original Tier 1 form.</p>
 
-        <h3>Officer Level-Up Perks</h3>
-        <p>Upon leveling up, an Officer may select one of the following tactical upgrades:</p>
-        <ul class="data-list">
-            <li><strong>+1 Leadership Capacity</strong></li>
-            <li><strong>+1 Equipment Slot</strong> (if slots are still locked)</li>
-            <li><strong>+1 Elemental Protection</strong> (element of your choice)</li>
-        </ul>
-        <span class="note">Note: In addition to standard level-up perks, Officers are also affected by the global Awakening progression system. Consult the Awakening doctrine for further parameters.</span>
+            <h3>Officer Level-Up Perks</h3>
+            <p>Upon leveling up, an Officer may select one of the following tactical upgrades:</p>
+            <ul class="data-list">
+                <li><strong>+1 Leadership Capacity</strong></li>
+                <li><strong>+1 Equipment Slot</strong> (if slots are still locked)</li>
+                <li><strong>+1 Elemental Protection</strong> (of your choice)</li>
+            </ul>
+        </div>
     </div>
 
-    <div class="text-panel">
-        <h2>Evolution & Champions</h2>
-        <p>When a unit gains enough experience to evolve into a higher tier, a medal icon will appear on the post-battle screen, allowing you to select its next evolutionary path. <span class="warning">Warning: Any experience gained beyond the evolution threshold is permanently lost. You must upgrade them as soon as possible to avoid data waste.</span></p>
+    <div class="content-row">
+        <div class="image-panel">
+            <img src="../img/unit_evolution.jpg" alt="Unit Evolution and Champions">
+        </div>
+        <div class="text-panel">
+            <h2>Evolution & Champions</h2>
+            <p>When a unit reaches the threshold to evolve into a higher tier, a medal icon will appear on the post-battle screen. <span class="warning">Experience gained beyond the evolution threshold is permanently lost; you must upgrade units immediately to avoid data waste.</span></p>
 
-        <h3>Champion Units</h3>
-        <p>Champion Units are elite assets strictly capped at 1 for each combat category: <strong>Melee, Ranged, Support, Magic, and Hybrid</strong>. A new Champion in a specific category can only be forged if the current one has been permanently killed (which requires the total annihilation of their assigned party).</p>
+            <h3>Champion Units</h3>
+            <p>Champion Units are elite assets capped at 1 for each combat category: <span class="highlight">Melee, Ranged, Support, Magic, and Hybrid</span>. A new Champion can only be forged if the current one has been permanently killed through the total annihilation of their party.</p>
+        </div>
     </div>
 </main>
 
