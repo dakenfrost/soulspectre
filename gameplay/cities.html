@@ -294,37 +294,46 @@
         const images = document.querySelectorAll('.image-panel img');
         const closeBtn = document.querySelector('.close-modal');
 
-        // Apri il modal al click su qualsiasi immagine
+        // Funzione universale per chiudere
+        const closeModal = () => {
+            modal.classList.remove('show');
+            setTimeout(() => { 
+                modal.style.display = "none"; 
+            }, 300); 
+        };
+
+        // Apertura
         images.forEach(img => {
             img.addEventListener('click', function() {
-                modal.classList.add('show');
-                modalImg.src = this.src; // Copia la sorgente dell'immagine cliccata
+                modal.style.display = "block"; // 1. Ripristina il display
+                
+                // 2. Piccolo delay per permettere al browser di registrare il display:block
+                // prima di far partire la transizione di opacità
+                setTimeout(() => {
+                    modal.classList.add('show');
+                }, 10);
+                
+                modalImg.src = this.src; 
             });
         });
 
-        // Chiudi il modal cliccando sulla X
-        closeBtn.addEventListener('click', () => {
-            modal.classList.remove('show');
-            setTimeout(() => { modal.style.display = "none"; }, 300); // Aspetta la fine della transizione
-        });
+        // Chiusura con click sulla X
+        closeBtn.addEventListener('click', closeModal);
 
-        // Chiudi il modal cliccando ovunque fuori dall'immagine
+        // Chiusura con click fuori dall'immagine
         modal.addEventListener('click', (e) => {
             if (e.target !== modalImg) {
-                modal.classList.remove('show');
-                setTimeout(() => { modal.style.display = "none"; }, 300);
+                closeModal();
             }
         });
 
-        // Chiudi con il tasto ESC
+        // Chiusura con tasto ESC
         document.addEventListener('keydown', (e) => {
             if (e.key === "Escape" && modal.classList.contains('show')) {
-                modal.classList.remove('show');
-                setTimeout(() => { modal.style.display = "none"; }, 300);
+                closeModal();
             }
         });
     });
 </script>
-
 </body>
 </html>
