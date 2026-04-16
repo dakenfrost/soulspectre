@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOULSPECTRE | The Basics</title>
     <style>
+        :root {
+            --accent-blue: #5c9ce6;
+            --accent-red: #d04b4b;
+        }
+
         body {
             background-color: #0a0a0a;
             color: #e0e0e0;
@@ -82,10 +87,10 @@
 
         .system-btn:hover {
             background: rgba(40, 40, 55, 0.9);
-            border-left: 4px solid #5c9ce6;
+            border-left: 4px solid var(--accent-blue);
             transform: translateX(10px);
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            color: #5c9ce6;
+            color: var(--accent-blue);
         }
 
         /* PREVIEW PANEL */
@@ -107,6 +112,12 @@
             object-fit: cover;
             border-bottom: 1px solid rgba(255,255,255,0.1);
             filter: brightness(0.8);
+            transition: filter 0.3s ease;
+            cursor: zoom-in; /* Aggiunto cursore zoom */
+        }
+
+        #preview-img:hover {
+            filter: brightness(1) contrast(1.1);
         }
 
         .preview-content { padding: 35px; }
@@ -157,6 +168,55 @@
             .system-list, .preview-panel { width: 100%; position: static; }
             .preview-panel { min-height: auto; }
         }
+
+        /* Modal / Lightbox Logic */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 9999; 
+            left: 0; 
+            top: 0;
+            width: 100vw; 
+            height: 100vh; 
+            background-color: rgba(5, 5, 5, 0.95); 
+            backdrop-filter: blur(5px);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.show {
+            display: block;
+            opacity: 1;
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 95vw;
+            max-height: 95vh;
+            border: 2px solid var(--accent-blue);
+            box-shadow: 0 0 50px rgba(0,0,0,0.8);
+            border-radius: 4px;
+            object-fit: contain;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: #e0e0e0;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+            z-index: 10000;
+        }
+
+        .close-modal:hover {
+            color: var(--accent-red);
+        }
     </style>
 </head>
 <body>
@@ -193,6 +253,11 @@
 </main>
 
 <a href="index.html" class="back-link">← Return to Strategic Doctrine</a>
+
+<div id="imageModal" class="modal">
+    <span class="close-modal">&times;</span>
+    <img class="modal-content" id="zoomedImage">
+</div>
 
 <script>
     const data = {
@@ -243,6 +308,44 @@
         defaultContent.style.display = 'none';
         activeContent.style.display = 'block';
     }
+
+    // Lightbox Logic
+    document.addEventListener('DOMContentLoaded', () => {
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('zoomedImage');
+        const previewImg = document.getElementById('preview-img');
+        const closeBtn = document.querySelector('.close-modal');
+
+        // Apri il modal cliccando sull'immagine di preview corrente
+        previewImg.addEventListener('click', function() {
+            if (this.src) { // Assicurati che un'immagine sia caricata
+                modal.classList.add('show');
+                modalImg.src = this.src; 
+            }
+        });
+
+        // Chiudi il modal cliccando sulla X
+        closeBtn.addEventListener('click', () => {
+            modal.classList.remove('show');
+            setTimeout(() => { modal.style.display = "none"; }, 300); 
+        });
+
+        // Chiudi il modal cliccando ovunque fuori dall'immagine
+        modal.addEventListener('click', (e) => {
+            if (e.target !== modalImg) {
+                modal.classList.remove('show');
+                setTimeout(() => { modal.style.display = "none"; }, 300);
+            }
+        });
+
+        // Chiudi con il tasto ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === "Escape" && modal.classList.contains('show')) {
+                modal.classList.remove('show');
+                setTimeout(() => { modal.style.display = "none"; }, 300);
+            }
+        });
+    });
 </script>
 
 </body>
