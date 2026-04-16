@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Awakening System</title>
+    <style>
+        :root {
+            --bg-color: #0a0a0a;
+            --text-main: #e0e0e0;
+            --accent-blue: #5c9ce6;
+            --accent-red: #d04b4b;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --panel-bg: rgba(15, 15, 20, 0.85);
+            
+            /* Rarity Colors */
+            --common: #9da3a4;
+            --uncommon: #4caf50;
+            --rare: #2196f3;
+            --epic: #9c27b0;
+            --legendary: #ff9800;
+            --major: #ffeb3b;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        #bg-image {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background-image: url('../img/homepage_bg.jpg'); 
+            background-size: cover;
+            background-position: center;
+            z-index: -2;
+        }
+
+        #overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background: linear-gradient(135deg, rgba(10,10,15,0.95) 0%, rgba(5,5,5,0.98) 100%); 
+            z-index: -1;
+        }
+
+        header {
+            padding: 60px 20px;
+            text-align: center;
+            width: 100%;
+        }
+
+        h1 {
+            letter-spacing: 6px;
+            font-size: 2.5rem;
+            color: #fff;
+            text-transform: uppercase;
+            margin: 0;
+            text-shadow: 0 0 15px rgba(92, 156, 230, 0.3);
+            border-bottom: 2px solid var(--border-color);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        main {
+            width: 90%;
+            max-width: 1200px;
+            margin: 40px auto;
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+        }
+
+        .content-row {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .content-row.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .text-panel {
+            flex: 1;
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            padding: 40px;
+            border-radius: 4px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+            line-height: 1.6;
+        }
+
+        .text-panel h2 {
+            color: #fff;
+            margin-top: 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .image-panel {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-panel img {
+            width: 100%;
+            max-width: 600px;
+            border: 2px solid #333;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            filter: brightness(0.85) contrast(1.1);
+            transition: filter 0.3s ease;
+            cursor: zoom-in;
+        }
+
+        .image-panel img:hover {
+            filter: brightness(1) contrast(1.1);
+        }
+
+        /* Rarity Badge Styling */
+        .rarity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .rarity-item {
+            padding: 10px;
+            border-radius: 4px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .common { background: rgba(157, 163, 164, 0.2); color: var(--common); border-color: var(--common); }
+        .uncommon { background: rgba(76, 175, 80, 0.2); color: var(--uncommon); border-color: var(--uncommon); }
+        .rare { background: rgba(33, 150, 243, 0.2); color: var(--rare); border-color: var(--rare); }
+        .epic { background: rgba(156, 39, 176, 0.2); color: var(--epic); border-color: var(--epic); }
+        .legendary { background: rgba(255, 152, 0, 0.2); color: var(--legendary); border-color: var(--legendary); }
+        .major { background: rgba(255, 235, 59, 0.2); color: var(--major); border-color: var(--major); }
+
+        .highlight { color: var(--accent-blue); font-weight: bold; }
+        .warning { color: var(--accent-red); font-weight: bold; }
+
+        .back-link {
+            display: block;
+            margin: 20px auto 60px auto;
+            color: #888;
+            text-decoration: none;
+            transition: color 0.3s;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+
+        .back-link:hover { color: #fff; }
+
+        /* Lightbox */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 9999; 
+            left: 0; top: 0;
+            width: 100vw; height: 100vh; 
+            background-color: rgba(5, 5, 5, 0.95); 
+            backdrop-filter: blur(5px);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.show { display: block; opacity: 1; }
+
+        .modal-content {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 95vw; max-height: 95vh;
+            border: 2px solid var(--accent-blue);
+            border-radius: 4px;
+            object-fit: contain;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px; right: 40px;
+            color: var(--text-main);
+            font-size: 40px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 900px) {
+            .content-row, .content-row.reverse { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<header>
+    <h1>Awakening System</h1>
+</header>
+
+<main>
+    <div class="content-row">
+        <div class="image-panel">
+            <img src="../img/awakening_progression.png" alt="Awakening Progression">
+        </div>
+        <div class="text-panel">
+            <h2>Faction-Wide Mastery</h2>
+            <p>Your journey begins at <span class="highlight">Awakening Level 0</span>. Unlike standard leveling, Awakening is a global progression system that represents your faction's growing connection to the spectral realm.</p>
+            <p>Clearing dungeons, conquering ancient ruins, or defeating formidable legendary opponents will grant Awakening Experience. When the faction levels up, <span class="highlight">all Officers</span>—current and future—benefit from the unlocked potential simultaneously.</p>
+        </div>
+    </div>
+
+    <div class="content-row reverse">
+        <div class="image-panel">
+            <img src="../img/awakening_perks.png" alt="Awakening Perks Selection">
+        </div>
+        <div class="text-panel">
+            <h2>The Choice of Power</h2>
+            <p>Each time your Awakening Level increases, you are granted a choice of <span class="highlight">three random perks</span>. These perks provide permanent passive attribute bonuses to your Officers, allowing you to specialize your military force.</p>
+            <p>Perks are divided into five rarity tiers, each offering progressively stronger bonuses:</p>
+            <div class="rarity-grid">
+                <div class="rarity-item common">Common</div>
+                <div class="rarity-item uncommon">Uncommon</div>
+                <div class="rarity-item rare">Rare</div>
+                <div class="rarity-item epic">Epic</div>
+                <div class="rarity-item legendary">Legendary</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-row">
+        <div class="image-panel">
+            <img src="../img/awakening_major.png" alt="Major Milestones">
+        </div>
+        <div class="text-panel">
+            <h2>Milestones & Syncing</h2>
+            <p>Every <span class="major">5 Levels</span>, the standard perk selection is replaced by <span class="major">Major Perks</span>. These yellow-tier upgrades grant game-changing abilities, such as increased Initiative, extra attacks, or powerful passive modifiers for Officer skills.</p>
+            
+            <h3>Level Synchronization</h3>
+            <p>An Officer's Awakening potential is linked to their combat experience. An Officer can access Awakening levels up to <span class="highlight">Hero Level × 5</span>.</p>
+            <p><em>Example:</em> A Level 2 Hero can utilize up to 10 Awakening levels. If your faction has reached Level 13, that hero will remain capped at 10 until they reach Level 3, at which point the remaining 3 levels will unlock automatically.</p>
+            <p class="warning">The maximum Awakening Level is currently capped at 30.</p>
+        </div>
+    </div>
+</main>
+
+<a href="index.html" class="back-link">← Return to Strategic Doctrine</a>
+
+<div id="imageModal" class="modal">
+    <span class="close-modal">&times;</span>
+    <img class="modal-content" id="zoomedImage">
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('zoomedImage');
+        const images = document.querySelectorAll('.image-panel img');
+        const closeBtn = document.querySelector('.close-modal');
+
+        const closeModal = () => {
+            modal.classList.remove('show');
+            setTimeout(() => { modal.style.display = "none"; }, 300); 
+        };
+
+        images.forEach(img => {
+            img.addEventListener('click', function() {
+                modal.style.display = "block";
+                setTimeout(() => { modal.classList.add('show'); }, 10);
+                modalImg.src = this.src; 
+            });
+        });
+
+        closeBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => { if (e.target !== modalImg) closeModal(); });
+        document.addEventListener('keydown', (e) => { if (e.key === "Escape" && modal.classList.contains('show')) closeModal(); });
+    });
+</script>
+
+</body>
+</html>
