@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Map & Resources</title>
+    <style>
+        :root {
+            --bg-color: #0a0a0a;
+            --text-main: #e0e0e0;
+            --gold: #ffd700;
+            --mana: #5c9ce6;
+            --platinum: #e5e4e2;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --panel-bg: rgba(15, 15, 20, 0.85);
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        #bg-image {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background-image: url('../img/homepage_bg.jpg'); 
+            background-size: cover;
+            background-position: center;
+            z-index: -2;
+        }
+
+        #overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background: linear-gradient(135deg, rgba(10,10,15,0.95) 0%, rgba(5,5,5,0.98) 100%); 
+            z-index: -1;
+        }
+
+        header {
+            padding: 60px 20px;
+            text-align: center;
+            width: 100%;
+        }
+
+        h1 {
+            letter-spacing: 6px;
+            font-size: 2.5rem;
+            color: #fff;
+            text-transform: uppercase;
+            margin: 0;
+            text-shadow: 0 0 15px rgba(92, 156, 230, 0.3);
+            border-bottom: 2px solid var(--border-color);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        main {
+            width: 90%;
+            max-width: 1200px;
+            margin: 40px auto;
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+        }
+
+        /* Alternating Row Structure */
+        .content-row {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .content-row.reverse {
+            flex-direction: row-reverse;
+        }
+
+        /* Text Panel */
+        .text-panel {
+            flex: 1;
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            padding: 40px;
+            border-radius: 4px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+            line-height: 1.6;
+        }
+
+        .text-panel h2 {
+            color: #fff;
+            margin-top: 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        /* Image Panel */
+        .image-panel {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-panel img {
+            width: 100%;
+            max-width: 600px;
+            border: 2px solid #333;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            filter: brightness(0.85) contrast(1.1);
+            transition: filter 0.3s ease;
+        }
+
+        .image-panel img:hover {
+            filter: brightness(1) contrast(1.1);
+        }
+
+        /* Formatting Classes */
+        .gold { color: var(--gold); font-weight: bold; }
+        .mana { color: var(--mana); font-weight: bold; }
+        .platinum { color: var(--platinum); font-weight: bold; }
+        
+        ul.poi-list {
+            list-style-type: square;
+            padding-left: 20px;
+        }
+
+        ul.poi-list li {
+            margin-bottom: 10px;
+            color: #ccc;
+        }
+
+        ul.poi-list li strong {
+            color: #fff;
+        }
+
+        .back-link {
+            display: block;
+            margin: 20px auto 60px auto;
+            color: #888;
+            text-decoration: none;
+            transition: color 0.3s;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+
+        .back-link:hover { color: #fff; }
+
+        @media (max-width: 900px) {
+            .content-row, .content-row.reverse {
+                flex-direction: column;
+            }
+            .text-panel, .image-panel {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<header>
+    <h1>Map & Resources</h1>
+</header>
+
+<main>
+    <div class="content-row">
+        <div class="image-panel">
+            <img src="../img/map_overview.jpg" alt="Global Map Generation">
+        </div>
+        <div class="text-panel">
+            <h2>World Generation</h2>
+            <p>Map generation depends on the active game mode. Campaigns feature specific, pre-designed maps for each scenario, while other modes utilize randomly generated maps.</p>
+            <p>Near the capital city, you will find low-level points of interest to level up your parties. As you venture further across the map, you will face progressively more challenging encounters.</p>
+        </div>
+    </div>
+
+    <div class="content-row reverse">
+        <div class="image-panel">
+            <img src="../img/map_economy.jpg" alt="Resources and Influence">
+        </div>
+        <div class="text-panel">
+            <h2>Economy & Influence</h2>
+            <p>There are three kinds of resources:</p>
+            <ul>
+                <li><span class="gold">Gold</span> - The primary currency used for most transactions.</li>
+                <li><span class="mana">Mana</span> - Required to cast spells and to recruit or build specific units and structures.</li>
+                <li><span class="platinum">Platinum</span> - An extremely rare resource used to create Champion Units.</li>
+            </ul>
+            <p>The map features different tiers of cities, each projecting influence over the surrounding zone (marked by a specific color). The faction controlling a city receives a specific amount of resources each turn, calculated based on the structures built and the resource nodes secured within its zone of influence.</p>
+        </div>
+    </div>
+
+    <div class="content-row">
+        <div class="image-panel">
+            <img src="../img/map_poi.jpg" alt="Points of Interest">
+        </div>
+        <div class="text-panel">
+            <h2>Points of Interest</h2>
+            <p>There are several types of points of interest scattered across the map. These are often guarded by hostile NPC parties; defeating higher-difficulty parties yields greater resource rewards.</p>
+            <p>Below is the list of points of interest:</p>
+            <ul class="poi-list">
+                <li><strong>Gold Mine</strong> - Generates <span class="gold">Gold</span> for the controlling city.</li>
+                <li><strong>Mana Shrine</strong> - Generates <span class="mana">Mana</span> for the controlling city.</li>
+                <li><strong>Platinum Mine</strong> - Generates <span class="platinum">Platinum</span> for the controlling city (usually heavily guarded for a very low yield).</li>
+                <li><strong>Wandering Hostiles</strong> - Defeating them grants random rewards.</li>
+                <li><strong>Merchant Shop</strong> - Allows buying and selling of items.</li>
+                <li><strong>Dungeon</strong> - Features multiple floors. Depending on the difficulty, clearing it rewards items and/or Awakening progression.</li>
+                <li><strong>Raid</strong> - Highly challenging encounters for elite parties, yielding epic rewards and Awakening progression.</li>
+                <li><strong>Magic Tower</strong> - Sells random spells in exchange for <span class="mana">Mana</span>.</li>
+                <li><strong>Blessing Shrine</strong> - Provides combat buffs to allied units operating within its vicinity.</li>
+                <li><strong>Gate of Chaos</strong> - Similar to a random encounter, but continuously respawns enemies every X turns until closed.</li>
+                <li><strong>Gate of Hell</strong> - Similar to a Raid, but respawns elite enemies every X turns until sealed.</li>
+                <li><strong>Quest Node</strong> - Objectives required to advance the current scenario.</li>
+            </ul>
+        </div>
+    </div>
+</main>
+
+<a href="index.html" class="back-link">← Return to Main Doctrine</a>
+
+</body>
+</html>
