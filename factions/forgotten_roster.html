@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -17,7 +17,7 @@
         #bg-image {
             position: fixed; top: 0; left: 0;
             width: 100vw; height: 100vh;
-            background-image: url('../img/forgotten_bg.jpg');
+            background-image: url('../img/forgotten/forgotten_bg.jpg');
             background-size: cover; background-position: center; z-index: -2;
         }
         #overlay {
@@ -51,16 +51,97 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
             box-shadow: 0 10px 25px rgba(0,0,0,0.6); padding-bottom: 20px; box-sizing: border-box;
         }
-        .order-card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(92,184,138,0.3); border-bottom-color: #a5d6a7; }
-        .order-bg { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-size: cover; background-position: center; transition: transform 0.5s ease; z-index: 1; }
-        .order-card:hover .order-bg { transform: scale(1.05); }
-        .order-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 35%); z-index: 2; transition: background 0.3s ease; }
-        .order-card:hover .order-overlay { background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 30%); }
-        .order-title { position: relative; z-index: 3; color: #fff; font-size: 1.6rem; text-transform: uppercase; letter-spacing: 3px; text-shadow: 0 2px 4px rgba(0,0,0,1), 0 0 10px rgba(0,0,0,0.8); margin: 0; text-align: center; padding: 0 15px; width: 100%; }
-        .malicott-card { grid-column: 1 / -1; height: 200px; border-bottom-color: #5cb88a; }
-        .back-link { display: block; text-align: center; margin-top: 40px; color: #666; text-decoration: none; font-size: 1rem; letter-spacing: 1px; transition: color 0.3s; padding: 20px; border-top: 1px solid rgba(255,255,255,0.1); }
-        .back-link:hover { color: #5cb88a; }
-        @media (max-width: 950px) { .roster-grid { grid-template-columns: 1fr; } .order-card { height: 200px; } }
+        .order-card:not(.locked-card):hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(92,184,138,0.3);
+            border-bottom-color: #a5d6a7;
+        }
+
+        .order-bg {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.5s ease;
+            z-index: 1;
+        }
+
+        .order-card:not(.locked-card):hover .order-bg {
+            transform: scale(1.05);
+        }
+
+        .order-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 35%);
+            z-index: 2;
+            transition: background 0.3s ease;
+        }
+
+        .order-title {
+            position: relative;
+            z-index: 3;
+            color: #fff;
+            font-size: 1.6rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 0 2px 4px rgba(0,0,0,1), 0 0 10px rgba(0,0,0,0.8);
+            margin: 0;
+            text-align: center;
+            padding: 0 15px;
+            width: 100%;
+        }
+
+        .malicott-card {
+            grid-column: 1 / -1;
+            height: 200px;
+            border-bottom-color: #5cb88a;
+        }
+
+        /* CARD BLOCCATA */
+        .locked-card {
+            cursor: not-allowed;
+            border-bottom-color: #444;
+            filter: grayscale(1) contrast(0.8);
+            opacity: 0.6;
+        }
+
+        .locked-card .order-title {
+            color: #888;
+        }
+
+        /* OTHERS CARD */
+        .others-card {
+            border-bottom-color: #888;
+        }
+
+        .others-card:hover {
+            border-bottom-color: #a5d6a7;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 40px;
+            color: #666;
+            text-decoration: none;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+            padding: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .back-link:hover {
+            color: #5cb88a;
+            text-shadow: 0 0 10px rgba(92, 184, 138, 0.4);
+        }
+
+        @media (max-width: 950px) {
+            .roster-grid { grid-template-columns: 1fr; }
+            .order-card { height: 200px; padding-bottom: 15px; }
+            .order-title { font-size: 1.4rem; letter-spacing: 2px; }
+        }
     </style>
 </head>
 <body>
@@ -76,29 +157,35 @@
     </div>
     <div class="roster-grid">
         <a href="../units/forgotten/forgotten_order_arborei.html" class="order-card">
-            <div class="order-bg" style="background-image: url('../img/forgotten_roster_arborei.jpg');"></div>
+            <div class="order-bg" style="background-image: url('../img/forgotten/forgotten_roster_arborei.jpg');"></div>
             <div class="order-overlay"></div>
             <h2 class="order-title">Combattenti Arborei</h2>
         </a>
         <a href="../units/forgotten/forgotten_order_linfa.html" class="order-card">
-            <div class="order-bg" style="background-image: url('../img/forgotten_roster_linfa.jpg');"></div>
+            <div class="order-bg" style="background-image: url('../img/forgotten/forgotten_roster_linfa.jpg');"></div>
             <div class="order-overlay"></div>
             <h2 class="order-title">Ombre della Linfa</h2>
         </a>
         <a href="../units/forgotten/forgotten_order_araldi.html" class="order-card">
-            <div class="order-bg" style="background-image: url('../img/forgotten_roster_araldi.jpg');"></div>
+            <div class="order-bg" style="background-image: url('../img/forgotten/forgotten_roster_araldi.jpg');"></div>
             <div class="order-overlay"></div>
             <h2 class="order-title">Araldi della Polvere</h2>
         </a>
         <a href="../units/forgotten/forgotten_order_sentinelle.html" class="order-card">
-            <div class="order-bg" style="background-image: url('../img/forgotten_roster_sentinelle.jpg');"></div>
+            <div class="order-bg" style="background-image: url('../img/forgotten/forgotten_roster_sentinelle.jpg');"></div>
             <div class="order-overlay"></div>
             <h2 class="order-title">Sentinelle d'Ambra</h2>
         </a>
-        <a href="../units/forgotten/forgotten_malicott.html" class="order-card malicott-card">
-            <div class="order-bg" style="background-image: url('../img/forgotten_leader_malicott.jpg');"></div>
+        <div class="order-card locked-card">
+            <div class="order-bg" style="background-image: url('../img/forgotten/forgotten_roster_hybrids.png');"></div>
             <div class="order-overlay"></div>
-            <h2 class="order-title">Malicott , The Root Mother</h2>
+            <h2 class="order-title">Hybrid Units (Locked)</h2>
+        </div>
+
+        <a class="order-card others-card locked-card">
+            <div class="order-bg" style="background-image: url('../img/forgotten/forgotten_roster_others.png');"></div>
+            <div class="order-overlay"></div>
+            <h2 class="order-title">Others (Locked)</h2>
         </a>
     </div>
     <a href="forgotten.html" class="back-link">← Return to the Forgotten Overview</a>

@@ -6,7 +6,7 @@
     <title>SOULSPECTRE | Storm Elf</title>
     <style>
         body{color:#e0e0e0;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;line-height:1.8;margin:0;display:flex;flex-direction:column;align-items:center;}
-        #bg-image{position:fixed;top:0;left:0;width:100vw;height:100vh;background-image:url('../../img/forgotten_bg.jpg');background-size:cover;background-position:center;z-index:-2;}
+        #bg-image{position:fixed;top:0;left:0;width:100vw;height:100vh;background-image:url('../../img/forgotten/forgotten_bg.jpg');background-size:cover;background-position:center;z-index:-2;}
         #overlay{position:fixed;top:0;left:0;width:100vw;height:100vh;background:linear-gradient(to bottom,rgba(5,12,8,0.90),rgba(3,8,5,0.98));z-index:-1;}
         header{padding:60px 20px 30px;text-align:center;width:100%;max-width:1100px;}
         h1{letter-spacing:5px;font-size:2.8rem;margin:0;color:#fff;text-transform:uppercase;text-shadow:0 0 15px rgba(92,184,138,0.5);}
@@ -35,7 +35,7 @@
         .skill-card:hover{transform:translateY(-5px);}
         .skill-card.sk-base{border-left-color:#666;}.skill-card.sk-active{border-left-color:#4dd0e1;}.skill-card.sk-passive{border-left-color:#a5d6a7;}
         .skill-header{display:flex;align-items:center;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:15px;margin-bottom:15px;gap:15px;}
-        .skill-icon{width:70px;height:70px;border-radius:4px;object-fit:cover;border:2px solid rgba(255,179,0,0.4);flex-shrink:0;background:rgba(0,0,0,0.3);}
+        .skill-icon{width:70px;height:70px;border-radius:4px;object-fit:cover;flex-shrink:0;background:rgba(0,0,0,0.3);}
         .skill-title-container{flex:1;}
         .skill-title{margin:0 0 6px;color:#fff;font-size:1.2rem;text-transform:uppercase;letter-spacing:1px;}
         .skill-type{font-size:0.72rem;padding:2px 8px;border-radius:2px;text-transform:uppercase;letter-spacing:1px;display:inline-block;}
@@ -66,10 +66,10 @@
     <div class="subtitle">Tier 4 , Wind Path</div>
 </header>
 <main>
-    <div class="intro-banner"><img src="../../img/forgotten_storm_elf_banner.png" alt="Storm Elf Banner"></div>
+    <div class="intro-banner"><img src="../../img/forgotten/forgotten_storm_elf_banner.png" alt="Storm Elf Banner"></div>
     <div class="split-section">
         <div class="section-image-container">
-            <img src="../../img/forgotten_storm_elf_combat.jpg" alt="Storm Elf">
+            <img src="../../img/forgotten/forgotten_storm_elf_combat.jpg" alt="Storm Elf">
         </div>
         <div class="section-text">
             <h2>The Eye Is Not Safe</h2>
@@ -89,21 +89,21 @@
         <div class="skills-grid">
             <div class="skill-card sk-base">
                 <div class="skill-header">
-                    <img src="../../img/forgotten_skill_artiglio_fulmine.png" alt="" class="skill-icon">
+                    <img src="../../img/forgotten/skills/forgotten_skill_artiglio_fulmine.svg" alt="" class="skill-icon">
                     <div class="skill-title-container"><h3 class="skill-title">Lightning Claw</h3><span class="skill-type base">Base</span></div>
                 </div>
                 <div class="skill-desc">Drives both hands into the target in a dual strike of pure lightning, dealing <span class="dmg-air">Air</span> and <span class="dmg-pure">Pure</span> elemental damage. The <span class="dmg-pure">Pure</span> component bypasses all elemental resistances. The Storm Elf never attacks once when twice is possible.</div>
             </div>
             <div class="skill-card sk-active">
                 <div class="skill-header">
-                    <img src="../../img/forgotten_skill_tempesta_personale.png" alt="" class="skill-icon">
+                    <img src="../../img/forgotten/skills/forgotten_skill_tempesta_personale.svg" alt="" class="skill-icon">
                     <div class="skill-title-container"><h3 class="skill-title">Personal Storm</h3><span class="skill-type active">Active</span></div>
                 </div>
                 <div class="skill-desc">The Storm Elf becomes the center of a personal storm cell for 1 turn, releasing arcing bolts of <span class="dmg-air">Air</span> energy that strike <strong>all enemies on the battlefield</strong> for reduced ATK damage. Each enemy hit suffers <strong>-10% Initiative</strong> for 1 turn. The storm does not play favorites with geography.</div>
             </div>
             <div class="skill-card sk-passive">
                 <div class="skill-header">
-                    <img src="../../img/forgotten_skill_instinto_vento.png" alt="" class="skill-icon">
+                    <img src="../../img/forgotten/skills/forgotten_skill_instinto_vento.svg" alt="" class="skill-icon">
                     <div class="skill-title-container"><h3 class="skill-title">Wind Instinct</h3><span class="skill-type passive">Passive</span></div>
                 </div>
                 <div class="skill-desc">The Storm Elf's elemental attunement gives them preternatural evasion , they read air displacement like text, and <strong>attacks must be aimed with +20% precision cost</strong> or be Dodged by the Storm Elf at a base <strong>+20% Dodge rate</strong>. Additionally, their own Initiative is permanently increased by <strong>+10%</strong> above base.</div>
@@ -114,7 +114,7 @@
         <h2 class="gallery-header">Gallery</h2>
         <div class="carousel-wrap">
             <div class="carousel-track" id="carouselTrack">
-                <div class="carousel-item"><img src="../../img/forgotten_storm_elf_portrait.jpg" alt="Portrait"></div>
+                <div class="carousel-item"><img src="../../img/forgotten/forgotten_storm_elf_portrait.jpg" alt="Portrait"></div>
             </div>
         </div>
         <div class="carousel-nav">
@@ -122,7 +122,7 @@
             <button class="nav-btn" id="nextBtn">&#8594;</button>
         </div>
     </div>
-    <a href="forgotten_order_araldi.html" class="back-link">← Return to Araldi della Cenere</a>
+    <a href="forgotten_order_araldi.html" class="back-link">? Return to Araldi della Cenere</a>
 </main>
 <script>
     const track=document.getElementById('carouselTrack');const items=track.querySelectorAll('.carousel-item');let current=0;

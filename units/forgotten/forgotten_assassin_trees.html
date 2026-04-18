@@ -6,7 +6,7 @@
     <title>SOULSPECTRE | Assassin of the Trees</title>
     <style>
         body{color:#e0e0e0;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;line-height:1.8;margin:0;display:flex;flex-direction:column;align-items:center;}
-        #bg-image{position:fixed;top:0;left:0;width:100vw;height:100vh;background-image:url('../../img/forgotten_bg.jpg');background-size:cover;background-position:center;z-index:-2;}
+        #bg-image{position:fixed;top:0;left:0;width:100vw;height:100vh;background-image:url('../../img/forgotten/forgotten_bg.jpg');background-size:cover;background-position:center;z-index:-2;}
         #overlay{position:fixed;top:0;left:0;width:100vw;height:100vh;background:linear-gradient(to bottom,rgba(5,12,8,0.90),rgba(3,8,5,0.98));z-index:-1;}
         header{padding:60px 20px 30px;text-align:center;width:100%;max-width:1100px;}
         h1{letter-spacing:5px;font-size:2.8rem;margin:0;color:#fff;text-transform:uppercase;text-shadow:0 0 15px rgba(92,184,138,0.5);}
@@ -37,7 +37,7 @@
         .skill-card:hover{transform:translateY(-5px);}
         .skill-card.sk-base{border-left-color:#666;}.skill-card.sk-active{border-left-color:#4dd0e1;}.skill-card.sk-passive{border-left-color:#a5d6a7;}
         .skill-header{display:flex;align-items:center;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:15px;margin-bottom:15px;gap:15px;}
-        .skill-icon{width:70px;height:70px;border-radius:4px;object-fit:cover;border:2px solid rgba(129,199,132,0.3);flex-shrink:0;background:rgba(0,0,0,0.3);}
+        .skill-icon{width:70px;height:70px;border-radius:4px;object-fit:cover;flex-shrink:0;background:rgba(0,0,0,0.3);}
         .skill-title-container{flex:1;}
         .skill-title{margin:0 0 6px;color:#fff;font-size:1.2rem;text-transform:uppercase;letter-spacing:1px;}
         .skill-type{font-size:0.72rem;padding:2px 8px;border-radius:2px;text-transform:uppercase;letter-spacing:1px;display:inline-block;}
@@ -68,11 +68,11 @@
     <div class="subtitle">Tier 3 , Assassin Path</div>
 </header>
 <main>
-    <div class="intro-banner"><img src="../../img/forgotten_assassin_trees_banner.png" alt="Assassin of the Trees Banner"></div>
+    <div class="intro-banner"><img src="../../img/forgotten/forgotten_assassin_trees_banner.png" alt="Assassin of the Trees Banner"></div>
     <div class="split-section">
         <div class="section-image-container">
-            <img src="../../img/forgotten_assassin_trees_f_combat.jpg" alt="Assassin of the Trees F">
-            <img src="../../img/forgotten_assassin_trees_m_combat.jpg" alt="Assassin of the Trees M" class="combat-anim">
+            <img src="../../img/forgotten/forgotten_assassin_trees_f_combat.jpg" alt="Assassin of the Trees F">
+            <img src="../../img/forgotten/forgotten_assassin_trees_m_combat.jpg" alt="Assassin of the Trees M" class="combat-anim">
         </div>
         <div class="section-text">
             <h2>Almost Home</h2>
@@ -92,21 +92,21 @@
         <div class="skills-grid">
             <div class="skill-card sk-base">
                 <div class="skill-header">
-                    <img src="../../img/forgotten_skill_taglio.png" alt="" class="skill-icon">
+                    <img src="../../img/forgotten/skills/forgotten_skill_taglio.svg" alt="" class="skill-icon">
                     <div class="skill-title-container"><h3 class="skill-title">Slash</h3><span class="skill-type base">Base Attack</span></div>
                 </div>
                 <div class="skill-desc">A razor-precise melee slash dealing <span class="dmg-phys">Physical</span> damage. Fast and efficient , no wasted movement.</div>
             </div>
             <div class="skill-card sk-active">
                 <div class="skill-header">
-                    <img src="../../img/forgotten_skill_attacco_furtivo.png" alt="" class="skill-icon">
+                    <img src="../../img/forgotten/skills/forgotten_skill_attacco_furtivo.svg" alt="" class="skill-icon">
                     <div class="skill-title-container"><h3 class="skill-title">Stealth Attack</h3><span class="skill-type active">Active</span></div>
                 </div>
                 <div class="skill-desc">Slips into the backline and strikes a random enemy with <span class="dmg-phys">Physical</span> + <span class="dmg-poison">Poison</span> damage, ignoring <strong>25% Armor</strong>. Applies <strong>Poison</strong> for 3 turns (5% HP loss/turn).</div>
             </div>
             <div class="skill-card sk-passive">
                 <div class="skill-header">
-                    <img src="../../img/forgotten_skill_armature_spine.png" alt="" class="skill-icon">
+                    <img src="../../img/forgotten/skills/forgotten_skill_armature_spine.svg" alt="" class="skill-icon">
                     <div class="skill-title-container"><h3 class="skill-title">Thorn Armor</h3><span class="skill-type passive">Passive</span></div>
                 </div>
                 <div class="skill-desc">When struck by a <span class="dmg-phys">Physical</span> or <span class="dmg-poison">Poison</span> attack, the attacker receives <strong>30%</strong> of the damage dealt as reflected <span class="dmg-poison">Poison</span> damage. The thorn-armor cannot be removed by conventional dispelling; it is biological, not magical.</div>
@@ -117,8 +117,8 @@
         <h2 class="gallery-header">Gallery</h2>
         <div class="carousel-wrap">
             <div class="carousel-track" id="carouselTrack">
-                <div class="carousel-item"><img src="../../img/forgotten_assassin_trees_f_portrait.jpg" alt="Portrait F"></div>
-                <div class="carousel-item"><img src="../../img/forgotten_assassin_trees_m_portrait.jpg" alt="Portrait M"></div>
+                <div class="carousel-item"><img src="../../img/forgotten/forgotten_assassin_trees_f_portrait.jpg" alt="Portrait F"></div>
+                <div class="carousel-item"><img src="../../img/forgotten/forgotten_assassin_trees_m_portrait.jpg" alt="Portrait M"></div>
             </div>
         </div>
         <div class="carousel-nav">
@@ -126,7 +126,7 @@
             <button class="nav-btn" id="nextBtn">&#8594;</button>
         </div>
     </div>
-    <a href="forgotten_order_arborei.html" class="back-link">← Return to Combattenti Arborei</a>
+    <a href="forgotten_order_arborei.html" class="back-link">? Return to Combattenti Arborei</a>
 </main>
 <script>
     const track=document.getElementById('carouselTrack');const items=track.querySelectorAll('.carousel-item');let current=0;

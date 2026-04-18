@@ -6,7 +6,7 @@
     <title>SOULSPECTRE | Light Mage</title>
     <style>
         body{color:#e0e0e0;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;line-height:1.8;margin:0;display:flex;flex-direction:column;align-items:center;}
-        #bg-image{position:fixed;top:0;left:0;width:100vw;height:100vh;background-image:url('../../img/forgotten_bg.jpg');background-size:cover;background-position:center;z-index:-2;}
+        #bg-image{position:fixed;top:0;left:0;width:100vw;height:100vh;background-image:url('../../img/forgotten/forgotten_bg.jpg');background-size:cover;background-position:center;z-index:-2;}
         #overlay{position:fixed;top:0;left:0;width:100vw;height:100vh;background:linear-gradient(to bottom,rgba(5,12,8,0.90),rgba(3,8,5,0.98));z-index:-1;}
         header{padding:60px 20px 30px;text-align:center;width:100%;max-width:1100px;}
         h1{letter-spacing:5px;font-size:2.8rem;margin:0;color:#fff;text-transform:uppercase;text-shadow:0 0 15px rgba(92,184,138,0.5);}
@@ -35,7 +35,7 @@
         .skill-card:hover{transform:translateY(-5px);}
         .skill-card.sk-base{border-left-color:#666;}.skill-card.sk-active{border-left-color:#4dd0e1;}.skill-card.sk-passive{border-left-color:#a5d6a7;}
         .skill-header{display:flex;align-items:center;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:15px;margin-bottom:15px;gap:15px;}
-        .skill-icon{width:70px;height:70px;border-radius:4px;object-fit:cover;border:2px solid rgba(129,199,132,0.4);flex-shrink:0;background:rgba(0,0,0,0.3);}
+        .skill-icon{width:70px;height:70px;border-radius:4px;object-fit:cover;flex-shrink:0;background:rgba(0,0,0,0.3);}
         .skill-title-container{flex:1;}
         .skill-title{margin:0 0 6px;color:#fff;font-size:1.2rem;text-transform:uppercase;letter-spacing:1px;}
         .skill-type{font-size:0.72rem;padding:2px 8px;border-radius:2px;text-transform:uppercase;letter-spacing:1px;display:inline-block;}
@@ -66,10 +66,10 @@
     <div class="subtitle">Tier 3 , Light Path</div>
 </header>
 <main>
-    <div class="intro-banner"><img src="../../img/forgotten_light_mage_banner.png" alt="Light Mage Banner"></div>
+    <div class="intro-banner"><img src="../../img/forgotten/forgotten_light_mage_banner.png" alt="Light Mage Banner"></div>
     <div class="split-section">
         <div class="section-image-container">
-            <img src="../../img/forgotten_light_mage_combat.jpg" alt="Light Mage">
+            <img src="../../img/forgotten/forgotten_light_mage_combat.jpg" alt="Light Mage">
         </div>
         <div class="section-text">
             <h2>The Bright Side of the Equation</h2>
@@ -89,21 +89,21 @@
         <div class="skills-grid">
             <div class="skill-card sk-base">
                 <div class="skill-header">
-                    <img src="../../img/forgotten_skill_raggio_solare.png" alt="" class="skill-icon">
+                    <img src="../../img/forgotten/skills/forgotten_skill_raggio_solare.svg" alt="" class="skill-icon">
                     <div class="skill-title-container"><h3 class="skill-title">Solar Ray</h3><span class="skill-type base">Base</span></div>
                 </div>
                 <div class="skill-desc">A concentrated solar beam of <span class="dmg-light">Light</span> energy that cuts through resistance coatings and magical barriers. Deals full ATK in <span class="dmg-light">Light</span> damage while ignoring <strong>10% of the target's elemental resistance</strong>. The sun does not negotiate with shadow.</div>
             </div>
             <div class="skill-card sk-active">
                 <div class="skill-header">
-                    <img src="../../img/forgotten_skill_barriera_luce.png" alt="" class="skill-icon">
+                    <img src="../../img/forgotten/skills/forgotten_skill_barriera_luce.svg" alt="" class="skill-icon">
                     <div class="skill-title-container"><h3 class="skill-title">Light Barrier</h3><span class="skill-type active">Active</span></div>
                 </div>
                 <div class="skill-desc">Erects a formation-wide luminous barrier that amplifies all allied resistances by <strong>+25%</strong> for 2 turns. Shadow-type attacks targeting allies during the barrier are reflected for <strong>15% of their base damage</strong>. The light does not only destroy , it protects by being too intense to pass through.</div>
             </div>
             <div class="skill-card sk-passive">
                 <div class="skill-header">
-                    <img src="../../img/forgotten_skill_luminescenza.png" alt="" class="skill-icon">
+                    <img src="../../img/forgotten/skills/forgotten_skill_luminescenza.svg" alt="" class="skill-icon">
                     <div class="skill-title-container"><h3 class="skill-title">Luminescence</h3><span class="skill-type passive">Passive</span></div>
                 </div>
                 <div class="skill-desc">The Light Mage's sustained radiance amplifies all healing and recovery effects triggered by <span class="dmg-light">Light</span>-infused abilities by <strong>+20%</strong>. When <em>Barriera di Luce</em> is active, all regeneration effects on allies have their per-turn value increased by <strong>+2%</strong> , the light accelerates recovery as well as resistance.</div>
@@ -114,7 +114,7 @@
         <h2 class="gallery-header">Gallery</h2>
         <div class="carousel-wrap">
             <div class="carousel-track" id="carouselTrack">
-                <div class="carousel-item"><img src="../../img/forgotten_light_mage_portrait.jpg" alt="Portrait"></div>
+                <div class="carousel-item"><img src="../../img/forgotten/forgotten_light_mage_portrait.jpg" alt="Portrait"></div>
             </div>
         </div>
         <div class="carousel-nav">
@@ -122,7 +122,7 @@
             <button class="nav-btn" id="nextBtn">&#8594;</button>
         </div>
     </div>
-    <a href="forgotten_order_araldi.html" class="back-link">← Return to Araldi della Cenere</a>
+    <a href="forgotten_order_araldi.html" class="back-link">? Return to Araldi della Cenere</a>
 </main>
 <script>
     const track=document.getElementById('carouselTrack');const items=track.querySelectorAll('.carousel-item');let current=0;

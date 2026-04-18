@@ -1,0 +1,29 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <radialGradient id="bg" cx="40%" cy="35%" r="70%">
+      <stop offset="0%" stop-color="#110d1a" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#080e09" stop-opacity="1"/>
+    </radialGradient>
+    <filter id="soft">
+      <feGaussianBlur stdDeviation="0.8" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softer">
+      <feGaussianBlur stdDeviation="1.4" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <!-- bg -->
+  <rect width="64" height="64" rx="10" fill="url(#bg)"/>
+  <!-- texture organica leggera -->
+  <ellipse cx="18" cy="16" rx="22" ry="18" fill="#ce93d8" opacity="0.04"/>
+  <ellipse cx="48" cy="50" rx="20" ry="16" fill="#ce93d8" opacity="0.04"/>
+    <path d="M14 14 Q32 10 50 14 Q54 32 50 50 Q32 54 14 50 Q10 32 14 14Z"
+        fill="none" stroke="#ce93d8" stroke-width="1.5"/>
+  <line x1="14" y1="26" x2="50" y2="26" stroke="#ce93d8" stroke-width="0.8" opacity="0.5"/>
+  <line x1="14" y1="38" x2="50" y2="38" stroke="#ce93d8" stroke-width="0.8" opacity="0.5"/>
+  <line x1="26" y1="14" x2="26" y2="50" stroke="#ce93d8" stroke-width="0.8" opacity="0.5"/>
+  <line x1="38" y1="14" x2="38" y2="50" stroke="#ce93d8" stroke-width="0.8" opacity="0.5"/>
+  <circle cx="32" cy="32" r="5" fill="#ce93d8" opacity="0.3"/>
+  <circle cx="32" cy="32" r="2" fill="#e1b5e8" opacity="0.6"/>
+</svg>

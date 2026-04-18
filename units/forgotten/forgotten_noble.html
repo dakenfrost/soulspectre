@@ -6,7 +6,7 @@
     <title>SOULSPECTRE | Noble</title>
     <style>
         body{color:#e0e0e0;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;line-height:1.8;margin:0;display:flex;flex-direction:column;align-items:center;}
-        #bg-image{position:fixed;top:0;left:0;width:100vw;height:100vh;background-image:url('../../img/forgotten_bg.jpg');background-size:cover;background-position:center;z-index:-2;}
+        #bg-image{position:fixed;top:0;left:0;width:100vw;height:100vh;background-image:url('../../img/forgotten/forgotten_bg.jpg');background-size:cover;background-position:center;z-index:-2;}
         #overlay{position:fixed;top:0;left:0;width:100vw;height:100vh;background:linear-gradient(to bottom,rgba(5,12,8,0.90),rgba(3,8,5,0.98));z-index:-1;}
         header{padding:60px 20px 30px;text-align:center;width:100%;max-width:1100px;}
         h1{letter-spacing:5px;font-size:2.8rem;margin:0;color:#fff;text-transform:uppercase;text-shadow:0 0 15px rgba(92,184,138,0.5);}
@@ -35,7 +35,7 @@
         .skill-card:hover{transform:translateY(-5px);}
         .skill-card.sk-base{border-left-color:#666;}.skill-card.sk-active{border-left-color:#4dd0e1;}.skill-card.sk-passive{border-left-color:#a5d6a7;}.skill-card.sk-ultimate{border-left-color:#ce93d8;}
         .skill-header{display:flex;align-items:center;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:15px;margin-bottom:15px;gap:15px;}
-        .skill-icon{width:70px;height:70px;border-radius:4px;object-fit:cover;border:2px solid rgba(255,215,0,0.4);flex-shrink:0;background:rgba(0,0,0,0.3);}
+        .skill-icon{width:70px;height:70px;border-radius:4px;object-fit:cover;flex-shrink:0;background:rgba(0,0,0,0.3);}
         .skill-title-container{flex:1;}
         .skill-title{margin:0 0 6px;color:#fff;font-size:1.2rem;text-transform:uppercase;letter-spacing:1px;}
         .skill-type{font-size:0.72rem;padding:2px 8px;border-radius:2px;text-transform:uppercase;letter-spacing:1px;display:inline-block;}
@@ -67,10 +67,10 @@
     <div class="subtitle">Officer , Sentinelle delle Ceneri</div>
 </header>
 <main>
-    <div class="intro-banner"><img src="../../img/forgotten_noble_banner.png" alt="Noble Banner"></div>
+    <div class="intro-banner"><img src="../../img/forgotten/forgotten_noble_banner.png" alt="Noble Banner"></div>
     <div class="split-section">
         <div class="section-image-container">
-            <img src="../../img/forgotten_noble_combat.jpg" alt="Noble">
+            <img src="../../img/forgotten/forgotten_noble_combat.jpg" alt="Noble">
         </div>
         <div class="section-text">
             <h2>What Aristocracy Becomes</h2>
@@ -90,28 +90,28 @@
         <div class="skills-grid">
             <div class="skill-card sk-base">
                 <div class="skill-header">
-                    <img src="../../img/forgotten_skill_tiro_comandato.png" alt="" class="skill-icon">
+                    <img src="../../img/forgotten/skills/forgotten_skill_tiro_comandato.svg" alt="" class="skill-icon">
                     <div class="skill-title-container"><h3 class="skill-title">Commanded Shot</h3><span class="skill-type base">Base</span></div>
                 </div>
                 <div class="skill-desc">A precise command shot that deals full ATK in <span class="dmg-phys">Physical</span> ranged damage and <strong>applies Mark</strong> to the target. Marked targets take <strong>+15% increased damage from all allied ranged attacks</strong> for 2 turns. The Noble does not shoot without a reason. The reason is to make the next shot easier.</div>
             </div>
             <div class="skill-card sk-active">
                 <div class="skill-header">
-                    <img src="../../img/forgotten_skill_coordinazione.png" alt="" class="skill-icon">
+                    <img src="../../img/forgotten/skills/forgotten_skill_coordinazione.svg" alt="" class="skill-icon">
                     <div class="skill-title-container"><h3 class="skill-title">Coordination</h3><span class="skill-type active">Active</span></div>
                 </div>
                 <div class="skill-desc">The Noble issues synchronized firing orders to all Sentinelle units. All allies gain <strong>+15% Accuracy</strong> and <strong>+10% Critical Chance</strong> for 2 turns. If any enemy is currently Marked, this bonus is extended to <strong>3 turns</strong>. Synchronization is the Noble's form of generosity , she shares her targeting with the formation.</div>
             </div>
             <div class="skill-card sk-passive">
                 <div class="skill-header">
-                    <img src="../../img/forgotten_skill_presenza_tattica.png" alt="" class="skill-icon">
+                    <img src="../../img/forgotten/skills/forgotten_skill_presenza_tattica.svg" alt="" class="skill-icon">
                     <div class="skill-title-container"><h3 class="skill-title">Tactical Presence</h3><span class="skill-type passive">Passive</span></div>
                 </div>
                 <div class="skill-desc">As long as the Noble is alive on the battlefield, all Custodian-class and Sniper-class allied units gain a persistent <strong>+10% ATK</strong> bonus from her commanding presence. The formation does not fight harder when she dies , they fight harder because she is watching.</div>
             </div>
             <div class="skill-card sk-ultimate">
                 <div class="skill-header">
-                    <img src="../../img/forgotten_skill_segnale_suppresso.png" alt="" class="skill-icon">
+                    <img src="../../img/forgotten/skills/forgotten_skill_segnale_suppresso.svg" alt="" class="skill-icon">
                     <div class="skill-title-container"><h3 class="skill-title">Suppression Signal</h3><span class="skill-type ultimate">Ultimate</span></div>
                 </div>
                 <div class="skill-desc">The Noble calls suppression fire from the entire Sentinelle formation , all enemies receive <span class="dmg-phys">Physical</span> ranged hits from distributed angles, dealing ATK-based damage and reducing enemy Morale by <strong>-15</strong>. All enemies hit are <strong>Exposed</strong> for 2 turns , reduced Defense by 20%. Exposed targets cannot voluntarily use movement or repositioning skills.</div>
@@ -122,7 +122,7 @@
         <h2 class="gallery-header">Gallery</h2>
         <div class="carousel-wrap">
             <div class="carousel-track" id="carouselTrack">
-                <div class="carousel-item"><img src="../../img/forgotten_noble_portrait.jpg" alt="Portrait"></div>
+                <div class="carousel-item"><img src="../../img/forgotten/forgotten_noble_portrait.jpg" alt="Portrait"></div>
             </div>
         </div>
         <div class="carousel-nav">
@@ -130,7 +130,7 @@
             <button class="nav-btn" id="nextBtn">&#8594;</button>
         </div>
     </div>
-    <a href="forgotten_order_sentinelle.html" class="back-link">← Return to Sentinelle delle Ceneri</a>
+    <a href="forgotten_order_sentinelle.html" class="back-link">? Return to Sentinelle delle Ceneri</a>
 </main>
 <script>
     const track=document.getElementById('carouselTrack');const items=track.querySelectorAll('.carousel-item');let current=0;
