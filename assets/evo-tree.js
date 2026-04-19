@@ -14,13 +14,12 @@
             '.evo-tree-topbar{display:flex;align-items:center;padding:10px 16px;background:rgba(0,0,0,0.5);border-bottom:1px solid rgba(255,255,255,0.08);}',
             '.evo-tree-topbar-title{color:#5cb88a;font-size:0.8rem;text-transform:uppercase;letter-spacing:2px;font-weight:bold;}',
             '.evo-tree-canvas{position:relative;width:100%;overflow:hidden;background:#050d07;background-size:cover;background-position:center;}',
-            '.evo-node{position:absolute;text-align:center;cursor:default;z-index:2;}',
-            '.evo-portrait{position:relative;width:100%;aspect-ratio:1/1;border-radius:4px;border:2px solid;overflow:hidden;background:#000;}',
-            '.evo-portrait img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:top center;display:block;}',
-            '.evo-portrait img:first-child{position:relative;}',
-            '.evo-portrait-anim{animation:evo-crossfade 8s infinite;}',
-            '@keyframes evo-crossfade{0%,40%{opacity:0}50%,90%{opacity:1}100%{opacity:0}}',
-            '.evo-label{font-size:0.65rem;margin-top:5px;text-transform:uppercase;letter-spacing:0.5px;line-height:1.3;font-weight:bold;word-break:break-word;}'
+            /* horizontal card node */
+            '.evo-node{position:absolute;display:flex;align-items:center;border-radius:5px;border:2px solid;z-index:2;box-sizing:border-box;overflow:hidden;cursor:default;}',
+            '.evo-node-label{flex:1;padding:0 10px;color:#fff;font-size:0.72rem;font-weight:bold;text-transform:uppercase;letter-spacing:0.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}',
+            '.evo-node-imgs{display:flex;gap:3px;padding:4px 4px 4px 0;flex-shrink:0;}',
+            '.evo-node-img-wrap{position:relative;overflow:hidden;border-radius:3px;border:1px solid rgba(255,255,255,0.25);flex-shrink:0;}',
+            '.evo-node-img-wrap img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:top center;display:block;}',
         ].join('');
         document.head.appendChild(s);
     }
@@ -43,7 +42,8 @@
     }
 
     /* ── Tier colours ─────────────────────────────────────────────────── */
-    var TC = { 0: '#ffd700', 1: '#e0e0e0', 2: '#4dd0e1', 3: '#81c784', 4: '#ffb300', 5: '#ce93d8' };
+    var TC  = { 0: '#6b8de3', 1: '#c0c0c0', 2: '#4dd0e1', 3: '#81c784', 4: '#ffb300', 5: '#ce93d8' };
+    var TBG = { 0: 'rgba(50,65,170,0.82)', 1: 'rgba(80,80,80,0.72)', 2: 'rgba(20,130,155,0.82)', 3: 'rgba(45,145,60,0.82)', 4: 'rgba(165,110,10,0.82)', 5: 'rgba(120,50,160,0.82)' };
 
     /* ── Extract path label from tier text (e.g. "Tier 2 , Defender Path" → "Defender Path") */
     function getPathLabel(t) {
@@ -94,7 +94,8 @@
                 var idx = pathKeys.indexOf(pathLabel.toLowerCase());
                 path = idx === 0 ? 'left' : idx === 1 ? 'right' : 'center';
             }
-            return { name: name, tier: tier, path: path, pathLabel: pathLabel, imgSrc: imgSrc, imgSrc2: imgSrc2, color: color };
+            var bg = TBG[tier] || 'rgba(0,0,0,0.7)';
+            return { name: name, tier: tier, path: path, pathLabel: pathLabel, imgSrc: imgSrc, imgSrc2: imgSrc2, color: color, bg: bg };
         });
     }
 
@@ -105,6 +106,7 @@
             for (var j = 0; j < units.length; j++) {
                 var u = units[i], v = units[j];
                 if (v.tier !== u.tier + 1) continue;
+                if (u.tier === 0) continue; /* Officer has no outgoing arrows */
                 if ((u.path === 'left' && v.path === 'right') || (u.path === 'right' && v.path === 'left')) continue;
                 if (u.path === 'center' || v.path === 'center' || u.path === v.path) edges.push([i, j]);
             }
@@ -120,27 +122,43 @@
         if (!units.length) return;
 
         var W = Math.max(canvas.offsetWidth || 0, canvas.clientWidth || 0, 300);
-        var NODE = Math.min(90, Math.max(60, W * 0.11));
-        var ROW_H = NODE + 60;
+        var CARD_H  = 66;
+        var CARD_GAP = 10;
+        var ROW_H   = CARD_H + 52;
         var maxTier = Math.max.apply(null, units.map(function (u) { return u.tier; }));
-        var PAD_TOP = 38, PAD_BOT = 54;
+        var PAD_TOP = 36, PAD_BOT = 48;
         var CANVAS_H = PAD_TOP + (maxTier + 1) * ROW_H + PAD_BOT;
 
         canvas.style.minHeight = CANVAS_H + 'px';
 
         var hasPaths = units.some(function (u) { return u.path !== 'center'; });
-        var leftCX = hasPaths ? Math.max(NODE / 2 + 30, W * 0.22) : W * 0.5;
-        var rightCX = hasPaths ? Math.min(W - NODE / 2 - 30, W * 0.78) : W * 0.5;
-        var colCX = { left: leftCX, center: W * 0.5, right: rightCX };
+
+        /* max cards in any single tier+path slot → determines card width */
+        var maxPerSlot = 1;
+        for (var t = 0; t <= maxTier; t++) {
+            ['left', 'right', 'center'].forEach(function (p) {
+                var c = units.filter(function (u) { return u.tier === t && u.path === p; }).length;
+                if (c > maxPerSlot) maxPerSlot = c;
+            });
+        }
+        var zoneW  = hasPaths ? W * 0.42 : W * 0.65;
+        var CARD_W = Math.min(240, Math.max(150, Math.floor((zoneW - (maxPerSlot - 1) * CARD_GAP) / maxPerSlot)));
+        var IMG_SZ = CARD_H - 8;
+
+        var colCX = {
+            left:   hasPaths ? W * 0.21 : W * 0.5,
+            center: W * 0.5,
+            right:  hasPaths ? W * 0.79 : W * 0.5
+        };
 
         var positions = units.map(function (unit, idx) {
             var before = units.slice(0, idx).filter(function (v) { return v.tier === unit.tier && v.path === unit.path; }).length;
-            var total = units.filter(function (v) { return v.tier === unit.tier && v.path === unit.path; }).length;
-            var slotW = total * NODE + (total - 1) * 14;
+            var total  = units.filter(function (v) { return v.tier === unit.tier && v.path === unit.path; }).length;
+            var slotW  = total * CARD_W + (total - 1) * CARD_GAP;
             var cx = colCX[unit.path] || W * 0.5;
-            var x = cx - slotW / 2 + before * (NODE + 14);
-            var y = PAD_TOP + unit.tier * ROW_H;
-            return { x: x, y: y, cx: x + NODE / 2, topY: y, botY: y + NODE };
+            var x  = cx - slotW / 2 + before * (CARD_W + CARD_GAP);
+            var y  = PAD_TOP + unit.tier * ROW_H;
+            return { x: x, y: y, cx: x + CARD_W / 2, topY: y, botY: y + CARD_H };
         });
 
         /* SVG edges + column labels */
@@ -177,25 +195,34 @@
         /* Remove old nodes */
         canvas.querySelectorAll('.evo-node,.evo-tier-lbl').forEach(function (n) { n.remove(); });
 
-        /* Render nodes */
+        /* Render card nodes */
         units.forEach(function (unit, idx) {
             var pos = positions[idx];
             var d = document.createElement('div');
             d.className = 'evo-node';
-            d.style.cssText = 'left:' + pos.x + 'px;top:' + pos.y + 'px;width:' + NODE + 'px;';
-            var p2html = unit.imgSrc2
-                ? '<img src="' + unit.imgSrc2 + '" alt="" loading="lazy" class="evo-portrait-anim" onerror="this.style.display=\'none\'">'
-                : '';
+            d.style.cssText = 'left:' + pos.x + 'px;top:' + pos.y + 'px;width:' + CARD_W + 'px;height:' + CARD_H + 'px;' +
+                'border-color:' + unit.color + ';background:' + unit.bg + ';' +
+                'box-shadow:0 0 14px ' + unit.color + '44;';
+
+            var imgsHTML = '';
+            if (unit.imgSrc) {
+                imgsHTML += '<div class="evo-node-img-wrap" style="width:' + IMG_SZ + 'px;height:' + IMG_SZ + 'px;">' +
+                    '<img src="' + unit.imgSrc + '" alt="' + unit.name + '" loading="lazy" onerror="this.style.opacity=0.2">' +
+                    '</div>';
+            }
+            if (unit.imgSrc2) {
+                imgsHTML += '<div class="evo-node-img-wrap" style="width:' + IMG_SZ + 'px;height:' + IMG_SZ + 'px;">' +
+                    '<img src="' + unit.imgSrc2 + '" alt="" loading="lazy" onerror="this.style.opacity=0.2">' +
+                    '</div>';
+            }
+
             d.innerHTML =
-                '<div class="evo-portrait" style="border-color:' + unit.color + ';box-shadow:0 0 10px ' + unit.color + '33">' +
-                    '<img src="' + unit.imgSrc + '" alt="' + unit.name + '" loading="lazy" onerror="this.style.opacity=0.25">' +
-                    p2html +
-                '</div>' +
-                '<div class="evo-label" style="color:' + unit.color + '">' + unit.name + '</div>';
+                '<div class="evo-node-label">' + unit.name + '</div>' +
+                (imgsHTML ? '<div class="evo-node-imgs">' + imgsHTML + '</div>' : '');
             canvas.appendChild(d);
         });
 
-        /* Tier labels */
+        /* Tier labels on left edge */
         var TN = { 0: 'Officer', 1: 'Tier I', 2: 'Tier II', 3: 'Tier III', 4: 'Tier IV', 5: 'Tier V' };
         var done = {};
         units.forEach(function (unit) {
@@ -203,7 +230,7 @@
                 done[unit.tier] = true;
                 var lbl = document.createElement('div');
                 lbl.className = 'evo-tier-lbl';
-                var y = PAD_TOP + unit.tier * ROW_H + NODE / 2 - 8;
+                var y = PAD_TOP + unit.tier * ROW_H + CARD_H / 2 - 8;
                 lbl.style.cssText = 'position:absolute;left:5px;top:' + y + 'px;color:' + unit.color + ';font-size:0.58rem;text-transform:uppercase;letter-spacing:1px;opacity:0.5;font-weight:bold;white-space:nowrap;';
                 lbl.textContent = TN[unit.tier] || ('T' + unit.tier);
                 canvas.appendChild(lbl);
