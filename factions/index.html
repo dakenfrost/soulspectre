@@ -95,31 +95,43 @@
             transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
             z-index: 1;
 
-            /* FIX: Forza l'immagine a non andare oltre il bordo interno */
+            /* Forza l'immagine a stare dentro i limiti del box */
             background-origin: border-box;
             box-sizing: border-box;
         }
 
-        /* 2. Sostituisci i border-left degli hover con i box-shadow */
-        .valkyrion:not(.locked):hover { 
-        box-shadow: inset 10px 0 0 0 var(--accent-blue); /* La barra blu ora è "dentro" */
-        color: var(--accent-blue); 
-        }
-
-        .forgotten:not(.locked):hover { 
-        box-shadow: inset 10px 0 0 0 var(--accent-green); 
-        color: var(--accent-green); 
-        }
-
+        /* Overlay scuro per leggibilità */
         .faction-btn::before {
-        content: '';
-        position: absolute;
-        top: 0; left: 0; 
-        width: 100%; height: 100%;
-        /* Aumentiamo leggermente l'opacità a sinistra per fondere meglio */
-        background: linear-gradient(90deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 100%);
-        z-index: -1;
-        transition: background 0.3s ease;
+            content: '';
+            position: absolute;
+            top: 0; left: 0; 
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 100%);
+            z-index: -1;
+            transition: background 0.3s ease;
+        }
+
+        /* Gestione Hover Generale */
+        .faction-btn:hover {
+            transform: translateX(15px);
+            border-color: rgba(255,255,255,0.4);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        /* Gestione colori tramite BOX-SHADOW INSET (Niente bordini glitchati) */
+        .valkyrion:hover { 
+            box-shadow: inset 10px 0 0 0 var(--accent-blue); 
+            color: var(--accent-blue); 
+        }
+
+        .forgotten:hover { 
+            box-shadow: inset 10px 0 0 0 var(--accent-green); 
+            color: var(--accent-green); 
+        }
+
+        .locked:hover {
+            box-shadow: inset 10px 0 0 0 #444;
+            color: #fff;
         }
 
         /* Banner Backgrounds */
@@ -131,25 +143,11 @@
         .brotherhood { background-image: url('../img/banners/banner_brotherhood.jpg'); }
         .elven { background-image: url('../img/banners/banner_elven.jpg'); }
 
-        /* Hover States for ALL Factions (Active & Locked) */
-        .faction-btn:hover {
-            transform: translateX(15px);
-            border-color: rgba(255,255,255,0.4);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-
-        /* Color Borders only for Active or Highlighted items */
-        .valkyrion:hover { border-left: 10px solid var(--accent-blue); color: var(--accent-blue); }
-        .forgotten:hover { border-left: 10px solid var(--accent-green); color: var(--accent-green); }
-        
-        /* Locked hover visuals (No specific color, just white/gray) */
-        .locked:hover { border-left: 10px solid #444; color: #fff; }
-
-        /* LOCKED STATE STYLING */
+        /* LOCKED STATE */
         .locked {
             filter: grayscale(100%);
             opacity: 0.7;
-            cursor: help; /* Indica che puoi passarci sopra per info, ma non cliccare */
+            cursor: help;
             color: var(--text-locked);
         }
 
