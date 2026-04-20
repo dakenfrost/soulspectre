@@ -1,240 +1,64 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SOULSPECTRE | Factions</title>
-    <style>
-        body {
-            background-color: #0a0a0a;
-            color: #e0e0e0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        #bg-image {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100vw; height: 100vh;
-            background-image: url('../img/homepage_bg.jpg'); 
-            background-size: cover;
-            background-position: center;
-            z-index: -2;
-        }
-
-        #overlay {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100vw; height: 100vh;
-            background: linear-gradient(135deg, rgba(10,10,15,0.95) 0%, rgba(5,5,5,0.98) 100%); 
-            z-index: -1;
-        }
-
-        header {
-            padding: 60px 20px;
-            text-align: center;
-            width: 100%;
-        }
-
-        h1 {
-            letter-spacing: 6px;
-            font-size: 2.5rem;
-            color: #fff;
-            text-transform: uppercase;
-            margin: 0;
-            text-shadow: 0 0 15px rgba(255,255,255,0.1);
-        }
-
-        main {
-            display: flex;
-            width: 90%;
-            max-width: 1200px;
-            gap: 40px;
-            margin-bottom: 50px;
-            align-items: flex-start;
-        }
-
-        /* FACTION LIST */
+/* FACTION LIST */
         .faction-list {
             flex: 0 0 40%;
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 15px;
         }
 
         .faction-btn {
-            background: rgba(20, 20, 25, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 30px;
+            position: relative;
+            height: 80px; /* Altezza fissa per il bannerino */
+            display: flex;
+            align-items: center;
+            padding-left: 30px;
             color: #fff;
             text-decoration: none;
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 2px;
-            transition: all 0.3s ease;
-            border-left: 0px solid transparent;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+        }
+
+        /* Overlay scuro per leggibilità testo */
+        .faction-btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(90deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 100%);
+            z-index: -1;
+            transition: background 0.3s ease;
         }
 
         .faction-btn:hover {
-            background: rgba(30, 30, 45, 1);
-            transform: translateX(10px);
+            transform: translateX(15px);
+            border-color: rgba(255,255,255,0.3);
         }
 
-        .faction-btn.valkyrion:hover { border-left: 8px solid #5c9ce6; color: #5c9ce6; border-color: rgba(92, 156, 230, 0.4); }
-        .faction-btn.forgotten:hover { border-left: 8px solid #5cb88a; color: #5cb88a; border-color: rgba(92, 184, 138, 0.4); }
-
-        /* PREVIEW PANEL */
-        .preview-panel {
-            flex: 1;
-            background: rgba(15, 15, 15, 0.9);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            min-height: 550px;
-            display: flex;
-            flex-direction: column;
-            position: sticky;
-            top: 40px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
-            border-radius: 4px;
-            overflow: hidden;
+        .faction-btn:hover::before {
+            background: linear-gradient(90deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 100%);
         }
 
-        #preview-img {
-            width: 100%;
-            height: 320px;
-            object-fit: cover;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            background-color: #000;
-        }
+        /* Assegnazione immagini di sfondo (bannerini) */
+        .valkyrion { background-image: url('../img/banners/banner_valkyrion.jpg'); }
+        .forgotten { background-image: url('../img/banners/banner_forgotten.jpg'); }
+        .kharos { background-image: url('../img/banners/banner_kharos.jpg'); }
+        .syndicate { background-image: url('../img/banners/banner_syndicate.jpg'); }
+        .primal { background-image: url('../img/banners/banner_primal.jpg'); }
+        .brotherhood { background-image: url('../img/banners/banner_brotherhood.jpg'); }
+        .elven { background-image: url('../img/banners/banner_elven.jpg'); }
 
-        .preview-content { padding: 35px; }
-
-        #preview-title {
-            font-size: 2rem;
-            margin: 0 0 15px 0;
-            color: #fff;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-        }
-
-        #preview-desc {
-            color: #ccc;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin: 0;
-        }
-
-        .placeholder-text {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 550px;
-            color: #444;
-            font-style: italic;
-            text-align: center;
-            padding: 40px;
-            font-size: 1.2rem;
-            letter-spacing: 1px;
-        }
-
-        .back-link {
-            margin: 40px 0;
-            color: #666;
-            text-decoration: none;
-            transition: color 0.3s;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            letter-spacing: 2px;
-        }
-
-        .back-link:hover { color: #fff; }
-
-        @media (max-width: 900px) {
-            main { flex-direction: column; }
-            .faction-list, .preview-panel { flex: 1 1 100%; width: 100%; position: static; }
-            .preview-panel { min-height: auto; }
-        }
-    </style>
-</head>
-<body>
-
-<div id="bg-image"></div>
-<div id="overlay"></div>
-
-<header>
-    <h1>Factions Archive</h1>
-</header>
-
-<main>
-    <div class="faction-list">
-        <a href="valkyrion.html" class="faction-btn valkyrion" 
-           onmouseover="updatePreview('valkyrion')" 
-           onmouseout="resetPreview()">
-            Valkyrion Empire
-        </a>
-
-        <a href="forgotten.html" class="faction-btn forgotten" 
-           onmouseover="updatePreview('forgotten')" 
-           onmouseout="resetPreview()">
-            The Forgotten
-        </a>
-    </div>
-
-    <div class="preview-panel" id="panel">
-        <div id="default-content" class="placeholder-text">
-            Select an entity to initiate data scan...
-        </div>
-        <div id="active-content" style="display: none;">
-            <img id="preview-img" src="" alt="Faction Preview">
-            <div class="preview-content">
-                <h2 id="preview-title"></h2>
-                <p id="preview-desc"></p>
-            </div>
-        </div>
-    </div>
-</main>
-
-<a href="../index.html" class="back-link">← Return to Main Hub</a>
-
-<script>
-    const data = {
-        valkyrion: {
-            title: "Valkyrion Empire",
-            desc: "A hegemony of steel and intellect. They understand that survival permits no moral errors. Their doctrine relies on tactical foresight and the systematic neutralization of threats through arcane arts and military precision.",
-            img: "../img/faction_preview_valkyrion.jpg"
-        },
-        forgotten: {
-            title: "The Forgotten",
-            desc: "An empire born from extinction. Malicott, the Root Mother, preserved entire peoples from total annihilation and gave them a second life. Her children carry no memory of their past , only the will that drove them to accept her pact.",
-            img: "../img/forgotten/faction_preview_forgotten.jpg"
-        }
-    };
-
-    const defaultContent = document.getElementById('default-content');
-    const activeContent = document.getElementById('active-content');
-    const pTitle = document.getElementById('preview-title');
-    const pDesc = document.getElementById('preview-desc');
-    const pImg = document.getElementById('preview-img');
-
-    function updatePreview(faction) {
-        const info = data[faction];
-        pTitle.innerText = info.title;
-        pDesc.innerText = info.desc;
-        pImg.src = info.img;
-        
-        defaultContent.style.display = 'none';
-        activeContent.style.display = 'block';
-    }
-
-    function resetPreview() {
-        // Keeps the last viewed faction for smoother navigation
-    }
-</script>
-
-</body>
-</html>
+        /* Effetti colore al passaggio del mouse (Bordi) */
+        .faction-btn.valkyrion:hover { border-left: 10px solid #5c9ce6; }
+        .faction-btn.forgotten:hover { border-left: 10px solid #5cb88a; }
+        .faction-btn.kharos:hover { border-left: 10px solid #d95d2b; }
+        .faction-btn.syndicate:hover { border-left: 10px solid #9b59b6; }
+        .faction-btn.primal:hover { border-left: 10px solid #a67c52; }
+        .faction-btn.brotherhood:hover { border-left: 10px solid #95a5a6; }
+        .faction-btn.elven:hover { border-left: 10px solid #27ae60; }
