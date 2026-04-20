@@ -11,7 +11,7 @@
             --bg-dark: #050505;
             --panel-bg: rgba(10, 10, 12, 0.98);
             --text-main: #e0e0e0;
-            --text-locked: #555;
+            --text-locked: #777;
         }
 
         body {
@@ -114,24 +114,26 @@
         .brotherhood { background-image: url('../img/banners/banner_brotherhood.jpg'); }
         .elven { background-image: url('../img/banners/banner_elven.jpg'); }
 
-        /* Hover States for Active Factions */
-        .faction-btn:not(.locked):hover {
+        /* Hover States for ALL Factions (Active & Locked) */
+        .faction-btn:hover {
             transform: translateX(15px);
             border-color: rgba(255,255,255,0.4);
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        .valkyrion:not(.locked):hover { border-left: 10px solid var(--accent-blue); color: var(--accent-blue); }
-        .forgotten:not(.locked):hover { border-left: 10px solid var(--accent-green); color: var(--accent-green); }
+        /* Color Borders only for Active or Highlighted items */
+        .valkyrion:hover { border-left: 10px solid var(--accent-blue); color: var(--accent-blue); }
+        .forgotten:hover { border-left: 10px solid var(--accent-green); color: var(--accent-green); }
+        
+        /* Locked hover visuals (No specific color, just white/gray) */
+        .locked:hover { border-left: 10px solid #444; color: #fff; }
 
-        /* LOCKED STATE */
+        /* LOCKED STATE STYLING */
         .locked {
             filter: grayscale(100%);
-            opacity: 0.6;
-            cursor: not-allowed;
-            pointer-events: none;
+            opacity: 0.7;
+            cursor: help; /* Indica che puoi passarci sopra per info, ma non cliccare */
             color: var(--text-locked);
-            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .locked::after {
@@ -166,6 +168,7 @@
             object-fit: cover;
             border-bottom: 2px solid rgba(255,255,255,0.05);
             filter: brightness(0.8);
+            transition: opacity 0.3s ease;
         }
 
         .preview-content { padding: 40px; }
@@ -203,16 +206,16 @@
         <a href="valkyrion.html" class="faction-btn valkyrion" onmouseover="updatePreview('valkyrion')">Valkyrion Empire</a>
         <a href="forgotten.html" class="faction-btn forgotten" onmouseover="updatePreview('forgotten')">The Forgotten</a>
         
-        <a href="#" class="faction-btn kharos locked">Kharos Dominion</a>
-        <a href="#" class="faction-btn syndicate locked">Devil Syndicate</a>
-        <a href="#" class="faction-btn primal locked">Primal Coalition</a>
-        <a href="#" class="faction-btn brotherhood locked">Iron Brotherhood</a>
-        <a href="#" class="faction-btn elven locked">Elven Enclave</a>
+        <a href="javascript:void(0)" class="faction-btn kharos locked" onmouseover="updatePreview('kharos')">Kharos Dominion</a>
+        <a href="javascript:void(0)" class="faction-btn syndicate locked" onmouseover="updatePreview('syndicate')">Devil Syndicate</a>
+        <a href="javascript:void(0)" class="faction-btn primal locked" onmouseover="updatePreview('primal')">Primal Coalition</a>
+        <a href="javascript:void(0)" class="faction-btn brotherhood locked" onmouseover="updatePreview('brotherhood')">Iron Brotherhood</a>
+        <a href="javascript:void(0)" class="faction-btn elven locked" onmouseover="updatePreview('elven')">Elven Enclave</a>
     </div>
 
     <div class="preview-panel">
         <div id="default-content" class="placeholder-text">
-            Select an active entity to initiate data scan...
+            Select an entity to initiate data scan...
         </div>
         <div id="active-content" style="display: none;">
             <img id="preview-img" src="" alt="Faction Preview">
@@ -237,6 +240,31 @@
             title: "The Forgotten",
             desc: "An empire born from extinction. Malicott, the Root Mother, preserved entire peoples from total annihilation and gave them a second life.",
             img: "../img/forgotten/faction_preview_forgotten.jpg"
+        },
+        kharos: {
+            title: "Kharos Dominion [LOCKED]",
+            desc: "A five-century meritocracy. They blend brutal barbarian warfare with forbidden necromancy and advanced alchemy. Might makes Justice.",
+            img: "../img/faction_preview_kharos.jpg"
+        },
+        syndicate: {
+            title: "Devil Syndicate [LOCKED]",
+            desc: "A Lawful Evil conglomerate where profit is the only absolute. They conquer territories through economic strangulation and debt.",
+            img: "../img/faction_preview_syndicate.jpg"
+        },
+        primal: {
+            title: "Primal Coalition [LOCKED]",
+            desc: "A Chaotic Neutral alliance dedicated to the purity of instinct. They reject the suffocating laws of civilized kingdoms.",
+            img: "../img/faction_preview_primal.jpg"
+        },
+        brotherhood: {
+            title: "Iron Brotherhood [LOCKED]",
+            desc: "A Lawful Neutral collective of dwarves. In this society, individual ambition is a flaw; every citizen is a link in a grand chain.",
+            img: "../img/faction_preview_brotherhood.jpg"
+        },
+        elven: {
+            title: "Elven Enclave [LOCKED]",
+            desc: "A True Neutral isolationist power. Driven by an unwavering belief in their racial supremacy, indifferent to external chaos.",
+            img: "../img/faction_preview_elven.jpg"
         }
     };
 
