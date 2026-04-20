@@ -7,9 +7,11 @@
     <style>
         :root {
             --accent-blue: #5c9ce6;
+            --accent-green: #5cb88a;
             --bg-dark: #050505;
             --panel-bg: rgba(10, 10, 12, 0.98);
             --text-main: #e0e0e0;
+            --text-locked: #555;
         }
 
         body {
@@ -32,14 +34,14 @@
             background-size: cover;
             background-position: center;
             z-index: -2;
-            filter: brightness(0.2);
+            filter: brightness(0.15) blur(2px);
         }
 
         #overlay {
             position: fixed;
             top: 0; left: 0;
             width: 100vw; height: 100vh;
-            background: radial-gradient(circle, rgba(10,10,15,0.85) 0%, rgba(5,5,5,1) 100%); 
+            background: radial-gradient(circle, rgba(10,10,15,0.9) 0%, rgba(5,5,5,1) 100%); 
             z-index: -1;
         }
 
@@ -67,7 +69,6 @@
             align-items: flex-start;
         }
 
-        /* FACTION LIST (BANNER BUTTONS) */
         .faction-list {
             flex: 0 0 40%;
             display: flex;
@@ -95,7 +96,6 @@
             z-index: 1;
         }
 
-        /* Dark Overlay for text readability */
         .faction-btn::before {
             content: '';
             position: absolute;
@@ -105,17 +105,7 @@
             transition: background 0.3s ease;
         }
 
-        .faction-btn:hover {
-            transform: translateX(15px);
-            border-color: rgba(255,255,255,0.4);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-
-        .faction-btn:hover::before {
-            background: linear-gradient(90deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.1) 100%);
-        }
-
-        /* Banner Background Images */
+        /* Banner Backgrounds */
         .valkyrion { background-image: url('../img/banners/banner_valkyrion.jpg'); }
         .forgotten { background-image: url('../img/banners/banner_forgotten.jpg'); }
         .kharos { background-image: url('../img/banners/banner_kharos.jpg'); }
@@ -124,14 +114,36 @@
         .brotherhood { background-image: url('../img/banners/banner_brotherhood.jpg'); }
         .elven { background-image: url('../img/banners/banner_elven.jpg'); }
 
-        /* Color Borders on Hover */
-        .valkyrion:hover { border-left: 10px solid #5c9ce6; color: #5c9ce6; }
-        .forgotten:hover { border-left: 10px solid #5cb88a; color: #5cb88a; }
-        .kharos:hover { border-left: 10px solid #d95d2b; color: #d95d2b; }
-        .syndicate:hover { border-left: 10px solid #9b59b6; color: #9b59b6; }
-        .primal:hover { border-left: 10px solid #a67c52; color: #a67c52; }
-        .brotherhood:hover { border-left: 10px solid #95a5a6; color: #95a5a6; }
-        .elven:hover { border-left: 10px solid #27ae60; color: #27ae60; }
+        /* Hover States for Active Factions */
+        .faction-btn:not(.locked):hover {
+            transform: translateX(15px);
+            border-color: rgba(255,255,255,0.4);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .valkyrion:not(.locked):hover { border-left: 10px solid var(--accent-blue); color: var(--accent-blue); }
+        .forgotten:not(.locked):hover { border-left: 10px solid var(--accent-green); color: var(--accent-green); }
+
+        /* LOCKED STATE */
+        .locked {
+            filter: grayscale(100%);
+            opacity: 0.6;
+            cursor: not-allowed;
+            pointer-events: none;
+            color: var(--text-locked);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .locked::after {
+            content: 'DATA LOCKED';
+            position: absolute;
+            right: 20px;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            color: #444;
+            border: 1px solid #444;
+            padding: 2px 8px;
+        }
 
         /* PREVIEW PANEL */
         .preview-panel {
@@ -154,25 +166,11 @@
             object-fit: cover;
             border-bottom: 2px solid rgba(255,255,255,0.05);
             filter: brightness(0.8);
-            transition: filter 0.5s ease;
         }
 
         .preview-content { padding: 40px; }
-
-        #preview-title {
-            font-size: 2.2rem;
-            margin: 0 0 20px 0;
-            color: #fff;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-        }
-
-        #preview-desc {
-            color: #bbb;
-            font-size: 1.1rem;
-            line-height: 1.9;
-            margin: 0;
-        }
+        #preview-title { font-size: 2.2rem; margin: 0 0 20px 0; color: #fff; text-transform: uppercase; letter-spacing: 4px; }
+        #preview-desc { color: #bbb; font-size: 1.1rem; line-height: 1.9; margin: 0; }
 
         .placeholder-text {
             display: flex;
@@ -185,41 +183,10 @@
             padding: 40px;
             font-size: 1.3rem;
             letter-spacing: 2px;
-            text-transform: uppercase;
         }
 
-        .back-link {
-            margin: 40px 0;
-            color: #555;
-            text-decoration: none;
-            transition: color 0.3s;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            letter-spacing: 3px;
-        }
-
+        .back-link { margin: 40px 0; color: #555; text-decoration: none; transition: color 0.3s; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 3px; }
         .back-link:hover { color: #fff; }
-
-        footer {
-            margin-top: auto;
-            padding: 40px;
-            text-align: center;
-            width: 100%;
-            background: rgba(0,0,0,0.5);
-        }
-
-        .ai-note {
-            font-size: 0.75rem;
-            color: #444;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        @media (max-width: 1000px) {
-            main { flex-direction: column; }
-            .faction-list, .preview-panel { width: 100%; position: static; }
-            .preview-panel { min-height: auto; }
-        }
     </style>
 </head>
 <body>
@@ -235,16 +202,17 @@
     <div class="faction-list">
         <a href="valkyrion.html" class="faction-btn valkyrion" onmouseover="updatePreview('valkyrion')">Valkyrion Empire</a>
         <a href="forgotten.html" class="faction-btn forgotten" onmouseover="updatePreview('forgotten')">The Forgotten</a>
-        <a href="kharos.html" class="faction-btn kharos" onmouseover="updatePreview('kharos')">Kharos Dominion</a>
-        <a href="syndicate.html" class="faction-btn syndicate" onmouseover="updatePreview('syndicate')">Devil Syndicate</a>
-        <a href="primal.html" class="faction-btn primal" onmouseover="updatePreview('primal')">Primal Coalition</a>
-        <a href="brotherhood.html" class="faction-btn brotherhood" onmouseover="updatePreview('brotherhood')">Iron Brotherhood</a>
-        <a href="elven.html" class="faction-btn elven" onmouseover="updatePreview('elven')">Elven Enclave</a>
+        
+        <a href="#" class="faction-btn kharos locked">Kharos Dominion</a>
+        <a href="#" class="faction-btn syndicate locked">Devil Syndicate</a>
+        <a href="#" class="faction-btn primal locked">Primal Coalition</a>
+        <a href="#" class="faction-btn brotherhood locked">Iron Brotherhood</a>
+        <a href="#" class="faction-btn elven locked">Elven Enclave</a>
     </div>
 
-    <div class="preview-panel" id="panel">
+    <div class="preview-panel">
         <div id="default-content" class="placeholder-text">
-            Select a faction to initiate data scan...
+            Select an active entity to initiate data scan...
         </div>
         <div id="active-content" style="display: none;">
             <img id="preview-img" src="" alt="Faction Preview">
@@ -258,46 +226,17 @@
 
 <a href="../index.html" class="back-link">← Return to Main Hub</a>
 
-<footer>
-    <p class="ai-note">All images are generated with generative AI</p>
-</footer>
-
 <script>
     const data = {
         valkyrion: {
             title: "Valkyrion Empire",
-            desc: "A hegemony of steel and intellect. They understand that survival permits no moral errors. Their doctrine relies on tactical foresight and the systematic neutralization of threats through arcane arts and military precision.",
+            desc: "A hegemony of steel and intellect. They understand that survival permits no moral errors. Their doctrine relies on tactical foresight and military precision.",
             img: "../img/faction_preview_valkyrion.jpg"
         },
         forgotten: {
             title: "The Forgotten",
-            desc: "An empire born from extinction. Malicott, the Root Mother, preserved entire peoples from total annihilation and gave them a second life. Her children carry no memory of their past, only the will that drove them to accept her pact.",
+            desc: "An empire born from extinction. Malicott, the Root Mother, preserved entire peoples from total annihilation and gave them a second life.",
             img: "../img/forgotten/faction_preview_forgotten.jpg"
-        },
-        kharos: {
-            title: "Kharos Dominion",
-            desc: "A five-century meritocracy born from banditry, now a powerhouse of dark alchemy and necromancy. Operating on the ruthless axiom that 'Might makes Justice', they ensure peak efficiency by replacing the weak with the worthy through demonic pacts and brutal strength.",
-            img: "../img/faction_preview_kharos.jpg"
-        },
-        syndicate: {
-            title: "Devil Syndicate",
-            desc: "A Lawful Evil faction where profit is the only absolute. They conquer territories not through blades, but through economic strangulation and inescapable contracts. In this conglomerate, debt is a weapon more lethal than any spell.",
-            img: "../img/faction_preview_syndicate.jpg"
-        },
-        primal: {
-            title: "Primal Coalition",
-            desc: "A Chaotic Neutral alliance dedicated to the purity of instinct. They reject the suffocating laws of 'civilized' kingdoms, maintaining loyalty only to their natural drives and the raw hierarchy of the wild.",
-            img: "../img/faction_preview_primal.jpg"
-        },
-        brotherhood: {
-            title: "Iron Brotherhood",
-            desc: "A Lawful Neutral collective of dwarves working for the Greater Good. In this society, individual ambition is a flaw; every citizen is a link in a grand chain. In exchange for compliance, all members are guaranteed absolute security and a high standard of living.",
-            img: "../img/faction_preview_brotherhood.jpg"
-        },
-        elven: {
-            title: "Elven Enclave",
-            desc: "A True Neutral isolationist power. Driven by an unwavering belief in their racial supremacy, the elves remain entirely indifferent to external chaos, guarding their borders with lethal precision against all 'lesser' influences.",
-            img: "../img/faction_preview_elven.jpg"
         }
     };
 
@@ -309,10 +248,10 @@
 
     function updatePreview(faction) {
         const info = data[faction];
+        if(!info) return;
         pTitle.innerText = info.title;
         pDesc.innerText = info.desc;
         pImg.src = info.img;
-        
         defaultContent.style.display = 'none';
         activeContent.style.display = 'block';
     }
