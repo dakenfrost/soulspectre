@@ -77,15 +77,28 @@
         img.src = src;
     }
 
+    /* ── Detect subdirectory from existing <img> tags on the page ───── */
+    function detectSubdir() {
+        var re = /img\/forgotten\/([^/]+)\//;
+        var imgs = document.querySelectorAll('img[src]');
+        for (var i = 0; i < imgs.length; i++) {
+            var m = re.exec(imgs[i].getAttribute('src'));
+            if (m) return m[1] + '/';
+        }
+        return '';
+    }
+
     function build() {
         var banner = document.querySelector('.intro-banner');
         if (!banner) return;
 
-        /* Derive base portrait path from the current HTML filename.
-           e.g. forgotten_frontline_defender.html
-           → ../../img/forgotten/forgotten_frontline_defender_f_portrait.jpg */
-        var page = location.pathname.split('/').pop().replace('.html', '');
-        var base = '../../img/forgotten/';
+        /* Derive base portrait path from the current HTML filename
+           and the subdirectory detected from other images already in the page.
+           e.g. forgotten_frontline_defender.html + arborei/ found in existing imgs
+           → ../../img/forgotten/arborei/forgotten_frontline_defender_f_portrait.jpg */
+        var page   = location.pathname.split('/').pop().replace('.html', '');
+        var subdir = detectSubdir();
+        var base   = '../../img/forgotten/' + subdir;
         var srcF      = base + page + '_f_portrait.jpg';
         var srcM      = base + page + '_m_portrait.jpg';
         var srcSingle = base + page + '_portrait.jpg';
