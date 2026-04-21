@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Forgotten Spells</title>
+    <style>
+        body {
+            color: #e0e0e0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #bg-image {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background-image: url('../img/forgotten/forgotten_bg.jpg');
+            background-size: cover;
+            background-position: center;
+            z-index: -2;
+        }
+
+        #overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background: linear-gradient(to bottom, rgba(5, 12, 8, 0.90), rgba(3, 8, 5, 0.98));
+            z-index: -1;
+        }
+
+        header {
+            padding: 60px 20px 30px 20px;
+            text-align: center;
+            width: 100%;
+            max-width: 1100px;
+        }
+
+        h1 {
+            letter-spacing: 5px;
+            font-size: 2.5rem;
+            margin: 0;
+            color: #fff;
+            text-transform: uppercase;
+            text-shadow: 0 0 15px rgba(92, 184, 138, 0.6);
+        }
+
+        .subtitle {
+            color: #5cb88a;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            margin-top: 10px;
+            text-transform: uppercase;
+        }
+
+        main {
+            max-width: 1100px;
+            padding: 40px 20px;
+            width: 100%;
+        }
+
+        .intro-block {
+            background: rgba(10, 18, 12, 0.7);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-left: 3px solid #5cb88a;
+            padding: 25px 30px;
+            margin-bottom: 50px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            color: #aaa;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .intro-block strong {
+            color: #5cb88a;
+        }
+
+        .spell-category {
+            margin-bottom: 40px;
+            background: rgba(10, 18, 12, 0.65);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .level-header {
+            padding: 15px 25px;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            border-bottom: 2px solid rgba(255,255,255,0.1);
+        }
+
+        /* Level colours — Forgotten palette */
+        .lv-1 { background: rgba(176, 190, 197, 0.12); color: #b0bec5; border-bottom-color: #b0bec5; }
+        .lv-2 { background: rgba(92, 184, 138, 0.12); color: #5cb88a; border-bottom-color: #5cb88a; }
+        .lv-3 { background: rgba(77, 208, 225, 0.12); color: #4dd0e1; border-bottom-color: #4dd0e1; }
+        .lv-4 { background: rgba(206, 147, 216, 0.12); color: #ce93d8; border-bottom-color: #ce93d8; }
+        .lv-5 { background: rgba(255, 179, 0, 0.12); color: #ffb300; border-bottom-color: #ffb300; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th {
+            padding: 12px 25px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            color: #666;
+            letter-spacing: 1px;
+            background: rgba(0,0,0,0.2);
+        }
+
+        td {
+            padding: 15px 25px;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+            vertical-align: middle;
+        }
+
+        tr:last-child td { border-bottom: none; }
+        tr:hover td { background: rgba(92, 184, 138, 0.05); }
+
+        .spell-icon-cell { width: 60px; text-align: center; }
+        .spell-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 4px;
+            border: 1px solid rgba(92, 184, 138, 0.25);
+            background: rgba(0,0,0,0.3);
+            padding: 4px;
+            object-fit: contain;
+        }
+
+        .mana-cost {
+            font-family: monospace;
+            color: #4dd0e1;
+            font-weight: bold;
+            font-size: 1.1rem;
+            width: 100px;
+        }
+
+        .spell-name {
+            color: #fff;
+            font-weight: bold;
+            font-size: 1.05rem;
+            width: 240px;
+        }
+
+        .spell-effect {
+            color: #ccc;
+            font-size: 0.95rem;
+        }
+
+        .stack-info {
+            color: #5cb88a;
+            font-size: 0.8rem;
+            font-style: italic;
+            display: block;
+            margin-top: 4px;
+        }
+
+        .dmg-earth  { color: #a5d6a7; font-weight: bold; }
+        .dmg-light  { color: #fff176; font-weight: bold; }
+        .dmg-pure   { color: #e0e0e0; font-weight: bold; }
+        .dmg-mind   { color: #f48fb1; font-weight: bold; }
+        .spore-tag  { color: #5cb88a; font-weight: bold; }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 40px;
+            color: #666;
+            text-decoration: none;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+            padding: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .back-link:hover {
+            color: #5cb88a;
+            text-shadow: 0 0 10px rgba(92, 184, 138, 0.4);
+        }
+
+        @media (max-width: 800px) {
+            .mana-cost, .spell-icon-cell { display: none; }
+            .spell-name { width: auto; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<header>
+    <h1>Forgotten Spells</h1>
+    <div class="subtitle">The Living Art of the Root Mother</div>
+</header>
+
+<main>
+
+    <div class="intro-block">
+        The spells of the Empire of the Forgotten are not learned — they are <strong>remembered</strong>. Each incantation is a fragment of the Mother Tree's will, channelled through Malicott and passed down to those she has granted a second life. They speak in roots, in spores, in the slow patience of ancient wood. To cast them is to borrow from the earth something it will eventually take back.
+    </div>
+
+    <!-- LEVEL 1 -->
+    <div class="spell-category">
+        <div class="level-header lv-1">Level 1 Spells</div>
+        <table>
+            <thead>
+                <tr>
+                    <th class="spell-icon-cell">Icon</th>
+                    <th>Mana</th>
+                    <th>Name</th>
+                    <th>Effect</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/forgotten/skills/forgotten_skill_distillato_vita.svg" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">200</td>
+                    <td class="spell-name">Mending Sap</td>
+                    <td class="spell-effect">Heals <strong>25 HP</strong> to selected party.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/forgotten/skills/forgotten_skill_frusta_linfa.svg" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">200</td>
+                    <td class="spell-name">Sap Lash</td>
+                    <td class="spell-effect">Deals <span class="dmg-light">Light</span> damage to frontline enemies.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/forgotten/skills/forgotten_skill_scintilla.svg" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">200</td>
+                    <td class="spell-name">Spore Seed</td>
+                    <td class="spell-effect">Applies 1 <span class="spore-tag">Spore</span> to target enemy unit.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/forgotten/skills/forgotten_skill_istinto_bosco.svg" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">200</td>
+                    <td class="spell-name">Root Tangle</td>
+                    <td class="spell-effect">Reduces movement of target enemy party by <strong>20%</strong> for this turn.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/forgotten/skills/forgotten_skill_campo_ombra.svg" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">200</td>
+                    <td class="spell-name">Forest Veil</td>
+                    <td class="spell-effect">Selected party gains <strong>+5% dodge</strong> this turn.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/forgotten/skills/forgotten_skill_luminescenza.svg" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">200</td>
+                    <td class="spell-name">Summon Wisps</td>
+                    <td class="spell-effect">Summons a group of <strong>Forgotten Wisps</strong>. They are dismissed at end of turn.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- LEVEL 2 -->
+    <div class="spell-category">
+        <div class="level-header lv-2">Level 2 Spells</div>
+        <table>
+            <tbody>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/forgotten/skills/forgotten_skill_rimedio_sacro.svg" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">400</td>
+                    <td class="spell-name">Nature's Remedy</td>
+                    <td class="spell-effect">Heals <strong>50 HP</strong> to selected party.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/forgotten/skills/forgotten_skill_dardo_ambra.svg" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">400</td>
+                    <td class="spell-name">Amber Dart</td>
+                    <td class="spell-effect">Deals <span class="dmg-earth">Earth</span> damage to a single target enemy.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/forgotten/skills/forgotten_skill_armature_spine.svg" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">400</td>
+                    <td class="spell-name">Thorn Shell</td>
+                    <td class="spell-effect">Selected party gains <strong>+5% armor</strong> this turn.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/forgotten/skills/forgotten_skill_ward_vivente.svg" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">400</td>
+                    <td class="spell-name">Living Ward</td>
+                    <td class="spell-effect">Selected party gains protection to <span class="dmg-earth">Earth</span> damage for this turn.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/forgotten/skills/forgotten_skill_salvia_natura.svg" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">400</td>
+                    <td class="spell-name">Deadening Moss</td>
+                    <td class="spell-effect">Selected enemy party gets <strong>-5% damage</strong> for this turn.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/forgotten/skills/forgotten_skill_coordinazione.svg" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">400</td>
+                    <td class="spell-name">Verdant March</td>
+                    <td class="spell-effect">Adds <strong>40% movement speed</strong> to selected party this turn.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- LEVEL 3 -->
+    <div class="spell-category">
+        <div class="level-header lv-3">Level 3 Spells</div>
+        <table>
+            <tbody>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/forgotten/skills/forgotten_skill_rigoglio.svg" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">800</td>
+                    <td class="spell-name">Flourish</td>
+                    <td class="spell-effect">Heals <strong>80 HP</strong> to selected party.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/forgotten/skills/forgotten_skill_sentenza_bosco.svg" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">800</td>
+                    <td class="spell-name">Grasping Roots</td>
+                    <td class="spell-effect">Immobilizes target enemy party for <strong>1 turn</strong>.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/forgotten/skills/forgotten_skill_ancora_spirituale.svg" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">800</td>
+                    <td class="spell-name">Soul Anchor</td>
+                    <td class="spell-effect">Selected party gains protection to <span class="dmg-mind">Mind</span> damage for this turn.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/forgotten/skills/forgotten_skill_instabilita_aerea.svg" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">800</td>
+                    <td class="spell-name">Spore Cloud</td>
+                    <td class="spell-effect">Applies 2 <span class="spore-tag">Spores</span> to all enemies in the target party.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/forgotten/skills/forgotten_skill_saggezza_ancestrale.svg" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">800</td>
+                    <td class="spell-name">Ancestral Wisdom</td>
+                    <td class="spell-effect">Selected party gains <strong>+5% accuracy</strong> and <strong>+5% damage</strong> for this turn.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/forgotten/skills/forgotten_skill_risveglio.svg" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">800</td>
+                    <td class="spell-name">Minor Awakening</td>
+                    <td class="spell-effect">Revives the first dead unit in selected party at <strong>30% HP</strong>.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- LEVEL 4 -->
+    <div class="spell-category">
+        <div class="level-header lv-4">Level 4 Spells</div>
+        <table>
+            <tbody>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/forgotten/skills/forgotten_skill_patto_vita.svg" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">1600</td>
+                    <td class="spell-name">Pact of Life</td>
+                    <td class="spell-effect">Heals <strong>120 HP</strong> to selected party. <span class="stack-info">Stackable with Flourish</span></td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/forgotten/skills/forgotten_skill_tornado.svg" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">1600</td>
+                    <td class="spell-name">Root Storm</td>
+                    <td class="spell-effect">Deals <span class="dmg-earth">Earth</span> damage to all enemies on the field.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/forgotten/skills/forgotten_skill_vortice_oscuro.svg" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">1600</td>
+                    <td class="spell-name">Dark Vortex</td>
+                    <td class="spell-effect">Target enemy party gets <strong>-10% damage</strong> for this turn. <span class="stack-info">Stackable with Deadening Moss</span></td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/forgotten/skills/forgotten_skill_eredita_vegetale.svg" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">1600</td>
+                    <td class="spell-name">Verdant Surge</td>
+                    <td class="spell-effect">Selected party gains <strong>+10% damage</strong> this turn. <span class="stack-info">Stackable with Ancestral Wisdom</span></td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/forgotten/skills/forgotten_skill_barriera_luce.svg" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">1600</td>
+                    <td class="spell-name">Spine Barrier</td>
+                    <td class="spell-effect">Selected party gains <strong>+10% armor</strong> this turn. <span class="stack-info">Stackable with Thorn Shell</span></td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/forgotten/skills/forgotten_skill_risveglio.svg" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">1600</td>
+                    <td class="spell-name">Greater Awakening</td>
+                    <td class="spell-effect">Revives the first dead unit in selected party at <strong>50% HP</strong>. <span class="stack-info">Stackable with Minor Awakening</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- LEVEL 5 -->
+    <div class="spell-category">
+        <div class="level-header lv-5">Level 5 Spells</div>
+        <table>
+            <tbody>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/forgotten/skills/forgotten_skill_benedizione_malicott.svg" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">3200</td>
+                    <td class="spell-name">Malicott's Blessing</td>
+                    <td class="spell-effect">Heals <strong>200 HP</strong> to selected party and cleanses all debuffs from them.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/forgotten/skills/forgotten_skill_grande_trasmutazione.svg" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">3200</td>
+                    <td class="spell-name">Great Transmutation</td>
+                    <td class="spell-effect">For <strong>1 turn</strong>, converts <strong>30%</strong> of all damage dealt by selected party into HP for their weakest member.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/forgotten/skills/forgotten_skill_giudizio_anima.svg" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">3200</td>
+                    <td class="spell-name">Soul's Judgement</td>
+                    <td class="spell-effect">Deals <span class="dmg-pure">Pure</span> damage to all enemies, then heals allies for <strong>50%</strong> of the total damage dealt.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/forgotten/skills/forgotten_skill_maledizione_dono.svg" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">3200</td>
+                    <td class="spell-name">Curse of the Gift</td>
+                    <td class="spell-effect">Executes all enemies below <strong>25% HP</strong>. For each enemy consumed, one allied unit restores <strong>20% HP</strong>.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/forgotten/skills/forgotten_skill_trascendenza.svg" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">3200</td>
+                    <td class="spell-name">Transcendence</td>
+                    <td class="spell-effect">Selected party is immune to all damage for <strong>1 turn</strong>.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/forgotten/skills/forgotten_skill_voce_malicott.svg" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">3200</td>
+                    <td class="spell-name">Malicott's Voice</td>
+                    <td class="spell-effect">Summons the <strong>Spirit Guide</strong> to the field. It is dismissed at end of turn.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <a href="forgotten.html" class="back-link">← Return to the Forgotten Overview</a>
+</main>
+
+</body>
+</html>
