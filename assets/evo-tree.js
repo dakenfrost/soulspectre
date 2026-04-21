@@ -11,18 +11,37 @@
         s.id = 'evo-tree-style';
         s.textContent = [
             '.evo-tree-wrapper{width:100%;margin-bottom:60px;border:1px solid rgba(255,255,255,0.1);border-radius:4px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,0.6);}',
-            '.evo-tree-topbar{display:flex;align-items:center;padding:10px 16px;background:rgba(0,0,0,0.5);border-bottom:1px solid rgba(255,255,255,0.08);}',
-            '.evo-tree-topbar-title{color:#5cb88a;font-size:0.8rem;text-transform:uppercase;letter-spacing:2px;font-weight:bold;}',
+            '.evo-tree-topbar{display:flex;align-items:center;gap:14px;padding:10px 16px;background:rgba(0,0,0,0.5);border-bottom:1px solid rgba(255,255,255,0.08);}',
+            '.evo-tree-topbar-title{color:#5cb88a;font-size:0.8rem;text-transform:uppercase;letter-spacing:2px;font-weight:bold;flex:1;}',
+            /* zoom controls */
+            '.evo-zoom-ctrl{display:flex;align-items:center;gap:8px;user-select:none;}',
+            '.evo-zoom-icon{font-size:0.75rem;color:rgba(255,255,255,0.4);cursor:pointer;transition:color 0.2s;}',
+            '.evo-zoom-icon:hover{color:#5cb88a;}',
+            '.evo-zoom-label{font-size:0.65rem;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:1px;white-space:nowrap;}',
+            '.evo-zoom-slider{-webkit-appearance:none;appearance:none;width:80px;height:3px;background:rgba(255,255,255,0.15);border-radius:2px;outline:none;cursor:pointer;}',
+            '.evo-zoom-slider::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:11px;height:11px;border-radius:50%;background:#5cb88a;cursor:pointer;box-shadow:0 0 5px #5cb88a88;}',
+            '.evo-zoom-slider::-moz-range-thumb{width:11px;height:11px;border-radius:50%;background:#5cb88a;cursor:pointer;border:none;box-shadow:0 0 5px #5cb88a88;}',
+            /* canvas */
             '.evo-tree-canvas{position:relative;width:100%;overflow:hidden;background:#050d07;background-size:cover;background-position:center;}',
+            /* magnifier lens */
+            '.evo-magnifier{position:fixed;pointer-events:none;border-radius:50%;border:2px solid rgba(92,184,138,0.6);box-shadow:0 0 0 1px rgba(0,0,0,0.5),0 4px 24px rgba(0,0,0,0.8);overflow:hidden;z-index:9999;display:none;background:#050d07;}',
+            '.evo-magnifier canvas{position:absolute;top:0;left:0;}',
             /* horizontal card node */
             '.evo-node{position:absolute;display:flex;align-items:center;border-radius:5px;border:2px solid;z-index:2;box-sizing:border-box;overflow:hidden;cursor:default;}',
-            '.evo-node-label{flex:1;padding:0 10px;color:#fff;font-size:0.72rem;font-weight:bold;text-transform:uppercase;letter-spacing:0.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}',
+            '.evo-node-label{flex:1;padding:0 10px;color:#fff;font-size:0.72rem;font-weight:bold;text-transform:uppercase;letter-spacing:0.5px;white-space:normal;overflow-wrap:break-word;word-break:break-word;line-height:1.25;}',
             '.evo-node-imgs{display:flex;gap:3px;padding:4px 4px 4px 0;flex-shrink:0;}',
             '.evo-node-img-wrap{position:relative;overflow:hidden;border-radius:3px;border:1px solid rgba(255,255,255,0.25);flex-shrink:0;}',
             '.evo-node-img-wrap img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:top center;display:block;}',
         ].join('');
         document.head.appendChild(s);
     }
+
+    /* ── Magnifier state ──────────────────────────────────────────────── */
+    var _magZoom = 2.5;   /* default zoom level */
+    var _magSize = 160;   /* lens diameter in px */
+    var _magEl   = null;  /* the lens DOM element */
+    var _magInner = null; /* scaled clone container inside lens */
+    var _magActive = false;
 
     /* ── Build wrapper HTML inside #evo-tree-root ─────────────────────── */
     function buildShell() {
@@ -33,12 +52,132 @@
             '<div class="evo-tree-wrapper">' +
                 '<div class="evo-tree-topbar">' +
                     '<span class="evo-tree-topbar-title">&#9670; Evolution Path</span>' +
+                    '<div class="evo-zoom-ctrl">' +
+                        '<span class="evo-zoom-label">&#128269; Zoom</span>' +
+                        '<span class="evo-zoom-icon" id="evo-zoom-minus">&#8722;</span>' +
+                        '<input type="range" class="evo-zoom-slider" id="evo-zoom-slider" min="1.5" max="5" step="0.1" value="2.5">' +
+                        '<span class="evo-zoom-icon" id="evo-zoom-plus">&#43;</span>' +
+                    '</div>' +
                 '</div>' +
                 '<div class="evo-tree-canvas" id="evo-tree-canvas">' +
                     '<svg id="evo-tree-svg" xmlns="http://www.w3.org/2000/svg" style="position:absolute;top:0;left:0;pointer-events:none;overflow:visible;"></svg>' +
                 '</div>' +
             '</div>';
         if (bg) document.getElementById('evo-tree-canvas').style.backgroundImage = "url('" + bg + "')";
+
+        /* Wire zoom slider */
+        var slider = document.getElementById('evo-zoom-slider');
+        var btnM   = document.getElementById('evo-zoom-minus');
+        var btnP   = document.getElementById('evo-zoom-plus');
+        if (slider) {
+            slider.addEventListener('input', function () {
+                _magZoom = parseFloat(this.value);
+            });
+        }
+        if (btnM) {
+            btnM.addEventListener('click', function () {
+                _magZoom = Math.max(1.5, parseFloat((+_magZoom - 0.25).toFixed(2)));
+                if (slider) slider.value = _magZoom;
+            });
+        }
+        if (btnP) {
+            btnP.addEventListener('click', function () {
+                _magZoom = Math.min(5, parseFloat((+_magZoom + 0.25).toFixed(2)));
+                if (slider) slider.value = _magZoom;
+            });
+        }
+
+        /* Create lens element (appended to body so it floats freely) */
+        if (!document.getElementById('evo-magnifier')) {
+            _magEl = document.createElement('div');
+            _magEl.id = 'evo-magnifier';
+            _magEl.className = 'evo-magnifier';
+            _magEl.style.width  = _magSize + 'px';
+            _magEl.style.height = _magSize + 'px';
+            /* Inner container that will hold the scaled/translated canvas clone */
+            _magInner = document.createElement('div');
+            _magInner.style.cssText = 'position:absolute;top:0;left:0;transform-origin:0 0;pointer-events:none;';
+            _magEl.appendChild(_magInner);
+            document.body.appendChild(_magEl);
+        }
+
+        /* Attach mouse events to canvas */
+        var canvas = document.getElementById('evo-tree-canvas');
+        if (canvas) {
+            canvas.addEventListener('mouseenter', function () { _magActive = true; _magEl.style.display = 'block'; });
+            canvas.addEventListener('mouseleave', function () { _magActive = false; _magEl.style.display = 'none'; });
+            canvas.addEventListener('mousemove', onMagMove);
+        }
+    }
+
+    /* ── Magnifier move handler ───────────────────────────────────────── */
+    function onMagMove(e) {
+        if (!_magActive || !_magEl || !_magInner) return;
+        var canvas = document.getElementById('evo-tree-canvas');
+        if (!canvas) return;
+
+        /* Position lens offset from cursor so it doesn't cover it */
+        var offset = _magSize / 2 + 16;
+        var lx = e.clientX + offset;
+        var ly = e.clientY - _magSize / 2;
+        /* Keep lens inside viewport */
+        if (lx + _magSize > window.innerWidth)  lx = e.clientX - offset - _magSize;
+        if (ly < 0)                              ly = 0;
+        if (ly + _magSize > window.innerHeight)  ly = window.innerHeight - _magSize;
+
+        _magEl.style.left = lx + 'px';
+        _magEl.style.top  = ly + 'px';
+
+        /* Mouse position inside canvas */
+        var rect = canvas.getBoundingClientRect();
+        var mx   = e.clientX - rect.left;
+        var my   = e.clientY - rect.top;
+
+        /* We want the cursor point to appear at the center of the lens.
+           With scale Z, a point (mx, my) in original space maps to
+           (mx*Z - _magSize/2, my*Z - _magSize/2) offset inside inner. */
+        var tx = -mx * _magZoom + _magSize / 2;
+        var ty = -my * _magZoom + _magSize / 2;
+
+        /* Sync inner size and background to canvas */
+        var W = canvas.offsetWidth;
+        var H = canvas.offsetHeight;
+        _magInner.style.width  = W + 'px';
+        _magInner.style.height = H + 'px';
+        _magInner.style.background = canvas.style.backgroundImage
+            ? canvas.style.backgroundImage + ' center/cover' : '#050d07';
+        _magInner.style.transform = 'scale(' + _magZoom + ') translate(' + (tx / _magZoom) + 'px,' + (ty / _magZoom) + 'px)';
+
+        /* Clone nodes from canvas into inner if not done / stale */
+        _syncMagClone(canvas);
+    }
+
+    var _magCloneVersion = 0;
+    function _syncMagClone(canvas) {
+        /* Rebuild clone content on every render cycle (nodes are re-created on render) */
+        var ver = parseInt(canvas.getAttribute('data-mag-ver') || '0', 10);
+        if (_magInner._ver === ver) return;
+        _magInner._ver = ver;
+
+        /* Remove old cloned nodes */
+        while (_magInner.firstChild) _magInner.removeChild(_magInner.firstChild);
+
+        /* Clone SVG */
+        var svg = canvas.querySelector('#evo-tree-svg');
+        if (svg) {
+            var svgClone = svg.cloneNode(true);
+            svgClone.style.position = 'absolute';
+            svgClone.style.top = '0';
+            svgClone.style.left = '0';
+            svgClone.style.pointerEvents = 'none';
+            _magInner.appendChild(svgClone);
+        }
+
+        /* Clone .evo-node and .evo-tier-lbl elements */
+        canvas.querySelectorAll('.evo-node,.evo-tier-lbl').forEach(function (el) {
+            var cl = el.cloneNode(true);
+            _magInner.appendChild(cl);
+        });
     }
 
     /* ── Tier colours ─────────────────────────────────────────────────── */
@@ -200,7 +339,7 @@
             var pos = positions[idx];
             var d = document.createElement('div');
             d.className = 'evo-node';
-            d.style.cssText = 'left:' + pos.x + 'px;top:' + pos.y + 'px;width:' + CARD_W + 'px;height:' + CARD_H + 'px;' +
+            d.style.cssText = 'left:' + pos.x + 'px;top:' + pos.y + 'px;width:' + CARD_W + 'px;min-height:' + CARD_H + 'px;height:auto;' +
                 'border-color:' + unit.color + ';background:' + unit.bg + ';' +
                 'box-shadow:0 0 14px ' + unit.color + '44;';
 
@@ -236,6 +375,10 @@
                 canvas.appendChild(lbl);
             }
         });
+
+        /* Signal magnifier clone to refresh */
+        var ver = parseInt(canvas.getAttribute('data-mag-ver') || '0', 10);
+        canvas.setAttribute('data-mag-ver', ver + 1);
     }
 
     /* ── Boot ─────────────────────────────────────────────────────────── */
