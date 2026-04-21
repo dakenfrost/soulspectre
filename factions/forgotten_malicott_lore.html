@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | The Secrets of Malicott</title>
+    <style>
+        body {
+            color: #e0e0e0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #bg-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url('../img/forgotten/forgotten_bg.jpg'); 
+            background-size: cover;
+            background-position: center;
+            z-index: -2;
+        }
+
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(to bottom, rgba(5, 12, 8, 0.90), rgba(3, 8, 5, 0.98)); 
+            z-index: -1;
+        }
+
+        header {
+            padding: 60px 20px 30px 20px;
+            text-align: center;
+            width: 100%;
+            max-width: 1100px;
+        }
+
+        h1 {
+            letter-spacing: 5px;
+            font-size: 2.8rem;
+            margin: 0;
+            color: #fff;
+            text-transform: uppercase;
+            text-shadow: 0 0 15px rgba(92, 184, 138, 0.5);
+        }
+
+        .subtitle {
+            color: #5cb88a;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            margin-top: 10px;
+            text-transform: uppercase;
+        }
+
+        main {
+            max-width: 1100px; 
+            padding: 40px 20px;
+            width: 100%;
+            position: relative;
+        }
+
+        .split-section {
+            display: flex;
+            gap: 40px;
+            align-items: stretch; 
+            margin-bottom: 60px; 
+            background: rgba(10, 18, 12, 0.7);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-left: 3px solid #5cb88a;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .section-image {
+            flex: 0 0 45%; 
+        }
+
+        .section-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+        }
+
+        .section-text {
+            flex: 1; 
+            padding: 35px;
+        }
+
+        h2 {
+            color: #fff;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 10px;
+            margin-top: 0;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+        }
+
+        p {
+            margin-bottom: 25px;
+            color: #ccc;
+            font-size: 1.1rem;
+            text-align: justify;
+        }
+
+        strong {
+            color: #5cb88a;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #aaa;
+            border-left: 3px solid #5cb88a;
+            padding: 20px;
+            margin: 30px 0;
+            background: rgba(0, 0, 0, 0.4);
+            font-size: 1.1rem;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.5);
+        }
+
+        .quote-author {
+            display: block;
+            margin-top: 15px;
+            font-size: 0.95rem;
+            color: #5cb88a;
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        .pact-phases {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .pact-phase {
+            background: rgba(0,0,0,0.4);
+            border-left: 3px solid #5cb88a;
+            padding: 15px 20px;
+        }
+
+        .phase-label {
+            color: #5cb88a;
+            font-weight: bold;
+            font-size: 1.05rem;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 60px;
+            color: #666;
+            text-decoration: none;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+            padding: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .back-link:hover {
+            color: #5cb88a;
+            text-shadow: 0 0 10px rgba(92, 184, 138, 0.4);
+        }
+
+        @media (max-width: 950px) {
+            .split-section {
+                flex-direction: column; 
+            }
+            .section-image {
+                flex: 1 1 100%;
+                width: 100%;
+                height: 300px; 
+            }
+            .section-text {
+                border-top: 1px solid rgba(255,255,255,0.1);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<header>
+    <h1>The Secrets of Malicott</h1>
+    <div class="subtitle">Mysteries of the Root Mother</div>
+</header>
+
+<main>
+
+    <div class="split-section" style="border: none; background: rgba(10,18,12,0.5); backdrop-filter: none; box-shadow: none; margin-bottom: 30px;">
+        <div class="section-text" style="padding: 20px; text-align: center;">
+            <p style="text-align: center; margin: 0;">She does not rule by decree, she does not speak, and she does not interact with the people on a daily basis. Yet everything in the Empire of the Forgotten begins and ends with her.</p>
+        </div>
+    </div>
+
+    <!-- SECTION 1: The Root Mother -->
+    <div class="split-section">
+        <div class="section-image">
+            <img src="../img/forgotten/forgotten_leader_1_tree.png" alt="The Mother Tree">
+        </div>
+        <div class="section-text">
+            <h2>The Root Mother</h2>
+            <p>Malicott was once a traditional deity, now she has become something different: an ancient, biological, and silent entity. She appears as a <strong>Colossal Tree, white as pure light,</strong> unmoving at the center of the capital. She does not rule by decree, she does not speak, and she does not interact with the people on a daily basis.</p>
+            <p>Her greatest power is to halt the total extinction of a race. She does not merely save single individuals; she preserves the culture, historical memory, and essence of entire peoples — good or evil as they may be — provided they demonstrate valor and a profound reverence for nature. It is hypothesized that Malicott feeds on the pure willpower of the saved peoples, their successes, and their self-awareness.</p>
+            <p>With parts of her own body — fallen branches, leaves, bark — rendered divine by her essence, her artisans forge sacred weapons. Malicott acts out of a sense of <strong>cosmic justice with a fierce maternal attachment.</strong></p>
+        </div>
+    </div>
+
+    <!-- SECTION 2: The Shadow of the Mother -->
+    <div class="split-section">
+        <div class="section-image">
+            <img src="../img/forgotten/forgotten_leader_2_shadow.png" alt="The Shadow of the Mother">
+        </div>
+        <div class="section-text">
+            <h2>The Shadow of the Mother</h2>
+            <p>Malicott does not directly intervene in minor skirmishes. However, when one of her summons or champions uses their ultimate move or supreme power, <strong>for an instant, the gigantic shadow of Malicott appears behind them.</strong></p>
+            <p>It is the image of a proud mother watching her children triumph — smiling not out of cruelty, but because that necessary violence guarantees survival. It is a reminder to all who witness it: the Empire does not stand alone. It never has.</p>
+        </div>
+    </div>
+
+    <!-- SECTION 3: The Mailform -->
+    <div class="split-section">
+        <div class="section-image">
+            <img src="../img/forgotten/forgotten_leader_3_mailform.png" alt="The Mailform">
+        </div>
+        <div class="section-text">
+            <h2>The Mailform: The Firstborn</h2>
+            <p>Before the Empire was what it is today, when Malicott was still a Goddess at the height of her powers, she created the <strong>Mailform.</strong> The name echoes that of the Mother, as they are her direct and original creation. Unlike current citizens (who are resurrected), the Mailform were born alive and possessed biological bodies — a unique trait that allowed them to survive the millennia and procreate naturally.</p>
+            <p>They are considered <strong>Demigods of Ingenuity.</strong> They possess no innate magic, but their understanding of matter is absolute. They are the only ones capable of carving Malicott's sacred wood and forging it into divine weapons and armor for the militia.</p>
+            <p>Their philosophy is one of radical pacifism. A Mailform will never draw a weapon to wound. Their art is creation, not destruction — and therefore they never participate in battles, limiting themselves to arming those who must defend the Empire.</p>
+        </div>
+    </div>
+
+    <!-- SECTION 4: The Ritual of Birth -->
+    <div class="split-section">
+        <div class="section-image">
+            <img src="../img/forgotten/forgotten_leader_4_rebirth.png" alt="The Ritual of Birth">
+        </div>
+        <div class="section-text">
+            <h2>The Ritual of Birth</h2>
+            <p>Procreation in the Empire is both biological and mystical. Every new citizen is generated directly by the Mother Tree — Malicott's physical body. It is not a sudden event: the entire Empire <strong>"feels"</strong> when a new life is about to arrive.</p>
+            <p>The Tree begins to pulse and telepathically broadcasts to all inhabitants the most significant memories and purest emotions of the soul about to be resurrected — though faces are obscured and unclear. It is a moment of <strong>collective joy</strong> that boosts the population's morale, allowing them to prepare a welcome, clothing, and weapons for the newcomer.</p>
+            <p>The ritual culminates at the center of the Tree, where enormous roots open like a sacred womb. Attending citizens must voluntarily donate a small part of their ethereal energy — a communal sacrifice that fuels the new life. When the roots are about to unseal, Malicott's original figure briefly appears, bowing to the kingdom in gratitude. Once the roots part, the <strong>"New Possibility"</strong> emerges.</p>
+        </div>
+    </div>
+
+    <!-- SECTION 5: Mystery of the Face -->
+    <div class="split-section">
+        <div class="section-image">
+            <img src="../img/forgotten/forgotten_leader_5_face.png" alt="The Mystery of the Face">
+        </div>
+        <div class="section-text">
+            <h2>The Mystery of the Face</h2>
+            <p>A peculiar aspect of the ritual is <strong>visual anonymity.</strong> Throughout the entire gestation process within the roots, the unborn's body is wrapped in a membrane of diaphanous bark and pulsing light. The faces in its memories are completely unrecognizable — devoid of defined features, like uncarved clay statues.</p>
+            <p>It is said that in this phase, the soul is still deciding how to present itself to the world and not to reveal its origins. It is only at the <strong>exact moment of the first breath</strong> that the unique and definitive identity of the new life is revealed.</p>
+        </div>
+    </div>
+
+    <!-- SECTION 6: The Dialogue of the Grafting -->
+    <div class="split-section">
+        <div class="section-image">
+            <img src="../img/forgotten/forgotten_leader_6_pact.png" alt="The Dialogue of the Grafting">
+        </div>
+        <div class="section-text">
+            <h2>The Dialogue of the Grafting</h2>
+            <p>What happens in the exact moment between definitive death and rebirth? It is not an automatic process. It is a <strong>contract.</strong></p>
+            <p>When a soul dies and is intercepted in time by Malicott's power, it does not wake immediately in a new body. It finds itself in the <strong>Limbo of the Roots</strong> — a dark, warm, and humid space, similar to the inside of a seed buried underground. Here, time does not exist. The soul is alone with the voice of Malicott.</p>
+            <p>The spiritual dialogue always occurs in three phases:</p>
+            <div class="pact-phases">
+                <div class="pact-phase">
+                    <span class="phase-label">The Offer of Peace</span>
+                    Malicott shows the soul the sweetness of eternal oblivion — rest, the end of pain. Many souls accept this and vanish into peace, never becoming citizens.
+                </div>
+                <div class="pact-phase">
+                    <span class="phase-label">The Provocation</span>
+                    To those who hesitate, Malicott asks like a mother: <em>"Have you finished your journey?"</em>
+                </div>
+                <div class="pact-phase">
+                    <span class="phase-label">The Pact</span>
+                    If the soul responds with desire or a desperate "No," Malicott proposes the exchange: <em>"I will give you a second chance for your will. But there is a price to pay."</em>
+                </div>
+            </div>
+            <p>Agreeing carries heavy consequences: <strong>no third chances</strong> — failure or betrayal causes the soul to be permanently consumed. Those who return also lose all conscious memory of their first existence. The only memory that survives, vivid and indelible like a scar, is the exact instant of the pact itself.</p>
+        </div>
+    </div>
+
+    <!-- SECTION 7: Posthumous Rejection -->
+    <div class="split-section">
+        <div class="section-image">
+            <img src="../img/forgotten/forgotten_leader_7_rejection.png" alt="The Posthumous Rejection">
+        </div>
+        <div class="section-text">
+            <h2>The Posthumous Rejection</h2>
+            <p>There is a rare and terrifying case. Some souls say "Yes" to Malicott solely out of fear — without a true will to live. When these spirits are placed into a new body, the <strong>rejection is immediate.</strong> The body does not animate. The soul remains trapped in immobile flesh, conscious but paralyzed, until it goes mad and is absorbed by the Mother Tree as pure, raw nourishment.</p>
+            <div class="quote">
+                "Do not ask for life if you have no intention of using it."
+            </div>
+            <p>This grim fate serves as the Empire's most powerful unspoken teaching — that the gift of a second chance demands more than desperation. It demands <strong>will.</strong></p>
+        </div>
+    </div>
+
+    <a href="forgotten_leader.html" class="back-link">← Return to Malicott</a>
+</main>
+
+</body>
+</html>
