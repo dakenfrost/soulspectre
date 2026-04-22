@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Forgotten Infrastructure</title>
+    <style>
+        body {
+            color: #e0e0e0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #bg-image {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background-image: url('../img/forgotten/forgotten_bg.jpg');
+            background-size: cover;
+            background-position: center;
+            z-index: -2;
+        }
+
+        #overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background: linear-gradient(to bottom, rgba(5, 12, 8, 0.90), rgba(3, 8, 5, 0.98));
+            z-index: -1;
+        }
+
+        header {
+            padding: 60px 20px 30px 20px;
+            text-align: center;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        h1 {
+            letter-spacing: 5px;
+            font-size: 2.5rem;
+            margin: 0;
+            color: #fff;
+            text-transform: uppercase;
+            text-shadow: 0 0 15px rgba(92, 184, 138, 0.6);
+        }
+
+        .subtitle {
+            color: #5cb88a;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            margin-top: 10px;
+            text-transform: uppercase;
+        }
+
+        main {
+            max-width: 1200px;
+            padding: 40px 20px;
+            width: 100%;
+        }
+
+        .intro-block {
+            background: rgba(10, 18, 12, 0.7);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-left: 3px solid #5cb88a;
+            padding: 25px 30px;
+            margin-bottom: 50px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            color: #aaa;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .intro-block strong { color: #5cb88a; }
+
+        h2.section-title {
+            border-bottom: 2px solid #5cb88a;
+            padding-bottom: 10px;
+            margin-top: 60px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 1.8rem;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(92, 184, 138, 0.3);
+        }
+
+        .level-group { margin-top: 30px; }
+
+        .level-label {
+            background: rgba(92, 184, 138, 0.12);
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: #5cb88a;
+            margin-bottom: 20px;
+            display: inline-block;
+            border: 1px solid rgba(92, 184, 138, 0.25);
+            letter-spacing: 1px;
+        }
+
+        .building-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 18px;
+            margin-bottom: 40px;
+        }
+
+        .building-card {
+            background: rgba(10, 18, 12, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            gap: 15px;
+            padding: 15px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .building-card:hover {
+            border-color: rgba(92, 184, 138, 0.4);
+            background: rgba(15, 28, 18, 0.85);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+        }
+
+        .building-img {
+            width: 90px; height: 90px;
+            flex-shrink: 0;
+            border-radius: 4px;
+            object-fit: cover;
+            border: 1px solid rgba(92, 184, 138, 0.2);
+            background: rgba(0,0,0,0.4);
+        }
+
+        .building-info { flex: 1; }
+
+        .building-name {
+            display: block;
+            font-size: 1.05rem;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .building-cost {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-family: monospace;
+            font-size: 1rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .currency-icon { width: 16px; height: 16px; vertical-align: middle; }
+        .cost-gold { color: #ffd700; }
+        .cost-platinum { color: #e5e4e2; }
+
+        .building-effect { font-size: 0.9rem; color: #aaa; line-height: 1.4; }
+        .building-effect strong { color: #c8ecd8; }
+
+        /* Branch colour tags */
+        .tag-arborei  { border-left: 3px solid #5cb88a; }
+        .tag-linfa    { border-left: 3px solid #4dd0e1; }
+        .tag-araldi   { border-left: 3px solid #fff176; }
+        .tag-sentinelle { border-left: 3px solid #ce93d8; }
+        .tag-province { border-left: 4px solid #a5d6a7; }
+
+        /* Champion (platinum) cards */
+        .card-platinum {
+            border: 1px solid rgba(229, 228, 226, 0.25);
+            box-shadow: 0 0 15px rgba(255,255,255,0.04);
+        }
+        .upgrade-note {
+            display: block;
+            margin-top: 5px;
+            font-size: 0.8rem;
+            color: #e5e4e2;
+            font-style: italic;
+        }
+
+        /* Champion section label */
+        .label-champion {
+            background: rgba(229, 228, 226, 0.1);
+            color: #e5e4e2;
+            border: 1px solid rgba(229, 228, 226, 0.2);
+        }
+
+        .branch-legend {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+            font-size: 0.85rem;
+            color: #888;
+        }
+        .branch-legend span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .legend-dot {
+            width: 12px; height: 12px;
+            border-radius: 2px;
+            flex-shrink: 0;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 60px;
+            color: #666;
+            text-decoration: none;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+            padding: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        .back-link:hover {
+            color: #5cb88a;
+            text-shadow: 0 0 10px rgba(92, 184, 138, 0.4);
+        }
+
+        @media (max-width: 700px) {
+            .building-grid { grid-template-columns: 1fr; }
+            .branch-legend { gap: 12px; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<header>
+    <h1>Forgotten Infrastructure</h1>
+    <div class="subtitle">The Living Architecture of the Empire</div>
+</header>
+
+<main>
+
+    <div class="intro-block">
+        The Empire of the Forgotten does not build with stone or steel. Its structures are <strong>grown, not constructed</strong> — extensions of the Mother Tree's will, coaxed from the soil over decades or conjured in a single night of Malicott's attention. Each building is a vessel of memory, a shaped intention that guides a reborn soul further along the path the Mother has seen within them. To erect one is to make a promise to the future.
+    </div>
+
+    <!-- BRANCH LEGEND -->
+    <div class="branch-legend">
+        <span><div class="legend-dot" style="background:#5cb88a;"></div> Arboreal Fighters</span>
+        <span><div class="legend-dot" style="background:#4dd0e1;"></div> Shadows of the Sap</span>
+        <span><div class="legend-dot" style="background:#fff176;"></div> Heralds of Dust</span>
+        <span><div class="legend-dot" style="background:#ce93d8;"></div> Amber Sentinels</span>
+    </div>
+
+    <!-- ===================== CAPITAL BUILDINGS ===================== -->
+    <h2 class="section-title">Capital Buildings</h2>
+
+    <!-- LEVEL 1 -->
+    <div class="level-group">
+        <div class="level-label">Root Stage — Path Awakening (Tier 1 → Tier 2)</div>
+        <div class="building-grid">
+
+            <!-- ARBOREI -->
+            <div class="building-card tag-arborei">
+                <img src="../img/forgotten/forgotten_building_shield_grove.jpg" class="building-img" alt="Shield Grove">
+                <div class="building-info">
+                    <span class="building-name">Shield Grove</span>
+                    <span class="building-cost cost-gold">400 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Ethereal Swordsman → <strong>Frontline Defender</strong> (Defender Path).</span>
+                </div>
+            </div>
+            <div class="building-card tag-arborei">
+                <img src="../img/forgotten/forgotten_building_shadow_tunnel.jpg" class="building-img" alt="Shadow Tunnel">
+                <div class="building-info">
+                    <span class="building-name">Shadow Tunnel</span>
+                    <span class="building-cost cost-gold">400 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Ethereal Swordsman → <strong>Shadow Combatant</strong> (Assassin Path).</span>
+                </div>
+            </div>
+
+            <!-- LINFA -->
+            <div class="building-card tag-linfa">
+                <img src="../img/forgotten/forgotten_building_anchor_pool.jpg" class="building-img" alt="Anchor Pool">
+                <div class="building-info">
+                    <span class="building-name">Anchor Pool</span>
+                    <span class="building-cost cost-gold">400 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Will-o'-the-Wisps → <strong>Spirit Guide</strong> (Spirit Path).</span>
+                </div>
+            </div>
+            <div class="building-card tag-linfa">
+                <img src="../img/forgotten/forgotten_building_root_library.jpg" class="building-img" alt="Root Library">
+                <div class="building-info">
+                    <span class="building-name">Root Library</span>
+                    <span class="building-cost cost-gold">400 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Will-o'-the-Wisps → <strong>Inherited</strong> (Nature Path).</span>
+                </div>
+            </div>
+
+            <!-- ARALDI -->
+            <div class="building-card tag-araldi">
+                <img src="../img/forgotten/forgotten_building_radiant_crucible.jpg" class="building-img" alt="Radiant Crucible">
+                <div class="building-info">
+                    <span class="building-name">Radiant Crucible</span>
+                    <span class="building-cost cost-gold">400 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Ash Fruit → <strong>Corrupted Light Mage</strong> (Light Path).</span>
+                </div>
+            </div>
+            <div class="building-card tag-araldi">
+                <img src="../img/forgotten/forgotten_building_wind_vane.jpg" class="building-img" alt="Wind Vane">
+                <div class="building-info">
+                    <span class="building-name">Wind Vane</span>
+                    <span class="building-cost cost-gold">400 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Ash Fruit → <strong>Corrupted Wind Mage</strong> (Wind Path).</span>
+                </div>
+            </div>
+
+            <!-- SENTINELLE -->
+            <div class="building-card tag-sentinelle">
+                <img src="../img/forgotten/forgotten_building_control_bastion.jpg" class="building-img" alt="Control Bastion">
+                <div class="building-info">
+                    <span class="building-name">Control Bastion</span>
+                    <span class="building-cost cost-gold">400 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Amber Caster → <strong>Custodian</strong> (Custodian Path).</span>
+                </div>
+            </div>
+            <div class="building-card tag-sentinelle">
+                <img src="../img/forgotten/forgotten_building_sight_tower.jpg" class="building-img" alt="Sight Tower">
+                <div class="building-info">
+                    <span class="building-name">Sight Tower</span>
+                    <span class="building-cost cost-gold">400 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Amber Caster → <strong>Archer</strong> (Sniper Path).</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- LEVEL 2 -->
+    <div class="level-group">
+        <div class="level-label">Branch Stage — The Divergence (Tier 2 → Tier 3)</div>
+        <div class="building-grid">
+
+            <!-- ARBOREI -->
+            <div class="building-card tag-arborei">
+                <img src="../img/forgotten/forgotten_building_placeholder.png" class="building-img" alt="">
+                <div class="building-info">
+                    <span class="building-name">Guardian's Canopy</span>
+                    <span class="building-cost cost-gold">800 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Frontline Defender → <strong>Squire of the Homeland</strong>.</span>
+                </div>
+            </div>
+            <div class="building-card tag-arborei">
+                <img src="../img/forgotten/forgotten_building_placeholder.png" class="building-img" alt="">
+                <div class="building-info">
+                    <span class="building-name">Hunter's Den</span>
+                    <span class="building-cost cost-gold">800 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Shadow Combatant → <strong>Assassin of the Trees</strong>.</span>
+                </div>
+            </div>
+
+            <!-- LINFA -->
+            <div class="building-card tag-linfa">
+                <img src="../img/forgotten/forgotten_building_placeholder.png" class="building-img" alt="">
+                <div class="building-info">
+                    <span class="building-name">Purgation Vault</span>
+                    <span class="building-cost cost-gold">800 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Spirit Guide → <strong>Vestal</strong>.</span>
+                </div>
+            </div>
+            <div class="building-card tag-linfa">
+                <img src="../img/forgotten/forgotten_building_placeholder.png" class="building-img" alt="">
+                <div class="building-info">
+                    <span class="building-name">Distillation Grove</span>
+                    <span class="building-cost cost-gold">800 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Inherited → <strong>Herbalist</strong>.</span>
+                </div>
+            </div>
+
+            <!-- ARALDI -->
+            <div class="building-card tag-araldi">
+                <img src="../img/forgotten/forgotten_building_placeholder.png" class="building-img" alt="">
+                <div class="building-info">
+                    <span class="building-name">Purification Spire</span>
+                    <span class="building-cost cost-gold">800 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Corrupted Light Mage → <strong>Light Mage</strong>.</span>
+                </div>
+            </div>
+            <div class="building-card tag-araldi">
+                <img src="../img/forgotten/forgotten_building_placeholder.png" class="building-img" alt="">
+                <div class="building-info">
+                    <span class="building-name">Storm Lens</span>
+                    <span class="building-cost cost-gold">800 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Corrupted Wind Mage → <strong>Wind Mage</strong>.</span>
+                </div>
+            </div>
+
+            <!-- SENTINELLE -->
+            <div class="building-card tag-sentinelle">
+                <img src="../img/forgotten/forgotten_building_placeholder.png" class="building-img" alt="">
+                <div class="building-info">
+                    <span class="building-name">Binding Post</span>
+                    <span class="building-cost cost-gold">800 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Custodian → <strong>Justiciar</strong>.</span>
+                </div>
+            </div>
+            <div class="building-card tag-sentinelle">
+                <img src="../img/forgotten/forgotten_building_placeholder.png" class="building-img" alt="">
+                <div class="building-info">
+                    <span class="building-name">Spotter's Nest</span>
+                    <span class="building-cost cost-gold">800 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Archer → <strong>Marksman</strong>.</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- LEVEL 3 -->
+    <div class="level-group">
+        <div class="level-label">Canopy Stage — The Ascension (Tier 3 → Tier 4)</div>
+        <div class="building-grid">
+
+            <!-- ARBOREI -->
+            <div class="building-card tag-arborei">
+                <img src="../img/forgotten/forgotten_building_placeholder.png" class="building-img" alt="">
+                <div class="building-info">
+                    <span class="building-name">Sky Forge</span>
+                    <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Squire of the Homeland → <strong>Valkyrie Defender of the Homeland</strong>.</span>
+                </div>
+            </div>
+            <div class="building-card tag-arborei">
+                <img src="../img/forgotten/forgotten_building_placeholder.png" class="building-img" alt="">
+                <div class="building-info">
+                    <span class="building-name">Memory of Claws</span>
+                    <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Assassin of the Trees → <strong>Elf Assassin</strong>.</span>
+                </div>
+            </div>
+
+            <!-- LINFA -->
+            <div class="building-card tag-linfa">
+                <img src="../img/forgotten/forgotten_building_placeholder.png" class="building-img" alt="">
+                <div class="building-info">
+                    <span class="building-name">Wings of Grace</span>
+                    <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Vestal → <strong>Valkyrie Guardian</strong>.</span>
+                </div>
+            </div>
+            <div class="building-card tag-linfa">
+                <img src="../img/forgotten/forgotten_building_placeholder.png" class="building-img" alt="">
+                <div class="building-info">
+                    <span class="building-name">Alchemical Bloom</span>
+                    <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Herbalist → <strong>Elf Alchemist</strong>.</span>
+                </div>
+            </div>
+
+            <!-- ARALDI -->
+            <div class="building-card tag-araldi">
+                <img src="../img/forgotten/forgotten_building_placeholder.png" class="building-img" alt="">
+                <div class="building-info">
+                    <span class="building-name">Solar Altar</span>
+                    <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Light Mage → <strong>Sun Valkyrie</strong>.</span>
+                </div>
+            </div>
+            <div class="building-card tag-araldi">
+                <img src="../img/forgotten/forgotten_building_placeholder.png" class="building-img" alt="">
+                <div class="building-info">
+                    <span class="building-name">Tempest Roost</span>
+                    <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Wind Mage → <strong>Storm Elf</strong>.</span>
+                </div>
+            </div>
+
+            <!-- SENTINELLE -->
+            <div class="building-card tag-sentinelle">
+                <img src="../img/forgotten/forgotten_building_placeholder.png" class="building-img" alt="">
+                <div class="building-info">
+                    <span class="building-name">Lance Forge</span>
+                    <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Justiciar → <strong>Valkyrie Lancer</strong>.</span>
+                </div>
+            </div>
+            <div class="building-card tag-sentinelle">
+                <img src="../img/forgotten/forgotten_building_placeholder.png" class="building-img" alt="">
+                <div class="building-info">
+                    <span class="building-name">Memory Lens</span>
+                    <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Marksman → <strong>Elf Sniper</strong>.</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- LEVEL 4 — CHAMPION SHRINES (PLATINUM) -->
+    <div class="level-group">
+        <div class="level-label label-champion">Crown Stage — Champion Shrines (Tier 5)</div>
+        <div class="building-grid">
+
+            <div class="building-card tag-arborei card-platinum">
+                <img src="../img/forgotten/forgotten_building_placeholder.png" class="building-img" alt="">
+                <div class="building-info">
+                    <span class="building-name">The Convergence Chamber</span>
+                    <span class="building-cost cost-platinum">10 <img src="../img/icon_platinum.png" class="currency-icon" alt="Platinum"></span>
+                    <span class="building-effect">Unlocks T5 → <strong>Assassin Defender of the Peoples</strong>.</span>
+                    <span class="upgrade-note">Upgrade: 5 Platinum <img src="../img/icon_platinum.png" class="currency-icon" alt="Platinum"></span>
+                </div>
+            </div>
+
+            <div class="building-card tag-linfa card-platinum">
+                <img src="../img/forgotten/forgotten_building_placeholder.png" class="building-img" alt="">
+                <div class="building-info">
+                    <span class="building-name">Malicott's Sanctum</span>
+                    <span class="building-cost cost-platinum">10 <img src="../img/icon_platinum.png" class="currency-icon" alt="Platinum"></span>
+                    <span class="building-effect">Unlocks T5 → <strong>Emissary</strong>.</span>
+                    <span class="upgrade-note">Upgrade: 5 Platinum <img src="../img/icon_platinum.png" class="currency-icon" alt="Platinum"></span>
+                </div>
+            </div>
+
+            <div class="building-card tag-araldi card-platinum">
+                <img src="../img/forgotten/forgotten_building_placeholder.png" class="building-img" alt="">
+                <div class="building-info">
+                    <span class="building-name">Celestial Vault</span>
+                    <span class="building-cost cost-platinum">10 <img src="../img/icon_platinum.png" class="currency-icon" alt="Platinum"></span>
+                    <span class="building-effect">Unlocks T5 → <strong>Seraph Mage</strong>.</span>
+                    <span class="upgrade-note">Upgrade: 5 Platinum <img src="../img/icon_platinum.png" class="currency-icon" alt="Platinum"></span>
+                </div>
+            </div>
+
+            <div class="building-card tag-sentinelle card-platinum">
+                <img src="../img/forgotten/forgotten_building_placeholder.png" class="building-img" alt="">
+                <div class="building-info">
+                    <span class="building-name">Eye of All Seasons</span>
+                    <span class="building-cost cost-platinum">10 <img src="../img/icon_platinum.png" class="currency-icon" alt="Platinum"></span>
+                    <span class="building-effect">Unlocks T5 → <strong>Eye of the Forest</strong>.</span>
+                    <span class="upgrade-note">Upgrade: 5 Platinum <img src="../img/icon_platinum.png" class="currency-icon" alt="Platinum"></span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ===================== CAPITAL UTILITY ===================== -->
+    <h2 class="section-title">Capital Utility</h2>
+    <div class="building-grid">
+
+        <div class="building-card">
+            <img src="../img/forgotten/forgotten_building_placeholder.png" class="building-img" alt="">
+            <div class="building-info">
+                <span class="building-name">Malicott's Garden</span>
+                <span class="building-cost cost-gold">800 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                <span class="building-effect">Increase health regeneration by <strong>30%</strong> at turn end.</span>
+            </div>
+        </div>
+
+        <div class="building-card">
+            <img src="../img/forgotten/forgotten_building_placeholder.png" class="building-img" alt="">
+            <div class="building-info">
+                <span class="building-name">Memory Archive</span>
+                <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                <span class="building-effect">Increase XP gain by an additional <strong>10%</strong>.</span>
+            </div>
+        </div>
+
+        <div class="building-card">
+            <img src="../img/forgotten/forgotten_building_placeholder.png" class="building-img" alt="">
+            <div class="building-info">
+                <span class="building-name">Sap Conduit</span>
+                <span class="building-cost cost-gold">3200 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                <span class="building-effect">Reduce Mana cost of spells by <strong>10%</strong>.</span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ===================== PROVINCE BUILDINGS ===================== -->
+    <h2 class="section-title">Province Buildings</h2>
+    <div class="building-grid">
+
+        <div class="building-card tag-province">
+            <img src="../img/forgotten/forgotten_building_placeholder.png" class="building-img" alt="">
+            <div class="building-info">
+                <span class="building-name">Thorn Walls</span>
+                <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                <span class="building-effect">Reduce damage taken in province by a <strong>flat 5</strong>.</span>
+            </div>
+        </div>
+
+        <div class="building-card tag-province">
+            <img src="../img/forgotten/forgotten_building_placeholder.png" class="building-img" alt="">
+            <div class="building-info">
+                <span class="building-name">Root Maze</span>
+                <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                <span class="building-effect">Reduce damage taken in province when attacked in enemy turn by <strong>10%</strong>.</span>
+            </div>
+        </div>
+
+        <div class="building-card tag-province">
+            <img src="../img/forgotten/forgotten_building_placeholder.png" class="building-img" alt="">
+            <div class="building-info">
+                <span class="building-name">Healing Grove</span>
+                <span class="building-cost cost-gold">3200 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                <span class="building-effect">Increase healing received by units in province by <strong>20%</strong>.</span>
+            </div>
+        </div>
+
+    </div>
+
+    <a href="forgotten.html" class="back-link">← Return to the Forgotten Overview</a>
+</main>
+
+</body>
+</html>
