@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SOULSPECTRE | Assassin Defender of the Peoples</title>
+    <title>SOULSPECTRE | Warden</title>
     <link rel="stylesheet" href="../../assets/forgotten_units.css">
     <style>:root{--accent:#ce93d8;}</style>
 </head>
@@ -11,7 +11,7 @@
 <div id="bg-image"></div>
 <div id="overlay"></div>
 <header>
-    <h1>Assassin Defender of the Peoples</h1>
+    <h1>Warden</h1>
     <div class="subtitle">Tier 5 , Champion , Arboreal Fighters</div>
 </header>
 <main>
@@ -24,25 +24,19 @@
         <div class="section-text">
             <h2>Two Lives, One Purpose</h2>
             <p>There is no record of the process by which a Defender path and an Assassin path converge. It should not be possible , they are opposite philosophies, opposite body modifications, opposite combat instincts. And yet. There are those who surpass the barrier of duality and become something that has no precedent in the Empire's taxonomy.</p>
-            <p>The <strong>Assassin Defender of the Peoples</strong> carries the love of the Valkyrie and the precision of the Elf Assassin simultaneously, without contradiction. They are the largest unit in the Arborei branch and the fastest. They stand in front of others and slip through shadows in the same breath. In their presence, the rest of the formation breathes differently , deeper, calmer, as if they have taken the weight of everyone's fear and metabolized it into something useful.</p>
+            <p>The <strong>Warden</strong> carries the love of the Valkyrie and the precision of the Bladeclaw simultaneously, without contradiction. They are the largest unit in the Arborei branch and the fastest. They stand in front of others and slip through shadows in the same breath. In their presence, the rest of the formation breathes differently , deeper, calmer, as if they have taken the weight of everyone's fear and metabolized it into something useful.</p>
             <p>They are <em>immune</em> to Mind, Soul, Light, Earth, and Air damage. These are not resistances , these are closed doors. What was created from the merging of a Valkyrie and an Elf cannot be divided against itself again.</p>
-            <div class="immunity-list">
-                <span class="immunity-tag">Immune: Mind</span>
-                <span class="immunity-tag">Immune: Soul</span>
-                <span class="immunity-tag">Immune: Light</span>
-                <span class="immunity-tag">Immune: Earth</span>
-                <span class="immunity-tag">Immune: Air</span>
-            </div>
         </div>
     </div>
     <div class="tactical-module">
         <div class="tactical-header"><h2>Tactical Data</h2></div>
         <div class="stats-box">
-            <div class="stat-item"><span class="stat-label">HP</span><span class="stat-value hp">280</span></div>
-            <div class="stat-item"><span class="stat-label">ATK</span><span class="stat-value atk">95</span></div>
+            <div class="stat-item"><span class="stat-label">Tier</span><span class="stat-value tier">5</span></div>
+            <div class="stat-item"><span class="stat-label">HP</span><span class="stat-value hp">310</span></div>
+            <div class="stat-item"><span class="stat-label">ATK</span><span class="stat-value atk">120</span></div>
             <div class="stat-item"><span class="stat-label">INI</span><span class="stat-value">50</span></div>
             <div class="stat-item"><span class="stat-label">Armor</span><span class="stat-value armor">25%</span></div>
-            <div class="stat-item"><span class="stat-label">Tier</span><span class="stat-value tier">Champion</span></div>
+            <div class="stat-item"><span class="stat-label">Immunity</span><span class="stat-value res">Mind, Soul, Light, Earth, Air</span></div>
         </div>
         <div class="skills-grid">
             <div class="skill-card sk-base">
@@ -50,21 +44,28 @@
                     <img src="../../img/forgotten/skills/forgotten_skill_colpo_simbiosi.png" alt="" class="skill-icon">
                     <div class="skill-title-container"><h3 class="skill-title">Symbiosis Strike</h3><span class="skill-type base">Base Attack</span></div>
                 </div>
-                <div class="skill-desc">Strikes <strong>3 random enemies</strong> simultaneously with combined <span class="dmg-phys">Physical</span> + <span class="dmg-light">Light</span> damage. Penetrates <strong>25% Armor</strong> on each strike. The symbiosis between the two paths makes this attack simultaneously heavy and precise , each target is hit differently, denying positional clustering as a defense.</div>
+                <div class="skill-desc">Deals 100% ATK in <span class="dmg-phys">Physical</span> + 25% ATK in <span class="dmg-light">Light</span> damage to 3 random enemies, penetrating 25% Armor on each strike.</div>
             </div>
             <div class="skill-card sk-active">
                 <div class="skill-header">
                     <img src="../../img/forgotten/skills/forgotten_skill_ricordi_strazianti.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Harrowing Memories</h3><span class="skill-type active">Active</span></div>
+                    <div class="skill-title-container"><h3 class="skill-title">Harrowing Memories</h3><span class="skill-type active">Active Skill</span></div>
                 </div>
-                <div class="skill-desc">Channels the harrowing weight of two remembered deaths into a psychic assault on a single target. Deals <span class="dmg-mind">Mind</span> damage and inflicts <strong>Fear</strong> , the target flees combat for 1 turn and cannot be controlled by its commanders. Additionally reduces the entire enemy squad's <strong>Morale by 20</strong>, weakening their resistance to routing.</div>
+                <div class="skill-desc">Deals 100% ATK in <span class="dmg-mind">Mind</span> damage to one enemy. Applies Fear for 1 turn</div>
             </div>
             <div class="skill-card sk-passive">
                 <div class="skill-header">
                     <img src="../../img/forgotten/skills/forgotten_skill_controllo_battaglia.png" alt="" class="skill-icon">
                     <div class="skill-title-container"><h3 class="skill-title">Battle Control</h3><span class="skill-type passive">Passive</span></div>
                 </div>
-                <div class="skill-desc">All allied units gain <strong>+20% Armor</strong>. For each T3-or-lower unit in the Allied formation, all units recover an additional <strong>+5% HP</strong> per turn. <em>Once per battle</em>, when any allied unit falls, the Assassin Defender may resurrect them with <strong>25% HP</strong>. The bond between two remembered deaths is not a renewable resource , it can only be spent once.</div>
+                <div class="skill-desc">All allies gain +20% from the Max Hp value to this unit in Armor. Once per battle, when any allied unit falls, revives them with 25% HP.</div>
+            </div>
+            <div class="skill-card sk-ultimate">
+                <div class="skill-header">
+                    <img src="../../img/forgotten/skills/forgotten_skill_giudizio_anima2.png" alt="" class="skill-icon">
+                    <div class="skill-title-container"><h3 class="skill-title">Final Judgment</h3><span class="skill-type ultimate">Ultimate , Once per Battle</span></div>
+                </div>
+                <div class="skill-desc">Deals 180% ATK in <span class="dmg-phys">Physical</span> + <span class="dmg-light">Light</span> damage to all enemies, ignoring 40% Armor. Applies Fear for 2 turns and reduces enemy Morale by 30.</div>
             </div>
         </div>
     </div>

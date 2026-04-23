@@ -53,6 +53,7 @@ em{color:#aaa;font-style:italic;}
 .stat-value.unique{color:#5cb88a;}
 .stat-value.res-earth{color:#a5d6a7;}
 .stat-value.res-mind{color:#f48fb1;}
+.stat-value.res { color: #ba68c8; font-size: 1rem; }
 
 /* ---- Skills grid ---- */
 .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:25px;}
@@ -83,6 +84,7 @@ em{color:#aaa;font-style:italic;}
 .dmg-poison{color:#aed581;font-weight:bold;}
 .dmg-mind  {color:#f48fb1;font-weight:bold;}
 .dmg-pure  {color:#e0e0e0;font-weight:bold;}
+.dmg-dark { color: #b39ddb; font-weight: bold; }
 .heal-tag  {color:#69f0ae;font-weight:bold;}
 .spore-tag {color:#5cb88a;font-weight:bold;}
 
