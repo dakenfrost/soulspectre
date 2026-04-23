@@ -55,6 +55,7 @@
             letter-spacing: 2px;
             margin-top: 10px;
             text-transform: uppercase;
+            font-weight: bold;
         }
 
         main {
@@ -79,41 +80,41 @@
             margin: 0;
         }
 
-        .unit-list { display: flex; flex-direction: column; gap: 15px; }
+        .unit-list { display: flex; flex-direction: column; gap: 20px; }
 
         .unit-row {
             display: flex;
             align-items: center;
             background: rgba(20,10,25,0.6);
             border: 1px solid rgba(255,255,255,0.05);
-            padding: 15px 25px;
+            padding: 25px 35px;
             border-radius: 4px;
             transition: all 0.3s ease;
         }
 
         .unit-row:hover { transform: translateX(10px); background: rgba(30,15,40,0.8); }
 
-        .unit-row.t-0 { border-left: 4px solid #555; }
-        .unit-row.t-1 { border-left: 4px solid #b0bec5; } 
-        .unit-row.t-2 { border-left: 4px solid #81c784; } 
-        .unit-row.t-3 { border-left: 4px solid #64b5f6; } 
-        .unit-row.t-4 { border-left: 4px solid #ba68c8; } 
-        .unit-row.t-5 { border-left: 4px solid #ffb300; } 
+        .unit-row.t-0 { border-left: 5px solid #555; }
+        .unit-row.t-1 { border-left: 5px solid #b0bec5; } 
+        .unit-row.t-2 { border-left: 5px solid #81c784; } 
+        .unit-row.t-3 { border-left: 5px solid #64b5f6; } 
+        .unit-row.t-4 { border-left: 5px solid #ba68c8; } 
+        .unit-row.t-5 { border-left: 5px solid #ffb300; } 
 
         .portrait-container {
-            flex: 0 0 80px;
-            width: 80px;
-            height: 80px;
-            margin-right: 20px;
-            border-radius: 2px;
+            flex: 0 0 120px;
+            width: 120px;
+            height: 120px;
+            margin-right: 30px;
+            border-radius: 4px;
             border: 1px solid rgba(255,255,255,0.1);
             overflow: hidden;
             background: #000;
         }
 
         .portrait-container.wide {
-            flex: 0 0 160px;
-            width: 160px;
+            flex: 0 0 220px;
+            width: 220px;
         }
 
         .portrait-container img {
@@ -123,8 +124,8 @@
         }
 
         .unit-info { flex: 1; }
-        .unit-name { font-size: 1.3rem; color: #fff; margin: 0; text-transform: uppercase; }
-        .unit-tier { font-size: 0.8rem; letter-spacing: 1px; margin-bottom: 5px; }
+        .unit-name { font-size: 1.7rem; color: #fff; margin: 0 0 5px 0; text-transform: uppercase; }
+        .unit-tier { font-size: 0.95rem; letter-spacing: 1px; margin-bottom: 10px; font-weight: bold; }
         
         .color-t0 { color: #555; }
         .color-t1 { color: #b0bec5; }
@@ -133,25 +134,32 @@
         .color-t4 { color: #ba68c8; }
         .color-t5 { color: #ffb300; }
 
-        .unit-desc { color: #aaa; font-size: 0.95rem; margin: 0; line-height: 1.4; }
+        .unit-desc { color: #aaa; font-size: 1.1rem; margin: 0; line-height: 1.5; }
 
         .btn-tactical {
             background: rgba(171, 71, 188, 0.1);
             color: #ab47bc;
             border: 1px solid #ab47bc;
-            padding: 8px 15px;
+            padding: 12px 25px;
             text-decoration: none;
-            font-size: 0.8rem;
+            font-size: 1rem;
             font-weight: bold;
             text-transform: uppercase;
             border-radius: 2px;
             transition: 0.3s;
+            margin-left: 20px;
         }
 
         .btn-tactical:hover { background: #ab47bc; color: #fff; }
 
-        .back-link { margin: 60px 0; color: #666; text-decoration: none; text-transform: uppercase; font-size: 0.9rem; }
+        .back-link { display: block; margin: 60px 0; color: #666; text-decoration: none; text-transform: uppercase; font-size: 1rem; text-align: center; font-weight: bold; }
         .back-link:hover { color: #ab47bc; }
+        
+        @media (max-width: 850px) {
+            .unit-row { flex-direction: column; text-align: center; padding: 25px; }
+            .portrait-container { margin: 0 0 20px 0; }
+            .btn-tactical { margin: 20px 0 0 0; display: inline-block; }
+        }
     </style>
 </head>
 <body>
@@ -305,6 +313,7 @@
             </div>
             <a href="valkyrion_extra_captain.html" class="btn-tactical">Data</a>
         </div>
+    </div>
 
     <div class="category-header"><h2>Summon Units</h2></div>
     <div class="unit-list">
