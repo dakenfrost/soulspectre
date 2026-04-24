@@ -6,7 +6,7 @@
     <title>SOULSPECTRE | Arcade Protocol</title>
     <style>
         :root {
-            --arcade-color: #e53935; /* Arcade Red */
+            --arcade-color: #e53935;
             --arcade-glow: rgba(229, 57, 53, 0.6);
             --bg-dark: #050505;
         }
@@ -122,7 +122,6 @@
             filter: brightness(0.8);
         }
 
-        /* Testo nel terzo inferiore dell'immagine */
         .slide-content {
             background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 60%, transparent 100%);
             padding: 60px 80px 40px 80px;
@@ -170,12 +169,11 @@
             background: var(--arcade-color);
             color: #fff;
             box-shadow: 0 0 20px var(--arcade-glow);
+            animation: none;
         }
 
         .prev { left: 20px; animation: pulseLeft 2s infinite; }
         .next { right: 20px; animation: pulseRight 2s infinite; }
-
-        .nav-arrow:hover { animation: none; } /* Ferma l'animazione al passaggio del mouse */
 
         @keyframes pulseRight {
             0% { transform: translate(0, -50%); }
@@ -227,6 +225,13 @@
 
         .back-link:hover { color: #fff; }
 
+        /* --- ANOMALY TRIGGER --- */
+        #anomaly-trigger {
+            cursor: default;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
         @media (max-width: 800px) {
             .slide-content { padding: 40px 20px 30px 20px; }
             .slide-title { font-size: 1.5rem; }
@@ -249,7 +254,7 @@
     <div class="slider-container">
         
         <div class="slide active">
-            <div class="slide-bg" style="background-image: url('../../img/arcade_slide1.png');"></div>
+            <div class="slide-bg" style="background-image: url('../../img/arcade/slide1.jpg');"></div>
             <div class="slide-content">
                 <h2 class="slide-title">Escalating Warfare</h2>
                 <p class="slide-desc">Fight randomized factions across unknown territories. Available technology and unit capabilities will escalate drastically with each consecutive stage you survive.</p>
@@ -257,7 +262,7 @@
         </div>
 
         <div class="slide">
-            <div class="slide-bg" style="background-image: url('../../img/arcade_slide2.png');"></div>
+            <div class="slide-bg" style="background-image: url('../../img/arcade/slide2.jpg');"></div>
             <div class="slide-content">
                 <h2 class="slide-title">Command Elimination</h2>
                 <p class="slide-desc">Attrition is not enough. To secure the sector and complete the stage, you must breach the enemy vanguard and defeat their commanding boss.</p>
@@ -265,7 +270,7 @@
         </div>
 
         <div class="slide">
-            <div class="slide-bg" style="background-image: url('../../img/arcade_slide3.png');"></div>
+            <div class="slide-bg" style="background-image: url('../../img/arcade/slide3.jpg');"></div>
             <div class="slide-content">
                 <h2 class="slide-title">The Foreign Entity</h2>
                 <p class="slide-desc">Following a victory, the simulation will suspend. A foreign entity will demand answers to specific questions. Your replies will alter unseen variables.</p>
@@ -273,10 +278,10 @@
         </div>
 
         <div class="slide">
-            <div class="slide-bg" style="background-image: url('../../img/arcade_slide4.png');"></div>
+            <div class="slide-bg" style="background-image: url('../../img/arcade/slide4.jpg');"></div>
             <div class="slide-content">
                 <h2 class="slide-title">The Soul Spectre</h2>
-                <p class="slide-desc">At the end of the journey, reality fractures. Enter the Realm of Shadows, locate the world of the Soul Spectre, and confront the ultimate anomaly.</p>
+                <p class="slide-desc">At the end of the journey, reality fractures. Enter the Realm of Shadows, locate the world of the <span id="anomaly-trigger">Soul Spectre</span>, and confront the ultimate anomaly.</p>
             </div>
         </div>
 
@@ -295,20 +300,18 @@
 <a href="campaign_menu.html" class="back-link">← Return to Selection</a>
 
 <script>
+    // --- SLIDER LOGIC ---
     let currentSlide = 0;
     const slides = document.querySelectorAll('.slide');
     const dots = document.querySelectorAll('.dot');
 
     function showSlide(index) {
-        // Reset valid index
         if (index >= slides.length) currentSlide = 0;
         if (index < 0) currentSlide = slides.length - 1;
 
-        // Remove active class from all
         slides.forEach(slide => slide.classList.remove('active'));
         dots.forEach(dot => dot.classList.remove('active'));
 
-        // Add active class to current
         slides[currentSlide].classList.add('active');
         dots[currentSlide].classList.add('active');
     }
@@ -321,6 +324,20 @@
     function goToSlide(index) {
         currentSlide = index;
         showSlide(currentSlide);
+    }
+
+    // --- ANOMALY TRIGGER LOGIC (EASTER EGG) ---
+    let clickCount = 0;
+    const trigger = document.getElementById('anomaly-trigger');
+    
+    if (trigger) {
+        trigger.addEventListener('click', () => {
+            clickCount++;
+            if (clickCount === 37) {
+                // Modifica il percorso se necessario
+                window.location.href = 'units/void/x4pof09014juf32k.html';
+            }
+        });
     }
 </script>
 
