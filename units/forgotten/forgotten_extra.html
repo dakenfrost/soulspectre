@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Forgotten Archive - Others</title>
+    <style>
+        body {
+            color: #e0e0e0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #bg-image {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background-image: url('../../img/forgotten/forgotten_bg.jpg');
+            background-size: cover;
+            background-position: center;
+            z-index: -2;
+        }
+
+        #overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background: linear-gradient(to bottom, rgba(5, 12, 8, 0.94), rgba(3, 8, 5, 0.98));
+            z-index: -1;
+        }
+
+        header {
+            padding: 60px 20px 30px 20px;
+            text-align: center;
+            width: 100%;
+            max-width: 1100px;
+        }
+
+        h1 {
+            letter-spacing: 5px;
+            font-size: 2.8rem;
+            margin: 0;
+            color: #fff;
+            text-transform: uppercase;
+            text-shadow: 0 0 15px rgba(92, 184, 138, 0.6);
+        }
+
+        .subtitle {
+            color: #5cb88a;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            margin-top: 10px;
+            text-transform: uppercase;
+        }
+
+        main {
+            max-width: 1100px;
+            padding: 40px 20px;
+            width: 100%;
+            position: relative;
+        }
+
+        .category-header {
+            margin: 60px 0 30px 0;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(92, 184, 138, 0.3);
+            text-align: left;
+        }
+
+        .category-header:first-child {
+            margin-top: 0;
+        }
+
+        .category-header h2 {
+            font-size: 2rem;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin: 0;
+        }
+
+        .unit-list { display: flex; flex-direction: column; gap: 15px; }
+
+        .unit-row {
+            display: flex;
+            align-items: center;
+            background: rgba(10, 18, 12, 0.6);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 15px 25px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .unit-row:hover { transform: translateX(10px); background: rgba(15, 28, 18, 0.8); }
+
+        .unit-row.t-0 { border-left: 4px solid #555; }
+        .unit-row.t-1 { border-left: 4px solid #b0bec5; }
+        .unit-row.t-2 { border-left: 4px solid #81c784; }
+        .unit-row.t-3 { border-left: 4px solid #64b5f6; }
+        .unit-row.t-4 { border-left: 4px solid #ba68c8; }
+        .unit-row.t-5 { border-left: 4px solid #ffb300; }
+
+        .portrait-container {
+            flex: 0 0 80px;
+            width: 80px;
+            height: 80px;
+            margin-right: 20px;
+            border-radius: 2px;
+            border: 1px solid rgba(255,255,255,0.1);
+            overflow: hidden;
+            background: #000;
+        }
+
+        .portrait-container.wide {
+            flex: 0 0 160px;
+            width: 160px;
+        }
+
+        .portrait-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .unit-info { flex: 1; }
+        .unit-name { font-size: 1.3rem; color: #fff; margin: 0; text-transform: uppercase; }
+        .unit-tier { font-size: 0.8rem; letter-spacing: 1px; margin-bottom: 5px; }
+
+        .color-t0 { color: #555; }
+        .color-t1 { color: #b0bec5; }
+        .color-t2 { color: #81c784; }
+        .color-t3 { color: #64b5f6; }
+        .color-t4 { color: #ba68c8; }
+        .color-t5 { color: #ffb300; }
+
+        .unit-desc { color: #aaa; font-size: 0.95rem; margin: 0; line-height: 1.4; }
+
+        .btn-tactical {
+            background: rgba(92, 184, 138, 0.1);
+            color: #5cb88a;
+            border: 1px solid #5cb88a;
+            padding: 8px 15px;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        .btn-tactical:hover { background: #5cb88a; color: #fff; }
+
+        .back-link { margin: 60px 0; color: #666; text-decoration: none; text-transform: uppercase; font-size: 0.9rem; }
+        .back-link:hover { color: #5cb88a; }
+    </style>
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<header>
+    <h1>Forgotten Archive</h1>
+    <div class="subtitle">Hostile Encounters & Summoning Dossiers</div>
+</header>
+
+<main>
+
+    <!-- HOSTILE UNITS -->
+    <div class="category-header"><h2>Hostile Units</h2></div>
+    <div class="unit-list">
+
+        <div class="unit-row t-1">
+            <div class="portrait-container"><img src="../../img/forgotten/extra/forgotten_extra_poacher_portrait.jpg" alt="Poacher"></div>
+            <div class="unit-info">
+                <h3 class="unit-name">Poacher</h3>
+                <div class="unit-tier">Classification: <span class="color-t1">Tier 1</span></div>
+                <p class="unit-desc">Opportunistic hunters who stray into sacred forest territory, drawn by the rarity of its creatures. They lack any respect for the life that Malicott has cultivated, and the roots do not forget trespassers.</p>
+            </div>
+            <a href="forgotten_extra_poacher.html" class="btn-tactical">Data</a>
+        </div>
+
+        <div class="unit-row t-1">
+            <div class="portrait-container"><img src="../../img/forgotten/extra/forgotten_extra_deserter_portrait.jpg" alt="Deserter"></div>
+            <div class="unit-info">
+                <h3 class="unit-name">Deserter</h3>
+                <div class="unit-tier">Classification: <span class="color-t1">Tier 1</span></div>
+                <p class="unit-desc">Imperial soldiers who fled the purges and took refuge in the wilderness. Starving and desperate, they have abandoned discipline for survival, attacking anything they encounter on the forest edge.</p>
+            </div>
+            <a href="forgotten_extra_deserter.html" class="btn-tactical">Data</a>
+        </div>
+
+        <div class="unit-row t-2">
+            <div class="portrait-container"><img src="../../img/forgotten/extra/forgotten_extra_imperial_scout_portrait.jpg" alt="Imperial Scout"></div>
+            <div class="unit-info">
+                <h3 class="unit-name">Imperial Scout</h3>
+                <div class="unit-tier">Classification: <span class="color-t2">Tier 2</span></div>
+                <p class="unit-desc">Valkyrion reconnaissance specialists dispatched to map the borders of Forgotten territory. They travel light, report swiftly, and are ordered to eliminate any Forgotten presence they encounter rather than risk exposure.</p>
+            </div>
+            <a href="forgotten_extra_imperial_scout.html" class="btn-tactical">Data</a>
+        </div>
+
+        <div class="unit-row t-2">
+            <div class="portrait-container"><img src="../../img/forgotten/extra/forgotten_extra_defector_portrait.jpg" alt="Defector"></div>
+            <div class="unit-info">
+                <h3 class="unit-name">Defector</h3>
+                <div class="unit-tier">Classification: <span class="color-t2">Tier 2</span></div>
+                <p class="unit-desc">Elves who rejected Malicott's pact and fled the empire. Unable to fully return to mortal life and unwilling to acknowledge what they are, they exist in a bitter in-between — hostile to the Forgotten, despised by the world beyond the forest.</p>
+            </div>
+            <a href="forgotten_extra_defector.html" class="btn-tactical">Data</a>
+        </div>
+
+        <div class="unit-row t-3">
+            <div class="portrait-container"><img src="../../img/forgotten/extra/forgotten_extra_witch_hunter_portrait.jpg" alt="Witch Hunter"></div>
+            <div class="unit-info">
+                <h3 class="unit-name">Witch Hunter</h3>
+                <div class="unit-tier">Classification: <span class="color-t3">Tier 3</span></div>
+                <p class="unit-desc">Veteran soldiers trained specifically to track and neutralize entities bound to nature magic. They carry amber-breaking tools and blessed blades designed to sever the connection between a Forgotten and the Mother Tree's will.</p>
+            </div>
+            <a href="forgotten_extra_witch_hunter.html" class="btn-tactical">Data</a>
+        </div>
+
+        <div class="unit-row t-3">
+            <div class="portrait-container"><img src="../../img/forgotten/extra/forgotten_extra_crimson_soldier_portrait.jpg" alt="Crimson Soldier"></div>
+            <div class="unit-info">
+                <h3 class="unit-name">Crimson Soldier</h3>
+                <div class="unit-tier">Classification: <span class="color-t3">Tier 3</span></div>
+                <p class="unit-desc">Elite infantry dispatched during the Crimson Campaign — the empire's most ruthless attempt to eradicate the Forgotten. Clad in red-lacquered armor, they march under orders that leave no room for mercy or retreat.</p>
+            </div>
+            <a href="forgotten_extra_crimson_soldier.html" class="btn-tactical">Data</a>
+        </div>
+
+        <div class="unit-row t-4">
+            <div class="portrait-container"><img src="../../img/forgotten/extra/forgotten_extra_inquisitor_portrait.jpg" alt="Inquisitor"></div>
+            <div class="unit-info">
+                <h3 class="unit-name">Inquisitor</h3>
+                <div class="unit-tier">Classification: <span class="color-t4">Tier 4</span></div>
+                <p class="unit-desc">Religious and military authority combined into a single lethal figure. Inquisitors view the Forgotten as an abomination against the natural order of death — a belief that Malicott's empire has spent centuries proving wrong, one battle at a time.</p>
+            </div>
+            <a href="forgotten_extra_inquisitor.html" class="btn-tactical">Data</a>
+        </div>
+
+        <div class="unit-row t-5">
+            <div class="portrait-container"><img src="../../img/forgotten/extra/forgotten_extra_crimson_champion_portrait.jpg" alt="Crimson Champion"></div>
+            <div class="unit-info">
+                <h3 class="unit-name">Crimson Champion</h3>
+                <div class="unit-tier">Classification: <span class="color-t5">Tier 5</span></div>
+                <p class="unit-desc">The personal vanguard of the Crimson Campaign's high command. A Crimson Champion has never known defeat — until the Forgotten. They carry the weight of every burning forest and every silenced root as a badge of pride. Malicott remembers each one by name.</p>
+            </div>
+            <a href="forgotten_extra_crimson_champion.html" class="btn-tactical">Data</a>
+        </div>
+
+    </div>
+
+    <!-- SUMMON UNITS -->
+    <div class="category-header"><h2>Summoned Units</h2></div>
+    <div class="unit-list">
+
+        <div class="unit-row t-1">
+            <div class="portrait-container wide"><img src="../../img/forgotten/extra/forgotten_summon_wisps_portrait.jpg" alt="Root Echoes"></div>
+            <div class="unit-info">
+                <h3 class="unit-name">Root Echoes</h3>
+                <div class="unit-tier">Classification: <span class="color-t1">Tier 1 · Non-Playable</span></div>
+                <p class="unit-desc">Fragments of life that have not yet chosen a form. When Malicott calls them through the Summon Wisps spell, Root Echoes drift into the world as extensions of her will — not soldiers, not scouts, but living proof that the forest is always present.</p>
+            </div>
+            <a href="forgotten_extra_root_echoes.html" class="btn-tactical">Data</a>
+        </div>
+
+        <div class="unit-row t-5">
+            <div class="portrait-container wide"><img src="../../img/forgotten/extra/forgotten_summon_spirit_guide_portrait.jpg" alt="Voice of the Root"></div>
+            <div class="unit-info">
+                <h3 class="unit-name">Voice of the Root</h3>
+                <div class="unit-tier">Classification: <span class="color-t5">Tier 5 · Non-Playable</span></div>
+                <p class="unit-desc">The oldest presence Malicott can call forth. When the Ancient Growth spell reaches its full resonance, the Voice of the Root walks beside the army — not to fight, but to remind everything alive that the Mother Tree predates every war ever waged against her.</p>
+            </div>
+            <a href="forgotten_extra_voice_root.html" class="btn-tactical">Data</a>
+        </div>
+
+    </div>
+
+    <!-- CAMPAIGN UNITS -->
+    <div class="category-header"><h2>Campaign Units</h2></div>
+    <div class="unit-list">
+
+        <div class="unit-row t-5">
+            <div class="portrait-container"><img src="../../img/forgotten/extra/forgotten_hero_prince_portrait.jpg" alt="The Prince"></div>
+            <div class="unit-info">
+                <h3 class="unit-name">Janus</h3>
+                <div class="unit-tier">Classification: <span class="color-t5">Tier 5</span></div>
+                <p class="unit-desc">He has no other name that the empire recognizes. Born into the Forgotten before he could choose otherwise, Janus carries both the weight of Malicott's trust and the doubt of someone who has seen what the world outside the forest truly looks like. A reluctant heir to a war he did not start.</p>
+            </div>
+            <a href="forgotten_extra_janus.html" class="btn-tactical">Data</a>
+        </div>
+
+    </div>
+
+    <a href="../../factions/forgotten_roster.html" class="back-link">← Return to Military Roster</a>
+
+</main>
+
+</body>
+</html>

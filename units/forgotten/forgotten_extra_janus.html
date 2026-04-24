@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Janus</title>
+    <link rel="stylesheet" href="../../assets/forgotten_units.css">
+    <style>:root{--accent:#ffb300;}</style>
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+<header>
+    <h1>Janus</h1>
+    <div class="subtitle">Tier 5 · Campaign Unit</div>
+</header>
+<main>
+    <div class="split-section">
+        <div class="section-image-container">
+            <img src="../../img/forgotten/extra/forgotten_hero_prince_portrait.jpg" alt="Janus">
+        </div>
+        <div class="section-text">
+            <h2>The Reluctant Heir</h2>
+            <p>He was not given a name at birth. Malicott named him later, when it became clear that he would grow into something that looked in two directions at once — toward the empire that had persecuted his people, and toward the forest that had preserved them. Janus, after the old concept of thresholds. He stands in doors more than rooms.</p>
+            <p>Born to a Forgotten mother who had been through the pact before him, Janus carries the sap in his blood without having chosen it. He never had the conversation that most of the Forgotten describe as the pivotal one — the moment you decide whether you want to continue. He simply woke up already continued, already part of the root network, already expected to care about what Malicott cared about.</p>
+            <p>He does care. That is not the problem. The problem is that he has also spent years moving through the world outside the forest, under false identities, watching the empire function. He has seen what the Forgotten look like from the other side. Not monstrous. Not an abomination. Just people who chose something the empire does not understand, and are paying the price for that choice indefinitely.</p>
+            <p>Janus cannot decide if this is a tragedy or simply the world. Malicott tells him the distinction matters less than what he does about it. He suspects she is right. He has not yet decided what to do about it.</p>
+        </div>
+    </div>
+    <div class="tactical-module">
+        <div class="tactical-header"><h2>Tactical Data</h2></div>
+        <div class="stats-box">
+            <div class="stat-item"><span class="stat-label">Tier</span><span class="stat-value tier">5</span></div>
+            <div class="stat-item"><span class="stat-label">HP</span><span class="stat-value hp">340</span></div>
+            <div class="stat-item"><span class="stat-label">ATK</span><span class="stat-value atk">105</span></div>
+            <div class="stat-item"><span class="stat-label">INI</span><span class="stat-value">44</span></div>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <div class="skill-header">
+                    <div class="skill-title-container"><h3 class="skill-title">Between Worlds</h3><span class="skill-type base">Base Skill</span></div>
+                </div>
+                <div class="skill-desc">Janus shifts his nature mid-battle. For 2 turns, his attacks deal Pure damage and he counts as neither Forgotten nor mortal for the purpose of targeting skills or resistances.</div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-header">
+                    <div class="skill-title-container"><h3 class="skill-title">Root Memory</h3><span class="skill-type base">Base Skill</span></div>
+                </div>
+                <div class="skill-desc">Channels the root network. Restores 80 HP to all allied Forgotten units. Janus himself heals for half that amount. Cooldown: 4 turns.</div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-header">
+                    <div class="skill-title-container"><h3 class="skill-title">Threshold</h3><span class="skill-type passive">Passive</span></div>
+                </div>
+                <div class="skill-desc">When Janus drops below 50% HP, he gains +20% ATK and +15% damage reduction for the rest of the battle. He has stood at the edge before. He knows how to stay there.</div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-header">
+                    <div class="skill-title-container"><h3 class="skill-title">Malicott's Trust</h3><span class="skill-type passive">Passive</span></div>
+                </div>
+                <div class="skill-desc">Allied Forgotten units in the same party gain +10% HP at the start of battle. Janus's presence reminds them of what they are fighting to preserve.</div>
+            </div>
+        </div>
+    </div>
+    <div class="portrait-gallery-module">
+        <h2 class="gallery-header">Gallery</h2>
+        <div class="carousel-wrap">
+            <div class="carousel-track" id="carouselTrack">
+                <div class="carousel-item"><img src="../../img/forgotten/extra/forgotten_hero_prince_portrait.jpg" alt="Janus Portrait"></div>
+            </div>
+        </div>
+        <div class="carousel-nav">
+            <button class="nav-btn" id="prevBtn">&#8592;</button>
+            <button class="nav-btn" id="nextBtn">&#8594;</button>
+        </div>
+    </div>
+    <a href="forgotten_extra.html" class="back-link">← Return to Others</a>
+</main>
+<script>
+    const track=document.getElementById('carouselTrack');const items=track.querySelectorAll('.carousel-item');let current=0;
+    function update(){if(items.length>0)track.style.transform=`translateX(-${current*(items[0].offsetWidth+15)}px)`;}
+    document.getElementById('nextBtn').addEventListener('click',()=>{if(current<items.length-1){current++;update();}});
+    document.getElementById('prevBtn').addEventListener('click',()=>{if(current>0){current--;update();}});
+</script>
+<script src="../../assets/unit-banner.js"></script>
+</body>
+</html>
