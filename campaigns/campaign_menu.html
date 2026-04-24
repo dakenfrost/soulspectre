@@ -99,11 +99,15 @@
             flex-direction: column;
             transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
             cursor: pointer;
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: overlay; /* Permette all'immagine e al gradiente di fondersi meglio */
         }
 
         /* --- STORY MODE (BLUE, TOP-LEFT) --- */
         .story-mode {
-            background: linear-gradient(135deg, rgba(10, 30, 60, 0.9), rgba(15, 45, 90, 0.95));
+            /* Immagine con gradiente blu sovrapposto pesantemente */
+            background-image: linear-gradient(135deg, rgba(10, 30, 60, 0.95), rgba(15, 45, 90, 0.98)), url('../../img/menu_story_bg.jpg');
             clip-path: polygon(0 0, 100% 0, 0 100%);
             z-index: 2;
             padding: 50px;
@@ -115,7 +119,8 @@
 
         /* --- ARCADE MODE (RED, BOTTOM-RIGHT) --- */
         .arcade-mode {
-            background: linear-gradient(135deg, rgba(60, 10, 15, 0.9), rgba(90, 15, 20, 0.95));
+            /* Immagine con gradiente rosso sovrapposto pesantemente */
+            background-image: linear-gradient(135deg, rgba(60, 10, 15, 0.95), rgba(90, 15, 20, 0.98)), url('../../img/menu_arcade_bg.jpg');
             clip-path: polygon(100% 0, 100% 100%, 0 100%);
             z-index: 1;
             padding: 50px;
@@ -134,7 +139,7 @@
             text-transform: uppercase;
             letter-spacing: 5px;
             transition: text-shadow 0.3s ease;
-            white-space: nowrap; /* Evita che il titolo vada a capo */
+            white-space: nowrap;
         }
 
         .story-mode .mode-title { color: var(--story-color); }
@@ -152,7 +157,8 @@
         /* --- HOVER KINETICS --- */
         
         .story-mode:hover {
-            background: linear-gradient(135deg, rgba(20, 70, 150, 1), rgba(30, 90, 190, 1));
+            /* Schiarisce il gradiente per rivelare maggiormente l'immagine sottostante */
+            background-image: linear-gradient(135deg, rgba(20, 70, 150, 0.8), rgba(30, 90, 190, 0.85)), url('../../img/menu_story_bg.jpg');
             box-shadow: inset 0 0 80px var(--story-glow);
             clip-path: polygon(0 0, 100% 0, 0 105%); 
             z-index: 10;
@@ -161,7 +167,8 @@
         .story-mode:hover .mode-desc { opacity: 1; color: #fff; }
 
         .arcade-mode:hover {
-            background: linear-gradient(135deg, rgba(150, 20, 30, 1), rgba(190, 30, 40, 1));
+            /* Schiarisce il gradiente per rivelare maggiormente l'immagine sottostante */
+            background-image: linear-gradient(135deg, rgba(150, 20, 30, 0.8), rgba(190, 30, 40, 0.85)), url('../../img/menu_arcade_bg.jpg');
             box-shadow: inset 0 0 80px var(--arcade-glow);
             clip-path: polygon(100% -5%, 100% 100%, 0 100%); 
             z-index: 10;
