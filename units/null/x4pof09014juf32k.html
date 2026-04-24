@@ -6,279 +6,233 @@
     <title>ɿɘƚɔɘqꙄ |uoꙄ</title>
     <style>
         :root {
-            --glitch-cyan: cyan;
-            --glitch-magenta: magenta;
-            --glitch-green: #0f0;
-            --bg-dark: #000;
+            --accent-color: #ff003c; /* Corrupted Red */
+            --accent-glow: rgba(255, 0, 60, 0.8);
+            --glitch-cyan: #0ff;
+            --glitch-magenta: #f0f;
         }
 
         body {
-            background-color: var(--bg-dark);
-            color: #ccc;
-            font-family: 'Courier New', Courier, monospace; /* Font monospaziato per l'effetto errore */
-            line-height: 1.5;
+            color: #e0e0e0;
+            font-family: 'Courier New', Courier, monospace; /* Font monospaziato per l'errore */
+            line-height: 1.8;
             margin: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
-            overflow: hidden; /* Blocca lo scroll */
-            user-select: none; /* Disabilita la selezione del testo di base */
+            user-select: none; /* Impedisce la selezione facile del testo */
+            overflow-x: hidden;
+        }
+
+        #bg-image {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background-image: url('../../img/valkyrion_bg.jpeg'); 
+            background-size: cover; background-position: center;
+            z-index: -2;
+            /* Filtro per corrompere l'immagine di sfondo */
+            filter: invert(1) hue-rotate(180deg) grayscale(80%) brightness(0.3);
         }
 
         #overlay {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
+            /* Aggiunti scanline e gradiente glitchato */
             background: 
-                linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
-                linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-            background-size: 100% 4px, 3px 100%;
-            z-index: 100;
-            pointer-events: none;
-            opacity: 0.6;
-            animation: flicker-bg 0.1s infinite;
+                linear-gradient(to bottom, rgba(10, 5, 5, 0.92), rgba(0, 0, 0, 0.98)),
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,0,0,0.05) 2px, rgba(255,0,0,0.05) 4px);
+            z-index: -1;
+            animation: flicker-bg 0.15s infinite;
         }
 
         header {
-            padding: 80px 20px 20px 20px;
-            text-align: center;
-            position: relative;
-            animation: text-glitch-intense 2s infinite;
+            padding: 60px 20px 30px 20px;
+            text-align: center; width: 100%; max-width: 1100px;
+            animation: text-glitch-skew 2s infinite;
         }
 
         h1 {
-            letter-spacing: 5px;
-            font-size: 2.2rem;
-            margin: 0;
-            color: #fff;
-            text-transform: uppercase;
+            letter-spacing: 5px; font-size: 2.8rem; margin: 0; color: #fff;
+            text-transform: uppercase; text-shadow: 2px 2px var(--glitch-cyan), -2px -2px var(--glitch-magenta);
+        }
+
+        .subtitle {
+            color: #444; font-size: 1.1rem; letter-spacing: 2px;
+            margin-top: 10px; text-transform: uppercase; font-weight: bold;
         }
 
         main {
-            max-width: 900px;
-            width: 100%;
-            padding: 20px;
-            animation: card-shake 0.5s infinite;
+            max-width: 1100px; padding: 40px 20px; width: 100%; position: relative;
+            animation: card-shake 0.4s infinite;
         }
 
-        /* --- THE GLITCHED UNIT CARD --- */
-        .glitch-unit-card {
-            background: rgba(10, 10, 10, 0.9);
-            border: 2px solid #333;
-            padding: 40px;
-            border-radius: 4px;
-            position: relative;
-            box-shadow: 
-                inset 10px 0 20px rgba(255, 0, 0, 0.2),
-                inset -10px 0 20px rgba(0, 255, 255, 0.2);
-            animation: rgb-split 1.5s infinite;
+        .intro-banner {
+            width: 100%; border: 1px solid rgba(255, 0, 0, 0.4);
+            border-bottom: 3px solid var(--accent-color);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+            border-radius: 4px; overflow: hidden; margin-bottom: 40px;
+            animation: rgb-split 2s infinite;
+            filter: contrast(150%) saturate(0) sepia(1) hue-rotate(300deg);
         }
 
-        .glitch-unit-card::before {
-            content: "ERROR 010101";
-            position: absolute;
-            top: 10px; right: 10px;
-            font-size: 0.7rem; color: var(--glitch-cyan);
+        .intro-banner img { width: 100%; display: block; opacity: 0.5; }
+
+        .split-section {
+            display: flex; gap: 40px; align-items: stretch; margin-bottom: 60px; 
+            background: rgba(15, 0, 0, 0.75); backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,0,0,0.2); border-left: 5px solid var(--accent-color);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            animation: rgb-split 1.5s infinite reverse;
         }
 
-        .section-header {
-            display: flex;
-            gap: 30px;
-            margin-bottom: 40px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding-bottom: 20px;
+        .section-image-container {
+            position: relative; flex: 0 0 40%; overflow: hidden; aspect-ratio: 3 / 4;
+            filter: invert(0.8) hue-rotate(90deg);
         }
 
-        .broken-portrait {
-            flex: 0 0 150px;
-            height: 150px;
-            border: 2px dashed #444;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-            color: #444;
-            animation: flicker-icon 0.3s infinite;
+        .section-image-container img {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover; object-position: top center; 
         }
 
-        .info-header { flex: 1; }
+        .section-text { flex: 1; padding: 35px; }
+        h2 { color: #fff; letter-spacing: 2px; text-transform: uppercase; border-bottom: 1px dashed rgba(255,0,0,0.3); padding-bottom: 10px; margin-top: 0; margin-bottom: 25px; font-size: 1.8rem; text-shadow: 1px 1px var(--glitch-cyan);}
+        p { margin-bottom: 25px; color: #aaa; font-size: 1.1rem; text-align: justify; }
 
-        /* ZALGO Gibberish for Title */
-        .broken-name {
-            font-size: 1.8rem;
-            color: #fff;
-            margin: 0 0 10px 0;
-            text-transform: uppercase;
+        .tactical-module { border-top: 2px dashed var(--accent-color); padding-top: 40px; margin-bottom: 60px; }
+
+        .stats-box {
+            display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;
+            background: linear-gradient(145deg, rgba(20, 0, 0, 0.9), rgba(5, 0, 0, 0.9));
+            border: 1px solid rgba(255, 0, 0, 0.3); border-radius: 4px;
+            padding: 25px; margin-bottom: 50px;
+            animation: rgb-split 0.8s infinite;
         }
 
-        .broken-tier {
-            font-size: 0.9rem;
-            color: #888;
-            margin-bottom: 5px;
+        .stat-item { text-align: center; padding: 10px 20px; }
+        .stat-label { display: block; color: #555; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px; }
+        .stat-value { display: block; color: #fff; font-size: 1.8rem; font-weight: bold; font-family: monospace; }
+        
+        .stat-value.hp { color: #f00; text-decoration: line-through; }
+        .stat-value.atk { color: var(--glitch-cyan); }
+        .stat-value.boss { color: #555; text-shadow: none; }
+
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 25px; }
+        .skill-card { background: rgba(5, 0, 0, 0.8); border: 1px solid rgba(255,0,0,0.1); border-left: 4px solid #f00; padding: 25px; animation: card-shake 2s infinite; }
+        
+        .skill-header { display: flex; align-items: center; border-bottom: 1px solid rgba(255,0,0,0.2); padding-bottom: 15px; margin-bottom: 15px; }
+        .skill-icon { width: 70px; height: 70px; border-radius: 0; object-fit: cover; border: 1px dashed var(--accent-color); margin-right: 15px; background-color: rgba(255, 0, 0, 0.2); filter: invert(1); }
+        .skill-title { margin: 0; color: #fff; font-size: 1.3rem; text-transform: uppercase; text-shadow: 1px -1px var(--glitch-magenta); }
+        .skill-type { font-size: 0.75rem; padding: 2px 6px; background: rgba(255,0,0,0.1); border-radius: 2px; text-transform: uppercase; align-self: flex-start; margin-top: 5px; color: #f00;}
+        
+        .skill-desc { color: #888; font-size: 0.95rem; }
+
+        .portrait-gallery-module { background: rgba(5, 0, 0, 0.7); border: 1px dashed rgba(255,0,0,0.2); border-left: 3px solid var(--accent-color); padding: 35px; margin-bottom: 40px; display: none; /* Nascosto per l'errore */ }
+
+        .back-link { display: block; text-align: center; margin-top: 60px; color: #333; text-decoration: none; padding: 20px; border-top: 1px dashed #333; text-transform: uppercase; letter-spacing: 2px;}
+        .back-link:hover { color: #f00; text-shadow: 0 0 5px #f00;}
+
+        /* --- GLITCH KEYFRAMES --- */
+        @keyframes flicker-bg {
+            0% { opacity: 0.92; }
+            50% { opacity: 0.98; }
+            100% { opacity: 0.92; }
         }
 
-        .broken-desc {
-            color: #aaa;
-            font-size: 0.95rem;
-            margin: 0;
-        }
-
-        /* STATS BOX */
-        .broken-stats-box {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            background: #111;
-            border: 1px solid rgba(255,255,255,0.05);
-            padding: 20px;
-            margin-bottom: 40px;
-        }
-
-        .broken-stat-item { text-align: center; }
-        .broken-stat-label { font-size: 0.75rem; color: #666; text-transform: uppercase; }
-        .broken-stat-value { font-size: 1.5rem; color: #888; font-weight: bold; }
-
-        /* SKILLS GRID */
-        .broken-skills-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-
-        .broken-skill-card {
-            border: 1px solid rgba(255,255,255,0.05);
-            padding: 20px;
-            animation: flicker-skill 2s infinite;
-        }
-
-        .broken-skill-header { display: flex; align-items: center; gap: 15px; margin-bottom: 10px; }
-        .broken-skill-icon { width: 50px; height: 50px; border: 1px solid #333; animation: flicker-icon 0.1s infinite; }
-        .broken-skill-title { margin: 0; font-size: 1.2rem; text-transform: uppercase; }
-        .broken-skill-type { font-size: 0.7rem; color: #555; }
-
-        .broken-skill-desc { color: #888; font-size: 0.9rem; }
-
-        /* --- GLITCH ANIMATIONS --- */
-        @keyframes Flicker-bg {
-            0% { opacity: 0.6; }
-            50% { opacity: 0.7; }
-            100% { opacity: 0.6; }
+        @keyframes rgb-split {
+            0% { box-shadow: inset 4px 0 10px rgba(0, 255, 255, 0.4), inset -4px 0 10px rgba(255, 0, 255, 0.4); }
+            20% { box-shadow: inset 8px 0 15px rgba(255, 0, 255, 0.4), inset -8px 0 15px rgba(0, 255, 0, 0.4); }
+            80% { box-shadow: inset 4px 0 10px rgba(255, 0, 0, 0.4), inset -4px 0 10px rgba(0, 255, 255, 0.4); }
+            100% { box-shadow: inset 4px 0 10px rgba(255, 0, 0, 0.4), inset -4px 0 10px rgba(0, 255, 255, 0.4); }
         }
 
         @keyframes card-shake {
             0% { transform: translate(0, 0); }
             10% { transform: translate(-1px, -1px); }
             20% { transform: translate(1px, 0); }
-            30% { transform: translate(0, 1px); Skew(1deg); }
+            30% { transform: translate(0, 1px) skew(1deg); }
             40% { transform: translate(-1px, 1px); }
             50% { transform: translate(1px, -1px); }
             60% { transform: translate(0, 0); }
             100% { transform: translate(0, 0); }
         }
 
-        @keyframes rgb-split {
-            0% { box-shadow: inset 10px 0 20px rgba(255, 0, 0, 0.2), inset -10px 0 20px rgba(0, 255, 255, 0.2); }
-            20% { box-shadow: inset 12px 0 25px rgba(255, 0, 255, 0.2), inset -12px 0 25px rgba(0, 255, 0, 0.2); }
-            80% { box-shadow: inset 10px 0 20px rgba(255, 0, 0, 0.2), inset -10px 0 20px rgba(0, 255, 255, 0.2); }
-            100% { box-shadow: inset 10px 0 20px rgba(255, 0, 0, 0.2), inset -10px 0 20px rgba(0, 255, 255, 0.2); }
-        }
-
-        @keyframes text-glitch-intense {
-            0% { transform: Skew(0deg); color: #fff; }
-            5% { transform: Skew(5deg); color: var(--glitch-cyan); }
-            7% { transform: Skew(-5deg); color: var(--glitch-magenta); }
-            10% { transform: Skew(0deg); color: #fff; }
-            100% { transform: Skew(0deg); }
-        }
-
         @keyframes text-glitch-skew {
-            0% { transform: Skew(0deg); }
-            10% { transform: Skew(10deg); }
-            12% { transform: Skew(0deg); }
-            60% { transform: Skew(0deg); }
-            62% { transform: Skew(-10deg); }
-            65% { transform: Skew(0deg); }
-            100% { transform: Skew(0deg); }
+            0% { transform: skew(0deg); }
+            10% { transform: skew(5deg); }
+            12% { transform: skew(0deg); }
+            60% { transform: skew(0deg); }
+            62% { transform: skew(-5deg); }
+            65% { transform: skew(0deg); }
+            100% { transform: skew(0deg); }
         }
 
-        @keyframes flicker-icon {
-            0% { opacity: 1; }
-            5% { opacity: 0; }
-            7% { opacity: 1; }
-            100% { opacity: 1; }
+        @media (max-width: 950px) {
+            .split-section { flex-direction: column; }
+            .section-image-container { flex: 1 1 100%; height: 500px; }
+            .skills-grid { grid-template-columns: 1fr; }
+            .stats-box { flex-direction: column; gap: 20px; }
         }
-
-        @keyframes flicker-skill {
-            0% { border-color: rgba(255,255,255,0.05); }
-            2% { border-color: rgba(255,255,255,0.1); }
-            4% { border-color: rgba(255,255,255,0.05); }
-            60% { border-color: rgba(255,255,255,0.05); }
-            62% { border-color: rgba(255,0,0,0.2); }
-            64% { border-color: rgba(255,255,255,0.05); }
-            100% { border-color: rgba(255,255,255,0.05); }
-        }
-
-        .back-link {
-            margin-top: 60px; color: #444; text-decoration: none; text-transform: uppercase; font-size: 0.8rem;
-            padding: 20px; border-top: 1px dashed #222; text-align: center; width: 100%;
-        }
-        .back-link:hover { color: #888; animation: text-glitch-intense 0.1s infinite; }
     </style>
 </head>
 <body>
 
+<div id="bg-image"></div>
 <div id="overlay"></div>
 
 <header>
     <h1>S̸͔̭̪̣͕͖̹̓͐͒̌̄̚ͅo̷̠͚̭̾̍̉̑͊̉̃̂̚ṳ̷͎͇̌̍̎̇l̵̰̹̳͙̣̖͕̋̈͠͠ ̷̞̹͙́̽S̶̡̫̟̼̪̟̃̆͛͌̊͘͘p̸͇̩̉̿͋̈́̈́̈ȩ̶̫̹͖̙̱̐́̓͑͌͜c̸̹͈̩̟̲̹͙͖͖̀͒͒̿̏t̶̰͕̬̪͔̣̦̼̥̋̌̽͜ḙ̸̪͓͙̐́͛̈̇̓̏̒͌r̵͎̳̖͕̮̦̒̆</h1>
+    <div class="subtitle">[ E R R O R _ N U L L _ E N T I T Y ]</div>
 </header>
 
 <main>
-    <div class="glitch-unit-card">
-        <div class="section-header">
-            <div class="broken-portrait">
-                [DATA_CORRUPT]
-            </div>
-            <div class="info-header">
-                <h2 class="broken-name" style="animation: text-glitch-skew 1.5s infinite">S͢x̝̲̳͎̳͇̃̀ͣo̧̰̞͔͊ͫ̔̓̐̆ͩḷ̛̗̥̤͈̙̱̽̂̎͒͆̊ ̶͇̺̖͒̆ͨͯ͊S͚̫͔͂͌̌ͣ̓ͮ͒͢v̼͍̣̠̘̐̈ȩ͈̜̰̬̔ͨ̃̎c̹̫͎͎̯̣̬͒̓̽x͈̳̲̙̿͗̇͂͢t̼̲̫̝̓̂̏̆e̛̙͓̦ͩͤ̑̉́f̢̰̤̠̥̓̿̂</h2>
-                <div class="broken-tier">Entity Class: [UNKNOWN_NULL]</div>
-                <p class="broken-desc">D̶̠̗͍͎̻̙̝̂ͨ̉̂ͮ̉́͢a̝̠͍͔̗̙ͩ̀̌͒ͫ͊͊ṯ̰̯̰̺̜̯͚̏ͯͨa̯͎̫̼̝̙͂̅ͫ ̡̖̫͈̦͚̫̲͑ͧͤ̽c̯̠̝̳̠͌̅o̙̰͓̙̰͍͋̆͢r̹̣̪̗̘ͯͮ̏̌ͭͬͫ̚r͍̗̳̞͚̪ͨ͊̊͟ų̹̗̟̰̮͍͊̅ͧ͊̂̄̌͜p͉̪̰̗ͣ̎ͯ̅́̕ṫ̫͔͎̙̘̫͉ͮͣͨ̈͢.̢̰͈̯̲̳ͬ̋͗̂ ̴͚̘̣͔̉̑̊Ų̜̙̝͙͋ͨ͂͟ṉ̯̞̭̱̰ͤ̈͛a̡̤͎̯͖̠̔ͤ͢ḇ̭̝̭̮̞͎̯̋̿̍̐̏l͍̭̣͉̳̿̅̋̒̽͑͝ḙ̭͔̣͇͕̣͎̆͛ ̢̫̞̠̲̦̿̽̃̈́͢t̗̱̱̯̜̣̀͌̇ͮ͢o̧͎̟͖͂̈́̓͌̓͟ ̢̫̦̟̳̻̰͆͗̈́ͩ͢f̠͎͉̺͍̜̝̃͊e̗͎͖̰̭̳̻̓ͮ̉̈ͣṫ̛̲̲̙̼̮̼̐͊̏ͪ͢c͖͓̪͇̪͌̔̔ͤ͢ḩ̨̞̬͔͇͂͊̋͢ ̡̳̪̪͊ͤ̇̅͟f̯̰̖̘̦̉̽ͯu̡̘̝̞̭͌ͯͯ͢l̢̞̖̠̯̺͂ͬ͌͋͟l̻̰͖̻̣̖̔ͯͧ̉̂̉̚͢ ̨͖̲̗̤͋̈̉ͩm̜͖̭͖͓̮̽̂ͫ̌ͨ̍̚͢ë̛̙̱̞͕̈́ͤͩ̉ͨ͢m̫̖̯̫͒͆͂͒ͤ͡o̢̪͕̲̰͚͊̐͊͟ŗ̰̫̗̻́͑͌͒y̖͇̟͉͐͊ͧ̒͜ ͢s̞͎͉͇͇͙̆͐̀̇e̱̳͔̦̖͓̽ͩ̒̋͟g̝̫̪̰̯̙̝͒̈͋͋ͫ͜m̹̣̤̣̫͖̏̌̂ͮ̓ë̡̙̣̠͕̜ͨ̂n̘̘̭͈̗̓͋̓͒ͩ͢ẗ͉̳̲̟͖͓ͩ̌͗ͥ̚.̨͚̪̠̳̭ͧ͋͛͢ ̢̖̯̻͓͖͑̅ͯ͋̅͟P͔̱͎̜̘̮͓͊̑͊̓͟ŗ̝̗̠͙̅̉̈ͤo̧͍̝̪͗̂͢t̡̞̭͎̠͋̐͂̓͟ỏ̧̠̘̠̦̒͒c̹̰̟͚ͯ̉̈́ͮ̀͢o̢̱̜͉̻͔͓͌̔̀͢l̢̪̙̦̣͔̋͊͊͟ ̢̱̳̰̪͋͑ͤͪ͟į̝̙̠͖͔͋ͨ̇͟n̨͓͕̪̝̭̓ͨ̉̇̕͢s̮͉͇͓͕̐̂̅͢t̛̜̰̤̪̂ͫ̆̌͟ą̹̟͍͔͊ͮ͢ḇ̡͖̭̤͙̓̾͛͢l̢̝̠͇͔̋͊͊͟ę͖̯͉͉̟͑̅͊̇͘.</p>
-            </div>
+    <div class="intro-banner">
+        <img src="../../img/valkyrion_extra_Captain_banner.png" alt="CORRUPT">
+    </div>
+
+    <div class="split-section">
+        <div class="section-image-container">
+            <img src="../../img/valkyrion_extra_Captain_combat.jpg" alt="CORRUPT">
+        </div>
+        <div class="section-text">
+            <h2>T͢h͜e̡ ̡A͢n͜o͢m̡a͜l͢y̧</h2>
+            <p>Yxou crxatxd thxs. Ewxrxy cxxice, evxry esxcxpe. Î̶̠̖͍͎̻̙̝ͨ̉̂ͮ̉́͢n̝̠͍͔̗̙ͩ̀̌͒ͫ͊͊v̱̰̯̰̺̜̯͚̏ͯͨa̯͎̫̼̝̙͂̅ͫl̡̖̫͈̦͚̫̲͑ͧͤ̽i̯̠̝̳̠͌̅d̙̰͓̙̰͍͋̆͢ ̹̣̪̗̘ͯͮ̏̌ͭͬͫ̚o͍̗̳̞͚̪ͨ͊̊͟p̹̗̟̰̮͍͊̅ͧ͊̂̄̌͜e͉̪̰̗ͣ̎ͯ̅́̕ṙ̫͔͎̙̘̫͉ͮͣͨ̈͢a̢̰͈̯̲̳ͬ̋͗̂t̴͚̘̣͔̉̑̊į̜̙̝͙͋ͨ͂͟o̯̞̭̱̰ͤ̈͛n̡̤͎̯͖̠̔ͤ͢.</p>
+            <p>Txhre is nx xscxpe frxm whxt yxu arx. Sytxm fxilure inxntixatxd. Cxlculxtxng vxxid... 100%.</p>
+        </div>
+    </div>
+
+    <div class="tactical-module">
+        <div class="tactical-header">
+            <h2 style="border:none; text-align:center; color:#555; text-shadow:none;">[ F A T A L _ E R R O R ]</h2>
         </div>
 
-        <div class="broken-stats-box">
-            <div class="broken-stat-item">
-                <span class="broken-stat-label">H̕͢x̜͕̳͓̜̂ͫ̆͢x͕̯̰̗̓̂͢t̪̲̭͎̙͇̾̉̆ͨ͢ ̛͈̙͔͊ͫ̔P̗̱̰̯̿͑ͧͯ͢x̨͓͕̪̝̭̓ͨ̉̇͢͞n͙͉͇͑̅͊ṱ̟͉͓̙͋̃s̢̰̤̠̥̓̿̂</span>
-                <span class="broken-stat-value">E̕ŖR̴O̴R</span>
-            </div>
-            <div class="broken-stat-item">
-                <span class="broken-stat-label">A͢x̨x̨a̡̤͢çx̨</span>
-                <span class="broken-stat-value">0̶1̶0̶1̶</span>
-            </div>
-            <div class="broken-stat-item">
-                <span class="broken-stat-label">I͢n͢x͜x͢i̧</span>
-                <span class="broken-stat-value">[͢N͢U͢L͢L͢]͢</span>
-            </div>
-            <div class="broken-stat-item">
-                <span class="broken-stat-label">S͢x̨x͜x̨</span>
-                <span class="broken-stat-value">2̶</span>
-            </div>
+        <div class="stats-box">
+            <div class="stat-item"><span class="stat-label">Cxxsxxfxcxtxxn</span><span class="stat-value boss">0x000000</span></div>
+            <div class="stat-item"><span class="stat-label">Hxx Pxxnts</span><span class="stat-value hp">E R R O R</span></div>
+            <div class="stat-item"><span class="stat-label">Axxack</span><span class="stat-value atk">NaN</span></div>
+            <div class="stat-item"><span class="stat-label">Inxxtxatxve</span><span class="stat-value">-1</span></div>
         </div>
 
-        <div class="broken-skills-grid">
-            <div class="broken-skill-card">
-                <div class="broken-skill-header">
-                    <div class="broken-skill-icon"></div>
-                    <div class="broken-skill-title-container">
-                        <h3 class="broken-skill-title">C̶͢͢o̶̠̭̖͇͇̓͌r̶͚̫̖̯͌̔͢r̶͎̰̤͇͇̾̉͡u̶̠̭͇͇̔ͨ͡p̶̟͉͓̙͋̃͢t̶̰͕̬̋̌̽͟ ̶̞̹͙́̽Ẽ̶̡̟̆͟n̶͉͓͓͎͑ͯ͢t̶̰͕̬̋̌̽͟ṉ̶͉͓͓͎͑ͯ͢u̶̠̭͇͇̔ͨ͡t̶̰͕̬̋̌̽͟ḙ̶̪͓͙̐́͟</h3>
-                        <span class="broken-skill-type">[͢A͢x͜A͢ÇCÇ]̧</span>
-                    </div>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <div class="skill-header">
+                    <img src="../../img/base_base_skill.png" alt="GLITCH" class="skill-icon">
+                    <div class="skill-title-container"><h3 class="skill-title">Sxhxttxrxd Rxalxtx</h3><span class="skill-type">C O R R U P T E D</span></div>
                 </div>
-                <div class="broken-skill-desc">Ḑa̢t̡͢a̡ ͟ço̧r̨r̨ųp͜͢t͟.̨ ͢Ųn͜͢ąb͜l̨e͢ ͟t̡ǫ ͜d̡e͢͢c͜r͜͢y͜͢p̡͢t̡ ͟s͜k̨i̡l̡͢l͢ ͢d̢e͟͢çŗįp͜͢t͟i͜ǫ͢ņ.̨ ͢E̡ŗr̨o͜r̨ ͢codę ̧0̢x͜͢F̧F̧0̢x̨F̢F̧</div>
+                <div class="skill-desc">Excxutes a mxmory lxak. Ixgnores 100% of pxayer hxpe. Sxsxtem wxlx sxut dxwn sxon.</div>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-header">
+                    <img src="../../img/base_active_skill.png" alt="GLITCH" class="skill-icon">
+                    <div class="skill-title-container"><h3 class="skill-title">Exsxcxpe Pxotxcxl</h3><span class="skill-type">N U L L</span></div>
+                </div>
+                <div class="skill-desc">Ixsuxs an irxevxcxble mxndxte. All escxpe rxxutes cxosxd. Yxu caxnnxt hxde hxre anxy mxre.</div>
             </div>
         </div>
     </div>
 
-    <a href="javascript:history.back()" class="back-link">[ E̸X̸I̸T̸ ̸P̸R̸O̸T̸O̸C̸O̸L̸ ]</a>
+    <a href="javascript:history.back()" class="back-link">R x t x r n _ T o _ I l l x s x o n</a>
 </main>
 
 </body>
