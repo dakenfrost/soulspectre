@@ -26,24 +26,40 @@ Elenco delle fazioni attive, i loro tratti chiave e i colori
 dominanti usati nel web design delle loro interfacce.
 
 1. VALKYRION EMPIRE
-   Tema: Ordine, Legge, Esercito, Conoscenza (Librarians)
-   Colore Principale: Valkyrion Imperial Blue  [Hex: #5c9ce6]
+   Tema: Egemonia d'acciaio e intelletto. Preveggenza tattica, precisione militare, assenza di errori morali.
+   Colore Principale: Imperial Blue            [Hex: #5c9ce6]
    Colore Accento 1: Royal Purple (Dossier)    [Hex: #ab47bc]
    Colore Sfondo: Scuri Freddi                 [Hex: #0a0f19]
 
 2. REALM OF SHADOWS / ANOMALIES (Soul Spectre)
-   Tema: Errori di sistema, Corruzione, Doppelganger, Vuoto
+   Tema: Errori di sistema, Corruzione, Doppelganger, Vuoto.
    Colore Principale: Absolute Black           [Hex: #000000]
    Colore Accento 1: Glitch Cyan               [Hex: #00ffff]
    Colore Accento 2: Glitch Magenta            [Hex: #ff00ff]
    Filtri Visivi: Invert, Grayscale, Zalgo Text
 
-3. [ NOME FAZIONE 3 ]
-   Tema: ...
-   Colore Principale: ...
+3. THE FORGOTTEN
+   Tema: Sopravvivenza all'estinzione, Rinascita, Devozione alla "Root Mother" Malicott.
+   Colore Principale: Root Green               [Hex: #5cb88a]
 
-4. [ NOME FAZIONE 4 ]
-   Tema: ...
-   Colore Principale: ...
+4. KHAROS DOMINION [Locked]
+   Tema: Meritocrazia brutale (5 secoli), Guerra Barbara, Necromanzia, Alchimia. "La Forza fa la Giustizia".
+   Colore Principale: Blood/Rust Red           [Hex: #b71c1c] *Proposta logica*
+
+5. DEVIL SYNDICATE [Locked]
+   Tema: Conglomerato Legale Malvagio. Il profitto è l'assoluto, strangolamento economico, debito.
+   Colore Principale: Corrupted Gold/Brass     [Hex: #d4af37] *Proposta logica*
+
+6. PRIMAL COALITION [Locked]
+   Tema: Alleanza Caotico Neutrale. Purezza dell'istinto, rifiuto delle leggi soffocanti della civiltà.
+   Colore Principale: Savage Amber/Orange      [Hex: #e65100] *Proposta logica*
+
+7. IRON BROTHERHOOD [Locked]
+   Tema: Collettivo di Nani Legale Neutrale. Anti-individualismo, società come catena ininterrotta.
+   Colore Principale: Forge Iron/Steel         [Hex: #78909c] *Proposta logica*
+
+8. ELVEN ENCLAVE [Locked]
+   Tema: Isolazionismo Vero Neutrale. Supremazia razziale, totale indifferenza al caos esterno.
+   Colore Principale: Pale Sylvan/Silver       [Hex: #c5e1a5] *Proposta logica*
 
 ====================================================================
