@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ɿɘƚɔɘqꙄ |uoꙄ</title>
+    <style>
+        :root {
+            --glitch-cyan: cyan;
+            --glitch-magenta: magenta;
+            --glitch-green: #0f0;
+            --bg-dark: #000;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: #ccc;
+            font-family: 'Courier New', Courier, monospace; /* Font monospaziato per l'effetto errore */
+            line-height: 1.5;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow: hidden; /* Blocca lo scroll */
+            user-select: none; /* Disabilita la selezione del testo di base */
+        }
+
+        #overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: 
+                linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+                linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            background-size: 100% 4px, 3px 100%;
+            z-index: 100;
+            pointer-events: none;
+            opacity: 0.6;
+            animation: flicker-bg 0.1s infinite;
+        }
+
+        header {
+            padding: 80px 20px 20px 20px;
+            text-align: center;
+            position: relative;
+            animation: text-glitch-intense 2s infinite;
+        }
+
+        h1 {
+            letter-spacing: 5px;
+            font-size: 2.2rem;
+            margin: 0;
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        main {
+            max-width: 900px;
+            width: 100%;
+            padding: 20px;
+            animation: card-shake 0.5s infinite;
+        }
+
+        /* --- THE GLITCHED UNIT CARD --- */
+        .glitch-unit-card {
+            background: rgba(10, 10, 10, 0.9);
+            border: 2px solid #333;
+            padding: 40px;
+            border-radius: 4px;
+            position: relative;
+            box-shadow: 
+                inset 10px 0 20px rgba(255, 0, 0, 0.2),
+                inset -10px 0 20px rgba(0, 255, 255, 0.2);
+            animation: rgb-split 1.5s infinite;
+        }
+
+        .glitch-unit-card::before {
+            content: "ERROR 010101";
+            position: absolute;
+            top: 10px; right: 10px;
+            font-size: 0.7rem; color: var(--glitch-cyan);
+        }
+
+        .section-header {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 40px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 20px;
+        }
+
+        .broken-portrait {
+            flex: 0 0 150px;
+            height: 150px;
+            border: 2px dashed #444;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: #444;
+            animation: flicker-icon 0.3s infinite;
+        }
+
+        .info-header { flex: 1; }
+
+        /* ZALGO Gibberish for Title */
+        .broken-name {
+            font-size: 1.8rem;
+            color: #fff;
+            margin: 0 0 10px 0;
+            text-transform: uppercase;
+        }
+
+        .broken-tier {
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 5px;
+        }
+
+        .broken-desc {
+            color: #aaa;
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        /* STATS BOX */
+        .broken-stats-box {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            background: #111;
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 20px;
+            margin-bottom: 40px;
+        }
+
+        .broken-stat-item { text-align: center; }
+        .broken-stat-label { font-size: 0.75rem; color: #666; text-transform: uppercase; }
+        .broken-stat-value { font-size: 1.5rem; color: #888; font-weight: bold; }
+
+        /* SKILLS GRID */
+        .broken-skills-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .broken-skill-card {
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 20px;
+            animation: flicker-skill 2s infinite;
+        }
+
+        .broken-skill-header { display: flex; align-items: center; gap: 15px; margin-bottom: 10px; }
+        .broken-skill-icon { width: 50px; height: 50px; border: 1px solid #333; animation: flicker-icon 0.1s infinite; }
+        .broken-skill-title { margin: 0; font-size: 1.2rem; text-transform: uppercase; }
+        .broken-skill-type { font-size: 0.7rem; color: #555; }
+
+        .broken-skill-desc { color: #888; font-size: 0.9rem; }
+
+        /* --- GLITCH ANIMATIONS --- */
+        @keyframes Flicker-bg {
+            0% { opacity: 0.6; }
+            50% { opacity: 0.7; }
+            100% { opacity: 0.6; }
+        }
+
+        @keyframes card-shake {
+            0% { transform: translate(0, 0); }
+            10% { transform: translate(-1px, -1px); }
+            20% { transform: translate(1px, 0); }
+            30% { transform: translate(0, 1px); Skew(1deg); }
+            40% { transform: translate(-1px, 1px); }
+            50% { transform: translate(1px, -1px); }
+            60% { transform: translate(0, 0); }
+            100% { transform: translate(0, 0); }
+        }
+
+        @keyframes rgb-split {
+            0% { box-shadow: inset 10px 0 20px rgba(255, 0, 0, 0.2), inset -10px 0 20px rgba(0, 255, 255, 0.2); }
+            20% { box-shadow: inset 12px 0 25px rgba(255, 0, 255, 0.2), inset -12px 0 25px rgba(0, 255, 0, 0.2); }
+            80% { box-shadow: inset 10px 0 20px rgba(255, 0, 0, 0.2), inset -10px 0 20px rgba(0, 255, 255, 0.2); }
+            100% { box-shadow: inset 10px 0 20px rgba(255, 0, 0, 0.2), inset -10px 0 20px rgba(0, 255, 255, 0.2); }
+        }
+
+        @keyframes text-glitch-intense {
+            0% { transform: Skew(0deg); color: #fff; }
+            5% { transform: Skew(5deg); color: var(--glitch-cyan); }
+            7% { transform: Skew(-5deg); color: var(--glitch-magenta); }
+            10% { transform: Skew(0deg); color: #fff; }
+            100% { transform: Skew(0deg); }
+        }
+
+        @keyframes text-glitch-skew {
+            0% { transform: Skew(0deg); }
+            10% { transform: Skew(10deg); }
+            12% { transform: Skew(0deg); }
+            60% { transform: Skew(0deg); }
+            62% { transform: Skew(-10deg); }
+            65% { transform: Skew(0deg); }
+            100% { transform: Skew(0deg); }
+        }
+
+        @keyframes flicker-icon {
+            0% { opacity: 1; }
+            5% { opacity: 0; }
+            7% { opacity: 1; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes flicker-skill {
+            0% { border-color: rgba(255,255,255,0.05); }
+            2% { border-color: rgba(255,255,255,0.1); }
+            4% { border-color: rgba(255,255,255,0.05); }
+            60% { border-color: rgba(255,255,255,0.05); }
+            62% { border-color: rgba(255,0,0,0.2); }
+            64% { border-color: rgba(255,255,255,0.05); }
+            100% { border-color: rgba(255,255,255,0.05); }
+        }
+
+        .back-link {
+            margin-top: 60px; color: #444; text-decoration: none; text-transform: uppercase; font-size: 0.8rem;
+            padding: 20px; border-top: 1px dashed #222; text-align: center; width: 100%;
+        }
+        .back-link:hover { color: #888; animation: text-glitch-intense 0.1s infinite; }
+    </style>
+</head>
+<body>
+
+<div id="overlay"></div>
+
+<header>
+    <h1>S̸͔̭̪̣͕͖̹̓͐͒̌̄̚ͅo̷̠͚̭̾̍̉̑͊̉̃̂̚ṳ̷͎͇̌̍̎̇l̵̰̹̳͙̣̖͕̋̈͠͠ ̷̞̹͙́̽S̶̡̫̟̼̪̟̃̆͛͌̊͘͘p̸͇̩̉̿͋̈́̈́̈ȩ̶̫̹͖̙̱̐́̓͑͌͜c̸̹͈̩̟̲̹͙͖͖̀͒͒̿̏t̶̰͕̬̪͔̣̦̼̥̋̌̽͜ḙ̸̪͓͙̐́͛̈̇̓̏̒͌r̵͎̳̖͕̮̦̒̆</h1>
+</header>
+
+<main>
+    <div class="glitch-unit-card">
+        <div class="section-header">
+            <div class="broken-portrait">
+                [DATA_CORRUPT]
+            </div>
+            <div class="info-header">
+                <h2 class="broken-name" style="animation: text-glitch-skew 1.5s infinite">S͢x̝̲̳͎̳͇̃̀ͣo̧̰̞͔͊ͫ̔̓̐̆ͩḷ̛̗̥̤͈̙̱̽̂̎͒͆̊ ̶͇̺̖͒̆ͨͯ͊S͚̫͔͂͌̌ͣ̓ͮ͒͢v̼͍̣̠̘̐̈ȩ͈̜̰̬̔ͨ̃̎c̹̫͎͎̯̣̬͒̓̽x͈̳̲̙̿͗̇͂͢t̼̲̫̝̓̂̏̆e̛̙͓̦ͩͤ̑̉́f̢̰̤̠̥̓̿̂</h2>
+                <div class="broken-tier">Entity Class: [UNKNOWN_NULL]</div>
+                <p class="broken-desc">D̶̠̗͍͎̻̙̝̂ͨ̉̂ͮ̉́͢a̝̠͍͔̗̙ͩ̀̌͒ͫ͊͊ṯ̰̯̰̺̜̯͚̏ͯͨa̯͎̫̼̝̙͂̅ͫ ̡̖̫͈̦͚̫̲͑ͧͤ̽c̯̠̝̳̠͌̅o̙̰͓̙̰͍͋̆͢r̹̣̪̗̘ͯͮ̏̌ͭͬͫ̚r͍̗̳̞͚̪ͨ͊̊͟ų̹̗̟̰̮͍͊̅ͧ͊̂̄̌͜p͉̪̰̗ͣ̎ͯ̅́̕ṫ̫͔͎̙̘̫͉ͮͣͨ̈͢.̢̰͈̯̲̳ͬ̋͗̂ ̴͚̘̣͔̉̑̊Ų̜̙̝͙͋ͨ͂͟ṉ̯̞̭̱̰ͤ̈͛a̡̤͎̯͖̠̔ͤ͢ḇ̭̝̭̮̞͎̯̋̿̍̐̏l͍̭̣͉̳̿̅̋̒̽͑͝ḙ̭͔̣͇͕̣͎̆͛ ̢̫̞̠̲̦̿̽̃̈́͢t̗̱̱̯̜̣̀͌̇ͮ͢o̧͎̟͖͂̈́̓͌̓͟ ̢̫̦̟̳̻̰͆͗̈́ͩ͢f̠͎͉̺͍̜̝̃͊e̗͎͖̰̭̳̻̓ͮ̉̈ͣṫ̛̲̲̙̼̮̼̐͊̏ͪ͢c͖͓̪͇̪͌̔̔ͤ͢ḩ̨̞̬͔͇͂͊̋͢ ̡̳̪̪͊ͤ̇̅͟f̯̰̖̘̦̉̽ͯu̡̘̝̞̭͌ͯͯ͢l̢̞̖̠̯̺͂ͬ͌͋͟l̻̰͖̻̣̖̔ͯͧ̉̂̉̚͢ ̨͖̲̗̤͋̈̉ͩm̜͖̭͖͓̮̽̂ͫ̌ͨ̍̚͢ë̛̙̱̞͕̈́ͤͩ̉ͨ͢m̫̖̯̫͒͆͂͒ͤ͡o̢̪͕̲̰͚͊̐͊͟ŗ̰̫̗̻́͑͌͒y̖͇̟͉͐͊ͧ̒͜ ͢s̞͎͉͇͇͙̆͐̀̇e̱̳͔̦̖͓̽ͩ̒̋͟g̝̫̪̰̯̙̝͒̈͋͋ͫ͜m̹̣̤̣̫͖̏̌̂ͮ̓ë̡̙̣̠͕̜ͨ̂n̘̘̭͈̗̓͋̓͒ͩ͢ẗ͉̳̲̟͖͓ͩ̌͗ͥ̚.̨͚̪̠̳̭ͧ͋͛͢ ̢̖̯̻͓͖͑̅ͯ͋̅͟P͔̱͎̜̘̮͓͊̑͊̓͟ŗ̝̗̠͙̅̉̈ͤo̧͍̝̪͗̂͢t̡̞̭͎̠͋̐͂̓͟ỏ̧̠̘̠̦̒͒c̹̰̟͚ͯ̉̈́ͮ̀͢o̢̱̜͉̻͔͓͌̔̀͢l̢̪̙̦̣͔̋͊͊͟ ̢̱̳̰̪͋͑ͤͪ͟į̝̙̠͖͔͋ͨ̇͟n̨͓͕̪̝̭̓ͨ̉̇̕͢s̮͉͇͓͕̐̂̅͢t̛̜̰̤̪̂ͫ̆̌͟ą̹̟͍͔͊ͮ͢ḇ̡͖̭̤͙̓̾͛͢l̢̝̠͇͔̋͊͊͟ę͖̯͉͉̟͑̅͊̇͘.</p>
+            </div>
+        </div>
+
+        <div class="broken-stats-box">
+            <div class="broken-stat-item">
+                <span class="broken-stat-label">H̕͢x̜͕̳͓̜̂ͫ̆͢x͕̯̰̗̓̂͢t̪̲̭͎̙͇̾̉̆ͨ͢ ̛͈̙͔͊ͫ̔P̗̱̰̯̿͑ͧͯ͢x̨͓͕̪̝̭̓ͨ̉̇͢͞n͙͉͇͑̅͊ṱ̟͉͓̙͋̃s̢̰̤̠̥̓̿̂</span>
+                <span class="broken-stat-value">E̕ŖR̴O̴R</span>
+            </div>
+            <div class="broken-stat-item">
+                <span class="broken-stat-label">A͢x̨x̨a̡̤͢çx̨</span>
+                <span class="broken-stat-value">0̶1̶0̶1̶</span>
+            </div>
+            <div class="broken-stat-item">
+                <span class="broken-stat-label">I͢n͢x͜x͢i̧</span>
+                <span class="broken-stat-value">[͢N͢U͢L͢L͢]͢</span>
+            </div>
+            <div class="broken-stat-item">
+                <span class="broken-stat-label">S͢x̨x͜x̨</span>
+                <span class="broken-stat-value">2̶</span>
+            </div>
+        </div>
+
+        <div class="broken-skills-grid">
+            <div class="broken-skill-card">
+                <div class="broken-skill-header">
+                    <div class="broken-skill-icon"></div>
+                    <div class="broken-skill-title-container">
+                        <h3 class="broken-skill-title">C̶͢͢o̶̠̭̖͇͇̓͌r̶͚̫̖̯͌̔͢r̶͎̰̤͇͇̾̉͡u̶̠̭͇͇̔ͨ͡p̶̟͉͓̙͋̃͢t̶̰͕̬̋̌̽͟ ̶̞̹͙́̽Ẽ̶̡̟̆͟n̶͉͓͓͎͑ͯ͢t̶̰͕̬̋̌̽͟ṉ̶͉͓͓͎͑ͯ͢u̶̠̭͇͇̔ͨ͡t̶̰͕̬̋̌̽͟ḙ̶̪͓͙̐́͟</h3>
+                        <span class="broken-skill-type">[͢A͢x͜A͢ÇCÇ]̧</span>
+                    </div>
+                </div>
+                <div class="broken-skill-desc">Ḑa̢t̡͢a̡ ͟ço̧r̨r̨ųp͜͢t͟.̨ ͢Ųn͜͢ąb͜l̨e͢ ͟t̡ǫ ͜d̡e͢͢c͜r͜͢y͜͢p̡͢t̡ ͟s͜k̨i̡l̡͢l͢ ͢d̢e͟͢çŗįp͜͢t͟i͜ǫ͢ņ.̨ ͢E̡ŗr̨o͜r̨ ͢codę ̧0̢x͜͢F̧F̧0̢x̨F̢F̧</div>
+            </div>
+        </div>
+    </div>
+
+    <a href="javascript:history.back()" class="back-link">[ E̸X̸I̸T̸ ̸P̸R̸O̸T̸O̸C̸O̸L̸ ]</a>
+</main>
+
+</body>
+</html>
