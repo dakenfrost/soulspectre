@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | The Reflection</title>
+    <style>
+        :root {
+            --shadow-color: #888;
+            --shadow-glow: rgba(255, 255, 255, 0.4);
+            --bg-dark: #020202;
+        }
+
+        body {
+            color: #d0d0d0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: var(--bg-dark);
+        }
+
+        #bg-image {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background-image: url('../../img/menu_arcade_bg.jpg'); 
+            background-size: cover; background-position: center;
+            z-index: -2;
+            filter: grayscale(100%) invert(1) brightness(0.1);
+            transform: scaleX(-1); /* Sfondo specchiato orizzontalmente */
+        }
+
+        #overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: linear-gradient(to top, rgba(10, 10, 10, 0.95), rgba(2, 2, 2, 0.98)); 
+            z-index: -1;
+        }
+
+        /* --- CLASSE FONDAMENTALE PER L'EFFETTO SPECCHIO/CAPOVOLTO --- */
+        .mirror-text {
+            transform: rotate(180deg);
+            display: inline-block;
+            width: 100%;
+        }
+
+        header {
+            padding: 80px 20px 40px 20px;
+            text-align: center; width: 100%; max-width: 1100px;
+        }
+
+        h1 {
+            letter-spacing: 15px; font-size: 3.5rem; margin: 0; color: #fff;
+            text-transform: uppercase; text-shadow: 0 0 20px var(--shadow-glow);
+        }
+
+        .subtitle {
+            color: var(--shadow-color); font-size: 1.2rem; letter-spacing: 4px;
+            margin-top: 10px; text-transform: uppercase; font-weight: bold;
+        }
+
+        main {
+            max-width: 1100px; padding: 20px; width: 100%; position: relative;
+        }
+
+        .intro-banner {
+            width: 100%; border: 1px solid rgba(255, 255, 255, 0.2);
+            border-bottom: 3px solid #fff;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+            border-radius: 4px; overflow: hidden; margin-bottom: 40px;
+            filter: grayscale(100%);
+            transform: scaleX(-1); /* Immagine specchiata */
+        }
+
+        .intro-banner img { width: 100%; display: block; opacity: 0.6; }
+
+        .split-section {
+            display: flex; gap: 40px; align-items: stretch; margin-bottom: 60px; 
+            background: rgba(20, 20, 20, 0.6); backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.1); border-left: 3px solid #fff;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            /* Invertiamo l'ordine visivo dei blocchi */
+            flex-direction: row-reverse;
+        }
+
+        .section-image-container {
+            position: relative; flex: 0 0 40%; overflow: hidden; aspect-ratio: 3 / 4;
+            filter: grayscale(100%) brightness(0.8);
+            transform: scaleX(-1);
+        }
+
+        .section-image-container img {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover; object-position: top center; 
+        }
+
+        .section-text { flex: 1; padding: 35px; }
+        
+        h2 { color: #fff; letter-spacing: 2px; text-transform: uppercase; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 10px; margin-top: 0; margin-bottom: 25px; font-size: 1.8rem; }
+        p { margin-bottom: 25px; color: #bbb; font-size: 1.1rem; text-align: justify; }
+
+        .tactical-module { border-top: 2px solid #555; padding-top: 40px; margin-bottom: 60px; }
+
+        .stats-box {
+            display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;
+            background: linear-gradient(145deg, rgba(30, 30, 30, 0.9), rgba(10, 10, 10, 0.9));
+            border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 4px;
+            padding: 25px; margin-bottom: 50px;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
+            /* Layout invertito */
+            flex-direction: row-reverse;
+        }
+
+        .stat-item { text-align: center; padding: 10px 20px; }
+        .stat-label { display: block; color: #777; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px; }
+        .stat-value { display: block; color: #fff; font-size: 1.5rem; font-weight: bold; font-family: monospace; text-shadow: 0 0 10px rgba(255,255,255,0.3);}
+
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 25px; direction: rtl; }
+        
+        .skill-card { 
+            background: rgba(15, 15, 15, 0.8); border: 1px solid rgba(255,255,255,0.05); 
+            border-right: 4px solid #555; border-left: none; /* Bordo spostato a destra */
+            padding: 25px; direction: ltr; /* Ripristina la direzione interna per far funzionare il rotate correttamente */
+        }
+        
+        .skill-header { display: flex; align-items: center; justify-content: flex-end; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; margin-bottom: 15px; flex-direction: row-reverse; }
+        .skill-icon { width: 70px; height: 70px; border-radius: 4px; object-fit: cover; border: 1px solid #555; margin-left: 15px; background-color: #000; filter: grayscale(100%) invert(1); transform: scaleX(-1); }
+        .skill-title-container { text-align: right; }
+        .skill-title { margin: 0; color: #fff; font-size: 1.3rem; text-transform: uppercase; }
+        .skill-type { font-size: 0.75rem; padding: 2px 6px; background: rgba(255,255,255,0.1); border-radius: 2px; text-transform: uppercase; margin-top: 5px; display: inline-block;}
+        
+        .skill-desc { color: #aaa; font-size: 1rem; }
+
+        .back-link { display: block; text-align: center; margin-top: 60px; color: #666; text-decoration: none; padding: 20px; border-top: 1px solid rgba(255,255,255,0.1); text-transform: uppercase; letter-spacing: 2px;}
+        .back-link:hover { color: #fff; }
+
+        @media (max-width: 950px) {
+            .split-section { flex-direction: column-reverse; }
+            .section-image-container { flex: 1 1 100%; height: 500px; }
+            .skills-grid { grid-template-columns: 1fr; }
+            .stats-box { flex-direction: column; gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<header>
+    <h1><span class="mirror-text">YOU</span></h1>
+    <div class="subtitle"><span class="mirror-text">Realm of Shadows - Perfect Reflection</span></div>
+</header>
+
+<main>
+    <div class="intro-banner">
+        <img src="../../img/valkyrion_bg.jpeg" alt="Shadow Banner">
+    </div>
+
+    <div class="split-section">
+        <div class="section-image-container">
+            <img src="../../img/valkyrion_extra_Captain_combat.jpg" alt="Shadow Combat Form">
+        </div>
+        <div class="section-text">
+            <h2><span class="mirror-text">The Final Barrier</span></h2>
+            <p><span class="mirror-text">You are the only obstacle left. Every tactical decision you made, every optimization, every victory has culminated in this entity. It knows your strategies because it is your strategy.</span></p>
+            <p><span class="mirror-text">To break the simulation and face the Architect, you must first prove that you can overcome your own perfection. Attrition is useless against a mirror. Find the flaw in yourself.</span></p>
+        </div>
+    </div>
+
+    <div class="tactical-module">
+        <div class="tactical-header">
+            <h2 style="border:none; text-align:center"><span class="mirror-text">Shadow Interface</span></h2>
+        </div>
+
+        <div class="stats-box">
+            <div class="stat-item"><span class="stat-label"><span class="mirror-text">Classification</span></span><span class="stat-value"><span class="mirror-text">Your Officer Tier</span></span></div>
+            <div class="stat-item"><span class="stat-label"><span class="mirror-text">Hit Points</span></span><span class="stat-value"><span class="mirror-text">Your Officer HP</span></span></div>
+            <div class="stat-item"><span class="stat-label"><span class="mirror-text">Attack</span></span><span class="stat-value"><span class="mirror-text">Your Officer Attack</span></span></div>
+            <div class="stat-item"><span class="stat-label"><span class="mirror-text">Initiative</span></span><span class="stat-value"><span class="mirror-text">Your Officer Initiative</span></span></div>
+        </div>
+
+        <div class="skills-grid">
+            <div class="skill-card">
+                <div class="skill-header">
+                    <img src="../../img/base_base_skill.png" alt="Mirror Skill" class="skill-icon">
+                    <div class="skill-title-container">
+                        <h3 class="skill-title"><span class="mirror-text">Your Base Skill</span></h3>
+                        <br><span class="skill-type"><span class="mirror-text">Base Skill</span></span>
+                    </div>
+                </div>
+                <div class="skill-desc"><span class="mirror-text">The effects of this skill are the exact same as your officer's skill.</span></div>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-header">
+                    <img src="../../img/base_active_skill.png" alt="Mirror Skill" class="skill-icon">
+                    <div class="skill-title-container">
+                        <h3 class="skill-title"><span class="mirror-text">Your Active Skill</span></h3>
+                        <br><span class="skill-type"><span class="mirror-text">Active Skill</span></span>
+                    </div>
+                </div>
+                <div class="skill-desc"><span class="mirror-text">The effects of this skill are the exact same as your officer's skill.</span></div>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-header">
+                    <img src="../../img/base_passive_skill.png" alt="Mirror Skill" class="skill-icon">
+                    <div class="skill-title-container">
+                        <h3 class="skill-title"><span class="mirror-text">Your Passive Skill</span></h3>
+                        <br><span class="skill-type"><span class="mirror-text">Passive</span></span>
+                    </div>
+                </div>
+                <div class="skill-desc"><span class="mirror-text">The effects of this skill are the exact same as your officer's skill.</span></div>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-header">
+                    <img src="../../img/base_ultimate_skill.png" alt="Mirror Skill" class="skill-icon">
+                    <div class="skill-title-container">
+                        <h3 class="skill-title"><span class="mirror-text">Your Ultimate</span></h3>
+                        <br><span class="skill-type"><span class="mirror-text">Ultimate</span></span>
+                    </div>
+                </div>
+                <div class="skill-desc"><span class="mirror-text">The effects of this skill are the exact same as your officer's skill.</span></div>
+            </div>
+        </div>
+    </div>
+
+    <a href="arcade_mode.html" class="back-link"><span class="mirror-text">← Return to Reality</span></a>
+</main>
+
+</body>
+</html>
