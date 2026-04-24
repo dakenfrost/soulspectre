@@ -69,7 +69,7 @@
             border-bottom: 3px solid var(--accent-color);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
             border-radius: 4px; overflow: hidden; margin-bottom: 40px;
-            /* Aggiunta animazione banner-flash */
+            /* Le animazioni rimangono le stesse, cambiano i keyframe */
             animation: rgb-split 2s infinite, banner-flash 4s infinite;
         }
 
@@ -85,7 +85,7 @@
 
         .section-image-container {
             position: relative; flex: 0 0 40%; overflow: hidden; aspect-ratio: 3 / 4;
-            /* Aggiunta animazione portrait-flash */
+            /* L'animazione rimane, cambiano i keyframe */
             animation: portrait-flash 3.5s infinite;
         }
 
@@ -182,15 +182,43 @@
             100% { transform: translate(0, 0); }
         }
 
-        /* --- NUOVI KEYFRAMES PER SFARFALLIO IMMAGINI --- */
+        /* --- KEYFRAMES AGGIORNATI PER SFARFALLIO BILANCIATO (Preferenza Positiva) --- */
+        
+        /* Banner: Base Normale (Positiva), Flash Corrotti (Negativi) */
         @keyframes banner-flash {
-            0%, 88%, 92%, 98%, 100% { filter: contrast(150%) saturate(0) sepia(1) hue-rotate(300deg) invert(1); }
-            89%, 91%, 93%, 97% { filter: contrast(100%) saturate(1) sepia(0) hue-rotate(0deg) invert(0); }
+            /* Stato Positivo (Normale) - Base */
+            0%, 15%, 25%, 35%, 55%, 65%, 85%, 100% { 
+                filter: contrast(100%) saturate(1) sepia(0) hue-rotate(0deg) invert(0); 
+                opacity: 0.5; /* Manteniamo l'opacità del design originale */
+            }
+            /* Stato Negativo (Corrotto) - Glitch rapidi */
+            18%, 22% { 
+                filter: contrast(150%) saturate(0) sepia(1) hue-rotate(300deg) invert(1); 
+                opacity: 0.2; /* Più scuro durante il glitch negativo */
+            }
+            58%, 62% { 
+                filter: contrast(200%) saturate(0) sepia(0) hue-rotate(0deg) invert(1) brightness(1.5); 
+                opacity: 0.8; /* Flash luminoso negativo */
+            }
+            88%, 92% { 
+                filter: contrast(150%) saturate(0) sepia(1) hue-rotate(300deg) invert(1); 
+                opacity: 0.2;
+            }
         }
 
+        /* Portrait: Base Normale (Positiva), Flash Corrotti (Negativi) */
         @keyframes portrait-flash {
-            0%, 30%, 34%, 70%, 74%, 100% { filter: invert(0.8) hue-rotate(90deg); }
-            31%, 33%, 71%, 73% { filter: invert(0) hue-rotate(0deg); }
+            /* Stato Positivo (Normale) - Base */
+            0%, 40%, 50%, 60%, 100% { 
+                filter: invert(0) hue-rotate(0deg); 
+            }
+            /* Stato Negativo (Corrotto) - Glitch rapidi e asincroni */
+            42%, 48% { 
+                filter: invert(0.8) hue-rotate(90deg); 
+            }
+            62%, 68% { 
+                filter: invert(1) hue-rotate(180deg) brightness(0.8); 
+            }
         }
 
         @media (max-width: 950px) {
