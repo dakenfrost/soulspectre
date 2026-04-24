@@ -1,0 +1,49 @@
+====================================================================
+                SOULSPECTRE - SYSTEM ARCHITECTURE
+====================================================================
+
+--- [ POWER SCALING & TIERS ] ---
+
+I Tier rappresentano la classificazione oggettiva di potenza e 
+influenza all'interno della simulazione.
+
+T0: Commoners    | Colore UI: Grigio Scuro     [Hex: #555555]
+T1: Soldier      | Colore UI: Grigio/Azzurro   [Hex: #b0bec5]
+T2: Adept        | Colore UI: Verde            [Hex: #81c784]
+T3: Veteran      | Colore UI: Blu              [Hex: #64b5f6]
+T4: Elite        | Colore UI: Viola            [Hex: #ba68c8]
+T5: Champion     | Colore UI: Oro/Ambra        [Hex: #ffb300]
+T6: Ruler        | Colore UI: Rosso Cremisi    [Hex: #e53935]
+T7: Cataclysm    | Colore UI: Rosso Corrotto   [Hex: #ff003c / Glitch]
+T8: Apocalypse   | Colore UI: [ DA DEFINIRE ]
+T9: Extinction   | Colore UI: [ DA DEFINIRE ]
+T10: ?????       | Colore UI: [ DA DEFINIRE ]
+
+
+--- [ FACTIONS & COLOR SCHEMES ] ---
+
+Elenco delle fazioni attive, i loro tratti chiave e i colori 
+dominanti usati nel web design delle loro interfacce.
+
+1. VALKYRION EMPIRE
+   Tema: Ordine, Legge, Esercito, Conoscenza (Librarians)
+   Colore Principale: Valkyrion Imperial Blue  [Hex: #5c9ce6]
+   Colore Accento 1: Royal Purple (Dossier)    [Hex: #ab47bc]
+   Colore Sfondo: Scuri Freddi                 [Hex: #0a0f19]
+
+2. REALM OF SHADOWS / ANOMALIES (Soul Spectre)
+   Tema: Errori di sistema, Corruzione, Doppelganger, Vuoto
+   Colore Principale: Absolute Black           [Hex: #000000]
+   Colore Accento 1: Glitch Cyan               [Hex: #00ffff]
+   Colore Accento 2: Glitch Magenta            [Hex: #ff00ff]
+   Filtri Visivi: Invert, Grayscale, Zalgo Text
+
+3. [ NOME FAZIONE 3 ]
+   Tema: ...
+   Colore Principale: ...
+
+4. [ NOME FAZIONE 4 ]
+   Tema: ...
+   Colore Principale: ...
+
+====================================================================
