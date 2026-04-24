@@ -69,8 +69,8 @@
             border-bottom: 3px solid var(--accent-color);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
             border-radius: 4px; overflow: hidden; margin-bottom: 40px;
-            animation: rgb-split 2s infinite;
-            filter: contrast(150%) saturate(0) sepia(1) hue-rotate(300deg);
+            /* Aggiunta animazione banner-flash */
+            animation: rgb-split 2s infinite, banner-flash 4s infinite;
         }
 
         .intro-banner img { width: 100%; display: block; opacity: 0.5; }
@@ -85,7 +85,8 @@
 
         .section-image-container {
             position: relative; flex: 0 0 40%; overflow: hidden; aspect-ratio: 3 / 4;
-            filter: invert(0.8) hue-rotate(90deg);
+            /* Aggiunta animazione portrait-flash */
+            animation: portrait-flash 3.5s infinite;
         }
 
         .section-image-container img {
@@ -111,7 +112,6 @@
         .stat-label { display: block; color: #555; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px; }
         .stat-value { display: block; color: #fff; font-size: 1.8rem; font-weight: bold; font-family: monospace; }
         
-        /* Tier Chiaramente Visibile e Catastrofico */
         .stat-value.cataclysm { 
             color: #fff; 
             text-shadow: 0 0 10px #f00, 0 0 20px #f00, 2px 2px var(--glitch-cyan), -2px -2px var(--glitch-magenta); 
@@ -182,6 +182,17 @@
             100% { transform: translate(0, 0); }
         }
 
+        /* --- NUOVI KEYFRAMES PER SFARFALLIO IMMAGINI --- */
+        @keyframes banner-flash {
+            0%, 88%, 92%, 98%, 100% { filter: contrast(150%) saturate(0) sepia(1) hue-rotate(300deg) invert(1); }
+            89%, 91%, 93%, 97% { filter: contrast(100%) saturate(1) sepia(0) hue-rotate(0deg) invert(0); }
+        }
+
+        @keyframes portrait-flash {
+            0%, 30%, 34%, 70%, 74%, 100% { filter: invert(0.8) hue-rotate(90deg); }
+            31%, 33%, 71%, 73% { filter: invert(0) hue-rotate(0deg); }
+        }
+
         @media (max-width: 950px) {
             .split-section { flex-direction: column; }
             .section-image-container { flex: 1 1 100%; height: 500px; }
@@ -211,7 +222,7 @@
         </div>
         <div class="section-text">
             <h2>T͢h͜e̡ ̡A͢n͜o͢m̡a͜l͢y̧</h2>
-            <p>Yxou crxatxd thxs. Ewxrxy cxxice, evxry esxcxpe. Î̶̠̖͍͎̻̙̝ͨ̉̂ͮ̉́͢n̝̠͍͔̗̙ͩ̀̌͒ͫ͊͊v̱̰̯̰̺̜̯͚̏ͯͨa̯͎̫̼̝̙͂̅ͫl̡̖̫͈̦͚̫̲͑ͧͤ̽i̯̠̝̳̠͌̅d̙̰͓̙̰͍͋̆͢ ̹̣̪̗̘ͯͮ̏̌ͭͬͫ̚o͍̗̳̞͚̪ͨ͊̊͟p̹̗̟̰̮͍͊̅ͧ͊̂̄̌͜e͉̪̰̗ͣ̎ͯ̅́̕ṙ̫͔͎̙̘̫͉ͮͣͨ̈͢a̢̰͈̯̲̳ͬ̋͗̂t̴͚̘̣͔̉̑̊į̜̙̝͙͋ͨ͂͟o̯̞̭̱̰ͤ̈͛n̡̤͎̯͖̠̔ͤ͢.</p>
+            <p>Yxou crxatxd thxs. Ewxrxy cxxice, evxry esxcxpe. Î̶̠̖͍͎̻̙̝ͨ̉̂ͮ̉́͢n̝̠͍͔̗̙ͩ̀̌͒ͫ͊͊v̱̰̯̰̺̜̯͚̏ͯͨa̯͎̫̼̝̙͂̅ͫl̡̖̫͈̦͚̫̲͑ͧͤ̽i̯̠̝̳̠͌̅d̙̰͓̙̰͍͋̆͢ ̹̣̪̗̘ͯͮ̏̌ͭͬͫ̚o͍̗̳̞͚̪ͨ͊̊͟p̹̗̟̰̮͍͊̅ͧ͊̂̄̌͜e͉̪̰̗ͣ̎ͯ̅́̕ṙ̫͔͎̙̘̫͉ͮͣͨ̈͢a̢̰͈̯̲̳ͬ̋͗̂t̴͚̘̣͔̉̑̊į̜̙̝͙͋ͨ͂͟o̯̞̭̱̰ͤ̈͛n̡̤͎̯͖̠̔ͤ͢.</p>
             <p>Txhre is nx xscxpe frxm whxt yxu arx. Sytxm fxilure inxntixatxd. Cxlculxtxng vxxid... 100%.</p>
         </div>
     </div>
