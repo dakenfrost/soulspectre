@@ -14,13 +14,13 @@
 
         body {
             color: #e0e0e0;
-            font-family: 'Courier New', Courier, monospace; /* Font monospaziato per l'errore */
+            font-family: 'Courier New', Courier, monospace;
             line-height: 1.8;
             margin: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
-            user-select: none; /* Impedisce la selezione facile del testo */
+            user-select: none;
             overflow-x: hidden;
         }
 
@@ -30,14 +30,12 @@
             background-image: url('../../img/valkyrion_bg.jpeg'); 
             background-size: cover; background-position: center;
             z-index: -2;
-            /* Filtro per corrompere l'immagine di sfondo */
             filter: invert(1) hue-rotate(180deg) grayscale(80%) brightness(0.3);
         }
 
         #overlay {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
-            /* Aggiunti scanline e gradiente glitchato */
             background: 
                 linear-gradient(to bottom, rgba(10, 5, 5, 0.92), rgba(0, 0, 0, 0.98)),
                 repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,0,0,0.05) 2px, rgba(255,0,0,0.05) 4px);
@@ -113,9 +111,17 @@
         .stat-label { display: block; color: #555; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px; }
         .stat-value { display: block; color: #fff; font-size: 1.8rem; font-weight: bold; font-family: monospace; }
         
+        /* Tier Chiaramente Visibile e Catastrofico */
+        .stat-value.cataclysm { 
+            color: #fff; 
+            text-shadow: 0 0 10px #f00, 0 0 20px #f00, 2px 2px var(--glitch-cyan), -2px -2px var(--glitch-magenta); 
+            letter-spacing: 3px; 
+            font-size: 2rem;
+            animation: text-glitch-intense 0.5s infinite;
+        }
+        
         .stat-value.hp { color: #f00; text-decoration: line-through; }
         .stat-value.atk { color: var(--glitch-cyan); }
-        .stat-value.boss { color: #555; text-shadow: none; }
 
         .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 25px; }
         .skill-card { background: rgba(5, 0, 0, 0.8); border: 1px solid rgba(255,0,0,0.1); border-left: 4px solid #f00; padding: 25px; animation: card-shake 2s infinite; }
@@ -127,7 +133,7 @@
         
         .skill-desc { color: #888; font-size: 0.95rem; }
 
-        .portrait-gallery-module { background: rgba(5, 0, 0, 0.7); border: 1px dashed rgba(255,0,0,0.2); border-left: 3px solid var(--accent-color); padding: 35px; margin-bottom: 40px; display: none; /* Nascosto per l'errore */ }
+        .portrait-gallery-module { display: none; }
 
         .back-link { display: block; text-align: center; margin-top: 60px; color: #333; text-decoration: none; padding: 20px; border-top: 1px dashed #333; text-transform: uppercase; letter-spacing: 2px;}
         .back-link:hover { color: #f00; text-shadow: 0 0 5px #f00;}
@@ -165,6 +171,15 @@
             62% { transform: skew(-5deg); }
             65% { transform: skew(0deg); }
             100% { transform: skew(0deg); }
+        }
+
+        @keyframes text-glitch-intense {
+            0% { transform: translate(0, 0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0, 0); }
         }
 
         @media (max-width: 950px) {
@@ -207,7 +222,7 @@
         </div>
 
         <div class="stats-box">
-            <div class="stat-item"><span class="stat-label">Cxxsxxfxcxtxxn</span><span class="stat-value boss">0x000000</span></div>
+            <div class="stat-item"><span class="stat-label">C L A S S I F I C A T I O N</span><span class="stat-value cataclysm">TIER 7: CATACLYSM</span></div>
             <div class="stat-item"><span class="stat-label">Hxx Pxxnts</span><span class="stat-value hp">E R R O R</span></div>
             <div class="stat-item"><span class="stat-label">Axxack</span><span class="stat-value atk">NaN</span></div>
             <div class="stat-item"><span class="stat-label">Inxxtxatxve</span><span class="stat-value">-1</span></div>
@@ -228,6 +243,22 @@
                     <div class="skill-title-container"><h3 class="skill-title">Exsxcxpe Pxotxcxl</h3><span class="skill-type">N U L L</span></div>
                 </div>
                 <div class="skill-desc">Ixsuxs an irxevxcxble mxndxte. All escxpe rxxutes cxosxd. Yxu caxnnxt hxde hxre anxy mxre.</div>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-header">
+                    <img src="../../img/base_passive_skill.png" alt="GLITCH" class="skill-icon">
+                    <div class="skill-title-container"><h3 class="skill-title">Axbxsxal Vxxid</h3><span class="skill-type">P A S S I V E _ G L I T C H</span></div>
+                </div>
+                <div class="skill-desc">Thx eyntxty caxnnot bxe cxxntrxlled. Ixmuxne tx axll lxgxc. Yxour sxatxs axre mxanxnglxsx hexe.</div>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-header">
+                    <img src="../../img/base_ultimate_skill.png" alt="GLITCH" class="skill-icon">
+                    <div class="skill-title-container"><h3 class="skill-title">Rxsxt Sxymtxe</h3><span class="skill-type">F A T A L _ E X E C U T E</span></div>
+                </div>
+                <div class="skill-desc">Dxletes axtaxckxrs frxm txhe gxme rxxgitry. Axxxl mxrxy is vxxid. Pxxs prxss alt+f4 nxxw.</div>
             </div>
         </div>
     </div>
