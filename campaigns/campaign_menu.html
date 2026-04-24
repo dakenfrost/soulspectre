@@ -12,6 +12,10 @@
             --arcade-glow: rgba(229, 57, 53, 0.8);
         }
 
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             color: #e0e0e0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -107,20 +111,20 @@
             justify-content: flex-start;
         }
 
-        .story-mode .content-wrapper { max-width: 45%; }
+        .story-mode .content-wrapper { max-width: 55%; }
 
         /* --- ARCADE MODE (RED, BOTTOM-RIGHT) --- */
         .arcade-mode {
             background: linear-gradient(135deg, rgba(60, 10, 15, 0.9), rgba(90, 15, 20, 0.95));
             clip-path: polygon(100% 0, 100% 100%, 0 100%);
-            z-index: 1; /* Underneath story mode to prevent bounding box overlap issues */
+            z-index: 1;
             padding: 50px;
             align-items: flex-end;
             justify-content: flex-end;
             text-align: right;
         }
 
-        .arcade-mode .content-wrapper { max-width: 45%; }
+        .arcade-mode .content-wrapper { max-width: 55%; }
 
         /* --- TYPOGRAPHY --- */
         .mode-title {
@@ -130,6 +134,7 @@
             text-transform: uppercase;
             letter-spacing: 5px;
             transition: text-shadow 0.3s ease;
+            white-space: nowrap; /* Evita che il titolo vada a capo */
         }
 
         .story-mode .mode-title { color: var(--story-color); }
@@ -146,21 +151,19 @@
 
         /* --- HOVER KINETICS --- */
         
-        /* Story Mode Hover */
         .story-mode:hover {
             background: linear-gradient(135deg, rgba(20, 70, 150, 1), rgba(30, 90, 190, 1));
             box-shadow: inset 0 0 80px var(--story-glow);
-            clip-path: polygon(0 0, 100% 0, 0 105%); /* Pushes the diagonal slightly */
+            clip-path: polygon(0 0, 100% 0, 0 105%); 
             z-index: 10;
         }
         .story-mode:hover .mode-title { text-shadow: 0 0 25px var(--story-glow); color: #fff; }
         .story-mode:hover .mode-desc { opacity: 1; color: #fff; }
 
-        /* Arcade Mode Hover */
         .arcade-mode:hover {
             background: linear-gradient(135deg, rgba(150, 20, 30, 1), rgba(190, 30, 40, 1));
             box-shadow: inset 0 0 80px var(--arcade-glow);
-            clip-path: polygon(100% -5%, 100% 100%, 0 100%); /* Pushes the diagonal slightly */
+            clip-path: polygon(100% -5%, 100% 100%, 0 100%); 
             z-index: 10;
         }
         .arcade-mode:hover .mode-title { text-shadow: 0 0 25px var(--arcade-glow); color: #fff; }
@@ -179,13 +182,13 @@
                 flex-direction: column;
                 border-radius: 8px;
             }
-            .campaign-selector::after { display: none; } /* Remove diagonal line */
+            .campaign-selector::after { display: none; } 
             
             .mode-panel {
                 position: relative;
                 width: 100%;
                 height: 300px;
-                clip-path: none !important; /* Disable triangles */
+                clip-path: none !important; 
                 align-items: center;
                 justify-content: center;
                 text-align: center;
@@ -193,6 +196,7 @@
             }
             
             .content-wrapper { max-width: 100% !important; }
+            .mode-title { white-space: normal; font-size: 2.8rem; }
             .arcade-mode { text-align: center; }
             
             .story-mode:hover { transform: scale(1.02); z-index: 2; }
