@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Arcade Protocol</title>
+    <style>
+        :root {
+            --arcade-color: #e53935; /* Arcade Red */
+            --arcade-glow: rgba(229, 57, 53, 0.6);
+            --bg-dark: #050505;
+            --panel-bg: rgba(20, 5, 5, 0.85);
+            --text-main: #e0e0e0;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        #bg-image {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background-image: url('../../img/menu_arcade_bg.jpg'); /* The red background from the menu */
+            background-size: cover;
+            background-position: center;
+            z-index: -2;
+            filter: grayscale(50%) brightness(0.2);
+        }
+
+        #overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background: linear-gradient(to bottom, rgba(30, 5, 5, 0.9), rgba(5, 0, 0, 0.98)); 
+            z-index: -1;
+        }
+
+        header {
+            padding: 60px 20px 40px 20px;
+            text-align: center;
+            width: 100%;
+            border-bottom: 1px solid rgba(229, 57, 53, 0.2);
+            background: radial-gradient(ellipse at top, rgba(229, 57, 53, 0.1), transparent 70%);
+        }
+
+        h1 {
+            letter-spacing: 10px;
+            font-size: 3rem;
+            color: #fff;
+            text-transform: uppercase;
+            margin: 0;
+            text-shadow: 0 0 20px var(--arcade-glow);
+        }
+
+        .subtitle {
+            color: var(--arcade-color);
+            font-size: 1.2rem;
+            letter-spacing: 4px;
+            margin-top: 10px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        main {
+            width: 100%;
+            max-width: 1000px;
+            padding: 50px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .intro-text {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #ccc;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            padding: 0 40px;
+        }
+
+        /* --- TIMELINE / PROTOCOL STEPS --- */
+        .protocol-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+
+        .protocol-card {
+            background: var(--panel-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-left: 4px solid var(--arcade-color);
+            border-radius: 4px;
+            padding: 30px;
+            display: flex;
+            align-items: flex-start;
+            gap: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .protocol-card:hover {
+            transform: translateX(10px);
+            background: rgba(30, 10, 10, 0.9);
+            border-color: rgba(229, 57, 53, 0.3);
+        }
+
+        .step-number {
+            flex: 0 0 80px;
+            height: 80px;
+            background: rgba(229, 57, 53, 0.1);
+            border: 1px solid rgba(229, 57, 53, 0.3);
+            color: var(--arcade-color);
+            font-size: 2.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            text-shadow: 0 0 10px var(--arcade-glow);
+        }
+
+        .protocol-content { flex: 1; }
+        
+        .protocol-title {
+            font-size: 1.5rem;
+            color: #fff;
+            margin: 0 0 10px 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .protocol-desc {
+            color: #aaa;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* --- ENDGAME WARNING --- */
+        .warning-card {
+            background: repeating-linear-gradient(
+                45deg,
+                rgba(20, 5, 5, 0.9),
+                rgba(20, 5, 5, 0.9) 10px,
+                rgba(30, 5, 5, 0.9) 10px,
+                rgba(30, 5, 5, 0.9) 20px
+            );
+            border: 1px solid var(--arcade-color);
+            border-left: 8px solid var(--arcade-color);
+        }
+
+        .warning-card .step-number {
+            background: var(--arcade-color);
+            color: #fff;
+            text-shadow: none;
+        }
+
+        .warning-card .protocol-title { color: var(--arcade-color); text-shadow: 0 0 10px var(--arcade-glow); }
+
+        /* --- ACTION BAR --- */
+        .action-bar {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(229, 57, 53, 0.2);
+        }
+
+        .btn-start {
+            background: rgba(229, 57, 53, 0.1);
+            color: var(--arcade-color);
+            border: 2px solid var(--arcade-color);
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-start:hover {
+            background: var(--arcade-color);
+            color: #fff;
+            box-shadow: 0 0 30px var(--arcade-glow);
+            transform: scale(1.05);
+        }
+
+        .back-link {
+            margin-bottom: 60px;
+            color: #666;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover { color: #fff; }
+
+        @media (max-width: 800px) {
+            .protocol-card { flex-direction: column; align-items: center; text-align: center; padding: 20px; }
+            .step-number { margin-bottom: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<header>
+    <h1>Arcade Protocol</h1>
+    <div class="subtitle">The Endless Simulation</div>
+</header>
+
+<main>
+    <p class="intro-text">
+        Welcome to the Gauntlet. The Arcade Protocol is a procedurally generated theater of war stripped of politics and alliances. 
+        Here, you will select your allegiance and face a gauntlet of randomized factions in a relentless escalation of force. 
+        Survival is not guaranteed.
+    </p>
+
+    <div class="protocol-grid">
+        
+        <div class="protocol-card">
+            <div class="step-number">I</div>
+            <div class="protocol-content">
+                <h2 class="protocol-title">Tactical Escalation</h2>
+                <p class="protocol-desc">Combat is divided into five escalating tiers. In Tier 1, you are restricted to basic infantry and low-level spells. To advance, you must shatter the enemy vanguard and execute their commanding Hero—a powerful entity operating one tier above your current limitations.</p>
+            </div>
+        </div>
+
+        <div class="protocol-card">
+            <div class="step-number">II</div>
+            <div class="protocol-content">
+                <h2 class="protocol-title">The Interrogations</h2>
+                <p class="protocol-desc">Violence brings questions, not peace. Following the execution of an enemy commander, the simulation will pause. You will be asked a question. Your answers will not affect the immediate battle, but they will silently shape the anomaly waiting at the end of the simulation. Choose your philosophy carefully.</p>
+            </div>
+        </div>
+
+        <div class="protocol-card warning-card">
+            <div class="step-number">III</div>
+            <div class="protocol-content">
+                <h2 class="protocol-title">The Realm of Shadows</h2>
+                <p class="protocol-desc">Should you survive the five mortal tiers, the simulation collapses into the Realm of Shadows. Here, foreign armies cease to exist. You will face the darkest reflection of your own allegiance—perfect, merciless doppelgangers of your own heroes and units. Your greatest tactical strengths will be weaponized against you.</p>
+            </div>
+        </div>
+
+        <div class="protocol-card warning-card">
+            <div class="step-number">IV</div>
+            <div class="protocol-content">
+                <h2 class="protocol-title">The Soul Spectre</h2>
+                <p class="protocol-desc">If the shadows are purged, only the Architect remains. The Soul Spectre is the final anomaly—an entity born from the desperate psychological need to escape reality. It wields the very concepts you forged during the Interrogations. To win, you must defeat the manifestation of your own escapism.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="action-bar">
+        <a href="javascript:void(0)" class="btn-start">Initialize Simulation</a>
+    </div>
+
+</main>
+
+<a href="campaign_menu.html" class="back-link">← Abort Deployment</a>
+
+</body>
+</html>
