@@ -94,6 +94,7 @@
 
         .unit-row:hover { transform: translateX(10px); background: rgba(30,15,40,0.8); }
 
+        /* Tier Borders */
         .unit-row.t-0 { border-left: 5px solid #555; }
         .unit-row.t-1 { border-left: 5px solid #b0bec5; } 
         .unit-row.t-2 { border-left: 5px solid #81c784; } 
@@ -113,21 +114,15 @@
             background: #000;
         }
 
-        .portrait-container.wide {
-            flex: 0 0 220px;
-            width: 220px;
-        }
+        .portrait-container.wide { flex: 0 0 220px; width: 220px; }
 
-        .portrait-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+        .portrait-container img { width: 100%; height: 100%; object-fit: cover; }
 
         .unit-info { flex: 1; }
         .unit-name { font-size: 1.7rem; color: #fff; margin: 0 0 5px 0; text-transform: uppercase; }
         .unit-tier { font-size: 0.95rem; letter-spacing: 1px; margin-bottom: 10px; font-weight: bold; }
         
+        /* Tier Colors */
         .color-t0 { color: #555; }
         .color-t1 { color: #b0bec5; }
         .color-t2 { color: #81c784; }
@@ -196,6 +191,33 @@
             </div>
             <a href="valkyrion_extra_thief.html" class="btn-tactical">Data</a>
         </div>
+        <div class="unit-row t-1">
+            <div class="portrait-container"><img src="../../img/valkyrion_highwayman_portrait.png" alt="Highwayman"></div>
+            <div class="unit-info">
+                <h3 class="unit-name">Highwayman</h3>
+                <div class="unit-tier">Classification: <span class="color-t1">Tier 1 (Soldier)</span></div>
+                <p class="unit-desc">Seasoned brigands equipped with light crossbows, specialized in exploiting terrain for lethal ambushes.</p>
+            </div>
+            <a href="valkyrion_extra_highwayman.html" class="btn-tactical">Data</a>
+        </div>
+        <div class="unit-row t-1">
+            <div class="portrait-container"><img src="../../img/valkyrion_militia_portrait.png" alt="Militia"></div>
+            <div class="unit-info">
+                <h3 class="unit-name">Militia</h3>
+                <div class="unit-tier">Classification: <span class="color-t1">Tier 1 (Soldier)</span></div>
+                <p class="unit-desc">The foundation of imperial law enforcement. Issued standard-grade gear and drilled in basic military protocols.</p>
+            </div>
+            <a href="valkyrion_extra_militia.html" class="btn-tactical">Data</a>
+        </div>
+        <div class="unit-row t-2">
+            <div class="portrait-container"><img src="../../img/valkyrion_thug_portrait.png" alt="Thug"></div>
+            <div class="unit-info">
+                <h3 class="unit-name">Thug</h3>
+                <div class="unit-tier">Classification: <span class="color-t2">Tier 2 (Adept)</span></div>
+                <p class="unit-desc">Powerfully built enforcers with a penchant for physical demolition and systematic bone-breaking.</p>
+            </div>
+            <a href="valkyrion_extra_thug.html" class="btn-tactical">Data</a>
+        </div>
         <div class="unit-row t-2">
             <div class="portrait-container"><img src="../../img/valkyrion_soldier_portrait.png" alt="Soldier"></div>
             <div class="unit-info">
@@ -204,6 +226,87 @@
                 <p class="unit-desc">A step above the common militia. These units possess the discipline and refined gear necessary for sustained frontline engagements.</p>
             </div>
             <a href="valkyrion_extra_soldier.html" class="btn-tactical">Data</a>
+        </div>
+        <div class="unit-row t-2">
+            <div class="portrait-container"><img src="../../img/valkyrion_spearman_portrait.png" alt="Spearman"></div>
+            <div class="unit-info">
+                <h3 class="unit-name">Spearman</h3>
+                <div class="unit-tier">Classification: <span class="color-t2">Tier 2 (Adept)</span></div>
+                <p class="unit-desc">Disciplined infantry trained to maintain distance, utilizing reach to impale encroaching threats before they can strike.</p>
+            </div>
+            <a href="valkyrion_extra_spearman.html" class="btn-tactical">Data</a>
+        </div>
+        <div class="unit-row t-3">
+            <div class="portrait-container"><img src="../../img/valkyrion_bandit_chief_portrait.png" alt="Bandit Chief"></div>
+            <div class="unit-info">
+                <h3 class="unit-name">Bandit Chief</h3>
+                <div class="unit-tier">Classification: <span class="color-t3">Tier 3 (Veteran)</span></div>
+                <p class="unit-desc">Criminal masterminds overseeing local syndicates. They possess the ruthlessness and tactical foresight to challenge imperial outposts.</p>
+            </div>
+            <a href="valkyrion_extra_bandit_chief.html" class="btn-tactical">Data</a>
+        </div>
+        <div class="unit-row t-3">
+            <div class="portrait-container"><img src="../../img/valkyrion_veteran_portrait.png" alt="Veteran"></div>
+            <div class="unit-info">
+                <h3 class="unit-name">Veteran</h3>
+                <div class="unit-tier">Classification: <span class="color-t3">Tier 3 (Veteran)</span></div>
+                <p class="unit-desc">Decorated survivors of countless campaigns. Clad in high-grade imperial steel, they represent the empire's primary elite force.</p>
+            </div>
+            <a href="valkyrion_extra_veteran.html" class="btn-tactical">Data</a>
+        </div>
+        <div class="unit-row t-3">
+            <div class="portrait-container"><img src="../../img/valkyrion_skirmisher_portrait.png" alt="Skirmisher"></div>
+            <div class="unit-info">
+                <h3 class="unit-name">Skirmisher</h3>
+                <div class="unit-tier">Classification: <span class="color-t3">Tier 3 (Veteran)</span></div>
+                <p class="unit-desc">Highly mobile units equipped with shields and heavy javelins. They excel at softening enemy formations with high-impact ranged strikes.</p>
+            </div>
+            <a href="valkyrion_extra_skirmisher.html" class="btn-tactical">Data</a>
+        </div>
+        <div class="unit-row t-4">
+            <div class="portrait-container"><img src="../../img/valkyrion_crime_lord_portrait.png" alt="Crime Lord"></div>
+            <div class="unit-info">
+                <h3 class="unit-name">Crime Lord</h3>
+                <div class="unit-tier">Classification: <span class="color-t4">Tier 4 (Elite)</span></div>
+                <p class="unit-desc">The strategic architects of sprawling criminal networks. Their influence and lethality make them high-priority targets for the empire.</p>
+            </div>
+            <a href="valkyrion_extra_crime_lord.html" class="btn-tactical">Data</a>
+        </div>
+        <div class="unit-row t-4">
+            <div class="portrait-container"><img src="../../img/valkyrion_honor_guard_portrait.jpg" alt="Honor Guard"></div>
+            <div class="unit-info">
+                <h3 class="unit-name">Honor Guard</h3>
+                <div class="unit-tier">Classification: <span class="color-t4">Tier 4 (Elite)</span></div>
+                <p class="unit-desc">The military zenith of the Valkyrion Empire. Hand-picked for their supreme experience and unwavering loyalty to the throne.</p>
+            </div>
+            <a href="valkyrion_extra_honor_guard.html" class="btn-tactical">Data</a>
+        </div>
+        <div class="unit-row t-4">
+            <div class="portrait-container"><img src="../../img/valkyrion_shadow_portrait.png" alt="Shadow"></div>
+            <div class="unit-info">
+                <h3 class="unit-name">Shadow</h3>
+                <div class="unit-tier">Classification: <span class="color-t4">Tier 4 (Elite)</span></div>
+                <p class="unit-desc">Enigmatic assassins operating within the blind spots of perception. They materialize for a single fatal blow before dissolving into darkness.</p>
+            </div>
+            <a href="valkyrion_extra_shadow.html" class="btn-tactical">Data</a>
+        </div>
+        <div class="unit-row t-4">
+            <div class="portrait-container"><img src="../../img/valkyrion_extra_noble_portrait.png" alt="Noble"></div>
+            <div class="unit-info">
+                <h3 class="unit-name">Noble</h3>
+                <div class="unit-tier">Classification: <span class="color-t4">Tier 4 (Elite)</span></div>
+                <p class="unit-desc">Scions of the empire's high houses. Formidably trained in the arts of war, they represent the elite social strata of Valkyrion.</p>
+            </div>
+            <a href="valkyrion_extra_noble.html" class="btn-tactical">Data</a>
+        </div>
+        <div class="unit-row t-5">
+            <div class="portrait-container"><img src="../../img/valkyrion_extra_captain_portrait.jpg" alt="Captain"></div>
+            <div class="unit-info">
+                <h3 class="unit-name">Captain</h3>
+                <div class="unit-tier">Classification: <span class="color-t5">Tier 5 (Champion)</span></div>
+                <p class="unit-desc">High-ranking governors of imperial cities. Their absolute administrative power is backed by immense personal strength and tactical mastery.</p>
+            </div>
+            <a href="valkyrion_extra_captain.html" class="btn-tactical">Data</a>
         </div>
     </div>
 
@@ -214,7 +317,7 @@
             <div class="unit-info">
                 <h3 class="unit-name">Guardian Golem</h3>
                 <div class="unit-tier">Classification: <span class="color-t3">Tier 3 (Veteran)</span></div>
-                <p class="unit-desc">An ancient soul bound to a magi-mechanical frame. A relentless juggernaut of stone and steel, animated to crush the empire's nemeses.</p>
+                <p class="unit-desc">An ancient soul bound to a magi-mechanical frame. A relentless juggernaut of stone and steel.</p>
             </div>
             <a href="valkyrion_summon_golem.html" class="btn-tactical">Data</a>
         </div>
@@ -223,9 +326,18 @@
             <div class="unit-info">
                 <h3 class="unit-name">Revenant</h3>
                 <div class="unit-tier">Classification: <span class="color-t5">Tier 5 (Champion)</span></div>
-                <p class="unit-desc">Legendary warriors resurrected to finish their ancient deeds. They possess an unbreakable will and the grim resilience of the grave.</p>
+                <p class="unit-desc">Legendary warriors resurrected to finish their ancient deeds. They possess the grim resilience of the grave.</p>
             </div>
             <a href="valkyrion_summon_revenant.html" class="btn-tactical">Data</a>
+        </div>
+        <div class="unit-row t-5">
+            <div class="portrait-container wide"><img src="../../img/valkyrion_summon_archangel_portrait.png" alt="Archangel"></div>
+            <div class="unit-info">
+                <h3 class="unit-name">Archangel</h3>
+                <div class="unit-tier">Classification: <span class="color-t5">Tier 5 (Champion)</span></div>
+                <p class="unit-desc">Avatar of celestial retribution. They bring absolute purification to the battlefield with uncompromising fury.</p>
+            </div>
+            <a href="valkyrion_summon_archangel.html" class="btn-tactical">Data</a>
         </div>
     </div>
 
@@ -267,7 +379,7 @@
             <div class="unit-info">
                 <h3 class="unit-name">Erika, the Queen</h3>
                 <div class="unit-tier">Classification: <span class="color-t3">Tier 3 (Veteran)</span></div>
-                <p class="unit-desc">A woman with excellent crossbow skills, but a terrible character that makes her judgmental.</p>
+                <p class="unit-desc">A woman with excellent crossbow skills, but her terrible personality makes her judgmental.</p>
             </div>
             <a href="valkyrion_hero_erika.html" class="btn-tactical">Data</a>
         </div>
@@ -297,7 +409,7 @@
             <div class="unit-info">
                 <h3 class="unit-name">Paoler, the Spellblade</h3>
                 <div class="unit-tier">Classification: <span class="color-t5">Tier 5 (Champion)</span></div>
-                <p class="unit-desc">An half-elf adventurer and adoptive brother of Lilibeth. He combines sword proficiency with magic to execute magic-imbued attacks.</p>
+                <p class="unit-desc">A half-elf adventurer and adoptive brother of Lilibeth. He combines sword proficiency with magic to execute magic-imbued attacks.</p>
             </div>
             <a href="valkyrion_hero_paoler.html" class="btn-tactical">Data</a>
         </div>
