@@ -60,7 +60,7 @@
 
             '<button class="accordion-btn">Gameplay <span class="chevron">&#9660;</span></button>' +
             '<div class="accordion-content">' +
-                '<a href="../../gameplay/rules.html"  class="sub-link">Core Rules</a>' +
+                '<a href="/gameplay/basicshtml" class="sub-link">Core Rules</a>' +
                 '<a href="../../gameplay/combat.html" class="sub-link">Combat Mechanics</a>' +
                 '<a href="../../gameplay/stats.html"  class="sub-link">Stats &amp; Tiers</a>' +
             '</div>' +
