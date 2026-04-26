@@ -59,13 +59,14 @@
         .nav-logo-container { height: 40px; display: flex; align-items: center; }
         .nav-logo-container img { height: 100%; object-fit: contain; }
 
-        /* --- SIDEBAR DRAWER --- */
+        /* --- SIDEBAR DRAWER (ACCORDION) --- */
         .sidebar {
-            position: fixed; top: 0; left: -300px; width: 280px; height: 100vh;
+            position: fixed; top: 0; left: -320px; width: 300px; height: 100vh;
             background: rgba(10, 10, 15, 0.98); border-right: 1px solid rgba(255,255,255,0.05);
             z-index: 1001; transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex; flex-direction: column; padding: 80px 0 20px 0;
             box-shadow: 20px 0 50px rgba(0,0,0,0.8);
+            overflow-y: auto;
         }
         .sidebar.active { left: 0; }
 
@@ -75,15 +76,42 @@
         }
         .close-sidebar:hover { color: #fff; }
 
-        .sidebar-link {
-            display: block; padding: 15px 30px; color: #ccc; text-decoration: none;
+        .accordion-btn {
+            background: transparent; color: #ccc; border: none; width: 100%;
+            text-align: left; padding: 18px 30px; font-size: 0.95rem;
+            text-transform: uppercase; letter-spacing: 2px; font-weight: bold;
+            cursor: pointer; transition: all 0.3s ease; border-left: 3px solid transparent;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        
+        .accordion-btn:hover { background: rgba(255,255,255,0.03); color: #fff; }
+        .accordion-btn.active { background: rgba(255,255,255,0.05); color: #fff; border-left-color: var(--accent-color); }
+        
+        .chevron { font-size: 0.8rem; transition: transform 0.3s ease; }
+        .accordion-btn.active .chevron { transform: rotate(180deg); color: var(--accent-color); }
+
+        .accordion-content {
+            max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .sub-link {
+            display: block; padding: 12px 30px 12px 50px; color: #888;
+            text-decoration: none; font-size: 0.85rem; text-transform: uppercase;
+            letter-spacing: 1px; border-left: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.3s ease;
+        }
+        .sub-link:hover { color: var(--accent-color); padding-left: 55px; background: rgba(129, 199, 132, 0.05); }
+        .sub-link.locked { color: #444; cursor: not-allowed; }
+        .sub-link.locked:hover { color: #555; padding-left: 50px; background: none; }
+        .sub-link.locked::after { content: " [LOCKED]"; font-size: 0.65rem; letter-spacing: 0; }
+
+        .direct-link {
+            display: block; padding: 18px 30px; color: #ccc; text-decoration: none;
             text-transform: uppercase; letter-spacing: 2px; font-weight: bold;
             border-left: 3px solid transparent; transition: all 0.3s ease;
         }
-        .sidebar-link:hover {
-            background: rgba(255,255,255,0.05); color: #fff; border-left-color: var(--accent-color);
-            padding-left: 35px;
-        }
+        .direct-link:hover { background: rgba(255,255,255,0.05); color: #fff; border-left-color: var(--accent-color); }
 
         .sidebar-overlay {
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
@@ -161,12 +189,36 @@
 
 <aside class="sidebar" id="sidebar">
     <button class="close-sidebar" id="close-btn">&times;</button>
-    <a href="../../index.html" class="sidebar-link">Main Hub</a>
-    <a href="../../gameplay/index.html" class="sidebar-link">Basics & Gameplay</a>
-    <a href="../../factions/index.html" class="sidebar-link">Factions Archive</a>
-    <a href="../../campaigns/campaign_menu.html" class="sidebar-link">Campaigns Mode</a>
-    <a href="../../about/credits.html" class="sidebar-link">The Architects</a>
+    
+    <a href="../../index.html" class="direct-link">Main Hub</a>
+
+    <button class="accordion-btn">Gameplay <span class="chevron">▼</span></button>
+    <div class="accordion-content">
+        <a href="../../gameplay/rules.html" class="sub-link">Core Rules</a>
+        <a href="../../gameplay/combat.html" class="sub-link">Combat Mechanics</a>
+        <a href="../../gameplay/stats.html" class="sub-link">Stats & Tiers</a>
+    </div>
+
+    <button class="accordion-btn">Factions <span class="chevron">▼</span></button>
+    <div class="accordion-content">
+        <a href="../../factions/valkyrion_roster.html" class="sub-link" style="color: #5c9ce6;">Valkyrion Empire</a>
+        <a href="../../factions/forgotten.html" class="sub-link" style="color: #5cb88a;">The Forgotten</a>
+        <a href="#" class="sub-link locked">Kharos Dominion</a>
+        <a href="#" class="sub-link locked">Devil Syndicate</a>
+        <a href="#" class="sub-link locked">Primal Coalition</a>
+        <a href="#" class="sub-link locked">Iron Brotherhood</a>
+        <a href="#" class="sub-link locked">Elven Enclave</a>
+    </div>
+
+    <button class="accordion-btn">Campaigns <span class="chevron">▼</span></button>
+    <div class="accordion-content">
+        <a href="../../campaigns/story_mode.html" class="sub-link">Story Mode</a>
+        <a href="../../campaigns/arcade_mode.html" class="sub-link">Arcade Mode</a>
+    </div>
+
+    <a href="../../about/credits.html" class="direct-link">The Architects</a>
 </aside>
+
 <div class="breadcrumbs">
     <a href="../../index.html">Home</a> &rsaquo; 
     <a href="../../factions/index.html">Factions</a> &rsaquo; 
@@ -231,111 +283,6 @@
     </div>
 </main>
 
-<style>
-        /* ... [Il resto del tuo CSS rimane uguale, aggiorna solo queste classi della sidebar] ... */
-
-        /* --- SIDEBAR DRAWER (AGGIONATA A FISARMONICA) --- */
-        .sidebar {
-            position: fixed; top: 0; left: -320px; width: 300px; height: 100vh;
-            background: rgba(10, 10, 15, 0.98); border-right: 1px solid rgba(255,255,255,0.05);
-            z-index: 1001; transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex; flex-direction: column; padding: 80px 0 20px 0;
-            box-shadow: 20px 0 50px rgba(0,0,0,0.8);
-            overflow-y: auto; /* Permette lo scorrimento se i menu sono aperti */
-        }
-        .sidebar.active { left: 0; }
-
-        .close-sidebar {
-            position: absolute; top: 15px; right: 20px; background: none; border: none;
-            color: #888; font-size: 1.5rem; cursor: pointer; transition: 0.3s;
-        }
-        .close-sidebar:hover { color: #fff; }
-
-        /* Stile dei Pulsanti Macro-Categoria */
-        .accordion-btn {
-            background: transparent; color: #ccc; border: none; width: 100%;
-            text-align: left; padding: 18px 30px; font-size: 0.95rem;
-            text-transform: uppercase; letter-spacing: 2px; font-weight: bold;
-            cursor: pointer; transition: all 0.3s ease; border-left: 3px solid transparent;
-            display: flex; justify-content: space-between; align-items: center;
-        }
-        
-        .accordion-btn:hover { background: rgba(255,255,255,0.03); color: #fff; }
-        .accordion-btn.active { background: rgba(255,255,255,0.05); color: #fff; border-left-color: var(--accent-color); }
-        
-        .chevron { font-size: 0.8rem; transition: transform 0.3s ease; }
-        .accordion-btn.active .chevron { transform: rotate(180deg); color: var(--accent-color); }
-
-        /* Contenitore dei Sottomenu */
-        .accordion-content {
-            max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out;
-            background: rgba(0, 0, 0, 0.5);
-        }
-
-        /* Stile dei Link Interni */
-        .sub-link {
-            display: block; padding: 12px 30px 12px 50px; color: #888;
-            text-decoration: none; font-size: 0.85rem; text-transform: uppercase;
-            letter-spacing: 1px; border-left: 1px solid rgba(255,255,255,0.05);
-            transition: all 0.3s ease;
-        }
-        .sub-link:hover { color: var(--accent-color); padding-left: 55px; background: rgba(129, 199, 132, 0.05); }
-        .sub-link.locked { color: #444; cursor: not-allowed; }
-        .sub-link.locked:hover { color: #555; padding-left: 50px; background: none; }
-        .sub-link.locked::after { content: " [LOCKED]"; font-size: 0.65rem; letter-spacing: 0; }
-
-        /* Link Diretti (Senza sottomenu) */
-        .direct-link {
-            display: block; padding: 18px 30px; color: #ccc; text-decoration: none;
-            text-transform: uppercase; letter-spacing: 2px; font-weight: bold;
-            border-left: 3px solid transparent; transition: all 0.3s ease;
-        }
-        .direct-link:hover { background: rgba(255,255,255,0.05); color: #fff; border-left-color: var(--accent-color); }
-</style>
-
-
-<nav class="global-nav">
-    <button class="menu-toggle" id="menu-btn">&#9776;</button>
-    <a href="../../index.html" class="nav-logo-container">
-        <img src="../../img/logo.png" alt="SOULSPECTRE LOGO">
-    </a>
-</nav>
-
-<div class="sidebar-overlay" id="sidebar-overlay"></div>
-
-<aside class="sidebar" id="sidebar">
-    <button class="close-sidebar" id="close-btn">&times;</button>
-    
-    <a href="../../index.html" class="direct-link">Main Hub</a>
-
-    <button class="accordion-btn">Gameplay <span class="chevron">▼</span></button>
-    <div class="accordion-content">
-        <a href="../../gameplay/rules.html" class="sub-link">Core Rules</a>
-        <a href="../../gameplay/combat.html" class="sub-link">Combat Mechanics</a>
-        <a href="../../gameplay/stats.html" class="sub-link">Stats & Tiers</a>
-    </div>
-
-    <button class="accordion-btn">Factions <span class="chevron">▼</span></button>
-    <div class="accordion-content">
-        <a href="../../factions/valkyrion_roster.html" class="sub-link" style="color: #5c9ce6;">Valkyrion Empire</a>
-        <a href="../../factions/forgotten.html" class="sub-link" style="color: #5cb88a;">The Forgotten</a>
-        <a href="#" class="sub-link locked">Kharos Dominion</a>
-        <a href="#" class="sub-link locked">Devil Syndicate</a>
-        <a href="#" class="sub-link locked">Primal Coalition</a>
-        <a href="#" class="sub-link locked">Iron Brotherhood</a>
-        <a href="#" class="sub-link locked">Elven Enclave</a>
-    </div>
-
-    <button class="accordion-btn">Campaigns <span class="chevron">▼</span></button>
-    <div class="accordion-content">
-        <a href="../../campaigns/story_mode.html" class="sub-link">Story Mode</a>
-        <a href="../../campaigns/arcade_mode.html" class="sub-link">Arcade Mode</a>
-    </div>
-
-    <a href="../../about/credits.html" class="direct-link">The Architects</a>
-</aside>
-
-
 <script>
     /* Universal Navigation Script */
     const menuBtn = document.getElementById('menu-btn');
@@ -357,13 +304,8 @@
     const acc = document.getElementsByClassName("accordion-btn");
     for (let i = 0; i < acc.length; i++) {
         acc[i].addEventListener("click", function() {
-            // Seleziona se stesso come attivo
             this.classList.toggle("active");
-            
-            // Trova il div .accordion-content successivo
             let panel = this.nextElementSibling;
-            
-            // Espandi o comprimi
             if (panel.style.maxHeight) {
                 panel.style.maxHeight = null;
             } else {
