@@ -1,8 +1,8 @@
 const navTemplate = `
 <nav class="global-nav">
     <button class="menu-toggle" id="menu-btn">&#9776;</button>
-    <a href="../../index.html" class="nav-logo-container">
-        <img src="../../img/logo.png" alt="SOULSPECTRE LOGO">
+    <a href="/index.html" class="nav-logo-container">
+        <img src="/img/logo.png" alt="SOULSPECTRE LOGO">
     </a>
 </nav>
 
@@ -11,35 +11,22 @@ const navTemplate = `
 <aside class="sidebar" id="sidebar">
     <button class="close-sidebar" id="close-btn">&times;</button>
     
-    <a href="../../index.html" class="direct-link">Main Hub</a>
+    <a href="/index.html" class="direct-link">Main Hub</a>
 
     <button class="accordion-btn">Gameplay <span class="chevron">▼</span></button>
     <div class="accordion-content">
-        <a href="../../gameplay/rules.html" class="sub-link">Core Rules</a>
-        <a href="../../gameplay/combat.html" class="sub-link">Combat Mechanics</a>
-        <a href="../../gameplay/stats.html" class="sub-link">Stats & Tiers</a>
-    </div>
+        <a href="/gameplay/rules.html" class="sub-link">Core Rules</a>
+        </div>
 
     <button class="accordion-btn">Factions <span class="chevron">▼</span></button>
     <div class="accordion-content">
-        <a href="../../factions/valkyrion_roster.html" class="sub-link" style="color: #5c9ce6;">Valkyrion Empire</a>
-        <a href="../../factions/forgotten.html" class="sub-link" style="color: #5cb88a;">The Forgotten</a>
+        <a href="/factions/valkyrion.html" class="sub-link" style="color: #5c9ce6;">Valkyrion Empire</a>
+        <a href="/factions/valkyrion_roster.html" class="sub-link">Valkyrion Units</a>
+        <a href="/factions/forgotten.html" class="sub-link" style="color: #5cb88a;">The Forgotten</a>
         <a href="#" class="sub-link locked">Kharos Dominion</a>
-        <a href="#" class="sub-link locked">Devil Syndicate</a>
-        <a href="#" class="sub-link locked">Primal Coalition</a>
-        <a href="#" class="sub-link locked">Iron Brotherhood</a>
-        <a href="#" class="sub-link locked">Elven Enclave</a>
     </div>
-
-    <button class="accordion-btn">Campaigns <span class="chevron">▼</span></button>
-    <div class="accordion-content">
-        <a href="../../campaigns/story_mode.html" class="sub-link">Story Mode</a>
-        <a href="../../campaigns/arcade_mode.html" class="sub-link">Arcade Mode</a>
-    </div>
-
-    <a href="../../about/credits.html" class="direct-link">The Architects</a>
-</aside>
-`;
+    
+    `;
 
 class GlobalNav extends HTMLElement {
     connectedCallback() {
