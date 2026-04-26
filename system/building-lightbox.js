@@ -6,7 +6,7 @@
  *   2. The script reads the building name from the nearest  .building-name  element
  *      inside the same  .building-card  parent (optional — caption is skipped if absent).
  *   3. Include this script once at the bottom of any buildings page:
- *        <script src="../assets/building-lightbox.js"></script>
+ *        <script src="../system/building-lightbox.js"></script>
  *
  *   The script injects its own overlay markup and CSS automatically.
  *   No external dependencies, no frameworks.

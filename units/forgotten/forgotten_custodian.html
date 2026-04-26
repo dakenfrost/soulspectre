@@ -4,79 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOULSPECTRE | Custodian</title>
-    <link rel="stylesheet" href="../../assets/forgotten_units.css">
+    <link rel="stylesheet" href="../../system/unit-page.css">
 </head>
 <body>
 <div id="bg-image"></div>
 <div id="overlay"></div>
-<header>
-    <h1>Custodian</h1>
-    <div class="subtitle">Tier 2 , Custodian Path</div>
-</header>
-<main>
-    <div class="intro-banner"><img src="../../img/forgotten/sentinelle/forgotten_custodian_banner.png" alt="Custodian Banner"></div>
-    <div class="split-section">
-        <div class="section-image-container">
-            <img src="../../img/forgotten/sentinelle/forgotten_custodian_f_combat.jpg" alt="Custodian F">
-            <img src="../../img/forgotten/sentinelle/forgotten_custodian_m_combat.jpg" alt="Custodian M" class="combat-anim">
-        </div>
-        <div class="section-text">
-            <h2>The Body Between</h2>
-            <p>The Custodians were not soldiers. They were bodyguards , personal guards of estate administrators, judicial officers, minor provincial lords. Their expertise was not in combat but in <strong>positioning.</strong> They understood lines of sight, understood which angle produced a fatal opening, and spent their working lives placing themselves between those angles and the people they were paid to protect. Whether the thing they were guarding was worth protecting was, professionally, not their concern.</p>
-            <p>In death, the instinct persists without the income. The Custodians now protect Sentinelle archers and casters with the same mechanical calm they showed in their first lives , stepping into impact trajectories, angling shields to redirect incoming shots, <em>treating the protection of the formation's vulnerable units as a geometric problem</em> with a clean solution.</p>
-            <p>They are quieter than most Sentinelle units. They were always hired staff, trained to be present without being heard. In the formation they remain present without being heard, which actually makes them more effective , enemies often misjudge their positions because the Custodian gives nothing away through noise or posturing.</p>
-        </div>
-    </div>
-    <div class="tactical-module">
-        <div class="tactical-header"><h2>Tactical Data</h2></div>
-        <div class="stats-box">
-            <div class="stat-item"><span class="stat-label">Tier</span><span class="stat-value tier">2</span></div>
-            <div class="stat-item"><span class="stat-label">HP</span><span class="stat-value hp">100</span></div>
-            <div class="stat-item"><span class="stat-label">ATK</span><span class="stat-value atk">35</span></div>
-            <div class="stat-item"><span class="stat-label">INI</span><span class="stat-value">55</span></div>
-        </div>
-        <div class="skills-grid">
-            <div class="skill-card sk-base">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_dardo_ambra.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Amber Shot</h3><span class="skill-type base">Base Skill</span></div>
-                </div>
-                <div class="skill-desc">Deals <span class="dmg-earth">Earth</span> ranged damage to one enemy.</div>
-            </div>
-            <div class="skill-card sk-active">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_crystalline.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Crystalline Cage</h3><span class="skill-type active">Active Skill</span></div>
-                </div>
-                <div class="skill-desc">Deals 25% <span class="dmg-earth">Earth</span> ranged damage to one enemy. Immobilizes the target for 1 turn. Reduces target Initiative by 10% for 1 turn.</div>
-            </div>
-        </div>
-    </div>
-    <div class="portrait-gallery-module">
-        <h2 class="gallery-header">Gallery</h2>
-        <div class="carousel-wrap">
-            <div class="carousel-track" id="carouselTrack">
-                <div class="carousel-item">
-                    <img src="../../img/forgotten/sentinelle/forgotten_custodian_f_portrait.jpg" alt="Portrait F">
-                </div>
-                <div class="carousel-item">
-                    <img src="../../img/forgotten/sentinelle/forgotten_custodian_m_portrait.jpg" alt="Portrait M">
-                </div>
-            </div>
-        </div>
-        <div class="carousel-nav">
-            <button class="nav-btn" id="prevBtn">&#8592;</button>
-            <button class="nav-btn" id="nextBtn">&#8594;</button>
-        </div>
-    </div>
-    <a href="forgotten_order_sentinelle.html" class="back-link">← Return to Sentinelle delle Ceneri</a>
-</main>
-<script>
-    const track=document.getElementById('carouselTrack');const items=track.querySelectorAll('.carousel-item');let current=0;
-    function update(){track.style.transform=`translateX(-${current*(items[0].offsetWidth+15)}px)`;}
-    document.getElementById('nextBtn').addEventListener('click',()=>{if(current<items.length-1){current++;update();}});
-    document.getElementById('prevBtn').addEventListener('click',()=>{if(current>0){current--;update();}});
+<script type="application/json" id="unit-data">
+{
+  "name": "Custodian",
+  "subtitle": "The Body Between - Tier 2 ",
+  "accent": "#4dd0e1",
+  "bgImage": "../../img/forgotten/forgotten_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",              "label": "Home" },
+    { "href": "../../factions/index.html",     "label": "Factions" },
+    { "href": "../../factions/forgotten.html", "label": "The Forgotten" },
+    { "href": "../forgotten_roster.html",      "label": "Amber Sentinels" },
+    { "href": "forgotten_order_sentinelle.html","label": "Others" },
+    {                                          "label": "Custodian" }
+  ],
+
+  "combat": ["../../img/forgotten/sentinelle/forgotten_custodian_f_combat.jpg","../../img/forgotten/sentinelle/forgotten_custodian_m_combat.jpg"],
+
+  "bio": {
+    "title": "The Unrelenting Purge",
+    "quote": "Guilty or innocent, it matters not. The ritual must be completed. The impurity must be purged by iron and silence.",
+    "paragraphs": [
+            "The Custodians were not soldiers. They were bodyguards , personal guards of estate administrators, judicial officers, minor provincial lords. Their expertise was not in combat but in <strong>positioning.</strong> They understood lines of sight, understood which angle produced a fatal opening, and spent their working lives placing themselves between those angles and the people they were paid to protect. Whether the thing they were guarding was worth protecting was, professionally, not their concern."
+            ,"In death, the instinct persists without the income. The Custodians now protect Sentinelle archers and casters with the same mechanical calm they showed in their first lives , stepping into impact trajectories, angling shields to redirect incoming shots, <em>treating the protection of the formation's vulnerable units as a geometric problem</em> with a clean solution."
+            ,"They are quieter than most Sentinelle units. They were always hired staff, trained to be present without being heard. In the formation they remain present without being heard, which actually makes them more effective , enemies often misjudge their positions because the Custodian gives nothing away through noise or posturing."
+    ]
+  },
+
+  "stats": {
+    "hp":          100,
+    "atk":         35,
+    "ini":         55,
+    "size":        1
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Amber Shot",
+      "icon": "../../img/forgotten/skills/forgotten_skill_dardo_ambra.png",
+      "desc": "Deals <span class=\"dmg-earth\">Earth</span> ranged damage to one enemy."
+    },
+    {
+      "type": "active",
+      "name": "Crystalline Cage",
+      "icon": "../../img/forgotten/skills/forgotten_skill_crystalline.png",
+      "desc": "Deals 25% <span class=\"dmg-earth\">Earth</span> ranged damage to one enemy. Immobilizes the target for 1 turn. Reduces target Initiative by 10% for 1 turn."
+    }
+  ],
+
+  "gallery": [
+    "../../img/forgotten/sentinelle/forgotten_custodian_f_portrait.jpg",
+    "../../img/forgotten/sentinelle/forgotten_custodian_m_portrait.jpg"
+  ],
+
+  "backLink": {
+    "href":  "forgotten_order_sentinelle.html",
+    "label": "Return to Others"
+  }
+}
 </script>
-<script src="../../assets/unit-banner.js"></script>
+<script src="../../system/unit-renderer.js"></script>
 </body>
 </html>

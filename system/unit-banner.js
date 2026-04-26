@@ -3,7 +3,7 @@
  * F (left) / M (right) portrait layout, or a single centred portrait.
  * The unit title is overlaid at the bottom centre.
  *
- * Usage: add  <script src="../../assets/unit-banner.js"></script>
+ * Usage: add  <script src="../../system/unit-banner.js"></script>
  * before </body> on any unit page. No other changes needed.
  */
 (function () {

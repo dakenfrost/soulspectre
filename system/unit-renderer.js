@@ -174,11 +174,16 @@
     }
 
     /* -- Hero card --------------------------------------------------- */
-    var combat = data.combat || '';
+    var combatRaw = data.combat || [];
+    var combatImgs = Array.isArray(combatRaw) ? combatRaw : [combatRaw];
+    var combatHtml = combatImgs.map(function (src, i) {
+        return '<img src="' + esc(src) + '" alt="' + esc(name) + '"' +
+            (i > 0 ? ' class="combat-anim"' : '') + '>';
+    }).join('');
     main.innerHTML =
         '<div class="hero-card">' +
             '<div class="combat-container">' +
-                '<img src="' + esc(combat) + '" alt="' + esc(name) + '">' +
+                combatHtml +
             '</div>' +
             '<div class="hero-content">' +
                 bioHtml +
