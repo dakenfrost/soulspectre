@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SOULSPECTRE | Chloé, the Shy Witch</title>
+    <title>SOULSPECTRE | Barog, the Grim Hunter</title>
     
     <link rel="stylesheet" href="../../system/global_nav.css">
 
@@ -44,13 +44,12 @@
             z-index: -1;
         }
 
-        /* --- PAGE CONTENT --- */
         header { padding: 30px 20px; text-align: center; width: 100%; }
         h1 { letter-spacing: 5px; font-size: 2.8rem; margin: 0; color: #fff; text-transform: uppercase; text-shadow: 0 0 15px var(--accent-glow); }
         .classification { color: var(--accent-color); font-size: 1.1rem; letter-spacing: 2px; margin-top: 5px; text-transform: uppercase; font-weight: bold; }
         main { max-width: 1000px; padding: 0 20px 40px 20px; width: 95%; }
 
-        /* Character Card (Aggiornata con min-height) */
+        /* Character Card con altezza aumentata per l'artwork verticale */
         .hero-card { 
             display: flex; 
             gap: 0; 
@@ -61,7 +60,7 @@
             box-shadow: 0 20px 50px rgba(0,0,0,0.8); 
             border-radius: 4px; 
             overflow: hidden; 
-            min-height: 500px; 
+            min-height: 550px; 
         }
         
         .portrait-container { flex: 0 0 380px; position: relative; border-right: 2px solid var(--accent-color); }
@@ -93,36 +92,23 @@
         .skill-desc { color: #aaa; font-size: 1rem; margin: 0; }
         .highlight { color: var(--accent-color); font-weight: bold; }
 
-        /* --- CAROUSEL & LIGHTBOX (ZOOM GALLERY) --- */
+        /* Gallery & Lightbox */
         .portrait-gallery-module { background: rgba(15, 5, 20, 0.7); border: 1px solid rgba(255,255,255,0.05); border-left: 3px solid var(--accent-color); padding: 35px; margin-top: 40px; }
         .carousel-container { position: relative; width: 100%; overflow: hidden; display: flex; align-items: center; }
         .carousel-track { display: flex; gap: 15px; transition: transform 0.3s ease; }
         .carousel-item { flex: 0 0 200px; height: 200px; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; cursor: zoom-in; }
-        .carousel-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; }
-        .carousel-item:hover img { transform: scale(1.05); }
-        .nav-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(15,5,20,0.9); border: 1px solid var(--accent-color); color: var(--accent-color); width: 40px; height: 40px; border-radius: 50%; cursor: pointer; z-index: 3; transition: background 0.3s, color 0.3s; }
-        .nav-arrow:hover { background: var(--accent-color); color: #000; }
+        .carousel-item img { width: 100%; height: 100%; object-fit: cover; }
+        .nav-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(15,5,20,0.9); border: 1px solid var(--accent-color); color: var(--accent-color); width: 40px; height: 40px; border-radius: 50%; cursor: pointer; z-index: 3; }
         .prev { left: 10px; } .next { right: 10px; }
 
-        .lightbox-overlay {
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            background: rgba(0,0,0,0.92); z-index: 2000; display: flex;
-            justify-content: center; align-items: center;
-            opacity: 0; visibility: hidden; transition: opacity 0.3s ease;
-        }
+        .lightbox-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.92); z-index: 2000; display: flex; justify-content: center; align-items: center; opacity: 0; visibility: hidden; transition: opacity 0.3s; }
         .lightbox-overlay.active { opacity: 1; visibility: visible; }
-        .lightbox-img { max-width: 90%; max-height: 90vh; border: 2px solid var(--accent-color); border-radius: 4px; box-shadow: 0 0 40px rgba(0,0,0,0.9); }
-        .lightbox-close {
-            position: absolute; top: 25px; right: 35px; font-size: 2.5rem;
-            color: #aaa; cursor: pointer; background: none; border: none; transition: color 0.3s;
-        }
-        .lightbox-close:hover { color: #fff; }
+        .lightbox-img { max-width: 90%; max-height: 90vh; border: 2px solid var(--accent-color); border-radius: 4px; }
+        .lightbox-close { position: absolute; top: 25px; right: 35px; font-size: 2.5rem; color: #aaa; cursor: pointer; background: none; border: none; }
 
         @media (max-width: 850px) {
             .hero-card { flex-direction: column; }
             .portrait-container { flex: 0 0 400px; border-right: none; border-bottom: 2px solid var(--accent-color); }
-            .skill-item:hover { transform: translateY(-5px); }
-            .lightbox-close { top: 10px; right: 20px; }
         }
     </style>
 </head>
@@ -138,30 +124,30 @@
     <a href="../../factions/index.html">Factions</a> &rsaquo; 
     <a href="../valkyrion_roster.html">Valkyrion Empire</a> &rsaquo; 
     <a href="valkyrion_extra.html">Others</a> &rsaquo; 
-    <span>Chloé</span>
+    <span>Barog</span>
 </div>
 
 <header>
-    <h1>Chloé</h1>
-    <div class="classification">The Shy Witch | Tier 2 Adept Hero</div>
+    <h1>Barog</h1>
+    <div class="classification">The Grim Hunter | Tier 2 Adept Hero</div>
 </header>
 
 <main>
     <div class="hero-card">
         <div class="portrait-container">
-            <img src="../../img/valkyrion_chloe_portrait.png" alt="Chloé Portrait">
+            <img src="../../img/valkyrion_barog_portrait.png" alt="Barog Portrait">
         </div>
         <div class="hero-content">
             <div class="hero-bio">
-                <h2>Gentle Soul, Hidden Power</h2>
-                <p>"The flowers don't care about the Empire... why can't we be more like them? Please, just let me go back to my garden."</p>
-                <p>Formerly a promising talent within the imperial academies, Chloé fled the rigid structure of Valkyrion to find peace in the countryside. Her magic is instinctive and deeply tied to the natural world, though she possesses a dramatic, shadowed past that she refuses to discuss.</p>
+                <h2>The Unrelenting Purge</h2>
+                <p>"Guilty or innocent, it matters not. The ritual must be completed. The impurity must be purged by iron and silence."</p>
+                <p>One of the most feared veteran witch hunters in the Valkyrion territories, Barog is a man who long ago discarded the luxury of doubt.</p>
             </div>
             
             <div class="stats-row">
-                <div class="stat-item"><span class="stat-label">Hit Points</span><span class="stat-value hp">140</span></div>
-                <div class="stat-item"><span class="stat-label">Attack</span><span class="stat-value atk">35</span></div>
-                <div class="stat-item"><span class="stat-label">Initiative</span><span class="stat-value">60</span></div>
+                <div class="stat-item"><span class="stat-label">Hit Points</span><span class="stat-value hp">160</span></div>
+                <div class="stat-item"><span class="stat-label">Attack</span><span class="stat-value atk">50</span></div>
+                <div class="stat-item"><span class="stat-label">Initiative</span><span class="stat-value">50</span></div>
                 <div class="stat-item"><span class="stat-label">Immunity</span><span class="stat-value special">Mind</span></div>
             </div>
         </div>
@@ -169,31 +155,27 @@
 
     <h3 style="text-transform:uppercase; letter-spacing:3px; color:#555; border-bottom:1px solid #222; padding-bottom:10px;">Combat Doctrine</h3>
     <div class="skills-list">
-        
         <div class="skill-item">
-            <img src="../../img/base_base_skill.png" alt="Magic Bolt" class="skill-icon">
+            <img src="../../img/base_base_skill.png" alt="Slash" class="skill-icon">
             <div class="skill-info">
-                <div class="skill-header"><h4 class="skill-name">Magic Bolt</h4><span class="skill-tag">Base</span></div>
-                <p class="skill-desc">Unleashes a concentrated orb of raw arcane energy. Deals <span class="highlight">standard magic damage</span> to a single enemy at range.</p>
+                <div class="skill-header"><h4 class="skill-name">Slash</h4><span class="skill-tag">Base</span></div>
+                <p class="skill-desc">Deals <span class="highlight">standard physical damage</span> to a single enemy.</p>
             </div>
         </div>
-
         <div class="skill-item">
-            <img src="../../img/base_active_skill.png" alt="Soul Hex" class="skill-icon">
+            <img src="../../img/base_active_skill.png" alt="Execution" class="skill-icon">
             <div class="skill-info">
-                <div class="skill-header"><h4 class="skill-name">Soul Hex</h4><span class="skill-tag">Active</span></div>
-                <p class="skill-desc">Chloé's fear manifests as a curse. Deals magic damage to a target and reduces their <span class="highlight">Attack by 20%</span> for 2 turns.</p>
+                <div class="skill-header"><h4 class="skill-name">Execution</h4><span class="skill-tag">Active</span></div>
+                <p class="skill-desc">Deals bonus damage based on <span class="highlight">missing HP</span> of the target.</p>
             </div>
         </div>
-
         <div class="skill-item">
-            <img src="../../img/base_passive_skill.png" alt="Forest Veil" class="skill-icon">
+            <img src="../../img/base_passive_skill.png" alt="Blind Justice" class="skill-icon">
             <div class="skill-info">
-                <div class="skill-header"><h4 class="skill-name">Forest Veil</h4><span class="skill-tag">Passive</span></div>
-                <p class="skill-desc">Her shy nature makes her hard to target. Chloé gains an innate <span class="highlight">+15% Dodge</span> chance against all ranged attacks.</p>
+                <div class="skill-header"><h4 class="skill-name">Blind Justice</h4><span class="skill-tag">Passive</span></div>
+                <p class="skill-desc"><span class="highlight">+30% damage</span> against Caster classes.</p>
             </div>
         </div>
-
     </div>
 
     <div class="portrait-gallery-module">
@@ -201,9 +183,9 @@
         <div class="carousel-container">
             <button class="nav-arrow prev" id="car-prev">&#8249;</button>
             <div class="carousel-track" id="car-track">
-                <div class="carousel-item"><img src="../../img/extra/valkyrion_hero_chloe_gallery1.jpg" alt="Archive 1" class="zoomable"></div>
-                <div class="carousel-item"><img src="../../img/extra/valkyrion_hero_chloe_gallery2.jpg" alt="Archive 2" class="zoomable"></div>
-                <div class="carousel-item"><img src="../../img/extra/valkyrion_hero_chloe_gallery3.jpg" alt="Archive 3" class="zoomable"></div>
+                <div class="carousel-item"><img src="../../img/extra/valkyrion_hero_barog_gallery1.jpg" alt="Archive 1" class="zoomable"></div>
+                <div class="carousel-item"><img src="../../img/extra/valkyrion_hero_barog_gallery2.jpg" alt="Archive 2" class="zoomable"></div>
+                <div class="carousel-item"><img src="../../img/extra/valkyrion_hero_barog_gallery3.jpg" alt="Archive 3" class="zoomable"></div>
             </div>
             <button class="nav-arrow next" id="car-next">&#8250;</button>
         </div>
@@ -217,7 +199,7 @@
 
 <script src="../../system/navigation.js"></script>
 <script>
-    /* Carousel Logic */
+    /* Carousel & Lightbox Logic Locale */
     const track = document.getElementById('car-track');
     const items = Array.from(track.children);
     const prevBtn = document.getElementById('car-prev');
@@ -241,7 +223,6 @@
         else updateCarousel(items.length - 1);
     });
 
-    /* Lightbox Logic */
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
     const closeLightboxBtn = document.getElementById('lightbox-close');
@@ -254,15 +235,8 @@
         });
     });
 
-    closeLightboxBtn.addEventListener('click', () => {
-        lightbox.classList.remove('active');
-    });
-
-    lightbox.addEventListener('click', (e) => {
-        if (e.target !== lightboxImg) {
-            lightbox.classList.remove('active');
-        }
-    });
+    closeLightboxBtn.addEventListener('click', () => lightbox.classList.remove('active'));
+    lightbox.addEventListener('click', (e) => { if (e.target !== lightboxImg) lightbox.classList.remove('active'); });
 </script>
 
 </body>
