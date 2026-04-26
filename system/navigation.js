@@ -2,7 +2,7 @@ const navTemplate = `
 <nav class="global-nav">
     <button class="menu-toggle" id="menu-btn">&#9776;</button>
     <a href="/index.html" class="nav-logo-container">
-        <img src="/img/logo.png" alt="SOULSPECTRE LOGO">
+        <img src="../../img/logo.png" alt="SOULSPECTRE LOGO">
     </a>
 </nav>
 
