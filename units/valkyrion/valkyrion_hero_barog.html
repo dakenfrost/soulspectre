@@ -6,116 +6,32 @@
     <title>SOULSPECTRE | Barog, the Grim Hunter</title>
     
     <link rel="stylesheet" href="../../system/global_nav.css">
+    <link rel="stylesheet" href="../../system/hero_layout.css">
+    <script src="../../system/navigation.js" defer></script>
+    <script src="../../system/ui_modules.js" defer></script>
 
     <style>
         :root {
             --accent-color: #81c784; /* Adept Green */
-            --accent-glow: rgba(129, 199, 132, 0.3);
             --stat-hp: #4CAF50;
             --stat-atk: #f44336;
             --panel-bg: rgba(15, 20, 15, 0.85);
         }
 
-        body {
-            color: #e0e0e0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding-top: 60px; /* Spazio per la nav fissa */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-color: #050505;
-        }
-
-        #bg-image {
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            background-image: url('../../img/valkyrion_bg.jpeg'); 
-            background-size: cover; background-position: center;
-            z-index: -2;
+        #bg-image { 
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -2; 
             filter: brightness(0.15);
-        }
-
-        #overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            background: radial-gradient(circle at center, transparent, rgba(0,0,0,0.9)); 
-            z-index: -1;
-        }
-
-        header { padding: 30px 20px; text-align: center; width: 100%; }
-        h1 { letter-spacing: 5px; font-size: 2.8rem; margin: 0; color: #fff; text-transform: uppercase; text-shadow: 0 0 15px var(--accent-glow); }
-        .classification { color: var(--accent-color); font-size: 1.1rem; letter-spacing: 2px; margin-top: 5px; text-transform: uppercase; font-weight: bold; }
-        main { max-width: 1000px; padding: 0 20px 40px 20px; width: 95%; }
-
-        /* Character Card con altezza aumentata per l'artwork verticale */
-        .hero-card { 
-            display: flex; 
-            gap: 0; 
-            margin-bottom: 40px; 
-            background: var(--panel-bg); 
-            backdrop-filter: blur(10px); 
-            border: 1px solid rgba(255,255,255,0.05); 
-            box-shadow: 0 20px 50px rgba(0,0,0,0.8); 
-            border-radius: 4px; 
-            overflow: hidden; 
-            min-height: 550px; 
+            background-image: url('../../img/valkyrion_bg.jpeg'); 
+            background-size: cover; background-position: center; 
         }
         
-        .portrait-container { flex: 0 0 380px; position: relative; border-right: 2px solid var(--accent-color); }
-        .portrait-container img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
-        .hero-content { flex: 1; padding: 40px; display: flex; flex-direction: column; }
-        .hero-bio { margin-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px; }
-        .hero-bio h2 { color: #fff; margin-top: 0; text-transform: uppercase; letter-spacing: 2px; }
-        .hero-bio p { color: #bbb; font-style: italic; font-size: 1.05rem; }
-
-        /* Stats */
-        .stats-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
-        .stat-item { background: rgba(255,255,255,0.03); padding: 12px; border-radius: 2px; border: 1px solid rgba(255,255,255,0.05); }
-        .stat-label { display: block; color: #666; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
-        .stat-value { display: block; color: #fff; font-size: 1.3rem; font-weight: bold; font-family: monospace; }
-        .stat-value.hp { color: var(--stat-hp); }
-        .stat-value.atk { color: var(--stat-atk); }
-        .stat-value.special { color: #64B5F6; font-size: 1rem; }
-
-        /* Skills */
-        .skills-list { display: flex; flex-direction: column; gap: 15px; margin-top: 20px; }
-        .skill-item { display: flex; align-items: center; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-left: 4px solid #333; padding: 20px; transition: all 0.3s ease; cursor: pointer; }
-        .skill-item:hover { background: rgba(129, 199, 132, 0.08); border-left-color: var(--accent-color); transform: translateX(10px); box-shadow: -10px 0 20px rgba(129, 199, 132, 0.1); }
-        .skill-icon { width: 70px; height: 70px; margin-right: 25px; flex-shrink: 0; border: 1px solid rgba(255,255,255,0.1); padding: 3px; background: #000; filter: grayscale(0.5); transition: 0.3s; }
-        .skill-item:hover .skill-icon { filter: grayscale(0); border-color: var(--accent-color); }
-        .skill-info { flex: 1; }
-        .skill-header { display: flex; align-items: center; gap: 15px; margin-bottom: 5px; }
-        .skill-name { color: #fff; font-size: 1.3rem; text-transform: uppercase; margin: 0; }
-        .skill-tag { font-size: 0.7rem; color: #777; border: 1px solid #444; padding: 2px 6px; text-transform: uppercase; }
-        .skill-desc { color: #aaa; font-size: 1rem; margin: 0; }
-        .highlight { color: var(--accent-color); font-weight: bold; }
-
-        /* Gallery & Lightbox */
-        .portrait-gallery-module { background: rgba(15, 5, 20, 0.7); border: 1px solid rgba(255,255,255,0.05); border-left: 3px solid var(--accent-color); padding: 35px; margin-top: 40px; }
-        .carousel-container { position: relative; width: 100%; overflow: hidden; display: flex; align-items: center; }
-        .carousel-track { display: flex; gap: 15px; transition: transform 0.3s ease; }
-        .carousel-item { flex: 0 0 200px; height: 200px; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; cursor: zoom-in; }
-        .carousel-item img { width: 100%; height: 100%; object-fit: cover; }
-        .nav-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(15,5,20,0.9); border: 1px solid var(--accent-color); color: var(--accent-color); width: 40px; height: 40px; border-radius: 50%; cursor: pointer; z-index: 3; }
-        .prev { left: 10px; } .next { right: 10px; }
-
-        .lightbox-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.92); z-index: 2000; display: flex; justify-content: center; align-items: center; opacity: 0; visibility: hidden; transition: opacity 0.3s; }
-        .lightbox-overlay.active { opacity: 1; visibility: visible; }
-        .lightbox-img { max-width: 90%; max-height: 90vh; border: 2px solid var(--accent-color); border-radius: 4px; }
-        .lightbox-close { position: absolute; top: 25px; right: 35px; font-size: 2.5rem; color: #aaa; cursor: pointer; background: none; border: none; }
-
-        @media (max-width: 850px) {
-            .hero-card { flex-direction: column; }
-            .portrait-container { flex: 0 0 400px; border-right: none; border-bottom: 2px solid var(--accent-color); }
+        #overlay { 
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1;
+            background: radial-gradient(circle at center, transparent, rgba(0,0,0,0.9)); 
         }
     </style>
 </head>
 <body>
-
-<div id="bg-image"></div>
-<div id="overlay"></div>
 
 <global-navigation></global-navigation>
 
@@ -141,7 +57,7 @@
             <div class="hero-bio">
                 <h2>The Unrelenting Purge</h2>
                 <p>"Guilty or innocent, it matters not. The ritual must be completed. The impurity must be purged by iron and silence."</p>
-                <p>One of the most feared veteran witch hunters in the Valkyrion territories, Barog is a man who long ago discarded the luxury of doubt.</p>
+                <p>One of the most feared veteran witch hunters in the Valkyrion territories, Barog is a man who long ago discarded the luxury of doubt. He scours the provinces, maintaining ideological purity where diplomacy fails.</p>
             </div>
             
             <div class="stats-row">
@@ -155,27 +71,31 @@
 
     <h3 style="text-transform:uppercase; letter-spacing:3px; color:#555; border-bottom:1px solid #222; padding-bottom:10px;">Combat Doctrine</h3>
     <div class="skills-list">
+        
         <div class="skill-item">
             <img src="../../img/base_base_skill.png" alt="Slash" class="skill-icon">
             <div class="skill-info">
                 <div class="skill-header"><h4 class="skill-name">Slash</h4><span class="skill-tag">Base</span></div>
-                <p class="skill-desc">Deals <span class="highlight">standard physical damage</span> to a single enemy.</p>
+                <p class="skill-desc">Deals <span class="highlight">standard physical damage</span> to a single enemy in melee range.</p>
             </div>
         </div>
+
         <div class="skill-item">
             <img src="../../img/base_active_skill.png" alt="Execution" class="skill-icon">
             <div class="skill-info">
                 <div class="skill-header"><h4 class="skill-name">Execution</h4><span class="skill-tag">Active</span></div>
-                <p class="skill-desc">Deals bonus damage based on <span class="highlight">missing HP</span> of the target.</p>
+                <p class="skill-desc">Deals physical damage to an enemy. For each <span class="highlight">missing 1% of the target's HP</span>, increase the damage by <span class="highlight">1%</span>.</p>
             </div>
         </div>
+
         <div class="skill-item">
             <img src="../../img/base_passive_skill.png" alt="Blind Justice" class="skill-icon">
             <div class="skill-info">
                 <div class="skill-header"><h4 class="skill-name">Blind Justice</h4><span class="skill-tag">Passive</span></div>
-                <p class="skill-desc"><span class="highlight">+30% damage</span> against Caster classes.</p>
+                <p class="skill-desc">His hatred for the arcane is absolute. <span class="highlight">Caster classes</span> take an additional <span class="highlight">30% damage</span> from his attacks.</p>
             </div>
         </div>
+
     </div>
 
     <div class="portrait-gallery-module">
@@ -196,48 +116,6 @@
     <button class="lightbox-close" id="lightbox-close">&times;</button>
     <img src="" alt="Zoomed Archive" class="lightbox-img" id="lightbox-img">
 </div>
-
-<script src="../../system/navigation.js"></script>
-<script>
-    /* Carousel & Lightbox Logic Locale */
-    const track = document.getElementById('car-track');
-    const items = Array.from(track.children);
-    const prevBtn = document.getElementById('car-prev');
-    const nextBtn = document.getElementById('car-next');
-    let currentIndex = 0;
-
-    const updateCarousel = (index) => {
-        if (items.length === 0) return;
-        const itemWidth = items[0].getBoundingClientRect().width;
-        track.style.transform = `translateX(-${(itemWidth + 15) * index}px)`;
-        currentIndex = index;
-    };
-
-    nextBtn.addEventListener('click', () => {
-        if (currentIndex < items.length - 1) updateCarousel(currentIndex + 1);
-        else updateCarousel(0);
-    });
-
-    prevBtn.addEventListener('click', () => {
-        if (currentIndex > 0) updateCarousel(currentIndex - 1);
-        else updateCarousel(items.length - 1);
-    });
-
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-    const closeLightboxBtn = document.getElementById('lightbox-close');
-    const zoomables = document.querySelectorAll('.zoomable');
-
-    zoomables.forEach(img => {
-        img.addEventListener('click', () => {
-            lightboxImg.src = img.src;
-            lightbox.classList.add('active');
-        });
-    });
-
-    closeLightboxBtn.addEventListener('click', () => lightbox.classList.remove('active'));
-    lightbox.addEventListener('click', (e) => { if (e.target !== lightboxImg) lightbox.classList.remove('active'); });
-</script>
 
 </body>
 </html>
