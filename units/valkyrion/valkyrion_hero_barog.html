@@ -166,10 +166,36 @@
         .skill-desc { color: #aaa; font-size: 1rem; margin: 0; }
         .highlight { color: var(--accent-color); font-weight: bold; }
 
+        /* --- CAROUSEL & LIGHTBOX (ZOOM GALLERY) --- */
+        .portrait-gallery-module { background: rgba(15, 5, 20, 0.7); border: 1px solid rgba(255,255,255,0.05); border-left: 3px solid var(--accent-color); padding: 35px; margin-top: 40px; }
+        .carousel-container { position: relative; width: 100%; overflow: hidden; display: flex; align-items: center; }
+        .carousel-track { display: flex; gap: 15px; transition: transform 0.3s ease; }
+        .carousel-item { flex: 0 0 200px; height: 200px; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; cursor: zoom-in; }
+        .carousel-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; }
+        .carousel-item:hover img { transform: scale(1.05); }
+        .nav-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(15,5,20,0.9); border: 1px solid var(--accent-color); color: var(--accent-color); width: 40px; height: 40px; border-radius: 50%; cursor: pointer; z-index: 3; transition: background 0.3s, color 0.3s; }
+        .nav-arrow:hover { background: var(--accent-color); color: #000; }
+        .prev { left: 10px; } .next { right: 10px; }
+
+        .lightbox-overlay {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0,0,0,0.92); z-index: 2000; display: flex;
+            justify-content: center; align-items: center;
+            opacity: 0; visibility: hidden; transition: opacity 0.3s ease;
+        }
+        .lightbox-overlay.active { opacity: 1; visibility: visible; }
+        .lightbox-img { max-width: 90%; max-height: 90vh; border: 2px solid var(--accent-color); border-radius: 4px; box-shadow: 0 0 40px rgba(0,0,0,0.9); }
+        .lightbox-close {
+            position: absolute; top: 25px; right: 35px; font-size: 2.5rem;
+            color: #aaa; cursor: pointer; background: none; border: none; transition: color 0.3s;
+        }
+        .lightbox-close:hover { color: #fff; }
+
         @media (max-width: 850px) {
             .hero-card { flex-direction: column; }
             .portrait-container { flex: 0 0 400px; border-right: none; border-bottom: 2px solid var(--accent-color); }
             .skill-item:hover { transform: translateY(-5px); }
+            .lightbox-close { top: 10px; right: 20px; }
         }
     </style>
 </head>
@@ -281,7 +307,25 @@
         </div>
 
     </div>
+
+    <div class="portrait-gallery-module">
+        <h2 style="border:none; text-align:center; font-size:1.5rem; margin-top:0; margin-bottom: 20px;">Dossier Archives</h2>
+        <div class="carousel-container">
+            <button class="nav-arrow prev" id="car-prev">&#8249;</button>
+            <div class="carousel-track" id="car-track">
+                <div class="carousel-item"><img src="../../img/extra/valkyrion_hero_barog_gallery1.jpg" alt="Archive 1" class="zoomable"></div>
+                <div class="carousel-item"><img src="../../img/extra/valkyrion_hero_barog_gallery2.jpg" alt="Archive 2" class="zoomable"></div>
+                <div class="carousel-item"><img src="../../img/extra/valkyrion_hero_barog_gallery3.jpg" alt="Archive 3" class="zoomable"></div>
+            </div>
+            <button class="nav-arrow next" id="car-next">&#8250;</button>
+        </div>
+    </div>
 </main>
+
+<div class="lightbox-overlay" id="lightbox">
+    <button class="lightbox-close" id="lightbox-close">&times;</button>
+    <img src="" alt="Zoomed Archive" class="lightbox-img" id="lightbox-img">
+</div>
 
 <script>
     /* Universal Navigation Script */
@@ -290,7 +334,6 @@
     const sidebar = document.getElementById('sidebar');
     const overlay = document.getElementById('sidebar-overlay');
 
-    // Toggle Sidebar
     function toggleMenu() {
         sidebar.classList.toggle('active');
         overlay.classList.toggle('active');
@@ -313,6 +356,53 @@
             } 
         });
     }
+
+    /* Carousel Logic */
+    const track = document.getElementById('car-track');
+    const items = Array.from(track.children);
+    const prevBtn = document.getElementById('car-prev');
+    const nextBtn = document.getElementById('car-next');
+    let currentIndex = 0;
+
+    const updateCarousel = (index) => {
+        if (items.length === 0) return;
+        const itemWidth = items[0].getBoundingClientRect().width;
+        track.style.transform = `translateX(-${(itemWidth + 15) * index}px)`;
+        currentIndex = index;
+    };
+
+    nextBtn.addEventListener('click', () => {
+        if (currentIndex < items.length - 1) updateCarousel(currentIndex + 1);
+        else updateCarousel(0);
+    });
+
+    prevBtn.addEventListener('click', () => {
+        if (currentIndex > 0) updateCarousel(currentIndex - 1);
+        else updateCarousel(items.length - 1);
+    });
+
+    /* Lightbox Logic */
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const closeLightboxBtn = document.getElementById('lightbox-close');
+    const zoomables = document.querySelectorAll('.zoomable');
+
+    zoomables.forEach(img => {
+        img.addEventListener('click', () => {
+            lightboxImg.src = img.src;
+            lightbox.classList.add('active');
+        });
+    });
+
+    closeLightboxBtn.addEventListener('click', () => {
+        lightbox.classList.remove('active');
+    });
+
+    lightbox.addEventListener('click', (e) => {
+        if (e.target !== lightboxImg) {
+            lightbox.classList.remove('active');
+        }
+    });
 </script>
 
 </body>
