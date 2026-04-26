@@ -43,11 +43,9 @@
     }
 
     /* ── 5. Navigation ───────────────────────────────────────────────── */
-    // Derive navigation.js path from this script's own URL (same folder)
     var _selfSrc = document.currentScript ? document.currentScript.src : '';
     var _navSrc  = _selfSrc.replace(/unit-renderer\.js([^/]*)$/, 'navigation.js');
 
-    // Inject the custom element first — it will be upgraded once the script loads
     inject('<global-navigation></global-navigation>');
 
     var _navScript = document.createElement('script');
@@ -78,26 +76,28 @@
     /* ── 8. Main content ─────────────────────────────────────────────── */
     var main = document.createElement('main');
 
-    /* -- Bio --------------------------------------------------------- */
+    /* -- Bio logic with Quote Box ----------------------------------- */
     var bioHtml = '';
     if (data.bio) {
         var bioBody = '';
         if (data.bio.quote) {
-            bioBody += '<p><em>&ldquo;' + data.bio.quote + '&rdquo;</em></p>';
+            bioBody += 
+                '<div class="quote-box">' +
+                    '<p class="quote-text"><em>&ldquo;' + esc(data.bio.quote) + '&rdquo;</em></p>' +
+                '</div>';
         }
         (data.bio.paragraphs || []).forEach(function (p) {
             bioBody += '<p>' + p + '</p>';
         });
         bioHtml =
             '<div class="hero-bio">' +
-                '<h2>' + esc(data.bio.title || '') + '</h2>' +
+                '<h2>' + esc(data.bio.title || 'Biography') + '</h2>' +
                 bioBody +
             '</div>';
     }
 
-    /* -- Stats ------------------------------------------------------- */
+    /* -- Stats mapping ---------------------------------------------- */
     var STAT_MAP = [
-        /* [ jsonKey,   displayLabel,  valueCssClass ] */
         ['tier',      'Tier',        'tier'],
         ['hp',        'Hit Points',  'hp'],
         ['atk',       'Attack',      'atk'],
@@ -107,14 +107,13 @@
         ['size',      'Size',        ''],
         ['immunity',  'Immunity',    'special'],
         ['crit_chance','Crit Chance', ''],
-        ['dodge',     'Dodge',       ''],
+        ['dodge',     'Dodge',       'dodge'],
         ['protection','Protection',  '']
     ];
 
     var statsHtml = '';
     if (data.stats) {
         var usedKeys = {};
-
         STAT_MAP.forEach(function (row) {
             var key = row[0], label = row[1], cls = row[2];
             var val = data.stats[key];
@@ -127,7 +126,6 @@
                 '</div>';
         });
 
-        /* Extra custom stats not in STAT_MAP */
         Object.keys(data.stats).forEach(function (key) {
             if (usedKeys[key]) return;
             var val = data.stats[key];
@@ -141,17 +139,22 @@
         });
     }
 
-    /* -- Hero card --------------------------------------------------- */
+    /* -- Hero Card Assembly (Split Portrait + Content) -------------- */
+    var faction = (data.faction || 'generic').toLowerCase();
     var combatRaw = data.combat || [];
     var combatImgs = Array.isArray(combatRaw) ? combatRaw : [combatRaw];
     var combatHtml = combatImgs.map(function (src, i) {
         return '<img src="' + esc(src) + '" alt="' + esc(name) + '"' +
             (i > 0 ? ' class="combat-anim"' : '') + '>';
     }).join('');
+
     main.innerHTML =
         '<div class="hero-card">' +
-            '<div class="combat-container">' +
-                combatHtml +
+            '<div class="combat-frame frame-' + faction + '">' +
+                '<div class="portrait-decorator"></div>' +
+                '<div class="combat-container">' +
+                    combatHtml +
+                '</div>' +
             '</div>' +
             '<div class="hero-content">' +
                 bioHtml +
@@ -159,7 +162,7 @@
             '</div>' +
         '</div>';
 
-    /* -- Skills ------------------------------------------------------ */
+    /* -- Skills Section --------------------------------------------- */
     var SKILL_LABEL = {
         base:    'Base',
         active:  'Active',
@@ -192,7 +195,7 @@
             '<div class="skills-list">' + skillsHtml + '</div>';
     }
 
-    /* -- Gallery ------------------------------------------------------- */
+    /* -- Gallery Section -------------------------------------------- */
     if (data.gallery && data.gallery.length) {
         var galleryItems = data.gallery.map(function (src, i) {
             return (
@@ -215,7 +218,7 @@
             '</div>';
     }
 
-    /* -- Back link --------------------------------------------------- */
+    /* -- Back Link -------------------------------------------------- */
     if (data.backLink) {
         main.innerHTML +=
             '<a href="' + esc(data.backLink.href) + '" class="back-link">' +
@@ -223,7 +226,7 @@
             '</a>';
     }
 
-    /* -- Lightbox overlay ------------------------------------------- */
+    /* -- Lightbox --------------------------------------------------- */
     if (data.gallery && data.gallery.length) {
         inject(
             '<div class="lightbox-overlay" id="lightbox">' +
@@ -235,7 +238,7 @@
 
     document.body.appendChild(main);
 
-    /* ── 10. Carousel logic ──────────────────────────────────────────── */
+    /* -- Carousel & Lightbox Logic --------------------------------- */
     var track = document.getElementById('carouselTrack');
     if (track) {
         var slides  = track.querySelectorAll('.carousel-item');
@@ -245,36 +248,27 @@
             track.style.transform =
                 'translateX(-' + (current * (slides[0].offsetWidth + 15)) + 'px)';
         }
-        var nextBtn = document.getElementById('nextBtn');
-        var prevBtn = document.getElementById('prevBtn');
-        if (nextBtn) nextBtn.addEventListener('click', function () {
+        document.getElementById('nextBtn').addEventListener('click', function () {
             if (current < slides.length - 1) { current++; slide(); }
         });
-        if (prevBtn) prevBtn.addEventListener('click', function () {
+        document.getElementById('prevBtn').addEventListener('click', function () {
             if (current > 0) { current--; slide(); }
         });
     }
 
-    /* ── 11. Lightbox logic ─────────────────────────────────────────── */
-    var lightbox     = document.getElementById('lightbox');
-    var lightboxImg  = document.getElementById('lightbox-img');
+    var lightbox      = document.getElementById('lightbox');
+    var lightboxImg   = document.getElementById('lightbox-img');
     var lightboxClose = document.getElementById('lightbox-close');
     if (lightbox) {
         document.querySelectorAll('.carousel-item img').forEach(function (img) {
-            img.style.cursor = 'zoom-in';
             img.addEventListener('click', function () {
                 lightboxImg.src = this.src;
                 lightbox.classList.add('active');
             });
         });
         function closeLightbox() { lightbox.classList.remove('active'); }
-        if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
-        lightbox.addEventListener('click', function (e) {
-            if (e.target === lightbox) closeLightbox();
-        });
-        document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape') closeLightbox();
-        });
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', function (e) { if (e.target === lightbox) closeLightbox(); });
     }
 
 })();
