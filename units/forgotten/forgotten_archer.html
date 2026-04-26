@@ -1,78 +1,74 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOULSPECTRE | Archer</title>
-    <link rel="stylesheet" href="../../assets/forgotten_units.css">
+    <link rel="stylesheet" href="../../assets/unit-page.css">
 </head>
 <body>
 <div id="bg-image"></div>
 <div id="overlay"></div>
-<header>
-    <h1>Archer</h1>
-    <div class="subtitle">Tier 2 , Sniper Path</div>
-</header>
-<main>
-    <div class="intro-banner"><img src="../../img/forgotten/sentinelle/forgotten_archer_banner.png" alt="Archer Banner"></div>
-    <div class="split-section">
-        <div class="section-image-container">
-            <img src="../../img/forgotten/sentinelle/forgotten_archer_f_combat.jpg" alt="Archer F">
-            <img src="../../img/forgotten/sentinelle/forgotten_archer_m_combat.jpg" alt="Archer M" class="combat-anim">
-        </div>
-        <div class="section-text">
-            <h2>Wood, String, Consequence</h2>
-            <p>The Archers of the Sentinelle are not glamorous. They were, in life, forest hunters: people who fed families through patient observation and the willingness to hold still while something died. They did not think of themselves as warriors, and they still do not. They think of themselves as problem-solvers with a specific skill set, and the problem on the battlefield is usually the same as the problem in the forest , <strong>something needs to stop moving, and they are the accurate way to make that happen.</strong></p>
-            <p>The transition to military use required only a change of target. The patience, the stillness, the ability to calculate for wind and distance and the particular way a moving body distributes weight , all of this transferred directly. What also transferred was <em>the complete absence of drama about it.</em> The Archers do not celebrate. They note whether the shot was clean and prepare the next one.</p>
-            <p>They are the entry point of the Sentinelle's precision line. The Marksman and the Elf Sniper are refinements on what the Archer already does; the Archer is the foundation , the proof that the Sentinelle's logic works at its most basic level. Steady, patient, and accurate enough to make the Custodians' protection of the position worthwhile.</p>
-        </div>
-    </div>
-    <div class="tactical-module">
-        <div class="tactical-header"><h2>Tactical Data</h2></div>
-        <div class="stats-box">
-            <div class="stat-item"><span class="stat-label">Tier</span><span class="stat-value tier">2</span></div>
-            <div class="stat-item"><span class="stat-label">HP</span><span class="stat-value hp">85</span></div>
-            <div class="stat-item"><span class="stat-label">ATK</span><span class="stat-value atk">40</span></div>
-            <div class="stat-item"><span class="stat-label">INI</span><span class="stat-value">65</span></div>
-        </div>
-        <div class="skills-grid">
-            <div class="skill-card sk-base">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_freccia_tagliente.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Sharp Arrow</h3><span class="skill-type base">Base Skill</span></div>
-                </div>
-                <div class="skill-desc">Deals <span class="dmg-phys">Physical</span> ranged damage to one enemy. </div>
-            </div>
-            <div class="skill-card sk-active">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_tiro_doppio.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Double Shot</h3><span class="skill-type active">Active Skill</span></div>
-                </div>
-                <div class="skill-desc">Fires 2 shots. One shot deals 100% ATK in <span class="dmg-phys">Physical</span> ranged damage. </br> If the target dies with the first shot, the second hits another enemy</div>
-            </div>
-        </div>
-    </div>
-    <div class="portrait-gallery-module">
-        <h2 class="gallery-header">Gallery</h2>
-        <div class="carousel-wrap">
-            <div class="carousel-track" id="carouselTrack">
-                <div class="carousel-item"><img src="../../img/forgotten/sentinelle/forgotten_archer_f_portrait.jpg" alt="Portrait F"></div>
-                <div class="carousel-item"><img src="../../img/forgotten/sentinelle/forgotten_archer_m_portrait.jpg" alt="Portrait M"></div>
-            </div>
-        </div>
-        <div class="carousel-nav">
-            <button class="nav-btn" id="prevBtn">&#8592;</button>
-            <button class="nav-btn" id="nextBtn">&#8594;</button>
-        </div>
-    </div>
-    <a href="forgotten_order_sentinelle.html" class="back-link">← Return to Sentinelle delle Ceneri</a>
-</main>
-<script>
-    const track=document.getElementById('carouselTrack');const items=track.querySelectorAll('.carousel-item');let current=0;
-    function update(){track.style.transform=`translateX(-${current*(items[0].offsetWidth+15)}px)`;}
-    document.getElementById('nextBtn').addEventListener('click',()=>{if(current<items.length-1){current++;update();}});
-    document.getElementById('prevBtn').addEventListener('click',()=>{if(current>0){current--;update();}});
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Archer",
+  "subtitle": "Sniper Path | Tier 2 ",
+  "accent": "#4dd0e1",
+  "bgImage": "../../img/forgotten/forgotten_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                  "label": "Home" },
+    { "href": "../../factions/index.html",         "label": "Factions" },
+    { "href": "../../factions/forgotten.html",     "label": "The Forgotten" },
+    { "href": "forgotten_order_sentinelle.html",   "label": "Sentinelle delle Ceneri" },
+    {                                              "label": "Archer" }
+  ],
+
+  "combat": "../../img/forgotten/sentinelle/forgotten_archer_f_combat.jpg",
+
+  "bio": {
+    "title": "Wood, String, Consequence",
+    "paragraphs": [
+      "The Archers of the Sentinelle are not glamorous. They were, in life, forest hunters: people who fed families through patient observation and the willingness to hold still while something died. They did not think of themselves as warriors, and they still do not. They think of themselves as problem-solvers with a specific skill set, and the problem on the battlefield is usually the same as the problem in the forest — <strong>something needs to stop moving, and they are the accurate way to make that happen.</strong>",
+      "The transition to military use required only a change of target. The patience, the stillness, the ability to calculate for wind and distance — all of this transferred directly. What also transferred was <em>the complete absence of drama about it.</em> The Archers do not celebrate. They note whether the shot was clean and prepare the next one."
+    ]
+  },
+
+  "stats": {
+    "tier":  2,
+    "hp":    85,
+    "atk":   40,
+    "ini":   65
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Sharp Arrow",
+      "icon": "../../img/forgotten/skills/forgotten_skill_freccia_tagliente.png",
+      "desc": "Deals <span class=\"dmg-phys\">Physical</span> ranged damage to one enemy."
+    },
+    {
+      "type": "active",
+      "name": "Double Shot",
+      "icon": "../../img/forgotten/skills/forgotten_skill_tiro_doppio.png",
+      "desc": "Fires 2 shots. Each shot deals <span class=\"highlight\">100% ATK</span> in <span class=\"dmg-phys\">Physical</span> ranged damage. If the target dies with the first shot, the second hits another enemy."
+    }
+  ],
+
+  "gallery": [
+    "../../img/forgotten/sentinelle/forgotten_archer_f_portrait.jpg",
+    "../../img/forgotten/sentinelle/forgotten_archer_m_portrait.jpg"
+  ],
+
+  "backLink": {
+    "href":  "forgotten_order_sentinelle.html",
+    "label": "Return to Sentinelle delle Ceneri"
+  }
+}
 </script>
-<script src="../../assets/unit-banner.js"></script>
+
+<script src="../../assets/unit-renderer.js"></script>
 </body>
 </html>
