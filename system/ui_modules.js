@@ -1,6 +1,20 @@
-/* --- GLOBAL UI LOGIC (Carousel & Lightbox) --- */
+/* --- GLOBAL UI LOGIC --- */
 document.addEventListener('DOMContentLoaded', () => {
-    // Carousel
+    
+    // 1. FILTRO STATISTICHE (Auto-Nascondi valori a 0)
+    const statItems = document.querySelectorAll('.stat-item');
+    statItems.forEach(item => {
+        const valElement = item.querySelector('.stat-value');
+        if (valElement) {
+            const val = valElement.textContent.trim().toLowerCase();
+            // Se il valore è 0, 0%, none, o vuoto, nasconde l'intero blocco
+            if (val === '0' || val === '0%' || val === 'none' || val === '-' || val === '') {
+                item.style.display = 'none';
+            }
+        }
+    });
+
+    // 2. CAROUSEL
     const track = document.getElementById('car-track');
     const prevBtn = document.getElementById('car-prev');
     const nextBtn = document.getElementById('car-next');
@@ -22,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Lightbox
+    // 3. LIGHTBOX
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
     const closeBtn = document.getElementById('lightbox-close');
