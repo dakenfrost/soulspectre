@@ -18,7 +18,6 @@
             --panel-bg: rgba(15, 20, 15, 0.85);
         }
 
-        /* QUESTO ERA SPARITO */
         body {
             color: #e0e0e0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -42,14 +41,18 @@
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1;
             background: radial-gradient(circle at center, transparent, rgba(0,0,0,0.9)); 
         }
+
+        /* --- LIMITI DI LARGHEZZA RIPRISTINATI --- */
+        header { padding: 30px 20px; text-align: center; width: 100%; box-sizing: border-box; }
+        h1 { letter-spacing: 5px; font-size: 2.8rem; margin: 0; color: #fff; text-transform: uppercase; }
+        .classification { color: var(--accent-color); font-size: 1.1rem; letter-spacing: 2px; margin-top: 5px; text-transform: uppercase; font-weight: bold; }
+        main { max-width: 1000px; padding: 0 20px 40px 20px; width: 100%; box-sizing: border-box; }
     </style>
 </head>
 <body>
 
 <div id="bg-image"></div>
 <div id="overlay"></div>
-
-<global-navigation></global-navigation>
 
 <global-navigation></global-navigation>
 
@@ -70,7 +73,7 @@
 <main>
     <div class="hero-card">
         <div class="portrait-container">
-            <img src="../../img/valkyrion_barog_combat.png" alt="Barog Portrait">
+            <img src="../../img/valkyrion_barog_combat.png" alt="Barog Combat">
         </div>
         <div class="hero-content">
             <div class="hero-bio">
