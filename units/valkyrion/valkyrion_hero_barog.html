@@ -6,20 +6,22 @@
     <title>SOULSPECTRE | Barog, the Grim Hunter</title>
     <style>
         :root {
-            --tier-color: #81c784; /* Adept Green */
-            --bg-dark: #0a0a12;
-            --panel-bg: rgba(20, 20, 30, 0.8);
+            --accent-color: #81c784; /* Adept Green */
+            --accent-glow: rgba(129, 199, 132, 0.3);
+            --stat-hp: #4CAF50;
+            --stat-atk: #f44336;
+            --panel-bg: rgba(15, 20, 15, 0.85);
         }
 
         body {
-            color: #d0d0d0;
+            color: #e0e0e0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             margin: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
-            background-color: var(--bg-dark);
+            background-color: #050505;
         }
 
         #bg-image {
@@ -28,97 +30,108 @@
             background-image: url('../../img/valkyrion_bg.jpeg'); 
             background-size: cover; background-position: center;
             z-index: -2;
-            filter: brightness(0.2);
+            filter: brightness(0.15);
         }
 
         #overlay {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
-            background: linear-gradient(to bottom, rgba(10, 10, 20, 0.9), rgba(5, 5, 10, 0.98)); 
+            background: radial-gradient(circle at center, transparent, rgba(0,0,0,0.9)); 
             z-index: -1;
         }
 
         header {
-            padding: 60px 20px 20px 20px;
-            text-align: center; width: 100%; max-width: 1100px;
+            padding: 50px 20px 20px 20px;
+            text-align: center; width: 100%;
         }
 
         h1 {
-            letter-spacing: 5px; font-size: 2.5rem; margin: 0; color: #fff;
-            text-transform: uppercase;
+            letter-spacing: 5px; font-size: 2.8rem; margin: 0; color: #fff;
+            text-transform: uppercase; text-shadow: 0 0 15px var(--accent-glow);
         }
 
         .classification {
-            color: var(--tier-color); font-size: 1.1rem; letter-spacing: 2px;
+            color: var(--accent-color); font-size: 1.1rem; letter-spacing: 2px;
             margin-top: 5px; text-transform: uppercase; font-weight: bold;
         }
 
         main {
-            max-width: 1100px; padding: 20px; width: 100%; position: relative;
+            max-width: 1000px; padding: 20px; width: 95%;
         }
 
-        .split-section {
-            display: flex; gap: 30px; align-items: stretch; margin-bottom: 40px; 
+        /* --- CHARACTER CARD (Top Section) --- */
+        .hero-card {
+            display: flex; gap: 0; margin-bottom: 40px; 
             background: var(--panel-bg); backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.05); border-left: 4px solid var(--tier-color);
+            border: 1px solid rgba(255,255,255,0.05);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            border-radius: 4px; overflow: hidden;
         }
 
         .portrait-container {
-            flex: 0 0 350px; overflow: hidden; aspect-ratio: 3 / 4;
-            border-right: 1px solid rgba(255,255,255,0.1);
+            flex: 0 0 380px; position: relative;
+            border-right: 2px solid var(--accent-color);
         }
 
-        .portrait-container img {
-            width: 100%; height: 100%; object-fit: cover;
+        .portrait-container img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+        .hero-content { flex: 1; padding: 40px; display: flex; flex-direction: column; }
+        
+        .hero-bio { margin-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px; }
+        .hero-bio h2 { color: #fff; margin-top: 0; text-transform: uppercase; letter-spacing: 2px; }
+        .hero-bio p { color: #bbb; font-style: italic; font-size: 1.05rem; }
+
+        /* Integrated Stats */
+        .stats-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
+        .stat-item { background: rgba(255,255,255,0.03); padding: 12px; border-radius: 2px; border: 1px solid rgba(255,255,255,0.05); }
+        .stat-label { display: block; color: #666; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
+        .stat-value { display: block; color: #fff; font-size: 1.3rem; font-weight: bold; font-family: monospace; }
+        .stat-value.hp { color: var(--stat-hp); }
+        .stat-value.atk { color: var(--stat-atk); }
+        .stat-value.special { color: #64B5F6; font-size: 1rem; }
+
+        /* --- SKILLS LIST (Bottom Section) --- */
+        .skills-list { display: flex; flex-direction: column; gap: 15px; margin-top: 20px; }
+        
+        .skill-item {
+            display: flex; align-items: center; background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.05); border-left: 4px solid #333;
+            padding: 20px; transition: all 0.3s ease; cursor: pointer;
         }
 
-        .hero-intro { flex: 1; padding: 40px; display: flex; flex-direction: column; justify-content: center; }
-        .hero-intro p { font-size: 1.1rem; color: #bbb; font-style: italic; margin-bottom: 30px; }
-
-        .stats-grid {
-            display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
-        }
-
-        .stat-item {
-            background: rgba(255,255,255,0.03); padding: 15px; border-radius: 2px;
-            border-bottom: 2px solid rgba(129, 199, 132, 0.2);
-        }
-
-        .stat-label { display: block; color: #777; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
-        .stat-value { display: block; color: #fff; font-size: 1.4rem; font-weight: bold; font-family: monospace; }
-        .stat-value.immunity { color: #64b5f6; font-size: 1.1rem; }
-
-        .tactical-module { margin-top: 20px; }
-        .module-title { 
-            font-size: 1.5rem; color: #fff; text-transform: uppercase; letter-spacing: 3px;
-            margin-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;
-        }
-
-        .skills-container { display: grid; grid-template-columns: 1fr; gap: 20px; }
-
-        .skill-card {
-            display: flex; align-items: flex-start; background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.05); padding: 20px;
+        .skill-item:hover {
+            background: rgba(129, 199, 132, 0.08);
+            border-left-color: var(--accent-color);
+            transform: translateX(10px);
+            box-shadow: -10px 0 20px rgba(129, 199, 132, 0.1);
         }
 
         .skill-icon {
-            width: 60px; height: 60px; margin-right: 20px; flex-shrink: 0;
-            border: 1px solid var(--tier-color); padding: 2px;
+            width: 70px; height: 70px; margin-right: 25px; flex-shrink: 0;
+            border: 1px solid rgba(255,255,255,0.1); padding: 3px;
+            background: #000; filter: grayscale(0.5); transition: 0.3s;
         }
 
-        .skill-info h3 { margin: 0; color: var(--tier-color); text-transform: uppercase; font-size: 1.2rem; }
-        .skill-type { font-size: 0.7rem; color: #777; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; display: block; }
-        .skill-desc { color: #aaa; margin: 0; }
+        .skill-item:hover .skill-icon { filter: grayscale(0); border-color: var(--accent-color); }
+
+        .skill-info { flex: 1; }
+        .skill-header { display: flex; align-items: center; gap: 15px; margin-bottom: 5px; }
+        .skill-name { color: #fff; font-size: 1.3rem; text-transform: uppercase; margin: 0; }
+        .skill-tag { font-size: 0.7rem; color: #777; border: 1px solid #444; padding: 2px 6px; text-transform: uppercase; }
+
+        .skill-desc { color: #aaa; font-size: 1rem; margin: 0; }
+        .highlight { color: var(--accent-color); font-weight: bold; }
 
         .back-link { 
-            display: block; text-align: center; margin-top: 60px; color: #555; 
-            text-decoration: none; padding: 20px; text-transform: uppercase; letter-spacing: 2px;
+            display: block; text-align: center; margin-top: 50px; color: #444; 
+            text-decoration: none; text-transform: uppercase; letter-spacing: 2px; padding: 20px;
         }
-        .back-link:hover { color: var(--tier-color); }
+        .back-link:hover { color: #fff; }
 
         @media (max-width: 850px) {
-            .split-section { flex-direction: column; }
-            .portrait-container { flex: 1 1 100%; height: 400px; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+            .hero-card { flex-direction: column; }
+            .portrait-container { flex: 0 0 400px; border-right: none; border-bottom: 2px solid var(--accent-color); }
+            .skill-item:hover { transform: translateY(-5px); }
         }
     </style>
 </head>
@@ -133,65 +146,74 @@
 </header>
 
 <main>
-    <div class="split-section">
+    <div class="hero-card">
         <div class="portrait-container">
             <img src="../../img/valkyrion_barog_portrait.png" alt="Barog Portrait">
         </div>
-        <div class="hero-intro">
-            <p>"Guilty or innocent, it matters not. Barog would rather see 100 innocents burn than let an evil witch get free; every price is not too high to deliver to god's mercy the spawns of evil. The impurity must be purged by iron and silence."</p>
-            <div class="stats-grid">
+        <div class="hero-content">
+            <div class="hero-bio">
+                <h2>The Unrelenting Purge</h2>
+                <p>"Guilty or innocent, it matters not. The ritual must be completed. The impurity must be purged by iron and silence."</p>
+                <p>One of the most feared veteran witch hunters in the Valkyrion territories, Barog is a man who long ago discarded the luxury of doubt. He scours the provinces, maintaining ideological purity where diplomacy fails.</p>
+            </div>
+            
+            <div class="stats-row">
                 <div class="stat-item">
                     <span class="stat-label">Hit Points</span>
-                    <span class="stat-value">160</span>
+                    <span class="stat-value hp">160</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-label">Attack</span>
-                    <span class="stat-value">50</span>
+                    <span class="stat-value atk">50</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-label">Initiative</span>
                     <span class="stat-value">50</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-label">Special</span>
-                    <span class="stat-value immunity">Immunity: Mind</span>
+                    <span class="stat-label">Immunity</span>
+                    <span class="stat-value special">Mind</span>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="tactical-module">
-        <h2 class="module-title">Combat Doctrine</h2>
-        <div class="skills-container">
-            
-            <div class="skill-card">
-                <img src="../../img/base_base_skill.png" alt="Base Skill" class="skill-icon">
-                <div class="skill-info">
-                    <span class="skill-type">Base Skill</span>
-                    <h3>Slash</h3>
-                    <p class="skill-desc">Deals standard physical damage to a single enemy in melee range.</p>
+    <h3 style="text-transform:uppercase; letter-spacing:3px; color:#555; border-bottom:1px solid #222; padding-bottom:10px;">Combat Doctrine</h3>
+    <div class="skills-list">
+        
+        <div class="skill-item">
+            <img src="../../img/base_base_skill.png" alt="Slash" class="skill-icon">
+            <div class="skill-info">
+                <div class="skill-header">
+                    <h4 class="skill-name">Slash</h4>
+                    <span class="skill-tag">Base</span>
                 </div>
+                <p class="skill-desc">Deals <span class="highlight">standard physical damage</span> to a single enemy in melee range.</p>
             </div>
-
-            <div class="skill-card">
-                <img src="../../img/base_active_skill.png" alt="Active Skill" class="skill-icon">
-                <div class="skill-info">
-                    <span class="skill-type">Active Skill</span>
-                    <h3>Execution</h3>
-                    <p class="skill-desc">Deals high physical damage to a single enemy in melee range. Damage increases by 1% for every 1% of the target's missing HP.</p>
-                </div>
-            </div>
-
-            <div class="skill-card">
-                <img src="../../img/base_passive_skill.png" alt="Passive Skill" class="skill-icon">
-                <div class="skill-info">
-                    <span class="skill-type">Passive Trait</span>
-                    <h3>Blind Justice</h3>
-                    <p class="skill-desc">Barog's fanatical hatred for the arcane grants him a 30% damage bonus against all Caster classes.</p>
-                </div>
-            </div>
-
         </div>
+
+        <div class="skill-item">
+            <img src="../../img/base_active_skill.png" alt="Execution" class="skill-icon">
+            <div class="skill-info">
+                <div class="skill-header">
+                    <h4 class="skill-name">Execution</h4>
+                    <span class="skill-tag">Active</span>
+                </div>
+                <p class="skill-desc">Deals physical damage to an enemy. For each <span class="highlight">missing 1% of the target's HP</span>, increase the damage by <span class="highlight">1%</span>.</p>
+            </div>
+        </div>
+
+        <div class="skill-item">
+            <img src="../../img/base_passive_skill.png" alt="Blind Justice" class="skill-icon">
+            <div class="skill-info">
+                <div class="skill-header">
+                    <h4 class="skill-name">Blind Justice</h4>
+                    <span class="skill-tag">Passive</span>
+                </div>
+                <p class="skill-desc">His hatred for the arcane is absolute. <span class="highlight">Caster classes</span> take an additional <span class="highlight">30% damage</span> from his attacks.</p>
+            </div>
+        </div>
+
     </div>
 
     <a href="valkyrion_extra.html" class="back-link">← Return to Archive</a>
