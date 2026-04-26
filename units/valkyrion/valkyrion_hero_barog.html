@@ -18,6 +18,19 @@
             --panel-bg: rgba(15, 20, 15, 0.85);
         }
 
+        /* QUESTO ERA SPARITO */
+        body {
+            color: #e0e0e0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding-top: 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #050505;
+        }
+
         #bg-image { 
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -2; 
             filter: brightness(0.15);
@@ -32,6 +45,11 @@
     </style>
 </head>
 <body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<global-navigation></global-navigation>
 
 <global-navigation></global-navigation>
 
