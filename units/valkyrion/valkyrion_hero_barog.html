@@ -11,6 +11,7 @@
             --stat-hp: #4CAF50;
             --stat-atk: #f44336;
             --panel-bg: rgba(15, 20, 15, 0.85);
+            --nav-bg: rgba(5, 5, 5, 0.95);
         }
 
         body {
@@ -18,6 +19,7 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             margin: 0;
+            padding-top: 60px; /* Spazio per la nav fissa */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -40,48 +42,81 @@
             z-index: -1;
         }
 
-        header {
-            padding: 50px 20px 20px 20px;
-            text-align: center; width: 100%;
+        /* --- GLOBAL NAVIGATION SYSTEM --- */
+        .global-nav {
+            position: fixed; top: 0; left: 0; width: 100%; height: 60px;
+            background: var(--nav-bg); border-bottom: 1px solid rgba(255,255,255,0.1);
+            display: flex; align-items: center; padding: 0 20px; z-index: 1000;
+            box-sizing: border-box; backdrop-filter: blur(5px);
         }
 
-        h1 {
-            letter-spacing: 5px; font-size: 2.8rem; margin: 0; color: #fff;
-            text-transform: uppercase; text-shadow: 0 0 15px var(--accent-glow);
+        .menu-toggle {
+            background: none; border: none; color: #fff; font-size: 1.5rem;
+            cursor: pointer; margin-right: 20px; transition: color 0.3s;
+        }
+        .menu-toggle:hover { color: var(--accent-color); }
+
+        .nav-logo-container { height: 40px; display: flex; align-items: center; }
+        .nav-logo-container img { height: 100%; object-fit: contain; }
+
+        /* --- SIDEBAR DRAWER --- */
+        .sidebar {
+            position: fixed; top: 0; left: -300px; width: 280px; height: 100vh;
+            background: rgba(10, 10, 15, 0.98); border-right: 1px solid rgba(255,255,255,0.05);
+            z-index: 1001; transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex; flex-direction: column; padding: 80px 0 20px 0;
+            box-shadow: 20px 0 50px rgba(0,0,0,0.8);
+        }
+        .sidebar.active { left: 0; }
+
+        .close-sidebar {
+            position: absolute; top: 15px; right: 20px; background: none; border: none;
+            color: #888; font-size: 1.5rem; cursor: pointer; transition: 0.3s;
+        }
+        .close-sidebar:hover { color: #fff; }
+
+        .sidebar-link {
+            display: block; padding: 15px 30px; color: #ccc; text-decoration: none;
+            text-transform: uppercase; letter-spacing: 2px; font-weight: bold;
+            border-left: 3px solid transparent; transition: all 0.3s ease;
+        }
+        .sidebar-link:hover {
+            background: rgba(255,255,255,0.05); color: #fff; border-left-color: var(--accent-color);
+            padding-left: 35px;
         }
 
-        .classification {
-            color: var(--accent-color); font-size: 1.1rem; letter-spacing: 2px;
-            margin-top: 5px; text-transform: uppercase; font-weight: bold;
+        .sidebar-overlay {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0,0,0,0.7); z-index: 1000; opacity: 0; visibility: hidden;
+            transition: all 0.3s ease; backdrop-filter: blur(2px);
         }
+        .sidebar-overlay.active { opacity: 1; visibility: visible; }
 
-        main {
-            max-width: 1000px; padding: 20px; width: 95%;
+        /* --- BREADCRUMBS --- */
+        .breadcrumbs {
+            width: 100%; max-width: 1000px; margin: 20px auto 0 auto; padding: 0 20px;
+            font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: #666;
         }
+        .breadcrumbs a { color: #888; text-decoration: none; transition: color 0.3s; }
+        .breadcrumbs a:hover { color: #fff; }
+        .breadcrumbs span { color: var(--accent-color); font-weight: bold; }
 
-        /* --- CHARACTER CARD (Top Section) --- */
-        .hero-card {
-            display: flex; gap: 0; margin-bottom: 40px; 
-            background: var(--panel-bg); backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.05);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
-            border-radius: 4px; overflow: hidden;
-        }
+        /* --- PAGE CONTENT --- */
+        header { padding: 30px 20px; text-align: center; width: 100%; }
+        h1 { letter-spacing: 5px; font-size: 2.8rem; margin: 0; color: #fff; text-transform: uppercase; text-shadow: 0 0 15px var(--accent-glow); }
+        .classification { color: var(--accent-color); font-size: 1.1rem; letter-spacing: 2px; margin-top: 5px; text-transform: uppercase; font-weight: bold; }
+        main { max-width: 1000px; padding: 0 20px 40px 20px; width: 95%; }
 
-        .portrait-container {
-            flex: 0 0 380px; position: relative;
-            border-right: 2px solid var(--accent-color);
-        }
-
+        /* Character Card */
+        .hero-card { display: flex; gap: 0; margin-bottom: 40px; background: var(--panel-bg); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 20px 50px rgba(0,0,0,0.8); border-radius: 4px; overflow: hidden; }
+        .portrait-container { flex: 0 0 380px; position: relative; border-right: 2px solid var(--accent-color); }
         .portrait-container img { width: 100%; height: 100%; object-fit: cover; display: block; }
-
         .hero-content { flex: 1; padding: 40px; display: flex; flex-direction: column; }
-        
         .hero-bio { margin-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px; }
         .hero-bio h2 { color: #fff; margin-top: 0; text-transform: uppercase; letter-spacing: 2px; }
         .hero-bio p { color: #bbb; font-style: italic; font-size: 1.05rem; }
 
-        /* Integrated Stats */
+        /* Stats */
         .stats-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
         .stat-item { background: rgba(255,255,255,0.03); padding: 12px; border-radius: 2px; border: 1px solid rgba(255,255,255,0.05); }
         .stat-label { display: block; color: #666; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
@@ -90,43 +125,18 @@
         .stat-value.atk { color: var(--stat-atk); }
         .stat-value.special { color: #64B5F6; font-size: 1rem; }
 
-        /* --- SKILLS LIST (Bottom Section) --- */
+        /* Skills */
         .skills-list { display: flex; flex-direction: column; gap: 15px; margin-top: 20px; }
-        
-        .skill-item {
-            display: flex; align-items: center; background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.05); border-left: 4px solid #333;
-            padding: 20px; transition: all 0.3s ease; cursor: pointer;
-        }
-
-        .skill-item:hover {
-            background: rgba(129, 199, 132, 0.08);
-            border-left-color: var(--accent-color);
-            transform: translateX(10px);
-            box-shadow: -10px 0 20px rgba(129, 199, 132, 0.1);
-        }
-
-        .skill-icon {
-            width: 70px; height: 70px; margin-right: 25px; flex-shrink: 0;
-            border: 1px solid rgba(255,255,255,0.1); padding: 3px;
-            background: #000; filter: grayscale(0.5); transition: 0.3s;
-        }
-
+        .skill-item { display: flex; align-items: center; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-left: 4px solid #333; padding: 20px; transition: all 0.3s ease; cursor: pointer; }
+        .skill-item:hover { background: rgba(129, 199, 132, 0.08); border-left-color: var(--accent-color); transform: translateX(10px); box-shadow: -10px 0 20px rgba(129, 199, 132, 0.1); }
+        .skill-icon { width: 70px; height: 70px; margin-right: 25px; flex-shrink: 0; border: 1px solid rgba(255,255,255,0.1); padding: 3px; background: #000; filter: grayscale(0.5); transition: 0.3s; }
         .skill-item:hover .skill-icon { filter: grayscale(0); border-color: var(--accent-color); }
-
         .skill-info { flex: 1; }
         .skill-header { display: flex; align-items: center; gap: 15px; margin-bottom: 5px; }
         .skill-name { color: #fff; font-size: 1.3rem; text-transform: uppercase; margin: 0; }
         .skill-tag { font-size: 0.7rem; color: #777; border: 1px solid #444; padding: 2px 6px; text-transform: uppercase; }
-
         .skill-desc { color: #aaa; font-size: 1rem; margin: 0; }
         .highlight { color: var(--accent-color); font-weight: bold; }
-
-        .back-link { 
-            display: block; text-align: center; margin-top: 50px; color: #444; 
-            text-decoration: none; text-transform: uppercase; letter-spacing: 2px; padding: 20px;
-        }
-        .back-link:hover { color: #fff; }
 
         @media (max-width: 850px) {
             .hero-card { flex-direction: column; }
@@ -139,6 +149,31 @@
 
 <div id="bg-image"></div>
 <div id="overlay"></div>
+
+<nav class="global-nav">
+    <button class="menu-toggle" id="menu-btn">&#9776;</button>
+    <a href="../../index.html" class="nav-logo-container">
+        <img src="../../img/logo.png" alt="SOULSPECTRE LOGO">
+    </a>
+</nav>
+
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+<aside class="sidebar" id="sidebar">
+    <button class="close-sidebar" id="close-btn">&times;</button>
+    <a href="../../index.html" class="sidebar-link">Main Hub</a>
+    <a href="../../gameplay/index.html" class="sidebar-link">Basics & Gameplay</a>
+    <a href="../../factions/index.html" class="sidebar-link">Factions Archive</a>
+    <a href="../../campaigns/campaign_menu.html" class="sidebar-link">Campaigns Mode</a>
+    <a href="../../about/credits.html" class="sidebar-link">The Architects</a>
+</aside>
+<div class="breadcrumbs">
+    <a href="../../index.html">Home</a> &rsaquo; 
+    <a href="../../factions/index.html">Factions</a> &rsaquo; 
+    <a href="../valkyrion_roster.html">Valkyrion Empire</a> &rsaquo; 
+    <a href="valkyrion_extra.html">Extra Units</a> &rsaquo; 
+    <span>Barog</span>
+</div>
 
 <header>
     <h1>Barog</h1>
@@ -158,22 +193,10 @@
             </div>
             
             <div class="stats-row">
-                <div class="stat-item">
-                    <span class="stat-label">Hit Points</span>
-                    <span class="stat-value hp">160</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-label">Attack</span>
-                    <span class="stat-value atk">50</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-label">Initiative</span>
-                    <span class="stat-value">50</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-label">Immunity</span>
-                    <span class="stat-value special">Mind</span>
-                </div>
+                <div class="stat-item"><span class="stat-label">Hit Points</span><span class="stat-value hp">160</span></div>
+                <div class="stat-item"><span class="stat-label">Attack</span><span class="stat-value atk">50</span></div>
+                <div class="stat-item"><span class="stat-label">Initiative</span><span class="stat-value">50</span></div>
+                <div class="stat-item"><span class="stat-label">Immunity</span><span class="stat-value special">Mind</span></div>
             </div>
         </div>
     </div>
@@ -184,10 +207,7 @@
         <div class="skill-item">
             <img src="../../img/base_base_skill.png" alt="Slash" class="skill-icon">
             <div class="skill-info">
-                <div class="skill-header">
-                    <h4 class="skill-name">Slash</h4>
-                    <span class="skill-tag">Base</span>
-                </div>
+                <div class="skill-header"><h4 class="skill-name">Slash</h4><span class="skill-tag">Base</span></div>
                 <p class="skill-desc">Deals <span class="highlight">standard physical damage</span> to a single enemy in melee range.</p>
             </div>
         </div>
@@ -195,10 +215,7 @@
         <div class="skill-item">
             <img src="../../img/base_active_skill.png" alt="Execution" class="skill-icon">
             <div class="skill-info">
-                <div class="skill-header">
-                    <h4 class="skill-name">Execution</h4>
-                    <span class="skill-tag">Active</span>
-                </div>
+                <div class="skill-header"><h4 class="skill-name">Execution</h4><span class="skill-tag">Active</span></div>
                 <p class="skill-desc">Deals physical damage to an enemy. For each <span class="highlight">missing 1% of the target's HP</span>, increase the damage by <span class="highlight">1%</span>.</p>
             </div>
         </div>
@@ -206,18 +223,30 @@
         <div class="skill-item">
             <img src="../../img/base_passive_skill.png" alt="Blind Justice" class="skill-icon">
             <div class="skill-info">
-                <div class="skill-header">
-                    <h4 class="skill-name">Blind Justice</h4>
-                    <span class="skill-tag">Passive</span>
-                </div>
+                <div class="skill-header"><h4 class="skill-name">Blind Justice</h4><span class="skill-tag">Passive</span></div>
                 <p class="skill-desc">His hatred for the arcane is absolute. <span class="highlight">Caster classes</span> take an additional <span class="highlight">30% damage</span> from his attacks.</p>
             </div>
         </div>
 
     </div>
-
-    <a href="valkyrion_extra.html" class="back-link">← Return to Archive</a>
 </main>
+
+<script>
+    /* Universal Navigation Script */
+    const menuBtn = document.getElementById('menu-btn');
+    const closeBtn = document.getElementById('close-btn');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('sidebar-overlay');
+
+    function toggleMenu() {
+        sidebar.classList.toggle('active');
+        overlay.classList.toggle('active');
+    }
+
+    menuBtn.addEventListener('click', toggleMenu);
+    closeBtn.addEventListener('click', toggleMenu);
+    overlay.addEventListener('click', toggleMenu);
+</script>
 
 </body>
 </html>
