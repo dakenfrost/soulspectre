@@ -15,15 +15,16 @@ const navTemplate = `
 
     <button class="accordion-btn">Gameplay <span class="chevron">▼</span></button>
     <div class="accordion-content">
-        <a href="/gameplay/rules.html" class="sub-link">Core Rules</a>
-        <a href="/gameplay/combat.html" class="sub-link">Combat Mechanics</a>
-        <a href="/gameplay/stats.html" class="sub-link">Stats & Tiers</a>
+        <a href="/gameplay/basicshtml" class="sub-link">Core Rules</a>
+        <a href="/gameplay/cities.html" class="sub-link">Cities Mechanics</a>
+        <a href="/gameplay/mapresources.html" class="sub-link">Map And Resources</a>
+        <a href="/gameplay/officers.html" class="sub-link">Officers and Parties</a>
+        <a href="/gameplay/progression.html" class="sub-link">Characters Progression</a>
     </div>
 
     <button class="accordion-btn">Factions <span class="chevron">▼</span></button>
     <div class="accordion-content">
         <a href="/factions/valkyrion.html" class="sub-link" style="color: #5c9ce6;">Valkyrion Empire</a>
-        <a href="/factions/valkyrion_roster.html" class="sub-link" style="color: #5c9ce6;">Valkyrion Units</a>
         <a href="/factions/forgotten.html" class="sub-link" style="color: #5cb88a;">The Forgotten</a>
         <a href="#" class="sub-link locked">Kharos Dominion</a>
         <a href="#" class="sub-link locked">Devil Syndicate</a>
