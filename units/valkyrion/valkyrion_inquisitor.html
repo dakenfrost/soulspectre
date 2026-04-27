@@ -4,6 +4,93 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOULSPECTRE | Inquisitor</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <script src="../../system/unit-renderer.js" defer></script>
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Inquisitor",
+  "faction": "Valkyrion",
+  "subtitle": "Order of the Sword - Tier 4",
+  "accent": "#5c9ce6",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/valkyrion.html",           "label": "Valkyrion Empire" },
+    { "href": "valkyrion_order_sword.html",              "label": "Order of the Sword" },
+    {                                                    "label": "Inquisitor" }
+  ],
+
+  "combat": [
+    "../../img/valkyrion_inquisitor_m_combat.jpg",
+    "../../img/valkyrion_inquisitor_f_combat.jpg"
+  ],
+
+  "bio": {
+    "title": "The Soul Binder",
+    "paragraphs": [
+      "Witch Hunters who have endured the darkest horrors life can offer may become Inquisitors. These individuals possess exceptional mental fortitude and have mastered forbidden arts, binding their enemies in preparation for final judgment.",
+      "They are the silent terror of the Empire's enemies, capable of silencing a soul before the blade even touches the flesh. Their existence is a constant reminder that no heresy can hide from the Emperor's gaze."
+    ]
+  },
+
+  "stats": {
+    "tier": "Tier 4",
+    "hp": 220,
+    "atk": 100,
+    "ini": 50,
+    "immunity": "Mind, Soul",
+    "protection": "Dark"
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Silencing Soul Strike",
+      "icon": "../../img/valkyrion_skill_icon_silencing_soul_strike.png",
+      "desc": "Deals <span class=\"dmg-soul\">Soul</span> damage to one enemy (melee). <strong>Silences</strong> the target for 1 turn (<span class=\"dmg-mind\">Mind</span> attack)."
+    },
+    {
+      "type": "active",
+      "name": "Judgement Chains",
+      "icon": "../../img/valkyrion_skill_icon_judgement_chains.png",
+      "desc": "Binds the target with magical chains of spiritual energy. Deals <span class=\"dmg-soul\">Soul</span> damage and <strong>stuns</strong> the target for 2 turns."
+    },
+    {
+      "type": "passive",
+      "name": "Soul Mastery",
+      "icon": "../../img/valkyrion_skill_icon_soul_mastery.png",
+      "desc": "Inquisitor debuffs <strong>ignore resistances and immunities</strong>. If a target is not resistant or immune to <span class=\"dmg-soul\">Soul</span> damage, damage dealt is <strong>increased by 50%</strong>."
+    }
+  ],
+
+  "gallery": [
+    "../../img/valkyrion_inquisitor_extra_1.jpg",
+    "../../img/valkyrion_inquisitor_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "valkyrion_order_sword.html",
+    "label": "Return to Order of the Sword"
+  }
+}
+</script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Inquisitor</title>
     <style>
         body {
             color: #e0e0e0;
