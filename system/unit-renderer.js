@@ -1,14 +1,13 @@
 (function () {
     'use strict';
 
-    /* ── 1. Caricamento Dati ── */
     var dataEl = document.getElementById('unit-data');
     if (!dataEl) return;
     var data;
     try { data = JSON.parse(dataEl.textContent); }
     catch (e) { console.error('Errore JSON:', e); return; }
 
-    /* ── 2. Colore Accento e Titolo ── */
+    /* ── 1. Colore Accento e Titolo ── */
     if (data.accent) {
         document.documentElement.style.setProperty('--accent-color', data.accent);
     }
@@ -21,7 +20,7 @@
 
     function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
 
-    /* ── 3. Iniezione Menu e Sidebar (Integrata) ── */
+    /* ── 2. Navigazione Integrata ── */
     var navHtml = 
         '<nav class="global-nav">' +
             '<button class="menu-toggle" id="menuToggle">☰</button>' +
@@ -43,22 +42,15 @@
     navContainer.innerHTML = navHtml;
     document.body.insertBefore(navContainer, document.body.firstChild);
 
-    /* Logica Apertura Menu */
     var sidebar = document.getElementById('sidebar');
     var overlay = document.getElementById('sidebarOverlay');
-    
     document.getElementById('menuToggle').onclick = toggleMenu;
     document.getElementById('closeSidebar').onclick = toggleMenu;
     overlay.onclick = toggleMenu;
 
-    function toggleMenu() {
-        sidebar.classList.toggle('active');
-        overlay.classList.toggle('active');
-    }
+    function toggleMenu() { sidebar.classList.toggle('active'); overlay.classList.toggle('active'); }
 
-    /* ── 4. Rendering Contenuto ── */
-    var main = document.createElement('main');
-
+    /* ── 3. Rendering Layout ── */
     // Breadcrumbs
     if (data.breadcrumbs) {
         var crumbs = data.breadcrumbs.map(function(bc, i) {
@@ -75,10 +67,12 @@
     header.innerHTML = '<h1>' + esc(data.name) + '</h1>' + (data.subtitle ? '<div class="classification">' + esc(data.subtitle) + '</div>' : '');
     document.body.appendChild(header);
 
-    // Hero Card (Bio + Stats)
+    var main = document.createElement('main');
+
+    // Hero Card
     var bioHtml = '<div class="hero-bio"><h2>Biography</h2>' + (data.bio.paragraphs || []).map(function(p){ return '<p>'+p+'</p>'; }).join('') + '</div>';
     var statsHtml = '';
-    var statKeys = [['tier','Tier','tier'],['hp','Hit Points','hp'],['atk','Attack','atk'],['ini','Initiative','']];
+    var statKeys = [['tier','Tier','tier'],['hp','Hit Points','hp'],['atk','Attack','atk'],['ini','Initiative',''],['immunity','Immunity','special'],['protection','Protection','special']];
     statKeys.forEach(function(k) {
         if (data.stats[k[0]]) statsHtml += '<div class="stat-item"><span class="stat-label">'+k[1]+'</span><span class="stat-value '+k[2]+'">'+data.stats[k[0]]+'</span></div>';
     });
@@ -86,17 +80,47 @@
     var combatImgs = Array.isArray(data.combat) ? data.combat : [data.combat];
     var combatHtml = combatImgs.map(function(src, i){ return '<img src="'+esc(src)+'" '+(i>0?'class="combat-anim"':'')+'>'; }).join('');
 
-    main.innerHTML = 
-        '<div class="hero-card">' +
-            '<div class="combat-container">' + combatHtml + '</div>' +
-            '<div class="hero-content">' + bioHtml + '<div class="stats-row">' + statsHtml + '</div></div>' +
-        '</div>';
+    main.innerHTML = '<div class="hero-card"><div class="combat-container">' + combatHtml + '</div><div class="hero-content">' + bioHtml + '<div class="stats-row">' + statsHtml + '</div></div></div>';
 
+    // Skills (REINSERITO)
+    if (data.skills && data.skills.length) {
+        var skHtml = data.skills.map(function(sk) {
+            var type = (sk.type || 'base').toLowerCase();
+            return '<div class="skill-item sk-'+type+'">' + (sk.icon ? '<img src="'+esc(sk.icon)+'" class="skill-icon">' : '') +
+                   '<div class="skill-info"><div class="skill-header"><h4 class="skill-name">'+esc(sk.name)+'</h4><span class="skill-tag '+type+'">'+type+'</span></div><p class="skill-desc">'+sk.desc+'</p></div></div>';
+        }).join('');
+        main.innerHTML += '<h3 class="skills-section-title">Combat Doctrine</h3><div class="skills-list">' + skHtml + '</div>';
+    }
+
+    // Gallery / Carousel (REINSERITO)
+    if (data.gallery && data.gallery.length) {
+        var items = data.gallery.map(function(src){ return '<div class="carousel-item"><img src="'+esc(src)+'"></div>'; }).join('');
+        main.innerHTML += '<div class="portrait-gallery-module"><h2 class="gallery-header">Gallery</h2>' +
+                          '<div class="carousel-wrap"><div class="carousel-track" id="carouselTrack">' + items + '</div></div>' +
+                          '<div class="carousel-nav"><button class="nav-btn" id="prevBtn">&#8592;</button><button class="nav-btn" id="nextBtn">&#8594;</button></div></div>';
+    }
+
+    if (data.backLink) main.innerHTML += '<a href="'+esc(data.backLink.href)+'" class="back-link">&#8592; '+esc(data.backLink.label)+'</a>';
     document.body.appendChild(main);
 
-    // Lightbox finale
+    /* ── 4. Logica Carosello & Lightbox ── */
+    var track = document.getElementById('carouselTrack'), current = 0;
+    if (track) {
+        var slides = track.querySelectorAll('.carousel-item');
+        document.getElementById('nextBtn').onclick = function() { if(current < slides.length - 1){ current++; slide(); } };
+        document.getElementById('prevBtn').onclick = function() { if(current > 0){ current--; slide(); } };
+        function slide() { track.style.transform = 'translateX(-' + (current * (slides[0].offsetWidth + 15)) + 'px)'; }
+    }
+
+    // Lightbox
     var lb = document.createElement('div');
     lb.className = 'lightbox-overlay'; lb.id = 'lightbox';
-    lb.innerHTML = '<button class="lightbox-close" id="lbClose">&times;</button><img src="" id="lbImg">';
+    lb.innerHTML = '<button class="lightbox-close" id="lbClose">&times;</button><img src="" id="lbImg" class="lightbox-img">';
     document.body.appendChild(lb);
+    
+    var lbImg = document.getElementById('lbImg');
+    document.querySelectorAll('.carousel-item img').forEach(function(img){
+        img.onclick = function(){ lbImg.src = this.src; lb.classList.add('active'); };
+    });
+    document.getElementById('lbClose').onclick = function(){ lb.classList.remove('active'); };
 })();
