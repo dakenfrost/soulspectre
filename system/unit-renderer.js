@@ -7,7 +7,7 @@
     try { data = JSON.parse(dataEl.textContent); }
     catch (e) { console.error('Errore JSON:', e); return; }
 
-    /* ── 1. Colore Accento e Titolo ── */
+    /* ── 1. Accent & Theme ── */
     if (data.accent) {
         document.documentElement.style.setProperty('--accent-color', data.accent);
     }
@@ -69,7 +69,7 @@
 
     var main = document.createElement('main');
 
-    // Hero Card
+    // Hero Card (Bio + Stats)
     var bioHtml = '<div class="hero-bio"><h2>Biography</h2>' + (data.bio.paragraphs || []).map(function(p){ return '<p>'+p+'</p>'; }).join('') + '</div>';
     var statsHtml = '';
     var statKeys = [['tier','Tier','tier'],['hp','Hit Points','hp'],['atk','Attack','atk'],['ini','Initiative',''],['immunity','Immunity','special'],['protection','Protection','special']];
@@ -80,9 +80,10 @@
     var combatImgs = Array.isArray(data.combat) ? data.combat : [data.combat];
     var combatHtml = combatImgs.map(function(src, i){ return '<img src="'+esc(src)+'" '+(i>0?'class="combat-anim"':'')+'>'; }).join('');
 
+    // Rispettiamo le classi del CSS per le cornici (hero-card e combat-container)
     main.innerHTML = '<div class="hero-card"><div class="combat-container">' + combatHtml + '</div><div class="hero-content">' + bioHtml + '<div class="stats-row">' + statsHtml + '</div></div></div>';
 
-    // Skills (REINSERITO)
+    // Skills
     if (data.skills && data.skills.length) {
         var skHtml = data.skills.map(function(sk) {
             var type = (sk.type || 'base').toLowerCase();
@@ -92,7 +93,7 @@
         main.innerHTML += '<h3 class="skills-section-title">Combat Doctrine</h3><div class="skills-list">' + skHtml + '</div>';
     }
 
-    // Gallery / Carousel (REINSERITO)
+    // Gallery / Carousel
     if (data.gallery && data.gallery.length) {
         var items = data.gallery.map(function(src){ return '<div class="carousel-item"><img src="'+esc(src)+'"></div>'; }).join('');
         main.innerHTML += '<div class="portrait-gallery-module"><h2 class="gallery-header">Gallery</h2>' +
@@ -112,7 +113,7 @@
         function slide() { track.style.transform = 'translateX(-' + (current * (slides[0].offsetWidth + 15)) + 'px)'; }
     }
 
-    // Lightbox
+    // Lightbox (FIXED: Chiusura cliccando fuori)
     var lb = document.createElement('div');
     lb.className = 'lightbox-overlay'; lb.id = 'lightbox';
     lb.innerHTML = '<button class="lightbox-close" id="lbClose">&times;</button><img src="" id="lbImg" class="lightbox-img">';
@@ -122,5 +123,9 @@
     document.querySelectorAll('.carousel-item img').forEach(function(img){
         img.onclick = function(){ lbImg.src = this.src; lb.classList.add('active'); };
     });
-    document.getElementById('lbClose').onclick = function(){ lb.classList.remove('active'); };
+
+    // Funzione di chiusura
+    function closeLB() { lb.classList.remove('active'); }
+    document.getElementById('lbClose').onclick = closeLB;
+    lb.onclick = function(e) { if(e.target === lb) closeLB(); }; // Chiude se clicchi sullo sfondo
 })();
