@@ -4,153 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOULSPECTRE | Anastasia, The First Librarian</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <script src="../../system/navigation.js" defer></script>
+    <script src="../../system/unit-renderer.js" defer></script>
+
     <style>
         :root {
-            --accent-color: #ab47bc; /* Order of Knowledge Purple */
-            --accent-glow: rgba(171, 71, 188, 0.6);
-            --ultimate-gold: #ffd700;
-        }
-
-        body {
-            color: #e0e0e0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.8;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        #bg-image {
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            background-image: url('../../img/valkyrion_bg.jpeg'); 
-            background-size: cover; background-position: center;
-            z-index: -2;
-        }
-
-        #overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            background: linear-gradient(to bottom, rgba(15, 5, 20, 0.92), rgba(5, 5, 5, 0.98)); 
-            z-index: -1;
-        }
-
-        header {
-            padding: 60px 20px 30px 20px;
-            text-align: center; width: 100%; max-width: 1100px;
-        }
-
-        h1 {
-            letter-spacing: 5px; font-size: 2.8rem; margin: 0; color: #fff;
-            text-transform: uppercase; text-shadow: 0 0 15px var(--accent-glow);
-        }
-
-        .subtitle {
-            color: var(--ultimate-gold); font-size: 1.1rem; letter-spacing: 2px;
-            margin-top: 10px; text-transform: uppercase; font-weight: bold;
-        }
-
-        main {
-            max-width: 1100px; padding: 40px 20px; width: 100%; position: relative;
-        }
-
-        .intro-banner {
-            width: 100%; border: 1px solid rgba(171, 71, 188, 0.2);
-            border-bottom: 3px solid var(--accent-color);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
-            border-radius: 4px; overflow: hidden; margin-bottom: 40px;
-        }
-
-        .intro-banner img { width: 100%; display: block; }
-
-        .split-section {
-            display: flex; gap: 40px; align-items: stretch; margin-bottom: 60px; 
-            background: rgba(15, 5, 20, 0.75); backdrop-filter: blur(8px);
-            border: 1px solid rgba(255,255,255,0.05); border-left: 3px solid var(--accent-color);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-
-        .section-image-container {
-            position: relative; flex: 0 0 40%; overflow: hidden; aspect-ratio: 3 / 4;
-        }
-
-        .section-image-container img {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            object-fit: cover; object-position: top center; 
-        }
-
-        .section-text { flex: 1; padding: 35px; }
-        h2 { color: #fff; letter-spacing: 2px; text-transform: uppercase; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; margin-top: 0; margin-bottom: 25px; font-size: 1.8rem; }
-        p { margin-bottom: 25px; color: #ccc; font-size: 1.1rem; text-align: justify; }
-
-        .tactical-module { border-top: 2px solid var(--accent-color); padding-top: 40px; margin-bottom: 60px; }
-
-        .stats-box {
-            display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;
-            background: linear-gradient(145deg, rgba(25, 10, 30, 0.9), rgba(10, 5, 15, 0.9));
-            border: 1px solid rgba(171, 71, 188, 0.3); border-radius: 4px;
-            padding: 25px; margin-bottom: 50px;
-            box-shadow: inset 0 0 20px rgba(0,0,0,0.8), 0 10px 20px rgba(0,0,0,0.5);
-        }
-
-        .stat-item { text-align: center; padding: 10px 15px; }
-        .stat-label { display: block; color: #888; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px; }
-        .stat-value { display: block; color: #fff; font-size: 1.8rem; font-weight: bold; font-family: monospace; }
-        
-        .stat-value.hp { color: #4CAF50; }
-        .stat-value.atk { color: #f44336; }
-        .stat-value.hero { color: var(--ultimate-gold); text-shadow: 0 0 10px rgba(255,215,0,0.5); }
-        .stat-value.text-small { font-size: 1.1rem; font-family: 'Segoe UI', Tahoma, sans-serif; letter-spacing: 1px; }
-
-        .advanced-stats {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin-top: 10px;
-            padding-top: 15px;
-            border-top: 1px solid rgba(171, 71, 188, 0.2);
-        }
-
-        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 25px; }
-        .skill-card { background: rgba(20, 10, 25, 0.8); border: 1px solid rgba(255,255,255,0.05); border-left: 4px solid #333; padding: 25px; transition: transform 0.2s ease; }
-        .skill-card:hover { transform: translateY(-5px); border-left-color: var(--accent-color); }
-        .skill-card.ultimate { border-left-color: var(--ultimate-gold); border-right: 1px solid rgba(255,215,0,0.2); }
-
-        .skill-header { display: flex; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; margin-bottom: 15px; }
-        .skill-icon { width: 70px; height: 70px; border-radius: 4px; object-fit: cover; border: 2px solid rgba(171, 71, 188, 0.3); margin-right: 15px; background-color: rgba(0, 0, 0, 0.2); }
-        .skill-title { margin: 0; color: #fff; font-size: 1.3rem; text-transform: uppercase; }
-        .skill-type { font-size: 0.75rem; padding: 2px 6px; background: rgba(255,255,255,0.1); border-radius: 2px; text-transform: uppercase; align-self: flex-start; margin-top: 5px; }
-        
-        .skill-type.base { color: #ccc; }
-        .skill-type.active { color: #64B5F6; }
-        .skill-type.passive { color: #81C784; }
-        .skill-type.ultimate { color: var(--ultimate-gold); font-weight: bold; background: rgba(255, 215, 0, 0.15); }
-        
-        .skill-desc { color: #bbb; font-size: 0.95rem; }
-        .dmg-fire { color: #ff5722; font-weight: bold; }
-        .dmg-wind { color: #81c784; font-weight: bold; }
-        .dmg-air { color: #4dd0e1; font-weight: bold; }
-        .dmg-earth { color: #8d6e63; font-weight: bold; }
-        .highlight-buff { color: #ba68c8; font-weight: bold; }
-
-        .portrait-gallery-module { background: rgba(15, 5, 20, 0.7); border: 1px solid rgba(255,255,255,0.05); border-left: 3px solid var(--accent-color); padding: 35px; margin-bottom: 40px; }
-        .carousel-container { position: relative; width: 100%; overflow: hidden; display: flex; align-items: center; }
-        .carousel-track { display: flex; gap: 15px; transition: transform 0.3s ease; }
-        .carousel-item { flex: 0 0 200px; height: 200px; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; }
-        .carousel-item img { width: 100%; height: 100%; object-fit: cover; }
-        .nav-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(15,5,20,0.9); border: 1px solid var(--accent-color); color: var(--accent-color); width: 40px; height: 40px; border-radius: 50%; cursor: pointer; z-index: 3; }
-        .prev { left: 10px; } .next { right: 10px; }
-
-        .back-link { display: block; text-align: center; margin-top: 60px; color: #666; text-decoration: none; padding: 20px; border-top: 1px solid rgba(255,255,255,0.1); text-transform: uppercase; letter-spacing: 2px;}
-        .back-link:hover { color: var(--accent-color); }
-
-        @media (max-width: 950px) {
-            .split-section { flex-direction: column; }
-            .section-image-container { flex: 1 1 100%; height: 500px; }
-            .skills-grid { grid-template-columns: 1fr; }
-            .advanced-stats { flex-direction: column; gap: 15px; }
+            --stat-hp:  #4CAF50;
+            --stat-atk: #f44336;
         }
     </style>
 </head>
@@ -159,106 +21,84 @@
 <div id="bg-image"></div>
 <div id="overlay"></div>
 
-<header>
-    <h1>Anastasia, The First Librarian</h1>
-    <div class="subtitle">Valkyrion Empire - Tier 5 Hero (Ruler)</div>
-</header>
+<global-navigation></global-navigation>
 
-<main>
-    <div class="intro-banner">
-        <img src="../../img/valkyrion_hero_anastasia_banner.png" alt="Anastasia Banner">
-    </div>
+<script type="application/json" id="unit-data">
+{
+  "name": "Anastasia, The First Librarian",
+  "faction": "Valkyrion",
+  "subtitle": "Valkyrion Empire | Tier 5 Hero (Ruler)",
+  "accent": "#ab47bc",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
 
-    <div class="split-section">
-        <div class="section-image-container">
-            <img src="../../img/valkyrion_hero_anastasia_combat.png" alt="Anastasia Combat Form">
-        </div>
-        <div class="section-text">
-            <h2>Architect of the Great Library</h2>
-            <p>A close confidante of the Founder, Anastasia is the architect of the Great Library of Padineon and the creator of the all-female Order of Librarians, established to safeguard the empire's accumulated knowledge. An exceptionally gifted scholar, she authored the foundational texts still utilized by every imperial academy of magic to this day.</p>
-            <p>However, profoundly inspired by the Founder, her studies extended far beyond arcane theory and into physical martial arts. This unique synthesis of academic mastery and rigorous physical discipline makes her an anomaly among scholars. She is not merely a supreme spellcaster, but a highly effective general and a formidable close-quarters combatant capable of shattering enemy lines both mentally and physically.</p>
-        </div>
-    </div>
+  "breadcrumbs": [
+    { "href": "../../index.html",              "label": "Home" },
+    { "href": "../../factions/index.html",     "label": "Factions" },
+    { "href": "../../factions/valkyrion.html", "label": "Valkyrion Empire" },
+    { "href": "../../factions/valkyrion_roster.html", "label": "Units" },
+    { "href": "valkyrion_extra.html",           "label": "Extra Roster" },
+    {                                          "label": "Anastasia" }
+  ],
 
-    <div class="tactical-module">
-        <div class="tactical-header">
-            <h2 style="border:none; text-align:center">Tactical Interface</h2>
-        </div>
+  "combat": "../../img/valkyrion_hero_anastasia_combat.png",
 
-        <div class="stats-box">
-            <div class="stat-item"><span class="stat-label">Classification</span><span class="stat-value hero">Tier 5 Ruler</span></div>
-            <div class="stat-item"><span class="stat-label">Hit Points</span><span class="stat-value hp">900</span></div>
-            <div class="stat-item"><span class="stat-label">Attack</span><span class="stat-value atk">160</span></div>
-            <div class="stat-item"><span class="stat-label">Initiative</span><span class="stat-value">50</span></div>
-            
-            <div class="advanced-stats">
-                <div class="stat-item"><span class="stat-label">Immunities</span><span class="stat-value text-small">Mind</span></div>
-                <div class="stat-item"><span class="stat-label">Protection</span><span class="stat-value text-small">Fire, Wind, Air, Earth</span></div>
-            </div>
-        </div>
+  "bio": {
+    "title": "Architect of the Great Library",
+    "paragraphs": [
+      "A close confidante of the Founder, Anastasia is the architect of the Great Library of Padineon and the creator of the all-female Order of Librarians, established to safeguard the empire's accumulated knowledge.",
+      "An exceptionally gifted scholar, she authored the foundational texts still utilized by every imperial academy of magic to this day. Her studies extended far beyond arcane theory and into physical martial arts, making her a formidable close-quarters combatant capable of shattering enemy lines both mentally and physically."
+    ]
+  },
 
-        <div class="skills-grid">
-            <div class="skill-card">
-                <div class="skill-header">
-                    <img src="../../img/base_base_skill.png" alt="Prismatic Blast" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Prismatic Blast</h3><span class="skill-type base">Base Skill</span></div>
-                </div>
-                <div class="skill-desc">Unleashes a devastating convergence of elemental forces. Deals damage to all enemies in a targeted group equal to <strong>40% of Attack</strong> across four distinct vectors: <span class="dmg-fire">Fire</span>, <span class="dmg-wind">Wind</span>, <span class="dmg-air">Air</span>, and <span class="dmg-earth">Earth</span>.</div>
-            </div>
+  "stats": {
+    "tier":        "5 ★ Ruler",
+    "hp":          900,
+    "atk":         160,
+    "ini":         50,
+    "immunity":    "Mind",
+    "protection":  "Fire, Wind, Air, Earth",
+    "dodge":       "20% (Melee)"
+  },
 
-            <div class="skill-card">
-                <div class="skill-header">
-                    <img src="../../img/base_active_skill.png" alt="Kinetic Shield" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Kinetic Shield</h3><span class="skill-type active">Active Skill</span></div>
-                </div>
-                <div class="skill-desc">Conjures an arcane barrier that absorbs up to <strong>240 incoming damage</strong> (cannot be stacked with other shields). The shield actively converts kinetic impact into offensive power: for every <strong>10 damage absorbed</strong>, Anastasia gains a <span class="highlight-buff">+4 bonus to Attack</span>. All accumulated damage bonuses instantly disappear when the shield is destroyed.</div>
-            </div>
-
-            <div class="skill-card">
-                <div class="skill-header">
-                    <img src="../../img/base_passive_skill.png" alt="Master Scholar" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Master Scholar</h3><span class="skill-type passive">Passive</span></div>
-                </div>
-                <div class="skill-desc">Her profound understanding of combat geometry grants a <strong>20% innate chance to Dodge</strong> melee attacks. Once per turn, if an enemy skill deals non-Physical damage, Anastasia automatically casts a counterspell to <strong>nullify the non-Physical damage entirely</strong> (requires the ability to act). Her tactical oversight also increases the entire party's <strong>Accuracy and Dodge by 5%</strong>.</div>
-            </div>
-
-            <div class="skill-card ultimate">
-                <div class="skill-header">
-                    <img src="../../img/base_ultimate_skill.png" alt="Dimensional Portal" class="skill-icon" style="border-color:var(--ultimate-gold)">
-                    <div class="skill-title-container"><h3 class="skill-title" style="color:var(--ultimate-gold)">Dimensional Portal</h3><span class="skill-type ultimate">Ultimate</span></div>
-                </div>
-                <div class="skill-desc">Tears the fabric of reality to call upon apocalyptic reinforcements. Randomly summons either a Tier 5 <strong>Archangel</strong> or a Tier 5 <strong>Revenant</strong> directly into the battlefield.</div>
-            </div>
-        </div>
-    </div>
-
-    <div class="portrait-gallery-module">
-        <h2 style="border:none; text-align:center; font-size:1.5rem; margin-bottom: 20px;">Dossier Archives</h2>
-        <div class="carousel-container">
-            <button class="nav-arrow prev">&#8249;</button>
-            <div class="carousel-track">
-                <div class="carousel-item active"><img src="../../img/extra/valkyrion_hero_anastasia_gallery1.jpg" alt="Archive 1"></div>
-                <div class="carousel-item"><img src="../../img/extra/valkyrion_hero_anastasia_gallery2.jpg" alt="Archive 2"></div>
-                <div class="carousel-item"><img src="../../img/extra/valkyrion_hero_anastasia_gallery3.jpg" alt="Archive 3"></div>
-            </div>
-            <button class="nav-arrow next">&#8250;</button>
-        </div>
-    </div>
-
-    <a href="valkyrion_extra.html" class="back-link">← Return to Extra Roster</a>
-</main>
-
-<script>
-    const track = document.querySelector('.carousel-track');
-    let items = Array.from(track.children);
-    let currentIndex = 0;
-    const moveToItem = (index) => {
-        const itemWidth = items[0].getBoundingClientRect().width;
-        track.style.transform = `translateX(-${(itemWidth + 15) * index}px)`;
-        currentIndex = index;
+  "skills": [
+    {
+      "type": "base",
+      "name": "Prismatic Blast",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Deals damage to all enemies in a group equal to <span class=\"highlight\">40% Attack</span> across four vectors: <span class=\"dmg-fire\">Fire</span>, <span class=\"dmg-air\">Wind</span>, <span class=\"dmg-air\">Air</span>, and <span class=\"dmg-earth\">Earth</span>."
+    },
+    {
+      "type": "active",
+      "name": "Kinetic Shield",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Absorbs up to <span class=\"highlight\">240 damage</span>. For every 10 damage absorbed, Anastasia gains a <span class=\"highlight\">+4 Attack bonus</span> until the shield is destroyed."
+    },
+    {
+      "type": "passive",
+      "name": "Master Scholar",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "20% chance to Dodge melee. Once per turn, automatically <span class=\"highlight\">nullifies non-Physical damage</span> from an enemy skill. Party Accuracy and Dodge <span class=\"highlight\">+5%</span>."
+    },
+    {
+      "type": "ultimate",
+      "name": "Dimensional Portal",
+      "icon": "../../img/base_ultimate_skill.png",
+      "desc": "Tears reality to call reinforcements. Randomly summons a Tier 5 <span class=\"highlight\">Archangel</span> or <span class=\"highlight\">Revenant</span> to the battlefield."
     }
-    document.querySelector('.next').addEventListener('click', () => currentIndex < items.length - 1 ? moveToItem(currentIndex + 1) : moveToItem(0));
-    document.querySelector('.prev').addEventListener('click', () => currentIndex > 0 ? moveToItem(currentIndex - 1) : moveToItem(items.length - 1));
+  ],
+
+  "gallery": [
+    "../../img/extra/valkyrion_hero_anastasia_gallery1.jpg",
+    "../../img/extra/valkyrion_hero_anastasia_gallery2.jpg",
+    "../../img/extra/valkyrion_hero_anastasia_gallery3.jpg"
+  ],
+
+  "backLink": {
+    "href":  "valkyrion_extra.html",
+    "label": "Return to Extra Roster"
+  }
+}
 </script>
+
 </body>
 </html>
