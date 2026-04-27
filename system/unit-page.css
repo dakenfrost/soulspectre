@@ -1,7 +1,5 @@
 /* ============================================================
-   SOULSPECTRE – Unit Pages | Core Stylesheet
-   Layout: Framed Split (Portrait Left, Content Right)
-   Path: ../assets/frames/
+   SOULSPECTRE – Unit Pages | Core Stylesheet (STABLE ROLLBACK)
    ============================================================ */
 
 :root {
@@ -24,7 +22,6 @@ body {
     flex-direction: column;
     align-items: center;
     background-color: #050505;
-    overflow-x: hidden;
 }
 
 #bg-image {
@@ -39,7 +36,37 @@ body {
     z-index: -1;
 }
 
-/* ── Breadcrumbs & Header ─────────────────────────────────────────── */
+/* ── Navigation (RIPRISTINATO) ─────────────────────────────────────── */
+.global-nav {
+    position: fixed; top: 0; left: 0; width: 100%; height: 60px;
+    background: var(--nav-bg); border-bottom: 1px solid rgba(255,255,255,0.1);
+    display: flex; align-items: center; padding: 0 20px; z-index: 1000;
+    box-sizing: border-box; backdrop-filter: blur(5px);
+}
+
+.menu-toggle { background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; margin-right: 20px; transition: color 0.3s; }
+.menu-toggle:hover { color: var(--accent-color); }
+.nav-logo-container { height: 40px; display: flex; align-items: center; }
+.nav-logo-container img { height: 100%; object-fit: contain; }
+
+/* ── Sidebar (RIPRISTINATO) ────────────────────────────────────────── */
+.sidebar {
+    position: fixed; top: 0; left: -320px; width: 300px; height: 100vh;
+    background: rgba(10, 10, 15, 0.98); border-right: 1px solid rgba(255,255,255,0.05);
+    z-index: 1001; transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex; flex-direction: column; padding: 80px 0 20px 0;
+    box-shadow: 20px 0 50px rgba(0,0,0,0.8); overflow-y: auto;
+}
+.sidebar.active { left: 0; }
+
+.sidebar-overlay {
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.7); z-index: 1000; opacity: 0; visibility: hidden;
+    transition: 0.3s; backdrop-filter: blur(2px);
+}
+.sidebar-overlay.active { opacity: 1; visibility: visible; }
+
+/* ── Breadcrumbs ──────────────────────────────────────────────────── */
 .breadcrumbs {
     width: 100%; max-width: 1200px; margin: 20px auto 0 auto; padding: 0 20px;
     font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: #666;
@@ -49,96 +76,67 @@ body {
 .breadcrumbs a:hover { color: #fff; }
 .breadcrumbs span { color: var(--accent-color); font-weight: bold; }
 
+/* ── Header ───────────────────────────────────────────────────────── */
 header { padding: 30px 20px; text-align: center; width: 100%; box-sizing: border-box; }
 h1 { letter-spacing: 5px; font-size: 2.8rem; margin: 0; color: #fff; text-transform: uppercase; text-shadow: 0 0 15px var(--accent-glow); }
 .classification { color: var(--accent-color); font-size: 1.1rem; letter-spacing: 2px; margin-top: 5px; text-transform: uppercase; font-weight: bold; }
 
-/* ── Main Layout ─────────────────────────────────────────────────── */
+/* ── Main ─────────────────────────────────────────────────────────── */
 main { max-width: 1400px; padding: 0 20px 40px 20px; width: 95%; box-sizing: border-box; }
 
-/* ── Hero Card: Split Layout ──────────────────────────────────────── */
+/* ── Hero Card ────────────────────────────────────────────────────── */
 .hero-card {
-    display: flex; 
-    gap: 0; 
-    margin-bottom: 40px; 
-    background: var(--panel-bg);
-    backdrop-filter: blur(10px); 
-    border: 1px solid rgba(255,255,255,0.05);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.8); 
-    border-radius: 4px; 
-    overflow: hidden;
+    display: flex; gap: 0; margin-bottom: 40px; background: var(--panel-bg);
+    backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.05);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8); border-radius: 4px; overflow: hidden;
     min-height: 550px;
 }
-
-/* ── Logica Cornici (Percorso Root: ../assets/frames/) ── */
-.combat-frame { flex: 0 0 35%; position: relative; max-width: 500px; background: #000; min-width: 350px; }
-.portrait-decorator { position: absolute; top: -2px; left: -2px; right: -2px; bottom: -2px; pointer-events: none; z-index: 5; background-size: 100% 100%; }
-
-.frame-valkyrion .portrait-decorator { 
-    border-right: 3px solid var(--accent-color);
-    background-image: url('../assets/frames/valk_frame_overlay.png'); 
-}
-
-.frame-forgotten .portrait-decorator { 
-    border-right: 3px solid #81C784; 
-    background-image: url('../assets/frames/forgotten_frame_overlay.png'); 
-}
-
-.frame-generic .portrait-decorator { 
-    border-right: 2px solid rgba(255,255,255,0.1); 
-}
-
-.combat-container { position: relative; width: 100%; height: 100%; overflow: hidden; }
+.combat-container { flex: 0 0 35%; position: relative; border-right: 2px solid var(--accent-color); max-width: 500px; }
 .combat-container img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
 .combat-container img:first-child { position: relative; }
 .combat-anim { animation: crossfade-combat 8s infinite; }
 @keyframes crossfade-combat { 0%,40%{opacity:0} 50%,90%{opacity:1} 100%{opacity:0} }
 
-/* ── Hero Content ── */
-.hero-content { flex: 1; padding: 40px; display: flex; flex-direction: column; justify-content: flex-start; }
+/* ── Content Area ── */
+.hero-content { flex: 1; padding: 40px; display: flex; flex-direction: column; }
 .hero-bio { margin-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px; }
-.hero-bio h2 { color: #fff; margin-top: 0; text-transform: uppercase; letter-spacing: 2px; font-size: 1.5rem; }
+.hero-bio h2 { color: #fff; margin-top: 0; text-transform: uppercase; letter-spacing: 2px; }
 
 .quote-box { border-left: 3px solid var(--accent-color); padding: 15px 20px; margin: 20px 0; background: rgba(255,255,255,0.03); border-radius: 0 4px 4px 0; }
 .quote-text { color: var(--accent-color); font-size: 1.1rem; font-style: italic; margin: 0; }
+.hero-bio p { color: #bbb; margin-bottom: 15px; }
 
+/* ── Stats ────────────────────────────────────────────────────────── */
 .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 15px; }
-.stat-item { background: rgba(255,255,255,0.03); padding: 15px; border-radius: 2px; border: 1px solid rgba(255,255,255,0.05); text-align: center; }
-.stat-label { display: block; color: #888; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
-.stat-value { display: block; color: #fff; font-size: 1.5rem; font-weight: bold; font-family: monospace; }
+.stat-item { background: rgba(255,255,255,0.03); padding: 12px; border-radius: 2px; border: 1px solid rgba(255,255,255,0.05); }
+.stat-label { display: block; color: #666; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
+.stat-value { display: block; color: #fff; font-size: 1.3rem; font-weight: bold; font-family: monospace; }
 .stat-value.hp { color: var(--stat-hp); }
 .stat-value.atk { color: var(--stat-atk); }
 .stat-value.tier { color: var(--accent-color); }
-.stat-value.dodge { color: #4dd0e1; }
 
-/* ── Skills & Tags ── */
-.skills-section-title { text-transform: uppercase; letter-spacing: 3px; color: #555; border-bottom: 1px solid #222; padding-bottom: 10px; margin: 40px 0 20px; text-align: center; }
+/* ── Skills & Tags ────────────────────────────────────────────────── */
+.skills-section-title { text-transform: uppercase; letter-spacing: 3px; color: #555; border-bottom: 1px solid #222; padding-bottom: 10px; margin: 40px 0 20px; }
 .skills-list { display: flex; flex-direction: column; gap: 15px; }
 .skill-item { display: flex; align-items: center; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-left: 4px solid #333; padding: 20px; transition: 0.3s; }
 .skill-item:hover { background: rgba(255,255,255,0.04); border-left-color: var(--accent-color); transform: translateX(10px); }
-.skill-icon { width: 70px; height: 70px; margin-right: 25px; flex-shrink: 0; border: 1px solid rgba(255,255,255,0.1); background: #000; padding: 3px; box-sizing: border-box; }
+
+.skill-icon { width: 70px; height: 70px; margin-right: 25px; flex-shrink: 0; border: 1px solid rgba(255,255,255,0.1); background: #000; padding: 3px; }
+.skill-info { flex: 1; }
+.skill-header { display: flex; align-items: center; gap: 15px; margin-bottom: 5px; }
 .skill-name { color: #fff; font-size: 1.2rem; text-transform: uppercase; margin: 0; }
 .skill-tag { font-size: 0.7rem; color: #777; border: 1px solid #444; padding: 2px 6px; text-transform: uppercase; }
 
 .dmg-phys { color: #ff8a65; font-weight: bold; }
 .dmg-arcane { color: #ce93d8; font-weight: bold; }
-.dmg-air { color: #80deea; font-weight: bold; }
-.buff-stance { color: #4dd0e1; font-weight: bold; }
-.buff-energy { color: #ffeb3b; font-weight: bold; }
-.highlight-armor { color: #ffb74d; font-weight: bold; }
 
 /* ── Gallery ── */
 .portrait-gallery-module { background: rgba(10,18,12,0.7); border-left: 3px solid var(--accent-color); padding: 35px; margin-top: 50px; }
 .carousel-track { display: flex; gap: 15px; transition: transform 0.35s ease; }
 .carousel-item { flex: 0 0 200px; height: 260px; border: 1px solid rgba(255,255,255,0.1); overflow: hidden; background: #000; cursor: zoom-in; }
 .carousel-item img { width: 100%; height: 100%; object-fit: cover; }
-.nav-btn { background: #000; border: 1px solid var(--accent-color); color: var(--accent-color); width: 44px; height: 44px; border-radius: 50%; cursor: pointer; margin-top: 20px; transition: 0.2s; }
-.nav-btn:hover { background: var(--accent-color); color: #000; }
 
-.back-link { display: block; text-align: center; margin-top: 40px; color: #555; text-decoration: none; padding: 25px; border-top: 1px solid rgba(255,255,255,0.08); transition: 0.3s; }
-.back-link:hover { color: var(--accent-color); }
-
-/* ── Lightbox ── */
+/* ── Lightbox (RIPRISTINATO E CORRETTO) ── */
 .lightbox-overlay {
     position: fixed; inset: 0; background: rgba(0,0,0,0.92);
     z-index: 2000; display: flex; align-items: center; justify-content: center;
@@ -149,11 +147,11 @@ main { max-width: 1400px; padding: 0 20px 40px 20px; width: 95%; box-sizing: bor
 .lightbox-close {
     position: absolute; top: 20px; right: 28px; background: none; border: none;
     color: #fff; font-size: 3rem; cursor: pointer; line-height: 1;
-    opacity: 0.7; transition: 0.2s;
+    opacity: 0.7; transition: opacity 0.2s;
 }
 .lightbox-close:hover { opacity: 1; color: var(--accent-color); }
 
 @media (max-width: 950px) {
     .hero-card { flex-direction: column; }
-    .combat-frame { flex: 0 0 450px; max-width: 100%; min-width: 100%; border-right: none; border-bottom: 3px solid var(--accent-color); }
+    .combat-container { flex: 0 0 450px; max-width: 100%; border-right: none; border-bottom: 3px solid var(--accent-color); }
 }
