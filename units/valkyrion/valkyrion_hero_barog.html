@@ -32,21 +32,30 @@
     {                                          "label": "Barog" }
   ],
 
-  "combat": "../../img/valkyrion_barog_combat.png",
+  "combat": [
+    "../../img/valkyrion_barog_combat.png"
+  ],
 
   "bio": {
     "title": "The Unrelenting Purge",
     "quote": "Guilty or innocent, it matters not. The ritual must be completed. The impurity must be purged by iron and silence.",
     "paragraphs": [
-      "One of the most feared veteran witch hunters in the Valkyrion territories, Barog is a man who long ago discarded the luxury of doubt. He scours the provinces, maintaining ideological purity where diplomacy fails."
+      "Veterano tra i più temuti cacciatori dell'Inquisizione, Barog incarna la dottrina del Valkyrion nella sua forma più spietata. Non è semplicemente un soldato, ma uno strumento di conformità ideologica che ha barattato la propria empatia con una devozione ferrea al protocollo del silenzio. Dove le legioni imperiali portano ordine con lo scudo, Barog porta la purificazione con il ferro e l'esecuzione sommaria.",
+      "La sua fama è legata alla capacità di operare in totale isolamento nelle province più corrotte, scovando focolai di eresia arcana laddove persino i magistrati locali hanno fallito. Si dice che la sua mente sia stata talmente temprata dai rituali di resistenza mentale da essere diventata un deserto inaccessibile per qualsiasi manipolatore magico.",
+      "In combattimento, Barog non cerca la gloria, ma l'efficienza. Ogni colpo è calcolato per massimizzare l'agonia di chi ha osato sfidare le leggi dell'Impero. La sua presenza sul campo serve da monito: per Barog, la pietà è solo un'inefficienza logica che permette al cancro dell'impurità di diffondersi."
     ]
   },
 
   "stats": {
-    "hp":          160,
-    "atk":         50,
-    "ini":         50,
-    "immunity":    "Mind"
+    "tier": "Tier 2 Hero",
+    "hp": 160,
+    "atk": 50,
+    "ini": 50,
+    "special": {
+      "label": "Immunity",
+      "value": "Mind",
+      "class": "immunity"
+    }
   },
 
   "skills": [
@@ -54,19 +63,19 @@
       "type": "base",
       "name": "Slash",
       "icon": "../../img/base_base_skill.png",
-      "desc": "Deals <span class=\"highlight\">standard physical damage</span> to a single enemy in melee range."
+      "desc": "Deals <span class=\"dmg-phys\">Physical</span> damage to one enemy (melee)."
     },
     {
       "type": "active",
       "name": "Execution",
       "icon": "../../img/base_active_skill.png",
-      "desc": "Deals physical damage to an enemy. For each <span class=\"highlight\">missing 1% of the target's HP</span>, increase the damage by <span class=\"highlight\">1%</span>."
+      "desc": "An uncompromising finishing strike. Deals <span class=\"dmg-phys\">Physical</span> damage to an enemy. For each <strong>missing 1% of the target's HP</strong>, the damage output is increased by <strong>1%</strong>."
     },
     {
       "type": "passive",
       "name": "Blind Justice",
       "icon": "../../img/base_passive_skill.png",
-      "desc": "His hatred for the arcane is absolute. <span class=\"highlight\">Caster classes</span> take an additional <span class=\"highlight\">30% damage</span> from his attacks."
+      "desc": "His hatred for the arcane is absolute. Targets classified as <strong>Caster units</strong> take an additional <span class=\"highlight\">30% damage</span> from all of Barog's attacks."
     }
   ],
 
