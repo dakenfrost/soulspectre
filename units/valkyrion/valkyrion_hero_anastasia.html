@@ -3,32 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SOULSPECTRE | Anastasia, The First Librarian</title>
+    <title>SOULSPECTRE | Anastasia</title>
     
     <link rel="stylesheet" href="../../system/unit-page.css">
-    <script src="../../system/navigation.js" defer></script>
     <script src="../../system/unit-renderer.js" defer></script>
-
-    <style>
-        :root {
-            --stat-hp:  #4CAF50;
-            --stat-atk: #f44336;
-        }
-    </style>
 </head>
 <body>
 
 <div id="bg-image"></div>
 <div id="overlay"></div>
 
-<global-navigation></global-navigation>
-
 <script type="application/json" id="unit-data">
 {
   "name": "Anastasia, The First Librarian",
   "faction": "Valkyrion",
-  "subtitle": "Valkyrion Empire | Tier 5 Hero (Ruler)",
-  "accent": "#ab47bc",
+  "subtitle": "Valkyrion Empire | Tier 6 Ruler",
+  "accent": "#e53935",
   "bgImage": "../../img/valkyrion_bg.jpeg",
 
   "breadcrumbs": [
@@ -45,19 +35,18 @@
   "bio": {
     "title": "Architect of the Great Library",
     "paragraphs": [
-      "A close confidante of the Founder, Anastasia is the architect of the Great Library of Padineon and the creator of the all-female Order of Librarians, established to safeguard the empire's accumulated knowledge.",
-      "An exceptionally gifted scholar, she authored the foundational texts still utilized by every imperial academy of magic to this day. Her studies extended far beyond arcane theory and into physical martial arts, making her a formidable close-quarters combatant capable of shattering enemy lines both mentally and physically."
+      "Architect of the Great Library of Padineon. As the founder of her Order and former confidante to the Founder, she remains a pillar of imperial history.",
+      "An exceptionally gifted scholar, she authored the foundational texts still utilized by every imperial academy of magic to this day. Her studies extended far beyond arcane theory and into physical martial arts, making her a formidable close-quarters combatant capable of shattering enemy lines."
     ]
   },
 
   "stats": {
-    "tier":        "5 ★ Ruler",
+    "tier":        "6 ★ RULER",
     "hp":          900,
     "atk":         160,
     "ini":         50,
     "immunity":    "Mind",
-    "protection":  "Fire, Wind, Air, Earth",
-    "dodge":       "20% (Melee)"
+    "protection":  "Fire, Wind, Air, Earth"
   },
 
   "skills": [
@@ -77,7 +66,7 @@
       "type": "passive",
       "name": "Master Scholar",
       "icon": "../../img/base_passive_skill.png",
-      "desc": "20% chance to Dodge melee. Once per turn, automatically <span class=\"highlight\">nullifies non-Physical damage</span> from an enemy skill. Party Accuracy and Dodge <span class=\"highlight\">+5%</span>."
+      "desc": "20% innate chance to Dodge melee attacks. Once per turn, automatically <span class=\"highlight\">nullifies non-Physical damage</span> from an enemy skill. Party Accuracy and Dodge <span class=\"highlight\">+5%</span>."
     },
     {
       "type": "ultimate",
