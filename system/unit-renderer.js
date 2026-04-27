@@ -23,46 +23,22 @@
 
     function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
 
-    /* ── 2. Sidebar & Menu (LOGICA INTEGRATA) ── */
-    var navHtml = 
-        '<nav class="global-nav">' +
-            '<button class="menu-toggle" id="menuToggle">☰</button>' +
-            '<div class="nav-logo-container"><img src="../../img/soul_spectre_logo.png"></div>' +
-        '</nav>' +
-        '<div class="sidebar-overlay" id="sidebarOverlay"></div>' +
-        '<aside class="sidebar" id="sidebar">' +
-            '<button class="close-sidebar" id="closeSidebar">&times;</button>' +
-            '<a href="../../index.html" class="direct-link">Dashboard</a>' +
-            '<button class="accordion-btn" id="factionsBtn">Factions <span class="chevron">▼</span></button>' +
-            '<div class="accordion-content" id="factionsContent">' +
-                '<a href="../../factions/valkyrion.html" class="sub-link">Valkyrion Empire</a>' +
-                '<a href="#" class="sub-link locked">The Forgotten</a>' +
-            '</div>' +
-            '<a href="https://civitai.com" class="direct-link" target="_blank">Civitai Profile</a>' +
-        '</aside>';
-    
-    var navContainer = document.createElement('div');
-    navContainer.innerHTML = navHtml;
-    document.body.insertBefore(navContainer, document.body.firstChild);
+    /* ── 2. Global Navigation ( prende lo script navigation.js e cre la sidebar ) ── */
+    var _selfSrc = document.currentScript ? document.currentScript.src : '';
+    var _navSrc  = _selfSrc.replace(/unit-renderer\.js([^/]*)$/, 'navigation.js');
+
+    // Inject the custom element first — it will be upgraded once the script loads
+    inject('<global-navigation></global-navigation>');
+
+    var _navScript = document.createElement('script');
+    _navScript.src = _navSrc;
+    document.head.appendChild(_navScript);
 
     var sidebar = document.getElementById('sidebar');
     var overlay = document.getElementById('sidebarOverlay');
     function toggleMenu() { sidebar.classList.toggle('active'); overlay.classList.toggle('active'); }
-    
-    document.getElementById('menuToggle').onclick = toggleMenu;
-    document.getElementById('closeSidebar').onclick = toggleMenu;
-    overlay.onclick = toggleMenu;
 
-    document.getElementById('factionsBtn').onclick = function() {
-        this.classList.toggle('active');
-        var content = document.getElementById('factionsContent');
-        content.style.maxHeight = content.style.maxHeight ? null : content.scrollHeight + "px";
-    };
-
-    /* ── 3. Rendering Layout (Hero Card + Stats) ── */
-    var main = document.createElement('main');
-
-    // Breadcrumbs
+    // 2.5 NavBar Breadcrumbs (se specificati nel JSON, renderizza i breadcrumbs sotto la navbar)
     if (data.breadcrumbs) {
         var crumbs = data.breadcrumbs.map(function(bc, i) {
             return (i === data.breadcrumbs.length - 1) ? '<span>'+esc(bc.label)+'</span>' : '<a href="'+esc(bc.href)+'">'+esc(bc.label)+'</a>';
@@ -72,6 +48,11 @@
         bcDiv.innerHTML = crumbs;
         document.body.appendChild(bcDiv);
     }
+    
+
+    /* ── 3. Rendering Layout (Hero Card + Stats) ── */
+    var main = document.createElement('main');
+
 
     // Header
     var header = document.createElement('header');
@@ -81,17 +62,33 @@
     // Hero Card
     var bioHtml = '<div class="hero-bio"><h2>Biography</h2>' + (data.bio.paragraphs || []).map(function(p){ return '<p>'+p+'</p>'; }).join('') + '</div>';
     var statsHtml = '';
-    var statKeys = [['tier','Tier','tier'],['hp','Hit Points','hp'],['atk','Attack','atk'],['ini','Initiative',''],['immunity','Immunity','special'],['protection','Protection','special']];
+    // solo le keys che recupera per mettere le statistiche, se non c'è la key non viene mostrata
+    var statKeys = [        
+        ['tier',      'Tier',        'tier'],
+        ['hp',        'Hit Points',  'hp'],
+        ['atk',       'Attack',      'atk'],
+        ['ini',       'Initiative',  ''],
+        ['armor',     'Armor',       ''],
+        ['res',       'Resistance',  ''],
+        ['size',      'Size',        ''],
+        ['immunity',  'Immunity',    'special'],
+        ['crit_chance','Crit Chance', ''],
+        ['dodge',     'Dodge',       ''],
+        ['protection','Protection',  '']
+    ]; 
     statKeys.forEach(function(k) {
         if (data.stats[k[0]]) statsHtml += '<div class="stat-item"><span class="stat-label">'+k[1]+'</span><span class="stat-value '+k[2]+'">'+data.stats[k[0]]+'</span></div>';
     });
 
+    // Combat Images (può essere un array o una singola stringa)
     var combatImgs = Array.isArray(data.combat) ? data.combat : [data.combat];
+    // Il primo è statico, gli altri animati (se presenti)
     var combatHtml = combatImgs.map(function(src, i){ return '<img src="'+esc(src)+'" '+(i>0?'class="combat-anim"':'')+'>'; }).join('');
 
     main.innerHTML = '<div class="hero-card"><div class="combat-container">' + combatHtml + '</div><div class="hero-content">' + bioHtml + '<div class="stats-row">' + statsHtml + '</div></div></div>';
 
     // Skills
+    // Se ci sono, renderizza le skill. Ogni skill ha un tipo (base, active, passive) che determina lo stile.
     if (data.skills) {
         var skHtml = data.skills.map(function(sk) {
             var type = (sk.type || 'base').toLowerCase();
@@ -102,6 +99,7 @@
     }
 
     // Gallery
+    // Se ci sono immagini aggiuntive, crea una sezione galleria con carosello. Ogni immagine è cliccabile per ingrandire (lightbox).
     if (data.gallery) {
         var items = data.gallery.map(function(src){ return '<div class="carousel-item"><img src="'+esc(src)+'"></div>'; }).join('');
         main.innerHTML += '<div class="portrait-gallery-module"><h2 class="gallery-header">Gallery</h2>' +
@@ -109,6 +107,7 @@
                           '<div class="carousel-nav"><button class="nav-btn" id="prevBtn">&#8592;</button><button class="nav-btn" id="nextBtn">&#8594;</button></div></div>';
     }
 
+    // link infondo per tornare alla pagina precedente, se specificato nel JSON
     if (data.backLink) main.innerHTML += '<a href="'+esc(data.backLink.href)+'" class="back-link">&#8592; '+esc(data.backLink.label)+'</a>';
     document.body.appendChild(main);
 
@@ -128,6 +127,13 @@
     function closeLB() { lb.classList.remove('active'); }
     document.getElementById('lbClose').onclick = closeLB;
     lb.onclick = function(e) { if(e.target === lb) closeLB(); };
+
+    // Funzione di utilità per iniettare HTML (usata per la navbar)
+    function inject(html) {
+        var wrap = document.createElement('div');
+        wrap.innerHTML = html;
+        while (wrap.firstChild) document.body.appendChild(wrap.firstChild);
+    }
 
     /* Carosello */
     var track = document.getElementById('carouselTrack'), current = 0;
