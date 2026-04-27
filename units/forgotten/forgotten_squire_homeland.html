@@ -4,83 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOULSPECTRE | Skyguard</title>
-    <link rel="stylesheet" href="../../system/forgotten_units.css">
-    <style>:root{--accent:#81c784;}</style>
+    <link rel="stylesheet" href="../../system/unit-page.css">
 </head>
 <body>
 <div id="bg-image"></div>
 <div id="overlay"></div>
-<header>
-    <h1>Skyguard</h1>
-    <div class="subtitle">Tier 3 , Defender Path</div>
-</header>
-<main>
-    <div class="intro-banner"><img src="../../img/forgotten/arborei/forgotten_squire_homeland_banner.png" alt="Skyguard Banner"></div>
-    <div class="split-section">
-        <div class="section-image-container">
-            <img src="../../img/forgotten/arborei/forgotten_squire_homeland_f_combat.jpg" alt="Skyguard combat F">
-            <img src="../../img/forgotten/arborei/forgotten_squire_homeland_m_combat.jpg" alt="Skyguard combat M" class="combat-anim">
-        </div>
-        <div class="section-text">
-            <h2>Incorruptible</h2>
-            <p>They remember the skies. Not the memory of a battlefield , the memory of <strong>freedom.</strong> The Skyguard still has vestiges of their arboreal form, but they have shed it the way a tree sheds bark: not in loss, but in growth. What remains is a warrior who moves faster, fights harder, and feels the wind through the hollows of what were once branches.</p>
-            <p>The description is always the same: <em>"incorruptible."</em> The Council of Whispers uses this word not in the moralizing sense, but the literal one. Their soul has achieved a quality of structural integrity that resists magical corruption, terror, and manipulation. Attempts to turn a Squire against the Empire have a <strong>reliably poor success rate.</strong></p>
-            <p>They have also developed something unique among the Defender path: the ability to project their protective instinct outward. Assorbimento dell'anima is not merely a defensive technique , it is the Squire's will to suffer on behalf of others made into physical mechanics, into statistics, into armor ratings. The thing they died protecting, they now protect differently.</p>
-        </div>
-    </div>
-    <div class="tactical-module">
-        <div class="tactical-header"><h2>Tactical Data</h2></div>
-        <div class="stats-box">
-            <div class="stat-item"><span class="stat-label">Tier</span><span class="stat-value tier">3</span></div>
-            <div class="stat-item"><span class="stat-label">HP</span><span class="stat-value hp">200</span></div>
-            <div class="stat-item"><span class="stat-label">ATK</span><span class="stat-value atk">75</span></div>
-            <div class="stat-item"><span class="stat-label">INI</span><span class="stat-value">45</span></div>
-        </div>
-        <div class="skills-grid">
-            <div class="skill-card sk-base">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_colpo_scudo.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Shield Bash</h3><span class="skill-type base">Base Attack</span></div>
-                </div>
-                <div class="skill-desc">Deals <span class="dmg-phys">Physical</span> melee damage to one enemy. Reduces target's next attack accuracy by 15%.</div>
-            </div>
-            <div class="skill-card sk-active">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_materializzazione.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Materialization</h3><span class="skill-type active">Active Skill</span></div>
-                </div>
-                <div class="skill-desc">For 3 turns: -10% Initiative but +30% Armor  from the <span class="dmg-phys"> Attack</span>. Reflects 10% of <span class="dmg-phys">Physical</span> damage received back to attacker.</div>
-            </div>
-            <div class="skill-card sk-passive">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_assorbimento_anima.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Soul Absorption</h3><span class="skill-type passive">Passive</span></div>
-                </div>
-                <div class="skill-desc">All allies gain +15% Armor  from the <span class="dmg-phys"> Attack</span>. 20% of damage directed at non-targeted allies in the same row is redirected to this unit.</div>
-            </div>
-        </div>
-    </div>
-    <div class="portrait-gallery-module">
-        <h2 class="gallery-header">Gallery</h2>
-        <div class="carousel-wrap">
-            <div class="carousel-track" id="carouselTrack">
-                <div class="carousel-item"><img src="../../img/forgotten/arborei/forgotten_squire_homeland_portrait.jpg" alt="Squire Portrait"></div>
-                <div class="carousel-item"><img src="../../img/forgotten/arborei/forgotten_squire_homeland_extra_1.jpg" alt="Squire Extra"></div>
-            </div>
-        </div>
-        <div class="carousel-nav">
-            <button class="nav-btn" id="prevBtn">&#8592;</button>
-            <button class="nav-btn" id="nextBtn">&#8594;</button>
-        </div>
-    </div>
-    <a href="forgotten_order_arborei.html" class="back-link">← Return to Arboreal Fighters</a>
-</main>
-<script>
-    const track=document.getElementById('carouselTrack');const items=track.querySelectorAll('.carousel-item');let current=0;
-    function update(){track.style.transform=`translateX(-${current*(items[0].offsetWidth+15)}px)`;}
-    document.getElementById('nextBtn').addEventListener('click',()=>{if(current<items.length-1){current++;update();}});
-    document.getElementById('prevBtn').addEventListener('click',()=>{if(current>0){current--;update();}});
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Skyguard",
+  "subtitle": "Defender Path | Tier 3",
+  "accent": "#81c784",
+  "bgImage": "../../img/forgotten/forgotten_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",              "label": "Home" },
+    { "href": "../../factions/index.html",     "label": "Factions" },
+    { "href": "../../factions/forgotten.html", "label": "The Forgotten" },
+    { "href": "forgotten_order_arborei.html",  "label": "Arboreal Fighters" },
+    {                                          "label": "Skyguard" }
+  ],
+
+  "combat": ["../../img/forgotten/arborei/forgotten_squire_homeland_f_combat.jpg", "../../img/forgotten/arborei/forgotten_squire_homeland_m_combat.jpg"],
+
+  "bio": {
+    "title": "Incorruptible",
+    "paragraphs": [
+      "They remember the skies. Not the memory of a battlefield , the memory of <strong>freedom.</strong> The Skyguard still has vestiges of their arboreal form, but they have shed it the way a tree sheds bark: not in loss, but in growth. What remains is a warrior who moves faster, fights harder, and feels the wind through the hollows of what were once branches.",
+      "The description is always the same: <em>&ldquo;incorruptible.&rdquo;</em> The Council of Whispers uses this word not in the moralizing sense, but the literal one. Their soul has achieved a quality of structural integrity that resists magical corruption, terror, and manipulation. Attempts to turn a Squire against the Empire have a <strong>reliably poor success rate.</strong>",
+      "They have also developed something unique among the Defender path: the ability to project their protective instinct outward. Assorbimento dell'anima is not merely a defensive technique , it is the Squire's will to suffer on behalf of others made into physical mechanics, into statistics, into armor ratings. The thing they died protecting, they now protect differently."
+    ]
+  },
+
+  "stats": {
+    "tier": 3,
+    "hp":   200,
+    "atk":  75,
+    "ini":  45
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Shield Bash",
+      "icon": "../../img/forgotten/skills/forgotten_skill_colpo_scudo.png",
+      "desc": "Deals <span class=\"dmg-phys\">Physical</span> melee damage to one enemy. Reduces target's next attack accuracy by 15%."
+    },
+    {
+      "type": "active",
+      "name": "Materialization",
+      "icon": "../../img/forgotten/skills/forgotten_skill_materializzazione.png",
+      "desc": "For 3 turns: -10% Initiative but +30% Armor from the <span class=\"dmg-phys\"> Attack</span>. Reflects 10% of <span class=\"dmg-phys\">Physical</span> damage received back to attacker."
+    },
+    {
+      "type": "passive",
+      "name": "Soul Absorption",
+      "icon": "../../img/forgotten/skills/forgotten_skill_assorbimento_anima.png",
+      "desc": "All allies gain +15% Armor from the <span class=\"dmg-phys\"> Attack</span>. 20% of damage directed at non-targeted allies in the same row is redirected to this unit."
+    }
+  ],
+
+  "gallery": [
+    "../../img/forgotten/arborei/forgotten_squire_homeland_portrait.jpg",
+    "../../img/forgotten/arborei/forgotten_squire_homeland_extra_1.jpg"
+  ],
+
+  "backLink": {
+    "href":  "forgotten_order_arborei.html",
+    "label": "Return to Arboreal Fighters"
+  }
+}
 </script>
-<script src="../../system/unit-banner.js"></script>
+
+<script src="../../system/unit-renderer.js"></script>
 </body>
 </html>

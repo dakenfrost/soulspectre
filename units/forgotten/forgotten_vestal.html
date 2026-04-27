@@ -4,83 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOULSPECTRE | Vestal</title>
-    <link rel="stylesheet" href="../../system/forgotten_units.css">
-    <style>:root{--accent:#81c784;}</style>
+    <link rel="stylesheet" href="../../system/unit-page.css">
 </head>
 <body>
 <div id="bg-image"></div>
 <div id="overlay"></div>
-<header>
-    <h1>Vestal</h1>
-    <div class="subtitle">Tier 3 , Spirit Path</div>
-</header>
-<main>
-    <div class="intro-banner"><img src="../../img/forgotten/linfa/forgotten_vestal_banner.png" alt="Vestal Banner"></div>
-    <div class="split-section">
-        <div class="section-image-container">
-            <img src="../../img/forgotten/linfa/forgotten_vestal_f_combat.jpg" alt="Vestal combat F">
-            <img src="../../img/forgotten/linfa/forgotten_vestal_m_combat.jpg" alt="Vestal combat M" class="combat-anim">
-        </div>
-        <div class="section-text">
-            <h2>Untouchable By Design</h2>
-            <p>A Vestal is not trained to be clean , they are trained to maintain the boundary between the clean and the contaminated. Their entire existence is the management of that border in a world where the border is increasingly difficult to find. Poison, disease, curse, madness , the Vestal identifies each and removes it with the same expression a surgeon wears: <strong>focused, unsurprised, unremarkable.</strong></p>
-            <p>They are the Linfa branch's answer to large-scale status manipulation. While most units of the Empire can sustain through damage, the Vestal's value lies in preventing the secondary collapse , the fear that follows injury, the paralysis that follows pain. She does not fix what is broken. She <em>prevents fragmentation.</em></p>
-            <p>In form, she appears as a luminous figure robed in sap-soaked wrappings that continuously dissolve and reform. Each strip of cloth carries absorbed toxins , you can tell how hard the battle is by how dark they turn. By the end of a major engagement, the Vestal is almost entirely black. And she is still standing.</p>
-        </div>
-    </div>
-    <div class="tactical-module">
-        <div class="tactical-header"><h2>Tactical Data</h2></div>
-        <div class="stats-box">
-            <div class="stat-item"><span class="stat-label">Tier</span><span class="stat-value tier">3</span></div>
-            <div class="stat-item"><span class="stat-label">HP</span><span class="stat-value hp">90</span></div>
-            <div class="stat-item"><span class="stat-label">ATK</span><span class="stat-value atk">65</span></div>
-            <div class="stat-item"><span class="stat-label">INI</span><span class="stat-value ini">40</span></div>
-        </div>
-        <div class="skills-grid">
-            <div class="skill-card sk-base">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_rimedio_sacro.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Sacred Remedy</h3><span class="skill-type base">Base Skill</span></div>
-                </div>
-                <div class="skill-desc">Deals <span class="dmg-light">Light</span> damage to one enemy. If lethal, Heals the most injured ally for 15% of their maximum health.</div>
-            </div>
-            <div class="skill-card sk-active">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_purificazione.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Purification</h3><span class="skill-type active">Active Skill</span></div>
-                </div>
-                <div class="skill-desc">Removes all negative status effects from one ally. Grants Status Immunity for 1 turn.</div>
-            </div>
-            <div class="skill-card sk-passive">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_ward_vivente.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Living Ward</h3><span class="skill-type passive">Passive</span></div>
-                </div>
-                <div class="skill-desc">All allies have a 20% chance per incoming status effect to redirect it to this unit instead. This unit takes 25% negative effects from absorbed states.</div>
-            </div>
-        </div>
-    </div>
-    <div class="portrait-gallery-module">
-        <h2 class="gallery-header">Gallery</h2>
-        <div class="carousel-wrap">
-            <div class="carousel-track" id="carouselTrack">
-                <div class="carousel-item"><img src="../../img/forgotten/linfa/forgotten_vestal_f_portrait.jpg" alt="Portrait F"></div>
-                <div class="carousel-item"><img src="../../img/forgotten/linfa/forgotten_vestal_m_portrait.jpg" alt="Portrait M"></div>
-            </div>
-        </div>
-        <div class="carousel-nav">
-            <button class="nav-btn" id="prevBtn">&#8592;</button>
-            <button class="nav-btn" id="nextBtn">&#8594;</button>
-        </div>
-    </div>
-    <a href="forgotten_order_linfa.html" class="back-link">← Return to Shadows of the Sap</a>
-</main>
-<script>
-    const track=document.getElementById('carouselTrack');const items=track.querySelectorAll('.carousel-item');let current=0;
-    function update(){track.style.transform=`translateX(-${current*(items[0].offsetWidth+15)}px)`;}
-    document.getElementById('nextBtn').addEventListener('click',()=>{if(current<items.length-1){current++;update();}});
-    document.getElementById('prevBtn').addEventListener('click',()=>{if(current>0){current--;update();}});
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Vestal",
+  "subtitle": "Spirit Path | Tier 3",
+  "accent": "#81c784",
+  "bgImage": "../../img/forgotten/forgotten_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",              "label": "Home" },
+    { "href": "../../factions/index.html",     "label": "Factions" },
+    { "href": "../../factions/forgotten.html", "label": "The Forgotten" },
+    { "href": "forgotten_order_linfa.html",    "label": "Shadows of the Sap" },
+    {                                          "label": "Vestal" }
+  ],
+
+  "combat": ["../../img/forgotten/linfa/forgotten_vestal_f_combat.jpg", "../../img/forgotten/linfa/forgotten_vestal_m_combat.jpg"],
+
+  "bio": {
+    "title": "Untouchable By Design",
+    "paragraphs": [
+      "A Vestal is not trained to be clean , they are trained to maintain the boundary between the clean and the contaminated. Their entire existence is the management of that border in a world where the border is increasingly difficult to find. Poison, disease, curse, madness , the Vestal identifies each and removes it with the same expression a surgeon wears: <strong>focused, unsurprised, unremarkable.</strong>",
+      "They are the Linfa branch's answer to large-scale status manipulation. While most units of the Empire can sustain through damage, the Vestal's value lies in preventing the secondary collapse , the fear that follows injury, the paralysis that follows pain. She does not fix what is broken. She <em>prevents fragmentation.</em>",
+      "In form, she appears as a luminous figure robed in sap-soaked wrappings that continuously dissolve and reform. Each strip of cloth carries absorbed toxins , you can tell how hard the battle is by how dark they turn. By the end of a major engagement, the Vestal is almost entirely black. And she is still standing."
+    ]
+  },
+
+  "stats": {
+    "tier": 3,
+    "hp":   90,
+    "atk":  65,
+    "ini":  40
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Sacred Remedy",
+      "icon": "../../img/forgotten/skills/forgotten_skill_rimedio_sacro.png",
+      "desc": "Deals <span class=\"dmg-light\">Light</span> damage to one enemy. If lethal, Heals the most injured ally for 15% of their maximum health."
+    },
+    {
+      "type": "active",
+      "name": "Purification",
+      "icon": "../../img/forgotten/skills/forgotten_skill_purificazione.png",
+      "desc": "Removes all negative status effects from one ally. Grants Status Immunity for 1 turn."
+    },
+    {
+      "type": "passive",
+      "name": "Living Ward",
+      "icon": "../../img/forgotten/skills/forgotten_skill_ward_vivente.png",
+      "desc": "All allies have a 20% chance per incoming status effect to redirect it to this unit instead. This unit takes 25% negative effects from absorbed states."
+    }
+  ],
+
+  "gallery": [
+    "../../img/forgotten/linfa/forgotten_vestal_f_portrait.jpg",
+    "../../img/forgotten/linfa/forgotten_vestal_m_portrait.jpg"
+  ],
+
+  "backLink": {
+    "href":  "forgotten_order_linfa.html",
+    "label": "Return to Shadows of the Sap"
+  }
+}
 </script>
-<script src="../../system/unit-banner.js"></script>
+
+<script src="../../system/unit-renderer.js"></script>
 </body>
 </html>

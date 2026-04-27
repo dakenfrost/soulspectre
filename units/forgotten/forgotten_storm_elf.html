@@ -4,83 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOULSPECTRE | Storm Elf</title>
-    <link rel="stylesheet" href="../../system/forgotten_units.css">
-    <style>:root{--accent:#ffb300;}</style>
+    <link rel="stylesheet" href="../../system/unit-page.css">
 </head>
 <body>
 <div id="bg-image"></div>
 <div id="overlay"></div>
-<header>
-    <h1>Storm Elf</h1>
-    <div class="subtitle">Tier 4 , Wind Path</div>
-</header>
-<main>
-    <div class="intro-banner"><img src="../../img/forgotten/araldi/forgotten_storm_elf_banner.png" alt="Storm Elf Banner"></div>
-    <div class="split-section">
-        <div class="section-image-container">
-            <img src="../../img/forgotten/araldi/forgotten_storm_elf_f_combat.jpg" alt="Storm Elf F">
-            <img src="../../img/forgotten/araldi/forgotten_storm_elf_m_combat.jpg" alt="Storm Elf M" class="combat-anim">
-        </div>
-        <div class="section-text">
-            <h2>The Eye Is Not Safe</h2>
-            <p>The Storm Elves did not originally come from the Empire's forests. They come from the high ridgelines where the wind is not a metaphor for change but an <strong>actual structural force</strong> that sculpts stone, reroutes rivers, and determines which things survive the century. They spent their lives in elemental exposure that would disable most creatures, and they developed , through sheer necessity , nervous systems that interfaced with atmospheric disturbance as if it were a native language.</p>
-            <p>Malicott found them, as she finds most of her soldiers, at the moment of their deaths. The storm that killed the Storm Elves almost always involved lightning , they stood in the wrong place during the right storm, or <em>the right place during the wrong storm,</em> a distinction that means nothing to the result. What they retained in undeath was the current itself: arcing, discharging, unable to stop moving.</p>
-            <p>They are the fastest consistent damage-dealers in the Araldi branch. The Sun Valkyrie hits harder in one strike; the Storm Elf hits more frequently and is significantly harder to pin down. Tacticians debate which is preferable. The Storm Elves do not participate in this conversation , they are already somewhere else.</p>
-        </div>
-    </div>
-    <div class="tactical-module">
-        <div class="tactical-header"><h2>Tactical Data</h2></div>
-        <div class="stats-box">
-            <div class="stat-item"><span class="stat-label">Tier</span><span class="stat-value tier">4</span></div>
-            <div class="stat-item"><span class="stat-label">HP</span><span class="stat-value hp">120</span></div>
-            <div class="stat-item"><span class="stat-label">ATK</span><span class="stat-value atk">60</span></div>
-            <div class="stat-item"><span class="stat-label">INI</span><span class="stat-value">45</span></div>
-        </div>
-        <div class="skills-grid">
-            <div class="skill-card sk-base">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_artiglio_fulmine.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Lightning Claw</h3><span class="skill-type base">Base Skill</span></div>
-                </div>
-                <div class="skill-desc">Deals <span class="dmg-air">Air</span> damage to all enemies</div>
-            </div>
-            <div class="skill-card sk-active">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_tempesta_personale.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Personal Storm</h3><span class="skill-type active">Active Skill</span></div>
-                </div>
-                <div class="skill-desc">Deals <span class="dmg-air">Air</span> damage to all enemies. Applies Stunned with probability 30% for 2 turn.</div>
-            </div>
-            <div class="skill-card sk-passive">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_instinto_vento.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Wind Instinct</h3><span class="skill-type passive">Passive</span></div>
-                </div>
-                <div class="skill-desc">All allies gain +10% Initiative. This unit gains only +16% Dodge.</div>
-            </div>
-        </div>
-    </div>
-    <div class="portrait-gallery-module">
-        <h2 class="gallery-header">Gallery</h2>
-        <div class="carousel-wrap">
-            <div class="carousel-track" id="carouselTrack">
-                <div class="carousel-item"><img src="../../img/forgotten/araldi/forgotten_storm_elf_f_portrait.jpg" alt="Portrait F"></div>
-                <div class="carousel-item"><img src="../../img/forgotten/araldi/forgotten_storm_elf_m_portrait.jpg" alt="Portrait M"></div>
-            </div>
-        </div>
-        <div class="carousel-nav">
-            <button class="nav-btn" id="prevBtn">&#8592;</button>
-            <button class="nav-btn" id="nextBtn">&#8594;</button>
-        </div>
-    </div>
-    <a href="forgotten_order_araldi.html" class="back-link">← Return to Araldi della Cenere</a>
-</main>
-<script>
-    const track=document.getElementById('carouselTrack');const items=track.querySelectorAll('.carousel-item');let current=0;
-    function update(){track.style.transform=`translateX(-${current*(items[0].offsetWidth+15)}px)`;}
-    document.getElementById('nextBtn').addEventListener('click',()=>{if(current<items.length-1){current++;update();}});
-    document.getElementById('prevBtn').addEventListener('click',()=>{if(current>0){current--;update();}});
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Storm Elf",
+  "subtitle": "Wind Path | Tier 4",
+  "accent": "#ffb300",
+  "bgImage": "../../img/forgotten/forgotten_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",              "label": "Home" },
+    { "href": "../../factions/index.html",     "label": "Factions" },
+    { "href": "../../factions/forgotten.html", "label": "The Forgotten" },
+    { "href": "forgotten_order_araldi.html",   "label": "Heralds of Dust" },
+    {                                          "label": "Storm Elf" }
+  ],
+
+  "combat": ["../../img/forgotten/araldi/forgotten_storm_elf_f_combat.jpg", "../../img/forgotten/araldi/forgotten_storm_elf_m_combat.jpg"],
+
+  "bio": {
+    "title": "The Eye Is Not Safe",
+    "paragraphs": [
+      "The Storm Elves did not originally come from the Empire's forests. They come from the high ridgelines where the wind is not a metaphor for change but an <strong>actual structural force</strong> that sculpts stone, reroutes rivers, and determines which things survive the century. They spent their lives in elemental exposure that would disable most creatures, and they developed , through sheer necessity , nervous systems that interfaced with atmospheric disturbance as if it were a native language.",
+      "Malicott found them, as she finds most of her soldiers, at the moment of their deaths. The storm that killed the Storm Elves almost always involved lightning , they stood in the wrong place during the right storm, or <em>the right place during the wrong storm,</em> a distinction that means nothing to the result. What they retained in undeath was the current itself: arcing, discharging, unable to stop moving.",
+      "They are the fastest consistent damage-dealers in the Araldi branch. The Sun Valkyrie hits harder in one strike; the Storm Elf hits more frequently and is significantly harder to pin down. Tacticians debate which is preferable. The Storm Elves do not participate in this conversation , they are already somewhere else."
+    ]
+  },
+
+  "stats": {
+    "tier": 4,
+    "hp":   120,
+    "atk":  60,
+    "ini":  45
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Lightning Claw",
+      "icon": "../../img/forgotten/skills/forgotten_skill_artiglio_fulmine.png",
+      "desc": "Deals <span class=\"dmg-air\">Air</span> damage to all enemies"
+    },
+    {
+      "type": "active",
+      "name": "Personal Storm",
+      "icon": "../../img/forgotten/skills/forgotten_skill_tempesta_personale.png",
+      "desc": "Deals <span class=\"dmg-air\">Air</span> damage to all enemies. Applies Stunned with probability 30% for 2 turn."
+    },
+    {
+      "type": "passive",
+      "name": "Wind Instinct",
+      "icon": "../../img/forgotten/skills/forgotten_skill_instinto_vento.png",
+      "desc": "All allies gain +10% Initiative. This unit gains only +16% Dodge."
+    }
+  ],
+
+  "gallery": [
+    "../../img/forgotten/araldi/forgotten_storm_elf_f_portrait.jpg",
+    "../../img/forgotten/araldi/forgotten_storm_elf_m_portrait.jpg"
+  ],
+
+  "backLink": {
+    "href":  "forgotten_order_araldi.html",
+    "label": "Return to Heralds of Dust"
+  }
+}
 </script>
-<script src="../../system/unit-banner.js"></script>
+
+<script src="../../system/unit-renderer.js"></script>
 </body>
 </html>

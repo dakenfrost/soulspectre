@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Unit Builder</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background: #0d0d0d;
+            color: #c0c0c0;
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 14px;
+            padding: 28px 32px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #fff;
+            font-size: 20px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 28px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid #222;
+        }
+        h1 span { color: #4dd0e1; }
+
+        h2 {
+            color: #777;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 14px;
+            padding-bottom: 7px;
+            border-bottom: 1px solid #222;
+        }
+
+        .section {
+            background: #111;
+            border: 1px solid #1e1e1e;
+            border-radius: 6px;
+            padding: 20px 22px;
+            margin-bottom: 14px;
+        }
+
+        label {
+            display: block;
+            color: #666;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+            margin-top: 14px;
+        }
+        label:first-of-type { margin-top: 0; }
+
+        input[type=text], select, textarea {
+            width: 100%;
+            background: #161616;
+            border: 1px solid #2a2a2a;
+            color: #ddd;
+            padding: 8px 11px;
+            border-radius: 4px;
+            font-size: 13px;
+            font-family: inherit;
+            transition: border-color 0.15s;
+        }
+        input[type=text]:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #3a3a3a;
+        }
+        textarea { resize: vertical; min-height: 68px; line-height: 1.5; }
+
+        input[type=color] {
+            width: 44px;
+            height: 36px;
+            border: 1px solid #2a2a2a;
+            border-radius: 4px;
+            background: #161616;
+            padding: 2px 3px;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+        .grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 14px; }
+
+        .row { display: flex; gap: 10px; align-items: flex-start; }
+        .row > * { flex: 1; }
+
+        button {
+            background: #181818;
+            border: 1px solid #333;
+            color: #aaa;
+            padding: 6px 13px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            font-family: inherit;
+            transition: all 0.15s;
+            white-space: nowrap;
+        }
+        button:hover { background: #222; color: #eee; border-color: #444; }
+
+        button.primary {
+            background: #0d2b36;
+            border-color: #4dd0e1;
+            color: #4dd0e1;
+            font-size: 13px;
+            padding: 9px 22px;
+            font-weight: 600;
+        }
+        button.primary:hover { background: #133544; }
+
+        button.secondary {
+            border-color: #3a3a3a;
+            color: #888;
+        }
+
+        button.danger { border-color: #5a2020; color: #e05555; }
+        button.danger:hover { background: #2a1212; border-color: #8a3030; }
+
+        button.add { border-color: #1e3a1e; color: #66bb6a; font-size: 12px; }
+        button.add:hover { background: #0f1f0f; border-color: #2d5a2d; }
+
+        .chip-group { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+        .chip-group button { font-size: 11px; padding: 4px 9px; }
+
+        .entry-box {
+            background: #151515;
+            border: 1px solid #222;
+            border-radius: 5px;
+            padding: 14px 16px;
+            margin-bottom: 10px;
+        }
+        .entry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .entry-label { font-size: 11px; color: #555; text-transform: uppercase; letter-spacing: 1px; }
+
+        .color-row { display: flex; gap: 8px; align-items: center; margin-top: 0; }
+        .color-row input[type=text] { flex: 1; }
+
+        .radio-group { display: flex; gap: 18px; margin: 0; }
+        .radio-group label {
+            display: flex; align-items: center; gap: 6px;
+            margin: 0; text-transform: none; font-size: 13px; color: #aaa; cursor: pointer;
+        }
+        input[type=radio], input[type=checkbox] { width: auto; accent-color: #4dd0e1; }
+
+        .check-label {
+            display: flex; align-items: center; gap: 8px;
+            color: #888; font-size: 12px; cursor: pointer;
+            text-transform: none; letter-spacing: 0;
+            margin-top: 10px;
+        }
+
+        small { color: #444; font-size: 11px; display: block; margin-top: 4px; }
+        .inline-small { color: #444; font-size: 11px; margin-left: 6px; }
+
+        #output-area {
+            width: 100%;
+            height: 420px;
+            background: #080808;
+            border: 1px solid #2a2a2a;
+            color: #5fc8d8;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 12px;
+            padding: 16px;
+            border-radius: 4px;
+            resize: vertical;
+        }
+
+        .output-actions { display: flex; gap: 10px; margin-top: 10px; align-items: center; }
+        #copy-msg { color: #4dd0e1; font-size: 12px; display: none; margin-left: 6px; }
+
+        .sep { height: 1px; background: #1a1a1a; margin: 14px 0; }
+        .note { color: #444; font-size: 11px; font-style: italic; margin-top: 6px; }
+
+        .skill-type-badge {
+            display: inline-block;
+            font-size: 10px;
+            padding: 2px 7px;
+            border-radius: 3px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-left: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>SOULSPECTRE <span>·</span> Unit Builder</h1>
+
+<!-- ══════ BASIC INFO ══════ -->
+<div class="section">
+    <h2>Basic Info</h2>
+    <div class="grid-2">
+        <div>
+            <label>Unit Name</label>
+            <input type="text" id="f-name" placeholder="e.g. Archer">
+        </div>
+        <div>
+            <label>Subtitle</label>
+            <input type="text" id="f-subtitle" placeholder="e.g. Sniper Path | Tier 2">
+        </div>
+    </div>
+
+    <label>Accent Color</label>
+    <div class="color-row">
+        <input type="color" id="f-accent-picker" value="#4dd0e1">
+        <input type="text" id="f-accent" value="#4dd0e1" placeholder="#4dd0e1" style="max-width:140px">
+    </div>
+    <div class="chip-group">
+        <button onclick="setAccent('#e0e0e0')">T1 · #e0e0e0</button>
+        <button onclick="setAccent('#4dd0e1')">T2 · #4dd0e1</button>
+        <button onclick="setAccent('#81c784')">T3 · #81c784</button>
+        <button onclick="setAccent('#ffb300')">T4 · #ffb300</button>
+        <button onclick="setAccent('#ce93d8')">T5 · #ce93d8</button>
+        <button onclick="setAccent('#ffd700')">Officer · #ffd700</button>
+        <button onclick="setAccent('#64b5f6')">#64b5f6 (Crimson)</button>
+        <button onclick="setAccent('#b0bec5')">#b0bec5 (T1 Hostile)</button>
+        <button onclick="setAccent('#ba68c8')">#ba68c8 (Inquisitor)</button>
+    </div>
+
+    <label>Background Image</label>
+    <input type="text" id="f-bgimage" value="../../img/forgotten/forgotten_bg.jpg">
+</div>
+
+<!-- ══════ BREADCRUMBS ══════ -->
+<div class="section">
+    <h2>Breadcrumbs</h2>
+    <div id="crumbs-list"></div>
+    <div style="display:flex; gap:8px; align-items:center; margin-top:4px">
+        <button class="add" onclick="addCrumb()">+ Add Crumb</button>
+        <small style="margin:0">L'ultimo crumb deve avere href vuoto (è il nome dell'unità, senza link)</small>
+    </div>
+</div>
+
+<!-- ══════ COMBAT IMAGES ══════ -->
+<div class="section">
+    <h2>Combat Images</h2>
+    <div class="radio-group" style="margin-bottom:14px">
+        <label><input type="radio" name="combat-count" value="2" checked onchange="toggleCombat()"> Due immagini (F + M)</label>
+        <label><input type="radio" name="combat-count" value="1" onchange="toggleCombat()"> Immagine singola</label>
+    </div>
+    <label>Combat Image 1</label>
+    <input type="text" id="f-combat1" placeholder="../../img/forgotten/sentinelle/forgotten_unit_f_combat.jpg">
+    <div id="combat2-wrap">
+        <label>Combat Image 2</label>
+        <input type="text" id="f-combat2" placeholder="../../img/forgotten/sentinelle/forgotten_unit_m_combat.jpg">
+    </div>
+    <div class="chip-group">
+        <button onclick="prefixCombat('sentinelle')">sentinelle/</button>
+        <button onclick="prefixCombat('araldi')">araldi/</button>
+        <button onclick="prefixCombat('arborei')">arborei/</button>
+        <button onclick="prefixCombat('linfa')">linfa/</button>
+        <button onclick="prefixCombat('extra')">extra/</button>
+    </div>
+</div>
+
+<!-- ══════ BIO ══════ -->
+<div class="section">
+    <h2>Bio</h2>
+    <label>Titolo Bio</label>
+    <input type="text" id="f-bio-title" placeholder="e.g. Wood, String, Consequence">
+    <label>Paragrafi <span class="inline-small">(HTML consentito: &lt;strong&gt;, &lt;em&gt;, &lt;span class="dmg-phys"&gt;, ecc.)</span></label>
+    <div id="bio-paragraphs"></div>
+    <button class="add" onclick="addBioPara()" style="margin-top:4px">+ Add Paragraph</button>
+</div>
+
+<!-- ══════ STATS ══════ -->
+<div class="section">
+    <h2>Stats</h2>
+    <div class="grid-4">
+        <div>
+            <label>Tier</label>
+            <input type="text" id="f-tier" placeholder="1–5 o Officer">
+            <div class="chip-group">
+                <button onclick="setVal('f-tier','1')">1</button>
+                <button onclick="setVal('f-tier','2')">2</button>
+                <button onclick="setVal('f-tier','3')">3</button>
+                <button onclick="setVal('f-tier','4')">4</button>
+                <button onclick="setVal('f-tier','5')">5</button>
+                <button onclick="setVal('f-tier','Officer')">Officer</button>
+            </div>
+        </div>
+        <div>
+            <label>HP</label>
+            <input type="text" id="f-hp" placeholder="es. 120">
+        </div>
+        <div>
+            <label>ATK</label>
+            <input type="text" id="f-atk" placeholder="es. 55">
+        </div>
+        <div>
+            <label>INI</label>
+            <input type="text" id="f-ini" placeholder="es. 50">
+        </div>
+    </div>
+    <div class="grid-2" style="margin-top:14px">
+        <div>
+            <label>Armor <span class="inline-small">(opzionale)</span></label>
+            <input type="text" id="f-armor" placeholder="es. 25%">
+        </div>
+        <div>
+            <label>Immunity <span class="inline-small">(opzionale)</span></label>
+            <input type="text" id="f-immunity" placeholder="es. Instant Kill">
+        </div>
+    </div>
+</div>
+
+<!-- ══════ SKILLS ══════ -->
+<div class="section">
+    <h2>Skills</h2>
+    <div id="skills-list"></div>
+    <button class="add" onclick="addSkill()">+ Add Skill</button>
+</div>
+
+<!-- ══════ GALLERY ══════ -->
+<div class="section">
+    <h2>Gallery</h2>
+    <label class="check-label">
+        <input type="checkbox" id="f-no-gallery" onchange="renderGallery()">
+        Nessuna gallery (unità ostili / extra senza ritratti)
+    </label>
+    <div id="gallery-list" style="margin-top:12px"></div>
+    <button class="add" onclick="addGalleryItem()" style="margin-top:4px">+ Add Portrait</button>
+    <div class="chip-group">
+        <button onclick="prefixGallery('sentinelle')">sentinelle/</button>
+        <button onclick="prefixGallery('araldi')">araldi/</button>
+        <button onclick="prefixGallery('arborei')">arborei/</button>
+        <button onclick="prefixGallery('linfa')">linfa/</button>
+        <button onclick="prefixGallery('extra')">extra/</button>
+    </div>
+</div>
+
+<!-- ══════ BACK LINK ══════ -->
+<div class="section">
+    <h2>Back Link</h2>
+    <div class="grid-2">
+        <div>
+            <label>href</label>
+            <input type="text" id="f-back-href" placeholder="forgotten_order_sentinelle.html">
+        </div>
+        <div>
+            <label>label</label>
+            <input type="text" id="f-back-label" placeholder="Return to Amber Sentinels">
+        </div>
+    </div>
+    <div class="chip-group">
+        <button onclick="setBackLink('forgotten_order_sentinelle.html','Return to Amber Sentinels')">Sentinelle</button>
+        <button onclick="setBackLink('forgotten_order_araldi.html','Return to Children of the Dawn')">Araldi</button>
+        <button onclick="setBackLink('forgotten_order_arborei.html','Return to Keepers of the Wood')">Arborei</button>
+        <button onclick="setBackLink('forgotten_order_linfa.html','Return to Shadows of the Sap')">Linfa</button>
+        <button onclick="setBackLink('forgotten_extra.html','Return to Others')">Extra</button>
+    </div>
+</div>
+
+<!-- ══════ OUTPUT ══════ -->
+<div class="section">
+    <h2>Output</h2>
+    <div style="display:flex; gap:10px; margin-bottom:14px; flex-wrap:wrap;">
+        <button class="primary" onclick="generate()">⚡ Genera HTML completo</button>
+        <button class="secondary" onclick="generateJSON()">{ } Solo JSON</button>
+    </div>
+    <textarea id="output-area" readonly placeholder="Il file HTML generato apparirà qui..."></textarea>
+    <div class="output-actions">
+        <button onclick="copyOutput()">📋 Copia negli appunti</button>
+        <button onclick="downloadOutput()">💾 Scarica .html</button>
+        <span id="copy-msg">✓ Copiato!</span>
+    </div>
+</div>
+
+<script>
+// ─── State ────────────────────────────────────────────────────────────────────
+let crumbs = [];
+let bioParagraphs = [];
+let skills = [];
+let gallery = [];
+
+// ─── Init ─────────────────────────────────────────────────────────────────────
+window.onload = function () {
+    crumbs = [
+        { href: '../../index.html',              label: 'Home' },
+        { href: '../../factions/index.html',     label: 'Factions' },
+        { href: '../../factions/forgotten.html', label: 'The Forgotten' },
+        { href: '',                              label: '' },  // branch page
+        { href: '',                              label: '' },  // unit name (no link)
+    ];
+    renderCrumbs();
+
+    bioParagraphs = ['', '', ''];
+    renderBioParas();
+
+    skills = [
+        { type: 'base',    name: '', icon: '', desc: '' },
+        { type: 'active',  name: '', icon: '', desc: '' },
+        { type: 'passive', name: '', icon: '', desc: '' },
+    ];
+    renderSkills();
+
+    gallery = ['', ''];
+    renderGallery();
+
+    // Sync color picker ↔ text
+    document.getElementById('f-accent-picker').addEventListener('input', e => {
+        document.getElementById('f-accent').value = e.target.value;
+    });
+    document.getElementById('f-accent').addEventListener('input', e => {
+        if (/^#[0-9a-fA-F]{6}$/.test(e.target.value))
+            document.getElementById('f-accent-picker').value = e.target.value;
+    });
+};
+
+// ─── Helpers ─────────────────────────────────────────────────────────────────
+function setVal(id, val) { document.getElementById(id).value = val; }
+function setAccent(hex) { setVal('f-accent', hex); document.getElementById('f-accent-picker').value = hex; }
+function setBackLink(href, label) { setVal('f-back-href', href); setVal('f-back-label', label); }
+
+// ─── Breadcrumbs ─────────────────────────────────────────────────────────────
+function renderCrumbs() {
+    const list = document.getElementById('crumbs-list');
+    list.innerHTML = '';
+    crumbs.forEach((c, i) => {
+        const isLast = i === crumbs.length - 1;
+        const div = document.createElement('div');
+        div.className = 'entry-box';
+        div.innerHTML = `
+            <div class="entry-header">
+                <span class="entry-label">Crumb ${i + 1}${isLast ? ' — senza href' : ''}</span>
+                ${i > 2 ? `<button class="danger" onclick="removeCrumb(${i})">✕ Rimuovi</button>` : ''}
+            </div>
+            <div class="row">
+                <div>
+                    <label>href ${isLast ? '(lascia vuoto)' : ''}</label>
+                    <input type="text" value="${escHtml(c.href)}"
+                        onchange="crumbs[${i}].href=this.value"
+                        placeholder="${isLast ? '' : 'es. forgotten_order_sentinelle.html'}">
+                </div>
+                <div>
+                    <label>label</label>
+                    <input type="text" value="${escHtml(c.label)}"
+                        onchange="crumbs[${i}].label=this.value"
+                        placeholder="es. Amber Sentinels">
+                </div>
+            </div>`;
+        list.appendChild(div);
+    });
+}
+
+function addCrumb() { crumbs.push({ href: '', label: '' }); renderCrumbs(); }
+function removeCrumb(i) { crumbs.splice(i, 1); renderCrumbs(); }
+
+// ─── Combat ──────────────────────────────────────────────────────────────────
+function toggleCombat() {
+    const single = document.querySelector('input[name=combat-count]:checked').value === '1';
+    document.getElementById('combat2-wrap').style.display = single ? 'none' : '';
+}
+
+function prefixCombat(sub) {
+    const base = `../../img/forgotten/${sub}/forgotten_`;
+    ['f-combat1', 'f-combat2'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el && !el.value) el.value = base;
+    });
+}
+
+// ─── Bio ─────────────────────────────────────────────────────────────────────
+function addBioPara() { bioParagraphs.push(''); renderBioParas(); }
+function removeBioPara(i) { bioParagraphs.splice(i, 1); renderBioParas(); }
+
+function renderBioParas() {
+    const list = document.getElementById('bio-paragraphs');
+    list.innerHTML = '';
+    bioParagraphs.forEach((p, i) => {
+        const div = document.createElement('div');
+        div.style.cssText = 'display:flex;gap:8px;align-items:flex-start;margin-bottom:8px';
+        div.innerHTML = `
+            <div style="flex:0.12;min-width:28px;padding-top:10px;color:#444;font-size:11px;text-align:right">P${i+1}</div>
+            <textarea style="flex:1" oninput="bioParagraphs[${i}]=this.value">${escHtml(p)}</textarea>
+            <button class="danger" style="margin-top:6px;flex-shrink:0" onclick="removeBioPara(${i})">✕</button>`;
+        list.appendChild(div);
+    });
+}
+
+// ─── Skills ──────────────────────────────────────────────────────────────────
+function addSkill() { skills.push({ type: 'base', name: '', icon: '', desc: '' }); renderSkills(); }
+function removeSkill(i) { skills.splice(i, 1); renderSkills(); }
+
+function renderSkills() {
+    const list = document.getElementById('skills-list');
+    list.innerHTML = '';
+    const typeColors = { base:'#4dd0e1', active:'#81c784', passive:'#ffb300', ultimate:'#ce93d8' };
+    skills.forEach((s, i) => {
+        const div = document.createElement('div');
+        div.className = 'entry-box';
+        div.innerHTML = `
+            <div class="entry-header">
+                <span class="entry-label">Skill ${i + 1}</span>
+                <button class="danger" onclick="removeSkill(${i})">✕ Rimuovi</button>
+            </div>
+            <div class="grid-2">
+                <div>
+                    <label>Type</label>
+                    <select id="sk-type-${i}" onchange="skills[${i}].type=this.value">
+                        <option value="base"    ${s.type==='base'    ?'selected':''}>Base Skill</option>
+                        <option value="active"  ${s.type==='active'  ?'selected':''}>Active Skill</option>
+                        <option value="passive" ${s.type==='passive' ?'selected':''}>Passive</option>
+                        <option value="ultimate"${s.type==='ultimate'?'selected':''}>Ultimate</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Nome</label>
+                    <input type="text" id="sk-name-${i}" value="${escHtml(s.name)}"
+                        oninput="skills[${i}].name=this.value" placeholder="Nome skill">
+                </div>
+            </div>
+            <label>Icon Path <span class="inline-small">(lascia vuoto per unità ostili)</span></label>
+            <input type="text" id="sk-icon-${i}" value="${escHtml(s.icon)}"
+                oninput="skills[${i}].icon=this.value"
+                placeholder="../../img/forgotten/skills/forgotten_skill_xxx.png">
+            <div class="chip-group" style="margin-top:6px">
+                <button onclick="prefixSkillIcon(${i})">⚡ Prefill path skills/</button>
+            </div>
+            <label>Descrizione <span class="inline-small">(HTML: &lt;span class="dmg-phys"&gt; ecc.)</span></label>
+            <textarea id="sk-desc-${i}" oninput="skills[${i}].desc=this.value">${escHtml(s.desc)}</textarea>`;
+        list.appendChild(div);
+    });
+}
+
+function prefixSkillIcon(i) {
+    const el = document.getElementById(`sk-icon-${i}`);
+    if (el && !el.value) {
+        el.value = '../../img/forgotten/skills/forgotten_skill_';
+        skills[i].icon = el.value;
+    }
+}
+
+// ─── Gallery ─────────────────────────────────────────────────────────────────
+function addGalleryItem() { gallery.push(''); renderGallery(); }
+function removeGalleryItem(i) { gallery.splice(i, 1); renderGallery(); }
+
+function renderGallery() {
+    const list = document.getElementById('gallery-list');
+    list.innerHTML = '';
+    if (document.getElementById('f-no-gallery').checked) {
+        list.innerHTML = '<small>Gallery disabilitata.</small>';
+        return;
+    }
+    gallery.forEach((g, i) => {
+        const div = document.createElement('div');
+        div.style.cssText = 'display:flex;gap:8px;align-items:center;margin-bottom:8px';
+        div.innerHTML = `
+            <input type="text" id="gal-${i}" value="${escHtml(g)}"
+                oninput="gallery[${i}]=this.value"
+                placeholder="../../img/forgotten/sentinelle/forgotten_unit_f_portrait.jpg">
+            <button class="danger" onclick="removeGalleryItem(${i})" style="flex-shrink:0">✕</button>`;
+        list.appendChild(div);
+    });
+}
+
+function prefixGallery(sub) {
+    const base = `../../img/forgotten/${sub}/forgotten_`;
+    gallery.forEach((_, i) => {
+        const el = document.getElementById(`gal-${i}`);
+        if (el && !el.value) { el.value = base; gallery[i] = base; }
+    });
+}
+
+// ─── Sync DOM → State ─────────────────────────────────────────────────────────
+function syncFromDOM() {
+    // Crumbs
+    document.querySelectorAll('#crumbs-list .entry-box').forEach((box, i) => {
+        const inputs = box.querySelectorAll('input[type=text]');
+        if (crumbs[i]) { crumbs[i].href = inputs[0].value; crumbs[i].label = inputs[1].value; }
+    });
+    // Bio paragraphs
+    document.querySelectorAll('#bio-paragraphs textarea').forEach((ta, i) => {
+        if (i < bioParagraphs.length) bioParagraphs[i] = ta.value;
+    });
+    // Skills
+    skills.forEach((s, i) => {
+        const nameEl = document.getElementById(`sk-name-${i}`);
+        const iconEl = document.getElementById(`sk-icon-${i}`);
+        const descEl = document.getElementById(`sk-desc-${i}`);
+        const typeEl = document.getElementById(`sk-type-${i}`);
+        if (typeEl) s.type = typeEl.value;
+        if (nameEl) s.name = nameEl.value;
+        if (iconEl) s.icon = iconEl.value;
+        if (descEl) s.desc = descEl.value;
+    });
+    // Gallery
+    gallery.forEach((_, i) => {
+        const el = document.getElementById(`gal-${i}`);
+        if (el) gallery[i] = el.value;
+    });
+}
+
+// ─── Build JSON Object ────────────────────────────────────────────────────────
+function buildObj() {
+    syncFromDOM();
+
+    const name     = document.getElementById('f-name').value.trim();
+    const subtitle = document.getElementById('f-subtitle').value.trim();
+    const accent   = document.getElementById('f-accent').value.trim();
+    const bgImage  = document.getElementById('f-bgimage').value.trim();
+    const bioTitle = document.getElementById('f-bio-title').value.trim();
+    const tierRaw  = document.getElementById('f-tier').value.trim();
+    const tier     = /^\d+$/.test(tierRaw) ? Number(tierRaw) : tierRaw;
+    const hp       = Number(document.getElementById('f-hp').value) || 0;
+    const atk      = Number(document.getElementById('f-atk').value) || 0;
+    const ini      = Number(document.getElementById('f-ini').value) || 0;
+    const armor    = document.getElementById('f-armor').value.trim();
+    const immunity = document.getElementById('f-immunity').value.trim();
+    const backHref = document.getElementById('f-back-href').value.trim();
+    const backLabel= document.getElementById('f-back-label').value.trim();
+    const isSingle = document.querySelector('input[name=combat-count]:checked').value === '1';
+    const noGallery= document.getElementById('f-no-gallery').checked;
+
+    const combat = isSingle
+        ? document.getElementById('f-combat1').value.trim()
+        : [
+            document.getElementById('f-combat1').value.trim(),
+            document.getElementById('f-combat2').value.trim()
+          ].filter(v => v);
+
+    const breadcrumbs = crumbs
+        .filter(c => c.label.trim())
+        .map(c => c.href.trim() ? { href: c.href.trim(), label: c.label.trim() } : { label: c.label.trim() });
+
+    const stats = { tier, hp, atk, ini };
+    if (armor)    stats.armor    = armor;
+    if (immunity) stats.immunity = immunity;
+
+    const skillsArr = skills
+        .filter(s => s.name.trim())
+        .map(s => ({ type: s.type, name: s.name, icon: s.icon, desc: s.desc }));
+
+    const obj = { name, subtitle, accent, bgImage, breadcrumbs, combat,
+                  bio: { title: bioTitle, paragraphs: bioParagraphs.filter(p => p.trim()) },
+                  stats, skills: skillsArr };
+
+    if (!noGallery) {
+        const gal = gallery.filter(g => g.trim());
+        if (gal.length) obj.gallery = gal;
+    }
+
+    obj.backLink = { href: backHref, label: backLabel };
+
+    return { obj, name };
+}
+
+// ─── Generate ─────────────────────────────────────────────────────────────────
+function generate() {
+    const { obj, name } = buildObj();
+    const json = JSON.stringify(obj, null, 2);
+    const title = name || 'Unit';
+    const html =
+`<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | ${title}</title>
+    <link rel="stylesheet" href="../../system/unit-page.css">
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+${json}
+<\/script>
+
+<script src="../../system/unit-renderer.js"><\/script>
+</body>
+</html>`;
+    document.getElementById('output-area').value = html;
+}
+
+function generateJSON() {
+    const { obj } = buildObj();
+    document.getElementById('output-area').value = JSON.stringify(obj, null, 2);
+}
+
+// ─── Copy / Download ──────────────────────────────────────────────────────────
+function copyOutput() {
+    const ta = document.getElementById('output-area');
+    ta.select();
+    document.execCommand('copy');
+    const msg = document.getElementById('copy-msg');
+    msg.style.display = 'inline';
+    setTimeout(() => msg.style.display = 'none', 2000);
+}
+
+function downloadOutput() {
+    let content = document.getElementById('output-area').value;
+    if (!content.trim()) { generate(); content = document.getElementById('output-area').value; }
+    const { name } = buildObj();
+    const fname = (name || 'unit').toLowerCase().replace(/\s+/g, '_');
+    const blob = new Blob([content], { type: 'text/html;charset=utf-8' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `forgotten_${fname}.html`;
+    a.click();
+}
+
+// ─── Utility ─────────────────────────────────────────────────────────────────
+function escHtml(str) {
+    return (str || '').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+</script>
+
+</body>
+</html>

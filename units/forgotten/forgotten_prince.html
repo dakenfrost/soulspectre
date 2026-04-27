@@ -4,90 +4,84 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOULSPECTRE | The Prince</title>
-    <link rel="stylesheet" href="../../system/forgotten_units.css">
-    <style>:root{--accent:#ffd700;}</style>
+    <link rel="stylesheet" href="../../system/unit-page.css">
 </head>
 <body>
 <div id="bg-image"></div>
 <div id="overlay"></div>
-<header>
-    <h1>The Prince</h1>
-    <div class="subtitle">Officer , Heralds of Dust</div>
-</header>
-<main>
-    <div class="intro-banner"><img src="../../img/forgotten/araldi/forgotten_prince_banner.png" alt="The Prince Banner"></div>
-    <div class="split-section">
-        <div class="section-image-container">
-            <img src="../../img/forgotten/araldi/forgotten_prince_f_combat.jpg" alt="The Prince F">
-            <img src="../../img/forgotten/araldi/forgotten_prince_m_combat.jpg" alt="The Prince M" class="combat-anim">
-        </div>
-        <div class="section-text">
-            <h2>Accelerating the Inevitable</h2>
-            <p>In life, he ruled. He does not remember which territory, which dynasty, which century , the sap has compressed it all into a general truth: <strong>he understood power before he understood anything else,</strong> and that understanding did not die with him. What remained is not a king. It is the part of a king that was worth keeping.</p>
-            <p>The Prince leads the Heralds of Dust with the particular authority of a person who has exhausted every concern about authority. He does not need to be feared. He does not need to be loved. He needs the mages to be positioned correctly and the fire to arrive where it was meant to arrive , and these are both things he is very good at ensuring.</p>
-            <p>His form retains the most human silhouette of any Araldi officer: upright, still, wearing what might once have been court armor, now transmuted into something that burns at the edges. <em>He walks through the fire his own mages produce without appearing to notice it.</em> The Araldi have decided this is either a metaphor or proof that he was always this way.</p>
-        </div>
-    </div>
-    <div class="tactical-module">
-        <div class="tactical-header"><h2>Tactical Data</h2></div>
-        <div class="stats-box">
-            <div class="stat-item"><span class="stat-label">HP</span><span class="stat-value hp">90</span></div>
-            <div class="stat-item"><span class="stat-label">ATK</span><span class="stat-value atk">55</span></div>
-            <div class="stat-item"><span class="stat-label">INI</span><span class="stat-value">65</span></div>
-            <div class="stat-item"><span class="stat-label">Tier</span><span class="stat-value tier">Officer</span></div>
-        </div>
-        <div class="skills-grid">
-            <div class="skill-card sk-base">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_lampo_fuoco.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Fire Flash</h3><span class="skill-type base">Base Skill</span></div>
-                </div>
-                <div class="skill-desc">Deals <span class="dmg-light">Light</span> + <span class="dmg-fire">Fire</span> ranged damage to one enemy, penetrating 10% Armor.</div>
-            </div>
-            <div class="skill-card sk-active">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_comando_ardente.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Blazing Command</h3><span class="skill-type active">Active Skill</span></div>
-                </div>
-                <div class="skill-desc">All allied Araldi units gain +15% ATK and +8% Spell Penetration for 2 turns.</div>
-            </div>
-            <div class="skill-card sk-passive">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_noblesse_oblige.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Noblesse Oblige</h3><span class="skill-type passive">Passive</span></div>
-                </div>
-                <div class="skill-desc">For each allied unit that falls in battle, all remaining allies gain +6% Damage (max +30%).</div>
-            </div>
-            <div class="skill-card sk-ultimate">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_segnale_principe.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Prince's Signal</h3><span class="skill-type ultimate">Ultimate</span></div>
-                </div>
-                <div class="skill-desc">Deals <span class="dmg-light">Light</span> + <span class="dmg-fire">Fire</span> damage to all enemies. Applies Burning for 2 turns. Reduces enemy Morale by 20.</div>
-            </div>
-        </div>
-    </div>
-    <div class="portrait-gallery-module">
-        <h2 class="gallery-header">Gallery</h2>
-        <div class="carousel-wrap">
-            <div class="carousel-track" id="carouselTrack">
-                <div class="carousel-item"><img src="../../img/forgotten/araldi/forgotten_prince_m_portrait.jpg" alt="Portrait M"></div>
-                <div class="carousel-item"><img src="../../img/forgotten/araldi/forgotten_prince_f_portrait.jpg" alt="Portrait F"></div>
-            </div>
-        </div>
-        <div class="carousel-nav">
-            <button class="nav-btn" id="prevBtn">&#8592;</button>
-            <button class="nav-btn" id="nextBtn">&#8594;</button>
-        </div>
-    </div>
-    <a href="forgotten_order_araldi.html" class="back-link">← Return to Heralds of Dust</a>
-</main>
-<script>
-    const track=document.getElementById('carouselTrack');const items=track.querySelectorAll('.carousel-item');let current=0;
-    function update(){track.style.transform=`translateX(-${current*(items[0].offsetWidth+15)}px)`;}
-    document.getElementById('nextBtn').addEventListener('click',()=>{if(current<items.length-1){current++;update();}});
-    document.getElementById('prevBtn').addEventListener('click',()=>{if(current>0){current--;update();}});
+
+<script type="application/json" id="unit-data">
+{
+  "name": "The Prince",
+  "subtitle": "Heralds of Dust | Officer",
+  "accent": "#ffd700",
+  "bgImage": "../../img/forgotten/forgotten_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",              "label": "Home" },
+    { "href": "../../factions/index.html",     "label": "Factions" },
+    { "href": "../../factions/forgotten.html", "label": "The Forgotten" },
+    { "href": "forgotten_order_araldi.html",   "label": "Heralds of Dust" },
+    {                                          "label": "The Prince" }
+  ],
+
+  "combat": ["../../img/forgotten/araldi/forgotten_prince_f_combat.jpg", "../../img/forgotten/araldi/forgotten_prince_m_combat.jpg"],
+
+  "bio": {
+    "title": "Accelerating the Inevitable",
+    "paragraphs": [
+      "In life, he ruled. He does not remember which territory, which dynasty, which century , the sap has compressed it all into a general truth: <strong>he understood power before he understood anything else,</strong> and that understanding did not die with him. What remained is not a king. It is the part of a king that was worth keeping.",
+      "The Prince leads the Heralds of Dust with the particular authority of a person who has exhausted every concern about authority. He does not need to be feared. He does not need to be loved. He needs the mages to be positioned correctly and the fire to arrive where it was meant to arrive , and these are both things he is very good at ensuring.",
+      "His form retains the most human silhouette of any Araldi officer: upright, still, wearing what might once have been court armor, now transmuted into something that burns at the edges. <em>He walks through the fire his own mages produce without appearing to notice it.</em> The Araldi have decided this is either a metaphor or proof that he was always this way."
+    ]
+  },
+
+  "stats": {
+    "tier": "Officer",
+    "hp":   90,
+    "atk":  55,
+    "ini":  65
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Fire Flash",
+      "icon": "../../img/forgotten/skills/forgotten_skill_lampo_fuoco.png",
+      "desc": "Deals <span class=\"dmg-light\">Light</span> + <span class=\"dmg-fire\">Fire</span> ranged damage to one enemy, penetrating 10% Armor."
+    },
+    {
+      "type": "active",
+      "name": "Blazing Command",
+      "icon": "../../img/forgotten/skills/forgotten_skill_comando_ardente.png",
+      "desc": "All allied Araldi units gain +15% ATK and +8% Spell Penetration for 2 turns."
+    },
+    {
+      "type": "passive",
+      "name": "Noblesse Oblige",
+      "icon": "../../img/forgotten/skills/forgotten_skill_noblesse_oblige.png",
+      "desc": "For each allied unit that falls in battle, all remaining allies gain +6% Damage (max +30%)."
+    },
+    {
+      "type": "ultimate",
+      "name": "Prince's Signal",
+      "icon": "../../img/forgotten/skills/forgotten_skill_segnale_principe.png",
+      "desc": "Deals <span class=\"dmg-light\">Light</span> + <span class=\"dmg-fire\">Fire</span> damage to all enemies. Applies Burning for 2 turns. Reduces enemy Morale by 20."
+    }
+  ],
+
+  "gallery": [
+    "../../img/forgotten/araldi/forgotten_prince_m_portrait.jpg",
+    "../../img/forgotten/araldi/forgotten_prince_f_portrait.jpg"
+  ],
+
+  "backLink": {
+    "href":  "forgotten_order_araldi.html",
+    "label": "Return to Heralds of Dust"
+  }
+}
 </script>
-<script src="../../system/unit-banner.js"></script>
+
+<script src="../../system/unit-renderer.js"></script>
 </body>
 </html>

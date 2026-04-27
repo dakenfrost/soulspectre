@@ -4,83 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOULSPECTRE | Light Mage</title>
-    <link rel="stylesheet" href="../../system/forgotten_units.css">
-    <style>:root{--accent:#81c784;}</style>
+    <link rel="stylesheet" href="../../system/unit-page.css">
 </head>
 <body>
 <div id="bg-image"></div>
 <div id="overlay"></div>
-<header>
-    <h1>Light Mage</h1>
-    <div class="subtitle">Tier 3 , Light Path</div>
-</header>
-<main>
-    <div class="intro-banner"><img src="../../img/forgotten/araldi/forgotten_light_mage_banner.png" alt="Light Mage Banner"></div>
-    <div class="split-section">
-        <div class="section-image-container">
-            <img src="../../img/forgotten/araldi/forgotten_light_mage_f_combat.jpg" alt="Light Mage F">
-            <img src="../../img/forgotten/araldi/forgotten_light_mage_m_combat.jpg" alt="Light Mage M" class="combat-anim">
-        </div>
-        <div class="section-text">
-            <h2>The Bright Side of the Equation</h2>
-            <p>The Light Mage has resolved the contradiction that the Corrupted version still carries as tension. Light does not require corruption to cause harm , it requires <strong>focus, scale, and the willingness to direct it without flinching.</strong> The Light Mage has all three. She is not corrupted. She is simply very good at something that happens to burn.</p>
-            <p>The transition from Corrupted Light Mage to Light Mage is a process of integration rather than purification. The corruption is still present , it simply no longer registers as grief. The mage has metabolized the guilt of wielding light as a weapon and arrived at something that could almost be called <em>peace with it.</em></p>
-            <p>She projects radiance that her teammates squint in. She apologizes for this, occasionally, when she remembers. She is the only Araldi unit that other units complain about during camp , not about her character, but about sleeping in proximity to someone who never fully switches off.</p>
-        </div>
-    </div>
-    <div class="tactical-module">
-        <div class="tactical-header"><h2>Tactical Data</h2></div>
-        <div class="stats-box">
-            <div class="stat-item"><span class="stat-label">Tier</span><span class="stat-value tier">3</span></div>
-            <div class="stat-item"><span class="stat-label">HP</span><span class="stat-value hp">100</span></div>
-            <div class="stat-item"><span class="stat-label">ATK</span><span class="stat-value atk">45</span></div>
-            <div class="stat-item"><span class="stat-label">INI</span><span class="stat-value">45</span></div>
-        </div>
-        <div class="skills-grid">
-            <div class="skill-card sk-base">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_raggio_solare.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Solar Ray</h3><span class="skill-type base">Base Skill</span></div>
-                </div>
-                <div class="skill-desc">Deals <span class="dmg-light">Light</span> damage to all enemies, ignoring 10% of armor</div>
-            </div>
-            <div class="skill-card sk-active">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_barriera_luce.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Light Barrier</h3><span class="skill-type active">Active Skill</span></div>
-                </div>
-                <div class="skill-desc">All allies gain +25% all Element for 2 turns. <span class="dmg-dark">Dark</span> attacks on allies are reflected for 15% of their base damage.</div>
-            </div>
-            <div class="skill-card sk-passive">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_luminescenza.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Luminescence</h3><span class="skill-type passive">Passive</span></div>
-                </div>
-                <div class="skill-desc">All <span class="dmg-light">Light</span> damage dealt by this unit ignores an additional 15% of target resistance. Enemies hit by <span class="dmg-light">Light</span> deal 10% less damage for 1 turn.</div>
-            </div>
-        </div>
-    </div>
-    <div class="portrait-gallery-module">
-        <h2 class="gallery-header">Gallery</h2>
-        <div class="carousel-wrap">
-            <div class="carousel-track" id="carouselTrack">
-                <div class="carousel-item"><img src="../../img/forgotten/araldi/forgotten_light_mage_f_portrait.jpg" alt="Portrait F"></div>
-                <div class="carousel-item"><img src="../../img/forgotten/araldi/forgotten_light_mage_m_portrait.jpg" alt="Portrait M"></div>
-            </div>
-        </div>
-        <div class="carousel-nav">
-            <button class="nav-btn" id="prevBtn">&#8592;</button>
-            <button class="nav-btn" id="nextBtn">&#8594;</button>
-        </div>
-    </div>
-    <a href="forgotten_order_araldi.html" class="back-link">← Return to Araldi della Cenere</a>
-</main>
-<script>
-    const track=document.getElementById('carouselTrack');const items=track.querySelectorAll('.carousel-item');let current=0;
-    function update(){track.style.transform=`translateX(-${current*(items[0].offsetWidth+15)}px)`;}
-    document.getElementById('nextBtn').addEventListener('click',()=>{if(current<items.length-1){current++;update();}});
-    document.getElementById('prevBtn').addEventListener('click',()=>{if(current>0){current--;update();}});
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Light Mage",
+  "subtitle": "Light Path | Tier 3",
+  "accent": "#81c784",
+  "bgImage": "../../img/forgotten/forgotten_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",              "label": "Home" },
+    { "href": "../../factions/index.html",     "label": "Factions" },
+    { "href": "../../factions/forgotten.html", "label": "The Forgotten" },
+    { "href": "forgotten_order_araldi.html",   "label": "Heralds of Dust" },
+    {                                          "label": "Light Mage" }
+  ],
+
+  "combat": ["../../img/forgotten/araldi/forgotten_light_mage_f_combat.jpg", "../../img/forgotten/araldi/forgotten_light_mage_m_combat.jpg"],
+
+  "bio": {
+    "title": "The Bright Side of the Equation",
+    "paragraphs": [
+      "The Light Mage has resolved the contradiction that the Corrupted version still carries as tension. Light does not require corruption to cause harm , it requires <strong>focus, scale, and the willingness to direct it without flinching.</strong> The Light Mage has all three. She is not corrupted. She is simply very good at something that happens to burn.",
+      "The transition from Corrupted Light Mage to Light Mage is a process of integration rather than purification. The corruption is still present , it simply no longer registers as grief. The mage has metabolized the guilt of wielding light as a weapon and arrived at something that could almost be called <em>peace with it.</em>",
+      "She projects radiance that her teammates squint in. She apologizes for this, occasionally, when she remembers. She is the only Araldi unit that other units complain about during camp , not about her character, but about sleeping in proximity to someone who never fully switches off."
+    ]
+  },
+
+  "stats": {
+    "tier": 3,
+    "hp":   100,
+    "atk":  45,
+    "ini":  45
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Solar Ray",
+      "icon": "../../img/forgotten/skills/forgotten_skill_raggio_solare.png",
+      "desc": "Deals <span class=\"dmg-light\">Light</span> damage to all enemies, ignoring 10% of armor"
+    },
+    {
+      "type": "active",
+      "name": "Light Barrier",
+      "icon": "../../img/forgotten/skills/forgotten_skill_barriera_luce.png",
+      "desc": "All allies gain +25% all Element for 2 turns. <span class=\"dmg-dark\">Dark</span> attacks on allies are reflected for 15% of their base damage."
+    },
+    {
+      "type": "passive",
+      "name": "Luminescence",
+      "icon": "../../img/forgotten/skills/forgotten_skill_luminescenza.png",
+      "desc": "All <span class=\"dmg-light\">Light</span> damage dealt by this unit ignores an additional 15% of target resistance. Enemies hit by <span class=\"dmg-light\">Light</span> deal 10% less damage for 1 turn."
+    }
+  ],
+
+  "gallery": [
+    "../../img/forgotten/araldi/forgotten_light_mage_f_portrait.jpg",
+    "../../img/forgotten/araldi/forgotten_light_mage_m_portrait.jpg"
+  ],
+
+  "backLink": {
+    "href":  "forgotten_order_araldi.html",
+    "label": "Return to Heralds of Dust"
+  }
+}
 </script>
-<script src="../../system/unit-banner.js"></script>
+
+<script src="../../system/unit-renderer.js"></script>
 </body>
 </html>

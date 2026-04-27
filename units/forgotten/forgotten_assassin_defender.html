@@ -4,93 +4,87 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOULSPECTRE | Warden</title>
-    <link rel="stylesheet" href="../../system/forgotten_units.css">
-    <style>:root{--accent:#ce93d8;}</style>
+    <link rel="stylesheet" href="../../system/unit-page.css">
 </head>
 <body>
 <div id="bg-image"></div>
 <div id="overlay"></div>
-<header>
-    <h1>Warden</h1>
-    <div class="subtitle">Tier 5 , Champion , Arboreal Fighters</div>
-</header>
-<main>
-    <div class="intro-banner"><img src="../../img/forgotten/arborei/forgotten_assassin_defender_banner.png" alt="Assassin Defender Banner"></div>
-    <div class="split-section">
-        <div class="section-image-container">
-            <img src="../../img/forgotten/arborei/forgotten_assassin_defender_f_combat.jpg" alt="Assassin Defender F">
-            <img src="../../img/forgotten/arborei/forgotten_assassin_defender_m_combat.jpg" alt="Assassin Defender M" class="combat-anim">
-        </div>
-        <div class="section-text">
-            <h2>Two Lives, One Purpose</h2>
-            <p>There is no record of the process by which a Defender path and an Assassin path converge. It should not be possible , they are opposite philosophies, opposite body modifications, opposite combat instincts. And yet. There are those who surpass the barrier of duality and become something that has no precedent in the Empire's taxonomy.</p>
-            <p>The <strong>Warden</strong> carries the love of the Valkyrie and the precision of the Bladeclaw simultaneously, without contradiction. They are the largest unit in the Arborei branch and the fastest. They stand in front of others and slip through shadows in the same breath. In their presence, the rest of the formation breathes differently , deeper, calmer, as if they have taken the weight of everyone's fear and metabolized it into something useful.</p>
-            <p>They are <em>immune</em> to Mind, Soul, Light, Earth, and Air damage. These are not resistances , these are closed doors. What was created from the merging of a Valkyrie and an Elf cannot be divided against itself again.</p>
-        </div>
-    </div>
-    <div class="tactical-module">
-        <div class="tactical-header"><h2>Tactical Data</h2></div>
-        <div class="stats-box">
-            <div class="stat-item"><span class="stat-label">Tier</span><span class="stat-value tier">5</span></div>
-            <div class="stat-item"><span class="stat-label">HP</span><span class="stat-value hp">310</span></div>
-            <div class="stat-item"><span class="stat-label">ATK</span><span class="stat-value atk">120</span></div>
-            <div class="stat-item"><span class="stat-label">INI</span><span class="stat-value">50</span></div>
-            <div class="stat-item"><span class="stat-label">Armor</span><span class="stat-value armor">25%</span></div>
-            <div class="stat-item"><span class="stat-label">Immunity</span><span class="stat-value res">Mind, Soul, Light, Earth, Air</span></div>
-        </div>
-        <div class="skills-grid">
-            <div class="skill-card sk-base">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_colpo_simbiosi.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Symbiosis Strike</h3><span class="skill-type base">Base Attack</span></div>
-                </div>
-                <div class="skill-desc">Deals 100% ATK in <span class="dmg-phys">Physical</span> + 25% ATK in <span class="dmg-light">Light</span> damage to 3 random enemies, penetrating 25% Armor on each strike.</div>
-            </div>
-            <div class="skill-card sk-active">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_ricordi_strazianti.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Harrowing Memories</h3><span class="skill-type active">Active Skill</span></div>
-                </div>
-                <div class="skill-desc">Deals 100% ATK in <span class="dmg-mind">Mind</span> damage to one enemy. Applies Fear for 1 turn</div>
-            </div>
-            <div class="skill-card sk-passive">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_controllo_battaglia.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Battle Control</h3><span class="skill-type passive">Passive</span></div>
-                </div>
-                <div class="skill-desc">All allies gain +20% from the Max Hp value to this unit in Armor. Once per battle, when any allied unit falls, revives them with 25% HP.</div>
-            </div>
-            <div class="skill-card sk-ultimate">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_giudizio_anima2.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Final Judgment</h3><span class="skill-type ultimate">Ultimate , Once per Battle</span></div>
-                </div>
-                <div class="skill-desc">Deals 180% ATK in <span class="dmg-phys">Physical</span> + <span class="dmg-light">Light</span> damage to all enemies, ignoring 40% Armor. Applies Fear for 2 turns and reduces enemy Morale by 30.</div>
-            </div>
-        </div>
-    </div>
-    <div class="portrait-gallery-module">
-        <h2 class="gallery-header">Gallery</h2>
-        <div class="carousel-wrap">
-            <div class="carousel-track" id="carouselTrack">
-                <div class="carousel-item"><img src="../../img/forgotten/arborei/forgotten_assassin_defender_f_portrait.jpg" alt="Portrait F"></div>
-                <div class="carousel-item"><img src="../../img/forgotten/arborei/forgotten_assassin_defender_m_portrait.jpg" alt="Portrait M"></div>
-                <div class="carousel-item"><img src="../../img/forgotten/arborei/forgotten_assassin_defender_extra_1.jpg" alt="Extra 1"></div>
-            </div>
-        </div>
-        <div class="carousel-nav">
-            <button class="nav-btn" id="prevBtn">&#8592;</button>
-            <button class="nav-btn" id="nextBtn">&#8594;</button>
-        </div>
-    </div>
-    <a href="forgotten_order_arborei.html" class="back-link">← Return to Arboreal Fighters</a>
-</main>
-<script>
-    const track=document.getElementById('carouselTrack');const items=track.querySelectorAll('.carousel-item');let current=0;
-    function update(){track.style.transform=`translateX(-${current*(items[0].offsetWidth+15)}px)`;}
-    document.getElementById('nextBtn').addEventListener('click',()=>{if(current<items.length-1){current++;update();}});
-    document.getElementById('prevBtn').addEventListener('click',()=>{if(current>0){current--;update();}});
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Warden",
+  "subtitle": "Champion of the Arboreal Fighters | Tier 5",
+  "accent": "#ce93d8",
+  "bgImage": "../../img/forgotten/forgotten_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",              "label": "Home" },
+    { "href": "../../factions/index.html",     "label": "Factions" },
+    { "href": "../../factions/forgotten.html", "label": "The Forgotten" },
+    { "href": "forgotten_order_arborei.html",  "label": "Arboreal Fighters" },
+    {                                          "label": "Warden" }
+  ],
+
+  "combat": ["../../img/forgotten/arborei/forgotten_assassin_defender_f_combat.jpg", "../../img/forgotten/arborei/forgotten_assassin_defender_m_combat.jpg"],
+
+  "bio": {
+    "title": "Two Lives, One Purpose",
+    "paragraphs": [
+      "There is no record of the process by which a Defender path and an Assassin path converge. It should not be possible , they are opposite philosophies, opposite body modifications, opposite combat instincts. And yet. There are those who surpass the barrier of duality and become something that has no precedent in the Empire's taxonomy.",
+      "The <strong>Warden</strong> carries the love of the Valkyrie and the precision of the Bladeclaw simultaneously, without contradiction. They are the largest unit in the Arborei branch and the fastest. They stand in front of others and slip through shadows in the same breath. In their presence, the rest of the formation breathes differently , deeper, calmer, as if they have taken the weight of everyone's fear and metabolized it into something useful.",
+      "They are <em>immune</em> to Mind, Soul, Light, Earth, and Air damage. These are not resistances , these are closed doors. What was created from the merging of a Valkyrie and an Elf cannot be divided against itself again."
+    ]
+  },
+
+  "stats": {
+    "tier": 5,
+    "hp":     310,
+    "atk":    120,
+    "ini":    50,
+    "armor":  "25%",
+    "immunity": "Mind, Soul, Light, Earth, Air"
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Symbiosis Strike",
+      "icon": "../../img/forgotten/skills/forgotten_skill_colpo_simbiosi.png",
+      "desc": "Deals 100% ATK in <span class=\"dmg-phys\">Physical</span> + 25% ATK in <span class=\"dmg-light\">Light</span> damage to 3 random enemies, penetrating 25% Armor on each strike."
+    },
+    {
+      "type": "active",
+      "name": "Harrowing Memories",
+      "icon": "../../img/forgotten/skills/forgotten_skill_ricordi_strazianti.png",
+      "desc": "Deals 100% ATK in <span class=\"dmg-mind\">Mind</span> damage to one enemy. Applies Fear for 1 turn"
+    },
+    {
+      "type": "passive",
+      "name": "Battle Control",
+      "icon": "../../img/forgotten/skills/forgotten_skill_controllo_battaglia.png",
+      "desc": "All allies gain +20% from the Max Hp value to this unit in Armor. Once per battle, when any allied unit falls, revives them with 25% HP."
+    },
+    {
+      "type": "ultimate",
+      "name": "Final Judgment",
+      "icon": "../../img/forgotten/skills/forgotten_skill_giudizio_anima2.png",
+      "desc": "Deals 180% ATK in <span class=\"dmg-phys\">Physical</span> + <span class=\"dmg-light\">Light</span> damage to all enemies, ignoring 40% Armor. Applies Fear for 2 turns and reduces enemy Morale by 30."
+    }
+  ],
+
+  "gallery": [
+    "../../img/forgotten/arborei/forgotten_assassin_defender_f_portrait.jpg",
+    "../../img/forgotten/arborei/forgotten_assassin_defender_m_portrait.jpg",
+    "../../img/forgotten/arborei/forgotten_assassin_defender_extra_1.jpg"
+  ],
+
+  "backLink": {
+    "href":  "forgotten_order_arborei.html",
+    "label": "Return to Arboreal Fighters"
+  }
+}
 </script>
-<script src="../../system/unit-banner.js"></script>
+
+<script src="../../system/unit-renderer.js"></script>
 </body>
 </html>

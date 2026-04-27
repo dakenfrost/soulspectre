@@ -4,75 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOULSPECTRE | Corrupted Wind Mage</title>
-    <link rel="stylesheet" href="../../system/forgotten_units.css">
+    <link rel="stylesheet" href="../../system/unit-page.css">
 </head>
 <body>
 <div id="bg-image"></div>
 <div id="overlay"></div>
-<header>
-    <h1>Corrupted Wind Mage</h1>
-    <div class="subtitle">Tier 2 , Wind Path</div>
-</header>
-<main>
-    <div class="intro-banner"><img src="../../img/forgotten/araldi/forgotten_corrupted_wind_mage_banner.png" alt="Corrupted Wind Mage Banner"></div>
-    <div class="split-section">
-        <div class="section-image-container">
-            <img src="../../img/forgotten/araldi/forgotten_corrupted_wind_mage_f_combat.jpg" alt="Corrupted Wind Mage F">
-            <img src="../../img/forgotten/araldi/forgotten_corrupted_wind_mage_m_combat.jpg" alt="Corrupted Wind Mage M" class="combat-anim">
-        </div>
-        <div class="section-text">
-            <h2>Turbulence as Language</h2>
-            <p>The Corrupted Wind Mages communicate in air currents the way linguists communicate in syntax , with extraordinary precision and an irritation for imprecision in others. In life, they were scholars of atmospheric phenomena: those who mapped weather patterns, studied migration, read the political implications of the wind's direction. They already understood that <strong>air was never innocent.</strong></p>
-            <p>The corruption did not twist their understanding of wind , it simply removed the intermediate step between observation and action. They no longer describe the storm. <em>They are it.</em> Their movement through the battlefield creates eddies of displaced air that throw off the timing of other units around them , ally and enemy alike, though allies learn to compensate faster.</p>
-            <p>Their form is translucent in the way heat haze is translucent: present, distorting, hard to look directly at. They leave trails in their wake , not footprints, but a brief distortion of the air, like something moved through space too fast for the space to accommodate it.</p>
-        </div>
-    </div>
-    <div class="tactical-module">
-        <div class="tactical-header"><h2>Tactical Data</h2></div>
-        <div class="stats-box">
-            <div class="stat-item"><span class="stat-label">Tier</span><span class="stat-value tier">2</span></div>
-            <div class="stat-item"><span class="stat-label">HP</span><span class="stat-value hp">65</span></div>
-            <div class="stat-item"><span class="stat-label">ATK</span><span class="stat-value atk">30</span></div>
-            <div class="stat-item"><span class="stat-label">INI</span><span class="stat-value">50</span></div>
-        </div>
-        <div class="skills-grid">
-            <div class="skill-card sk-base">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_folata_corrotta.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Corrupted Gust</h3><span class="skill-type base">Base Skill</span></div>
-                </div>
-                <div class="skill-desc">Deals <span class="dmg-air">Air</span> damage to all enemies</div>
-            </div>
-            <div class="skill-card sk-active">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_vortice_oscuro.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Dark Vortex</h3><span class="skill-type active">Active Skill</span></div>
-                </div>
-                <div class="skill-desc">Deals <span class="dmg-air">Air</span> 120% damage to front row. Applies Stunned with probability 10% for 2 turn.</div>
-            </div>
-        </div>
-    </div>
-    <div class="portrait-gallery-module">
-        <h2 class="gallery-header">Gallery</h2>
-        <div class="carousel-wrap">
-            <div class="carousel-track" id="carouselTrack">
-                <div class="carousel-item"><img src="../../img/forgotten/araldi/forgotten_corrupted_wind_mage_f_portrait.jpg" alt="Portrait F"></div>
-                <div class="carousel-item"><img src="../../img/forgotten/araldi/forgotten_corrupted_wind_mage_m_portrait.jpg" alt="Portrait M"></div>
-            </div>
-        </div>
-        <div class="carousel-nav">
-            <button class="nav-btn" id="prevBtn">&#8592;</button>
-            <button class="nav-btn" id="nextBtn">&#8594;</button>
-        </div>
-    </div>
-    <a href="forgotten_order_araldi.html" class="back-link">← Return to Araldi della Cenere</a>
-</main>
-<script>
-    const track=document.getElementById('carouselTrack');const items=track.querySelectorAll('.carousel-item');let current=0;
-    function update(){track.style.transform=`translateX(-${current*(items[0].offsetWidth+15)}px)`;}
-    document.getElementById('nextBtn').addEventListener('click',()=>{if(current<items.length-1){current++;update();}});
-    document.getElementById('prevBtn').addEventListener('click',()=>{if(current>0){current--;update();}});
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Corrupted Wind Mage",
+  "subtitle": "Wind Path | Tier 2",
+  "accent": "#4dd0e1",
+  "bgImage": "../../img/forgotten/forgotten_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",              "label": "Home" },
+    { "href": "../../factions/index.html",     "label": "Factions" },
+    { "href": "../../factions/forgotten.html", "label": "The Forgotten" },
+    { "href": "forgotten_order_araldi.html",   "label": "Heralds of Dust" },
+    {                                          "label": "Corrupted Wind Mage" }
+  ],
+
+  "combat": ["../../img/forgotten/araldi/forgotten_corrupted_wind_mage_f_combat.jpg", "../../img/forgotten/araldi/forgotten_corrupted_wind_mage_m_combat.jpg"],
+
+  "bio": {
+    "title": "Turbulence as Language",
+    "paragraphs": [
+      "The Corrupted Wind Mages communicate in air currents the way linguists communicate in syntax , with extraordinary precision and an irritation for imprecision in others. In life, they were scholars of atmospheric phenomena: those who mapped weather patterns, studied migration, read the political implications of the wind's direction. They already understood that <strong>air was never innocent.</strong>",
+      "The corruption did not twist their understanding of wind , it simply removed the intermediate step between observation and action. They no longer describe the storm. <em>They are it.</em> Their movement through the battlefield creates eddies of displaced air that throw off the timing of other units around them , ally and enemy alike, though allies learn to compensate faster.",
+      "Their form is translucent in the way heat haze is translucent: present, distorting, hard to look directly at. They leave trails in their wake , not footprints, but a brief distortion of the air, like something moved through space too fast for the space to accommodate it."
+    ]
+  },
+
+  "stats": {
+    "tier": 2,
+    "hp":   65,
+    "atk":  30,
+    "ini":  50
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Corrupted Gust",
+      "icon": "../../img/forgotten/skills/forgotten_skill_folata_corrotta.png",
+      "desc": "Deals <span class=\"dmg-air\">Air</span> damage to all enemies"
+    },
+    {
+      "type": "active",
+      "name": "Dark Vortex",
+      "icon": "../../img/forgotten/skills/forgotten_skill_vortice_oscuro.png",
+      "desc": "Deals <span class=\"dmg-air\">Air</span> 120% damage to front row. Applies Stunned with probability 10% for 2 turn."
+    }
+  ],
+
+  "gallery": [
+    "../../img/forgotten/araldi/forgotten_corrupted_wind_mage_f_portrait.jpg",
+    "../../img/forgotten/araldi/forgotten_corrupted_wind_mage_m_portrait.jpg"
+  ],
+
+  "backLink": {
+    "href":  "forgotten_order_araldi.html",
+    "label": "Return to Heralds of Dust"
+  }
+}
 </script>
-<script src="../../system/unit-banner.js"></script>
+
+<script src="../../system/unit-renderer.js"></script>
 </body>
 </html>

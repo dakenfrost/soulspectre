@@ -4,85 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOULSPECTRE | Marksman</title>
-    <link rel="stylesheet" href="../../system/forgotten_units.css">
-    <style>:root{--accent:#81c784;}</style>
+    <link rel="stylesheet" href="../../system/unit-page.css">
 </head>
 <body>
 <div id="bg-image"></div>
 <div id="overlay"></div>
-<header>
-    <h1>Marksman</h1>
-    <div class="subtitle">Tier 3 , Sniper Path</div>
-</header>
-<main>
-    <div class="intro-banner"><img src="../../img/forgotten/sentinelle/forgotten_marksman_banner.png" alt="Marksman Banner"></div>
-    <div class="split-section">
-        <div class="section-image-container">
-            <img src="../../img/forgotten/sentinelle/forgotten_marksman_f_combat.jpg" alt="Marksman F">
-            <img src="../../img/forgotten/sentinelle/forgotten_marksman_m_combat.jpg" alt="Marksman M" class="combat-anim">
-        </div>
-        <div class="section-text">
-            <h2>The Calculation Is Not Romantic</h2>
-            <p>The Marksman does not think of shooting as an art. He thinks of it as applied mathematics: wind resistance, target velocity, angle of projection, anticipated movement, atmospheric humidity. You put the numbers in, you get a result. The result is a projectile arriving where you intended it to arrive. <strong>Romance is what people who miss invoke to explain the miss.</strong></p>
-            <p>He was, in life, a siege engineer at the crossbow specialist level , someone employed specifically to make precision shots at high-value targets during extended military operations. He was not a soldier. He was a consultant. He submitted invoices and everything. The invoices were extremely precise, which, in retrospect, should have told people something about his character.</p>
-            <p>In the Sentinelle he is the apex of the precision path before the elf specialists. This is not something he takes pride in. It is simply an accurate description of his position in the formation's capability hierarchy, and he appreciates accuracy in all its forms. He and the Noble have <em>a professional relationship that functions entirely through mutual technical respect and near-complete personality incompatibility.</em> It works.</p>
-        </div>
-    </div>
-    <div class="tactical-module">
-        <div class="tactical-header"><h2>Tactical Data</h2></div>
-        <div class="stats-box">
-            <div class="stat-item"><span class="stat-label">Tier</span><span class="stat-value tier">3</span></div>
-            <div class="stat-item"><span class="stat-label">HP</span><span class="stat-value hp">130</span></div>
-            <div class="stat-item"><span class="stat-label">ATK</span><span class="stat-value atk">70</span></div>
-            <div class="stat-item"><span class="stat-label">INI</span><span class="stat-value">60</span></div>
-        </div>
-        <div class="skills-grid">
-            <div class="skill-card sk-base">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_tiro_precisione.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Precision Shot</h3><span class="skill-type base">Base Skill</span></div>
-                </div>
-                <div class="skill-desc">Deals <span class="dmg-phys">Physical</span> ranged damage to one enemy</div>
-            </div>
-            <div class="skill-card sk-active">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_proiettile_perforante.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Piercing Round</h3><span class="skill-type active">Active Skill</span></div>
-                </div>
-                <div class="skill-desc">Deals 150% ATK in <span class="dmg-phys">Physical</span> ranged damage to one enemy, ignoring 20% of target Defense.</div>
-            </div>
-            <div class="skill-card sk-passive">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_occhio_freddo.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Cold Eye</h3><span class="skill-type passive">Passive</span></div>
-                </div>
-                <div class="skill-desc">Critical chance 10% (double damage). 
-                    Gains +5% Critical Chance for each consecutive turn without receiving damage (resets on hit and not apply with abilites).
-                    </div>
-            </div>
-        </div>
-    </div>
-    <div class="portrait-gallery-module">
-        <h2 class="gallery-header">Gallery</h2>
-        <div class="carousel-wrap">
-            <div class="carousel-track" id="carouselTrack">
-                <div class="carousel-item"><img src="../../img/forgotten/sentinelle/forgotten_marksman_m_portrait.jpg" alt="Portrait M"></div>
-                <div class="carousel-item"><img src="../../img/forgotten/sentinelle/forgotten_marksman_f_portrait.jpg" alt="Portrait F"></div>
-            </div>
-        </div>
-        <div class="carousel-nav">
-            <button class="nav-btn" id="prevBtn">&#8592;</button>
-            <button class="nav-btn" id="nextBtn">&#8594;</button>
-        </div>
-    </div>
-    <a href="forgotten_order_sentinelle.html" class="back-link">← Return to Sentinelle delle Ceneri</a>
-</main>
-<script>
-    const track=document.getElementById('carouselTrack');const items=track.querySelectorAll('.carousel-item');let current=0;
-    function update(){track.style.transform=`translateX(-${current*(items[0].offsetWidth+15)}px)`;}
-    document.getElementById('nextBtn').addEventListener('click',()=>{if(current<items.length-1){current++;update();}});
-    document.getElementById('prevBtn').addEventListener('click',()=>{if(current>0){current--;update();}});
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Marksman",
+  "subtitle": "Sniper Path | Tier 3",
+  "accent": "#81c784",
+  "bgImage": "../../img/forgotten/forgotten_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                  "label": "Home" },
+    { "href": "../../factions/index.html",         "label": "Factions" },
+    { "href": "../../factions/forgotten.html",     "label": "The Forgotten" },
+    { "href": "forgotten_order_sentinelle.html",   "label": "Amber Sentinels" },
+    {                                              "label": "Marksman" }
+  ],
+
+  "combat": ["../../img/forgotten/sentinelle/forgotten_marksman_f_combat.jpg", "../../img/forgotten/sentinelle/forgotten_marksman_m_combat.jpg"],
+
+  "bio": {
+    "title": "The Calculation Is Not Romantic",
+    "paragraphs": [
+      "The Marksman does not think of shooting as an art. He thinks of it as applied mathematics: wind resistance, target velocity, angle of projection, anticipated movement, atmospheric humidity. You put the numbers in, you get a result. The result is a projectile arriving where you intended it to arrive. <strong>Romance is what people who miss invoke to explain the miss.</strong>",
+      "He was, in life, a siege engineer at the crossbow specialist level , someone employed specifically to make precision shots at high-value targets during extended military operations. He was not a soldier. He was a consultant. He submitted invoices and everything. The invoices were extremely precise, which, in retrospect, should have told people something about his character.",
+      "In the Sentinelle he is the apex of the precision path before the elf specialists. This is not something he takes pride in. It is simply an accurate description of his position in the formation's capability hierarchy, and he appreciates accuracy in all its forms. He and the Noble have <em>a professional relationship that functions entirely through mutual technical respect and near-complete personality incompatibility.</em> It works."
+    ]
+  },
+
+  "stats": {
+    "tier": 3,
+    "hp":   130,
+    "atk":  70,
+    "ini":  60
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Precision Shot",
+      "icon": "../../img/forgotten/skills/forgotten_skill_tiro_precisione.png",
+      "desc": "Deals <span class=\"dmg-phys\">Physical</span> ranged damage to one enemy"
+    },
+    {
+      "type": "active",
+      "name": "Piercing Round",
+      "icon": "../../img/forgotten/skills/forgotten_skill_proiettile_perforante.png",
+      "desc": "Deals 150% ATK in <span class=\"dmg-phys\">Physical</span> ranged damage to one enemy, ignoring 20% of target Defense."
+    },
+    {
+      "type": "passive",
+      "name": "Cold Eye",
+      "icon": "../../img/forgotten/skills/forgotten_skill_occhio_freddo.png",
+      "desc": "Critical chance 10% (double damage). Gains +5% Critical Chance for each consecutive turn without receiving damage (resets on hit and not apply with abilites)."
+    }
+  ],
+
+  "gallery": [
+    "../../img/forgotten/sentinelle/forgotten_marksman_m_portrait.jpg",
+    "../../img/forgotten/sentinelle/forgotten_marksman_f_portrait.jpg"
+  ],
+
+  "backLink": {
+    "href":  "forgotten_order_sentinelle.html",
+    "label": "Return to Amber Sentinels"
+  }
+}
 </script>
-<script src="../../system/unit-banner.js"></script>
+
+<script src="../../system/unit-renderer.js"></script>
 </body>
 </html>

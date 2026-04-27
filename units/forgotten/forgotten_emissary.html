@@ -4,95 +4,85 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOULSPECTRE | Emissary</title>
-    <link rel="stylesheet" href="../../system/forgotten_units.css">
-    <style>:root{--accent:#ce93d8;}</style>
+    <link rel="stylesheet" href="../../system/unit-page.css">
 </head>
 <body>
 <div id="bg-image"></div>
 <div id="overlay"></div>
-<header>
-    <h1>Emissary</h1>
-    <div class="subtitle">Tier 5 Champion , Shadows of the Sap</div>
-</header>
-<main>
-    <div class="intro-banner"><img src="../../img/forgotten/linfa/forgotten_emissary_banner.png" alt="Emissary Banner"></div>
-    <div class="split-section">
-        <div class="section-image-container">
-            <img src="../../img/forgotten/linfa/forgotten_emissary_f_combat.jpg" alt="Emissary F">
-            <img src="../../img/forgotten/linfa/forgotten_emissary_m_combat.jpg" alt="Emissary M" class="combat-anim">
-        </div>
-        <div class="section-text">
-            <h2>The Living Covenant</h2>
-            <p>An Emissary is what happens when a Linfa soul fully integrates all dichotomies and stops experiencing them as tension. She is simultaneously <strong>Malicott's most complete manifestation</strong> and the most individually present unit in the entire Shadows of the Sap branch. Where lesser units are still becoming, the Emissary has arrived , not at transcendence, but at <em>perfect function.</em></p>
-            <p>She negotiates between life and death the way an experienced diplomat negotiates between two states that have been at war for a century: with total familiarity with both positions, zero illusions about either, and an absolute refusal to let the impasse continue. She does not mourn the fallen. She retrieves them and brings them back to work.</p>
-            <p>Her voice carries the specific timbre of sap-harmonics , each word is simultaneously spoken and felt as a vibration in the bones. Enemies who have heard her speak describe it as hearing the forest itself issue a sentence. Allies describe it differently: they say it sounds like someone who genuinely believes that <strong>the outcome is not in question. Only the timeline.</strong></p>
-        </div>
-    </div>
-    <div class="tactical-module">
-        <div class="tactical-header">
-            <h2>Tactical Data</h2>
-            <p>Linfa Champion , once per formation</p>
-        </div>
-        <div class="stats-box">
-            <div class="stat-item"><span class="stat-label">Tier</span><span class="stat-value tier">5</span></div>
-            <div class="stat-item"><span class="stat-label">HP</span><span class="stat-value hp">260</span></div>
-            <div class="stat-item"><span class="stat-label">ATK</span><span class="stat-value atk">100</span></div>
-            <div class="stat-item"><span class="stat-label">INI</span><span class="stat-value">50</span></div>
-            <div class="stat-item"><span class="stat-label">IMM</span> <span class="stat-value res">Instant Kill</span></div>
 
-        </div>
-        <div class="skills-grid">
-            <div class="skill-card sk-base">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_voce_malicott.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Voice of Malicott</h3><span class="skill-type base">Base Skill</span></div>
-                </div>
-                <div class="skill-desc">Deals <span class="dmg-mind">Mind</span> + <span class="dmg-light">Light</span> damage to all enemies. If used on an ally (less than 30% HP), Heals all allies for 10% of their max HP.</div>
-            </div>
-            <div class="skill-card sk-active">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_immunita_diplomatica.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Diplomatic Immunity</h3><span class="skill-type active">Active Skill</span></div>
-                </div>
-                <div class="skill-desc">For 1 turn, no allied unit can be reduced below 1 HP and all are immune to negative status effects.</div>
-            </div>
-            <div class="skill-card sk-passive">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_benedizione_malicott.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Blessing of Malicott</h3><span class="skill-type passive">Passive</span></div>
-                </div>
-                <div class="skill-desc">All allies gain +15% resistance to <span class="dmg-mind">Mind</span> and <span class="dmg-light">Light</span> damage.</div>
-            </div>
-            <div class="skill-card sk-ultimate">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_patto_vita.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Life Pact</h3><span class="skill-type ultimate">Ultimate , Once per Battle</span></div>
-                </div>
-                <div class="skill-desc">Revives all fallen allies at 25% HP. Heals all living allies for 30% of their max HP.</div>
-            </div>
-        </div>
-    </div>
-    <div class="portrait-gallery-module">
-        <h2 class="gallery-header">Gallery</h2>
-        <div class="carousel-wrap">
-            <div class="carousel-track" id="carouselTrack">
-                <div class="carousel-item"><img src="../../img/forgotten/linfa/forgotten_emissary_m_portrait.jpg" alt="Portrait M"></div>
-                <div class="carousel-item"><img src="../../img/forgotten/linfa/forgotten_emissary_f_portrait.jpg" alt="Portrait F"></div>
-            </div>
-        </div>
-        <div class="carousel-nav">
-            <button class="nav-btn" id="prevBtn">&#8592;</button>
-            <button class="nav-btn" id="nextBtn">&#8594;</button>
-        </div>
-    </div>
-    <a href="forgotten_order_linfa.html" class="back-link">← Return to Shadows of the Sap</a>
-</main>
-<script>
-    const track=document.getElementById('carouselTrack');const items=track.querySelectorAll('.carousel-item');let current=0;
-    function update(){track.style.transform=`translateX(-${current*(items[0].offsetWidth+15)}px)`;}
-    document.getElementById('nextBtn').addEventListener('click',()=>{if(current<items.length-1){current++;update();}});
-    document.getElementById('prevBtn').addEventListener('click',()=>{if(current>0){current--;update();}});
+<script type="application/json" id="unit-data">
+{
+  "name": "Emissary",
+  "subtitle": "Champion of the Shadows of the Sap | Tier 5",
+  "accent": "#ce93d8",
+  "bgImage": "../../img/forgotten/forgotten_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",              "label": "Home" },
+    { "href": "../../factions/index.html",     "label": "Factions" },
+    { "href": "../../factions/forgotten.html", "label": "The Forgotten" },
+    { "href": "forgotten_order_linfa.html",    "label": "Shadows of the Sap" },
+    {                                          "label": "Emissary" }
+  ],
+
+  "combat": ["../../img/forgotten/linfa/forgotten_emissary_f_combat.jpg", "../../img/forgotten/linfa/forgotten_emissary_m_combat.jpg"],
+
+  "bio": {
+    "title": "The Living Covenant",
+    "paragraphs": [
+      "An Emissary is what happens when a Linfa soul fully integrates all dichotomies and stops experiencing them as tension. She is simultaneously <strong>Malicott's most complete manifestation</strong> and the most individually present unit in the entire Shadows of the Sap branch. Where lesser units are still becoming, the Emissary has arrived , not at transcendence, but at <em>perfect function.</em>",
+      "She negotiates between life and death the way an experienced diplomat negotiates between two states that have been at war for a century: with total familiarity with both positions, zero illusions about either, and an absolute refusal to let the impasse continue. She does not mourn the fallen. She retrieves them and brings them back to work.",
+      "Her voice carries the specific timbre of sap-harmonics , each word is simultaneously spoken and felt as a vibration in the bones. Enemies who have heard her speak describe it as hearing the forest itself issue a sentence. Allies describe it differently: they say it sounds like someone who genuinely believes that <strong>the outcome is not in question. Only the timeline.</strong>"
+    ]
+  },
+
+  "stats": {
+    "tier": 5,
+    "hp":   260,
+    "atk":  100,
+    "ini":  50,
+    "immunity": "Instant Kill"
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Voice of Malicott",
+      "icon": "../../img/forgotten/skills/forgotten_skill_voce_malicott.png",
+      "desc": "Deals <span class=\"dmg-mind\">Mind</span> + <span class=\"dmg-light\">Light</span> damage to all enemies. If used on an ally (less than 30% HP), Heals all allies for 10% of their max HP."
+    },
+    {
+      "type": "active",
+      "name": "Diplomatic Immunity",
+      "icon": "../../img/forgotten/skills/forgotten_skill_immunita_diplomatica.png",
+      "desc": "For 1 turn, no allied unit can be reduced below 1 HP and all are immune to negative status effects."
+    },
+    {
+      "type": "passive",
+      "name": "Blessing of Malicott",
+      "icon": "../../img/forgotten/skills/forgotten_skill_benedizione_malicott.png",
+      "desc": "All allies gain +15% resistance to <span class=\"dmg-mind\">Mind</span> and <span class=\"dmg-light\">Light</span> damage."
+    },
+    {
+      "type": "ultimate",
+      "name": "Life Pact",
+      "icon": "../../img/forgotten/skills/forgotten_skill_patto_vita.png",
+      "desc": "Revives all fallen allies at 25% HP. Heals all living allies for 30% of their max HP."
+    }
+  ],
+
+  "gallery": [
+    "../../img/forgotten/linfa/forgotten_emissary_m_portrait.jpg",
+    "../../img/forgotten/linfa/forgotten_emissary_f_portrait.jpg"
+  ],
+
+  "backLink": {
+    "href":  "forgotten_order_linfa.html",
+    "label": "Return to Shadows of the Sap"
+  }
+}
 </script>
-<script src="../../system/unit-banner.js"></script>
+
+<script src="../../system/unit-renderer.js"></script>
 </body>
 </html>

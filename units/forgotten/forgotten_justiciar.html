@@ -4,83 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOULSPECTRE | Justiciar</title>
-    <link rel="stylesheet" href="../../system/forgotten_units.css">
-    <style>:root{--accent:#81c784;}</style>
+    <link rel="stylesheet" href="../../system/unit-page.css">
 </head>
 <body>
 <div id="bg-image"></div>
 <div id="overlay"></div>
-<header>
-    <h1>Justiciar</h1>
-    <div class="subtitle">Tier 3 , Custodian Path</div>
-</header>
-<main>
-    <div class="intro-banner"><img src="../../img/forgotten/sentinelle/forgotten_justiciar_banner.png" alt="Justiciar Banner"></div>
-    <div class="split-section">
-        <div class="section-image-container">
-            <img src="../../img/forgotten/sentinelle/forgotten_justiciar_f_combat.jpg" alt="Justiciar F">
-            <img src="../../img/forgotten/sentinelle/forgotten_justiciar_m_combat.jpg" alt="Justiciar M" class="combat-anim">
-        </div>
-        <div class="section-text">
-            <h2>Law That Stays</h2>
-            <p>The Justiciars were enforcement officers in the old empire before its fall , not soldiers, but the bodies of the legal system that went into the field when a legal system needed physical expression. They served writs. They maintained order at borders. They stopped things that needed stopping, using <strong>proportional force first and whatever followed proportional force if required.</strong> They understood legal authority as a physical posture, and they held that posture for thirty years each, on average, before dying in the line of it.</p>
-            <p>In undeath they find that the standards of the old legal system no longer apply , there is no law to enforce, no writs to serve, no territory that recognizes their authority. What remains is the posture itself: the way of standing that communicates <em>this far, no further,</em> and the training to back it up. Malicott finds this useful. The Sentinelle find it stabilizing. Having a Justiciar in the formation is like having a wall that occasionally points where the wall should be positioned.</p>
-            <p>They are the backbone of the Custodian path's protective function , more mobile than the T4 Valkyrie Lancer but less individually powerful, compensating with an ability to cover multiple formation members simultaneously and an almost aesthetic distaste for being moved from a position they have committed to holding.</p>
-        </div>
-    </div>
-    <div class="tactical-module">
-        <div class="tactical-header"><h2>Tactical Data</h2></div>
-        <div class="stats-box">
-            <div class="stat-item"><span class="stat-label">HP</span><span class="stat-value hp">150</span></div>
-            <div class="stat-item"><span class="stat-label">ATK</span><span class="stat-value atk">65</span></div>
-            <div class="stat-item"><span class="stat-label">INI</span><span class="stat-value">60</span></div>
-            <div class="stat-item"><span class="stat-label">Tier</span><span class="stat-value tier">3</span></div>
-        </div>
-        <div class="skills-grid">
-            <div class="skill-card sk-base">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_dardo_ambra.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Enforcement Round</h3><span class="skill-type base">Base Skill</span></div>
-                </div>
-                <div class="skill-desc">Deals <span class="dmg-earth">Earth</span> ranged damage to one enemy. Applies Exposed (-15% DEF) for 1 turn.</div>
-            </div>
-            <div class="skill-card sk-active">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_posizione_guardia.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Zone Suppression</h3><span class="skill-type active">Active Skill</span></div>
-                </div>
-                <div class="skill-desc">Deals <span class="dmg-earth">Earth</span> damage to all enemies in the target zone. Reduces all targets' Accuracy by 20% for 2 turns.</div>
-            </div>
-            <div class="skill-card sk-passive">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_coordinazione.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Amber Sightline</h3><span class="skill-type passive">Passive</span></div>
-                </div>
-                <div class="skill-desc">All allied Sentinelle units gain +10% Critical Chance. Enemies with Exposed or Immobilized take +8% damage from ranged attacks.</div>
-            </div>
-        </div>
-    </div>
-    <div class="portrait-gallery-module">
-        <h2 class="gallery-header">Gallery</h2>
-        <div class="carousel-wrap">
-            <div class="carousel-track" id="carouselTrack">
-                <div class="carousel-item"><img src="../../img/forgotten/sentinelle/forgotten_justiciar_m_portrait.jpg" alt="Portrait M"></div>
-                <div class="carousel-item"><img src="../../img/forgotten/sentinelle/forgotten_justiciar_f_portrait.jpg" alt="Portrait F"></div>
-            </div>
-        </div>
-        <div class="carousel-nav">
-            <button class="nav-btn" id="prevBtn">&#8592;</button>
-            <button class="nav-btn" id="nextBtn">&#8594;</button>
-        </div>
-    </div>
-    <a href="forgotten_order_sentinelle.html" class="back-link">← Return to Sentinelle delle Ceneri</a>
-</main>
-<script>
-    const track=document.getElementById('carouselTrack');const items=track.querySelectorAll('.carousel-item');let current=0;
-    function update(){track.style.transform=`translateX(-${current*(items[0].offsetWidth+15)}px)`;}
-    document.getElementById('nextBtn').addEventListener('click',()=>{if(current<items.length-1){current++;update();}});
-    document.getElementById('prevBtn').addEventListener('click',()=>{if(current>0){current--;update();}});
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Justiciar",
+  "subtitle": "Custodian Path | Tier 3",
+  "accent": "#81c784",
+  "bgImage": "../../img/forgotten/forgotten_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                  "label": "Home" },
+    { "href": "../../factions/index.html",         "label": "Factions" },
+    { "href": "../../factions/forgotten.html",     "label": "The Forgotten" },
+    { "href": "forgotten_order_sentinelle.html",   "label": "Amber Sentinels" },
+    {                                              "label": "Justiciar" }
+  ],
+
+  "combat": ["../../img/forgotten/sentinelle/forgotten_justiciar_f_combat.jpg", "../../img/forgotten/sentinelle/forgotten_justiciar_m_combat.jpg"],
+
+  "bio": {
+    "title": "Law That Stays",
+    "paragraphs": [
+      "The Justiciars were enforcement officers in the old empire before its fall , not soldiers, but the bodies of the legal system that went into the field when a legal system needed physical expression. They served writs. They maintained order at borders. They stopped things that needed stopping, using <strong>proportional force first and whatever followed proportional force if required.</strong> They understood legal authority as a physical posture, and they held that posture for thirty years each, on average, before dying in the line of it.",
+      "In undeath they find that the standards of the old legal system no longer apply , there is no law to enforce, no writs to serve, no territory that recognizes their authority. What remains is the posture itself: the way of standing that communicates <em>this far, no further,</em> and the training to back it up. Malicott finds this useful. The Sentinelle find it stabilizing. Having a Justiciar in the formation is like having a wall that occasionally points where the wall should be positioned.",
+      "They are the backbone of the Custodian path's protective function , more mobile than the T4 Valkyrie Lancer but less individually powerful, compensating with an ability to cover multiple formation members simultaneously and an almost aesthetic distaste for being moved from a position they have committed to holding."
+    ]
+  },
+
+  "stats": {
+    "tier": 3,
+    "hp":   150,
+    "atk":  65,
+    "ini":  60
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Enforcement Round",
+      "icon": "../../img/forgotten/skills/forgotten_skill_dardo_ambra.png",
+      "desc": "Deals <span class=\"dmg-earth\">Earth</span> ranged damage to one enemy. Applies Exposed (-15% DEF) for 1 turn."
+    },
+    {
+      "type": "active",
+      "name": "Zone Suppression",
+      "icon": "../../img/forgotten/skills/forgotten_skill_posizione_guardia.png",
+      "desc": "Deals <span class=\"dmg-earth\">Earth</span> damage to all enemies in the target zone. Reduces all targets' Accuracy by 20% for 2 turns."
+    },
+    {
+      "type": "passive",
+      "name": "Amber Sightline",
+      "icon": "../../img/forgotten/skills/forgotten_skill_coordinazione.png",
+      "desc": "All allied Sentinelle units gain +10% Critical Chance. Enemies with Exposed or Immobilized take +8% damage from ranged attacks."
+    }
+  ],
+
+  "gallery": [
+    "../../img/forgotten/sentinelle/forgotten_justiciar_m_portrait.jpg",
+    "../../img/forgotten/sentinelle/forgotten_justiciar_f_portrait.jpg"
+  ],
+
+  "backLink": {
+    "href":  "forgotten_order_sentinelle.html",
+    "label": "Return to Amber Sentinels"
+  }
+}
 </script>
-<script src="../../system/unit-banner.js"></script>
+
+<script src="../../system/unit-renderer.js"></script>
 </body>
 </html>

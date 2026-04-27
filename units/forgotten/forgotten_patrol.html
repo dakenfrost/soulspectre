@@ -4,106 +4,85 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOULSPECTRE | Patrol</title>
-    <link rel="stylesheet" href="../../system/forgotten_units.css">
-    <style>:root{--accent:#ffd700;}</style>
+    <link rel="stylesheet" href="../../system/unit-page.css">
 </head>
 <body>
 <div id="bg-image"></div>
 <div id="overlay"></div>
-<header>
-    <h1>Patrol</h1>
-    <div class="subtitle">Officer , Arboreal Fighters</div>
-</header>
-<main>
-    <div class="intro-banner"><img src="../../img/forgotten/arborei/forgotten_patrol_banner.png" alt="Patrol Banner"></div>
 
-    <div class="split-section">
-        <div class="section-image-container">
-            <img src="../../img/forgotten/arborei/forgotten_patrol_f_combat.jpg" alt="Patrol combat">
-            <img src="../../img/forgotten/arborei/forgotten_patrol_m_combat.jpg" alt="Patrol alternate" class="combat-anim">
-        </div>
-        <div class="section-text">
-            <h2>Origin Unknown</h2>
-            <p>No one knows where the Patrols come from. Even other Arborei, who share the language of root and etheric vibration, cannot identify which battlefield they remember, which war etched itself into their bark. They arrived in the Empire already formed, already commanding. Malicott did not create them , she <strong>recognized</strong> them.</p>
-            <p>What distinguishes a Patrol from other officers in the Empire is a quality that cannot be taught: the ability to <strong>be present.</strong> While other commanders plan from the rear, Patrols stand in the thick of the formation, their feet planted like ancient roots, their eyes tracking every movement on the field. They speak little. When they do speak, everyone listens , because they speak only what is necessary, and what is necessary is always true.</p>
-            <p>Among the undead warriors of the Empire, the Patrols hold a special authority. The Arborei feel an instinctive solidarity with them, a resonance they describe as <em>"hearing the same memory."</em> In battle, when a Patrol raises a fist in the signal to attack, the dead move before the living can register the command.</p>
-        </div>
-    </div>
+<script type="application/json" id="unit-data">
+{
+  "name": "Patrol",
+  "subtitle": "Arboreal Fighters | Officer",
+  "accent": "#ffd700",
+  "bgImage": "../../img/forgotten/forgotten_bg.jpg",
 
-    <div class="tactical-module">
-        <div class="tactical-header"><h2>Tactical Data</h2></div>
-        <div class="stats-box">
-            <div class="stat-item"><span class="stat-label">HP</span><span class="stat-value hp">110</span></div>
-            <div class="stat-item"><span class="stat-label">ATK</span><span class="stat-value atk">50</span></div>
-            <div class="stat-item"><span class="stat-label">INI</span><span class="stat-value">55</span></div>
-            <div class="stat-item"><span class="stat-label">Tier</span><span class="stat-value tier">Officer</span></div>
-        </div>
-        <div class="skills-grid">
-            <div class="skill-card sk-base">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_attacco.png" alt="" class="skill-icon">
-                    <div class="skill-title-container">
-                        <h3 class="skill-title">Attack</h3>
-                        <span class="skill-type base">Base Attack</span>
-                    </div>
-                </div>
-                <div class="skill-desc">Deals <span class="dmg-phys">Physical</span> melee damage to one enemy. If target is eliminated this turn, all allies gain +10 Morale.</div>
-            </div>
-            <div class="skill-card sk-active">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_coordinazione_eterea.png" alt="" class="skill-icon">
-                    <div class="skill-title-container">
-                        <h3 class="skill-title">Ethereal Coordination</h3>
-                        <span class="skill-type active">Active Skill</span>
-                    </div>
-                </div>
-                <div class="skill-desc">All allies gain +20% Accuracy and their attacks ignore 15% of enemy Armor for 2 turns.</div>
-            </div>
-            <div class="skill-card sk-passive">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_risonanza_nonmorte.png" alt="" class="skill-icon">
-                    <div class="skill-title-container">
-                        <h3 class="skill-title">Undeath Resonance</h3>
-                        <span class="skill-type passive">Passive</span>
-                    </div>
-                </div>
-                <div class="skill-desc">Undead allies deal +10% Critical Damage. Each time an enemy is killed, all allies recover 5% of their max HP.</div>
-            </div>
-            <div class="skill-card sk-ultimate">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_assalto_smeraldo.png" alt="" class="skill-icon">
-                    <div class="skill-title-container">
-                        <h3 class="skill-title">Emerald Assault</h3>
-                        <span class="skill-type ultimate">Ultimate</span>
-                    </div>
-                </div>
-                <div class="skill-desc">All allied units attack one random enemy simultaneously. All allies gain +15% Initiative and +10% Critical Chance for 2 turns.</div>
-            </div>
-        </div>
-    </div>
+  "breadcrumbs": [
+    { "href": "../../index.html",              "label": "Home" },
+    { "href": "../../factions/index.html",     "label": "Factions" },
+    { "href": "../../factions/forgotten.html", "label": "The Forgotten" },
+    { "href": "forgotten_order_arborei.html",  "label": "Arboreal Fighters" },
+    {                                          "label": "Patrol" }
+  ],
 
-    <div class="portrait-gallery-module">
-        <h2 class="gallery-header">Gallery</h2>
-        <div class="carousel-wrap">
-            <div class="carousel-track" id="carouselTrack">
-                <div class="carousel-item"><img src="../../img/forgotten/arborei/forgotten_patrol_f_portrait.jpg" alt="Patrol F Portrait"></div>
-                <div class="carousel-item"><img src="../../img/forgotten/arborei/forgotten_patrol_m_portrait.jpg" alt="Patrol M Portrait"></div>
-                <div class="carousel-item"><img src="../../img/forgotten/arborei/forgotten_patrol_extra_1.jpg" alt="Patrol Extra"></div>
-            </div>
-        </div>
-        <div class="carousel-nav">
-            <button class="nav-btn" id="prevBtn">&#8592;</button>
-            <button class="nav-btn" id="nextBtn">&#8594;</button>
-        </div>
-    </div>
-    <a href="forgotten_order_arborei.html" class="back-link">← Return to Arboreal Fighters</a>
-</main>
-<script>
-    const track=document.getElementById('carouselTrack');const items=track.querySelectorAll('.carousel-item');let current=0;
-    function update(){track.style.transform=`translateX(-${current*(items[0].offsetWidth+15)}px)`;}
-    document.getElementById('nextBtn').addEventListener('click',()=>{if(current<items.length-1){current++;update();}});
-    document.getElementById('prevBtn').addEventListener('click',()=>{if(current>0){current--;update();}});
+  "combat": ["../../img/forgotten/arborei/forgotten_patrol_f_combat.jpg", "../../img/forgotten/arborei/forgotten_patrol_m_combat.jpg"],
+
+  "bio": {
+    "title": "Origin Unknown",
+    "paragraphs": [
+      "No one knows where the Patrols come from. Even other Arborei, who share the language of root and etheric vibration, cannot identify which battlefield they remember, which war etched itself into their bark. They arrived in the Empire already formed, already commanding. Malicott did not create them , she <strong>recognized</strong> them.",
+      "What distinguishes a Patrol from other officers in the Empire is a quality that cannot be taught: the ability to <strong>be present.</strong> While other commanders plan from the rear, Patrols stand in the thick of the formation, their feet planted like ancient roots, their eyes tracking every movement on the field. They speak little. When they do speak, everyone listens , because they speak only what is necessary, and what is necessary is always true.",
+      "Among the undead warriors of the Empire, the Patrols hold a special authority. The Arborei feel an instinctive solidarity with them, a resonance they describe as <em>&ldquo;hearing the same memory.&rdquo;</em> In battle, when a Patrol raises a fist in the signal to attack, the dead move before the living can register the command."
+    ]
+  },
+
+  "stats": {
+    "tier": "Officer",
+    "hp":   110,
+    "atk":  50,
+    "ini":  55
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Attack",
+      "icon": "../../img/forgotten/skills/forgotten_skill_attacco.png",
+      "desc": "Deals <span class=\"dmg-phys\">Physical</span> melee damage to one enemy. If target is eliminated this turn, all allies gain +10 Morale."
+    },
+    {
+      "type": "active",
+      "name": "Ethereal Coordination",
+      "icon": "../../img/forgotten/skills/forgotten_skill_coordinazione_eterea.png",
+      "desc": "All allies gain +20% Accuracy and their attacks ignore 15% of enemy Armor for 2 turns."
+    },
+    {
+      "type": "passive",
+      "name": "Undeath Resonance",
+      "icon": "../../img/forgotten/skills/forgotten_skill_risonanza_nonmorte.png",
+      "desc": "Undead allies deal +10% Critical Damage. Each time an enemy is killed, all allies recover 5% of their max HP."
+    },
+    {
+      "type": "ultimate",
+      "name": "Emerald Assault",
+      "icon": "../../img/forgotten/skills/forgotten_skill_assalto_smeraldo.png",
+      "desc": "All allied units attack one random enemy simultaneously. All allies gain +15% Initiative and +10% Critical Chance for 2 turns."
+    }
+  ],
+
+  "gallery": [
+    "../../img/forgotten/arborei/forgotten_patrol_f_portrait.jpg",
+    "../../img/forgotten/arborei/forgotten_patrol_m_portrait.jpg",
+    "../../img/forgotten/arborei/forgotten_patrol_extra_1.jpg"
+  ],
+
+  "backLink": {
+    "href":  "forgotten_order_arborei.html",
+    "label": "Return to Arboreal Fighters"
+  }
+}
 </script>
-<script src="../../system/unit-banner.js"></script>
+
+<script src="../../system/unit-renderer.js"></script>
 </body>
 </html>

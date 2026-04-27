@@ -4,69 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOULSPECTRE | Ash Fruit</title>
-    <link rel="stylesheet" href="../../system/forgotten_units.css">
-    <style>:root{--accent:#e0e0e0;}</style>
+    <link rel="stylesheet" href="../../system/unit-page.css">
 </head>
 <body>
 <div id="bg-image"></div>
 <div id="overlay"></div>
-<header>
-    <h1>Ash Fruit</h1>
-    <div class="subtitle">Tier 1 , Heralds of Dust</div>
-</header>
-<main>
-    <div class="intro-banner"><img src="../../img/forgotten/araldi/forgotten_ash_fruit_banner.png" alt="Ash Fruit Banner"></div>
-    <div class="split-section">
-        <div class="section-image-container">
-            <img src="../../img/forgotten/araldi/forgotten_ash_fruit_f_combat.jpg" alt="Ash Fruit F">
-            <img src="../../img/forgotten/araldi/forgotten_ash_fruit_m_combat.jpg" alt="Ash Fruit M" class="combat-anim">
-        </div>
-        <div class="section-text">
-            <h2>First Ignition</h2>
-            <p>They look like they are made of charcoal. A fine, granular surface that sheds grey-white particles when they move , the way old embers release their final heat. Their eyes are the only part that remain warm: two small points of amber light in an otherwise ashen face that has not yet learned what it is becoming.</p>
-            <p>The Ash Fruits were not born into magic. In life, most were ordinary people who had ordinary proximity to fires , blacksmiths, glass-blowers, torch-lighters, those who tended hearths through long winters. <strong>They understood fire before they could command it.</strong> The sap simply remembered what their hands already knew and extended that knowledge inward.</p>
-            <p>They are the first entry point into the Araldi system, and they carry the particular dignity of any first step: tentative, necessary, <em>impossible to skip.</em> The mages who become Seraph-class can trace their power lineage directly back to the moment an Ash Fruit launched its first unremarkable spark across a battlefield and something in the chain reaction began.</p>
-        </div>
-    </div>
-    <div class="tactical-module">
-        <div class="tactical-header"><h2>Tactical Data</h2></div>
-        <div class="stats-box">
-            <div class="stat-item"><span class="stat-label">Tier</span><span class="stat-value tier">1</span></div>
-            <div class="stat-item"><span class="stat-label">HP</span><span class="stat-value hp">30</span></div>
-            <div class="stat-item"><span class="stat-label">ATK</span><span class="stat-value atk">20</span></div>
-            <div class="stat-item"><span class="stat-label">INI</span><span class="stat-value">40</span></div>
-        </div>
-        <div class="skills-grid">
-            <div class="skill-card">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_scintilla.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Spark</h3><span class="skill-type base">Base Skill</span></div>
-                </div>
-                <div class="skill-desc">Deals 50% ATK in <span class="dmg-light">Light</span> + 50% ATK in <span class="dmg-fire">Fire</span> damage to all enemies. 5% chance to apply Burning for 1 turn.</div>
-            </div>
-        </div>
-    </div>
-    <div class="portrait-gallery-module">
-        <h2 class="gallery-header">Gallery</h2>
-        <div class="carousel-wrap">
-            <div class="carousel-track" id="carouselTrack">
-                <div class="carousel-item"><img src="../../img/forgotten/araldi/forgotten_ash_fruit_f_portrait.jpg" alt="Portrait F"></div>
-                <div class="carousel-item"><img src="../../img/forgotten/araldi/forgotten_ash_fruit_m_portrait.jpg" alt="Portrait M"></div>
-            </div>
-        </div>
-        <div class="carousel-nav">
-            <button class="nav-btn" id="prevBtn">&#8592;</button>
-            <button class="nav-btn" id="nextBtn">&#8594;</button>
-        </div>
-    </div>
-    <a href="forgotten_order_araldi.html" class="back-link">← Return to Heralds of Dust</a>
-</main>
-<script>
-    const track=document.getElementById('carouselTrack');const items=track.querySelectorAll('.carousel-item');let current=0;
-    function update(){if(items.length>0)track.style.transform=`translateX(-${current*(items[0].offsetWidth+15)}px)`;}
-    document.getElementById('nextBtn').addEventListener('click',()=>{if(current<items.length-1){current++;update();}});
-    document.getElementById('prevBtn').addEventListener('click',()=>{if(current>0){current--;update();}});
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Ash Fruit",
+  "subtitle": "Heralds of Dust | Tier 1",
+  "accent": "#e0e0e0",
+  "bgImage": "../../img/forgotten/forgotten_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",              "label": "Home" },
+    { "href": "../../factions/index.html",     "label": "Factions" },
+    { "href": "../../factions/forgotten.html", "label": "The Forgotten" },
+    { "href": "forgotten_order_araldi.html",   "label": "Heralds of Dust" },
+    {                                          "label": "Ash Fruit" }
+  ],
+
+  "combat": ["../../img/forgotten/araldi/forgotten_ash_fruit_f_combat.jpg", "../../img/forgotten/araldi/forgotten_ash_fruit_m_combat.jpg"],
+
+  "bio": {
+    "title": "First Ignition",
+    "paragraphs": [
+      "They look like they are made of charcoal. A fine, granular surface that sheds grey-white particles when they move , the way old embers release their final heat. Their eyes are the only part that remain warm: two small points of amber light in an otherwise ashen face that has not yet learned what it is becoming.",
+      "The Ash Fruits were not born into magic. In life, most were ordinary people who had ordinary proximity to fires , blacksmiths, glass-blowers, torch-lighters, those who tended hearths through long winters. <strong>They understood fire before they could command it.</strong> The sap simply remembered what their hands already knew and extended that knowledge inward.",
+      "They are the first entry point into the Araldi system, and they carry the particular dignity of any first step: tentative, necessary, <em>impossible to skip.</em> The mages who become Seraph-class can trace their power lineage directly back to the moment an Ash Fruit launched its first unremarkable spark across a battlefield and something in the chain reaction began."
+    ]
+  },
+
+  "stats": {
+    "tier": 1,
+    "hp":   30,
+    "atk":  20,
+    "ini":  40
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Spark",
+      "icon": "../../img/forgotten/skills/forgotten_skill_scintilla.png",
+      "desc": "Deals 50% ATK in <span class=\"dmg-light\">Light</span> + 50% ATK in <span class=\"dmg-fire\">Fire</span> damage to all enemies. 5% chance to apply Burning for 1 turn."
+    }
+  ],
+
+  "gallery": [
+    "../../img/forgotten/araldi/forgotten_ash_fruit_f_portrait.jpg",
+    "../../img/forgotten/araldi/forgotten_ash_fruit_m_portrait.jpg"
+  ],
+
+  "backLink": {
+    "href":  "forgotten_order_araldi.html",
+    "label": "Return to Heralds of Dust"
+  }
+}
 </script>
-<script src="../../system/unit-banner.js"></script>
+
+<script src="../../system/unit-renderer.js"></script>
 </body>
 </html>

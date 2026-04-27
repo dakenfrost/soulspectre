@@ -4,89 +4,84 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOULSPECTRE | Eye of the Forest</title>
-    <link rel="stylesheet" href="../../system/forgotten_units.css">
-    <style>:root{--accent:#ce93d8;}</style>
+    <link rel="stylesheet" href="../../system/unit-page.css">
 </head>
 <body>
 <div id="bg-image"></div>
 <div id="overlay"></div>
-<header>
-    <h1>Eye of the Forest</h1>
-    <div class="subtitle">Tier 5 , Champion of the Sentinelle</div>
-</header>
-<main>
-    <div class="intro-banner"><img src="../../img/forgotten/sentinelle/forgotten_eye_forest_banner.png" alt="Eye of the Forest Banner"></div>
-    <div class="split-section">
-        <div class="section-image-container">
-            <img src="../../img/forgotten/sentinelle/forgotten_eye_forest_combat.jpg" alt="Eye of the Forest">
-            <img src="../../img/forgotten/sentinelle/forgotten_eye_forest_alt_combat.jpg" alt="Eye of the Forest alt" class="combat-anim">
-        </div>
-        <div class="section-text">
-            <h2>What the Forest Records</h2>
-            <p>The forests do not forget. The Empire's forests least of all , they are Malicott's original domain, places where the sap remembers every wound and every healing, where the root systems carry information older than the settlements built above them. The Eye of the Forest is not a title she chose. It is a <strong>function she fulfills:</strong> the forest needed an instrument for its observation, and she is what was available and willing.</p>
-            <p>She died doing what she had done her whole life , watching. She was a forest warden, a protector of boundaries, someone who spent decades at the observation points of the old empire knowing where every disturbance originated before it had produced consequences visible to anyone else. She was very good at this. She is <em>extraordinarily good at this in death,</em> because in undeath the forest's own vision layers on top of hers, and what she sees through both sets of eyes simultaneously is something closer to the total picture than any living creature normally accesses.</p>
-            <p>She does not describe this as power. She describes it as clarity. The battlefield, from where she stands, has no hidden positions. There are no invisible units, no obscured lines of sight, no strategic ambiguities. There is only what is there , and the vast majority of what is there can be reached from where she stands, at range, with absolute precision.</p>
-        </div>
-    </div>
-    <div class="tactical-module">
-        <div class="tactical-header"><h2>Tactical Data</h2></div>
-        <div class="stats-box">
-            <div class="stat-item"><span class="stat-label">Tier</span><span class="stat-value tier">5</span></div>
-            <div class="stat-item"><span class="stat-label">HP</span><span class="stat-value hp">250</span></div>
-            <div class="stat-item"><span class="stat-label">ATK</span><span class="stat-value atk">160</span></div>
-            <div class="stat-item"><span class="stat-label">INI</span><span class="stat-value">50</span></div>
-        </div>
-        <div class="skills-grid">
-            <div class="skill-card sk-base">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_visione_predatrice.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Predator's Vision</h3><span class="skill-type base">Base Skill</span></div>
-                </div>
-                <div class="skill-desc">Deals <span class="dmg-phys">Physical</span> ranged damage to one enemy, bypassing all Dodge</div>
-            </div>
-            <div class="skill-card sk-active">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_sorveglianza_totale.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Total Surveillance</h3><span class="skill-type active">Active Skill</span></div>
-                </div>
-                <div class="skill-desc">Reveals all enemies for 2 turns. Revealed enemies cannot Dodge or Evade and Critical Chance against them is increased by 50% (double damage).</div>
-            </div>
-            <div class="skill-card sk-passive">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_rete_caccia.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Hunting Net</h3><span class="skill-type passive">Passive</span></div>
-                </div>
-                <div class="skill-desc">All allies gain 8% Critical Chance for each enemy currently afflicted by Exposed, Marked, or Revealed.</div>
-            </div>
-            <div class="skill-card sk-ultimate">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_sentenza_bosco.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Forest Verdict</h3><span class="skill-type ultimate">Ultimate</span></div>
-                </div>
-                <div class="skill-desc">Once per battle. Deals 200% ATK in <span class="dmg-phys">Physical</span> + <span class="dmg-earth">Earth</span> damage to one enemy, ignoring all resistances and armor</div>
-            </div>
-        </div>
-    <div class="portrait-gallery-module">
-        <h2 class="gallery-header">Gallery</h2>
-        <div class="carousel-wrap">
-            <div class="carousel-track" id="carouselTrack">
-                <div class="carousel-item"><img src="../../img/forgotten/sentinelle/forgotten_eye_forest_portrait.jpg" alt="Portrait"></div>
-                <div class="carousel-item"><img src="../../img/forgotten/sentinelle/forgotten_eye_forest_alt_portrait.jpg" alt="Portrait alt"></div>
-            </div>
-        </div>
-        <div class="carousel-nav">
-            <button class="nav-btn" id="prevBtn">&#8592;</button>
-            <button class="nav-btn" id="nextBtn">&#8594;</button>
-        </div>
-    </div>
-    <a href="forgotten_order_sentinelle.html" class="back-link">← Return to Sentinelle delle Ceneri</a>
-</main>
-<script>
-    const track=document.getElementById('carouselTrack');const items=track.querySelectorAll('.carousel-item');let current=0;
-    function update(){track.style.transform=`translateX(-${current*(items[0].offsetWidth+15)}px)`;}
-    document.getElementById('nextBtn').addEventListener('click',()=>{if(current<items.length-1){current++;update();}});
-    document.getElementById('prevBtn').addEventListener('click',()=>{if(current>0){current--;update();}});
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Eye of the Forest",
+  "subtitle": "Champion of the Amber Sentinels | Tier 5",
+  "accent": "#ce93d8",
+  "bgImage": "../../img/forgotten/forgotten_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                  "label": "Home" },
+    { "href": "../../factions/index.html",         "label": "Factions" },
+    { "href": "../../factions/forgotten.html",     "label": "The Forgotten" },
+    { "href": "forgotten_order_sentinelle.html",   "label": "Amber Sentinels" },
+    {                                              "label": "Eye of the Forest" }
+  ],
+
+  "combat": ["../../img/forgotten/sentinelle/forgotten_eye_forest_combat.jpg", "../../img/forgotten/sentinelle/forgotten_eye_forest_alt_combat.jpg"],
+
+  "bio": {
+    "title": "What the Forest Records",
+    "paragraphs": [
+      "The forests do not forget. The Empire's forests least of all , they are Malicott's original domain, places where the sap remembers every wound and every healing, where the root systems carry information older than the settlements built above them. The Eye of the Forest is not a title she chose. It is a <strong>function she fulfills:</strong> the forest needed an instrument for its observation, and she is what was available and willing.",
+      "She died doing what she had done her whole life , watching. She was a forest warden, a protector of boundaries, someone who spent decades at the observation points of the old empire knowing where every disturbance originated before it had produced consequences visible to anyone else. She was very good at this. She is <em>extraordinarily good at this in death,</em> because in undeath the forest's own vision layers on top of hers, and what she sees through both sets of eyes simultaneously is something closer to the total picture than any living creature normally accesses.",
+      "She does not describe this as power. She describes it as clarity. The battlefield, from where she stands, has no hidden positions. There are no invisible units, no obscured lines of sight, no strategic ambiguities. There is only what is there , and the vast majority of what is there can be reached from where she stands, at range, with absolute precision."
+    ]
+  },
+
+  "stats": {
+    "tier": 5,
+    "hp":   250,
+    "atk":  160,
+    "ini":  50
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Predator's Vision",
+      "icon": "../../img/forgotten/skills/forgotten_skill_visione_predatrice.png",
+      "desc": "Deals <span class=\"dmg-phys\">Physical</span> ranged damage to one enemy, bypassing all Dodge"
+    },
+    {
+      "type": "active",
+      "name": "Total Surveillance",
+      "icon": "../../img/forgotten/skills/forgotten_skill_sorveglianza_totale.png",
+      "desc": "Reveals all enemies for 2 turns. Revealed enemies cannot Dodge or Evade and Critical Chance against them is increased by 50% (double damage)."
+    },
+    {
+      "type": "passive",
+      "name": "Hunting Net",
+      "icon": "../../img/forgotten/skills/forgotten_skill_rete_caccia.png",
+      "desc": "All allies gain 8% Critical Chance for each enemy currently afflicted by Exposed, Marked, or Revealed."
+    },
+    {
+      "type": "ultimate",
+      "name": "Forest Verdict",
+      "icon": "../../img/forgotten/skills/forgotten_skill_sentenza_bosco.png",
+      "desc": "Once per battle. Deals 200% ATK in <span class=\"dmg-phys\">Physical</span> + <span class=\"dmg-earth\">Earth</span> damage to one enemy, ignoring all resistances and armor"
+    }
+  ],
+
+  "gallery": [
+    "../../img/forgotten/sentinelle/forgotten_eye_forest_portrait.jpg",
+    "../../img/forgotten/sentinelle/forgotten_eye_forest_alt_portrait.jpg"
+  ],
+
+  "backLink": {
+    "href":  "forgotten_order_sentinelle.html",
+    "label": "Return to Amber Sentinels"
+  }
+}
 </script>
-<script src="../../system/unit-banner.js"></script>
+
+<script src="../../system/unit-renderer.js"></script>
 </body>
 </html>

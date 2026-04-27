@@ -4,85 +4,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOULSPECTRE | Thornguard</title>
-    <link rel="stylesheet" href="../../system/forgotten_units.css">
+    <link rel="stylesheet" href="../../system/unit-page.css">
 </head>
 <body>
 <div id="bg-image"></div>
 <div id="overlay"></div>
-<header>
-    <h1>Thornguard</h1>
-    <div class="subtitle">Tier 2 , Defender Path</div>
-</header>
-<main>
-    <div class="intro-banner"><img src="../../img/forgotten/arborei/forgotten_frontline_defender_banner.png" alt="Thornguard Banner"></div>
 
-    <div class="split-section">
-        <div class="section-image-container">
-            <img src="../../img/forgotten/arborei/forgotten_frontline_defender_f_combat.jpg" alt="Thornguard combat F">
-            <img src="../../img/forgotten/arborei/forgotten_frontline_defender_m_combat.jpg" alt="Thornguard combat M" class="combat-anim">
-        </div>
-        <div class="section-text">
-            <h2>The Wall That Breathes</h2>
-            <p>They grew from the Ashblade not through training but through <strong>choice.</strong> At some point in their existence as reborn undead, they were given a choice: to run or to stay. They stayed , and the act of staying changed them. Wood thickened. Roots deepened. Wings emerged, though only good for gliding, not true flight.</p>
-            <p>Thornguards remember, in fragments, what it felt like to protect something. A home. A child. A gate. The memory is not specific , it is more like a shape, the outline of a door they once stood in front of. That outline is now their battlefield identity. They plant themselves in front of it, whatever <em>it</em> is, and they do not move.</p>
-            <p>They have developed a combat philosophy unique to undead tacticians: <strong>Materializzazione</strong>, the art of sacrificing speed for substance. By focusing all ethereal energy inward, they become temporarily denser than stone , trading swiftness for absolute resistance. Enemies who attack a Defender mid-Materializzazione often injure themselves on the impact.</p>
-        </div>
-    </div>
+<script type="application/json" id="unit-data">
+{
+  "name": "Thornguard",
+  "subtitle": "Defender Path | Tier 2",
+  "accent": "#4dd0e1",
+  "bgImage": "../../img/forgotten/forgotten_bg.jpg",
 
-    <div class="tactical-module">
-        <div class="tactical-header"><h2>Tactical Data</h2></div>
-        <div class="stats-box">
-            <div class="stat-item"><span class="stat-label">Tier</span><span class="stat-value tier">2</span></div>
-            <div class="stat-item"><span class="stat-label">HP</span><span class="stat-value hp">160</span></div>
-            <div class="stat-item"><span class="stat-label">ATK</span><span class="stat-value atk">50</span></div>
-            <div class="stat-item"><span class="stat-label">INI</span><span class="stat-value">45</span></div>
-        </div>
-        <div class="skills-grid">
-            <div class="skill-card sk-base">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_colpo_scudo.png" alt="" class="skill-icon">
-                    <div class="skill-title-container">
-                        <h3 class="skill-title">Shield Bash</h3>
-                        <span class="skill-type base">Base Attack</span>
-                    </div>
-                </div>
-                <div class="skill-desc">Deals <span class="dmg-phys">Physical</span> melee damage to one enemy. Reduces target's next attack by 10%.</div>
-            </div>
-            <div class="skill-card sk-active">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_materializzazione.png" alt="" class="skill-icon">
-                    <div class="skill-title-container">
-                        <h3 class="skill-title">Materialization</h3>
-                        <span class="skill-type active">Active Skill</span>
-                    </div>
-                </div>
-                <div class="skill-desc">For 3 turns: -15% Initiative but +25% Armor from the <span class="dmg-phys"> Attack</span>. Reflects 8% of <span class="dmg-phys">Physical</span> damage received back to attacker.</div>
-            </div>
-        </div>
-    </div>
+  "breadcrumbs": [
+    { "href": "../../index.html",              "label": "Home" },
+    { "href": "../../factions/index.html",     "label": "Factions" },
+    { "href": "../../factions/forgotten.html", "label": "The Forgotten" },
+    { "href": "forgotten_order_arborei.html",  "label": "Arboreal Fighters" },
+    {                                          "label": "Thornguard" }
+  ],
 
-    <div class="portrait-gallery-module">
-        <h2 class="gallery-header">Gallery</h2>
-        <div class="carousel-wrap">
-            <div class="carousel-track" id="carouselTrack">
-                <div class="carousel-item"><img src="../../img/forgotten/arborei/forgotten_frontline_defender_m_portrait.jpg" alt="Thornguard Portrait M"></div>
-                <div class="carousel-item"><img src="../../img/forgotten/arborei/forgotten_frontline_defender_f_portrait.jpg" alt="Thornguard Portrait F"></div>
-                <div class="carousel-item"><img src="../../img/forgotten/arborei/forgotten_frontline_defender_extra_1.jpg" alt="Thornguard Extra"></div>
-            </div>
-        </div>
-        <div class="carousel-nav">
-            <button class="nav-btn" id="prevBtn">&#8592;</button>
-            <button class="nav-btn" id="nextBtn">&#8594;</button>
-        </div>
-    </div>
-    <a href="forgotten_order_arborei.html" class="back-link">← Return to Arboreal Fighters</a>
-</main>
-<script>
-    const track=document.getElementById('carouselTrack');const items=track.querySelectorAll('.carousel-item');let current=0;
-    function update(){track.style.transform=`translateX(-${current*(items[0].offsetWidth+15)}px)`;}
-    document.getElementById('nextBtn').addEventListener('click',()=>{if(current<items.length-1){current++;update();}});
-    document.getElementById('prevBtn').addEventListener('click',()=>{if(current>0){current--;update();}});
+  "combat": ["../../img/forgotten/arborei/forgotten_frontline_defender_f_combat.jpg", "../../img/forgotten/arborei/forgotten_frontline_defender_m_combat.jpg"],
+
+  "bio": {
+    "title": "The Wall That Breathes",
+    "paragraphs": [
+      "They grew from the Ashblade not through training but through <strong>choice.</strong> At some point in their existence as reborn undead, they were given a choice: to run or to stay. They stayed , and the act of staying changed them. Wood thickened. Roots deepened. Wings emerged, though only good for gliding, not true flight.",
+      "Thornguards remember, in fragments, what it felt like to protect something. A home. A child. A gate. The memory is not specific , it is more like a shape, the outline of a door they once stood in front of. That outline is now their battlefield identity. They plant themselves in front of it, whatever <em>it</em> is, and they do not move.",
+      "They have developed a combat philosophy unique to undead tacticians: <strong>Materializzazione</strong>, the art of sacrificing speed for substance. By focusing all ethereal energy inward, they become temporarily denser than stone , trading swiftness for absolute resistance. Enemies who attack a Defender mid-Materializzazione often injure themselves on the impact."
+    ]
+  },
+
+  "stats": {
+    "tier": 2,
+    "hp":   160,
+    "atk":  50,
+    "ini":  45
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Shield Bash",
+      "icon": "../../img/forgotten/skills/forgotten_skill_colpo_scudo.png",
+      "desc": "Deals <span class=\"dmg-phys\">Physical</span> melee damage to one enemy. Reduces target's next attack by 10%."
+    },
+    {
+      "type": "active",
+      "name": "Materialization",
+      "icon": "../../img/forgotten/skills/forgotten_skill_materializzazione.png",
+      "desc": "For 3 turns: -15% Initiative but +25% Armor from the <span class=\"dmg-phys\"> Attack</span>. Reflects 8% of <span class=\"dmg-phys\">Physical</span> damage received back to attacker."
+    }
+  ],
+
+  "gallery": [
+    "../../img/forgotten/arborei/forgotten_frontline_defender_m_portrait.jpg",
+    "../../img/forgotten/arborei/forgotten_frontline_defender_f_portrait.jpg",
+    "../../img/forgotten/arborei/forgotten_frontline_defender_extra_1.jpg"
+  ],
+
+  "backLink": {
+    "href":  "forgotten_order_arborei.html",
+    "label": "Return to Arboreal Fighters"
+  }
+}
 </script>
-<script src="../../system/unit-banner.js"></script>
+
+<script src="../../system/unit-renderer.js"></script>
 </body>
 </html>

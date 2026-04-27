@@ -4,90 +4,84 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOULSPECTRE | Noble</title>
-    <link rel="stylesheet" href="../../system/forgotten_units.css">
-    <style>:root{--accent:#ffd700;}</style>
+    <link rel="stylesheet" href="../../system/unit-page.css">
 </head>
 <body>
 <div id="bg-image"></div>
 <div id="overlay"></div>
-<header>
-    <h1>Noble</h1>
-    <div class="subtitle">Officer , Amber Sentinels</div>
-</header>
-<main>
-    <div class="intro-banner"><img src="../../img/forgotten/sentinelle/forgotten_noble_banner.png" alt="Noble Banner"></div>
-    <div class="split-section">
-        <div class="section-image-container">
-            <img src="../../img/forgotten/sentinelle/forgotten_noble_f_combat.jpg" alt="Noble F">
-            <img src="../../img/forgotten/sentinelle/forgotten_noble_m_combat.jpg" alt="Noble M" class="combat-anim">
-        </div>
-        <div class="section-text">
-            <h2>What Aristocracy Becomes</h2>
-            <p>The Noble survived her life as a military commander through a combination of <strong>tactical clarity and an aristocrat's complete comfort with giving orders</strong> that she would not necessarily follow herself. She was not a coward. She understood leverage , that a commander who dies with her troops is a commander the troops no longer have. She calculated continuously and survived continuously, and then died not in battle but of something ordinary and undramatic, which she regarded as a significant injustice.</p>
-            <p>Malicott offered her a second command and she accepted before the question was finished. The Amber Sentinels is her formation: ranged units, precision specialists, guards who understand that their role is to <em>create conditions,</em> not engage directly. The Noble does not fight at the front. She coordinates from behind the formation with complete lines of sight and no hesitation about redirecting fire.</p>
-            <p>She is, by most measures, the most professionally effective Officer in the entire Empire. She is also the one her troops are most likely to complain about in private, because she is excellent and she knows it and does not pretend otherwise. Malicott finds this refreshing. The Arborei Patrol finds her exhausting. Everyone agrees the results are very good.</p>
-        </div>
-    </div>
-    <div class="tactical-module">
-        <div class="tactical-header"><h2>Tactical Data</h2></div>
-        <div class="stats-box">
-            <div class="stat-item"><span class="stat-label">HP</span><span class="stat-value hp">105</span></div>
-            <div class="stat-item"><span class="stat-label">ATK</span><span class="stat-value atk">45</span></div>
-            <div class="stat-item"><span class="stat-label">INI</span><span class="stat-value">60</span></div>
-            <div class="stat-item"><span class="stat-label">Tier</span><span class="stat-value tier">Officer</span></div>
-        </div>
-        <div class="skills-grid">
-            <div class="skill-card sk-base">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_tiro_comandato.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Commanded Shot</h3><span class="skill-type base">Base Skill</span></div>
-                </div>
-                <div class="skill-desc">Deals <span class="dmg-phys">Physical</span> ranged damage to one enemy. Applies Mark (+15% damage from allied ranged attacks) for 2 turns.</div>
-            </div>
-            <div class="skill-card sk-active">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_coordinazione.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Coordination</h3><span class="skill-type active">Active Skill</span></div>
-                </div>
-                <div class="skill-desc">All allies gain +15% Accuracy and +10% Critical Chance for 2 turns.</div>
-            </div>
-            <div class="skill-card sk-passive">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_presenza_tattica.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Tactical Presence</h3><span class="skill-type passive">Passive</span></div>
-                </div>
-                <div class="skill-desc">While alive, all Custodian and Sniper allied units gain +10% ATK.</div>
-            </div>
-            <div class="skill-card sk-ultimate">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_segnale_suppresso.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Suppression Signal</h3><span class="skill-type ultimate">Ultimate</span></div>
-                </div>
-                <div class="skill-desc">All enemies receive Physical ranged hits. Reduces enemy Morale by 15. Applies Exposed (-15% DEF) to all enemies for 2 turns. All allies gain +15% Initiative for 2 turns.</div>
-            </div>
-        </div>
-    </div>
-    <div class="portrait-gallery-module">
-        <h2 class="gallery-header">Gallery</h2>
-        <div class="carousel-wrap">
-            <div class="carousel-track" id="carouselTrack">
-                <div class="carousel-item"><img src="../../img/forgotten/sentinelle/forgotten_noble_m_portrait.jpg" alt="Portrait M"></div>
-                <div class="carousel-item"><img src="../../img/forgotten/sentinelle/forgotten_noble_f_portrait.jpg" alt="Portrait F"></div>
-            </div>
-        </div>
-        <div class="carousel-nav">
-            <button class="nav-btn" id="prevBtn">&#8592;</button>
-            <button class="nav-btn" id="nextBtn">&#8594;</button>
-        </div>
-    </div>
-    <a href="forgotten_order_sentinelle.html" class="back-link">← Return to Amber Sentinels</a>
-</main>
-<script>
-    const track=document.getElementById('carouselTrack');const items=track.querySelectorAll('.carousel-item');let current=0;
-    function update(){track.style.transform=`translateX(-${current*(items[0].offsetWidth+15)}px)`;}
-    document.getElementById('nextBtn').addEventListener('click',()=>{if(current<items.length-1){current++;update();}});
-    document.getElementById('prevBtn').addEventListener('click',()=>{if(current>0){current--;update();}});
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Noble",
+  "subtitle": "Amber Sentinels | Officer",
+  "accent": "#ffd700",
+  "bgImage": "../../img/forgotten/forgotten_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                  "label": "Home" },
+    { "href": "../../factions/index.html",         "label": "Factions" },
+    { "href": "../../factions/forgotten.html",     "label": "The Forgotten" },
+    { "href": "forgotten_order_sentinelle.html",   "label": "Amber Sentinels" },
+    {                                              "label": "Noble" }
+  ],
+
+  "combat": ["../../img/forgotten/sentinelle/forgotten_noble_f_combat.jpg", "../../img/forgotten/sentinelle/forgotten_noble_m_combat.jpg"],
+
+  "bio": {
+    "title": "What Aristocracy Becomes",
+    "paragraphs": [
+      "The Noble survived her life as a military commander through a combination of <strong>tactical clarity and an aristocrat's complete comfort with giving orders</strong> that she would not necessarily follow herself. She was not a coward. She understood leverage , that a commander who dies with her troops is a commander the troops no longer have. She calculated continuously and survived continuously, and then died not in battle but of something ordinary and undramatic, which she regarded as a significant injustice.",
+      "Malicott offered her a second command and she accepted before the question was finished. The Amber Sentinels is her formation: ranged units, precision specialists, guards who understand that their role is to <em>create conditions,</em> not engage directly. The Noble does not fight at the front. She coordinates from behind the formation with complete lines of sight and no hesitation about redirecting fire.",
+      "She is, by most measures, the most professionally effective Officer in the entire Empire. She is also the one her troops are most likely to complain about in private, because she is excellent and she knows it and does not pretend otherwise. Malicott finds this refreshing. The Arborei Patrol finds her exhausting. Everyone agrees the results are very good."
+    ]
+  },
+
+  "stats": {
+    "tier": "Officer",
+    "hp":   105,
+    "atk":  45,
+    "ini":  60
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Commanded Shot",
+      "icon": "../../img/forgotten/skills/forgotten_skill_tiro_comandato.png",
+      "desc": "Deals <span class=\"dmg-phys\">Physical</span> ranged damage to one enemy. Applies Mark (+15% damage from allied ranged attacks) for 2 turns."
+    },
+    {
+      "type": "active",
+      "name": "Coordination",
+      "icon": "../../img/forgotten/skills/forgotten_skill_coordinazione.png",
+      "desc": "All allies gain +15% Accuracy and +10% Critical Chance for 2 turns."
+    },
+    {
+      "type": "passive",
+      "name": "Tactical Presence",
+      "icon": "../../img/forgotten/skills/forgotten_skill_presenza_tattica.png",
+      "desc": "While alive, all Custodian and Sniper allied units gain +10% ATK."
+    },
+    {
+      "type": "ultimate",
+      "name": "Suppression Signal",
+      "icon": "../../img/forgotten/skills/forgotten_skill_segnale_suppresso.png",
+      "desc": "All enemies receive Physical ranged hits. Reduces enemy Morale by 15. Applies Exposed (-15% DEF) to all enemies for 2 turns. All allies gain +15% Initiative for 2 turns."
+    }
+  ],
+
+  "gallery": [
+    "../../img/forgotten/sentinelle/forgotten_noble_m_portrait.jpg",
+    "../../img/forgotten/sentinelle/forgotten_noble_f_portrait.jpg"
+  ],
+
+  "backLink": {
+    "href":  "forgotten_order_sentinelle.html",
+    "label": "Return to Amber Sentinels"
+  }
+}
 </script>
-<script src="../../system/unit-banner.js"></script>
+
+<script src="../../system/unit-renderer.js"></script>
 </body>
 </html>

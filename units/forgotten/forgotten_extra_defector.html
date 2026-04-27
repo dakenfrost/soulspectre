@@ -1,58 +1,70 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOULSPECTRE | Defector</title>
-    <link rel="stylesheet" href="../../system/forgotten_units.css">
-    <style>:root{--accent:#81c784;}</style>
+    <link rel="stylesheet" href="../../system/unit-page.css">
 </head>
 <body>
 <div id="bg-image"></div>
 <div id="overlay"></div>
-<header>
-    <h1>Defector</h1>
-    <div class="subtitle">Tier 2 · Hostile Unit</div>
-</header>
-<main>
-    <div class="intro-banner"><img src="" alt="Defector Banner"></div>
-    <div class="split-section">
-        <div class="section-image-container">
-            <img src="../../img/forgotten/extra/forgotten_extra_defector_f_combat.jpg" alt="Defector F">
-            <img src="../../img/forgotten/extra/forgotten_extra_defector_m_combat.jpg" alt="Defector M" class="combat-anim">
-        </div>
-        <div class="section-text">
-            <h2>Between Two Deaths</h2>
-            <p>No one escapes Malicott's empire. The forest does not have exits, and the Mother Tree does not forget those who have drunk from her roots. The Forgotten call them Defectors not because they fled, but because of the choice they made when the silver disease first took hold — they refused the next step. They wanted to stay infected. They chose the sickness over the transformation it was meant to complete.</p>
-            <p>The silver disease does not kill, and it does not stop. Without Malicott's intervention to guide it toward rebirth, it simply continues — corroding slowly, never finishing, turning the body into something that cannot properly die and cannot properly live. Defectors carry that corrosion willingly. Whether out of fear of what the transformation would make them, or out of a defiant wish to remain halfway human, they made a choice that the rest of the Forgotten find difficult to name without contempt.</p>
-            <p>They are bitter in the way that only half-things can be bitter. The empire will not take them back — the silver marks on their skin mark them as corrupted, unfinished, unsafe. The Forgotten have no place for those who refused the root. And so they exist in the margins, hostile to both, belonging to neither. The forest watches them with something that, if pressed, Malicott might describe as grief.</p>
-        </div>
-    </div>
-    <div class="tactical-module">
-        <div class="tactical-header"><h2>Tactical Data</h2></div>
-        <div class="stats-box">
-            <div class="stat-item"><span class="stat-label">Tier</span><span class="stat-value tier">2</span></div>
-            <div class="stat-item"><span class="stat-label">HP</span><span class="stat-value hp">140</span></div>
-            <div class="stat-item"><span class="stat-label">ATK</span><span class="stat-value atk">45</span></div>
-            <div class="stat-item"><span class="stat-label">INI</span><span class="stat-value">38</span></div>
-        </div>
-        <div class="skills-grid">
-            <div class="skill-card">
-                <div class="skill-header">
-                    <div class="skill-title-container"><h3 class="skill-title">Root Denial</h3><span class="skill-type base">Base Skill</span></div>
-                </div>
-                <div class="skill-desc">Strikes a target Forgotten unit. On hit, that unit cannot benefit from healing effects for 1 turn — the Defector's severed connection disrupts the local root network.</div>
-            </div>
-            <div class="skill-card">
-                <div class="skill-header">
-                    <div class="skill-title-container"><h3 class="skill-title">Severed Sap</h3><span class="skill-type passive">Passive</span></div>
-                </div>
-                <div class="skill-desc">The Defector takes 50% less damage from Earth-type attacks. Their body still remembers, even if they wish it didn't.</div>
-            </div>
-        </div>
-    </div>
-    <a href="forgotten_extra.html" class="back-link">← Return to Others</a>
-</main>
-<script src="../../system/unit-banner.js"></script>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Defector",
+  "subtitle": "Hostile Unit | Tier 2",
+  "accent": "#81c784",
+  "bgImage": "../../img/forgotten/forgotten_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",              "label": "Home" },
+    { "href": "../../factions/index.html",     "label": "Factions" },
+    { "href": "../../factions/forgotten.html", "label": "The Forgotten" },
+    { "href": "forgotten_extra.html",          "label": "Others" },
+    {                                          "label": "Defector" }
+  ],
+
+  "combat": ["../../img/forgotten/extra/forgotten_extra_defector_f_combat.jpg", "../../img/forgotten/extra/forgotten_extra_defector_m_combat.jpg"],
+
+  "bio": {
+    "title": "Between Two Deaths",
+    "paragraphs": [
+      "No one escapes Malicott's empire. The forest does not have exits, and the Mother Tree does not forget those who have drunk from her roots. The Forgotten call them Defectors not because they fled, but because of the choice they made when the silver disease first took hold — they refused the next step. They wanted to stay infected. They chose the sickness over the transformation it was meant to complete.",
+      "The silver disease does not kill, and it does not stop. Without Malicott's intervention to guide it toward rebirth, it simply continues — corroding slowly, never finishing, turning the body into something that cannot properly die and cannot properly live. Defectors carry that corrosion willingly. Whether out of fear of what the transformation would make them, or out of a defiant wish to remain halfway human, they made a choice that the rest of the Forgotten find difficult to name without contempt.",
+      "They are bitter in the way that only half-things can be bitter. The empire will not take them back — the silver marks on their skin mark them as corrupted, unfinished, unsafe. The Forgotten have no place for those who refused the root. And so they exist in the margins, hostile to both, belonging to neither. The forest watches them with something that, if pressed, Malicott might describe as grief."
+    ]
+  },
+
+  "stats": {
+    "tier": 2,
+    "hp":   140,
+    "atk":  45,
+    "ini":  38
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Root Denial",
+      "icon": "",
+      "desc": "Strikes a target Forgotten unit. On hit, that unit cannot benefit from healing effects for 1 turn — the Defector's severed connection disrupts the local root network."
+    },
+    {
+      "type": "passive",
+      "name": "Severed Sap",
+      "icon": "",
+      "desc": "The Defector takes 50% less damage from Earth-type attacks. Their body still remembers, even if they wish it didn't."
+    }
+  ],
+
+  "backLink": {
+    "href":  "forgotten_extra.html",
+    "label": "Return to Others"
+  }
+}
+</script>
+
+<script src="../../system/unit-renderer.js"></script>
 </body>
 </html>

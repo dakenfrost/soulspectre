@@ -4,75 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOULSPECTRE | Corrupted Light Mage</title>
-    <link rel="stylesheet" href="../../system/forgotten_units.css">
+    <link rel="stylesheet" href="../../system/unit-page.css">
 </head>
 <body>
 <div id="bg-image"></div>
 <div id="overlay"></div>
-<header>
-    <h1>Corrupted Light Mage</h1>
-    <div class="subtitle">Tier 2 , Light Path</div>
-</header>
-<main>
-    <div class="intro-banner"><img src="../../img/forgotten/araldi/forgotten_corrupted_light_mage_banner.png" alt="Corrupted Light Mage Banner"></div>
-    <div class="split-section">
-        <div class="section-image-container">
-            <img src="../../img/forgotten/araldi/forgotten_corrupted_light_mage_f_combat.jpg" alt="Corrupted Light Mage F">
-            <img src="../../img/forgotten/araldi/forgotten_corrupted_light_mage_m_combat.jpg" alt="Corrupted Light Mage M" class="combat-anim">
-        </div>
-        <div class="section-text">
-            <h2>Light Through Broken Glass</h2>
-            <p>The Corrupted Light Mages were once practitioners of benevolent luminomancy , practitioners of the healing arts, channelers of protective light, those who used radiance to reveal and defend rather than to destroy. <strong>Death , and Malicott's sap , inverted the polarity.</strong> The light they produce now cuts rather than heals. It diagnoses vulnerabilities rather than symptoms.</p>
-            <p>They do not experience this as corruption. They experience it as <em>completion.</em> The same light that once mended flesh now reveals the seams of armor, the gaps in resistance, the half-second of unguarded exposure that a less observant mage would miss. They were always this perceptive. They simply did not previously have a use for the violence of it.</p>
-            <p>Their appearance is the most visibly unsettling of the T2 Araldi units: their skin is bright , not warmly so, but clinically, like something being examined under magnification. The light they emit is their own body, not a spell. They are a constant source of illumination. In darkness, they are always visible. They do not seem to consider this a disadvantage.</p>
-        </div>
-    </div>
-    <div class="tactical-module">
-        <div class="tactical-header"><h2>Tactical Data</h2></div>
-        <div class="stats-box">
-            <div class="stat-item"><span class="stat-label">Tier</span><span class="stat-value tier">2</span></div>
-            <div class="stat-item"><span class="stat-label">HP</span><span class="stat-value hp">65</span></div>
-            <div class="stat-item"><span class="stat-label">ATK</span><span class="stat-value atk">30</span></div>
-            <div class="stat-item"><span class="stat-label">INI</span><span class="stat-value">40</span></div>
-        </div>
-        <div class="skills-grid">
-            <div class="skill-card sk-base">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_raggio_corrotto.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Corrupted Ray</h3><span class="skill-type base">Base Skill</span></div>
-                </div>
-                <div class="skill-desc">Deals <span class="dmg-light">Light</span> damage to all enemies</div>
-            </div>
-            <div class="skill-card sk-active">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_maledizione_luminosa.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Blinding Flare</h3><span class="skill-type active">Active Skill</span></div>
-                </div>
-                <div class="skill-desc">Deals 100% ATK in <span class="dmg-light">Light</span> and 10% ATK in <span class="dmg-fire">Fire</span> damage to all enemies. Applies Blinded with -20% accuracy for 1 turn.</div>
-            </div>
-        </div>
-    </div>
-    <div class="portrait-gallery-module">
-        <h2 class="gallery-header">Gallery</h2>
-        <div class="carousel-wrap">
-            <div class="carousel-track" id="carouselTrack">
-                <div class="carousel-item"><img src="../../img/forgotten/araldi/forgotten_corrupted_light_mage_f_portrait.jpg" alt="Portrait F"></div>
-                <div class="carousel-item"><img src="../../img/forgotten/araldi/forgotten_corrupted_light_mage_m_portrait.jpg" alt="Portrait M"></div>
-            </div>
-        </div>
-        <div class="carousel-nav">
-            <button class="nav-btn" id="prevBtn">&#8592;</button>
-            <button class="nav-btn" id="nextBtn">&#8594;</button>
-        </div>
-    </div>
-    <a href="forgotten_order_araldi.html" class="back-link">← Return to Araldi della Cenere</a>
-</main>
-<script>
-    const track=document.getElementById('carouselTrack');const items=track.querySelectorAll('.carousel-item');let current=0;
-    function update(){track.style.transform=`translateX(-${current*(items[0].offsetWidth+15)}px)`;}
-    document.getElementById('nextBtn').addEventListener('click',()=>{if(current<items.length-1){current++;update();}});
-    document.getElementById('prevBtn').addEventListener('click',()=>{if(current>0){current--;update();}});
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Corrupted Light Mage",
+  "subtitle": "Light Path | Tier 2",
+  "accent": "#4dd0e1",
+  "bgImage": "../../img/forgotten/forgotten_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",              "label": "Home" },
+    { "href": "../../factions/index.html",     "label": "Factions" },
+    { "href": "../../factions/forgotten.html", "label": "The Forgotten" },
+    { "href": "forgotten_order_araldi.html",   "label": "Heralds of Dust" },
+    {                                          "label": "Corrupted Light Mage" }
+  ],
+
+  "combat": ["../../img/forgotten/araldi/forgotten_corrupted_light_mage_f_combat.jpg", "../../img/forgotten/araldi/forgotten_corrupted_light_mage_m_combat.jpg"],
+
+  "bio": {
+    "title": "Light Through Broken Glass",
+    "paragraphs": [
+      "The Corrupted Light Mages were once practitioners of benevolent luminomancy , practitioners of the healing arts, channelers of protective light, those who used radiance to reveal and defend rather than to destroy. <strong>Death , and Malicott's sap , inverted the polarity.</strong> The light they produce now cuts rather than heals. It diagnoses vulnerabilities rather than symptoms.",
+      "They do not experience this as corruption. They experience it as <em>completion.</em> The same light that once mended flesh now reveals the seams of armor, the gaps in resistance, the half-second of unguarded exposure that a less observant mage would miss. They were always this perceptive. They simply did not previously have a use for the violence of it.",
+      "Their appearance is the most visibly unsettling of the T2 Araldi units: their skin is bright , not warmly so, but clinically, like something being examined under magnification. The light they emit is their own body, not a spell. They are a constant source of illumination. In darkness, they are always visible. They do not seem to consider this a disadvantage."
+    ]
+  },
+
+  "stats": {
+    "tier": 2,
+    "hp":   65,
+    "atk":  30,
+    "ini":  40
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Corrupted Ray",
+      "icon": "../../img/forgotten/skills/forgotten_skill_raggio_corrotto.png",
+      "desc": "Deals <span class=\"dmg-light\">Light</span> damage to all enemies"
+    },
+    {
+      "type": "active",
+      "name": "Blinding Flare",
+      "icon": "../../img/forgotten/skills/forgotten_skill_maledizione_luminosa.png",
+      "desc": "Deals 100% ATK in <span class=\"dmg-light\">Light</span> and 10% ATK in <span class=\"dmg-fire\">Fire</span> damage to all enemies. Applies Blinded with -20% accuracy for 1 turn."
+    }
+  ],
+
+  "gallery": [
+    "../../img/forgotten/araldi/forgotten_corrupted_light_mage_f_portrait.jpg",
+    "../../img/forgotten/araldi/forgotten_corrupted_light_mage_m_portrait.jpg"
+  ],
+
+  "backLink": {
+    "href":  "forgotten_order_araldi.html",
+    "label": "Return to Heralds of Dust"
+  }
+}
 </script>
-<script src="../../system/unit-banner.js"></script>
+
+<script src="../../system/unit-renderer.js"></script>
 </body>
 </html>

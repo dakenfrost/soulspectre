@@ -4,83 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOULSPECTRE | Bladeclaw</title>
-    <link rel="stylesheet" href="../../system/forgotten_units.css">
-    <style>:root{--accent:#ffb300;}</style>
+    <link rel="stylesheet" href="../../system/unit-page.css">
 </head>
 <body>
 <div id="bg-image"></div>
 <div id="overlay"></div>
-<header>
-    <h1>Bladeclaw</h1>
-    <div class="subtitle">Tier 4 , Assassin Path</div>
-</header>
-<main>
-    <div class="intro-banner"><img src="../../img/forgotten/arborei/forgotten_elf_assassin_banner.png" alt="Bladeclaw Banner"></div>
-    <div class="split-section">
-        <div class="section-image-container">
-            <img src="../../img/forgotten/arborei/forgotten_elf_assassin_f_combat.jpg" alt="Bladeclaw F">
-            <img src="../../img/forgotten/arborei/forgotten_elf_assassin_m_combat.jpg" alt="Bladeclaw M" class="combat-anim">
-        </div>
-        <div class="section-text">
-            <h2>They Remember Everything</h2>
-            <p>The Bladeclaw has finally remembered. The fragments that the Duskblade chased and the Thornwalker nearly grasped have now assembled into a complete picture: a name, a life, a people, a forest. They know who they are. And they have <strong>chosen to remain.</strong></p>
-            <p>This is the moment many expected them to leave , to reclaim their living identity and walk away from the Empire. But that is not what happens. What happens is that the recovered memory becomes fuel, and the fuel becomes <em>absolute commitment.</em> They fight not because they have forgotten who they were, but because they have remembered what was done to their people.</p>
-            <p>Their claws replaced blades naturally, a biological response to the emotional clarity of recovered identity. In combat, they move with a grace that tactical reports describe as <em>"inconsistent with the medium of conflict"</em> , they simply should not be able to move like that in a battlefield. But elves were never bound by what should be possible. And the Bladeclaw carries all of that heritage forward into every engagement, extending a shadow that protects those fighting alongside them.</p>
-        </div>
-    </div>
-    <div class="tactical-module">
-        <div class="tactical-header"><h2>Tactical Data</h2></div>
-        <div class="stats-box">
-            <div class="stat-item"><span class="stat-label">Tier</span><span class="stat-value tier">4</span></div>
-            <div class="stat-item"><span class="stat-label">HP</span><span class="stat-value hp">225</span></div>
-            <div class="stat-item"><span class="stat-label">ATK</span><span class="stat-value atk">90</span></div>
-            <div class="stat-item"><span class="stat-label">INI</span><span class="stat-value">70</span></div>
-        </div>
-        <div class="skills-grid">
-            <div class="skill-card sk-base">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_taglio_artigli.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Claw Slash</h3><span class="skill-type base">Base Attack</span></div>
-                </div>
-                <div class="skill-desc">Deals 100% ATK in <span class="dmg-phys">Physical</span> melee damage to 2 random enemies.</div>
-            </div>
-            <div class="skill-card sk-active">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_attacco_furtivo.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Stealth Attack</h3><span class="skill-type active">Active Skill</span></div>
-                </div>
-                <div class="skill-desc">Strikes a random backline enemy for 25% ATK in <span class="dmg-earth">Earth</span> + 100% ATK in <span class="dmg-poison">Poison</span> damage, bypassing the frontline and ignoring 30% Armor.</div>
-            </div>
-            <div class="skill-card sk-passive">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_campo_ombra.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Shadow Field</h3><span class="skill-type passive">Passive</span></div>
-                </div>
-                <div class="skill-desc">All allies gain +15% Dodge Chance.</div>
-            </div>
-        </div>
-    </div>
-    <div class="portrait-gallery-module">
-        <h2 class="gallery-header">Gallery</h2>
-        <div class="carousel-wrap">
-            <div class="carousel-track" id="carouselTrack">
-                <div class="carousel-item"><img src="../../img/forgotten/arborei/forgotten_elf_assassin_f_portrait.jpg" alt="Portrait F"></div>
-                <div class="carousel-item"><img src="../../img/forgotten/arborei/forgotten_elf_assassin_m_portrait.jpg" alt="Portrait M"></div>
-            </div>
-        </div>
-        <div class="carousel-nav">
-            <button class="nav-btn" id="prevBtn">&#8592;</button>
-            <button class="nav-btn" id="nextBtn">&#8594;</button>
-        </div>
-    </div>
-    <a href="forgotten_order_arborei.html" class="back-link">← Return to Arboreal Fighters</a>
-</main>
-<script>
-    const track=document.getElementById('carouselTrack');const items=track.querySelectorAll('.carousel-item');let current=0;
-    function update(){track.style.transform=`translateX(-${current*(items[0].offsetWidth+15)}px)`;}
-    document.getElementById('nextBtn').addEventListener('click',()=>{if(current<items.length-1){current++;update();}});
-    document.getElementById('prevBtn').addEventListener('click',()=>{if(current>0){current--;update();}});
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Bladeclaw",
+  "subtitle": "Assassin Path | Tier 4",
+  "accent": "#ffb300",
+  "bgImage": "../../img/forgotten/forgotten_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",              "label": "Home" },
+    { "href": "../../factions/index.html",     "label": "Factions" },
+    { "href": "../../factions/forgotten.html", "label": "The Forgotten" },
+    { "href": "forgotten_order_arborei.html",  "label": "Arboreal Fighters" },
+    {                                          "label": "Bladeclaw" }
+  ],
+
+  "combat": ["../../img/forgotten/arborei/forgotten_elf_assassin_f_combat.jpg", "../../img/forgotten/arborei/forgotten_elf_assassin_m_combat.jpg"],
+
+  "bio": {
+    "title": "They Remember Everything",
+    "paragraphs": [
+      "The Bladeclaw has finally remembered. The fragments that the Duskblade chased and the Thornwalker nearly grasped have now assembled into a complete picture: a name, a life, a people, a forest. They know who they are. And they have <strong>chosen to remain.</strong>",
+      "This is the moment many expected them to leave , to reclaim their living identity and walk away from the Empire. But that is not what happens. What happens is that the recovered memory becomes fuel, and the fuel becomes <em>absolute commitment.</em> They fight not because they have forgotten who they were, but because they have remembered what was done to their people.",
+      "Their claws replaced blades naturally, a biological response to the emotional clarity of recovered identity. In combat, they move with a grace that tactical reports describe as <em>&ldquo;inconsistent with the medium of conflict&rdquo;</em> , they simply should not be able to move like that in a battlefield. But elves were never bound by what should be possible. And the Bladeclaw carries all of that heritage forward into every engagement, extending a shadow that protects those fighting alongside them."
+    ]
+  },
+
+  "stats": {
+    "tier": 4,
+    "hp":   225,
+    "atk":  90,
+    "ini":  70
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Claw Slash",
+      "icon": "../../img/forgotten/skills/forgotten_skill_taglio_artigli.png",
+      "desc": "Deals 100% ATK in <span class=\"dmg-phys\">Physical</span> melee damage to 2 random enemies."
+    },
+    {
+      "type": "active",
+      "name": "Stealth Attack",
+      "icon": "../../img/forgotten/skills/forgotten_skill_attacco_furtivo.png",
+      "desc": "Strikes a random backline enemy for 25% ATK in <span class=\"dmg-earth\">Earth</span> + 100% ATK in <span class=\"dmg-poison\">Poison</span> damage, bypassing the frontline and ignoring 30% Armor."
+    },
+    {
+      "type": "passive",
+      "name": "Shadow Field",
+      "icon": "../../img/forgotten/skills/forgotten_skill_campo_ombra.png",
+      "desc": "All allies gain +15% Dodge Chance."
+    }
+  ],
+
+  "gallery": [
+    "../../img/forgotten/arborei/forgotten_elf_assassin_f_portrait.jpg",
+    "../../img/forgotten/arborei/forgotten_elf_assassin_m_portrait.jpg"
+  ],
+
+  "backLink": {
+    "href":  "forgotten_order_arborei.html",
+    "label": "Return to Arboreal Fighters"
+  }
+}
 </script>
-<script src="../../system/unit-banner.js"></script>
+
+<script src="../../system/unit-renderer.js"></script>
 </body>
 </html>

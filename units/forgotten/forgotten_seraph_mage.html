@@ -4,91 +4,84 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOULSPECTRE | Seraph Mage</title>
-    <link rel="stylesheet" href="../../system/forgotten_units.css">
-    <style>:root{--accent:#ce93d8;}</style>
+    <link rel="stylesheet" href="../../system/unit-page.css">
 </head>
 <body>
 <div id="bg-image"></div>
 <div id="overlay"></div>
-<header>
-    <h1>Seraph Mage</h1>
-    <div class="subtitle">Tier 5 , Champion of the Araldi</div>
-</header>
-<main>
-    <div class="intro-banner"><img src="../../img/forgotten/araldi/forgotten_seraph_mage_banner.png" alt="Seraph Mage Banner"></div>
-    <div class="split-section">
-        <div class="section-image-container">
-            <img src="../../img/forgotten/araldi/forgotten_seraph_mage_f_combat.jpg" alt="Seraph Mage combat F">
-            <img src="../../img/forgotten/araldi/forgotten_seraph_mage_m_combat.jpg" alt="Seraph Mage combat M" class="combat-anim">
-        </div>
-        <div class="section-text">
-            <h2>The Architecture of the Sky</h2>
-            <p>The Seraph Mage is not "seraph" in the theological sense , she is not a messenger. The name refers to a classification of an older magic system, one that predated organized religion's attempt to claim divine hierarchy as its vocabulary. In that system, <em>seraph</em> meant <strong>the point at which elemental convergence achieves structural integrity.</strong> A seraph-class mage was not someone who channeled an element. She was someone who had become the meeting point between elements, and could shape that intersection deliberately.</p>
-            <p>She died three hundred years ago in a city whose name has been administratively removed from all surviving documents. The cause was not violence but physics: she attempted to merge two incompatible resonance fields as an act of creation, and the merger was successful in ways she did not survive. Malicott found what remained and recognized something that had not yet finished working.</p>
-            <p>The Seraph Mage does not think of herself as powerful. She thinks of herself as <strong>accurate.</strong> The distinction matters. Power implies effort; accuracy implies understanding. She has stopped expending effort on resistance that could simply be bypassed. Everything she channels goes through the substrate of reality directly , clean, fast, and without negotiating for right of way.</p>
-        </div>
-    </div>
-    <div class="tactical-module">
-        <div class="tactical-header"><h2>Tactical Data</h2></div>
-        <div class="stats-box">
-            <div class="stat-item"><span class="stat-label">Tier</span><span class="stat-value tier">5</span></div>
-            <div class="stat-item"><span class="stat-label">HP</span><span class="stat-value hp">300</span></div>
-            <div class="stat-item"><span class="stat-label">ATK</span><span class="stat-value atk">115</span></div>
-            <div class="stat-item"><span class="stat-label">INI</span><span class="stat-value">55</span></div>
 
-        </div>
-        <div class="skills-grid">
-            <div class="skill-card sk-base">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_lama_spazio.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Space Blade</h3><span class="skill-type base">Base Skill</span></div>
-                </div>
-                <div class="skill-desc">Deals 33% <span class="dmg-air">Air</span> + 34% <span class="dmg-light">Light</span> + 33% <span class="dmg-fire">Fire</span> damage to all enemies</div>
-            </div>
-            <div class="skill-card sk-active">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_conclave_celeste.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Celestial Conclave</h3><span class="skill-type active">Active Skill</span></div>
-                </div>
-                <div class="skill-desc">Deals 50% <span class="dmg-light">Light</span> + 50% <span class="dmg-air">Air</span> + 50% <span class="dmg-fire">Fire</span> damage to all enemies. </br>50% chance of Stunning or <span class="dmg-fire">Burning</span>(5% Fire damage/turn).</div>
-            </div>
-            <div class="skill-card sk-passive">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_trascendenza.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Transcendence</h3><span class="skill-type passive">Passive</span></div>
-                </div>
-                <div class="skill-desc">Gains +8% ATK for every allied unit that has fallen in battle. Immune to all debuffs if allied tier 3 or up fallen is at least 2.</div>
-            </div>
-            <div class="skill-card sk-ultimate">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_ordine_solare.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Solar Order</h3><span class="skill-type ultimate">Ultimate</span></div>
-                </div>
-                <div class="skill-desc">For 2 turns, all allied attacks deal +100% bonus <span class="dmg-light">Light</span> damage and +100% bonus <span class="dmg-fire">Fire</span> damage. Reduces all allied cooldowns by 1 turn.</div>
-            </div>
-        </div>
-    </div>
-    <div class="portrait-gallery-module">
-        <h2 class="gallery-header">Gallery</h2>
-        <div class="carousel-wrap">
-            <div class="carousel-track" id="carouselTrack">
-                <div class="carousel-item"><img src="../../img/forgotten/araldi/forgotten_seraph_mage_f_portrait.jpg" alt="Portrait F"></div>
-                <div class="carousel-item"><img src="../../img/forgotten/araldi/forgotten_seraph_mage_m_portrait.jpg" alt="Portrait M"></div>
-            </div>
-        </div>
-        <div class="carousel-nav">
-            <button class="nav-btn" id="prevBtn">&#8592;</button>
-            <button class="nav-btn" id="nextBtn">&#8594;</button>
-        </div>
-    </div>
-    <a href="forgotten_order_araldi.html" class="back-link">← Return to Araldi della Cenere</a>
-</main>
-<script>
-    const track=document.getElementById('carouselTrack');const items=track.querySelectorAll('.carousel-item');let current=0;
-    function update(){track.style.transform=`translateX(-${current*(items[0].offsetWidth+15)}px)`;}
-    document.getElementById('nextBtn').addEventListener('click',()=>{if(current<items.length-1){current++;update();}});
-    document.getElementById('prevBtn').addEventListener('click',()=>{if(current>0){current--;update();}});
+<script type="application/json" id="unit-data">
+{
+  "name": "Seraph Mage",
+  "subtitle": "Champion of the Araldi | Tier 5",
+  "accent": "#ce93d8",
+  "bgImage": "../../img/forgotten/forgotten_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",              "label": "Home" },
+    { "href": "../../factions/index.html",     "label": "Factions" },
+    { "href": "../../factions/forgotten.html", "label": "The Forgotten" },
+    { "href": "forgotten_order_araldi.html",   "label": "Heralds of Dust" },
+    {                                          "label": "Seraph Mage" }
+  ],
+
+  "combat": ["../../img/forgotten/araldi/forgotten_seraph_mage_f_combat.jpg", "../../img/forgotten/araldi/forgotten_seraph_mage_m_combat.jpg"],
+
+  "bio": {
+    "title": "The Architecture of the Sky",
+    "paragraphs": [
+      "The Seraph Mage is not &ldquo;seraph&rdquo; in the theological sense , she is not a messenger. The name refers to a classification of an older magic system, one that predated organized religion's attempt to claim divine hierarchy as its vocabulary. In that system, <em>seraph</em> meant <strong>the point at which elemental convergence achieves structural integrity.</strong> A seraph-class mage was not someone who channeled an element. She was someone who had become the meeting point between elements, and could shape that intersection deliberately.",
+      "She died three hundred years ago in a city whose name has been administratively removed from all surviving documents. The cause was not violence but physics: she attempted to merge two incompatible resonance fields as an act of creation, and the merger was successful in ways she did not survive. Malicott found what remained and recognized something that had not yet finished working.",
+      "The Seraph Mage does not think of herself as powerful. She thinks of herself as <strong>accurate.</strong> The distinction matters. Power implies effort; accuracy implies understanding. She has stopped expending effort on resistance that could simply be bypassed. Everything she channels goes through the substrate of reality directly , clean, fast, and without negotiating for right of way."
+    ]
+  },
+
+  "stats": {
+    "tier": 5,
+    "hp":   300,
+    "atk":  115,
+    "ini":  55
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Space Blade",
+      "icon": "../../img/forgotten/skills/forgotten_skill_lama_spazio.png",
+      "desc": "Deals 33% <span class=\"dmg-air\">Air</span> + 34% <span class=\"dmg-light\">Light</span> + 33% <span class=\"dmg-fire\">Fire</span> damage to all enemies"
+    },
+    {
+      "type": "active",
+      "name": "Celestial Conclave",
+      "icon": "../../img/forgotten/skills/forgotten_skill_conclave_celeste.png",
+      "desc": "Deals 50% <span class=\"dmg-light\">Light</span> + 50% <span class=\"dmg-air\">Air</span> + 50% <span class=\"dmg-fire\">Fire</span> damage to all enemies. 50% chance of Stunning or <span class=\"dmg-fire\">Burning</span> (5% Fire damage/turn)."
+    },
+    {
+      "type": "passive",
+      "name": "Transcendence",
+      "icon": "../../img/forgotten/skills/forgotten_skill_trascendenza.png",
+      "desc": "Gains +8% ATK for every allied unit that has fallen in battle. Immune to all debuffs if allied tier 3 or up fallen is at least 2."
+    },
+    {
+      "type": "ultimate",
+      "name": "Solar Order",
+      "icon": "../../img/forgotten/skills/forgotten_skill_ordine_solare.png",
+      "desc": "For 2 turns, all allied attacks deal +100% bonus <span class=\"dmg-light\">Light</span> damage and +100% bonus <span class=\"dmg-fire\">Fire</span> damage. Reduces all allied cooldowns by 1 turn."
+    }
+  ],
+
+  "gallery": [
+    "../../img/forgotten/araldi/forgotten_seraph_mage_f_portrait.jpg",
+    "../../img/forgotten/araldi/forgotten_seraph_mage_m_portrait.jpg"
+  ],
+
+  "backLink": {
+    "href":  "forgotten_order_araldi.html",
+    "label": "Return to Heralds of Dust"
+  }
+}
 </script>
-<script src="../../system/unit-banner.js"></script>
+
+<script src="../../system/unit-renderer.js"></script>
 </body>
 </html>

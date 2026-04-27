@@ -4,83 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOULSPECTRE | Herbalist</title>
-    <link rel="stylesheet" href="../../system/forgotten_units.css">
-    <style>:root{--accent:#81c784;}</style>
+    <link rel="stylesheet" href="../../system/unit-page.css">
 </head>
 <body>
 <div id="bg-image"></div>
 <div id="overlay"></div>
-<header>
-    <h1>Herbalist</h1>
-    <div class="subtitle">Tier 3 , Nature Path</div>
-</header>
-<main>
-    <div class="intro-banner"><img src="../../img/forgotten/linfa/forgotten_herbalist_banner.png" alt="Herbalist Banner"></div>
-    <div class="split-section">
-        <div class="section-image-container">
-            <img src="../../img/forgotten/linfa/forgotten_herbalist_f_combat.jpg" alt="Herbalist F">
-            <img src="../../img/forgotten/linfa/forgotten_herbalist_m_combat.jpg" alt="Herbalist M" class="combat-anim">
-        </div>
-        <div class="section-text">
-            <h2>The Song the Forest Remembers</h2>
-            <p>The Herbalist heals the way water finds its path , not by force, but by knowing exactly where to go. They carry a small wooden harp whose strings were grown, not made: each one a thread of living sap drawn from the oldest roots of the Forgotten homeland. When they play, the forest <strong>listens and responds.</strong></p>
-            <p>In the Economy of Merit, the Herbalist is neither a soldier nor a scholar. They occupy something older , a role that existed before the Empire had a name for it. They remember the forests. They remember which plants close wounds and which ones open them. That memory lives not in their mind but in their hands, in the angle of a finger against a string.</p>
-            <p>Their eyes are green the way deep water is green , lit from within, calm on the surface, and <em>bottomless if you look too long.</em> Allies near them report feeling less afraid. No one has ever adequately explained why.</p>
-        </div>
-    </div>
-    <div class="tactical-module">
-        <div class="tactical-header"><h2>Tactical Data</h2></div>
-        <div class="stats-box">
-            <div class="stat-item"><span class="stat-label">Tier</span><span class="stat-value tier">3</span></div>
-            <div class="stat-item"><span class="stat-label">HP</span><span class="stat-value hp">100</span></div>
-            <div class="stat-item"><span class="stat-label">ATK</span><span class="stat-value atk">50</span></div>
-            <div class="stat-item"><span class="stat-label">INI</span><span class="stat-value">45</span></div>
-        </div>
-        <div class="skills-grid">
-            <div class="skill-card sk-base">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_salvia_natura.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Nature's Sage</h3><span class="skill-type base">Base Skill</span></div>
-                </div>
-                <div class="skill-desc">Deals <span class="dmg-earth">Earth</span> damage to one enemy. If used on an ally (less than 30% HP), apply Nature Regeneration to the nearest ally (4% HP/turn for 3 turns).</div>
-            </div>
-            <div class="skill-card sk-active">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_pozione_primordiale.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Primordial Potion</h3><span class="skill-type active">Active Skill</span></div>
-                </div>
-                <div class="skill-desc">Heals one ally for 35% of their max HP. If target is below 25% HP, heals for 50% instead.</div>
-            </div>
-            <div class="skill-card sk-passive">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_rigoglio.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Flourish</h3><span class="skill-type passive">Passive</span></div>
-                </div>
-                <div class="skill-desc">All allies regenerate 3% of their max HP at the start of each turn.</div>
-            </div>
-        </div>
-    </div>
-    <div class="portrait-gallery-module">
-        <h2 class="gallery-header">Gallery</h2>
-        <div class="carousel-wrap">
-            <div class="carousel-track" id="carouselTrack">
-                <div class="carousel-item"><img src="../../img/forgotten/linfa/forgotten_herbalist_f_portrait.jpg" alt="Portrait F"></div>
-                <div class="carousel-item"><img src="../../img/forgotten/linfa/forgotten_herbalist_m_portrait.jpg" alt="Portrait M"></div>
-            </div>
-        </div>
-        <div class="carousel-nav">
-            <button class="nav-btn" id="prevBtn">&#8592;</button>
-            <button class="nav-btn" id="nextBtn">&#8594;</button>
-        </div>
-    </div>
-    <a href="forgotten_order_linfa.html" class="back-link">← Return to Shadows of the Sap</a>
-</main>
-<script>
-    const track=document.getElementById('carouselTrack');const items=track.querySelectorAll('.carousel-item');let current=0;
-    function update(){track.style.transform=`translateX(-${current*(items[0].offsetWidth+15)}px)`;}
-    document.getElementById('nextBtn').addEventListener('click',()=>{if(current<items.length-1){current++;update();}});
-    document.getElementById('prevBtn').addEventListener('click',()=>{if(current>0){current--;update();}});
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Herbalist",
+  "subtitle": "Nature Path | Tier 3",
+  "accent": "#81c784",
+  "bgImage": "../../img/forgotten/forgotten_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",              "label": "Home" },
+    { "href": "../../factions/index.html",     "label": "Factions" },
+    { "href": "../../factions/forgotten.html", "label": "The Forgotten" },
+    { "href": "forgotten_order_linfa.html",    "label": "Shadows of the Sap" },
+    {                                          "label": "Herbalist" }
+  ],
+
+  "combat": ["../../img/forgotten/linfa/forgotten_herbalist_f_combat.jpg", "../../img/forgotten/linfa/forgotten_herbalist_m_combat.jpg"],
+
+  "bio": {
+    "title": "The Song the Forest Remembers",
+    "paragraphs": [
+      "The Herbalist heals the way water finds its path , not by force, but by knowing exactly where to go. They carry a small wooden harp whose strings were grown, not made: each one a thread of living sap drawn from the oldest roots of the Forgotten homeland. When they play, the forest <strong>listens and responds.</strong>",
+      "In the Economy of Merit, the Herbalist is neither a soldier nor a scholar. They occupy something older , a role that existed before the Empire had a name for it. They remember the forests. They remember which plants close wounds and which ones open them. That memory lives not in their mind but in their hands, in the angle of a finger against a string.",
+      "Their eyes are green the way deep water is green , lit from within, calm on the surface, and <em>bottomless if you look too long.</em> Allies near them report feeling less afraid. No one has ever adequately explained why."
+    ]
+  },
+
+  "stats": {
+    "tier": 3,
+    "hp":   100,
+    "atk":  50,
+    "ini":  45
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Nature's Sage",
+      "icon": "../../img/forgotten/skills/forgotten_skill_salvia_natura.png",
+      "desc": "Deals <span class=\"dmg-earth\">Earth</span> damage to one enemy. If used on an ally (less than 30% HP), apply Nature Regeneration to the nearest ally (4% HP/turn for 3 turns)."
+    },
+    {
+      "type": "active",
+      "name": "Primordial Potion",
+      "icon": "../../img/forgotten/skills/forgotten_skill_pozione_primordiale.png",
+      "desc": "Heals one ally for 35% of their max HP. If target is below 25% HP, heals for 50% instead."
+    },
+    {
+      "type": "passive",
+      "name": "Flourish",
+      "icon": "../../img/forgotten/skills/forgotten_skill_rigoglio.png",
+      "desc": "All allies regenerate 3% of their max HP at the start of each turn."
+    }
+  ],
+
+  "gallery": [
+    "../../img/forgotten/linfa/forgotten_herbalist_f_portrait.jpg",
+    "../../img/forgotten/linfa/forgotten_herbalist_m_portrait.jpg"
+  ],
+
+  "backLink": {
+    "href":  "forgotten_order_linfa.html",
+    "label": "Return to Shadows of the Sap"
+  }
+}
 </script>
-<script src="../../system/unit-banner.js"></script>
+
+<script src="../../system/unit-renderer.js"></script>
 </body>
 </html>

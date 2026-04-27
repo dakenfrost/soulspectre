@@ -4,83 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOULSPECTRE | Thornwalker</title>
-    <link rel="stylesheet" href="../../system/forgotten_units.css">
-    <style>:root{--accent:#81c784;}</style>
+    <link rel="stylesheet" href="../../system/unit-page.css">
 </head>
 <body>
 <div id="bg-image"></div>
 <div id="overlay"></div>
-<header>
-    <h1>Thornwalker</h1>
-    <div class="subtitle">Tier 3 , Assassin Path</div>
-</header>
-<main>
-    <div class="intro-banner"><img src="../../img/forgotten/arborei/forgotten_assassin_trees_banner.png" alt="Thornwalker Banner"></div>
-    <div class="split-section">
-        <div class="section-image-container">
-            <img src="../../img/forgotten/arborei/forgotten_assassin_trees_f_combat.jpg" alt="Thornwalker F">
-            <img src="../../img/forgotten/arborei/forgotten_assassin_trees_m_combat.jpg" alt="Thornwalker M" class="combat-anim">
-        </div>
-        <div class="section-text">
-            <h2>Almost Home</h2>
-            <p>They remember pointed ears. The smell of pine resin and damp moss after rain. The particular silence of a forest at night, when every sound matters and every shadow is read instead of feared. They do not yet have a name for this , but it feels like <strong>home.</strong></p>
-            <p>The last traces of arboreal form have nearly dissolved. What remains is lighter, faster, and far more dangerous. Their skin has taken on a faint greenish iridescence, their reflexes moving closer to the elven heritage their soul is beginning to recover. They have also learned something new and terrible: that the body, when armored against attack, can become a weapon in itself.</p>
-            <p><strong>Armature di Spine</strong> is a passive defense that emerges naturally at this stage. The Assassin does not choose to have thorns , they simply do. Any aggressor who strikes them hard enough feels the poison return through their own impact. The forest does not attack. But it <em>does</em> remember everything that bleeds within it.</p>
-        </div>
-    </div>
-    <div class="tactical-module">
-        <div class="tactical-header"><h2>Tactical Data</h2></div>
-        <div class="stats-box">
-            <div class="stat-item"><span class="stat-label">Tier</span><span class="stat-value tier">3</span></div>
-            <div class="stat-item"><span class="stat-label">HP</span><span class="stat-value hp">185</span></div>
-            <div class="stat-item"><span class="stat-label">ATK</span><span class="stat-value atk">75</span></div>
-            <div class="stat-item"><span class="stat-label">INI</span><span class="stat-value">65</span></div>
-        </div>
-        <div class="skills-grid">
-            <div class="skill-card sk-base">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_attacco.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Slash</h3><span class="skill-type base">Base Attack</span></div>
-                </div>
-                <div class="skill-desc">Deals <span class="dmg-phys">Physical</span> melee damage to one enemy.</div>
-            </div>
-            <div class="skill-card sk-active">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_attacco_furtivo.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Stealth Attack</h3><span class="skill-type active">Active Skill</span></div>
-                </div>
-                <div class="skill-desc">Strikes a random backline enemy for <span class="dmg-phys">Physical</span> + <span class="dmg-poison">Poison</span> damage, ignoring 25% Armor. Applies Poison for 3 turns (5% HP loss/turn).</div>
-            </div>
-            <div class="skill-card sk-passive">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_armature_spine.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Thorn Armor</h3><span class="skill-type passive">Passive</span></div>
-                </div>
-                <div class="skill-desc">When struck by Physical or Poison attacks, reflects 30% of damage received as <span class="dmg-poison">Poison</span> to the attacker.</div>
-            </div>
-        </div>
-    </div>
-    <div class="portrait-gallery-module">
-        <h2 class="gallery-header">Gallery</h2>
-        <div class="carousel-wrap">
-            <div class="carousel-track" id="carouselTrack">
-                <div class="carousel-item"><img src="../../img/forgotten/arborei/forgotten_assassin_trees_f_portrait.jpg" alt="Portrait F"></div>
-                <div class="carousel-item"><img src="../../img/forgotten/arborei/forgotten_assassin_trees_m_portrait.jpg" alt="Portrait M"></div>
-            </div>
-        </div>
-        <div class="carousel-nav">
-            <button class="nav-btn" id="prevBtn">&#8592;</button>
-            <button class="nav-btn" id="nextBtn">&#8594;</button>
-        </div>
-    </div>
-    <a href="forgotten_order_arborei.html" class="back-link">← Return to Arboreal Fighters</a>
-</main>
-<script>
-    const track=document.getElementById('carouselTrack');const items=track.querySelectorAll('.carousel-item');let current=0;
-    function update(){track.style.transform=`translateX(-${current*(items[0].offsetWidth+15)}px)`;}
-    document.getElementById('nextBtn').addEventListener('click',()=>{if(current<items.length-1){current++;update();}});
-    document.getElementById('prevBtn').addEventListener('click',()=>{if(current>0){current--;update();}});
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Thornwalker",
+  "subtitle": "Assassin Path | Tier 3",
+  "accent": "#81c784",
+  "bgImage": "../../img/forgotten/forgotten_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",              "label": "Home" },
+    { "href": "../../factions/index.html",     "label": "Factions" },
+    { "href": "../../factions/forgotten.html", "label": "The Forgotten" },
+    { "href": "forgotten_order_arborei.html",  "label": "Arboreal Fighters" },
+    {                                          "label": "Thornwalker" }
+  ],
+
+  "combat": ["../../img/forgotten/arborei/forgotten_assassin_trees_f_combat.jpg", "../../img/forgotten/arborei/forgotten_assassin_trees_m_combat.jpg"],
+
+  "bio": {
+    "title": "Almost Home",
+    "paragraphs": [
+      "They remember pointed ears. The smell of pine resin and damp moss after rain. The particular silence of a forest at night, when every sound matters and every shadow is read instead of feared. They do not yet have a name for this , but it feels like <strong>home.</strong>",
+      "The last traces of arboreal form have nearly dissolved. What remains is lighter, faster, and far more dangerous. Their skin has taken on a faint greenish iridescence, their reflexes moving closer to the elven heritage their soul is beginning to recover. They have also learned something new and terrible: that the body, when armored against attack, can become a weapon in itself.",
+      "<strong>Armature di Spine</strong> is a passive defense that emerges naturally at this stage. The Assassin does not choose to have thorns , they simply do. Any aggressor who strikes them hard enough feels the poison return through their own impact. The forest does not attack. But it <em>does</em> remember everything that bleeds within it."
+    ]
+  },
+
+  "stats": {
+    "tier": 3,
+    "hp":   185,
+    "atk":  75,
+    "ini":  65
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Slash",
+      "icon": "../../img/forgotten/skills/forgotten_skill_attacco.png",
+      "desc": "Deals <span class=\"dmg-phys\">Physical</span> melee damage to one enemy."
+    },
+    {
+      "type": "active",
+      "name": "Stealth Attack",
+      "icon": "../../img/forgotten/skills/forgotten_skill_attacco_furtivo.png",
+      "desc": "Strikes a random backline enemy for <span class=\"dmg-phys\">Physical</span> + <span class=\"dmg-poison\">Poison</span> damage, ignoring 25% Armor. Applies Poison for 3 turns (5% HP loss/turn)."
+    },
+    {
+      "type": "passive",
+      "name": "Thorn Armor",
+      "icon": "../../img/forgotten/skills/forgotten_skill_armature_spine.png",
+      "desc": "When struck by Physical or Poison attacks, reflects 30% of damage received as <span class=\"dmg-poison\">Poison</span> to the attacker."
+    }
+  ],
+
+  "gallery": [
+    "../../img/forgotten/arborei/forgotten_assassin_trees_f_portrait.jpg",
+    "../../img/forgotten/arborei/forgotten_assassin_trees_m_portrait.jpg"
+  ],
+
+  "backLink": {
+    "href":  "forgotten_order_arborei.html",
+    "label": "Return to Arboreal Fighters"
+  }
+}
 </script>
-<script src="../../system/unit-banner.js"></script>
+
+<script src="../../system/unit-renderer.js"></script>
 </body>
 </html>

@@ -4,75 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOULSPECTRE | Duskblade</title>
-    <link rel="stylesheet" href="../../system/forgotten_units.css">
+    <link rel="stylesheet" href="../../system/unit-page.css">
 </head>
 <body>
 <div id="bg-image"></div>
 <div id="overlay"></div>
-<header>
-    <h1>Duskblade</h1>
-    <div class="subtitle">Tier 2 , Assassin Path</div>
-</header>
-<main>
-    <div class="intro-banner"><img src="../../img/forgotten/arborei/forgotten_shadow_combatant_banner.png" alt="Duskblade Banner"></div>
-    <div class="split-section">
-        <div class="section-image-container">
-            <img src="../../img/forgotten/arborei/forgotten_shadow_combatant_f_combat.jpg" alt="Duskblade F">
-            <img src="../../img/forgotten/arborei/forgotten_shadow_combatant_m_combat.jpg" alt="Duskblade M" class="combat-anim">
-        </div>
-        <div class="section-text">
-            <h2>The Memory Moves First</h2>
-            <p>The Duskblade chose differently. When faced with the choice between stand and stay or move and survive, their body answered before their mind did , and that answer was <strong>motion.</strong> Their arboreal form began to thin, becoming less like wood and more like shadow, less like a tree and more like the space between trees.</p>
-            <p>They have not yet recovered their past self. But they are beginning to feel it. A grace in the wrist. A habit of stepping silently. An instinct to check every shadow before entering a room. The fragments do not cohere into a name or a face yet , but they are <em>there</em>, and the Duskblade fights with the urgency of someone trying to remember who they were before they became this.</p>
-            <p>Their most dangerous trait is not their speed but their <strong>undetectability to backline units.</strong> They move through the noise of the frontline the way water moves through rock , not by force, but by finding every available crack. Their poisoned strikes are carefully learned, drawn from a lifetime they can't quite recall.</p>
-        </div>
-    </div>
-    <div class="tactical-module">
-        <div class="tactical-header"><h2>Tactical Data</h2></div>
-        <div class="stats-box">
-            <div class="stat-item"><span class="stat-label">Tier</span><span class="stat-value tier">2</span></div>
-            <div class="stat-item"><span class="stat-label">HP</span><span class="stat-value hp">135</span></div>
-            <div class="stat-item"><span class="stat-label">ATK</span><span class="stat-value atk">50</span></div>
-            <div class="stat-item"><span class="stat-label">INI</span><span class="stat-value">65</span></div>
-        </div>
-        <div class="skills-grid">
-            <div class="skill-card sk-base">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_attacco.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Slash</h3><span class="skill-type base">Base Attack</span></div>
-                </div>
-                <div class="skill-desc">Deals <span class="dmg-phys">Physical</span> melee damage to one enemy.</div>
-            </div>
-            <div class="skill-card sk-active">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_attacco_furtivo.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Stealth Attack</h3><span class="skill-type active">Active Skill</span></div>
-                </div>
-                <div class="skill-desc">Strikes a random backline enemy for 100% ATK in <span class="dmg-phys">Physical</span> + 20% <span class="dmg-poison">Poison</span> damage, ignoring 20% Armor. Applies Poison for 3 turns (4% HP loss/turn).</div>
-            </div>
-        </div>
-    </div>
-    <div class="portrait-gallery-module">
-        <h2 class="gallery-header">Gallery</h2>
-        <div class="carousel-wrap">
-            <div class="carousel-track" id="carouselTrack">
-                <div class="carousel-item"><img src="../../img/forgotten/arborei/forgotten_shadow_combatant_f_portrait.jpg" alt="Portrait F"></div>
-                <div class="carousel-item"><img src="../../img/forgotten/arborei/forgotten_shadow_combatant_m_portrait.jpg" alt="Portrait M"></div>
-            </div>
-        </div>
-        <div class="carousel-nav">
-            <button class="nav-btn" id="prevBtn">&#8592;</button>
-            <button class="nav-btn" id="nextBtn">&#8594;</button>
-        </div>
-    </div>
-    <a href="forgotten_order_arborei.html" class="back-link">← Return to Arboreal Fighters</a>
-</main>
-<script>
-    const track=document.getElementById('carouselTrack');const items=track.querySelectorAll('.carousel-item');let current=0;
-    function update(){track.style.transform=`translateX(-${current*(items[0].offsetWidth+15)}px)`;}
-    document.getElementById('nextBtn').addEventListener('click',()=>{if(current<items.length-1){current++;update();}});
-    document.getElementById('prevBtn').addEventListener('click',()=>{if(current>0){current--;update();}});
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Duskblade",
+  "subtitle": "Assassin Path | Tier 2",
+  "accent": "#4dd0e1",
+  "bgImage": "../../img/forgotten/forgotten_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",              "label": "Home" },
+    { "href": "../../factions/index.html",     "label": "Factions" },
+    { "href": "../../factions/forgotten.html", "label": "The Forgotten" },
+    { "href": "forgotten_order_arborei.html",  "label": "Arboreal Fighters" },
+    {                                          "label": "Duskblade" }
+  ],
+
+  "combat": ["../../img/forgotten/arborei/forgotten_shadow_combatant_f_combat.jpg", "../../img/forgotten/arborei/forgotten_shadow_combatant_m_combat.jpg"],
+
+  "bio": {
+    "title": "The Memory Moves First",
+    "paragraphs": [
+      "The Duskblade chose differently. When faced with the choice between stand and stay or move and survive, their body answered before their mind did , and that answer was <strong>motion.</strong> Their arboreal form began to thin, becoming less like wood and more like shadow, less like a tree and more like the space between trees.",
+      "They have not yet recovered their past self. But they are beginning to feel it. A grace in the wrist. A habit of stepping silently. An instinct to check every shadow before entering a room. The fragments do not cohere into a name or a face yet , but they are <em>there</em>, and the Duskblade fights with the urgency of someone trying to remember who they were before they became this.",
+      "Their most dangerous trait is not their speed but their <strong>undetectability to backline units.</strong> They move through the noise of the frontline the way water moves through rock , not by force, but by finding every available crack. Their poisoned strikes are carefully learned, drawn from a lifetime they can't quite recall."
+    ]
+  },
+
+  "stats": {
+    "tier": 2,
+    "hp":   135,
+    "atk":  50,
+    "ini":  65
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Slash",
+      "icon": "../../img/forgotten/skills/forgotten_skill_attacco.png",
+      "desc": "Deals <span class=\"dmg-phys\">Physical</span> melee damage to one enemy."
+    },
+    {
+      "type": "active",
+      "name": "Stealth Attack",
+      "icon": "../../img/forgotten/skills/forgotten_skill_attacco_furtivo.png",
+      "desc": "Strikes a random backline enemy for 100% ATK in <span class=\"dmg-phys\">Physical</span> + 20% <span class=\"dmg-poison\">Poison</span> damage, ignoring 20% Armor. Applies Poison for 3 turns (4% HP loss/turn)."
+    }
+  ],
+
+  "gallery": [
+    "../../img/forgotten/arborei/forgotten_shadow_combatant_f_portrait.jpg",
+    "../../img/forgotten/arborei/forgotten_shadow_combatant_m_portrait.jpg"
+  ],
+
+  "backLink": {
+    "href":  "forgotten_order_arborei.html",
+    "label": "Return to Arboreal Fighters"
+  }
+}
 </script>
-<script src="../../system/unit-banner.js"></script>
+
+<script src="../../system/unit-renderer.js"></script>
 </body>
 </html>

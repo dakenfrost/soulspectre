@@ -1,64 +1,76 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOULSPECTRE | Witch Hunter</title>
-    <link rel="stylesheet" href="../../system/forgotten_units.css">
-    <style>:root{--accent:#64b5f6;}</style>
+    <link rel="stylesheet" href="../../system/unit-page.css">
 </head>
 <body>
 <div id="bg-image"></div>
 <div id="overlay"></div>
-<header>
-    <h1>Witch Hunter</h1>
-    <div class="subtitle">Tier 3 · Hostile Unit</div>
-</header>
-<main>
-    <div class="intro-banner"><img src="" alt="Witch Hunter"></div>
-    <div class="split-section">
-        <div class="section-image-container">
-            <img src="../../img/forgotten/extra/forgotten_extra_witch_hunter_f_combat.jpg" alt="Witch Hunter F">
-            <img src="../../img/forgotten/extra/forgotten_extra_witch_hunter_m_combat.jpg" alt="Witch Hunter M" class="combat-anim">
-        </div>
-        <div class="section-text">
-            <h2>Those Who Study the Root</h2>
-            <p>They are not soldiers. They are specialists. Where the regular imperial army brings numbers and steel, Witch Hunters bring knowledge — specifically, knowledge of how to undo what Malicott has built. They spend years studying the nature of the pact: the amber compounds, the sap-to-blood transition, the precise points in the root network where a severing cut causes the most damage.</p>
-            <p>They carry blessed blades — not blessed in the religious sense, but treated with compounds that disrupt organic magic at a molecular level. They carry amber-breaking tools: small, precise, and expensive. They work methodically, the way a surgeon works, and they regard the Forgotten not as enemies to be defeated but as problems to be dissolved.</p>
-            <p>The Forgotten find them deeply unsettling. Not because they are powerful — they are — but because they are calm. They have no hatred. They have a method.</p>
-        </div>
-    </div>
-    <div class="tactical-module">
-        <div class="tactical-header"><h2>Tactical Data</h2></div>
-        <div class="stats-box">
-            <div class="stat-item"><span class="stat-label">Tier</span><span class="stat-value tier">3</span></div>
-            <div class="stat-item"><span class="stat-label">HP</span><span class="stat-value hp">185</span></div>
-            <div class="stat-item"><span class="stat-label">ATK</span><span class="stat-value atk">62</span></div>
-            <div class="stat-item"><span class="stat-label">INI</span><span class="stat-value">40</span></div>
-        </div>
-        <div class="skills-grid">
-            <div class="skill-card">
-                <div class="skill-header">
-                    <div class="skill-title-container"><h3 class="skill-title">Severance Blade</h3><span class="skill-type base">Base Skill</span></div>
-                </div>
-                <div class="skill-desc">Deals 120% ATK as Pure damage to a single target. If the target is a Forgotten unit, they are also prevented from being revived this battle.</div>
-            </div>
-            <div class="skill-card">
-                <div class="skill-header">
-                    <div class="skill-title-container"><h3 class="skill-title">Amber Break</h3><span class="skill-type base">Base Skill</span></div>
-                </div>
-                <div class="skill-desc">Removes all active buffs from target Forgotten unit. Cooldown: 3 turns.</div>
-            </div>
-            <div class="skill-card">
-                <div class="skill-header">
-                    <div class="skill-title-container"><h3 class="skill-title">Root Study</h3><span class="skill-type passive">Passive</span></div>
-                </div>
-                <div class="skill-desc">Deals +25% damage to Forgotten-faction units at all times.</div>
-            </div>
-        </div>
-    </div>
-    <a href="forgotten_extra.html" class="back-link">← Return to Others</a>
-</main>
-<script src="../../system/unit-banner.js"></script>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Witch Hunter",
+  "subtitle": "Hostile Unit | Tier 3",
+  "accent": "#64b5f6",
+  "bgImage": "../../img/forgotten/forgotten_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",              "label": "Home" },
+    { "href": "../../factions/index.html",     "label": "Factions" },
+    { "href": "../../factions/forgotten.html", "label": "The Forgotten" },
+    { "href": "forgotten_extra.html",          "label": "Others" },
+    {                                          "label": "Witch Hunter" }
+  ],
+
+  "combat": ["../../img/forgotten/extra/forgotten_extra_witch_hunter_f_combat.jpg", "../../img/forgotten/extra/forgotten_extra_witch_hunter_m_combat.jpg"],
+
+  "bio": {
+    "title": "Those Who Study the Root",
+    "paragraphs": [
+      "They are not soldiers. They are specialists. Where the regular imperial army brings numbers and steel, Witch Hunters bring knowledge — specifically, knowledge of how to undo what Malicott has built. They spend years studying the nature of the pact: the amber compounds, the sap-to-blood transition, the precise points in the root network where a severing cut causes the most damage.",
+      "They carry blessed blades — not blessed in the religious sense, but treated with compounds that disrupt organic magic at a molecular level. They carry amber-breaking tools: small, precise, and expensive. They work methodically, the way a surgeon works, and they regard the Forgotten not as enemies to be defeated but as problems to be dissolved.",
+      "The Forgotten find them deeply unsettling. Not because they are powerful — they are — but because they are calm. They have no hatred. They have a method."
+    ]
+  },
+
+  "stats": {
+    "tier": 3,
+    "hp":   185,
+    "atk":  62,
+    "ini":  40
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Severance Blade",
+      "icon": "",
+      "desc": "Deals 120% ATK as Pure damage to a single target. If the target is a Forgotten unit, they are also prevented from being revived this battle."
+    },
+    {
+      "type": "base",
+      "name": "Amber Break",
+      "icon": "",
+      "desc": "Removes all active buffs from target Forgotten unit. Cooldown: 3 turns."
+    },
+    {
+      "type": "passive",
+      "name": "Root Study",
+      "icon": "",
+      "desc": "Deals +25% damage to Forgotten-faction units at all times."
+    }
+  ],
+
+  "backLink": {
+    "href":  "forgotten_extra.html",
+    "label": "Return to Others"
+  }
+}
+</script>
+
+<script src="../../system/unit-renderer.js"></script>
 </body>
 </html>

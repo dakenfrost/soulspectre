@@ -4,83 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOULSPECTRE | Elf Alchemist</title>
-    <link rel="stylesheet" href="../../system/forgotten_units.css">
-    <style>:root{--accent:#ffb300;}</style>
+    <link rel="stylesheet" href="../../system/unit-page.css">
 </head>
 <body>
 <div id="bg-image"></div>
 <div id="overlay"></div>
-<header>
-    <h1>Elf Alchemist</h1>
-    <div class="subtitle">Tier 4 , Nature Path</div>
-</header>
-<main>
-    <div class="intro-banner"><img src="../../img/forgotten/forgotten_elf_alchemist_banner.png" alt="Elf Alchemist Banner"></div>
-    <div class="split-section">
-        <div class="section-image-container">
-            <img src="../../img/forgotten/linfa/forgotten_elf_alchemist_f_combat.jpg" alt="Elf Alchemist combat F">
-            <img src="../../img/forgotten/linfa/forgotten_elf_alchemist_m_combat.jpg" alt="Elf Alchemist combat M" class="combat-anim">
-        </div>
-        <div class="section-text">
-            <h2>Light That Does Not Burn</h2>
-            <p>The Elf Alchemist remembers the cathedral. Not its name, not its city , but the quality of the light inside it: amber, warm, falling through ancient stone in columns so thick they felt solid. She remembers holding a crystal up to that light for the first time and feeling something <strong>answer back from within it.</strong></p>
-            <p>What she carries now is a fragment of that first stone. She has never put it down. In the Economy of Merit she is classified as a transmuter , someone who changes the nature of what already exists rather than creating or destroying. She does not convert damage into nothing. She redirects it, filters it, <em>refines it</em> into something the body can absorb and use.</p>
-            <p>Her eyes hold the same quality as the crystal: green at the edges, gold at the center, lit from somewhere that is not quite here. She smiles often. It is the smile of someone who has learned to find the cathedral in every room they enter.</p>
-        </div>
-    </div>
-    <div class="tactical-module">
-        <div class="tactical-header"><h2>Tactical Data</h2></div>
-        <div class="stats-box">
-            <div class="stat-item"><span class="stat-label">Tier</span><span class="stat-value tier">4</span></div>
-            <div class="stat-item"><span class="stat-label">HP</span><span class="stat-value hp">120</span></div>
-            <div class="stat-item"><span class="stat-label">ATK</span><span class="stat-value atk">80</span></div>
-            <div class="stat-item"><span class="stat-label">INI</span><span class="stat-value ini">45</span></div>
-        </div>
-        <div class="skills-grid">
-            <div class="skill-card sk-base">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_distillato_vita.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Life Distillate</h3><span class="skill-type base">Base Skill</span></div>
-                </div>
-                <div class="skill-desc"><span class="dmg-earth">Heals </span> an ally for 100% Attack value and gives it a armor by 10% of its maximum HP for 2 turns</div>
-            </div>
-            <div class="skill-card sk-active">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_grande_trasmutazione.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Grand Transmutation</h3><span class="skill-type active">Active Skill</span></div>
-                </div>
-                <div class="skill-desc">For 1 turn, 30% of all damage received by allies is converted to HP, distributed evenly across all survivors at the end of the turn.</div>
-            </div>
-            <div class="skill-card sk-passive">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_pietra_vita.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Life Stone</h3><span class="skill-type passive">Passive</span></div>
-                </div>
-                <div class="skill-desc">All buff and regen effects on allies last +1 additional turn.</div>
-            </div>
-        </div>
-    </div>
-    <div class="portrait-gallery-module">
-        <h2 class="gallery-header">Gallery</h2>
-        <div class="carousel-wrap">
-            <div class="carousel-track" id="carouselTrack">
-                <div class="carousel-item"><img src="../../img/forgotten/linfa/forgotten_elf_alchemist_f_portrait.jpg" alt="Elf Alchemist portrait F"></div>
-                <div class="carousel-item"><img src="../../img/forgotten/linfa/forgotten_elf_alchemist_m_portrait.jpg" alt="Elf Alchemist portrait M"></div>
-            </div>
-        </div>
-        <div class="carousel-nav">
-            <button class="nav-btn" id="prevBtn">&#8592;</button>
-            <button class="nav-btn" id="nextBtn">&#8594;</button>
-        </div>
-    </div>
-    <a href="forgotten_order_linfa.html" class="back-link">← Return to Shadows of the Sap</a>
-</main>
-<script>
-    const track=document.getElementById('carouselTrack');const items=track.querySelectorAll('.carousel-item');let current=0;
-    function update(){track.style.transform=`translateX(-${current*(items[0].offsetWidth+15)}px)`;}
-    document.getElementById('nextBtn').addEventListener('click',()=>{if(current<items.length-1){current++;update();}});
-    document.getElementById('prevBtn').addEventListener('click',()=>{if(current>0){current--;update();}});
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Elf Alchemist",
+  "subtitle": "Nature Path | Tier 4",
+  "accent": "#ffb300",
+  "bgImage": "../../img/forgotten/forgotten_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",              "label": "Home" },
+    { "href": "../../factions/index.html",     "label": "Factions" },
+    { "href": "../../factions/forgotten.html", "label": "The Forgotten" },
+    { "href": "forgotten_order_linfa.html",    "label": "Shadows of the Sap" },
+    {                                          "label": "Elf Alchemist" }
+  ],
+
+  "combat": ["../../img/forgotten/linfa/forgotten_elf_alchemist_f_combat.jpg", "../../img/forgotten/linfa/forgotten_elf_alchemist_m_combat.jpg"],
+
+  "bio": {
+    "title": "Light That Does Not Burn",
+    "paragraphs": [
+      "The Elf Alchemist remembers the cathedral. Not its name, not its city , but the quality of the light inside it: amber, warm, falling through ancient stone in columns so thick they felt solid. She remembers holding a crystal up to that light for the first time and feeling something <strong>answer back from within it.</strong>",
+      "What she carries now is a fragment of that first stone. She has never put it down. In the Economy of Merit she is classified as a transmuter , someone who changes the nature of what already exists rather than creating or destroying. She does not convert damage into nothing. She redirects it, filters it, <em>refines it</em> into something the body can absorb and use.",
+      "Her eyes hold the same quality as the crystal: green at the edges, gold at the center, lit from somewhere that is not quite here. She smiles often. It is the smile of someone who has learned to find the cathedral in every room they enter."
+    ]
+  },
+
+  "stats": {
+    "tier": 4,
+    "hp":   120,
+    "atk":  80,
+    "ini":  45
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Life Distillate",
+      "icon": "../../img/forgotten/skills/forgotten_skill_distillato_vita.png",
+      "desc": "<span class=\"dmg-earth\">Heals </span> an ally for 100% Attack value and gives it a armor by 10% of its maximum HP for 2 turns"
+    },
+    {
+      "type": "active",
+      "name": "Grand Transmutation",
+      "icon": "../../img/forgotten/skills/forgotten_skill_grande_trasmutazione.png",
+      "desc": "For 1 turn, 30% of all damage received by allies is converted to HP, distributed evenly across all survivors at the end of the turn."
+    },
+    {
+      "type": "passive",
+      "name": "Life Stone",
+      "icon": "../../img/forgotten/skills/forgotten_skill_pietra_vita.png",
+      "desc": "All buff and regen effects on allies last +1 additional turn."
+    }
+  ],
+
+  "gallery": [
+    "../../img/forgotten/linfa/forgotten_elf_alchemist_f_portrait.jpg",
+    "../../img/forgotten/linfa/forgotten_elf_alchemist_m_portrait.jpg"
+  ],
+
+  "backLink": {
+    "href":  "forgotten_order_linfa.html",
+    "label": "Return to Shadows of the Sap"
+  }
+}
 </script>
-<script src="../../system/unit-banner.js"></script>
+
+<script src="../../system/unit-renderer.js"></script>
 </body>
 </html>

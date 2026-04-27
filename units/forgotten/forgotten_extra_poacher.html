@@ -1,59 +1,70 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOULSPECTRE | Poacher</title>
-    <link rel="stylesheet" href="../../system/forgotten_units.css">
-    <style>:root{--accent:#b0bec5;}</style>
+    <link rel="stylesheet" href="../../system/unit-page.css">
 </head>
 <body>
 <div id="bg-image"></div>
 <div id="overlay"></div>
-<header>
-    <h1>Poacher</h1>
-    <div class="subtitle">Tier 1 · Hostile Unit</div>
-</header>
-<main>
-    <div class="intro-banner"><img src="" alt="Pocher Banner"></div>
-    <div class="split-section">
-        <div class="section-image-container">
-            <img src="../../img/forgotten/extra/forgotten_extra_poacher_m_combat.jpg" alt="Poacher M">
-            <img src="../../img/forgotten/extra/forgotten_extra_poacher_f_combat.jpg" alt="Poacher F" class="combat-anim">
 
-        </div>
-        <div class="section-text">
-            <h2>Trespassers of the Sacred Wood</h2>
-            <p>They come from the outer villages, drawn by tales of strange creatures that do not die easily — creatures whose bones and hides fetch high prices in cities that ask no questions. They carry traps designed for large animals and crossbows loaded with iron bolts. They carry no respect for the land they enter.</p>
-            <p>The Forgotten do not hate them. They pity them, the way one pities a man who puts his hand into fire because no one told him it was burning. But Malicott's land does not tolerate trespass, and pity does not dull the roots that rise from the ground to catch a foot mid-step.</p>
-            <p>Most poachers never reach the deep forest. The ones who do rarely leave it.</p>
-        </div>
-    </div>
-    <div class="tactical-module">
-        <div class="tactical-header"><h2>Tactical Data</h2></div>
-        <div class="stats-box">
-            <div class="stat-item"><span class="stat-label">Tier</span><span class="stat-value tier">1</span></div>
-            <div class="stat-item"><span class="stat-label">HP</span><span class="stat-value hp">80</span></div>
-            <div class="stat-item"><span class="stat-label">ATK</span><span class="stat-value atk">22</span></div>
-            <div class="stat-item"><span class="stat-label">INI</span><span class="stat-value">48</span></div>
-        </div>
-        <div class="skills-grid">
-            <div class="skill-card">
-                <div class="skill-header">
-                    <div class="skill-title-container"><h3 class="skill-title">Trap Set</h3><span class="skill-type base">Base Skill</span></div>
-                </div>
-                <div class="skill-desc">Places a hidden trap. The next enemy unit that moves against this unit takes 30% of the Poacher's ATK as bonus damage at the start of combat.</div>
-            </div>
-            <div class="skill-card">
-                <div class="skill-header">
-                    <div class="skill-title-container"><h3 class="skill-title">Desperation Shot</h3><span class="skill-type base">Base Skill</span></div>
-                </div>
-                <div class="skill-desc">When below 30% HP, the Poacher fires a panicked bolt dealing 150% ATK to a single target.</div>
-            </div>
-        </div>
-    </div>
-    <a href="forgotten_extra.html" class="back-link">← Return to Others</a>
-</main>
-<script src="../../system/unit-banner.js"></script>
+<script type="application/json" id="unit-data">
+{
+  "name": "Poacher",
+  "subtitle": "Hostile Unit | Tier 1",
+  "accent": "#b0bec5",
+  "bgImage": "../../img/forgotten/forgotten_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",              "label": "Home" },
+    { "href": "../../factions/index.html",     "label": "Factions" },
+    { "href": "../../factions/forgotten.html", "label": "The Forgotten" },
+    { "href": "forgotten_extra.html",          "label": "Others" },
+    {                                          "label": "Poacher" }
+  ],
+
+  "combat": ["../../img/forgotten/extra/forgotten_extra_poacher_m_combat.jpg", "../../img/forgotten/extra/forgotten_extra_poacher_f_combat.jpg"],
+
+  "bio": {
+    "title": "Trespassers of the Sacred Wood",
+    "paragraphs": [
+      "They come from the outer villages, drawn by tales of strange creatures that do not die easily — creatures whose bones and hides fetch high prices in cities that ask no questions. They carry traps designed for large animals and crossbows loaded with iron bolts. They carry no respect for the land they enter.",
+      "The Forgotten do not hate them. They pity them, the way one pities a man who puts his hand into fire because no one told him it was burning. But Malicott's land does not tolerate trespass, and pity does not dull the roots that rise from the ground to catch a foot mid-step.",
+      "Most poachers never reach the deep forest. The ones who do rarely leave it."
+    ]
+  },
+
+  "stats": {
+    "tier": 1,
+    "hp":   80,
+    "atk":  22,
+    "ini":  48
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Trap Set",
+      "icon": "",
+      "desc": "Places a hidden trap. The next enemy unit that moves against this unit takes 30% of the Poacher's ATK as bonus damage at the start of combat."
+    },
+    {
+      "type": "base",
+      "name": "Desperation Shot",
+      "icon": "",
+      "desc": "When below 30% HP, the Poacher fires a panicked bolt dealing 150% ATK to a single target."
+    }
+  ],
+
+  "backLink": {
+    "href":  "forgotten_extra.html",
+    "label": "Return to Others"
+  }
+}
+</script>
+
+<script src="../../system/unit-renderer.js"></script>
 </body>
 </html>

@@ -4,83 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOULSPECTRE | Wind Mage</title>
-    <link rel="stylesheet" href="../../system/forgotten_units.css">
-    <style>:root{--accent:#81c784;}</style>
+    <link rel="stylesheet" href="../../system/unit-page.css">
 </head>
 <body>
 <div id="bg-image"></div>
 <div id="overlay"></div>
-<header>
-    <h1>Wind Mage</h1>
-    <div class="subtitle">Tier 3 , Wind Path</div>
-</header>
-<main>
-    <div class="intro-banner"><img src="../../img/forgotten/araldi/forgotten_wind_mage_banner.png" alt="Wind Mage Banner"></div>
-    <div class="split-section">
-        <div class="section-image-container">
-            <img src="../../img/forgotten/araldi/forgotten_wind_mage_f_combat.jpg" alt="Wind Mage F">
-            <img src="../../img/forgotten/araldi/forgotten_wind_mage_m_combat.jpg" alt="Wind Mage M" class="combat-anim">
-        </div>
-        <div class="section-text">
-            <h2>No Such Thing as Calm</h2>
-            <p>The Wind Mage has learned to stop treating air as neutral. Every atmosphere is an argument. Every prevailing wind is a political position. Every gust that knocked a projectile off course in history was <strong>the wind taking a side,</strong> whether or not anyone noticed. The Wind Mage notices. She picks sides too.</p>
-            <p>Her development from the Corrupted stage removed the ambivalence. The Corrupted Wind Mage creates disruption without a clear agenda: turbulence for turbulence's sake. The Wind Mage has an agenda. She uses the wind the way a skilled fencer uses misdirection , not to overwhelm, but to <em>create the precise opening that everyone else in the formation can step through.</em></p>
-            <p>She is one of the fastest units in the entire Araldi branch. The trade is fragility: she does not take hits well, but she is almost never where the hit was directed. The battlefield around her is slightly unpredictable at all times , umbrellas do not work near her, fires lean the wrong direction, dust moves in counter-intuitive patterns.</p>
-        </div>
-    </div>
-    <div class="tactical-module">
-        <div class="tactical-header"><h2>Tactical Data</h2></div>
-        <div class="stats-box">
-            <div class="stat-item"><span class="stat-label">Tier</span><span class="stat-value tier">3</span></div>
-            <div class="stat-item"><span class="stat-label">HP</span><span class="stat-value hp">90</span></div>
-            <div class="stat-item"><span class="stat-label">ATK</span><span class="stat-value atk">45</span></div>
-            <div class="stat-item"><span class="stat-label">INI</span><span class="stat-value">45</span></div>
-        </div>
-        <div class="skills-grid">
-            <div class="skill-card sk-base">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_lancia_vento.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Wind Lance</h3><span class="skill-type base">Base Skill</span></div>
-                </div>
-                <div class="skill-desc">Deals <span class="dmg-air">Air</span> damage to all enemies.</div>
-            </div>
-            <div class="skill-card sk-active">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_tornado.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Tornado</h3><span class="skill-type active">Active Skill</span></div>
-                </div>
-                <div class="skill-desc">Deals <span class="dmg-air">Air</span> damage to all enemies. Applies Stunned with probability 20% for 2 turn.</div>
-            </div>
-            <div class="skill-card sk-passive">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_affilatura_aerea.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Aerial Edge</h3><span class="skill-type passive">Passive</span></div>
-                </div>
-                <div class="skill-desc">All allies gain +10% Initiative. This unit gains only +8% Dodge.</div>
-            </div>
-        </div>
-    </div>
-    <div class="portrait-gallery-module">
-        <h2 class="gallery-header">Gallery</h2>
-        <div class="carousel-wrap">
-            <div class="carousel-track" id="carouselTrack">
-                <div class="carousel-item"><img src="../../img/forgotten/araldi/forgotten_wind_mage_f_portrait.jpg" alt="Portrait F"></div>
-                <div class="carousel-item"><img src="../../img/forgotten/araldi/forgotten_wind_mage_m_portrait.jpg" alt="Portrait M"></div>
-            </div>
-        </div>
-        <div class="carousel-nav">
-            <button class="nav-btn" id="prevBtn">&#8592;</button>
-            <button class="nav-btn" id="nextBtn">&#8594;</button>
-        </div>
-    </div>
-    <a href="forgotten_order_araldi.html" class="back-link">← Return to Araldi della Cenere</a>
-</main>
-<script>
-    const track=document.getElementById('carouselTrack');const items=track.querySelectorAll('.carousel-item');let current=0;
-    function update(){track.style.transform=`translateX(-${current*(items[0].offsetWidth+15)}px)`;}
-    document.getElementById('nextBtn').addEventListener('click',()=>{if(current<items.length-1){current++;update();}});
-    document.getElementById('prevBtn').addEventListener('click',()=>{if(current>0){current--;update();}});
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Wind Mage",
+  "subtitle": "Wind Path | Tier 3",
+  "accent": "#81c784",
+  "bgImage": "../../img/forgotten/forgotten_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",              "label": "Home" },
+    { "href": "../../factions/index.html",     "label": "Factions" },
+    { "href": "../../factions/forgotten.html", "label": "The Forgotten" },
+    { "href": "forgotten_order_araldi.html",   "label": "Heralds of Dust" },
+    {                                          "label": "Wind Mage" }
+  ],
+
+  "combat": ["../../img/forgotten/araldi/forgotten_wind_mage_f_combat.jpg", "../../img/forgotten/araldi/forgotten_wind_mage_m_combat.jpg"],
+
+  "bio": {
+    "title": "No Such Thing as Calm",
+    "paragraphs": [
+      "The Wind Mage has learned to stop treating air as neutral. Every atmosphere is an argument. Every prevailing wind is a political position. Every gust that knocked a projectile off course in history was <strong>the wind taking a side,</strong> whether or not anyone noticed. The Wind Mage notices. She picks sides too.",
+      "Her development from the Corrupted stage removed the ambivalence. The Corrupted Wind Mage creates disruption without a clear agenda: turbulence for turbulence's sake. The Wind Mage has an agenda. She uses the wind the way a skilled fencer uses misdirection , not to overwhelm, but to <em>create the precise opening that everyone else in the formation can step through.</em>",
+      "She is one of the fastest units in the entire Araldi branch. The trade is fragility: she does not take hits well, but she is almost never where the hit was directed. The battlefield around her is slightly unpredictable at all times , umbrellas do not work near her, fires lean the wrong direction, dust moves in counter-intuitive patterns."
+    ]
+  },
+
+  "stats": {
+    "tier": 3,
+    "hp":   90,
+    "atk":  45,
+    "ini":  45
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Wind Lance",
+      "icon": "../../img/forgotten/skills/forgotten_skill_lancia_vento.png",
+      "desc": "Deals <span class=\"dmg-air\">Air</span> damage to all enemies."
+    },
+    {
+      "type": "active",
+      "name": "Tornado",
+      "icon": "../../img/forgotten/skills/forgotten_skill_tornado.png",
+      "desc": "Deals <span class=\"dmg-air\">Air</span> damage to all enemies. Applies Stunned with probability 20% for 2 turn."
+    },
+    {
+      "type": "passive",
+      "name": "Aerial Edge",
+      "icon": "../../img/forgotten/skills/forgotten_skill_affilatura_aerea.png",
+      "desc": "All allies gain +10% Initiative. This unit gains only +8% Dodge."
+    }
+  ],
+
+  "gallery": [
+    "../../img/forgotten/araldi/forgotten_wind_mage_f_portrait.jpg",
+    "../../img/forgotten/araldi/forgotten_wind_mage_m_portrait.jpg"
+  ],
+
+  "backLink": {
+    "href":  "forgotten_order_araldi.html",
+    "label": "Return to Heralds of Dust"
+  }
+}
 </script>
-<script src="../../system/unit-banner.js"></script>
+
+<script src="../../system/unit-renderer.js"></script>
 </body>
 </html>

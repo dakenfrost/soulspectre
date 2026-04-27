@@ -4,84 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOULSPECTRE | Elf Sniper</title>
-    <link rel="stylesheet" href="../../system/forgotten_units.css">
-    <style>:root{--accent:#ffb300;}</style>
+    <link rel="stylesheet" href="../../system/unit-page.css">
 </head>
 <body>
 <div id="bg-image"></div>
 <div id="overlay"></div>
-<header>
-    <h1>Elf Sniper</h1>
-    <div class="subtitle">Tier 4 , Sniper Path</div>
-</header>
-<main>
-    <div class="intro-banner"><img src="../../img/forgotten/sentinelle/forgotten_elf_sniper_banner.png" alt="Elf Sniper Banner"></div>
-    <div class="split-section">
-        <div class="section-image-container">
-            <img src="../../img/forgotten/sentinelle/forgotten_elf_sniper_f_combat.jpg" alt="Elf Sniper F">
-            <img src="../../img/forgotten/sentinelle/forgotten_elf_sniper_m_combat.jpg" alt="Elf Sniper M" class="combat-anim">
-        </div>
-        <div class="section-text">
-            <h2>The Distance Was the Point</h2>
-            <p>The Elf Snipers were outlier cases even among elven forest specialists , individuals who preferred the relationship with targets that distance creates, the philosophical separation between the archer and the consequence of the arrow. Other hunters stayed close enough to see the thing they were hunting. The Elf Snipers stayed precisely far enough away that the hunt retained its <strong>quality as a relationship of pure information rather than proximity.</strong></p>
-            <p>They carried shadow with them practically. The ability to dissolve into peripheral vision, to occupy space that attention moves around rather than through, was something they had in life as a psychological skill and retained in undeath as actual metaphysics. They are half-visible between shots. <em>Not invisible.</em> Just , present in the way that background objects are present, which is to say: unremarked upon until the moment they matter.</p>
-            <p>The Elf Sniper is the hardest T4 Sentinelle unit to remove from the battlefield because she keeps repositioning between actions, and because the Elf Sniper's passive makes her temporarily untargetable by strategic priority , enemies do not forget about her, but they register her as a lower-order threat than she actually is, and act accordingly until she proves them wrong.</p>
-        </div>
-    </div>
-    <div class="tactical-module">
-        <div class="tactical-header"><h2>Tactical Data</h2></div>
-        <div class="stats-box">
-            <div class="stat-item"><span class="stat-label">Tier</span><span class="stat-value tier">4</span></div>
-            <div class="stat-item"><span class="stat-label">HP</span><span class="stat-value hp">180</span></div>
-            <div class="stat-item"><span class="stat-label">ATK</span><span class="stat-value atk">100</span></div>
-            <div class="stat-item"><span class="stat-label">INI</span><span class="stat-value">60</span></div>
-        </div>
-        <div class="skills-grid">
-            <div class="skill-card sk-base">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_freccia_ombra.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Shadow Arrow</h3><span class="skill-type base">Base Skill</span></div>
-                </div>
-                <div class="skill-desc">Deals 100% <span class="dmg-phys">Physical</span> + 25% <span class="dmg-shadow">Shadow</span> ranged damage to one enemy.</div>
-            </div>
-            <div class="skill-card sk-active">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_mirino_oblio.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Oblivion Sight</h3><span class="skill-type active">Active Skill</span></div>
-                </div>
-                <div class="skill-desc">Marks one enemy. Critical Chance on this enemy increased by 50% (double damage)</div>
-            </div>
-            <div class="skill-card sk-passive">
-                <div class="skill-header">
-                    <img src="../../img/forgotten/skills/forgotten_skill_istinto_bosco.png" alt="" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Forest Instinct</h3><span class="skill-type passive">Passive</span></div>
-                </div>
-                <div class="skill-desc">Gains +5% Critical Chance for each consecutive turn without receiving damage (resets on hit and not apply with abilites).
-                </br>Enemies treat this unit as a lower-priority target.</div>
-            </div>
-        </div>
-    </div>
-    <div class="portrait-gallery-module">
-        <h2 class="gallery-header">Gallery</h2>
-        <div class="carousel-wrap">
-            <div class="carousel-track" id="carouselTrack">
-                <div class="carousel-item"><img src="../../img/forgotten/sentinelle/forgotten_elf_sniper_f_portrait.jpg" alt="Portrait F"></div>
-                <div class="carousel-item"><img src="../../img/forgotten/sentinelle/forgotten_elf_sniper_m_portrait.jpg" alt="Portrait M"></div>
-            </div>
-        </div>
-        <div class="carousel-nav">
-            <button class="nav-btn" id="prevBtn">&#8592;</button>
-            <button class="nav-btn" id="nextBtn">&#8594;</button>
-        </div>
-    </div>
-    <a href="forgotten_order_sentinelle.html" class="back-link">← Return to Sentinelle delle Ceneri</a>
-</main>
-<script>
-    const track=document.getElementById('carouselTrack');const items=track.querySelectorAll('.carousel-item');let current=0;
-    function update(){track.style.transform=`translateX(-${current*(items[0].offsetWidth+15)}px)`;}
-    document.getElementById('nextBtn').addEventListener('click',()=>{if(current<items.length-1){current++;update();}});
-    document.getElementById('prevBtn').addEventListener('click',()=>{if(current>0){current--;update();}});
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Elf Sniper",
+  "subtitle": "Sniper Path | Tier 4",
+  "accent": "#ffb300",
+  "bgImage": "../../img/forgotten/forgotten_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                  "label": "Home" },
+    { "href": "../../factions/index.html",         "label": "Factions" },
+    { "href": "../../factions/forgotten.html",     "label": "The Forgotten" },
+    { "href": "forgotten_order_sentinelle.html",   "label": "Amber Sentinels" },
+    {                                              "label": "Elf Sniper" }
+  ],
+
+  "combat": ["../../img/forgotten/sentinelle/forgotten_elf_sniper_f_combat.jpg", "../../img/forgotten/sentinelle/forgotten_elf_sniper_m_combat.jpg"],
+
+  "bio": {
+    "title": "The Distance Was the Point",
+    "paragraphs": [
+      "The Elf Snipers were outlier cases even among elven forest specialists , individuals who preferred the relationship with targets that distance creates, the philosophical separation between the archer and the consequence of the arrow. Other hunters stayed close enough to see the thing they were hunting. The Elf Snipers stayed precisely far enough away that the hunt retained its <strong>quality as a relationship of pure information rather than proximity.</strong>",
+      "They carried shadow with them practically. The ability to dissolve into peripheral vision, to occupy space that attention moves around rather than through, was something they had in life as a psychological skill and retained in undeath as actual metaphysics. They are half-visible between shots. <em>Not invisible.</em> Just , present in the way that background objects are present, which is to say: unremarked upon until the moment they matter.",
+      "The Elf Sniper is the hardest T4 Sentinelle unit to remove from the battlefield because she keeps repositioning between actions, and because the Elf Sniper's passive makes her temporarily untargetable by strategic priority , enemies do not forget about her, but they register her as a lower-order threat than she actually is, and act accordingly until she proves them wrong."
+    ]
+  },
+
+  "stats": {
+    "tier": 4,
+    "hp":   180,
+    "atk":  100,
+    "ini":  60
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Shadow Arrow",
+      "icon": "../../img/forgotten/skills/forgotten_skill_freccia_ombra.png",
+      "desc": "Deals 100% <span class=\"dmg-phys\">Physical</span> + 25% <span class=\"dmg-shadow\">Shadow</span> ranged damage to one enemy."
+    },
+    {
+      "type": "active",
+      "name": "Oblivion Sight",
+      "icon": "../../img/forgotten/skills/forgotten_skill_mirino_oblio.png",
+      "desc": "Marks one enemy. Critical Chance on this enemy increased by 50% (double damage)"
+    },
+    {
+      "type": "passive",
+      "name": "Forest Instinct",
+      "icon": "../../img/forgotten/skills/forgotten_skill_istinto_bosco.png",
+      "desc": "Gains +5% Critical Chance for each consecutive turn without receiving damage (resets on hit and not apply with abilites). Enemies treat this unit as a lower-priority target."
+    }
+  ],
+
+  "gallery": [
+    "../../img/forgotten/sentinelle/forgotten_elf_sniper_f_portrait.jpg",
+    "../../img/forgotten/sentinelle/forgotten_elf_sniper_m_portrait.jpg"
+  ],
+
+  "backLink": {
+    "href":  "forgotten_order_sentinelle.html",
+    "label": "Return to Amber Sentinels"
+  }
+}
 </script>
-<script src="../../system/unit-banner.js"></script>
+
+<script src="../../system/unit-renderer.js"></script>
 </body>
 </html>
