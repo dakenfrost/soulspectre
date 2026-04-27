@@ -4,469 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOULSPECTRE | The Ruler</title>
+    <link rel="stylesheet" href="../system/shared.css">
     <style>
-        body {
-            color: #e0e0e0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.8;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        :root {
+            --accent-color: #5c9ce6;
+            --accent-glow:  rgba(92, 156, 230, 0.5);
+            --panel-bg:     rgba(15, 15, 15, 0.7);
         }
-
-        #bg-image {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-image: url('../img/valkyrion_bg.jpeg'); 
-            background-size: cover;
-            background-position: center;
-            z-index: -2;
-        }
-
-        #overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: linear-gradient(to bottom, rgba(10, 10, 12, 0.90), rgba(5, 5, 5, 0.98)); 
-            z-index: -1;
-        }
-
-        header {
-            padding: 60px 20px 30px 20px;
-            text-align: center;
-            width: 100%;
-            max-width: 1100px;
-        }
-
-        h1 {
-            letter-spacing: 5px;
-            font-size: 2.8rem;
-            margin: 0;
-            color: #fff;
-            text-transform: uppercase;
-            text-shadow: 0 0 15px rgba(92, 156, 230, 0.5);
-        }
-
-        .subtitle {
-            color: #5c9ce6;
-            font-size: 1.1rem;
-            letter-spacing: 2px;
-            margin-top: 10px;
-            text-transform: uppercase;
-        }
-
-        main {
-            max-width: 1100px; 
-            padding: 40px 20px;
-            width: 100%;
-            position: relative;
-        }
-
-        /* GRANDE BANNER INTRODUTTIVO */
-        .intro-banner {
-            width: 100%;
-            max-width: 1100px;
-            height: auto;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-bottom: 3px solid #5c9ce6;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
-            border-radius: 4px;
-            overflow: hidden;
-            margin-bottom: 40px;
-            display: block;
-        }
-
-        .intro-banner img {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-            display: block;
-        }
-
-        /* MODULO NARRATIVO (SPLIT LAYOUT) */
-        .split-section {
-            display: flex;
-            gap: 40px;
-            align-items: stretch; 
-            margin-bottom: 60px; 
-            background: rgba(15, 15, 15, 0.7);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255,255,255,0.05);
-            border-left: 3px solid #5c9ce6;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-
-        .section-image {
-            flex: 0 0 45%; 
-        }
-
-        .section-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; 
-        }
-
-        .section-text {
-            flex: 1; 
-            padding: 35px;
-        }
-
-        h2 {
-            color: #fff;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding-bottom: 10px;
-            margin-top: 0;
-            margin-bottom: 25px;
-            font-size: 1.8rem;
-        }
-
-        p {
-            margin-bottom: 25px;
-            color: #ccc;
-            font-size: 1.1rem;
-            text-align: justify;
-        }
-
-        strong {
-            color: #5c9ce6;
-        }
-
-        /* CAROSELLO EXTRA */
-        .portrait-gallery-module {
-            margin-top: 20px;
-            margin-bottom: 80px;
-            background: rgba(15, 15, 15, 0.7);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255,255,255,0.05);
-            border-left: 3px solid #5c9ce6;
-            padding: 35px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-
-        .gallery-header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .gallery-header h2 {
-            border: none;
-            display: inline-block;
-            font-size: 1.8rem;
-            text-shadow: 0 0 15px rgba(92, 156, 230, 0.6);
-            margin-bottom: 5px;
-        }
-
-        .carousel-container {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-        }
-
-        .carousel-track {
-            display: flex;
-            gap: 15px;
-            width: auto;
-            transition: transform 0.3s ease;
-        }
-
-        .carousel-item {
-            flex: 0 0 200px; 
-            height: 200px;
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 4px;
-            overflow: hidden;
-            position: relative;
-            transition: border-color 0.3s ease, transform 0.3s ease;
-        }
-
-        .carousel-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .carousel-item:hover {
-            border-color: #5c9ce6;
-            transform: translateY(-5px);
-        }
-
-        .carousel-item:hover img {
-            transform: scale(1.05);
-        }
-
-        .carousel-item.active {
-            border-color: #5c9ce6;
-            box-shadow: 0 0 10px rgba(92, 156, 230, 0.4);
-        }
-
-        .item-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0));
-            color: #fff;
-            font-size: 0.9rem;
-            padding: 10px 5px 5px 5px;
-            text-align: center;
-            letter-spacing: 1px;
-            font-weight: 600;
-        }
-
-        .nav-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(15,15,15,0.9);
-            border: 1px solid #5c9ce6;
-            color: #5c9ce6;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 3;
-            transition: background 0.3s, color 0.3s;
-            font-size: 1.5rem;
-            line-height: 1;
-        }
-
-        .nav-arrow:hover {
-            background: #5c9ce6;
-            color: #fff;
-        }
-
-        .prev { left: 10px; }
-        .next { right: 10px; }
-
-        .carousel-indicators {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin-top: 20px;
-        }
-
-        .indicator-dot {
-            width: 10px;
-            height: 10px;
-            background: rgba(255,255,255,0.3);
-            border-radius: 50%;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .indicator-dot.active {
-            background: #5c9ce6;
-            box-shadow: 0 0 5px #5c9ce6;
-        }
-
-        /* MODULO TATTICO: STATISTICHE E ABILITA' */
-        .tactical-module {
-            border-top: 2px solid #5c9ce6;
-            padding-top: 40px;
-        }
-
-        .tactical-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .tactical-header h2 {
-            border: none;
-            display: inline-block;
-            font-size: 2.2rem;
-            text-shadow: 0 0 15px rgba(92, 156, 230, 0.6);
-            margin-bottom: 5px;
-        }
-
-        .stats-box {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            background: linear-gradient(145deg, rgba(20,20,25,0.9), rgba(10,10,12,0.9));
-            border: 1px solid rgba(92, 156, 230, 0.3);
-            border-radius: 4px;
-            padding: 25px;
-            margin-bottom: 50px;
-            box-shadow: inset 0 0 20px rgba(0,0,0,0.8), 0 10px 20px rgba(0,0,0,0.5);
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: 10px 20px;
-        }
-
-        .stat-label {
-            display: block;
-            color: #888;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 5px;
-        }
-
-        .stat-value {
-            display: block;
-            color: #fff;
-            font-size: 1.8rem;
-            font-weight: bold;
-            font-family: monospace;
-            text-shadow: 0 0 10px rgba(255,255,255,0.3);
-        }
-
-        .stat-value.hp { color: #4CAF50; text-shadow: 0 0 10px rgba(76, 175, 80, 0.4); }
-        .stat-value.atk { color: #f44336; text-shadow: 0 0 10px rgba(244, 67, 54, 0.4); }
-        .stat-value.tier { color: #FFD700; text-shadow: 0 0 10px rgba(255, 215, 0, 0.4); }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 25px;
-        }
-
-        /* STILE AGGIORNATO PER LE SKILL CON ICONE */
-        .skill-card {
-            background: rgba(20, 20, 20, 0.8);
-            border: 1px solid rgba(255,255,255,0.05);
-            border-left: 4px solid #333;
-            padding: 25px;
-            transition: transform 0.2s ease, border-color 0.2s ease;
-        }
-
-        .skill-card:hover {
-            transform: translateY(-5px);
-            border-left-color: #5c9ce6;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-        }
-
-        .skill-card.ultimate {
-            border-left-color: #FFD700; 
-        }
-
-        .skill-header {
-            display: flex;
-            align-items: center; /* Allineamento verticale automatico per icona e titolo */
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding-bottom: 20px; /* Aumentato padding per accomodare l'icona */
-            margin-bottom: 20px;
-        }
-
-        /* STILE PER LO SPAZIO DELL'ICONA "QUADRATINO" */
-        .skill-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 4px;
-            object-fit: cover;
-            border: 2px solid rgba(92, 156, 230, 0.4);
-            margin-right: 20px;
-            background-color: rgba(0, 0, 0, 0.2); /* Sfondo in caso non ci sia l'immagine */
-            box-shadow: 0 0 10px rgba(92, 156, 230, 0.3); /* Un bagliore blu luminoso */
-        }
-
-        /* Contenitore per allineare titolo e tipo verticalmente a destra dell'icona */
-        .skill-title-container {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .skill-title {
-            margin: 0 0 5px 0;
-            color: #fff;
-            font-size: 1.4rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        .skill-type {
-            font-size: 0.8rem;
-            padding: 4px 8px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 2px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #aaa;
-            margin: 0;
-            align-self: flex-start; /* Allinea a sinistra */
-        }
-
-        .skill-type.base { background: rgba(158, 158, 158, 0.2); color: #ccc; }
-        .skill-type.active { background: rgba(33, 150, 243, 0.2); color: #64B5F6; }
-        .skill-type.passive { background: rgba(76, 175, 80, 0.2); color: #81C784; }
-        .skill-type.ultimate { background: rgba(255, 215, 0, 0.2); color: #FFD700; }
-
-        .skill-desc {
-            color: #bbb;
-            font-size: 1rem;
-            line-height: 1.6;
-            margin: 0;
-        }
-
-        .skill-desc ul {
-            margin-top: 10px;
-            padding-left: 20px;
-        }
-
-        .skill-desc li {
-            margin-bottom: 8px;
-        }
-
-        .dmg-phys { color: #ff8a65; font-weight: bold; }
-        .dmg-soul { color: #64b5f6; font-weight: bold; text-shadow: 0 0 5px rgba(100,181,246,0.5); }
-        .dmg-mind { color: #ba68c8; font-weight: bold; }
-        .status-stun { color: #ffd54f; font-weight: bold; }
-
-        .game-over-warning {
-            text-align: center;
-            color: #f44336;
-            margin-top: 50px;
-            padding: 20px;
-            border: 1px dashed rgba(244, 67, 54, 0.5);
-            background: rgba(244, 67, 54, 0.05);
-            font-weight: bold;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        .back-link {
-            display: block;
-            text-align: center;
-            margin-top: 60px;
-            color: #666;
-            text-decoration: none;
-            font-size: 1rem;
-            letter-spacing: 1px;
-            transition: color 0.3s;
-            padding: 20px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .back-link:hover {
-            color: #5c9ce6;
-            text-shadow: 0 0 10px rgba(92, 156, 230, 0.4);
-        }
-
+        #bg-image { background-image: url('../img/valkyrion_bg.jpeg'); }
+        #overlay  { background: linear-gradient(to bottom, rgba(10, 10, 12, 0.90), rgba(5, 5, 5, 0.98)); }
+        body { line-height: 1.8; }
+        /* Portrait gallery — different margins from shared */
+        .portrait-gallery-module { margin-top: 20px; margin-bottom: 80px; }
+        .gallery-header { text-align: center; margin-bottom: 30px; }
+        .gallery-header h2 { border: none; display: inline-block; font-size: 1.8rem; text-shadow: 0 0 15px var(--accent-glow); margin-bottom: 5px; }
+        /* Carousel (uses .carousel-container, not .carousel-wrap) */
+        .carousel-container { position: relative; width: 100%; overflow: hidden; display: flex; align-items: center; }
+        .carousel-track { display: flex; gap: 15px; width: auto; transition: transform 0.3s ease; }
+        .carousel-item { flex: 0 0 200px; height: 200px; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; position: relative; transition: border-color 0.3s ease, transform 0.3s ease; }
+        .carousel-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; }
+        .carousel-item:hover { border-color: var(--accent-color); transform: translateY(-5px); }
+        .carousel-item:hover img { transform: scale(1.05); }
+        .carousel-item.active { border-color: var(--accent-color); box-shadow: 0 0 10px var(--accent-glow); }
+        .item-caption { position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0)); color: #fff; font-size: 0.9rem; padding: 10px 5px 5px 5px; text-align: center; letter-spacing: 1px; font-weight: 600; }
+        .nav-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(15,15,15,0.9); border: 1px solid var(--accent-color); color: var(--accent-color); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 3; transition: background 0.3s, color 0.3s; font-size: 1.5rem; line-height: 1; }
+        .nav-arrow:hover { background: var(--accent-color); color: #fff; }
+        .prev { left: 10px; } .next { right: 10px; }
+        .carousel-indicators { display: flex; justify-content: center; gap: 8px; margin-top: 20px; }
+        .indicator-dot { width: 10px; height: 10px; background: rgba(255,255,255,0.3); border-radius: 50%; cursor: pointer; transition: background 0.3s; }
+        .indicator-dot.active { background: var(--accent-color); box-shadow: 0 0 5px var(--accent-color); }
+        /* Tactical stats & skills */
+        .tactical-module { border-top: 2px solid var(--accent-color); padding-top: 40px; }
+        .tactical-header { text-align: center; margin-bottom: 40px; }
+        .tactical-header h2 { border: none; display: inline-block; font-size: 2.2rem; text-shadow: 0 0 15px var(--accent-glow); margin-bottom: 5px; }
+        .stats-box { display: flex; justify-content: space-around; flex-wrap: wrap; background: linear-gradient(145deg, rgba(20,20,25,0.9), rgba(10,10,12,0.9)); border: 1px solid rgba(92,156,230,0.3); border-radius: 4px; padding: 25px; margin-bottom: 50px; box-shadow: inset 0 0 20px rgba(0,0,0,0.8), 0 10px 20px rgba(0,0,0,0.5); }
+        .stat-item { text-align: center; padding: 10px 20px; }
+        .stat-label { display: block; color: #888; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px; }
+        .stat-value { display: block; color: #fff; font-size: 1.8rem; font-weight: bold; font-family: monospace; text-shadow: 0 0 10px rgba(255,255,255,0.3); }
+        .stat-value.hp  { color: #4CAF50; text-shadow: 0 0 10px rgba(76,175,80,0.4); }
+        .stat-value.atk { color: #f44336; text-shadow: 0 0 10px rgba(244,67,54,0.4); }
+        .stat-value.tier{ color: #FFD700; text-shadow: 0 0 10px rgba(255,215,0,0.4); }
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 25px; }
+        .skill-card { background: rgba(20,20,20,0.8); border: 1px solid rgba(255,255,255,0.05); border-left: 4px solid #333; padding: 25px; transition: transform 0.2s ease, border-color 0.2s ease; }
+        .skill-card:hover { transform: translateY(-5px); border-left-color: var(--accent-color); box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
+        .skill-card.ultimate { border-left-color: #FFD700; }
+        .skill-header { display: flex; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px; margin-bottom: 20px; }
+        .skill-icon { width: 80px; height: 80px; border-radius: 4px; object-fit: cover; border: 2px solid rgba(92,156,230,0.4); margin-right: 20px; background-color: rgba(0,0,0,0.2); box-shadow: 0 0 10px rgba(92,156,230,0.3); }
+        .skill-title-container { flex: 1; display: flex; flex-direction: column; }
+        .skill-title { margin: 0 0 5px 0; color: #fff; font-size: 1.4rem; letter-spacing: 1px; text-transform: uppercase; }
+        .skill-type { font-size: 0.8rem; padding: 4px 8px; background: rgba(255,255,255,0.1); border-radius: 2px; text-transform: uppercase; letter-spacing: 1px; color: #aaa; margin: 0; align-self: flex-start; }
+        .skill-type.base    { background: rgba(158,158,158,0.2); color: #ccc; }
+        .skill-type.active  { background: rgba(33,150,243,0.2); color: #64B5F6; }
+        .skill-type.passive { background: rgba(76,175,80,0.2); color: #81C784; }
+        .skill-type.ultimate{ background: rgba(255,215,0,0.2); color: #FFD700; }
+        .skill-desc { color: #bbb; font-size: 1rem; line-height: 1.6; margin: 0; }
+        .skill-desc ul { margin-top: 10px; padding-left: 20px; }
+        .skill-desc li { margin-bottom: 8px; }
+        .dmg-phys   { color: #ff8a65; font-weight: bold; }
+        .dmg-soul   { color: #64b5f6; font-weight: bold; text-shadow: 0 0 5px rgba(100,181,246,0.5); }
+        .dmg-mind   { color: #ba68c8; font-weight: bold; }
+        .status-stun{ color: #ffd54f; font-weight: bold; }
+        .game-over-warning { text-align: center; color: #f44336; margin-top: 50px; padding: 20px; border: 1px dashed rgba(244,67,54,0.5); background: rgba(244,67,54,0.05); font-weight: bold; letter-spacing: 1px; text-transform: uppercase; }
         @media (max-width: 950px) {
-            .split-section { flex-direction: column; }
-            .section-image { flex: 1 1 100%; width: 100%; height: 300px; }
-            .section-text { border-top: 1px solid rgba(255,255,255,0.1); }
             .skills-grid { grid-template-columns: 1fr; }
             .stats-box { flex-direction: column; gap: 20px; }
             .carousel-item { flex: 0 0 150px; height: 150px; }
-            .skill-icon { width: 60px; height: 60px; margin-right: 15px; } /* Più piccola su mobile */
+            .skill-icon { width: 60px; height: 60px; margin-right: 15px; }
         }
     </style>
 </head>
@@ -474,6 +77,7 @@
 
 <div id="bg-image"></div>
 <div id="overlay"></div>
+<global-navigation base="../"></global-navigation>
 
 <header>
     <h1>The Empress / Emperor</h1>
@@ -739,6 +343,7 @@
         moveToItem(targetIndex);
     });
 </script>
+<script src="../system/navigation.js"></script>
 
 </body>
 </html>

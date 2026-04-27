@@ -209,11 +209,13 @@
             .content-row, .content-row.reverse { flex-direction: column; }
         }
     </style>
+    <link rel="stylesheet" href="../system/global_nav.css">
 </head>
 <body>
 
 <div id="bg-image"></div>
 <div id="overlay"></div>
+<global-navigation base="../"></global-navigation>
 
 <header>
     <h1>Awakening System</h1>
@@ -297,6 +299,7 @@
         document.addEventListener('keydown', (e) => { if (e.key === "Escape" && modal.classList.contains('show')) closeModal(); });
     });
 </script>
+<script src="../system/navigation.js"></script>
 
 </body>
 </html>

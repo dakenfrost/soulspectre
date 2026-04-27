@@ -4,257 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOULSPECTRE | Impero Valkyrion</title>
+    <link rel="stylesheet" href="../system/shared.css">
     <style>
-        body {
-            color: #e0e0e0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        :root {
+            --accent-color: #5c9ce6;
+            --accent-glow:  rgba(92, 156, 230, 0.3);
+            --panel-bg:     rgba(15, 15, 15, 0.8);
         }
-        
-        #bg-image {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-image: url('../img/valkyrion_bg.jpeg'); 
-            background-size: cover;
-            background-position: center;
-            z-index: -2;
-        }
-
-        #overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: linear-gradient(to bottom, rgba(10, 10, 12, 0.85), rgba(5, 5, 5, 0.95)); 
-            z-index: -1;
-        }
-
-        header {
-            padding: 60px 20px 30px 20px;
-            text-align: center;
-            width: 100%;
-            max-width: 1100px;
-            position: relative; 
-        }
-        h1 {
-            letter-spacing: 8px;
-            font-size: 3rem;
-            margin: 0;
-            color: #fff;
-            text-transform: uppercase;
-            text-shadow: 0 0 20px rgba(92, 156, 230, 0.6);
-        }
-        .tagline {
-            font-size: 1.2rem;
-            color: #5c9ce6; 
-            margin-top: 10px;
-            font-weight: 300;
-            letter-spacing: 2px;
-        }
-
-        main {
-            max-width: 1100px;
-            padding: 0 20px 50px 20px;
-            width: 100%;
-            position: relative;
-        }
-
-        .quote {
-            font-style: italic;
-            color: #aaa;
-            border-left: 3px solid #5c9ce6;
-            padding-left: 20px;
-            margin: 0 auto 50px auto;
-            background: rgba(15, 15, 15, 0.7); 
-            backdrop-filter: blur(8px); 
-            padding: 25px;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            box-shadow: inset 0 0 20px rgba(0,0,0,0.5), 0 5px 15px rgba(0,0,0,0.5);
-            max-width: 900px;
-        }
-        .quote-author {
-            display: block;
-            margin-top: 15px;
-            font-size: 0.95rem;
-            color: #5c9ce6;
-            font-weight: bold;
-            font-style: normal;
-        }
-
-        .split-layout {
-            display: flex;
-            gap: 40px;
-            align-items: stretch; 
-        }
-        
-        .split-image {
-            flex: 0 0 45%; 
-        }
-        .split-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; 
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-bottom: 3px solid #5c9ce6;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
-            border-radius: 4px;
-        }
-
+        #bg-image { background-image: url('../img/valkyrion_bg.jpeg'); }
+        #overlay  { background: linear-gradient(to bottom, rgba(10, 10, 12, 0.85), rgba(5, 5, 5, 0.95)); }
+        h1 { letter-spacing: 8px; font-size: 3rem; text-shadow: 0 0 20px var(--accent-glow); }
+        main { padding: 0 20px 50px 20px; }
+        /* Faction overview quote (wider, different bg) */
+        .quote { margin: 0 auto 50px auto; background: rgba(15,15,15,0.7); backdrop-filter: blur(8px); padding: 25px; box-shadow: inset 0 0 20px rgba(0,0,0,0.5), 0 5px 15px rgba(0,0,0,0.5); max-width: 900px; }
+        .split-layout { display: flex; gap: 40px; align-items: stretch; }
+        .split-image  { flex: 0 0 45%; }
+        .split-image img { width: 100%; height: 100%; object-fit: cover; border: 1px solid rgba(255,255,255,0.1); border-bottom: 3px solid var(--accent-color); box-shadow: 0 10px 30px rgba(0,0,0,0.8); border-radius: 4px; }
         .split-text {
-            flex: 1; 
-            background: rgba(15, 15, 15, 0.8); 
-            backdrop-filter: blur(10px); 
+            flex: 1;
+            background: rgba(15, 15, 15, 0.8);
+            backdrop-filter: blur(10px);
             padding: 35px;
             border: 1px solid rgba(255,255,255,0.05);
-            border-left: 2px solid #5c9ce6;
-            display: flex;
-            flex-direction: column;
+            border-left: 2px solid var(--accent-color);
+            display: flex; flex-direction: column;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
-        .split-text h2 {
-            color: #fff;
-            margin-top: 0;
-            font-size: 1.5rem;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding-bottom: 10px;
-            letter-spacing: 1px;
-        }
-        .split-text h2.tactics-title {
-            margin-top: 40px;
-            color: #5c9ce6;
-        }
-        .split-text p {
-            color: #ccc;
-            font-size: 1.05rem;
-            line-height: 1.8;
-            margin-bottom: 20px;
-        }
-        .split-text strong {
-            color: #5c9ce6;
-        }
-
-        .action-buttons {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr); 
-            gap: 15px;
-            margin-top: auto; 
-            padding-top: 30px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            justify-items: center;
-            align-items: center;
-        }
-
-        .btn-nav {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%; 
-            max-width: 180px;
-            height: 180px;
-            border: 1px solid rgba(255,255,255,0.1);
-            text-decoration: none;
-            overflow: hidden; 
-            border-radius: 4px;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-            margin: 0;
-        }
-
-        .btn-nav .btn-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 1;
-            transition: transform 0.5s ease;
-        }
-
-        /* MODIFICA: OVERLAY RESO PIÙ CHIARO */
-        .btn-nav::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            /* Ricalibrato: 10% oscurità in alto, 40% in basso (prima era 30% -> 80%) */
-            background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.4) 100%);
-            z-index: 2;
-            transition: background 0.3s ease;
-        }
-
-        .btn-label {
-            position: relative;
-            z-index: 3; 
-            color: #fff;
-            font-size: 1.2rem; 
-            font-weight: bold;
-            letter-spacing: 1px;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.9); 
-            text-transform: none;
-        }
-
-        .btn-nav:hover {
-            border-color: #5c9ce6;
-            box-shadow: 0 5px 20px rgba(92, 156, 230, 0.3);
-            transform: translateY(-3px);
-        }
-        .btn-nav:hover .btn-bg {
-            transform: scale(1.1); 
-        }
-        
-        /* MODIFICA: OVERLAY HOVER RESO PIÙ CHIARO */
-        .btn-nav:hover::after {
-            /* Ricalibrato in hover: quasi trasparente in alto, leggero velo al 20% in basso */
-            background: linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.2) 100%); 
-        }
-
-        .back-link {
-            display: block;
-            text-align: center;
-            margin-top: 60px;
-            color: #666;
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: color 0.3s;
-        }
-        .back-link:hover {
-            color: #5c9ce6;
-            text-shadow: 0 0 10px rgba(92, 156, 230, 0.4);
-        }
-
+        .split-text h2 { color: #fff; margin-top: 0; font-size: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; letter-spacing: 1px; }
+        .split-text h2.tactics-title { margin-top: 40px; color: var(--accent-color); }
+        .split-text p  { color: #ccc; font-size: 1.05rem; line-height: 1.8; margin-bottom: 20px; text-align: left; }
+        /* Action buttons (3-col layout for valkyrion overview) */
+        .action-buttons { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: auto; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); justify-items: center; align-items: center; }
+        .btn-nav { align-items: center; max-width: 180px; height: 180px; }
+        .btn-nav::after { background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.4) 100%); }
+        .btn-nav:hover::after { background: linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.2) 100%); }
+        .btn-label { font-size: 1.2rem; text-transform: none; letter-spacing: 1px; padding-bottom: 0; }
         @media (max-width: 900px) {
-            .split-layout {
-                flex-direction: column;
-            }
-            .split-image {
-                flex: 1 1 100%;
-                width: 100%;
-            }
-            .split-text {
-                border-left: none;
-                border-top: 2px solid #5c9ce6;
-            }
-            .action-buttons {
-                grid-template-columns: 1fr; 
-                gap: 10px;
-            }
-            .btn-nav {
-                max-width: 100%;
-                height: 150px;
-            }
+            .split-layout { flex-direction: column; }
+            .split-image  { flex: 1 1 100%; width: 100%; }
+            .split-text   { border-left: none; border-top: 2px solid var(--accent-color); }
+            .action-buttons { grid-template-columns: 1fr; gap: 10px; }
+            .btn-nav { max-width: 100%; height: 150px; }
         }
     </style>
 </head>
@@ -262,6 +52,7 @@
 
 <div id="bg-image"></div>
 <div id="overlay"></div>
+<global-navigation base="../"></global-navigation>
 
 <header>
     <h1>Valkyrion Empire</h1>
@@ -327,5 +118,6 @@
     <a href="../index.html" class="back-link">← Return to the Central Archive</a>
 </main>
 
+<script src="../system/navigation.js"></script>
 </body>
 </html>

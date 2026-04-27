@@ -1,0 +1,324 @@
+/* =============================================================
+   SOULSPECTRE – Shared Stylesheet
+   Common structural and component styles for faction/content pages.
+
+   Each page MUST define in its own :root or <style>:
+     --accent-color  : faction accent colour  (e.g. #5cb88a, #5c9ce6)
+     --accent-glow   : accent with opacity    (e.g. rgba(92,184,138,0.5))
+     --panel-bg      : semi-transparent panel (e.g. rgba(10,18,12,0.7))
+
+   Each page MUST also supply the page-specific overrides:
+     #bg-image { background-image: url('...'); }
+     #overlay  { background: linear-gradient(...); }
+   ============================================================= */
+
+@import url('./global_nav.css');
+
+:root {
+    --accent-color: #5c9ce6;
+    --accent-glow:  rgba(92, 156, 230, 0.4);
+    --panel-bg:     rgba(15, 15, 15, 0.7);
+}
+
+/* ── Base ──────────────────────────────────────────────────── */
+body {
+    color: #e0e0e0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* ── Background & Overlay ───────────────────────────────────── */
+#bg-image {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background-size: cover;
+    background-position: center;
+    z-index: -2;
+}
+
+#overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    z-index: -1;
+}
+
+/* ── Header ─────────────────────────────────────────────────── */
+header {
+    padding: 60px 20px 30px 20px;
+    text-align: center;
+    width: 100%;
+    max-width: 1100px;
+    position: relative;
+}
+
+h1 {
+    letter-spacing: 5px;
+    font-size: 2.8rem;
+    margin: 0;
+    color: #fff;
+    text-transform: uppercase;
+    text-shadow: 0 0 15px var(--accent-glow);
+}
+
+.subtitle,
+.tagline {
+    font-size: 1.1rem;
+    color: var(--accent-color);
+    margin-top: 10px;
+    letter-spacing: 2px;
+}
+.subtitle { text-transform: uppercase; }
+.tagline  { font-weight: 300; }
+
+/* ── Main Container ─────────────────────────────────────────── */
+main {
+    max-width: 1100px;
+    padding: 40px 20px;
+    width: 100%;
+    position: relative;
+}
+
+/* ── Content Typography ─────────────────────────────────────── */
+h2 {
+    color: #fff;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 10px;
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+}
+
+main p {
+    margin-bottom: 25px;
+    color: #ccc;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    text-align: justify;
+}
+
+strong { color: var(--accent-color); }
+
+/* ── Quote Block ─────────────────────────────────────────────── */
+.quote {
+    font-style: italic;
+    color: #aaa;
+    border-left: 3px solid var(--accent-color);
+    padding: 20px;
+    margin: 30px 0;
+    background: rgba(0, 0, 0, 0.4);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.5);
+}
+
+.quote-author {
+    display: block;
+    margin-top: 15px;
+    font-size: 0.95rem;
+    color: var(--accent-color);
+    font-weight: bold;
+    font-style: normal;
+}
+
+/* ── Intro Block  (Buildings / Spells pages) ────────────────── */
+.intro-block {
+    background: var(--panel-bg);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-left: 3px solid var(--accent-color);
+    padding: 25px 30px;
+    margin-bottom: 50px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    color: #aaa;
+    font-size: 1rem;
+    line-height: 1.8;
+}
+.intro-block strong { color: var(--accent-color); }
+
+/* ── Split Section  (Lore / Culture pages) ──────────────────── */
+.split-section {
+    display: flex;
+    gap: 40px;
+    align-items: stretch;
+    margin-bottom: 60px;
+    background: var(--panel-bg);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-left: 3px solid var(--accent-color);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.section-image         { flex: 0 0 45%; }
+.section-image img     { width: 100%; height: 100%; object-fit: cover; }
+.section-text          { flex: 1; padding: 35px; }
+
+/* ── Full-Width Section  (Culture pages) ────────────────────── */
+.full-width-section {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-bottom: 60px;
+    background: var(--panel-bg);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-left: 3px solid var(--accent-color);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    padding: 35px;
+}
+.full-width-image img {
+    width: 100%;
+    height: auto;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 3px solid var(--accent-color);
+    border-radius: 4px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+/* ── Intro Banner  (Leader pages) ───────────────────────────── */
+.intro-banner {
+    width: 100%;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 3px solid var(--accent-color);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 40px;
+    display: block;
+}
+.intro-banner img { width: 100%; height: auto; object-fit: cover; display: block; }
+
+/* ── Portrait Gallery  (Leader pages) ───────────────────────── */
+.portrait-gallery-module {
+    background: var(--panel-bg);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-left: 3px solid var(--accent-color);
+    padding: 35px;
+    margin-bottom: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+.gallery-header {
+    margin-top: 0;
+    margin-bottom: 25px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 10px;
+}
+.carousel-wrap   { position: relative; overflow: hidden; }
+.carousel-track  { display: flex; gap: 15px; transition: transform 0.35s ease; padding: 5px 2px; }
+.carousel-item   {
+    flex: 0 0 200px; height: 260px;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 4px; overflow: hidden; background: #000;
+}
+.carousel-item img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+.carousel-nav    { display: flex; justify-content: center; gap: 20px; margin-top: 20px; }
+.nav-btn {
+    background: var(--panel-bg);
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    width: 44px; height: 44px;
+    border-radius: 50%; cursor: pointer; font-size: 1.2rem;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s;
+}
+.nav-btn:hover { background: var(--accent-color); color: #000; }
+
+/* ── Navigation Buttons  (Faction overview pages) ───────────── */
+.nav-section { margin-top: 50px; }
+.nav-section-title {
+    text-align: center;
+    color: #555;
+    font-size: 0.8rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+.action-buttons {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 15px;
+}
+
+.btn-nav {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    border: 1px solid rgba(255,255,255,0.08);
+    text-decoration: none;
+    overflow: hidden;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+.btn-nav .btn-bg {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    transition: transform 0.5s ease;
+}
+.btn-nav::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.05) 30%, rgba(0,0,0,0.75) 100%);
+    z-index: 2;
+    transition: background 0.3s ease;
+}
+.btn-label {
+    position: relative;
+    z-index: 3;
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.9);
+    text-transform: uppercase;
+    padding-bottom: 14px;
+}
+.btn-nav:hover {
+    border-color: var(--accent-color);
+    box-shadow: 0 5px 25px var(--accent-glow);
+    transform: translateY(-4px);
+}
+.btn-nav:hover .btn-bg  { transform: scale(1.08); }
+.btn-nav:hover::after   { background: linear-gradient(to bottom, rgba(0,0,0,0.02) 30%, rgba(0,0,0,0.55) 100%); }
+
+/* ── Back Link ──────────────────────────────────────────────── */
+.back-link {
+    display: block;
+    text-align: center;
+    margin-top: 60px;
+    color: #666;
+    text-decoration: none;
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+    transition: color 0.3s;
+    padding: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+.back-link:hover {
+    color: var(--accent-color);
+    text-shadow: 0 0 10px var(--accent-glow);
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 950px) {
+    .split-section  { flex-direction: column; }
+    .section-image  { flex: 1 1 100%; width: 100%; height: 300px; }
+    .section-text   { border-top: 1px solid rgba(255,255,255,0.1); }
+    .action-buttons { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+}

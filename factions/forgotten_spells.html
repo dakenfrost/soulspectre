@@ -4,207 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOULSPECTRE | Forgotten Spells</title>
+    <link rel="stylesheet" href="../system/shared.css">
     <style>
-        body {
-            color: #e0e0e0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        :root {
+            --accent-color: #5cb88a;
+            --accent-glow:  rgba(92, 184, 138, 0.6);
+            --panel-bg:     rgba(10, 18, 12, 0.65);
         }
-
-        #bg-image {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100vw; height: 100vh;
-            background-image: url('../img/forgotten/forgotten_bg.jpg');
-            background-size: cover;
-            background-position: center;
-            z-index: -2;
-        }
-
-        #overlay {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100vw; height: 100vh;
-            background: linear-gradient(to bottom, rgba(5, 12, 8, 0.90), rgba(3, 8, 5, 0.98));
-            z-index: -1;
-        }
-
-        header {
-            padding: 60px 20px 30px 20px;
-            text-align: center;
-            width: 100%;
-            max-width: 1100px;
-        }
-
-        h1 {
-            letter-spacing: 5px;
-            font-size: 2.5rem;
-            margin: 0;
-            color: #fff;
-            text-transform: uppercase;
-            text-shadow: 0 0 15px rgba(92, 184, 138, 0.6);
-        }
-
-        .subtitle {
-            color: #5cb88a;
-            font-size: 1.1rem;
-            letter-spacing: 2px;
-            margin-top: 10px;
-            text-transform: uppercase;
-        }
-
-        main {
-            max-width: 1100px;
-            padding: 40px 20px;
-            width: 100%;
-        }
-
-        .intro-block {
-            background: rgba(10, 18, 12, 0.7);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255,255,255,0.05);
-            border-left: 3px solid #5cb88a;
-            padding: 25px 30px;
-            margin-bottom: 50px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            color: #aaa;
-            font-size: 1rem;
-            line-height: 1.8;
-        }
-
-        .intro-block strong {
-            color: #5cb88a;
-        }
-
-        .spell-category {
-            margin-bottom: 40px;
-            background: rgba(10, 18, 12, 0.65);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 4px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-
-        .level-header {
-            padding: 15px 25px;
-            font-size: 1.2rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            border-bottom: 2px solid rgba(255,255,255,0.1);
-        }
-
-        /* Level colours — Forgotten palette */
-        .lv-1 { background: rgba(176, 190, 197, 0.12); color: #b0bec5; border-bottom-color: #b0bec5; }
-        .lv-2 { background: rgba(92, 184, 138, 0.12); color: #5cb88a; border-bottom-color: #5cb88a; }
-        .lv-3 { background: rgba(77, 208, 225, 0.12); color: #4dd0e1; border-bottom-color: #4dd0e1; }
-        .lv-4 { background: rgba(206, 147, 216, 0.12); color: #ce93d8; border-bottom-color: #ce93d8; }
-        .lv-5 { background: rgba(255, 179, 0, 0.12); color: #ffb300; border-bottom-color: #ffb300; }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            text-align: left;
-        }
-
-        th {
-            padding: 12px 25px;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            color: #666;
-            letter-spacing: 1px;
-            background: rgba(0,0,0,0.2);
-        }
-
-        td {
-            padding: 15px 25px;
-            border-bottom: 1px solid rgba(255,255,255,0.03);
-            vertical-align: middle;
-        }
-
+        #bg-image { background-image: url('../img/forgotten/forgotten_bg.jpg'); }
+        #overlay  { background: linear-gradient(to bottom, rgba(5, 12, 8, 0.90), rgba(3, 8, 5, 0.98)); }
+        h1 { font-size: 2.5rem; }
+        /* Spell-specific components */
+        .spell-category { margin-bottom: 40px; background: var(--panel-bg); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .level-header { padding: 15px 25px; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 2px; font-weight: bold; display: flex; align-items: center; border-bottom: 2px solid rgba(255,255,255,0.1); }
+        .lv-1 { background: rgba(176,190,197,0.12); color: #b0bec5; border-bottom-color: #b0bec5; }
+        .lv-2 { background: rgba(92,184,138,0.12);  color: #5cb88a; border-bottom-color: #5cb88a; }
+        .lv-3 { background: rgba(77,208,225,0.12);  color: #4dd0e1; border-bottom-color: #4dd0e1; }
+        .lv-4 { background: rgba(206,147,216,0.12); color: #ce93d8; border-bottom-color: #ce93d8; }
+        .lv-5 { background: rgba(255,179,0,0.12);   color: #ffb300; border-bottom-color: #ffb300; }
+        table { width: 100%; border-collapse: collapse; text-align: left; }
+        th { padding: 12px 25px; text-transform: uppercase; font-size: 0.8rem; color: #666; letter-spacing: 1px; background: rgba(0,0,0,0.2); }
+        td { padding: 15px 25px; border-bottom: 1px solid rgba(255,255,255,0.03); vertical-align: middle; }
         tr:last-child td { border-bottom: none; }
-        tr:hover td { background: rgba(92, 184, 138, 0.05); }
-
+        tr:hover td { background: rgba(92,184,138,0.05); }
         .spell-icon-cell { width: 60px; text-align: center; }
-        .spell-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 4px;
-            border: 1px solid rgba(92, 184, 138, 0.25);
-            background: rgba(0,0,0,0.3);
-            padding: 4px;
-            object-fit: contain;
-        }
-
-        .mana-cost {
-            font-family: monospace;
-            color: #4dd0e1;
-            font-weight: bold;
-            font-size: 1.1rem;
-            width: 100px;
-        }
-
-        .spell-name {
-            color: #fff;
-            font-weight: bold;
-            font-size: 1.05rem;
-            width: 240px;
-        }
-
-        .spell-effect {
-            color: #ccc;
-            font-size: 0.95rem;
-        }
-
-        .stack-info {
-            color: #5cb88a;
-            font-size: 0.8rem;
-            font-style: italic;
-            display: block;
-            margin-top: 4px;
-        }
-
-        .dmg-earth  { color: #a5d6a7; font-weight: bold; }
-        .dmg-light  { color: #fff176; font-weight: bold; }
-        .dmg-pure   { color: #e0e0e0; font-weight: bold; }
-        .dmg-mind   { color: #f48fb1; font-weight: bold; }
-        .spore-tag  { color: #5cb88a; font-weight: bold; }
-
-        .back-link {
-            display: block;
-            text-align: center;
-            margin-top: 40px;
-            color: #666;
-            text-decoration: none;
-            font-size: 1rem;
-            letter-spacing: 1px;
-            transition: color 0.3s;
-            padding: 20px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .back-link:hover {
-            color: #5cb88a;
-            text-shadow: 0 0 10px rgba(92, 184, 138, 0.4);
-        }
-
-        @media (max-width: 800px) {
-            .mana-cost, .spell-icon-cell { display: none; }
-            .spell-name { width: auto; }
-        }
+        .spell-icon { width: 40px; height: 40px; border-radius: 4px; border: 1px solid rgba(92,184,138,0.25); background: rgba(0,0,0,0.3); padding: 4px; object-fit: contain; }
+        .mana-cost  { font-family: monospace; color: #4dd0e1; font-weight: bold; font-size: 1.1rem; width: 100px; }
+        .spell-name { color: #fff; font-weight: bold; font-size: 1.05rem; width: 240px; }
+        .spell-effect { color: #ccc; font-size: 0.95rem; }
+        .stack-info { color: var(--accent-color); font-size: 0.8rem; font-style: italic; display: block; margin-top: 4px; }
+        .dmg-earth { color: #a5d6a7; font-weight: bold; }
+        .dmg-light { color: #fff176; font-weight: bold; }
+        .dmg-pure  { color: #e0e0e0; font-weight: bold; }
+        .dmg-mind  { color: #f48fb1; font-weight: bold; }
+        .spore-tag { color: var(--accent-color); font-weight: bold; }
+        @media (max-width: 800px) { .mana-cost, .spell-icon-cell { display: none; } .spell-name { width: auto; } }
     </style>
 </head>
 <body>
 
 <div id="bg-image"></div>
 <div id="overlay"></div>
+<global-navigation base="../"></global-navigation>
 
 <header>
     <h1>Forgotten Spells</h1>
@@ -453,5 +294,6 @@
     <a href="forgotten.html" class="back-link">← Return to the Forgotten Overview</a>
 </main>
 
+<script src="../system/navigation.js"></script>
 </body>
 </html>

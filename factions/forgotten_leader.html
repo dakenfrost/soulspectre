@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOULSPECTRE | Malicott, the Root Mother</title>
     <link rel="stylesheet" href="../system/forgotten_units.css">
+    <link rel="stylesheet" href="../system/global_nav.css">
 </head>
 <body>
 
 <div id="bg-image"></div>
 <div id="overlay"></div>
+<global-navigation base="../"></global-navigation>
 
 <header>
     <h1>Malicott</h1>
@@ -137,5 +139,6 @@
     document.getElementById('nextBtn').addEventListener('click', () => { if (current < items.length - 1) { current++; update(); } });
     document.getElementById('prevBtn').addEventListener('click', () => { if (current > 0) { current--; update(); } });
 </script>
+<script src="../system/navigation.js"></script>
 </body>
 </html>
