@@ -1,0 +1,229 @@
+:root {
+    --valk-color: #5c9ce6;
+    --forgotten-color: #5cb88a;
+    --kharos-color: #b71c1c;
+    --syndicate-color: #ffb300;
+    --primal-color: #a1887f;
+    --iron-color: #90a4ae;
+    --elven-color: #4db6ac;
+    --bg-dark: #050505;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    background-color: var(--bg-dark);
+    color: #e0e0e0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+header {
+    position: absolute;
+    top: 0; left: 0; width: 100%;
+    padding: 40px;
+    text-align: center;
+    z-index: 100;
+    pointer-events: none;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+}
+
+h1 {
+    letter-spacing: 12px;
+    font-size: 2.5rem;
+    color: #fff;
+    text-transform: uppercase;
+    margin: 0;
+    text-shadow: 0 0 20px rgba(255,255,255,0.2);
+}
+
+.subtitle {
+    color: #888;
+    font-size: 1rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+/* --- SHIFTING SHARDS CONTAINER --- */
+.shard-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #000;
+}
+
+.shard {
+    position: relative;
+    flex: 1;
+    height: 100%;
+    transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    overflow: hidden;
+    border-right: 1px solid rgba(255,255,255,0.05);
+}
+
+.shard-bg {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-size: cover;
+    background-position: center;
+    filter: grayscale(100%) brightness(0.3);
+    transition: all 0.6s ease;
+    z-index: 1;
+}
+
+.shard-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.9));
+    z-index: 2;
+    opacity: 0.8;
+    transition: opacity 0.4s;
+}
+
+/* Faction Shard Content */
+.shard-content {
+    position: relative;
+    z-index: 10;
+    padding: 40px;
+    text-align: center;
+    transform: translateY(50px);
+    opacity: 0;
+    transition: all 0.5s ease 0.1s;
+    max-width: 400px;
+}
+
+.faction-name {
+    font-size: 2rem;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    margin: 0 0 20px 0;
+    white-space: nowrap;
+}
+
+.faction-desc {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #ccc;
+    margin-bottom: 30px;
+}
+
+.engage-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    border: 1px solid #fff;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    transition: 0.3s;
+}
+
+/* Floating Initial (Visible when closed) */
+.shard-label {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #666;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transition: all 0.4s;
+}
+
+/* --- HOVER EFFECTS --- */
+.shard:hover {
+    flex: 5;
+}
+
+.shard:hover .shard-bg {
+    filter: grayscale(0%) brightness(0.6);
+    transform: scale(1.05);
+}
+
+.shard:hover .shard-overlay {
+    opacity: 0.4;
+}
+
+.shard:hover .shard-content {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.shard:hover .shard-label {
+    opacity: 0;
+}
+
+/* --- FACTION SPECIFICS --- */
+.valkyrion .shard-bg { background-image: url('../img/banners/banner_valkyrion.png'); }
+.valkyrion:hover { box-shadow: inset 0 0 100px var(--valk-color); }
+.valkyrion:hover .faction-name { color: var(--valk-color); text-shadow: 0 0 20px var(--valk-color); }
+.valkyrion:hover .engage-btn { background: var(--valk-color); border-color: var(--valk-color); }
+
+.forgotten .shard-bg { background-image: url('../img/banners/banner_forgotten.png'); }
+.forgotten:hover { box-shadow: inset 0 0 100px var(--forgotten-color); }
+.forgotten:hover .faction-name { color: var(--forgotten-color); text-shadow: 0 0 20px var(--forgotten-color); }
+.forgotten:hover .engage-btn { background: var(--forgotten-color); border-color: var(--forgotten-color); }
+
+.kharos .shard-bg { background-image: url('../img/banners/banner_kharos.png'); }
+.kharos:hover { box-shadow: inset 0 0 100px var(--kharos-color); }
+.kharos:hover .faction-name { color: var(--kharos-color); text-shadow: 0 0 20px var(--kharos-color); }
+.kharos:hover .engage-btn { background: var(--kharos-color); border-color: var(--kharos-color); }
+
+.syndicate .shard-bg { background-image: url('../img/banners/banner_syndicate.png'); }
+.syndicate:hover { box-shadow: inset 0 0 100px var(--syndicate-color); }
+.syndicate:hover .faction-name { color: var(--syndicate-color); text-shadow: 0 0 20px var(--syndicate-color); }
+.syndicate:hover .engage-btn { background: var(--syndicate-color); border-color: var(--syndicate-color); }
+
+.primal .shard-bg { background-image: url('../img/banners/banner_primal.png'); }
+.primal:hover { box-shadow: inset 0 0 100px var(--primal-color); }
+.primal:hover .faction-name { color: var(--primal-color); text-shadow: 0 0 20px var(--primal-color); }
+.primal:hover .engage-btn { background: var(--primal-color); border-color: var(--primal-color); }
+
+.brotherhood .shard-bg { background-image: url('../img/banners/banner_brotherhood.png'); }
+.brotherhood:hover { box-shadow: inset 0 0 100px var(--iron-color); }
+.brotherhood:hover .faction-name { color: var(--iron-color); text-shadow: 0 0 20px var(--iron-color); }
+.brotherhood:hover .engage-btn { background: var(--iron-color); border-color: var(--iron-color); }
+
+.elven .shard-bg { background-image: url('../img/banners/banner_elven.png'); }
+.elven:hover { box-shadow: inset 0 0 100px var(--elven-color); }
+.elven:hover .faction-name { color: var(--elven-color); text-shadow: 0 0 20px var(--elven-color); }
+.elven:hover .engage-btn { background: var(--elven-color); border-color: var(--elven-color); }
+
+.abort-link {
+    position: absolute;
+    bottom: 30px;
+    right: 40px;
+    color: #555;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    z-index: 101;
+    transition: 0.3s;
+}
+.abort-link:hover { color: #fff; }
+
+@media (max-width: 1000px) {
+    .shard-container { flex-direction: column; }
+    .shard-label { writing-mode: horizontal-tb; left: 40px; bottom: 20px; transform: none; }
+    .engage-btn { display: none; }
+    .shard:hover { flex: 4; }
+}
