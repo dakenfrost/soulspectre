@@ -4,233 +4,85 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOULSPECTRE | Skirmisher</title>
-    <style>
-        :root {
-            --accent-color: #5c9ce6; /* Valkyrion Imperial Blue */
-            --accent-glow: rgba(92, 156, 230, 0.6);
-        }
-
-        body {
-            color: #e0e0e0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.8;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        #bg-image {
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            background-image: url('../../img/valkyrion_bg.jpeg'); 
-            background-size: cover; background-position: center;
-            z-index: -2;
-        }
-
-        #overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            background: linear-gradient(to bottom, rgba(10, 15, 25, 0.92), rgba(5, 5, 5, 0.98)); 
-            z-index: -1;
-        }
-
-        header {
-            padding: 60px 20px 30px 20px;
-            text-align: center; width: 100%; max-width: 1100px;
-        }
-
-        h1 {
-            letter-spacing: 5px; font-size: 2.8rem; margin: 0; color: #fff;
-            text-transform: uppercase; text-shadow: 0 0 15px var(--accent-glow);
-        }
-
-        .subtitle {
-            color: #64b5f6; font-size: 1.1rem; letter-spacing: 2px;
-            margin-top: 10px; text-transform: uppercase; font-weight: bold;
-        }
-
-        main {
-            max-width: 1100px; padding: 40px 20px; width: 100%; position: relative;
-        }
-
-        .intro-banner {
-            width: 100%; border: 1px solid rgba(92, 156, 230, 0.2);
-            border-bottom: 3px solid var(--accent-color);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
-            border-radius: 4px; overflow: hidden; margin-bottom: 40px;
-        }
-
-        .intro-banner img { width: 100%; display: block; }
-
-        .split-section {
-            display: flex; gap: 40px; align-items: stretch; margin-bottom: 60px; 
-            background: rgba(10, 15, 25, 0.75); backdrop-filter: blur(8px);
-            border: 1px solid rgba(255,255,255,0.05); border-left: 3px solid var(--accent-color);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-
-        .section-image-container {
-            position: relative; flex: 0 0 40%; overflow: hidden; aspect-ratio: 3 / 4;
-        }
-
-        .section-image-container img {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            object-fit: cover; object-position: top center; 
-        }
-
-        .section-text { flex: 1; padding: 35px; }
-        h2 { color: #fff; letter-spacing: 2px; text-transform: uppercase; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; margin-top: 0; margin-bottom: 25px; font-size: 1.8rem; }
-        p { margin-bottom: 25px; color: #ccc; font-size: 1.1rem; text-align: justify; }
-
-        .tactical-module { border-top: 2px solid var(--accent-color); padding-top: 40px; margin-bottom: 60px; }
-
-        .stats-box {
-            display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;
-            background: linear-gradient(145deg, rgba(15, 25, 40, 0.9), rgba(5, 10, 15, 0.9));
-            border: 1px solid rgba(92, 156, 230, 0.3); border-radius: 4px;
-            padding: 25px; margin-bottom: 50px;
-            box-shadow: inset 0 0 20px rgba(0,0,0,0.8), 0 10px 20px rgba(0,0,0,0.5);
-        }
-
-        .stat-item { text-align: center; padding: 10px 15px; }
-        .stat-label { display: block; color: #888; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px; }
-        .stat-value { display: block; color: #fff; font-size: 1.8rem; font-weight: bold; font-family: monospace; }
-        
-        .stat-value.hp { color: #4CAF50; }
-        .stat-value.atk { color: #f44336; }
-        .stat-value.arm { color: #9e9e9e; }
-        .stat-value.tier { color: #64b5f6; text-shadow: 0 0 10px rgba(100,181,246,0.5); }
-
-        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
-        .skill-card { background: rgba(10, 15, 25, 0.8); border: 1px solid rgba(255,255,255,0.05); border-left: 4px solid #333; padding: 25px; transition: transform 0.2s ease; }
-        .skill-card:hover { transform: translateY(-5px); border-left-color: var(--accent-color); }
-
-        .skill-header { display: flex; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; margin-bottom: 15px; }
-        .skill-icon { width: 70px; height: 70px; border-radius: 4px; object-fit: cover; border: 2px solid rgba(92, 156, 230, 0.3); margin-right: 15px; background-color: rgba(0, 0, 0, 0.2); }
-        .skill-title { margin: 0; color: #fff; font-size: 1.3rem; text-transform: uppercase; }
-        .skill-type { font-size: 0.75rem; padding: 2px 6px; background: rgba(255,255,255,0.1); border-radius: 2px; text-transform: uppercase; align-self: flex-start; margin-top: 5px; }
-        
-        .skill-type.base { color: #ccc; }
-        .skill-type.active { color: #64B5F6; }
-        .skill-type.passive { color: #81C784; }
-        
-        .skill-desc { color: #bbb; font-size: 0.95rem; }
-        .dmg-phys { color: #ff8a65; font-weight: bold; }
-        .highlight-buff { color: #4dd0e1; font-weight: bold; }
-
-        .portrait-gallery-module { background: rgba(10, 15, 25, 0.7); border: 1px solid rgba(255,255,255,0.05); border-left: 3px solid var(--accent-color); padding: 35px; margin-bottom: 40px; }
-        .carousel-container { position: relative; width: 100%; overflow: hidden; display: flex; align-items: center; }
-        .carousel-track { display: flex; gap: 15px; transition: transform 0.3s ease; }
-        .carousel-item { flex: 0 0 200px; height: 200px; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; }
-        .carousel-item img { width: 100%; height: 100%; object-fit: cover; }
-        .nav-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(10,15,25,0.9); border: 1px solid var(--accent-color); color: var(--accent-color); width: 40px; height: 40px; border-radius: 50%; cursor: pointer; z-index: 3; }
-        .prev { left: 10px; } .next { right: 10px; }
-
-        .back-link { display: block; text-align: center; margin-top: 60px; color: #666; text-decoration: none; padding: 20px; border-top: 1px solid rgba(255,255,255,0.1); text-transform: uppercase; letter-spacing: 2px;}
-        .back-link:hover { color: var(--accent-color); }
-
-        @media (max-width: 950px) {
-            .split-section { flex-direction: column; }
-            .section-image-container { flex: 1 1 100%; height: 500px; }
-            .skills-grid { grid-template-columns: 1fr; }
-            .stats-box { flex-direction: column; gap: 20px; }
-        }
-    </style>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <script src="../../system/unit-renderer.js" defer></script>
 </head>
 <body>
 
 <div id="bg-image"></div>
 <div id="overlay"></div>
 
-<header>
-    <h1>Skirmisher</h1>
-    <div class="subtitle">Valkyrion Empire - Tier 3 Vanguard</div>
-</header>
+<script type="application/json" id="unit-data">
+{
+  "name": "Skirmisher",
+  "faction": "Valkyrion",
+  "subtitle": "Valkyrion Empire - Tier 3 Vanguard",
+  "accent": "#5c9ce6",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
 
-<main>
-    <div class="intro-banner">
-        <img src="../../img/valkyrion_extra_skirmisher_banner.png" alt="Skirmisher Banner">
-    </div>
+  "breadcrumbs": [
+    { "href": "../../index.html",              "label": "Home" },
+    { "href": "../../factions/index.html",     "label": "Factions" },
+    { "href": "../../factions/valkyrion.html", "label": "Valkyrion Empire" },
+    { "href": "../../factions/valkyrion_roster.html", "label": "Units" },
+    { "href": "valkyrion_extra.html",          "label": "Extra Roster" },
+    {                                          "label": "Skirmisher" }
+  ],
 
-    <div class="split-section">
-        <div class="section-image-container">
-            <img src="../../img/valkyrion_extra_skirmisher_combat.jpg" alt="Skirmisher Combat Form">
-        </div>
-        <div class="section-text">
-            <h2>The Mobile Vanguard</h2>
-            <p>Skirmishers operate as the highly mobile spearhead of the Valkyrion forces. Selected for their athleticism and precision, they are deployed ahead of the main infantry blocks to disrupt enemy formations and shatter heavy defensive lines before the true engagement begins.</p>
-            <p>Equipped with sturdy imperial shields and an arsenal of heavy javelins, they specialize in anti-armor warfare. Their combat doctrine dictates swift, devastating volleys that use the enemy's own thick plating against them, transferring immense kinetic shockwaves through the heaviest defenses. Once retaliation is imminent, they lock their shields and brace for impact, turning into an immovable wall.</p>
-        </div>
-    </div>
+  "combat": [
+    "../../img/valkyrion_extra_skirmisher_combat.jpg"
+  ],
 
-    <div class="tactical-module">
-        <div class="tactical-header">
-            <h2 style="border:none; text-align:center">Tactical Interface</h2>
-        </div>
+  "bio": {
+    "title": "The Mobile Vanguard",
+    "paragraphs": [
+      "Skirmishers operate as the highly mobile spearhead of the Valkyrion forces. Selected for their athleticism and precision, they are deployed ahead of the main infantry blocks to disrupt enemy formations and shatter heavy defensive lines before the true engagement begins.",
+      "Equipped with sturdy imperial shields and an arsenal of heavy javelins, they specialize in anti-armor warfare. Their combat doctrine dictates swift, devastating volleys that use the enemy's own thick plating against them, transferring immense kinetic shockwaves through the heaviest defenses. Once retaliation is imminent, they lock their shields and brace for impact, turning into an immovable wall."
+    ]
+  },
 
-        <div class="stats-box">
-            <div class="stat-item"><span class="stat-label">Classification</span><span class="stat-value tier">Tier 3</span></div>
-            <div class="stat-item"><span class="stat-label">Hit Points</span><span class="stat-value hp">130</span></div>
-            <div class="stat-item"><span class="stat-label">Attack</span><span class="stat-value atk">80</span></div>
-            <div class="stat-item"><span class="stat-label">Armor</span><span class="stat-value arm">20%</span></div>
-            <div class="stat-item"><span class="stat-label">Initiative</span><span class="stat-value">50</span></div>
-        </div>
+  "stats": {
+    "tier": "Tier 3",
+    "hp": 130,
+    "atk": 80,
+    "armor": "20%",
+    "ini": 50
+  },
 
-        <div class="skills-grid">
-            <div class="skill-card">
-                <div class="skill-header">
-                    <img src="../../img/icons/base_base_skill.png" alt="Throw Javelin" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Throw Javelin</h3><span class="skill-type base">Base Skill</span></div>
-                </div>
-                <div class="skill-desc">Hurls a heavy imperial javelin with lethal precision. Deals <span class="dmg-phys">Physical Damage</span> to a single ranged target, designed to pierce enemy ranks from a safe distance.</div>
-            </div>
-
-            <div class="skill-card">
-                <div class="skill-header">
-                    <img src="../../img/icons/base_active_skill.png" alt="Shield Stance" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Shield Stance</h3><span class="skill-type active">Active Skill</span></div>
-                </div>
-                <div class="skill-desc">Adopts a highly disciplined defensive posture, bracing their heavy shield against incoming fire. Grants <span class="highlight-buff">80 Shield Points</span> to self, absorbing raw incoming damage before HP is affected.</div>
-            </div>
-
-            <div class="skill-card">
-                <div class="skill-header">
-                    <img src="../../img/icons/base_passive_skill.png" alt="Armor Piercing Momentum" class="skill-icon">
-                    <div class="skill-title-container"><h3 class="skill-title">Kinetic Penetration</h3><span class="skill-type passive">Passive</span></div>
-                </div>
-                <div class="skill-desc">The javelins are engineered to shatter fortifications. The Base Skill completely <strong>ignores the target's Armor</strong>. Furthermore, the immense kinetic force transfers through the plating, dealing <strong>additional damage equal to the target's Armor percentage</strong>.</div>
-            </div>
-        </div>
-    </div>
-
-    <div class="portrait-gallery-module">
-        <h2 style="border:none; text-align:center; font-size:1.5rem; margin-bottom: 20px;">Dossier Archives</h2>
-        <div class="carousel-container">
-            <button class="nav-arrow prev">&#8249;</button>
-            <div class="carousel-track">
-                <div class="carousel-item active"><img src="../../img/extra/valkyrion_extra_skirmisher_gallery1.jpg" alt="Archive 1"></div>
-                <div class="carousel-item"><img src="../../img/extra/valkyrion_extra_skirmisher_gallery2.jpg" alt="Archive 2"></div>
-                <div class="carousel-item"><img src="../../img/extra/valkyrion_extra_skirmisher_gallery3.jpg" alt="Archive 3"></div>
-            </div>
-            <button class="nav-arrow next">&#8250;</button>
-        </div>
-    </div>
-
-    <a href="valkyrion_extra.html" class="back-link">← Return to Extra Roster</a>
-</main>
-
-<script>
-    const track = document.querySelector('.carousel-track');
-    let items = Array.from(track.children);
-    let currentIndex = 0;
-    const moveToItem = (index) => {
-        const itemWidth = items[0].getBoundingClientRect().width;
-        track.style.transform = `translateX(-${(itemWidth + 15) * index}px)`;
-        currentIndex = index;
+  "skills": [
+    {
+      "type": "base",
+      "name": "Throw Javelin",
+      "icon": "../../img/icons/base_base_skill.png",
+      "desc": "Hurls a heavy imperial javelin with lethal precision. Deals <span class=\"dmg-phys\">Physical Damage</span> to a single ranged target, designed to pierce enemy ranks from a safe distance."
+    },
+    {
+      "type": "active",
+      "name": "Shield Stance",
+      "icon": "../../img/icons/base_active_skill.png",
+      "desc": "Adopts a highly disciplined defensive posture, bracing their heavy shield against incoming fire. Grants <span class=\"highlight-buff\">80 Shield Points</span> to self, absorbing raw incoming damage before HP is affected."
+    },
+    {
+      "type": "passive",
+      "name": "Kinetic Penetration",
+      "icon": "../../img/icons/base_passive_skill.png",
+      "desc": "The javelins are engineered to shatter fortifications. The Base Skill completely <strong>ignores the target's Armor</strong>. Furthermore, the immense kinetic force transfers through the plating, dealing <strong>additional damage equal to the target's Armor percentage</strong>."
     }
-    document.querySelector('.next').addEventListener('click', () => currentIndex < items.length - 1 ? moveToItem(currentIndex + 1) : moveToItem(0));
-    document.querySelector('.prev').addEventListener('click', () => currentIndex > 0 ? moveToItem(currentIndex - 1) : moveToItem(items.length - 1));
+  ],
+
+  "gallery": [
+    "../../img/extra/valkyrion_extra_skirmisher_gallery1.jpg",
+    "../../img/extra/valkyrion_extra_skirmisher_gallery2.jpg",
+    "../../img/extra/valkyrion_extra_skirmisher_gallery3.jpg"
+  ],
+
+  "backLink": {
+    "href":  "valkyrion_extra.html",
+    "label": "Return to Extra Roster"
+  }
+}
 </script>
+
 </body>
 </html>
