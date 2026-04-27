@@ -4,6 +4,91 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOULSPECTRE | Holy Avenger</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <script src="../../system/unit-renderer.js" defer></script>
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Holy Avenger",
+  "faction": "Valkyrion",
+  "subtitle": "Order of the Sword - Tier 4",
+  "accent": "#5c9ce6",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/valkyrion.html",           "label": "Valkyrion Empire" },
+    { "href": "valkyrion_order_sword.html",              "label": "Order of the Sword" },
+    {                                                    "label": "Holy Avenger" }
+  ],
+
+  "combat": [
+    "../../img/valkyrion_holy_avenger_m_combat.jpg",
+    "../../img/valkyrion_holy_avenger_f_combat.jpg"
+  ],
+
+  "bio": {
+    "title": "The Righteous Fury",
+    "paragraphs": [
+      "The most zealous Crusaders rise as Holy Avengers. Fueled by righteous fury, they strike down enemies with relentless aggression, becoming avatars of divine judgment on the battlefield.",
+      "They do not seek defense, for their faith is their shield, and their only goal is the complete obliteration of the Empire's enemies through sacred fire and steel."
+    ]
+  },
+
+  "stats": {
+    "tier": "Tier 4",
+    "hp": 300,
+    "atk": 50,
+    "ini": 50
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Holy Cross Slash",
+      "icon": "../../img/valkyrion_skill_icon_holy_cross_slash.png",
+      "desc": "Deals <span class=\"dmg-phys\">Physical</span> damage to one enemy (melee) <strong>twice</strong> in a crushing cross formation."
+    },
+    {
+      "type": "active",
+      "name": "Consacration",
+      "icon": "../../img/valkyrion_skill_icon_consacration.png",
+      "desc": "The Holy Avenger calls upon divine power to sanctify the ground. Deals <span class=\"dmg-light\">Light</span> damage 200% attack to all enemies around the unit and <strong>Heals</strong> all friendly units in the same area."
+    },
+    {
+      "type": "passive",
+      "name": "Eternal Crusade",
+      "icon": "../../img/valkyrion_skill_icon_eternal_crusade.png",
+      "desc": "An unwavering vow fuels every strike. Deals an additional <strong>30%</strong> <span class=\"dmg-light\">Light</span> damage whenever the unit deals damage."
+    }
+  ],
+
+  "gallery": [
+    "../../img/valkyrion_holy_avenger_extra_1.jpg",
+    "../../img/valkyrion_holy_avenger_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "valkyrion_order_sword.html",
+    "label": "Return to Order of the Sword"
+  }
+}
+</script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Holy Avenger</title>
     <style>
         body {
             color: #e0e0e0;
