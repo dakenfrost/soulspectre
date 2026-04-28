@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Regolus</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <script src="../../system/unit-renderer.js" defer></script>
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Regolus",
+  "faction": "Valkyrion",
+  "subtitle": "The Relentless Exorcist | Tier 3 Veteran Hero",
+  "accent": "#64b5f6",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",              "label": "Home" },
+    { "href": "../../factions/index.html",     "label": "Factions" },
+    { "href": "../../factions/valkyrion.html", "label": "Valkyrion Empire" },
+    { "href": "../../factions/valkyrion_roster.html", "label": "Units" },
+    { "href": "valkyrion_extra.html",          "label": "Extra Roster" },
+    {                                          "label": "Regolus" }
+  ],
+
+  "combat": [
+    "../../img/valkyrion_regolus_m_combat.jpg",
+    "../../img/valkyrion_regolus_f_combat.jpg"
+  ],
+
+  "bio": {
+    "title": "The Instrument of Divine Retribution",
+    "paragraphs": [
+      "Born into a lineage of high-ranking Imperial aristocrats, Regolus was raised within the hollow comfort of noble dogma. His early years were defined by the belief that moral righteousness was a shield—that those who behaved with honor would be protected by God’s grace. This worldview was incinerated on a dark mountain pass when rival houses orchestrated a demonic ambush, slaughtering his caravan to erase a political bloodline.",
+      "As the only survivor, Regolus emerged from the wreckage with a cold, transformative logic: if the 'good' are destined to be victims, then righteousness lacks a blade. He abandoned his inheritance to join the fanatical circles of the Imperial Exorcists, turning his trauma into a terrifying obsession. He no longer seeks to be 'good' in the eyes of men, but to be the lethal instrument of a God who finally decided to strike back. To Regolus, every demon he impales is a prayer answered in blood."
+    ]
+  },
+
+  "stats": {
+    "tier": "Tier 3",
+    "hp": 200,
+    "atk": 80,
+    "ini": 50,
+    "protection": "Fire, Holy"
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Judgement Smite",
+      "icon": "../../img/valkyrion_skill_icon_holy_smite.png",
+      "desc": "Strikes with a sanctified blade. Deals <strong>40</strong> <span class=\"dmg-phys\">Physical Damage</span> and <strong>40</strong> <span class=\"dmg-holy\">Holy Damage</span> (Melee). Has a <strong>30% chance</strong> to apply <span class=\"debuff-blind\">Blind</span> (Holy debuff)."
+    },
+    {
+      "type": "active",
+      "name": "Purifying Flames",
+      "icon": "../../img/valkyrion_skill_icon_divine_fire.png",
+      "desc": "Unleashes a wave of consecrated fire. Deals <strong>40</strong> <span class=\"dmg-fire\">Fire Damage</span> to an enemy group. Has a <strong>30% chance</strong> to apply <span class=\"debuff-burn\">Burn</span> for 2 turns (20% Atk damage at start of turn)."
+    },
+    {
+      "type": "passive",
+      "name": "God Instrument",
+      "icon": "../../img/valkyrion_skill_icon_divine_rebirth.png",
+      "desc": "Once per battle, upon dropping to 0 HP, Regolus instantly recovers <strong>50% of his Maximum HP</strong> and continues the fight."
+    }
+  ],
+
+  "gallery": [
+    "../../img/valkyrion_regolus_extra_1.jpg",
+    "../../img/valkyrion_regolus_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "valkyrion_extra.html",
+    "label": "Return to Extra Roster"
+  }
+}
+</script>
+
+</body>
+</html>
