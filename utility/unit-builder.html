@@ -281,18 +281,6 @@
     <h2>Stats</h2>
     <div class="grid-4">
         <div>
-            <label>Tier</label>
-            <input type="text" id="f-tier" placeholder="1–5 o Officer">
-            <div class="chip-group">
-                <button onclick="setVal('f-tier','1')">1</button>
-                <button onclick="setVal('f-tier','2')">2</button>
-                <button onclick="setVal('f-tier','3')">3</button>
-                <button onclick="setVal('f-tier','4')">4</button>
-                <button onclick="setVal('f-tier','5')">5</button>
-                <button onclick="setVal('f-tier','Officer')">Officer</button>
-            </div>
-        </div>
-        <div>
             <label>HP</label>
             <input type="text" id="f-hp" placeholder="es. 120">
         </div>
@@ -309,6 +297,10 @@
         <div>
             <label>Armor <span class="inline-small">(opzionale)</span></label>
             <input type="text" id="f-armor" placeholder="es. 25%">
+        </div>
+        <div>
+            <label>Dodge <span class="inline-small">(opzionale)</span></label>
+            <input type="text" id="f-dodge" placeholder="es. 25%">
         </div>
         <div>
             <label>Immunity <span class="inline-small">(opzionale)</span></label>
@@ -821,12 +813,11 @@ function buildObj() {
     const accent   = document.getElementById('f-accent').value.trim();
     const bgImage  = document.getElementById('f-bgimage').value.trim();
     const bioTitle = document.getElementById('f-bio-title').value.trim();
-    const tierRaw  = document.getElementById('f-tier').value.trim();
-    const tier     = /^\d+$/.test(tierRaw) ? Number(tierRaw) : tierRaw;
     const hp       = Number(document.getElementById('f-hp').value) || 0;
     const atk      = Number(document.getElementById('f-atk').value) || 0;
     const ini      = Number(document.getElementById('f-ini').value) || 0;
     const armor    = document.getElementById('f-armor').value.trim();
+    const dodge    = document.getElementById('f-dodge').value.trim();
     const immunity = document.getElementById('f-immunity').value.trim();
     const backHref = document.getElementById('f-back-href').value.trim();
     const backLabel= document.getElementById('f-back-label').value.trim();
@@ -844,8 +835,9 @@ function buildObj() {
         .filter(c => c.label.trim())
         .map(c => c.href.trim() ? { href: c.href.trim(), label: c.label.trim() } : { label: c.label.trim() });
 
-    const stats = { tier, hp, atk, ini };
+    const stats = { hp, atk, ini };
     if (armor)    stats.armor    = armor;
+    if (dodge)    stats.dodge    = dodge;
     if (immunity) stats.immunity = immunity;
 
     const skillsArr = skills
