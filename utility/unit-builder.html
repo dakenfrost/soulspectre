@@ -358,6 +358,7 @@
     <div style="display:flex; gap:10px; margin-bottom:14px; flex-wrap:wrap;">
         <button class="primary" onclick="generate()">⚡ Genera HTML completo</button>
         <button class="secondary" onclick="generateJSON()">{ } Solo JSON</button>
+        <button class="secondary" onclick="showPreview()">👁 Preview</button>
     </div>
     <textarea id="output-area" readonly placeholder="Il file HTML generato apparirà qui..."></textarea>
     <div class="output-actions">
@@ -365,6 +366,12 @@
         <button onclick="downloadOutput()">💾 Scarica .html</button>
         <span id="copy-msg">✓ Copiato!</span>
     </div>
+</div>
+
+<!-- ══════ PREVIEW ══════ -->
+<div class="section" id="preview-section" style="display:none">
+    <h2>Preview</h2>
+    <iframe id="preview-frame" style="width:100%;height:720px;border:none;border-radius:4px;background:#0d0d0d"></iframe>
 </div>
 
 <script>
@@ -436,13 +443,21 @@ const FACTIONS = {
             { href: '',                              label: '' },
             { href: '',                              label: '' },
         ],
-        hasFolderStructure: false,
-        imgBase: '../../img/kharos_',
-        subfolders: [],
+        hasFolderStructure: true,
+        imgBase: '../../img/kharos/',
+        subfolders: [
+            { key: 'vanguard', label: 'vanguard/', inName: false },
+            { key: 'siege',    label: 'siege/',    inName: false },
+            { key: 'shadow',   label: 'shadow/',   inName: false },
+            { key: 'extra',    label: 'extra/',    inName: true  },
+        ],
         filePrefix: 'kharos_',
-        skillPath: '../../img/kharos_skill_icon_',
+        skillPath: '../../img/kharos/skills/kharos_skill_',
         orders: [
-            { href: 'kharos_extra.html', label: 'Others', backLabel: 'Return to Others' },
+            { href: 'kharos_order_vanguard.html', label: 'Vanguard',  backLabel: 'Return to Vanguard' },
+            { href: 'kharos_order_siege.html',    label: 'Siege',     backLabel: 'Return to Siege' },
+            { href: 'kharos_order_shadow.html',   label: 'Shadow',    backLabel: 'Return to Shadow' },
+            { href: 'kharos_extra.html',          label: 'Others',    backLabel: 'Return to Others' },
         ],
     },
     syndicate: {
@@ -456,13 +471,21 @@ const FACTIONS = {
             { href: '',                              label: '' },
             { href: '',                              label: '' },
         ],
-        hasFolderStructure: false,
-        imgBase: '../../img/syndicate_',
-        subfolders: [],
+        hasFolderStructure: true,
+        imgBase: '../../img/syndicate/',
+        subfolders: [
+            { key: 'enforcers', label: 'enforcers/', inName: false },
+            { key: 'rogues',    label: 'rogues/',    inName: false },
+            { key: 'mages',     label: 'mages/',     inName: false },
+            { key: 'extra',     label: 'extra/',     inName: true  },
+        ],
         filePrefix: 'syndicate_',
-        skillPath: '../../img/syndicate_skill_icon_',
+        skillPath: '../../img/syndicate/skills/syndicate_skill_',
         orders: [
-            { href: 'syndicate_extra.html', label: 'Others', backLabel: 'Return to Others' },
+            { href: 'syndicate_order_enforcers.html', label: 'Enforcers', backLabel: 'Return to Enforcers' },
+            { href: 'syndicate_order_rogues.html',    label: 'Rogues',    backLabel: 'Return to Rogues' },
+            { href: 'syndicate_order_mages.html',     label: 'Mages',     backLabel: 'Return to Mages' },
+            { href: 'syndicate_extra.html',           label: 'Others',    backLabel: 'Return to Others' },
         ],
     },
     primal: {
@@ -476,13 +499,21 @@ const FACTIONS = {
             { href: '',                              label: '' },
             { href: '',                              label: '' },
         ],
-        hasFolderStructure: false,
-        imgBase: '../../img/primal_',
-        subfolders: [],
+        hasFolderStructure: true,
+        imgBase: '../../img/primal/',
+        subfolders: [
+            { key: 'hunters',  label: 'hunters/',  inName: false },
+            { key: 'shamans',  label: 'shamans/',  inName: false },
+            { key: 'beasts',   label: 'beasts/',   inName: false },
+            { key: 'extra',    label: 'extra/',    inName: true  },
+        ],
         filePrefix: 'primal_',
-        skillPath: '../../img/primal_skill_icon_',
+        skillPath: '../../img/primal/skills/primal_skill_',
         orders: [
-            { href: 'primal_extra.html', label: 'Others', backLabel: 'Return to Others' },
+            { href: 'primal_order_hunters.html', label: 'Hunters', backLabel: 'Return to Hunters' },
+            { href: 'primal_order_shamans.html', label: 'Shamans', backLabel: 'Return to Shamans' },
+            { href: 'primal_order_beasts.html',  label: 'Beasts',  backLabel: 'Return to Beasts' },
+            { href: 'primal_extra.html',         label: 'Others',  backLabel: 'Return to Others' },
         ],
     },
     brotherhood: {
@@ -496,13 +527,21 @@ const FACTIONS = {
             { href: '',                                label: '' },
             { href: '',                                label: '' },
         ],
-        hasFolderStructure: false,
-        imgBase: '../../img/brotherhood_',
-        subfolders: [],
+        hasFolderStructure: true,
+        imgBase: '../../img/brotherhood/',
+        subfolders: [
+            { key: 'warriors',   label: 'warriors/',   inName: false },
+            { key: 'engineers',  label: 'engineers/',  inName: false },
+            { key: 'priests',    label: 'priests/',    inName: false },
+            { key: 'extra',      label: 'extra/',      inName: true  },
+        ],
         filePrefix: 'brotherhood_',
-        skillPath: '../../img/brotherhood_skill_icon_',
+        skillPath: '../../img/brotherhood/skills/brotherhood_skill_',
         orders: [
-            { href: 'brotherhood_extra.html', label: 'Others', backLabel: 'Return to Others' },
+            { href: 'brotherhood_order_warriors.html',  label: 'Warriors',  backLabel: 'Return to Warriors' },
+            { href: 'brotherhood_order_engineers.html', label: 'Engineers', backLabel: 'Return to Engineers' },
+            { href: 'brotherhood_order_priests.html',   label: 'Priests',   backLabel: 'Return to Priests' },
+            { href: 'brotherhood_extra.html',           label: 'Others',    backLabel: 'Return to Others' },
         ],
     },
     elven: {
@@ -516,13 +555,21 @@ const FACTIONS = {
             { href: '',                              label: '' },
             { href: '',                              label: '' },
         ],
-        hasFolderStructure: false,
-        imgBase: '../../img/elven_',
-        subfolders: [],
+        hasFolderStructure: true,
+        imgBase: '../../img/elven/',
+        subfolders: [
+            { key: 'archers',    label: 'archers/',    inName: false },
+            { key: 'mages',      label: 'mages/',      inName: false },
+            { key: 'scouts',     label: 'scouts/',     inName: false },
+            { key: 'extra',      label: 'extra/',      inName: true  },
+        ],
         filePrefix: 'elven_',
-        skillPath: '../../img/elven_skill_icon_',
+        skillPath: '../../img/elven/skills/elven_skill_',
         orders: [
-            { href: 'elven_extra.html', label: 'Others', backLabel: 'Return to Others' },
+            { href: 'elven_order_archers.html', label: 'Archers', backLabel: 'Return to Archers' },
+            { href: 'elven_order_mages.html',   label: 'Mages',   backLabel: 'Return to Mages' },
+            { href: 'elven_order_scouts.html',  label: 'Scouts',  backLabel: 'Return to Scouts' },
+            { href: 'elven_extra.html',         label: 'Others',  backLabel: 'Return to Others' },
         ],
     },
 };
@@ -688,7 +735,9 @@ function renderSkills() {
 function prefixSkillIcon(i) {
     const el = document.getElementById(`sk-icon-${i}`);
     if (el && !el.value) {
-        el.value = FACTIONS[currentFaction].skillPath;
+        const nameEl = document.getElementById(`sk-name-${i}`);
+        const n = (nameEl ? nameEl.value.trim() : '').toLowerCase().replace(/\s+/g, '_');
+        el.value = FACTIONS[currentFaction].skillPath + n + '.png';
         skills[i].icon = el.value;
     }
 }
@@ -996,6 +1045,27 @@ function renderBackLinkChips() {
         btn.onclick = () => setBackLink(order.href, order.backLabel);
         container.appendChild(btn);
     });
+}
+
+// ─── Preview ────────────────────────────────────────────────────────────────
+function getUnitBaseUrl() {
+    const href = window.location.href;
+    const idx = href.lastIndexOf('/utility/');
+    if (idx === -1) return '';
+    return href.substring(0, idx + 1) + `units/${currentFaction}/`;
+}
+
+function showPreview() {
+    generate();
+    const content = document.getElementById('output-area').value;
+    if (!content.trim()) return;
+    const baseUrl = getUnitBaseUrl();
+    const withBase = content.replace('<head>', `<head>\n    <base href="${baseUrl}">`);
+    const iframe = document.getElementById('preview-frame');
+    iframe.srcdoc = withBase;
+    const section = document.getElementById('preview-section');
+    section.style.display = '';
+    section.scrollIntoView({ behavior: 'smooth' });
 }
 
 // ─── Utility ─────────────────────────────────────────────────────────────────
