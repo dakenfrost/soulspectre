@@ -199,6 +199,12 @@
 
 <h1>SOULSPECTRE <span>·</span> Unit Builder</h1>
 
+<!-- ══════ FACTION ══════ -->
+<div class="section">
+    <h2>Faction</h2>
+    <div id="faction-chips" class="chip-group"></div>
+</div>
+
 <!-- ══════ BASIC INFO ══════ -->
 <div class="section">
     <h2>Basic Info</h2>
@@ -231,7 +237,7 @@
     </div>
 
     <label>Background Image</label>
-    <input type="text" id="f-bgimage" value="../../img/forgotten/forgotten_bg.jpg">
+    <input type="text" id="f-bgimage" value="">
 </div>
 
 <!-- ══════ BREADCRUMBS ══════ -->
@@ -257,13 +263,7 @@
         <label>Combat Image 2</label>
         <input type="text" id="f-combat2" placeholder="../../img/forgotten/sentinelle/forgotten_unit_m_combat.jpg">
     </div>
-    <div class="chip-group">
-        <button onclick="prefixCombat('sentinelle')">sentinelle/</button>
-        <button onclick="prefixCombat('araldi')">araldi/</button>
-        <button onclick="prefixCombat('arborei')">arborei/</button>
-        <button onclick="prefixCombat('linfa')">linfa/</button>
-        <button onclick="prefixCombat('extra')">extra/</button>
-    </div>
+    <div id="combat-prefix-chips" class="chip-group"></div>
 </div>
 
 <!-- ══════ BIO ══════ -->
@@ -333,13 +333,7 @@
     </label>
     <div id="gallery-list" style="margin-top:12px"></div>
     <button class="add" onclick="addGalleryItem()" style="margin-top:4px">+ Add Portrait</button>
-    <div class="chip-group">
-        <button onclick="prefixGallery('sentinelle')">sentinelle/</button>
-        <button onclick="prefixGallery('araldi')">araldi/</button>
-        <button onclick="prefixGallery('arborei')">arborei/</button>
-        <button onclick="prefixGallery('linfa')">linfa/</button>
-        <button onclick="prefixGallery('extra')">extra/</button>
-    </div>
+    <div id="gallery-prefix-chips" class="chip-group"></div>
 </div>
 
 <!-- ══════ BACK LINK ══════ -->
@@ -355,13 +349,7 @@
             <input type="text" id="f-back-label" placeholder="Return to Amber Sentinels">
         </div>
     </div>
-    <div class="chip-group">
-        <button onclick="setBackLink('forgotten_order_sentinelle.html','Return to Amber Sentinels')">Sentinelle</button>
-        <button onclick="setBackLink('forgotten_order_araldi.html','Return to Children of the Dawn')">Araldi</button>
-        <button onclick="setBackLink('forgotten_order_arborei.html','Return to Keepers of the Wood')">Arborei</button>
-        <button onclick="setBackLink('forgotten_order_linfa.html','Return to Shadows of the Sap')">Linfa</button>
-        <button onclick="setBackLink('forgotten_extra.html','Return to Others')">Extra</button>
-    </div>
+    <div id="back-link-chips" class="chip-group"></div>
 </div>
 
 <!-- ══════ OUTPUT ══════ -->
@@ -380,7 +368,167 @@
 </div>
 
 <script>
+// ─── Faction Config ───────────────────────────────────────────────────────────
+const FACTIONS = {
+    forgotten: {
+        label: 'The Forgotten', name: 'Forgotten',
+        accent: '#4dd0e1',
+        bgImage: '../../img/forgotten/forgotten_bg.jpg',
+        breadcrumbsBase: [
+            { href: '../../index.html',              label: 'Home' },
+            { href: '../../factions/index.html',     label: 'Factions' },
+            { href: '../../factions/forgotten.html', label: 'The Forgotten' },
+            { href: '',                              label: '' },
+            { href: '',                              label: '' },
+        ],
+        hasFolderStructure: true,
+        imgBase: '../../img/forgotten/',
+        subfolders: [
+            { key: 'sentinelle', label: 'sentinelle/', inName: false },
+            { key: 'araldi',     label: 'araldi/',     inName: false },
+            { key: 'arborei',    label: 'arborei/',    inName: false },
+            { key: 'linfa',      label: 'linfa/',      inName: false },
+            { key: 'extra',      label: 'extra/',      inName: true  },
+        ],
+        filePrefix: 'forgotten_',
+        skillPath: '../../img/forgotten/skills/forgotten_skill_',
+        orders: [
+            { href: 'forgotten_order_sentinelle.html', label: 'Amber Sentinels',      backLabel: 'Return to Amber Sentinels' },
+            { href: 'forgotten_order_araldi.html',     label: 'Children of the Dawn', backLabel: 'Return to Children of the Dawn' },
+            { href: 'forgotten_order_arborei.html',    label: 'Keepers of the Wood',  backLabel: 'Return to Keepers of the Wood' },
+            { href: 'forgotten_order_linfa.html',      label: 'Shadows of the Sap',   backLabel: 'Return to Shadows of the Sap' },
+            { href: 'forgotten_extra.html',            label: 'Others',               backLabel: 'Return to Others' },
+        ],
+    },
+    valkyrion: {
+        label: 'Valkyrion Empire', name: 'Valkyrion',
+        accent: '#5c9ce6',
+        bgImage: '../../img/valkyrion_bg.jpeg',
+        breadcrumbsBase: [
+            { href: '../../index.html',                     label: 'Home' },
+            { href: '../../factions/index.html',            label: 'Factions' },
+            { href: '../../factions/valkyrion.html',        label: 'Valkyrion Empire' },
+            { href: '../../factions/valkyrion_roster.html', label: 'Units' },
+            { href: '',                                     label: '' },
+            { href: '',                                     label: '' },
+        ],
+        hasFolderStructure: false,
+        imgBase: '../../img/',
+        subfolders: [],
+        filePrefix: 'valkyrion_',
+        skillPath: '../../img/valkyrion_skill_icon_',
+        orders: [
+            { href: 'valkyrion_order_sword.html',       label: 'Order of the Sword',   backLabel: 'Return to Order of the Sword' },
+            { href: 'valkyrion_order_engineering.html', label: 'Order of Engineering', backLabel: 'Return to Order of Engineering' },
+            { href: 'valkyrion_order_knowledge.html',   label: 'Order of Knowledge',   backLabel: 'Return to Order of Knowledge' },
+            { href: 'valkyrion_order_light.html',       label: 'Order of Light',       backLabel: 'Return to Order of Light' },
+            { href: 'valkyrion_extra.html',             label: 'Others',               backLabel: 'Return to Others' },
+        ],
+    },
+    kharos: {
+        label: 'Kharos Dominion', name: 'Kharos',
+        accent: '#ef9a9a',
+        bgImage: '../../img/kharos_bg.jpg',
+        breadcrumbsBase: [
+            { href: '../../index.html',              label: 'Home' },
+            { href: '../../factions/index.html',     label: 'Factions' },
+            { href: '../../factions/kharos.html',    label: 'Kharos Dominion' },
+            { href: '',                              label: '' },
+            { href: '',                              label: '' },
+        ],
+        hasFolderStructure: false,
+        imgBase: '../../img/kharos_',
+        subfolders: [],
+        filePrefix: 'kharos_',
+        skillPath: '../../img/kharos_skill_icon_',
+        orders: [
+            { href: 'kharos_extra.html', label: 'Others', backLabel: 'Return to Others' },
+        ],
+    },
+    syndicate: {
+        label: 'Devil Syndicate', name: 'Syndicate',
+        accent: '#ff8a65',
+        bgImage: '../../img/syndicate_bg.jpg',
+        breadcrumbsBase: [
+            { href: '../../index.html',              label: 'Home' },
+            { href: '../../factions/index.html',     label: 'Factions' },
+            { href: '../../factions/syndicate.html', label: 'Devil Syndicate' },
+            { href: '',                              label: '' },
+            { href: '',                              label: '' },
+        ],
+        hasFolderStructure: false,
+        imgBase: '../../img/syndicate_',
+        subfolders: [],
+        filePrefix: 'syndicate_',
+        skillPath: '../../img/syndicate_skill_icon_',
+        orders: [
+            { href: 'syndicate_extra.html', label: 'Others', backLabel: 'Return to Others' },
+        ],
+    },
+    primal: {
+        label: 'Primal Coalition', name: 'Primal',
+        accent: '#a5d6a7',
+        bgImage: '../../img/primal_bg.jpg',
+        breadcrumbsBase: [
+            { href: '../../index.html',              label: 'Home' },
+            { href: '../../factions/index.html',     label: 'Factions' },
+            { href: '../../factions/primal.html',    label: 'Primal Coalition' },
+            { href: '',                              label: '' },
+            { href: '',                              label: '' },
+        ],
+        hasFolderStructure: false,
+        imgBase: '../../img/primal_',
+        subfolders: [],
+        filePrefix: 'primal_',
+        skillPath: '../../img/primal_skill_icon_',
+        orders: [
+            { href: 'primal_extra.html', label: 'Others', backLabel: 'Return to Others' },
+        ],
+    },
+    brotherhood: {
+        label: 'Iron Brotherhood', name: 'Brotherhood',
+        accent: '#ffe082',
+        bgImage: '../../img/brotherhood_bg.jpg',
+        breadcrumbsBase: [
+            { href: '../../index.html',                label: 'Home' },
+            { href: '../../factions/index.html',       label: 'Factions' },
+            { href: '../../factions/brotherhood.html', label: 'Iron Brotherhood' },
+            { href: '',                                label: '' },
+            { href: '',                                label: '' },
+        ],
+        hasFolderStructure: false,
+        imgBase: '../../img/brotherhood_',
+        subfolders: [],
+        filePrefix: 'brotherhood_',
+        skillPath: '../../img/brotherhood_skill_icon_',
+        orders: [
+            { href: 'brotherhood_extra.html', label: 'Others', backLabel: 'Return to Others' },
+        ],
+    },
+    elven: {
+        label: 'Elven Enclave', name: 'Elven',
+        accent: '#80cbc4',
+        bgImage: '../../img/elven_bg.jpg',
+        breadcrumbsBase: [
+            { href: '../../index.html',              label: 'Home' },
+            { href: '../../factions/index.html',     label: 'Factions' },
+            { href: '../../factions/elven.html',     label: 'Elven Enclave' },
+            { href: '',                              label: '' },
+            { href: '',                              label: '' },
+        ],
+        hasFolderStructure: false,
+        imgBase: '../../img/elven_',
+        subfolders: [],
+        filePrefix: 'elven_',
+        skillPath: '../../img/elven_skill_icon_',
+        orders: [
+            { href: 'elven_extra.html', label: 'Others', backLabel: 'Return to Others' },
+        ],
+    },
+};
+
 // ─── State ────────────────────────────────────────────────────────────────────
+let currentFaction = 'forgotten';
 let crumbs = [];
 let bioParagraphs = [];
 let skills = [];
@@ -388,15 +536,6 @@ let gallery = [];
 
 // ─── Init ─────────────────────────────────────────────────────────────────────
 window.onload = function () {
-    crumbs = [
-        { href: '../../index.html',              label: 'Home' },
-        { href: '../../factions/index.html',     label: 'Factions' },
-        { href: '../../factions/forgotten.html', label: 'The Forgotten' },
-        { href: '',                              label: '' },  // branch page
-        { href: '',                              label: '' },  // unit name (no link)
-    ];
-    renderCrumbs();
-
     bioParagraphs = ['', '', ''];
     renderBioParas();
 
@@ -418,6 +557,9 @@ window.onload = function () {
         if (/^#[0-9a-fA-F]{6}$/.test(e.target.value))
             document.getElementById('f-accent-picker').value = e.target.value;
     });
+
+    renderFactionChips();
+    onFactionChange('forgotten');
 };
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
@@ -443,13 +585,13 @@ function renderCrumbs() {
                     <label>href ${isLast ? '(lascia vuoto)' : ''}</label>
                     <input type="text" value="${escHtml(c.href)}"
                         onchange="crumbs[${i}].href=this.value"
-                        placeholder="${isLast ? '' : 'es. forgotten_order_sentinelle.html'}">
+                        placeholder="${isLast ? '' : 'es. order_page.html'}">
                 </div>
                 <div>
                     <label>label</label>
                     <input type="text" value="${escHtml(c.label)}"
                         onchange="crumbs[${i}].label=this.value"
-                        placeholder="es. Amber Sentinels">
+                        placeholder="es. Order Name">
                 </div>
             </div>`;
         list.appendChild(div);
@@ -465,11 +607,18 @@ function toggleCombat() {
     document.getElementById('combat2-wrap').style.display = single ? 'none' : '';
 }
 
-function prefixCombat(sub) {
-    const base = `../../img/forgotten/${sub}/forgotten_`;
+function prefixCombat(prefix) {
     ['f-combat1', 'f-combat2'].forEach(id => {
         const el = document.getElementById(id);
-        if (el && !el.value) el.value = base;
+        if (el && !el.value) 
+        {
+            el.value = prefix;
+            if (id === 'f-combat1') {
+                el.value += '_f_combat.jpg';
+            } else {
+                el.value += '_m_combat.jpg';
+            }
+        }
     });
 }
 
@@ -526,7 +675,7 @@ function renderSkills() {
             <label>Icon Path <span class="inline-small">(lascia vuoto per unità ostili)</span></label>
             <input type="text" id="sk-icon-${i}" value="${escHtml(s.icon)}"
                 oninput="skills[${i}].icon=this.value"
-                placeholder="../../img/forgotten/skills/forgotten_skill_xxx.png">
+                placeholder="${escHtml(FACTIONS[currentFaction].skillPath)}xxx.png">
             <div class="chip-group" style="margin-top:6px">
                 <button onclick="prefixSkillIcon(${i})">⚡ Prefill path skills/</button>
             </div>
@@ -539,7 +688,7 @@ function renderSkills() {
 function prefixSkillIcon(i) {
     const el = document.getElementById(`sk-icon-${i}`);
     if (el && !el.value) {
-        el.value = '../../img/forgotten/skills/forgotten_skill_';
+        el.value = FACTIONS[currentFaction].skillPath;
         skills[i].icon = el.value;
     }
 }
@@ -555,23 +704,33 @@ function renderGallery() {
         list.innerHTML = '<small>Gallery disabilitata.</small>';
         return;
     }
+    const fac = FACTIONS[currentFaction];
+    const galleryHint = fac.hasFolderStructure
+        ? `${fac.imgBase}{sub}/${fac.filePrefix}unit_f_portrait.jpg`
+        : `${fac.imgBase}unit_f_portrait.jpg`;
     gallery.forEach((g, i) => {
         const div = document.createElement('div');
         div.style.cssText = 'display:flex;gap:8px;align-items:center;margin-bottom:8px';
         div.innerHTML = `
             <input type="text" id="gal-${i}" value="${escHtml(g)}"
                 oninput="gallery[${i}]=this.value"
-                placeholder="../../img/forgotten/sentinelle/forgotten_unit_f_portrait.jpg">
+                placeholder="${escHtml(galleryHint)}">
             <button class="danger" onclick="removeGalleryItem(${i})" style="flex-shrink:0">✕</button>`;
         list.appendChild(div);
     });
 }
 
-function prefixGallery(sub) {
-    const base = `../../img/forgotten/${sub}/forgotten_`;
+function prefixGallery(prefix) {
     gallery.forEach((_, i) => {
         const el = document.getElementById(`gal-${i}`);
-        if (el && !el.value) { el.value = base; gallery[i] = base; }
+        if (el && !el.value) {
+            let full = prefix;
+            if (i === 0)      full += '_f_portrait.jpg';
+            else if (i === 1) full += '_m_portrait.jpg';
+            else              full += '_' + (i - 1) + '.jpg';
+            el.value = full;
+            gallery[i] = full;
+        }
     });
 }
 
@@ -710,8 +869,133 @@ function downloadOutput() {
     const blob = new Blob([content], { type: 'text/html;charset=utf-8' });
     const a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
-    a.download = `forgotten_${fname}.html`;
+    a.download = `${FACTIONS[currentFaction].filePrefix}${fname}.html`;
     a.click();
+}
+
+// ─── Faction UI ───────────────────────────────────────────────────────────────
+function renderFactionChips() {
+    const container = document.getElementById('faction-chips');
+    container.innerHTML = '';
+    Object.entries(FACTIONS).forEach(([key, fac]) => {
+        const btn = document.createElement('button');
+        btn.textContent = fac.label;
+        btn.style.borderColor = currentFaction === key ? fac.accent : '';
+        btn.style.color       = currentFaction === key ? fac.accent : '';
+        btn.onclick = () => onFactionChange(key);
+        container.appendChild(btn);
+    });
+}
+
+function onFactionChange(key) {
+    currentFaction = key;
+    const fac = FACTIONS[key];
+
+    // bgImage
+    document.getElementById('f-bgimage').value = fac.bgImage;
+
+    // Breadcrumbs
+    crumbs = fac.breadcrumbsBase.map(c => ({ ...c }));
+    renderCrumbs();
+
+    // Dynamic chips
+    renderFactionChips();
+    renderCombatChips();
+    renderGalleryChips();
+    renderBackLinkChips();
+
+    // Combat input placeholders
+    const combatHint = fac.hasFolderStructure
+        ? `${fac.imgBase}{sub}/${fac.filePrefix}unit_f_combat.jpg`
+        : `${fac.imgBase}unit_f_combat.jpg`;
+    document.getElementById('f-combat1').placeholder = combatHint;
+    document.getElementById('f-combat2').placeholder = combatHint.replace('_f_', '_m_');
+
+    // Back link placeholders
+    const firstOrder = fac.orders[0];
+    if (firstOrder) {
+        document.getElementById('f-back-href').placeholder  = firstOrder.href;
+        document.getElementById('f-back-label').placeholder = firstOrder.backLabel;
+    }
+
+    // Skill icon placeholders (existing skill rows)
+    skills.forEach((_, i) => {
+        const el = document.getElementById(`sk-icon-${i}`);
+        if (el) el.placeholder = `${fac.skillPath}xxx.png`;
+    });
+
+    // Gallery placeholders (existing gallery rows)
+    const galleryHint = fac.hasFolderStructure
+        ? `${fac.imgBase}{sub}/${fac.filePrefix}unit_f_portrait.jpg`
+        : `${fac.imgBase}unit_f_portrait.jpg`;
+    gallery.forEach((_, i) => {
+        const el = document.getElementById(`gal-${i}`);
+        if (el) el.placeholder = galleryHint;
+    });
+}
+
+function renderCombatChips() {
+    const fac = FACTIONS[currentFaction];
+    const container = document.getElementById('combat-prefix-chips');
+    container.innerHTML = '';
+    if (fac.hasFolderStructure) {
+        fac.subfolders.forEach(sub => {
+            const btn = document.createElement('button');
+            btn.textContent = sub.label;
+            btn.onclick = () => {
+                const n = document.getElementById('f-name').value.trim().toLowerCase().replace(/\s+/g, '_');
+                const subPfx = sub.inName ? `${sub.key}_` : '';
+                prefixCombat(`${fac.imgBase}${sub.key}/${fac.filePrefix}${subPfx}${n}`);
+            };
+            container.appendChild(btn);
+        });
+    } else {
+        const btn = document.createElement('button');
+        btn.textContent = fac.filePrefix;
+        btn.onclick = () => {
+            const n = document.getElementById('f-name').value.trim().toLowerCase().replace(/\s+/g, '_');
+            prefixCombat(`${fac.imgBase}${fac.filePrefix}${n}`);
+        };
+        container.appendChild(btn);
+    }
+}
+
+function renderGalleryChips() {
+    const fac = FACTIONS[currentFaction];
+    const container = document.getElementById('gallery-prefix-chips');
+    container.innerHTML = '';
+    if (fac.hasFolderStructure) {
+        fac.subfolders.forEach(sub => {
+            const btn = document.createElement('button');
+            btn.textContent = sub.label;
+            btn.onclick = () => {
+                const n = document.getElementById('f-name').value.trim().toLowerCase().replace(/\s+/g, '_');
+                const subPfx = sub.inName ? `${sub.key}_` : '';
+                prefixGallery(`${fac.imgBase}${sub.key}/${fac.filePrefix}${subPfx}${n}`);
+            };
+            container.appendChild(btn);
+        });
+    } else {
+        const btn = document.createElement('button');
+        btn.textContent = fac.filePrefix;
+        btn.onclick = () => {
+            const n = document.getElementById('f-name').value.trim().toLowerCase().replace(/\s+/g, '_');
+            prefixGallery(`${fac.imgBase}${fac.filePrefix}${n}`);
+        };
+        container.appendChild(btn);
+    }
+}
+
+function renderBackLinkChips() {
+    const fac = FACTIONS[currentFaction];
+    const container = document.getElementById('back-link-chips');
+    container.innerHTML = '';
+    fac.orders.forEach(order => {
+        const btn = document.createElement('button');
+        btn.textContent = order.label;
+        btn.onclick = () => setBackLink(order.href, order.backLabel);
+        container.appendChild(btn);
+    });
 }
 
 // ─── Utility ─────────────────────────────────────────────────────────────────
