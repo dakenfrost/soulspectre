@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | The Founder</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <script src="../../system/unit-renderer.js" defer></script>
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "The Founder",
+  "faction": "Valkyrion",
+  "subtitle": "The First Emperor | Tier 7 Origin Entity",
+  "accent": "#fafafa",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",              "label": "Home" },
+    { "href": "../../factions/index.html",     "label": "Factions" },
+    { "href": "../../factions/valkyrion.html", "label": "Valkyrion Empire" },
+    { "href": "../../factions/valkyrion_roster.html", "label": "Units" },
+    { "href": "valkyrion_extra.html",          "label": "Extra Roster" },
+    {                                          "label": "The Founder" }
+  ],
+
+  "combat": [
+    "../../img/valkyrion_founder_combat.png",
+  ],
+
+  "bio": {
+    "title": "The Architect of the Endless Empire",
+    "paragraphs": [
+      "The original founder of Padineon and the Valkyrion Empire is a figure shrouded in myth, terror, and awe. He began as a humble villager, yet with an iron fist and an incomprehensible vision, he shaped an endless empire from the ashes of the old world. While historical records regarding his appearance and true character are fragmented, every scholar agrees on one chilling fact: he was not a normal human being. Blessed with godlike strength, unmatched cunning, and access to advanced technological knowledge centuries ahead of his time, his most terrifying trait was a relentless, almost unnatural spirit that simply refused to yield to reality.",
+      "He was not driven by mere ambition, but by a horrifying, inescapable despair. The only true glimpse into his mind is a single, worn page preserved in the deepest vaults of the Great Library. Scrawled in terrible, frantic handwriting, the note reads: 'I wish I could give up, I wish I could break so this torment would end, but my soul refuses to accept this ending. If there is a god, I wish it's merciful. If he is not... I'll get there to complain.' He conquered the world not to rule it, but to find a way out of his own eternal nightmare."
+    ]
+  },
+
+  "stats": {
+    "tier": "Tier 7",
+    "hp": 1200,
+    "atk": 200,
+    "ini": 40,
+    "armor": "40%",
+    "immunity": "Dark, Soul, Mind"
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "\"This is useless...\"",
+      "icon": "../../img/valkyrion_skill_icon_founder_base.png",
+      "desc": "A strike devoid of hope but filled with crushing reality. Deals <strong>200</strong> <span class=\"dmg-phys\">Physical Damage</span> to a melee enemy, plus an additional <strong>100</strong> <span class=\"dmg-soul\">Soul Damage</span> (50% of Atk)."
+    },
+    {
+      "type": "active",
+      "name": "\"Shatter\"",
+      "icon": "../../img/valkyrion_skill_icon_founder_shatter.png",
+      "desc": "A manipulation of physical laws. Deals <strong>200</strong> <span class=\"dmg-plain\">PLAIN Damage</span> (cannot be reduced) to a ranged enemy. This attack <strong>cannot be dodged, ignores shields, and cannot be redirected</strong>. If the target dies, they are permanently removed from the enemy group."
+    },
+    {
+      "type": "passive",
+      "name": "\"I... cannot give up, not like this\"",
+      "icon": "../../img/valkyrion_skill_icon_founder_resolve.png",
+      "desc": "The Founder's soul rejects defeat. He is <strong>Immune to Crowd Control</strong> and any bypass skills. He restores <strong>120 HP</strong> (10% of Max HP) each turn. For every 20% of missing health, he gains <strong>10% Damage Reduction</strong> (applied after Armor reduction). His HP cannot drop below 1; upon reaching 1 HP, he will instantly retreat from the battlefield."
+    },
+    {
+      "type": "ultimate",
+      "name": "\"Can you see.... MY ... DESPAIR?!\"",
+      "icon": "../../img/valkyrion_skill_icon_founder_ultimate.png",
+      "desc": "A catastrophic release of origin power that breaks the world's structure (Long Cooldown). Instantly <strong>deletes the enemy group from the current save file</strong>. The battle immediately ends as a Victory."
+    }
+  ],
+
+  "gallery": [
+    "../../img/valkyrion_founder_extra_1.jpg",
+    "../../img/valkyrion_founder_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "valkyrion_extra.html",
+    "label": "Return to Extra Roster"
+  }
+}
+</script>
+
+</body>
+</html>
