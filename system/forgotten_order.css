@@ -56,6 +56,16 @@ main { max-width:1100px;padding:40px 20px;width:100%; }
 .portrait-container.wide { flex:0 0 160px;width:160px; }
 .portrait-anim { animation:crossfade 8s infinite; }
 @keyframes crossfade { 0%,40%{opacity:0} 50%,90%{opacity:1} 100%{opacity:0} }
+.combat-anim { animation: crossfade-combat 12s infinite; }
+.portrait-container .combat-anim:nth-child(1) { animation-delay:   0s; }
+.portrait-container .combat-anim:nth-child(2) { animation-delay:  -8s; }
+.portrait-container .combat-anim:nth-child(3) { animation-delay:  -4s; }
+@keyframes crossfade-combat {
+    0%, 30%  { opacity: 1 }
+    38%      { opacity: 0 }
+    92%      { opacity: 0 }
+    100%     { opacity: 1 }
+}
 
 /* ---- Unit info ---- */
 .unit-info { flex:1;display:flex;flex-direction:column;justify-content:center; }

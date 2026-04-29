@@ -140,6 +140,18 @@ main { max-width: 1400px; padding: 0 20px 40px 20px; width: 95%; box-sizing: bor
 .combat-anim { animation: crossfade-combat 8s infinite; }
 @keyframes crossfade-combat { 0%,40%{opacity:0} 50%,90%{opacity:1} 100%{opacity:0} }
 
+.combat-anim2 { animation: crossfade-combat2 12s infinite; }
+.combat-container .combat-anim2:nth-child(1) { animation-delay:   0s; }
+.combat-container .combat-anim2:nth-child(2) { animation-delay:  -8s; }
+.combat-container .combat-anim2:nth-child(3) { animation-delay:  -4s; }
+@keyframes crossfade-combat2 {
+    0%, 30%  { opacity: 1 }
+    38%      { opacity: 0 }
+    92%      { opacity: 0 }
+    100%     { opacity: 1 }
+}
+
+
 .hero-content { flex: 1; padding: 40px; display: flex; flex-direction: column; }
 
 .hero-bio {

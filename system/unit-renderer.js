@@ -83,7 +83,11 @@
     // Combat Images (può essere un array o una singola stringa)
     var combatImgs = Array.isArray(data.combat) ? data.combat : [data.combat];
     // Il primo è statico, gli altri animati (se presenti)
+    if (combatImgs.length > 2) {
+        var combatHtml = combatImgs.map(function(src, i){ return '<img src="'+esc(src)+'" '+('class="combat-anim2"')+'>'; }).join('');
+    }else{
     var combatHtml = combatImgs.map(function(src, i){ return '<img src="'+esc(src)+'" '+(i>0?'class="combat-anim"':'')+'>'; }).join('');
+    }
 
     main.innerHTML = '<div class="hero-card"><div class="combat-container">' + combatHtml + '</div><div class="hero-content">' + bioHtml + '<div class="stats-row">' + statsHtml + '</div></div></div>';
 
