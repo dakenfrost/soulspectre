@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Visual WYSIWYG Builder Pro</title>
+    
+    <!-- Caricamento Stili Originali -->
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+
+    <!-- STILI EDITOR -->
+    <style>
+        [contenteditable="true"] { outline: none; transition: all 0.2s; border-bottom: 1px dashed rgba(255,255,255,0.3); min-width: 20px; display: inline-block; }
+        [contenteditable="true"]:hover { border-bottom: 1px dashed var(--accent-color, #4dd0e1); background: rgba(255,255,255,0.05); cursor: text; }
+        [contenteditable="true"]:focus { border-bottom: 1px solid var(--accent-color, #4dd0e1); background: rgba(0,0,0,0.5); }
+        [contenteditable="true"]:empty::before { content: attr(data-placeholder); color: #777; font-style: italic; }
+        body {    padding-bottom: 60px;}
+        .editable-img { cursor: pointer; position: relative; transition: opacity 0.2s; }
+        .editable-img:hover { opacity: 0.6; }
+
+        .editor-btn { background: transparent; border: 1px dashed #555; color: #888; padding: 8px; cursor: pointer; text-align: center; font-size: 11px; text-transform: uppercase; margin-top: 10px; transition: 0.2s; width: 100%; display: block; border-radius: 4px; }
+        .editor-btn:hover { border-color: var(--accent-color, #4dd0e1); color: var(--accent-color, #4dd0e1); }
+        .editor-btn.inline { display: inline-block; width: auto; margin: 0 0 0 10px; padding: 2px 8px; border: 1px solid #555; }
+        
+        .remove-btn { background: rgba(200, 50, 50, 0.2); color: #ff5555; border: 1px solid rgba(200,50,50,0.5); padding: 2px 8px; font-size: 10px; cursor: pointer; border-radius: 3px; transition: 0.2s; white-space: nowrap; margin-left: 10px; }
+        .remove-btn:hover { background: #ff5555; color: #000; }
+        .remove-crumb { background: none; border: none; color: #ff5555; cursor: pointer; font-size: 12px; margin-right: 2px; padding: 0 4px; }
+        .edit-link-btn { background: none; border: none; color: var(--accent-color); cursor: pointer; font-size: 12px; padding: 0 4px; margin-right: 5px; opacity: 0.5; transition: 0.2s; }
+        .edit-link-btn:hover { opacity: 1; transform: scale(1.1); }
+
+        /* TOOLBOX LATERALE */
+        .builder-toolbox { position: fixed; top: 0; left: -360px; width: 340px; height: 100vh; background: rgba(12, 12, 12, 0.98); border-right: 1px solid var(--accent-color); z-index: 10001; transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1); padding: 20px; overflow-y: auto; box-shadow: 20px 0 50px rgba(0,0,0,0.8); }
+        .builder-toolbox.active { left: 0; }
+        .builder-toolbox h3 { color: #fff; text-transform: uppercase; letter-spacing: 2px; border-bottom: 1px solid #333; padding-bottom: 10px; margin-top: 0; font-size: 14px;}
+        .toolbox-section { margin-bottom: 25px; }
+        .toolbox-label { font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; display: block; }
+        
+        .toolbox-select { width: 100%; background: #000; border: 1px solid #444; color: #fff; padding: 8px; border-radius: 4px; margin-bottom: 10px; font-family: inherit; }
+        .toolbox-input { width: 100%; background: #000; border: 1px solid #333; color: var(--accent-color); padding: 8px; border-radius: 4px; margin-bottom: 8px; font-family: monospace; font-size: 11px; transition: 0.2s; }
+        .toolbox-input:focus { border-color: var(--accent-color); outline: none; }
+
+        .chip-group { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+        .chip-group button { background: #1a1a1a; border: 1px solid #333; color: #aaa; padding: 4px 8px; font-size: 10px; border-radius: 4px; cursor: pointer; transition: 0.2s; }
+        .chip-group button:hover { background: #2a2a2a; color: #fff; border-color: #555; }
+        .btn-magic { width: 100%; background: rgba(77, 208, 225, 0.1); border: 1px solid var(--accent-color); color: var(--accent-color); padding: 12px; border-radius: 4px; cursor: pointer; font-weight: bold; text-transform: uppercase; font-size: 11px; letter-spacing: 1px; transition: 0.2s; }
+        .btn-magic:hover { background: var(--accent-color); color: #000; }
+
+        /* TENDINA SKILL TIPO INLINEA */
+        select.skill-tag { appearance: none; -webkit-appearance: none; cursor: pointer; outline: none; font-weight: bold; font-family: inherit; transition: 0.2s; }
+        select.skill-tag option { background: #111; color: #fff; font-weight: normal; }
+
+        /* Toolbar In Basso */
+        .admin-toolbar { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: rgba(10, 10, 15, 0.98); border: 1px solid var(--accent-color, #4dd0e1); border-radius: 50px; padding: 10px 20px; display: flex; gap: 15px; align-items: center; z-index: 9999; box-shadow: 0 10px 30px rgba(0,0,0,0.8); }
+        .admin-toolbar button { background: transparent; color: #fff; border: 1px solid #444; padding: 8px 15px; border-radius: 20px; font-size: 12px; cursor: pointer; transition: 0.2s; }
+        .admin-toolbar button:hover { border-color: var(--accent-color, #4dd0e1); outline:none; }
+        .admin-toolbar .btn-primary { background: var(--accent-color, #4dd0e1); color: #000; font-weight: bold; }
+        .admin-toolbar .btn-primary:hover { background: #fff; }
+
+        /* Modale Output */
+        #output-modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 10005; justify-content: center; align-items: center; }
+        .modal-content { background: #111; padding: 20px; border-radius: 8px; width: 80%; max-width: 800px; border: 1px solid var(--accent-color, #4dd0e1); }
+        .modal-content textarea { width: 100%; height: 400px; background: #050505; color: var(--accent-color, #4dd0e1); border: 1px solid #333; padding: 10px; font-family: monospace; font-size: 12px; resize: vertical; }
+
+        #bg-image { cursor: pointer; z-index: -2; position: fixed; }
+        #bg-image::after { content: 'Cambia Sfondo'; position: absolute; top: 20px; left: 20px; background: rgba(0,0,0,0.8); color: #fff; padding: 5px 10px; font-size: 12px; opacity: 0; }
+        #bg-image:hover::after { opacity: 1; }
+    </style>
+</head>
+<body>
+<global-navigation></global-navigation>
+<div id="bg-image" style="background-image: url('../../img/');" onclick="changeImage('bg-image', true)"></div>
+<div id="overlay"></div>
+
+<!-- TOOLBOX AVANZATA LATERALE -->
+<div class="builder-toolbox" id="toolbox">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 20px;">
+        <h3 style="margin:0; border:none; padding:0;">🛠 Builder Tools</h3>
+        <button class="remove-btn" style="margin:0" onclick="toggleToolbox()">✕</button>
+    </div>
+
+    <div class="toolbox-section">
+        <span class="toolbox-label">1. Fazione & Directory</span>
+        <select class="toolbox-select" id="tb-faction" onchange="applyFaction(this.value)"></select>
+        <select class="toolbox-select" id="tb-subfolder" style="display:none;"></select>
+    </div>
+
+    <div class="toolbox-section">
+        <span class="toolbox-label">2. Automazione Percorsi</span>
+        <button class="btn-magic" onclick="autoFillPaths()">⚡ Auto-Compila Tutti i Path</button>
+    </div>
+
+    <!-- ISPETTORE PERCORSI AGGIUNTO -->
+    <div class="toolbox-section">
+        <span class="toolbox-label">Ispettore Link Immagini Principali</span>
+        <input type="text" id="tb-bg-url" class="toolbox-input" placeholder="Background Image URL" oninput="syncToVisual('bg-image', this.value, true)" title="Sfondo Pagina">
+        <input type="text" id="tb-c1-url" class="toolbox-input" placeholder="Combat Image 1 URL" oninput="syncToVisual('c-img-1', this.value)" title="Immagine Combat Femminile/Singola">
+        <input type="text" id="tb-c2-url" class="toolbox-input" placeholder="Combat Image 2 URL" oninput="syncToVisual('c-img-2', this.value)" title="Immagine Combat Maschile">
+    </div>
+
+    <div class="toolbox-section">
+        <span class="toolbox-label">3. Accento Rapido (Tier)</span>
+        <div class="chip-group">
+            <button onclick="setAccent('#e0e0e0')">T1</button>
+            <button onclick="setAccent('#4dd0e1')">T2</button>
+            <button onclick="setAccent('#81c784')">T3</button>
+            <button onclick="setAccent('#ffb300')">T4</button>
+            <button onclick="setAccent('#ce93d8')">T5</button>
+            <button onclick="setAccent('#ffd700')">Officer</button>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px; margin-top:5px;">
+            <input type="color" id="theme-color" value="#4dd0e1" style="background:transparent; border:none; width:30px; height:30px; cursor:pointer;" onchange="setAccent(this.value)">
+            <span style="font-size:10px; color:#aaa;">Colore Custom</span>
+        </div>
+    </div>
+
+    <div class="toolbox-section">
+        <span class="toolbox-label">4. Link di Ritorno Rapidi</span>
+        <div class="chip-group" id="tb-backlinks">
+            <!-- Popolati via JS -->
+        </div>
+    </div>
+</div>
+
+<!-- BREADCRUMBS -->
+<div class="breadcrumbs" style="display:flex; flex-wrap:wrap; align-items:center; gap:5px;">
+    <div id="breadcrumbs-container" style="display:flex; flex-wrap:wrap; align-items:center; gap:5px;"></div>
+    <button class="editor-btn inline" onclick="addCrumb()">+ Add Crumb</button>
+</div>
+
+<!-- HEADER -->
+<header>
+    <h1 id="e-name" contenteditable="true" data-placeholder="NOME UNITÀ"></h1>
+    <div class="classification" id="e-subtitle" contenteditable="true" data-placeholder="Sottotitolo | Tier X"></div>
+</header>
+
+<main>
+    <!-- HERO CARD -->
+    <div class="hero-card">
+        <div class="combat-container" id="combat-wrapper">
+            <img src="../../img/_f_combat.jpg" class="editable-img c-img" id="c-img-1" onclick="changeImage('c-img-1')">
+            <img src="../../img/_m_combat.jpg" class="editable-img c-img combat-anim" id="c-img-2" onclick="changeImage('c-img-2')" style="animation-delay: -8s;">
+        </div>
+        
+        <div class="hero-content">
+            <div class="hero-bio">
+                <h2 id="e-bio-title" contenteditable="true" data-placeholder="Titolo Bio"></h2>
+                <div id="bio-paragraphs"></div>
+                <button class="editor-btn" onclick="addBioPara()">+ Aggiungi Paragrafo Bio</button>
+            </div>
+
+            <div class="stats-row">
+                <div class="stat-item"><span class="stat-label">HP</span><span class="stat-value hp" id="s-hp" contenteditable="true"></span></div>
+                <div class="stat-item"><span class="stat-label">ATK</span><span class="stat-value atk" id="s-atk" contenteditable="true"></span></div>
+                <div class="stat-item"><span class="stat-label">INI</span><span class="stat-value" id="s-ini" contenteditable="true"></span></div>
+                <div class="stat-item"><span class="stat-label">Armor</span><span class="stat-value" id="s-armor" contenteditable="true" data-placeholder="-"></span></div>
+                <div class="stat-item"><span class="stat-label">Dodge</span><span class="stat-value" id="s-dodge" contenteditable="true" data-placeholder="-"></span></div>
+                <div class="stat-item"><span class="stat-label">Immunity</span><span class="stat-value special" id="s-immunity" contenteditable="true" data-placeholder="-"></span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SKILLS -->
+    <h2 class="skills-section-title">Combat Skills</h2>
+    <div class="skills-list" id="skills-container"></div>
+    <button class="editor-btn" style="margin-bottom:40px;" onclick="addSkill()">+ Aggiungi Skill</button>
+
+    <!-- GALLERY -->
+    <div class="portrait-gallery-module">
+        <h3 class="gallery-header" style="display:flex; justify-content:space-between; align-items:center;">
+            Portrait Gallery
+            <label style="font-size:11px; color:#888; font-weight:normal; cursor:pointer; text-transform:none; letter-spacing:0;">
+                <input type="checkbox" id="e-no-gallery" style="vertical-align:middle" onchange="toggleGallery(this.checked)"> Disabilita
+            </label>
+        </h3>
+        <div class="carousel-wrap" id="gallery-wrapper">
+            <div class="carousel-track" id="gallery-container" style="flex-wrap: wrap;"></div>
+            <button class="editor-btn" onclick="addGalleryItem()">+ Aggiungi Ritratto</button>
+        </div>
+    </div>
+
+    <!-- BACK LINK -->
+    <div style="text-align:center; padding: 20px; border-top: 1px solid rgba(255,255,255,0.08);">
+        <div style="font-size:10px; color:#666; margin-bottom:5px; text-transform:uppercase;">Configura Link di Ritorno</div>
+        <div style="display:inline-flex; align-items:center; gap:15px; border:1px solid #333; padding:10px 20px; border-radius:4px;">
+            <button class="edit-link-btn" onclick="promptLinkEdit(this, true)" title="Modifica URL">🔗</button>
+            <span style="color:#888;font-size:12px;">HREF:</span>
+            <span id="e-back-href" contenteditable="true" data-placeholder="pagina.html" style="color:var(--accent-color); font-family:monospace;"></span>
+            <span style="color:#888;font-size:12px;">| TESTO:</span>
+            <span id="e-back-label" contenteditable="true" data-placeholder="Return to..."></span>
+        </div>
+    </div>
+</main>
+
+<!-- TOOLBAR FLUTTUANTE BASSA -->
+<div class="admin-toolbar">
+    <button style="border-color:var(--accent-color); color:var(--accent-color);" onclick="toggleToolbox()">🛠 Apri Strumenti Avanzati</button>
+    <div style="width:1px; height:20px; background:#444; margin: 0 10px;"></div>
+    <select id="combat-count" onchange="updateCombatCount(this.value)" style="border-radius:20px; background:transparent; color:#fff; border:1px solid #444; padding:8px 15px; outline:none;">
+        <option value="2">2 Immagini Combat</option>
+        <option value="1">1 Immagine Combat</option>
+    </select>
+    <button onclick="exportData('json')">{ } JSON</button>
+    <button class="btn-primary" onclick="exportData('html')">⚡ Genera File Finale</button>
+</div>
+
+<!-- MODALE OUTPUT -->
+<div id="output-modal">
+    <div class="modal-content">
+        <h3 id="modal-title" style="margin-top:0; color:var(--accent-color);">Output</h3>
+        <textarea id="output-text" readonly></textarea>
+        <div style="margin-top: 15px; display: flex; gap: 10px; justify-content: flex-end;">
+            <span id="copy-feedback" style="color:var(--accent-color); display:none; align-self:center; font-size:12px;">Copiato!</span>
+            <button style="background:transparent; color:#fff; border:1px solid #555; padding:8px 15px; cursor:pointer;" onclick="copyOutput()">Copia Codice</button>
+            <button style="background:transparent; color:#fff; border:1px solid #555; padding:8px 15px; cursor:pointer;" onclick="downloadOutput()">Scarica File</button>
+            <button style="background:var(--accent-color); color:#000; border:none; padding:8px 15px; cursor:pointer; font-weight:bold;" onclick="document.getElementById('output-modal').style.display='none'">Chiudi</button>
+        </div>
+    </div>
+</div>
+
+<script src="../../system/navigation.js"></script>
+<script>
+// ─── CONFIGURAZIONE DB FAZIONI ───
+const FACTIONS = {
+    forgotten: {
+        label: 'The Forgotten', accent: '#4dd0e1', bgImage: '../../img/forgotten/forgotten_bg.jpg',
+        breadcrumbsBase: [ { href: '../../index.html', label: 'Home' }, { href: '../../factions/index.html', label: 'Factions' }, { href: '../../factions/forgotten.html', label: 'The Forgotten' } ],
+        hasFolderStructure: true, imgBase: '../../img/forgotten/', filePrefix: 'forgotten_', skillPath: '../../img/forgotten/skills/forgotten_skill_',
+        subfolders: [ { key: 'sentinelle', label: 'sentinelle/' }, { key: 'araldi', label: 'araldi/' }, { key: 'arborei', label: 'arborei/' }, { key: 'linfa', label: 'linfa/' }, { key: 'extra', label: 'extra/', inName: true } ],
+        orders: [ { href: 'forgotten_order_sentinelle.html', label: 'Amber Sentinels' }, { href: 'forgotten_order_araldi.html', label: 'Children of the Dawn' }, { href: 'forgotten_order_arborei.html', label: 'Keepers of the Wood' }, { href: 'forgotten_order_linfa.html', label: 'Shadows of the Sap' }, { href: 'forgotten_extra.html', label: 'Others' } ]
+    },
+    valkyrion: {
+        label: 'Valkyrion Empire', accent: '#5c9ce6', bgImage: '../../img/valkyrion_bg.jpeg',
+        breadcrumbsBase: [ { href: '../../index.html', label: 'Home' }, { href: '../../factions/index.html', label: 'Factions' }, { href: '../../factions/valkyrion.html', label: 'Valkyrion Empire' }, { href: '../../factions/valkyrion_roster.html', label: 'Units' } ],
+        hasFolderStructure: false, imgBase: '../../img/', filePrefix: 'valkyrion_', skillPath: '../../img/valkyrion_skill_icon_', subfolders: [],
+        orders: [ { href: 'valkyrion_order_sword.html', label: 'Order of the Sword' }, { href: 'valkyrion_order_engineering.html', label: 'Order of Engineering' }, { href: 'valkyrion_order_knowledge.html', label: 'Order of Knowledge' }, { href: 'valkyrion_order_light.html', label: 'Order of Light' } ]
+    },
+    kharos: {
+        label: 'Kharos Dominion', accent: '#ef9a9a', bgImage: '../../img/kharos_bg.jpg',
+        breadcrumbsBase: [ { href: '../../index.html', label: 'Home' }, { href: '../../factions/index.html', label: 'Factions' }, { href: '../../factions/kharos.html', label: 'Kharos Dominion' } ],
+        hasFolderStructure: true, imgBase: '../../img/kharos/', filePrefix: 'kharos_', skillPath: '../../img/kharos/skills/kharos_skill_',
+        subfolders: [ { key: 'vanguard', label: 'vanguard/' }, { key: 'siege', label: 'siege/' }, { key: 'shadow', label: 'shadow/' }, { key: 'extra', label: 'extra/', inName: true } ],
+        orders: [ { href: 'kharos_order_vanguard.html', label: 'Vanguard' }, { href: 'kharos_order_siege.html', label: 'Siege' }, { href: 'kharos_order_shadow.html', label: 'Shadow' } ]
+    },
+    syndicate: {
+        label: 'Devil Syndicate', accent: '#ff8a65', bgImage: '../../img/syndicate_bg.jpg',
+        breadcrumbsBase: [ { href: '../../index.html', label: 'Home' }, { href: '../../factions/index.html', label: 'Factions' }, { href: '../../factions/syndicate.html', label: 'Devil Syndicate' } ],
+        hasFolderStructure: true, imgBase: '../../img/syndicate/', filePrefix: 'syndicate_', skillPath: '../../img/syndicate/skills/syndicate_skill_',
+        subfolders: [ { key: 'enforcers', label: 'enforcers/' }, { key: 'rogues', label: 'rogues/' }, { key: 'mages', label: 'mages/' }, { key: 'extra', label: 'extra/', inName: true } ],
+        orders: [ { href: 'syndicate_order_enforcers.html', label: 'Enforcers' }, { href: 'syndicate_order_rogues.html', label: 'Rogues' }, { href: 'syndicate_order_mages.html', label: 'Mages' } ]
+    },
+    primal: {
+        label: 'Primal Coalition', accent: '#a5d6a7', bgImage: '../../img/primal_bg.jpg',
+        breadcrumbsBase: [ { href: '../../index.html', label: 'Home' }, { href: '../../factions/index.html', label: 'Factions' }, { href: '../../factions/primal.html', label: 'Primal Coalition' } ],
+        hasFolderStructure: true, imgBase: '../../img/primal/', filePrefix: 'primal_', skillPath: '../../img/primal/skills/primal_skill_',
+        subfolders: [ { key: 'hunters', label: 'hunters/' }, { key: 'shamans', label: 'shamans/' }, { key: 'beasts', label: 'beasts/' }, { key: 'extra', label: 'extra/', inName: true } ],
+        orders: [ { href: 'primal_order_hunters.html', label: 'Hunters' }, { href: 'primal_order_shamans.html', label: 'Shamans' }, { href: 'primal_order_beasts.html', label: 'Beasts' } ]
+    },
+    brotherhood: {
+        label: 'Iron Brotherhood', accent: '#ffe082', bgImage: '../../img/brotherhood_bg.jpg',
+        breadcrumbsBase: [ { href: '../../index.html', label: 'Home' }, { href: '../../factions/index.html', label: 'Factions' }, { href: '../../factions/brotherhood.html', label: 'Iron Brotherhood' } ],
+        hasFolderStructure: true, imgBase: '../../img/brotherhood/', filePrefix: 'brotherhood_', skillPath: '../../img/brotherhood/skills/brotherhood_skill_',
+        subfolders: [ { key: 'warriors', label: 'warriors/' }, { key: 'engineers', label: 'engineers/' }, { key: 'priests', label: 'priests/' }, { key: 'extra', label: 'extra/', inName: true } ],
+        orders: [ { href: 'brotherhood_order_warriors.html', label: 'Warriors' }, { href: 'brotherhood_order_engineers.html', label: 'Engineers' }, { href: 'brotherhood_order_priests.html', label: 'Priests' } ]
+    },
+    elven: {
+        label: 'Elven Enclave', accent: '#80cbc4', bgImage: '../../img/elven_bg.jpg',
+        breadcrumbsBase: [ { href: '../../index.html', label: 'Home' }, { href: '../../factions/index.html', label: 'Factions' }, { href: '../../factions/elven.html', label: 'Elven Enclave' } ],
+        hasFolderStructure: true, imgBase: '../../img/elven/', filePrefix: 'elven_', skillPath: '../../img/elven/skills/elven_skill_',
+        subfolders: [ { key: 'archers', label: 'archers/' }, { key: 'mages', label: 'mages/' }, { key: 'scouts', label: 'scouts/' }, { key: 'extra', label: 'extra/', inName: true } ],
+        orders: [ { href: 'elven_order_archers.html', label: 'Archers' }, { href: 'elven_order_mages.html', label: 'Mages' }, { href: 'elven_order_scouts.html', label: 'Scouts' } ]
+    }
+};
+
+let currentFactionKey = 'forgotten';
+
+// Inizializzazione Base
+window.onload = () => {
+    const select = document.getElementById('tb-faction');
+    for (const [key, f] of Object.entries(FACTIONS)) {
+        select.innerHTML += `<option value="${key}">${f.label}</option>`;
+    }
+    
+    addBioPara(); addBioPara();
+    addSkill("", "base", "../../img/folder/skills/faction_skill_.png", "");
+    addSkill("", "active", "../../img/folder/skills/faction_skill_.png", "");
+    addSkill("", "passive", "../../img/folder/skills/faction_skill_.png", "");
+    addSkill("", "ultimate", "../../img/folder/skills/faction_skill_.png", "");
+    addGalleryItem("../../img/folder/sentinelle/faction_portrait_f.jpg"); 
+    addGalleryItem("../../img/folder/sentinelle/faction_portrait_m.jpg");
+    applyFaction("forgotten");
+    refreshPathInputs();
+};
+
+// ─── UI FUNZIONI (Editor) ───
+function setAccent(color) {
+    document.documentElement.style.setProperty('--accent-color', color);
+    document.documentElement.style.setProperty('--accent-glow', color + '4D');
+    document.getElementById('theme-color').value = color;
+}
+
+// Sincronizzazione da Toolbox a Visuale
+function syncToVisual(id, val, isBg=false) {
+    const el = document.getElementById(id);
+    if(isBg) el.style.backgroundImage = `url('${val}')`;
+    else el.src = val;
+}
+
+// Sincronizzazione da Visuale a Toolbox
+function refreshPathInputs() {
+    let bgRaw = document.getElementById('bg-image').style.backgroundImage;
+    document.getElementById('tb-bg-url').value = bgRaw ? bgRaw.replace(/^url\(['"]?/, '').replace(/['"]?\)$/, '') : '';
+    document.getElementById('tb-c1-url').value = document.getElementById('c-img-1').getAttribute('src');
+    document.getElementById('tb-c2-url').value = document.getElementById('c-img-2').getAttribute('src');
+}
+
+function changeImage(id, isBg = false) {
+    const el = document.getElementById(id);
+    const currentSrc = isBg ? el.style.backgroundImage.slice(5, -2) : el.getAttribute('src');
+    const newSrc = prompt("Inserisci il percorso dell'immagine:", currentSrc || "../../img/");
+    if (newSrc) {
+        if (isBg) el.style.backgroundImage = `url('${newSrc}')`;
+        else el.setAttribute('src', newSrc);
+        refreshPathInputs();
+    }
+}
+
+function toggleGallery(isDisabled) { document.getElementById('gallery-wrapper').style.display = isDisabled ? 'none' : 'block'; }
+function toggleToolbox() { document.getElementById('toolbox').classList.toggle('active'); }
+function updateCombatCount(val) { document.getElementById('c-img-2').style.display = val === '1' ? 'none' : 'block'; }
+
+// Edit href tramite bottone 🔗
+function promptLinkEdit(btn, isBacklink = false) {
+    let targetSpan;
+    if(isBacklink) {
+        targetSpan = document.getElementById('e-back-href');
+        const newHref = prompt("Inserisci l'URL di destinazione:", targetSpan.innerText.trim());
+        if(newHref !== null) targetSpan.innerText = newHref;
+    } else {
+        targetSpan = btn.nextElementSibling;
+        const currentHref = targetSpan.getAttribute('data-href');
+        const newHref = prompt("Inserisci l'URL del breadcrumb:", currentHref || "");
+        if(newHref !== null) targetSpan.setAttribute('data-href', newHref);
+    }
+}
+
+// ─── LOGICA DEL TOOLBOX AVANZATO ───
+function applyFaction(key) {
+    currentFactionKey = key;
+    const f = FACTIONS[key];
+    
+    setAccent(f.accent);
+    document.getElementById('bg-image').style.backgroundImage = `url('${f.bgImage}')`;
+    refreshPathInputs();
+    
+    const subSel = document.getElementById('tb-subfolder');
+    subSel.innerHTML = '';
+    if (f.hasFolderStructure) {
+        f.subfolders.forEach(s => subSel.innerHTML += `<option value="${s.key}">${s.label}</option>`);
+        subSel.style.display = 'block';
+    } else {
+        subSel.style.display = 'none';
+    }
+
+    const bContainer = document.getElementById('breadcrumbs-container');
+    bContainer.innerHTML = '';
+    f.breadcrumbsBase.forEach(c => addCrumb(c.label, c.href));
+    if(f.orders.length > 0) addCrumb(f.orders[0].label, f.orders[0].href);
+    addCrumb("Archer", ""); // Ultimo
+
+    const blContainer = document.getElementById('tb-backlinks');
+    blContainer.innerHTML = '';
+    f.orders.forEach(o => {
+        const btn = document.createElement('button');
+        btn.innerText = o.label;
+        btn.onclick = () => {
+            document.getElementById('e-back-href').innerText = o.href;
+            document.getElementById('e-back-label').innerText = `Return to ${o.label}`;
+        };
+        blContainer.appendChild(btn);
+    });
+}
+
+function autoFillPaths() {
+    const f = FACTIONS[currentFactionKey];
+    const unitName = document.getElementById('e-name').innerText.trim().toLowerCase().replace(/\s+/g, '_');
+    const subKey = document.getElementById('tb-subfolder').value;
+    const subObj = f.subfolders ? f.subfolders.find(s => s.key === subKey) : null;
+    
+    let basePath = f.imgBase;
+    if (f.hasFolderStructure && subKey) basePath += subKey + '/';
+    
+    let prefix = f.filePrefix;
+    if (subObj && subObj.inName) prefix += subKey + '_';
+    
+    // Correzione bug __: aggiunge il nome unità solo se esiste, altrimenti rimuove l'underscore finale
+    if (unitName) {
+        prefix += unitName;
+    } else {
+        prefix = prefix.replace(/_$/, ''); 
+    }
+
+    // Combat Images
+    document.getElementById('c-img-1').src = `${basePath}${prefix}_f_combat.jpg`;
+    document.getElementById('c-img-2').src = `${basePath}${prefix}_m_combat.jpg`;
+
+    // Gallery
+    const galImgs = document.querySelectorAll('.e-gal-img');
+    if(galImgs.length > 0) galImgs[0].src = `${basePath}${prefix}_f_portrait.jpg`;
+    if(galImgs.length > 1) galImgs[1].src = `${basePath}${prefix}_m_portrait.jpg`;
+    for(let i=2; i<galImgs.length; i++) {
+        galImgs[i].src = `${basePath}${prefix}_${i}.jpg`;
+    }
+
+    // Skills
+    document.querySelectorAll('.e-sk-icon').forEach((img, index) => {
+        const skEl = img.parentElement.querySelector('.e-sk-name');
+        const skName = skEl && skEl.innerText.trim() !== '' ? skEl.innerText.trim().toLowerCase().replace(/\s+/g, '_') : `skill_${index}`;
+        img.src = `${f.skillPath}${skName}.png`;
+    });
+    refreshPathInputs(); // Aggiorna il toolbox
+}
+
+// ─── GENERATORI DOM WYSIWYG ───
+function addCrumb(label="Nuovo", href="") {
+    const div = document.createElement('div');
+    div.style.display = "inline-flex"; div.style.alignItems = "center"; div.className = "crumb-wrapper";
+    div.innerHTML = `
+        <button class="remove-crumb" onclick="this.parentElement.remove()" title="Rimuovi">✕</button>
+        <button class="edit-link-btn" onclick="promptLinkEdit(this)" title="Modifica URL">🔗</button>
+        <span class="e-crumb" contenteditable="true" data-href="${href}" data-placeholder="Nome Pagina">${label}</span>
+        <span style="margin: 0 5px; color:#666;">/</span>
+    `;
+    document.getElementById('breadcrumbs-container').appendChild(div);
+}
+
+function addBioPara() {
+    const div = document.createElement('div');
+    div.style.position = 'relative';
+    div.innerHTML = `<p contenteditable="true" class="e-bio-p" data-placeholder="Nuovo paragrafo..."></p><button class="remove-btn" onclick="this.parentElement.remove()" style="position:absolute; right:0; top:0;">✕</button>`;
+    document.getElementById('bio-paragraphs').appendChild(div);
+}
+
+// Skill Builder aggiornato per usare la tendina nativa
+function addSkill(name = "", type = "base", icon = "", desc = "") {
+    const div = document.createElement('div');
+    div.className = `skill-item e-skill-block sk-${type}`;
+    div.innerHTML = `
+        <img src="${icon}" class="skill-icon editable-img e-sk-icon" onclick="changeImage(this.id)" id="sk-img-${Date.now()}">
+        <div class="skill-info">
+            <div class="skill-header">
+                <h3 class="skill-name e-sk-name" contenteditable="true" data-placeholder="Nome Skill">${name}</h3>
+                <select class="skill-tag e-sk-type ${type}" onchange="updateSkillClass(this)">
+                    <option value="base" ${type==='base'?'selected':''}>BASE</option>
+                    <option value="active" ${type==='active'?'selected':''}>ACTIVE</option>
+                    <option value="passive" ${type==='passive'?'selected':''}>PASSIVE</option>
+                    <option value="ultimate" ${type==='ultimate'?'selected':''}>ULTIMATE</option>
+                </select>
+                <button class="remove-btn" style="margin-left:auto;" onclick="this.parentElement.parentElement.parentElement.remove()">✕ Rimuovi</button>
+            </div>
+            <p class="skill-desc e-sk-desc" contenteditable="true" data-placeholder="Descrizione (Supporta <span> html)">${desc}</p>
+        </div>
+    `;
+    document.getElementById('skills-container').appendChild(div);
+}
+
+function updateSkillClass(selectEl) {
+    const block = selectEl.closest('.skill-item');
+    const newType = selectEl.value;
+    block.className = `skill-item e-skill-block sk-${newType}`;
+    selectEl.className = `skill-tag e-sk-type ${newType}`;
+}
+
+function addGalleryItem(src = "") {
+    const div = document.createElement('div');
+    div.className = 'carousel-item';
+    div.style.position = 'relative';
+    div.style.overflow = 'visible';
+    const id = "gal-img-" + Date.now();
+    div.innerHTML = `
+        <img src="${src}" class="editable-img e-gal-img" id="${id}" onclick="changeImage('${id}')" style="border-radius:4px; overflow:hidden;">
+        <button class="remove-btn" onclick="this.parentElement.remove()" style="position:absolute; top:-10px; right:-10px; z-index:10;">✕</button>
+    `;
+    document.getElementById('gallery-container').appendChild(div);
+}
+
+// ─── ESTRAZIONE E BUILD DATA ───
+function buildDataObject() {
+    const getVal = (id) => document.getElementById(id).innerText.trim();
+    const crumbs = Array.from(document.querySelectorAll('.e-crumb')).map(el => ({ label: el.innerText.trim(), href: el.getAttribute('data-href') || undefined })).filter(c => c.label);
+    const combatImgs = Array.from(document.querySelectorAll('.c-img')).filter(img => img.style.display !== 'none').map(img => img.getAttribute('src').trim()).filter(Boolean);
+    const paragraphs = Array.from(document.querySelectorAll('.e-bio-p')).map(el => el.innerHTML.trim()).filter(Boolean);
+    const stats = { hp: Number(getVal('s-hp'))||0, atk: Number(getVal('s-atk'))||0, ini: Number(getVal('s-ini'))||0 };
+    if(getVal('s-armor')) stats.armor = getVal('s-armor');
+    if(getVal('s-dodge')) stats.dodge = getVal('s-dodge');
+    if(getVal('s-immunity')) stats.immunity = getVal('s-immunity');
+    
+    // Le skills ora pescano il .value dalla select
+    const skillsArr = Array.from(document.querySelectorAll('.e-skill-block')).map(block => ({ type: block.querySelector('.e-sk-type').value, name: block.querySelector('.e-sk-name').innerText.trim(), icon: block.querySelector('.e-sk-icon').getAttribute('src').trim(), desc: block.querySelector('.e-sk-desc').innerHTML.trim() })).filter(s => s.name);
+    
+    let galleryArr = undefined;
+    if (!document.getElementById('e-no-gallery').checked) galleryArr = Array.from(document.querySelectorAll('.e-gal-img')).map(img => img.getAttribute('src').trim()).filter(Boolean);
+    
+    let bgClean = document.getElementById('tb-bg-url').value;
+
+    return { name: getVal('e-name'), subtitle: getVal('e-subtitle'), accent: document.getElementById('theme-color').value, bgImage: bgClean, breadcrumbs: crumbs, combat: combatImgs.length === 1 ? combatImgs[0] : combatImgs, bio: { title: getVal('e-bio-title'), paragraphs: paragraphs }, stats: stats, skills: skillsArr, gallery: galleryArr, backLink: { href: getVal('e-back-href'), label: getVal('e-back-label') } };
+}
+
+let currentOutputMode = '';
+function exportData(mode) {
+    const data = buildDataObject();
+    const jsonString = JSON.stringify(data, null, 2);
+    let output = '';
+
+    if (mode === 'json') { document.getElementById('modal-title').innerText = 'Data Source (JSON)'; output = jsonString; } 
+    else {
+        document.getElementById('modal-title').innerText = 'HTML Finale';
+        const title = data.name || 'Unit';
+        output = `<!DOCTYPE html>\n<html lang="en">\n<head>\n    <meta charset="UTF-8">\n    <meta name="viewport" content="width=device-width, initial-scale=1.0">\n    <title>SOULSPECTRE | ${title}</title>\n    <link rel="stylesheet" href="../../system/unit-page.css">\n<link rel="stylesheet" href="../../system/global_nav.css">\n</head>\n<body>\n<div id="bg-image"></div>\n<div id="overlay"></div>\n\n<script type="application/json" id="unit-data">\n${jsonString}\n<\/script>\n\n<script src="../../system/unit-renderer.js"><\/script>\n</body>\n</html>`;
+    }
+    document.getElementById('output-text').value = output;
+    document.getElementById('output-modal').style.display = 'flex';
+    currentOutputMode = mode;
+}
+
+function copyOutput() { document.getElementById('output-text').select(); document.execCommand('copy'); document.getElementById('copy-feedback').style.display = 'inline'; setTimeout(() => document.getElementById('copy-feedback').style.display = 'none', 2000); }
+function downloadOutput() { const content = document.getElementById('output-text').value; const fname = (document.getElementById('e-name').innerText.trim() || 'unit').toLowerCase().replace(/\s+/g, '_'); const ext = currentOutputMode === 'json' ? '.json' : '.html'; const blob = new Blob([content], { type: 'text/plain;charset=utf-8' }); const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `unit_${fname}${ext}`; a.click(); }
+</script>
+
+</body>
+</html>
