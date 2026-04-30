@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Paoler</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <script src="../../system/unit-renderer.js" defer></script>
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Paoler",
+  "faction": "Valkyrion",
+  "subtitle": "The Spellblade | Tier 5 Hero",
+  "accent": "#ffb300",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",              "label": "Home" },
+    { "href": "../../factions/index.html",     "label": "Factions" },
+    { "href": "../../factions/valkyrion.html", "label": "Valkyrion Empire" },
+    { "href": "../../factions/valkyrion_roster.html", "label": "Units" },
+    { "href": "valkyrion_extra.html",          "label": "Extra Roster" },
+    {                                          "label": "Paoler" }
+  ],
+
+  "combat": [
+    "../../img/valkyrion_paoler_m_combat.png"
+  ],
+
+  "bio": {
+    "title": "The Wandering Flame",
+    "paragraphs": [
+      "Found abandoned in the untamed woods as an infant, Paoler’s half-elf heritage could have condemned him to the fringes of society. Instead, he was claimed by a renowned adventurer who raised him with the same rigorous affection he gave his biological daughter, Lilibeth. Paoler grew up without the burden of self-pity, channeling his focus into mastering the martial doctrines of his foster father. He viewed the old man not just as a savior, but as the ultimate benchmark of integrity and martial prowess.",
+      "When the veteran adventurer finally fell, his dying request was not a plea for vengeance, but a directive for Paoler to uncover the truth of his elven bloodline. Now a wandering sellsword alongside his sister Lilibeth, Paoler operates with relentless efficiency. He has seamlessly woven the innate, volatile magic of his ancestry into the disciplined swordplay taught by his father. He doesn't fight to find himself; he fights to honor the man who forged him, cutting through obstacles with a pragmatic, scorching brilliance."
+    ]
+  },
+
+  "stats": {
+    "tier": "Tier 5",
+    "hp": 350,
+    "atk": 100,
+    "ini": 50,
+    "protection": "Fire"
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Flaming Slash",
+      "icon": "../../img/valkyrion_skill_icon_flaming_slash.png",
+      "desc": "A heavy sword swing enveloped in magical heat. Deals <span class=\"dmg-phys\">Physical Damage</span> to units in front of him, plus an additional <strong>50%</strong> as <span class=\"dmg-fire\">Fire Damage</span>."
+    },
+    {
+      "type": "active",
+      "name": "Blazing Tornado",
+      "icon": "../../img/valkyrion_skill_icon_blazing_tornado.png",
+      "desc": "Unleashes a vortex of swirling embers. Deals <strong>25% of his Atk</strong> as <span class=\"dmg-fire\">Fire Damage</span> to the entire enemy group, hitting <strong>2 times</strong>. Each strike has a <strong>25% chance</strong> to apply <span class=\"debuff-burn\">Burn</span>, which deals 25% of his Atk as Fire Damage for 2 turns."
+    },
+    {
+      "type": "passive",
+      "name": "Molten Shield",
+      "icon": "../../img/valkyrion_skill_icon_molten_shield.png",
+      "desc": "Paoler’s combat focus generates a constant thermal barrier. At the start of his turn, he gains a <strong>100 HP Shield</strong>. As long as any shield is active, he is <strong>Immune to Crowd Control</strong> effects and automatically deals <strong>25 damage</strong> to anyone who attacks him."
+    },
+    {
+      "type": "ultimate",
+      "name": "Raise of the Phoenix",
+      "icon": "../../img/valkyrion_skill_icon_phoenix_raise.png",
+      "desc": "Channels his entire magical reserve into a devastating burst. Deals <strong>100% of his Atk</strong> as <span class=\"dmg-fire\">Fire Damage</span> to all enemy groups. Instantly applies <span class=\"debuff-burn\">Burn</span> to every enemy hit (deals 25% of Atk as Fire Damage for 2 turns)."
+    }
+  ],
+
+  "gallery": [
+    "../../img/valkyrion_paoler_extra_1.png",
+    "../../img/valkyrion_paoler_extra_2.png"
+  ],
+
+  "backLink": {
+    "href":  "valkyrion_extra.html",
+    "label": "Return to Extra Roster"
+  }
+}
+</script>
+
+</body>
+</html>
