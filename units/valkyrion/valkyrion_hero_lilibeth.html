@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Lilibeth</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <script src="../../system/unit-renderer.js" defer></script>
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Lilibeth",
+  "faction": "Valkyrion",
+  "subtitle": "The Sage | Tier 5 Hero",
+  "accent": "#ffb300",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",              "label": "Home" },
+    { "href": "../../factions/index.html",     "label": "Factions" },
+    { "href": "../../factions/valkyrion.html", "label": "Valkyrion Empire" },
+    { "href": "../../factions/valkyrion_roster.html", "label": "Units" },
+    { "href": "valkyrion_extra.html",          "label": "Extra Roster" },
+    {                                          "label": "Lilibeth" }
+  ],
+
+  "combat": [
+    "../../img/valkyrion_lilibeth_f_combat.png"
+  ],
+
+  "bio": {
+    "title": "The Master of Reactions",
+    "paragraphs": [
+      "While her foster brother Paoler inherited their father’s martial ferocity, Lilibeth chose to walk the intellectual path of their mother, a renowned scholar. Fascinated by the raw mechanics of matter, she plunged into the study of alchemy. By her early twenties, her unprecedented understanding of chemical and magical compounds earned her the title of 'Sage' among the most elite academic circles of the Empire. She views the battlefield not as a stage for heroism, but as a high-stress laboratory where theoretical formulas can be violently tested.",
+      "Lilibeth considers Paoler her true blood, completely disregarding the biological differences of his half-elf heritage. When he embarked on his wandering quest to uncover his origins, she packed her vials and followed him without a second thought. She provides the cold, analytical counterweight to his frontline aggression. Together, they form an incredibly lethal, self-sufficient unit: he holds the line, while she ensures that anyone standing against them is systematically reduced to ash or chemically dismantled."
+    ]
+  },
+
+  "stats": {
+    "tier": "Tier 5",
+    "hp": 250,
+    "atk": 80,
+    "ini": 40
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Fire Grenade",
+      "icon": "../../img/valkyrion_skill_icon_fire_grenade.png",
+      "desc": "Tosses a highly volatile alchemical flask. Deals <span class=\"dmg-fire\">Fire Damage</span> to all enemies in a group. Has a <strong>20% chance</strong> to apply <span class=\"debuff-burn\">Burn</span> (deals 20% of her Atk as damage at the start of the turn for 2 turns)."
+    },
+    {
+      "type": "active",
+      "name": "Life Elixir",
+      "icon": "../../img/valkyrion_skill_icon_life_elixir.png",
+      "desc": "Administers a potent, concentrated healing compound. Heals a target for <strong>300% of her Attack</strong>. Any overhealing is immediately converted into a <strong>Shield</strong>. If the target is dead, the elixir acts as a <strong>Resurrection</strong>."
+    },
+    {
+      "type": "passive",
+      "name": "Adaptive Coat",
+      "icon": "../../img/valkyrion_skill_icon_adaptive_coat.png",
+      "desc": "Lilibeth wears a specialized, reactive lab coat. She has a <strong>30% chance to dodge</strong> incoming single-target physical attacks. Magic attacks deal only <strong>50% damage</strong> to her, while the remaining <strong>50% is reflected</strong> back to the caster. Additionally, the duration of any debuff applied to her is <strong>halved</strong>."
+    },
+    {
+      "type": "ultimate",
+      "name": "Catastrophic Reaction",
+      "icon": "../../img/valkyrion_skill_icon_catastrophic_reaction.png",
+      "desc": "Lilibeth detonates an unstable mixture, causing an indiscriminate elemental meltdown. Deals <strong>100% of her Atk</strong> as <span class=\"dmg-frost\">Frost Damage</span> (20% chance to inflict <span class=\"debuff-frozen\">Frozen</span> for 1 turn), <strong>100% of her Atk</strong> as <span class=\"dmg-thunder\">Thunder Damage</span> (20% chance to inflict <span class=\"debuff-paralyze\">Paralyze</span> for 2 turns, causing a 50% skill failure rate), and <strong>100% of her Atk</strong> as <span class=\"dmg-earth\">Earth Damage</span> (20% chance to <span class=\"debuff-stun\">Stun</span>). This attack hits <strong>ALL OTHER UNITS</strong> on the battlefield (both friend and foe). Units protected by any <strong>Shield</strong> are completely immune to this attack."
+    }
+  ],
+
+  "gallery": [
+    "../../img/valkyrion_lilibeth_extra_1.png",
+    "../../img/valkyrion_lilibeth_extra_2.png"
+  ],
+
+  "backLink": {
+    "href":  "valkyrion_extra.html",
+    "label": "Return to Extra Roster"
+  }
+}
+</script>
+
+</body>
+</html>
