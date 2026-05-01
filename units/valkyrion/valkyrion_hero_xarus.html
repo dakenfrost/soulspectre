@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Xarus</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <script src="../../system/unit-renderer.js" defer></script>
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Xarus",
+  "faction": "Valkyrion",
+  "subtitle": "The Reaper | Tier 4 Sharpshooter",
+  "accent": "#ba68c8",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",              "label": "Home" },
+    { "href": "../../factions/index.html",     "label": "Factions" },
+    { "href": "../../factions/valkyrion.html", "label": "Valkyrion Empire" },
+    { "href": "../../factions/valkyrion_roster.html", "label": "Units" },
+    { "href": "valkyrion_extra.html",          "label": "Extra Roster" },
+    {                                          "label": "Xarus" }
+  ],
+
+  "combat": [
+    "../../img/valkyrion_xarus_m_combat.jpg"
+  ],
+
+  "bio": {
+    "title": "The Silent Arquebusier",
+    "paragraphs": [
+      "Xarus is a fundamentally solitary individual who prefers the quiet geometry of ballistics and the scent of old paper over the chaotic camaraderie of the barracks. To him, social interaction is an inefficient variable that distracts from the core objective: ending engagements as swiftly and cleanly as possible. As an expert sharpshooter, he has developed absolute mastery over the heavy arquebus, calculating trajectories and windage with machine-like precision to eliminate high-value targets in a single, unseen shot.",
+      "His ruthless, surgical efficiency on the battlefield earned him the moniker 'The Reaper' among both allies and terrified enemies. However, this level of detachment did not come naturally. Deep down, Xarus systematically dismantled his own empathy, killing the softer parts of his soul to become the flawless, unfeeling instrument the Empire required. He is not a hero, nor a villain; he is simply a necessary tool, a trigger pulled in the dark."
+    ]
+  },
+
+  "stats": {
+    "tier": "Tier 4",
+    "hp": 250,
+    "atk": 150,
+    "ini": 60
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Gun Shot",
+      "icon": "../../img/valkyrion_skill_icon_gun_shot.png",
+      "desc": "A lethal, high-caliber discharge. Deals <strong>150</strong> <span class=\"dmg-phys\">Physical Damage</span> to one enemy at any range."
+    },
+    {
+      "type": "active",
+      "name": "Tactical Reload",
+      "icon": "../../img/valkyrion_skill_icon_tactical_reload.png",
+      "desc": "Xarus repositions and prepares for the next execution. Instantly reloads the magazine (clearing the Empty Magazine debuff) and causes him to enter <span class=\"buff-stealth\">Stealth</span>. The reload effect completes at the end of the turn."
+    },
+    {
+      "type": "passive",
+      "name": "Heavy Firearm Master",
+      "icon": "../../img/valkyrion_skill_icon_heavy_firearm.png",
+      "desc": "Xarus utilizes specialized, armor-piercing ammunition. His skills <strong>can't be dodgedr</strong> and ignore up to <strong>20% of the target’s Armor</strong>. After each shot, he gains the <strong>Empty Magazine</strong> debuff, preventing the use of his Base Skill. After spending one turn without using skills, the weapon naturally reloads and the debuff is cleared."
+    }
+  ],
+
+  "gallery": [
+    "../../img/valkyrion_xarus_extra_1.jpg",
+    "../../img/valkyrion_xarus_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "valkyrion_extra.html",
+    "label": "Return to Extra Roster"
+  }
+}
+</script>
+
+</body>
+</html>
