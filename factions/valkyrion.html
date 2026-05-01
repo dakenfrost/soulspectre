@@ -9,52 +9,25 @@
         :root {
             --accent-color: #5c9ce6;
             --accent-glow:  rgba(92, 156, 230, 0.3);
-            --panel-bg:     rgba(15, 15, 15, 0.7);
+            --panel-bg:     rgba(15, 15, 15, 0.8);
         }
 
         #bg-image { 
-            position: fixed;
-            top: 0; left: 0;
-            width: 100vw; height: 100vh;
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
             background-image: url('../img/valkyrion_bg.jpeg'); 
-            background-size: cover;
-            background-position: center;
-            z-index: -2;
+            background-size: cover; background-position: center; z-index: -2;
         }
 
         #overlay { 
-            position: fixed;
-            top: 0; left: 0;
-            width: 100vw; height: 100vh;
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
             background: linear-gradient(to bottom, rgba(10, 10, 12, 0.85), rgba(5, 5, 5, 0.95)); 
             z-index: -1;
         }
 
-        header {
-            padding: 60px 20px 30px 20px;
-            text-align: center;
-        }
-
-        h1 { 
-            letter-spacing: 8px; 
-            font-size: 3rem; 
-            text-transform: uppercase;
-            margin: 0;
-            text-shadow: 0 0 20px var(--accent-glow); 
-        }
-
-        .tagline {
-            color: var(--accent-color);
-            letter-spacing: 2px;
-            margin-top: 10px;
-            font-size: 1.1rem;
-        }
-
-        main { 
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px 80px 20px; 
-        }
+        header { padding: 60px 20px 30px 20px; text-align: center; }
+        h1 { letter-spacing: 8px; font-size: 3rem; text-transform: uppercase; margin: 0; text-shadow: 0 0 20px var(--accent-glow); }
+        .tagline { color: var(--accent-color); letter-spacing: 2px; margin-top: 10px; font-size: 1.1rem; }
+        main { max-width: 1200px; margin: 0 auto; padding: 0 20px 80px 20px; }
 
         /* Citazione */
         .quote { 
@@ -63,38 +36,84 @@
             backdrop-filter: blur(8px); 
             padding: 25px; 
             border: 1px solid rgba(255,255,255,0.05);
-            font-style: italic;
-            color: #aaa;
-            text-align: center;
+            font-style: italic; color: #aaa; text-align: center;
             box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+            max-width: 900px;
         }
+        .quote-author { display: block; margin-top: 10px; font-style: normal; font-weight: bold; color: var(--accent-color); }
 
-        .quote-author {
-            display: block;
-            margin-top: 10px;
-            font-style: normal;
-            font-weight: bold;
-            color: var(--accent-color);
-        }
-
-        /* Sezione Split Superiore */
+        /* Layout Principale Diviso */
         .split-layout { 
             display: flex; 
             gap: 40px; 
             align-items: stretch; 
-            margin-bottom: 60px;
         }
 
-        .split-image { flex: 0 0 45%; }
-        .split-image img { 
-            width: 100%; height: 100%; 
-            object-fit: cover; 
-            border: 1px solid rgba(255,255,255,0.1); 
-            border-bottom: 3px solid var(--accent-color); 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8); 
-            border-radius: 4px; 
+        /* Il "Rettangolo" dei 6 Spicchi */
+        .split-nav-grid {
+            flex: 0 0 45%;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
         }
 
+        .slice-btn {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 4px;
+            text-decoration: none;
+            min-height: 140px; /* Altezza di ogni spicchio */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+
+        .slice-btn img {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            z-index: 1;
+        }
+
+        /* Overlay scuro per leggere il testo */
+        .slice-btn::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.8));
+            z-index: 2;
+            transition: background 0.3s ease;
+        }
+
+        .slice-btn:hover img {
+            transform: scale(1.1); /* Effetto zoom dell'immagine */
+        }
+
+        .slice-btn:hover::after {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(92, 156, 230, 0.6)); /* Viraggio colore fazione */
+        }
+
+        .slice-label {
+            position: relative;
+            z-index: 3;
+            color: #fff;
+            font-size: 1.3rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .slice-btn:hover .slice-label {
+            transform: translateY(-2px);
+        }
+
+        /* Testo a Destra */
         .split-text {
             flex: 1;
             background: var(--panel-bg);
@@ -103,77 +122,26 @@
             border: 1px solid rgba(255,255,255,0.05);
             border-left: 3px solid var(--accent-color);
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .split-text h2 { color: #fff; margin-top: 0; font-size: 1.6rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; letter-spacing: 1px; text-transform: uppercase; }
         .split-text p { color: #ccc; font-size: 1.05rem; line-height: 1.8; margin-bottom: 20px; }
         .tactics-title { color: var(--accent-color) !important; margin-top: 30px !important; }
 
-        /* Griglia Moduli (I 6 Spicchi) */
-        .faction-modules {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            width: 100%;
-        }
-
-        .module-panel {
-            background: rgba(15, 15, 15, 0.6);
-            border: 1px solid rgba(255,255,255,0.05);
-            border-left: 4px solid var(--accent-color);
-            padding: 25px;
-            text-decoration: none;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        }
-
-        .module-panel:hover {
-            background: rgba(25, 25, 25, 0.8);
-            transform: translateY(-5px) scale(1.02);
-            border-left-color: #fff;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.6);
-        }
-
-        .module-title {
-            color: var(--accent-color);
-            margin: 0 0 10px 0;
-            font-size: 1.4rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: color 0.3s ease;
-        }
-
-        .module-panel:hover .module-title {
-            color: #fff;
-        }
-
-        .module-desc {
-            color: #999;
-            margin: 0;
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
-
-        .back-link {
-            display: block;
-            text-align: center;
-            margin-top: 60px;
-            color: #666;
-            text-decoration: none;
-            padding: 20px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            transition: color 0.3s ease;
-        }
-
+        .back-link { display: block; text-align: center; margin-top: 60px; color: #666; text-decoration: none; padding: 20px; border-top: 1px solid rgba(255,255,255,0.1); transition: color 0.3s ease; }
         .back-link:hover { color: var(--accent-color); }
 
         /* Responsive */
         @media (max-width: 900px) {
-            .split-layout { flex-direction: column; }
-            .faction-modules { grid-template-columns: 1fr; }
+            .split-layout { flex-direction: column-reverse; } /* Su mobile il testo va sopra, i bottoni sotto */
+            .split-nav-grid { flex: 1 1 100%; grid-template-columns: 1fr 1fr; }
             h1 { font-size: 2.2rem; }
+        }
+        @media (max-width: 500px) {
+            .split-nav-grid { grid-template-columns: 1fr; } /* Colonna singola su schermi molto piccoli */
         }
     </style>
 </head>
@@ -195,50 +163,50 @@
     </div>
 
     <div class="split-layout">
-        <div class="split-image">
-            <img src="../img/valkyrion_hero.jpg" alt="Valkyrion Knight">
+        
+        <!-- Blocco Sinistro: I 6 Spicchi Visuali -->
+        <div class="split-nav-grid">
+            <a href="valkyrion_lore.html" class="slice-btn">
+                <img src="../img/icon_lore.png" alt="Lore">
+                <span class="slice-label">Lore</span>
+            </a>
+            
+            <a href="valkyrion_culture.html" class="slice-btn">
+                <img src="../img/icon_culture.png" alt="Culture">
+                <span class="slice-label">Culture</span>
+            </a>
+            
+            <a href="valkyrion_leader.html" class="slice-btn">
+                <img src="../img/icon_leader.png" alt="Leader">
+                <span class="slice-label">Leader</span>
+            </a>
+            
+            <a href="valkyrion_roster.html" class="slice-btn">
+                <img src="../img/icon_units.png" alt="Units">
+                <span class="slice-label">Units</span>
+            </a>
+
+            <a href="valkyrion_spells.html" class="slice-btn">
+                <img src="../img/icon_spells.png" alt="Spells">
+                <span class="slice-label">Spells</span>
+            </a>
+
+            <a href="valkyrion_buildings.html" class="slice-btn">
+                <img src="../img/icon_buildings.png" alt="Buildings">
+                <span class="slice-label">Buildings</span>
+            </a>
         </div>
 
+        <!-- Blocco Destro: Testo e Lore Base -->
         <div class="split-text">
             <h2>The Imperial Core</h2>
-            <p>L'Impero Valkyrion è nato da un Fondatore che comprese come l'onore non possa precedere la ragione. Lottano per essere giusti, pur sapendo che il mondo non lo permetterà. La loro esistenza è un costante compromesso tra bussola morale e brutale sopravvivenza.</p>
+            <p>The Valkyrion Empire was born from a Founder who realized that honor cannot precede reason. They strive to be just, even fully knowing the world will not allow it. Their existence is a constant, necessary compromise between their moral compass and their brutal survival.</p>
             
+            <p>At the pinnacle of this civilization stands the <strong>Emperor</strong>, a demi-god figure who inherits the Will of the Founder and exercises absolute mastery over the soul. The Emperor does not merely rule; they act as the spiritual and neurological anchor for the entire Empire, binding the collective will into a singular, undeniable force.</p>
+
             <h2 class="tactics-title">Tactical Doctrine</h2>
-            <p>Sul campo di battaglia, l'Impero opera come un'unità indistruttibile. Le loro forze vantano un roster bilanciato, caratterizzato da un eccezionale supporto curativo e arti divine. Sono esperti impareggiabili nell'eradicazione di entità demoniache.</p>
+            <p>On the battlefield, the Empire operates as a cohesive, unbreakable unit. Their forces boast a highly balanced roster characterized by exceptional healing support and divine arts. By design and doctrine, they are unparalleled experts in the <strong>eradication of demonic entities</strong>, bringing the light of reason and the crushing weight of steel to the darkest corners of the world.</p>
         </div>
-    </div>
-
-    <div class="faction-modules">
-        
-        <a href="valkyrion_lore.html" class="module-panel">
-            <h3 class="module-title">Lore</h3>
-            <p class="module-desc">Cronache storiche, eventi cruciali e i segreti più oscuri della fondazione dell'Impero.</p>
-        </a>
-
-        <a href="valkyrion_culture.html" class="module-panel">
-            <h3 class="module-title">Culture</h3>
-            <p class="module-desc">Esplora la struttura sociale, i dogmi religiosi e la vita quotidiana dei cittadini imperiali.</p>
-        </a>
-
-        <a href="valkyrion_leader.html" class="module-panel">
-            <h3 class="module-title">Leader</h3>
-            <p class="module-desc">Analisi del profilo e delle abilità divine dell'Imperatore, l'ancora del popolo.</p>
-        </a>
-
-        <a href="valkyrion_roster.html" class="module-panel">
-            <h3 class="module-title">Units</h3>
-            <p class="module-desc">Rassegna della gerarchia militare, dalle reclute standard alle Entità d'Origine Tier 7.</p>
-        </a>
-
-        <a href="valkyrion_spells.html" class="module-panel">
-            <h3 class="module-title">Spells</h3>
-            <p class="module-desc">Consulta il grimorio delle arti sacre e della magia imperiale sanzionata dal Concilio.</p>
-        </a>
-
-        <a href="valkyrion_buildings.html" class="module-panel">
-            <h3 class="module-title">Buildings</h3>
-            <p class="module-desc">Gestione delle infrastrutture, generazione risorse e installazioni difensive imperiali.</p>
-        </a>
 
     </div>
 
