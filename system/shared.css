@@ -53,7 +53,7 @@ header {
     padding: 60px 20px 30px 20px;
     text-align: center;
     width: 100%;
-    max-width: 1100px;
+    max-width: 80%;
     position: relative;
 }
 
@@ -78,7 +78,7 @@ h1 {
 
 /* ── Main Container ─────────────────────────────────────────── */
 main {
-    max-width: 1100px;
+    max-width: 80%;
     padding: 40px 20px;
     width: 100%;
     position: relative;

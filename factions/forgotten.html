@@ -21,7 +21,6 @@
         /* -- Left: hero video panel -- */
         .hero-panel {
             position: relative;
-            flex: 0 0 clamp(180px, 28vw, 380px);
             height: 100%;
             overflow: hidden;
             z-index: 1;
@@ -58,6 +57,7 @@
             display: flex;
             flex-direction: column;
             overflow: hidden;
+            margin-left: 5%;
         }
 
         header {
@@ -265,7 +265,7 @@
                 background: linear-gradient(to bottom, transparent 60%, rgba(3, 8, 5, 0.95) 100%);
             }
             .hero-panel-border { display: none; }
-            .page-content { height: auto; overflow: visible; }
+            .page-content { height: auto; overflow: visible; margin-left: 5%;}
             main { flex: none; }
             .split-text { overflow: visible; }
         }
