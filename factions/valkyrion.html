@@ -27,9 +27,8 @@
         header { padding: 60px 20px 30px 20px; text-align: center; }
         h1 { letter-spacing: 8px; font-size: 3rem; text-transform: uppercase; margin: 0; text-shadow: 0 0 20px var(--accent-glow); }
         .tagline { color: var(--accent-color); letter-spacing: 2px; margin-top: 10px; font-size: 1.1rem; }
-        main { max-width: 1200px; margin: 0 auto; padding: 0 20px 80px 20px; }
+        main { max-width: 1300px; margin: 0 auto; padding: 0 20px 80px 20px; }
 
-        /* Citazione */
         .quote { 
             margin: 0 auto 50px auto; 
             background: rgba(15,15,15,0.5); 
@@ -42,83 +41,135 @@
         }
         .quote-author { display: block; margin-top: 10px; font-style: normal; font-weight: bold; color: var(--accent-color); }
 
-        /* Layout Principale Diviso */
+        /* Split Layout Globale */
         .split-layout { 
             display: flex; 
             gap: 40px; 
             align-items: stretch; 
+            min-height: 600px; /* Assicura spazio sufficiente per gli spicchi */
         }
 
-        /* Il "Rettangolo" dei 6 Spicchi */
-        .split-nav-grid {
-            flex: 0 0 45%;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-        }
-
-        .slice-btn {
-            position: relative;
+        /* -----------------------------------------------------
+           IL GROSSO RETTANGOLO A SPICCHI ANIMATI (Accordion)
+           ----------------------------------------------------- */
+        .campaign-selector {
+            flex: 0 0 55%; /* Occupa il 55% della larghezza */
             display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
+            flex-direction: row; /* Spicchi verticali affiancati */
             border: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 3px solid var(--accent-color);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
             border-radius: 4px;
-            text-decoration: none;
-            min-height: 140px; /* Altezza di ogni spicchio */
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            overflow: hidden; /* Mantiene l'immagine all'interno */
+            background: #000;
         }
 
-        .slice-btn img {
+        .mode-panel {
+            flex: 1; /* Larghezza iniziale uguale per tutti */
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            transition: flex 0.5s cubic-bezier(0.25, 0.8, 0.25, 1); /* Espansione fluida */
+            display: flex;
+            align-items: flex-end; /* Allinea il contenuto testuale in basso */
+            cursor: pointer;
+        }
+
+        .mode-panel:hover {
+            flex: 4; /* Si allarga prendendo lo spazio degli altri */
+        }
+
+        /* L'immagine di background che zooma */
+        .panel-bg {
             position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.6s ease;
             z-index: 1;
         }
+        .mode-panel:hover .panel-bg { transform: scale(1.1); }
 
-        /* Overlay scuro per leggere il testo */
-        .slice-btn::after {
+        /* Filtro scuro base e gradiente su hover */
+        .mode-panel::after {
             content: '';
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.8));
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.6);
             z-index: 2;
-            transition: background 0.3s ease;
+            transition: background 0.5s ease;
+        }
+        .mode-panel:hover::after {
+            background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);
         }
 
-        .slice-btn:hover img {
-            transform: scale(1.1); /* Effetto zoom dell'immagine */
-        }
-
-        .slice-btn:hover::after {
-            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(92, 156, 230, 0.6)); /* Viraggio colore fazione */
-        }
-
-        .slice-label {
-            position: relative;
+        /* Titolo ruotato visibile quando chiuso */
+        .vertical-title {
+            position: absolute;
             z-index: 3;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-90deg);
             color: #fff;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: bold;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             text-transform: uppercase;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.9);
-            transition: transform 0.3s ease;
+            white-space: nowrap;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        .mode-panel:hover .vertical-title { opacity: 0; } /* Scompare su hover */
+
+        /* Contenuto descrittivo nascosto di base */
+        .content-wrapper {
+            position: relative;
+            z-index: 4;
+            padding: 30px;
+            color: #fff;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s ease 0.1s;
+            width: 100%;
+            box-sizing: border-box;
+            pointer-events: none; /* Impedisce che interferisca col mouse */
+        }
+        .mode-panel:hover .content-wrapper {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        .slice-btn:hover .slice-label {
-            transform: translateY(-2px);
+        .mode-title {
+            margin: 0 0 10px 0;
+            font-size: 1.8rem;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            white-space: nowrap; /* Evita il wrap durante l'animazione */
         }
 
-        /* Testo a Destra */
+        .mode-desc {
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #ccc;
+            opacity: 0; /* Ritardo aggiuntivo per il testo descrittivo */
+            transition: opacity 0.3s ease 0.3s;
+            display: -webkit-box;
+            -webkit-line-clamp: 3; /* Tronca il testo se troppo lungo */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .mode-panel:hover .mode-desc { opacity: 1; }
+
+        /* -----------------------------------------------------
+           TESTO INFORMATIVO A DESTRA
+           ----------------------------------------------------- */
         .split-text {
             flex: 1;
             background: var(--panel-bg);
             backdrop-filter: blur(10px);
-            padding: 35px;
+            padding: 40px;
             border: 1px solid rgba(255,255,255,0.05);
             border-left: 3px solid var(--accent-color);
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
@@ -135,13 +186,13 @@
         .back-link:hover { color: var(--accent-color); }
 
         /* Responsive */
-        @media (max-width: 900px) {
-            .split-layout { flex-direction: column-reverse; } /* Su mobile il testo va sopra, i bottoni sotto */
-            .split-nav-grid { flex: 1 1 100%; grid-template-columns: 1fr 1fr; }
-            h1 { font-size: 2.2rem; }
+        @media (max-width: 1024px) {
+            .split-layout { flex-direction: column-reverse; min-height: auto; }
+            .campaign-selector { height: 500px; flex: auto; }
         }
-        @media (max-width: 500px) {
-            .split-nav-grid { grid-template-columns: 1fr; } /* Colonna singola su schermi molto piccoli */
+        @media (max-width: 600px) {
+            .campaign-selector { flex-direction: column; height: 800px; } /* Diventa orizzontale su mobile */
+            .vertical-title { transform: translate(-50%, -50%) rotate(0deg); }
         }
     </style>
 </head>
@@ -164,40 +215,66 @@
 
     <div class="split-layout">
         
-        <!-- Blocco Sinistro: I 6 Spicchi Visuali -->
-        <div class="split-nav-grid">
-            <a href="valkyrion_lore.html" class="slice-btn">
-                <img src="../img/icon_lore.png" alt="Lore">
-                <span class="slice-label">Lore</span>
+        <!-- BLOCCO SINISTRO: Il rettangolo con spicchi animati -->
+        <div class="campaign-selector">
+            
+            <a href="valkyrion_lore.html" class="mode-panel">
+                <div class="panel-bg" style="background-image: url('../img/icon_lore.png');"></div>
+                <span class="vertical-title">Lore</span>
+                <div class="content-wrapper">
+                    <h2 class="mode-title">Lore</h2>
+                    <p class="mode-desc">Chronicles and historical records.</p>
+                </div>
             </a>
             
-            <a href="valkyrion_culture.html" class="slice-btn">
-                <img src="../img/icon_culture.png" alt="Culture">
-                <span class="slice-label">Culture</span>
+            <a href="valkyrion_culture.html" class="mode-panel">
+                <div class="panel-bg" style="background-image: url('../img/icon_culture.png');"></div>
+                <span class="vertical-title">Culture</span>
+                <div class="content-wrapper">
+                    <h2 class="mode-title">Culture</h2>
+                    <p class="mode-desc">Societal structure and religion.</p>
+                </div>
             </a>
             
-            <a href="valkyrion_leader.html" class="slice-btn">
-                <img src="../img/icon_leader.png" alt="Leader">
-                <span class="slice-label">Leader</span>
+            <a href="valkyrion_leader.html" class="mode-panel">
+                <div class="panel-bg" style="background-image: url('../img/icon_leader.png');"></div>
+                <span class="vertical-title">Leader</span>
+                <div class="content-wrapper">
+                    <h2 class="mode-title">Leader</h2>
+                    <p class="mode-desc">Profile of the current Emperor.</p>
+                </div>
             </a>
             
-            <a href="valkyrion_roster.html" class="slice-btn">
-                <img src="../img/icon_units.png" alt="Units">
-                <span class="slice-label">Units</span>
+            <a href="valkyrion_roster.html" class="mode-panel">
+                <div class="panel-bg" style="background-image: url('../img/icon_units.png');"></div>
+                <span class="vertical-title">Units</span>
+                <div class="content-wrapper">
+                    <h2 class="mode-title">Units</h2>
+                    <p class="mode-desc">Military hierarchy and rosters.</p>
+                </div>
             </a>
 
-            <a href="valkyrion_spells.html" class="slice-btn">
-                <img src="../img/icon_spells.png" alt="Spells">
-                <span class="slice-label">Spells</span>
+            <a href="valkyrion_spells.html" class="mode-panel">
+                <div class="panel-bg" style="background-image: url('../img/icon_spells.png');"></div>
+                <span class="vertical-title">Spells</span>
+                <div class="content-wrapper">
+                    <h2 class="mode-title">Spells</h2>
+                    <p class="mode-desc">Grimoire of divine arts.</p>
+                </div>
             </a>
 
-            <a href="valkyrion_buildings.html" class="slice-btn">
-                <img src="../img/icon_buildings.png" alt="Buildings">
-                <span class="slice-label">Buildings</span>
+            <a href="valkyrion_buildings.html" class="mode-panel">
+                <div class="panel-bg" style="background-image: url('../img/icon_buildings.png');"></div>
+                <span class="vertical-title">Buildings</span>
+                <div class="content-wrapper">
+                    <h2 class="mode-title">Buildings</h2>
+                    <p class="mode-desc">Infrastructure and defense.</p>
+                </div>
             </a>
+
         </div>
 
-        <!-- Blocco Destro: Testo e Lore Base -->
+        <!-- BLOCCO DESTRO: Testo e Lore Base -->
         <div class="split-text">
             <h2>The Imperial Core</h2>
             <p>The Valkyrion Empire was born from a Founder who realized that honor cannot precede reason. They strive to be just, even fully knowing the world will not allow it. Their existence is a constant, necessary compromise between their moral compass and their brutal survival.</p>
