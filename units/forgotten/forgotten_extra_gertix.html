@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | GERTIX</title>
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "GERTIX",
+  "subtitle": "SOUL TRAIDER | TIER 4",
+  "accent": "#ffb300",
+  "bgImage": "../../img/forgotten/forgotten_bg.jpg",
+  "breadcrumbs": [
+    {
+      "label": "HOME",
+      "href": "../../index.html"
+    },
+    {
+      "label": "FACTIONS",
+      "href": "../../factions/index.html"
+    },
+    {
+      "label": "THE FORGOTTEN",
+      "href": "../../factions/forgotten.html"
+    },
+    {
+      "label": "AMBER SENTINELS",
+      "href": "forgotten_extra.html"
+    },
+    {
+      "label": "GERTIX"
+    }
+  ],
+  "combat": "../../img/forgotten/extra/forgotten_extra_gertix_combat.jpg",
+  "bio": {
+    "title": "BIOGRAPHY",
+    "paragraphs": [
+      "Gertix is a cunning and elusive merchant of the macabre, operating in the shadows where gold holds no value. He deals in the most precious currency of all: life essence. Charismatic but ruthlessly pragmatic, Gertix uses his dark mercantile magic to drain his foes and empower his allies, always ensuring he gets the better end of the bargain."
+    ]
+  },
+  "stats": {
+    "hp": 900,
+    "atk": 80,
+    "ini": 50,
+    "dodge": "10"
+  },
+  "skills": [
+    {
+      "type": "base",
+      "name": "FAIR TRADE",
+      "icon": "../../img/forgotten/skills/forgotten_skill_fair_trade.png",
+      "desc": "He immediately restores his own HP equal to <b data-path-to-node=\"7,0,1,0,0\" data-index-in-node=\"166\">30%</b> of the damage dealt."
+    },
+    {
+      "type": "active",
+      "name": "CONTRACT SEALED",
+      "icon": "../../img/forgotten/skills/forgotten_skill_contract_sealed.png",
+      "desc": "Deals heavy area-of-effect magical damage to all enemies and inflicts <i>Stunning&nbsp;</i>for <b>2 turn</b>"
+    },
+    {
+      "type": "passive",
+      "name": "SOUL MARKET",
+      "icon": "../../img/forgotten/skills/forgotten_skill_soul_market.png",
+      "desc": "Every time an enemy is defeated, Gertix collects a \"Soul Fragment.\" Each fragment increases his Magical ATK by <b data-path-to-node=\"7,2,1,0,0\" data-index-in-node=\"169\">3%</b> and his INI by <b data-path-to-node=\"7,2,1,0,0\" data-index-in-node=\"187\">5%</b> for the remainder of the battle (stacks up to 10 times)"
+    }
+  ],
+  "gallery": [
+    "../../img/forgotten/extra/forgotten_extra_gertix_portrait.jpg"
+  ],
+  "backLink": {
+    "href": "forgotten_extra.html",
+    "label": "Return to Others"
+  }
+}
+</script>
+
+<script src="../../system/unit-renderer.js"></script>
+</body>
+</html>
