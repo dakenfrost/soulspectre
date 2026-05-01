@@ -1,190 +1,19 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SOULSPECTRE | Impero Valkyrion</title>
+    <title>SOULSPECTRE | Valkyrion Empire</title>
     <link rel="stylesheet" href="../system/shared.css">
+    <link rel="stylesheet" href="../system/faction.css">
     <style>
         :root {
             --accent-color: #5c9ce6;
             --accent-glow:  rgba(92, 156, 230, 0.5);
-            --panel-bg:     rgba(15, 15, 15, 0.8);
-            --shard-angle:  -6deg; /* L'angolazione del taglio diagonale */
+            --panel-bg:     rgba(10, 12, 20, 0.8);
         }
-
-        #bg-image { 
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            background-image: url('../img/valkyrion_bg.jpeg'); 
-            background-size: cover; background-position: center; z-index: -2;
-        }
-
-        #overlay { 
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            background: linear-gradient(to bottom, rgba(10, 10, 12, 0.85), rgba(5, 5, 5, 0.95)); 
-            z-index: -1;
-        }
-
-        header { padding: 60px 20px 30px 20px; text-align: center; }
-        h1 { letter-spacing: 8px; font-size: 3rem; text-transform: uppercase; margin: 0; text-shadow: 0 0 20px var(--accent-glow); }
-        .tagline { color: var(--accent-color); letter-spacing: 2px; margin-top: 10px; font-size: 1.1rem; }
-        main { max-width: 1300px; margin: 0 auto; padding: 0 20px 80px 20px; }
-
-        .quote { 
-            margin: 0 auto 50px auto; 
-            background: rgba(15,15,15,0.5); 
-            backdrop-filter: blur(8px); 
-            padding: 25px; 
-            border: 1px solid rgba(255,255,255,0.05);
-            font-style: italic; color: #aaa; text-align: center;
-            box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
-            max-width: 900px;
-        }
-        .quote-author { display: block; margin-top: 10px; font-style: normal; font-weight: bold; color: var(--accent-color); }
-
-        .split-layout { 
-            display: flex; 
-            gap: 40px; 
-            align-items: stretch; 
-            min-height: 700px; 
-        }
-
-        /* -----------------------------------------------------
-           IL RETTANGOLO DEGLI SHARDS (Diagonal Accordion)
-           ----------------------------------------------------- */
-        .campaign-selector {
-            flex: 0 0 50%;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            border-radius: 8px;
-            background: #050505;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.1);
-        }
-
-        .mode-panel {
-            flex: 1;
-            position: relative;
-            transform: skewY(var(--shard-angle)); /* Inclina l'intero blocco */
-            margin: -25px 0; /* Sovrappone i blocchi per nascondere i vuoti */
-            border-top: 3px solid #fff; /* La riga bianca luminosa del taglio */
-            box-shadow: 0 -5px 15px rgba(255,255,255,0.2);
-            transition: flex 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-            cursor: pointer;
-            overflow: hidden;
-            background: #111;
-            z-index: 1;
-        }
-
-        /* Correzioni per il primo e ultimo elemento per non avere bordi tagliati malamente */
-        .mode-panel:first-child { margin-top: -50px; border-top: none; box-shadow: none; }
-        .mode-panel:last-child { margin-bottom: -50px; }
-
-        .mode-panel:hover {
-            flex: 3; /* Espansione all'hover */
-            z-index: 10; /* Porta in primo piano per mostrare bene il bordo superiore */
-        }
-
-        /* -----------------------------------------------------
-           CONTENUTO INTERNO (Distorsione Inversa per raddrizzare)
-           ----------------------------------------------------- */
-        .panel-bg {
-            position: absolute;
-            /* Extra spazio top/bottom per non far vedere buchi neri durante la distorsione */
-            top: -100px; left: 0; right: 0; bottom: -100px;
-            transform: skewY(calc(var(--shard-angle) * -1)) scale(1.1); 
-            background-size: cover;
-            background-position: center;
-            transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
-            z-index: 1;
-        }
-        .mode-panel:hover .panel-bg {
-            transform: skewY(calc(var(--shard-angle) * -1)) scale(1.2); /* Effetto zoom come richiesto */
-        }
-
-        /* Filtro scuro che si dirada all'hover */
-        .panel-overlay {
-            position: absolute;
-            top: -100px; left: 0; right: 0; bottom: -100px;
-            transform: skewY(calc(var(--shard-angle) * -1));
-            background: rgba(0,0,0,0.7);
-            z-index: 2;
-            transition: background 0.6s ease;
-        }
-        .mode-panel:hover .panel-overlay {
-            background: linear-gradient(to right, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.3) 100%);
-        }
-
-        /* Contenitore Testo Raddrizzato */
-        .content-wrapper {
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            transform: skewY(calc(var(--shard-angle) * -1));
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 0 50px;
-            z-index: 5;
-            pointer-events: none; /* Impedisce al testo di interferire con l'hover del pannello */
-        }
-
-        .mode-title {
-            margin: 0;
-            font-size: 2.2rem;
-            color: var(--accent-color);
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.9);
-            transition: transform 0.5s ease;
-        }
-        .mode-panel:hover .mode-title {
-            transform: translateX(10px); /* Leggero slittamento in avanti */
-            color: #fff;
-        }
-
-        .mode-desc {
-            margin: 10px 0 0 0;
-            font-size: 1.05rem;
-            line-height: 1.5;
-            color: #ddd;
-            opacity: 0;
-            transform: translateX(20px);
-            transition: all 0.5s ease 0.1s; /* Ritardo per far apparire prima lo sfondo */
-            max-width: 80%;
-        }
-        .mode-panel:hover .mode-desc {
-            opacity: 1;
-            transform: translateX(10px);
-        }
-
-        /* -----------------------------------------------------
-           TESTO A DESTRA (Invariato)
-           ----------------------------------------------------- */
-        .split-text {
-            flex: 1;
-            background: var(--panel-bg);
-            backdrop-filter: blur(10px);
-            padding: 40px;
-            border: 1px solid rgba(255,255,255,0.05);
-            border-left: 3px solid var(--accent-color);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .split-text h2 { color: #fff; margin-top: 0; font-size: 1.6rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; letter-spacing: 1px; text-transform: uppercase; }
-        .split-text p { color: #ccc; font-size: 1.05rem; line-height: 1.8; margin-bottom: 20px; }
-        .tactics-title { color: var(--accent-color) !important; margin-top: 30px !important; }
-
-        .back-link { display: block; text-align: center; margin-top: 60px; color: #666; text-decoration: none; padding: 20px; border-top: 1px solid rgba(255,255,255,0.1); transition: color 0.3s ease; }
-        .back-link:hover { color: var(--accent-color); }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .split-layout { flex-direction: column-reverse; min-height: auto; }
-            .campaign-selector { height: 600px; flex: auto; }
-        }
+        #bg-image { background-image: url('../img/valkyrion_bg.jpeg'); }
+        #overlay  { background: linear-gradient(to bottom, rgba(8, 10, 18, 0.85), rgba(4, 5, 10, 0.95)); }
     </style>
 </head>
 <body>
@@ -193,93 +22,90 @@
 <div id="overlay"></div>
 <global-navigation base="../"></global-navigation>
 
-<header>
-    <h1>Valkyrion Empire</h1>
-    <div class="tagline">Disillusioned knights fighting for what they believe is right.</div>
-</header>
+<!-- Left: hero image panel -->
+<div class="hero-panel">
+    <img src="../img/valkyrion_hero.jpg" alt="Valkyrion Empire">
+    <div class="hero-panel-border"></div>
+</div>
 
-<main>
-    <div class="quote">
-        "Justice, might.—It is right that what is just should be obeyed; it is necessary that what is strongest should be obeyed. Justice without might is helpless; might without justice is tyrannical."
-        <span class="quote-author">— Blaise Pascal, Pensées</span>
-    </div>
+<!-- Right: all page content -->
+<div class="page-content">
+    <header>
+        <h1>Valkyrion Empire</h1>
+        <div class="tagline">Disillusioned knights fighting for what they believe is right.</div>
+    </header>
 
-    <div class="split-layout">
-        
-        <!-- BLOCCO SINISTRO: Il rettangolo con spicchi animati (Diagonali) -->
-        <div class="campaign-selector">
-            
-            <a href="valkyrion_lore.html" class="mode-panel">
-                <div class="panel-bg" style="background-image: url('../img/icon_lore.png');"></div>
-                <div class="panel-overlay"></div>
-                <div class="content-wrapper">
-                    <h2 class="mode-title">Lore</h2>
-                    <p class="mode-desc">Chronicles, historical records, and the deepest secrets of the Imperial foundation.</p>
-                </div>
-            </a>
-            
-            <a href="valkyrion_culture.html" class="mode-panel">
-                <div class="panel-bg" style="background-image: url('../img/icon_culture.png');"></div>
-                <div class="panel-overlay"></div>
-                <div class="content-wrapper">
-                    <h2 class="mode-title">Culture</h2>
-                    <p class="mode-desc">Study the societal structure, religious dogmas, and the daily life of the citizens.</p>
-                </div>
-            </a>
-            
-            <a href="valkyrion_leader.html" class="mode-panel">
-                <div class="panel-bg" style="background-image: url('../img/icon_leader.png');"></div>
-                <div class="panel-overlay"></div>
-                <div class="content-wrapper">
-                    <h2 class="mode-title">Leader</h2>
-                    <p class="mode-desc">Analyze the profile, stats, and ultimate divine abilities of the current Emperor.</p>
-                </div>
-            </a>
-            
-            <a href="valkyrion_roster.html" class="mode-panel">
-                <div class="panel-bg" style="background-image: url('../img/icon_units.png');"></div>
-                <div class="panel-overlay"></div>
-                <div class="content-wrapper">
-                    <h2 class="mode-title">Units</h2>
-                    <p class="mode-desc">Review the military hierarchy, from standard recruits to Tier 7 Origin Entities.</p>
-                </div>
-            </a>
-
-            <a href="valkyrion_spells.html" class="mode-panel">
-                <div class="panel-bg" style="background-image: url('../img/icon_spells.png');"></div>
-                <div class="panel-overlay"></div>
-                <div class="content-wrapper">
-                    <h2 class="mode-title">Spells</h2>
-                    <p class="mode-desc">Consult the grimoire of divine arts and sanctioned imperial magic.</p>
-                </div>
-            </a>
-
-            <a href="valkyrion_buildings.html" class="mode-panel">
-                <div class="panel-bg" style="background-image: url('../img/icon_buildings.png');"></div>
-                <div class="panel-overlay"></div>
-                <div class="content-wrapper">
-                    <h2 class="mode-title">Buildings</h2>
-                    <p class="mode-desc">Examine infrastructure, resource generation, and defensive installations.</p>
-                </div>
-            </a>
-
+    <main>
+        <div class="quote">
+            "Justice, might.—It is right that what is just should be obeyed; it is necessary that what is strongest should be obeyed. Justice without might is helpless; might without justice is tyrannical."
+            <span class="quote-author">— Blaise Pascal, Pensées</span>
         </div>
 
-        <!-- BLOCCO DESTRO: Testo -->
         <div class="split-text">
             <h2>The Imperial Core</h2>
             <p>The Valkyrion Empire was born from a Founder who realized that honor cannot precede reason. They strive to be just, even fully knowing the world will not allow it. Their existence is a constant, necessary compromise between their moral compass and their brutal survival.</p>
-            
+
             <p>At the pinnacle of this civilization stands the <strong>Emperor</strong>, a demi-god figure who inherits the Will of the Founder and exercises absolute mastery over the soul. The Emperor does not merely rule; they act as the spiritual and neurological anchor for the entire Empire, binding the collective will into a singular, undeniable force.</p>
 
             <h2 class="tactics-title">Tactical Doctrine</h2>
             <p>On the battlefield, the Empire operates as a cohesive, unbreakable unit. Their forces boast a highly balanced roster characterized by exceptional healing support and divine arts. By design and doctrine, they are unparalleled experts in the <strong>eradication of demonic entities</strong>, bringing the light of reason and the crushing weight of steel to the darkest corners of the world.</p>
         </div>
 
-    </div>
+        <div class="p5-menu">
+            <div class="p5-menu-header">
+                <span class="p5-menu-line"></span>
+                <span class="p5-menu-title">Explore the Empire</span>
+                <span class="p5-menu-line"></span>
+            </div>
+            <nav class="p5-nav-grid">
+                <a href="valkyrion_lore.html" class="p5-card" style="--c:#b0bec5;--cs:rgba(176,190,197,0.6)">
+                    <div class="p5-card-inner">
+                        <img src="../img/icon_lore.png" class="p5-card-icon" alt="">
+                        <span class="p5-card-num">01</span>
+                        <span class="p5-card-label">Lore</span>
+                    </div>
+                </a>
+                <a href="valkyrion_culture.html" class="p5-card" style="--c:#5c9ce6;--cs:rgba(92,156,230,0.6)">
+                    <div class="p5-card-inner">
+                        <img src="../img/icon_culture.png" class="p5-card-icon" alt="">
+                        <span class="p5-card-num">02</span>
+                        <span class="p5-card-label">Culture</span>
+                    </div>
+                </a>
+                <a href="valkyrion_leader.html" class="p5-card" style="--c:#d4af37;--cs:rgba(212,175,55,0.6)">
+                    <div class="p5-card-inner">
+                        <img src="../img/icon_leader.png" class="p5-card-icon" alt="">
+                        <span class="p5-card-num">03</span>
+                        <span class="p5-card-label">Leader</span>
+                    </div>
+                </a>
+                <a href="valkyrion_roster.html" class="p5-card" style="--c:#ef5350;--cs:rgba(239,83,80,0.6)">
+                    <div class="p5-card-inner">
+                        <img src="../img/icon_units.png" class="p5-card-icon" alt="">
+                        <span class="p5-card-num">04</span>
+                        <span class="p5-card-label">Units</span>
+                    </div>
+                </a>
+                <a href="valkyrion_spells.html" class="p5-card" style="--c:#ab47bc;--cs:rgba(171,71,188,0.6)">
+                    <div class="p5-card-inner">
+                        <img src="../img/icon_spells.png" class="p5-card-icon" alt="">
+                        <span class="p5-card-num">05</span>
+                        <span class="p5-card-label">Spells</span>
+                    </div>
+                </a>
+                <a href="valkyrion_buildings.html" class="p5-card" style="--c:#f57c00;--cs:rgba(245,124,0,0.6)">
+                    <div class="p5-card-inner">
+                        <img src="../img/icon_buildings.png" class="p5-card-icon" alt="">
+                        <span class="p5-card-num">06</span>
+                        <span class="p5-card-label">Buildings</span>
+                    </div>
+                </a>
+            </nav>
+        </div>
 
-    <a href="../index.html" class="back-link">← Return to the Central Archive</a>
-</main>
+        <a href="../index.html" class="back-link">&larr; Return to the Central Archive</a>
+    </main>
+</div>
 
 <script src="../system/navigation.js"></script>
 </body>
