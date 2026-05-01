@@ -13,20 +13,59 @@
         }
         #bg-image { background-image: url('../img/forgotten/forgotten_bg.jpg'); }
         #overlay  { background: linear-gradient(to bottom, rgba(5, 12, 8, 0.85), rgba(3, 8, 5, 0.95)); }
-        h1 { letter-spacing: 8px; font-size: 3rem; text-shadow: 0 0 20px var(--accent-glow); }
-        main { padding: 0 20px 50px 20px; }
-        /* Faction overview quote (wider, different bg) */
+
+        /* ── Fit entire page in one viewport ── */
+        html, body { height: 100dvh; overflow: hidden; }
+        body { display: flex; flex-direction: column; }
+
+        header {
+            padding: calc(60px + clamp(4px, 1vh, 18px)) 20px clamp(4px, 1.2vh, 16px);
+            flex-shrink: 0;
+        }
+        h1 {
+            letter-spacing: clamp(3px, 1vw, 8px);
+            font-size: clamp(1.4rem, 3.2vw, 3rem);
+            text-shadow: 0 0 20px var(--accent-glow);
+        }
+        .tagline { font-size: clamp(0.65rem, 1.1vw, 1.1rem); margin-top: 4px; }
+
+        main {
+            padding: 0 clamp(10px, 2vw, 20px) clamp(6px, 1vh, 16px);
+            flex: 1;
+            min-height: 0;
+            display: flex;
+            flex-direction: column;
+            gap: clamp(6px, 1.2vh, 20px);
+        }
+
+        /* Faction overview quote */
         .quote {
-            margin: 0 auto 50px auto;
+            margin: 0 auto;
+            flex-shrink: 0;
             background: rgba(10, 18, 12, 0.7);
             backdrop-filter: blur(8px);
-            padding: 25px;
+            padding: clamp(8px, 1vh, 18px) clamp(12px, 1.5vw, 25px);
             box-shadow: inset 0 0 20px rgba(0,0,0,0.5), 0 5px 15px rgba(0,0,0,0.5);
             max-width: 900px;
+            width: 100%;
+            font-size: clamp(0.72rem, 1.1vw, 1rem);
+            line-height: 1.5;
         }
+
         /* Unique overview split layout */
-        .split-layout { display: flex; gap: 40px; align-items: flex-start; }
-        .split-image { flex: 0 0 30%; align-self: flex-start; aspect-ratio: 9 / 16; }
+        .split-layout {
+            display: flex;
+            gap: clamp(10px, 2vw, 40px);
+            align-items: stretch;
+            flex: 1;
+            min-height: 0;
+        }
+        .split-image {
+            flex: 0 0 auto;
+            width: auto;
+            height: 100%;
+            aspect-ratio: 9 / 16;
+        }
         .split-image video {
             width: 100%; height: 100%; object-fit: cover;
             border: 1px solid rgba(255,255,255,0.1);
@@ -36,21 +75,179 @@
         }
         .split-text {
             flex: 1;
+            min-height: 0;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent-color) transparent;
             background: rgba(10, 18, 12, 0.8);
             backdrop-filter: blur(10px);
-            padding: 35px;
+            padding: clamp(12px, 2vh, 35px) clamp(12px, 2vw, 35px);
             border: 1px solid rgba(255,255,255,0.05);
             border-left: 2px solid var(--accent-color);
             display: flex; flex-direction: column;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
-        .split-text h2 { color: #fff; margin-top: 0; font-size: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; letter-spacing: 1px; }
-        .split-text h2.tactics-title { margin-top: 35px; color: var(--accent-color); }
-        .split-text p { color: #ccc; font-size: 1.05rem; line-height: 1.8; margin-bottom: 20px; text-align: left; }
+        .split-text::-webkit-scrollbar { width: 4px; }
+        .split-text::-webkit-scrollbar-track { background: transparent; }
+        .split-text::-webkit-scrollbar-thumb { background: var(--accent-color); border-radius: 2px; opacity: 0.5; }
+        .split-text h2 {
+            color: #fff; margin-top: 0;
+            font-size: clamp(0.85rem, 1.4vw, 1.5rem);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: clamp(4px, 0.6vh, 10px);
+            margin-bottom: clamp(6px, 1vh, 16px);
+            letter-spacing: 1px;
+            flex-shrink: 0;
+        }
+        .split-text h2.tactics-title { margin-top: clamp(10px, 1.8vh, 35px); color: var(--accent-color); }
+        .split-text p {
+            color: #ccc;
+            font-size: clamp(0.72rem, 1.05vw, 1.05rem);
+            line-height: clamp(1.4, 1.6, 1.8);
+            margin-bottom: clamp(6px, 1vh, 20px);
+            text-align: left;
+            flex-shrink: 0;
+        }
+
+        .back-link {
+            display: block;
+            flex-shrink: 0;
+            text-align: center;
+            color: #444;
+            text-decoration: none;
+            font-size: clamp(0.6rem, 0.85vw, 0.85rem);
+            letter-spacing: 1px;
+            padding: clamp(3px, 0.5vh, 8px) 20px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            transition: color 0.3s;
+        }
+        .back-link:hover { color: var(--accent-color); text-shadow: 0 0 10px var(--accent-glow); }
         @media (max-width: 900px) {
-            .split-layout { flex-direction: column; }
-            .split-image  { flex: 1 1 100%; width: 60%; margin: 0 auto; }
-            .split-text   { border-left: none; border-top: 2px solid var(--accent-color); }
+            html, body { height: auto; overflow: auto; }
+            main { flex: none; }
+            .split-layout { flex-direction: column; align-items: center; }
+            .split-image  { height: auto; width: 60%; aspect-ratio: 9/16; }
+            .split-text   { border-left: none; border-top: 2px solid var(--accent-color); overflow: visible; }
+        }
+
+        /* ── Persona 5-style Navigation Menu ── */
+        .p5-menu {
+            margin: 0 auto;
+            max-width: 960px;
+            width: 100%;
+            flex-shrink: 0;
+        }
+        .p5-menu-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 18px;
+        }
+        .p5-menu-line { flex: 1; height: 1px; }
+        .p5-menu-line:first-child { background: linear-gradient(to right, transparent, rgba(255,255,255,0.12)); }
+        .p5-menu-line:last-child  { background: linear-gradient(to left,  transparent, rgba(255,255,255,0.12)); }
+        .p5-menu-title {
+            font-size: 0.68rem;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: #666;
+            white-space: nowrap;
+        }
+        .p5-nav-grid {
+            display: flex;
+            height: clamp(160px, 26vw, 320px);
+            overflow: hidden;
+            gap: 2px;
+        }
+        .p5-card {
+            position: relative;
+            flex: 1;
+            min-width: 0;
+            overflow: hidden;
+            text-decoration: none;
+            transform: skewX(-8deg);
+            transition: flex 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+            background: rgba(0, 0, 0, 0.82);
+            border-top: 2px solid var(--c);
+        }
+        .p5-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--c);
+            opacity: 0.07;
+            transition: opacity 0.35s;
+            pointer-events: none;
+        }
+        .p5-card:hover { flex: 3; }
+        .p5-card:hover::before { opacity: 0.22; }
+        .p5-card-inner {
+            position: relative;
+            height: 100%;
+            transform: skewX(8deg);
+            overflow: hidden;
+        }
+        .p5-card-icon {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(0.6) brightness(0.45);
+            transition: filter 0.4s, transform 0.5s;
+        }
+        .p5-card:hover .p5-card-icon {
+            filter: grayscale(0) brightness(0.75) saturate(1.3);
+            transform: scale(1.06);
+        }
+        .p5-card-num {
+            position: absolute;
+            top: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.55rem;
+            font-weight: 900;
+            color: var(--c);
+            letter-spacing: 2px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            line-height: 1;
+            z-index: 2;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.9);
+        }
+        .p5-card:hover .p5-card-num { opacity: 1; }
+        .p5-card-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 28px 4px 10px;
+            font-size: clamp(0.5rem, 1.2vw, 0.75rem);
+            font-weight: 900;
+            font-style: italic;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #fff;
+            text-align: center;
+            white-space: nowrap;
+            background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.3s, letter-spacing 0.35s, text-shadow 0.3s;
+            z-index: 2;
+        }
+        .p5-card:hover .p5-card-label {
+            opacity: 1;
+            letter-spacing: clamp(2px, 0.5vw, 5px);
+            text-shadow: 0 0 14px var(--cs);
+        }
+        @media (max-width: 700px) {
+            .p5-card { transform: skewX(-4deg); }
+            .p5-card-inner { transform: skewX(4deg); }
+        }
+        @media (max-width: 480px) {
+            .p5-card { transform: none; }
+            .p5-card-inner { transform: none; }
+            .p5-nav-grid { gap: 1px; }
         }
     </style>
 </head>
@@ -86,35 +283,56 @@
 
     </div>
 
-    <div class="nav-section">
-        <div class="nav-section-title">Explore the Empire</div>
-        <div class="action-buttons">
-            <a href="forgotten_lore.html" class="btn-nav">
-                <img src="../img/forgotten/icon_lore.png" alt="" class="btn-bg">
-                <span class="btn-label">Lore</span>
-            </a>
-            <a href="forgotten_culture.html" class="btn-nav">
-                <img src="../img/forgotten/icon_culture.png" alt="" class="btn-bg">
-                <span class="btn-label">Culture</span>
-            </a>
-            <a href="forgotten_leader.html" class="btn-nav">
-                <img src="../img/icon_leader.png" alt="" class="btn-bg">
-                <span class="btn-label">Leader</span>
-            </a>
-            <a href="forgotten_roster.html" class="btn-nav">
-                <img src="../img/forgotten/icon_units.png" alt="" class="btn-bg">
-                <span class="btn-label">Units</span>
-            </a>
-            <a href="forgotten_spells.html" class="btn-nav">
-                <img src="../img/forgotten/icon_spells.png" alt="" class="btn-bg">
-                <span class="btn-label">Spells</span>
-            </a>
-            <a href="forgotten_buildings.html" class="btn-nav">
-                <img src="../img/forgotten/icon_buildings.png" alt="" class="btn-bg">
-                <span class="btn-label">Buildings</span>
-            </a>
+    <div class="p5-menu">
+        <div class="p5-menu-header">
+            <span class="p5-menu-line"></span>
+            <span class="p5-menu-title">Explore the Empire</span>
+            <span class="p5-menu-line"></span>
         </div>
-
+        <nav class="p5-nav-grid">
+            <a href="forgotten_lore.html" class="p5-card" style="--c:#b0bec5;--cs:rgba(176,190,197,0.6)">
+                <div class="p5-card-inner">
+                    <img src="../img/forgotten/icon_lore.png" class="p5-card-icon" alt="">
+                    <span class="p5-card-num">01</span>
+                    <span class="p5-card-label">Lore</span>
+                </div>
+            </a>
+            <a href="forgotten_culture.html" class="p5-card" style="--c:#4db6ac;--cs:rgba(77,182,172,0.6)">
+                <div class="p5-card-inner">
+                    <img src="../img/forgotten/icon_culture.png" class="p5-card-icon" alt="">
+                    <span class="p5-card-num">02</span>
+                    <span class="p5-card-label">Culture</span>
+                </div>
+            </a>
+            <a href="forgotten_leader.html" class="p5-card" style="--c:#d4af37;--cs:rgba(212,175,55,0.6)">
+                <div class="p5-card-inner">
+                    <img src="../img/icon_leader.png" class="p5-card-icon" alt="">
+                    <span class="p5-card-num">03</span>
+                    <span class="p5-card-label">Leader</span>
+                </div>
+            </a>
+            <a href="forgotten_roster.html" class="p5-card" style="--c:#ef5350;--cs:rgba(239,83,80,0.6)">
+                <div class="p5-card-inner">
+                    <img src="../img/forgotten/icon_units.png" class="p5-card-icon" alt="">
+                    <span class="p5-card-num">04</span>
+                    <span class="p5-card-label">Units</span>
+                </div>
+            </a>
+            <a href="forgotten_spells.html" class="p5-card" style="--c:#ab47bc;--cs:rgba(171,71,188,0.6)">
+                <div class="p5-card-inner">
+                    <img src="../img/forgotten/icon_spells.png" class="p5-card-icon" alt="">
+                    <span class="p5-card-num">05</span>
+                    <span class="p5-card-label">Spells</span>
+                </div>
+            </a>
+            <a href="forgotten_buildings.html" class="p5-card" style="--c:#f57c00;--cs:rgba(245,124,0,0.6)">
+                <div class="p5-card-inner">
+                    <img src="../img/forgotten/icon_buildings.png" class="p5-card-icon" alt="">
+                    <span class="p5-card-num">06</span>
+                    <span class="p5-card-label">Buildings</span>
+                </div>
+            </a>
+        </nav>
     </div>
 
     <a href="../index.html" class="back-link">← Return to the Central Archive</a>
