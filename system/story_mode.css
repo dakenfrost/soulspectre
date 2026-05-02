@@ -172,7 +172,7 @@ h1 {
 }
 
 /* --- FACTION SPECIFICS --- */
-.valkyrion .shard-bg { background-image: url('../img/banners/banner_valkyrion.png'); }
+.valkyrion .shard-bg { background-image: url('../img/banners/banner_story_valkyrion.png'); }
 .valkyrion:hover { box-shadow: inset 0 0 100px var(--valk-color); }
 .valkyrion:hover .faction-name { color: var(--valk-color); text-shadow: 0 0 20px var(--valk-color); }
 .valkyrion:hover .engage-btn { background: var(--valk-color); border-color: var(--valk-color); }
