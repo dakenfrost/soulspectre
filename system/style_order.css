@@ -16,13 +16,13 @@
     --panel-bg:          rgba(10,18,12,0.70);
     --tier-officer:      #ffd700;
     --tier-officer-glow: rgba(255,215,0,0.5);
-    --tier-0:            #555;
-    --tier-1:            #e0e0e0;
-    --tier-2:            #4dd0e1;
-    --tier-3:            #81c784;
-    --tier-4:            #ffb300;
+    --tier-0:            #555555;
+    --tier-1:            #b0bec5;
+    --tier-2:            #81c784;
+    --tier-3:            #64b5f6;
+    --tier-4:            #ba68c8;
     --tier-4-glow:       rgba(255,179,0,0.4);
-    --tier-5:            #ce93d8;
+    --tier-5:            #ffb300;
     --tier-5-glow:       rgba(206,147,216,0.5);
 }
 
