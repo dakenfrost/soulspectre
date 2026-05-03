@@ -29,24 +29,38 @@
         
         main { max-width: 1300px; width: 100%; padding: 0 20px 60px; margin: 0 auto; }
 
-        /* ─── GRIGLIA IBRIDA A 3 COLONNE ─── */
+        /* ─── IL MONOLITO IBRIDO ─── */
         .hybrid-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+            gap: 0; /* Gap azzerato per unire i blocchi */
             width: 100%;
-            height: 600px; /* Altezza massiccia per far respirare le immagini */
+            height: 600px; 
             margin: 40px auto;
+            
+            /* Stili globali applicati al contenitore padre */
+            background: var(--entry-bg);
+            border-radius: 6px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.9);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 3px solid var(--accent-color);
+            overflow: hidden; /* Maschera i bordi taglienti esterni */
         }
 
-        /* Il contenitore rettangolare di ogni colonna */
+        /* Le singole colonne ora sono solo partizioni logiche */
         .h-col {
             position: relative;
-            background: var(--entry-bg);
-            border-bottom: 3px solid var(--accent-color);
-            border-radius: 4px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-            overflow: hidden;
+            /* Una linea impercettibile per dividere visivamente i settori verticali */
+            border-right: 1px solid rgba(255,255,255,0.08); 
+            transition: z-index 0.3s step-end;
+        }
+        .h-col:last-child {
+            border-right: none;
+        }
+
+        /* Garantisce che la colonna in uso scavalchi le altre durante lo zoom */
+        .h-col:hover {
+            z-index: 10;
         }
 
         /* La singola metà (Triangolo) */
@@ -55,19 +69,15 @@
             top: 0; left: 0; width: 100%; height: 100%;
             display: block;
             text-decoration: none;
-            overflow: hidden;
-            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), z-index 0.4s;
-            z-index: 1;
             background: #050505;
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            z-index: 1;
+            transform-origin: center center;
         }
 
-        /* 
-           Forme Geometriche Assolute 
-           TL = Top Left | BR = Bottom Right | TR = Top Right | BL = Bottom Left
-        */
+        /* Forme Geometriche Assolute */
         .clip-tl { clip-path: polygon(0 0, 100% 0, 0 100%); }
         .clip-br { clip-path: polygon(100% 0, 100% 100%, 0 100%); }
-        
         .clip-tr { clip-path: polygon(0 0, 100% 0, 100% 100%); }
         .clip-bl { clip-path: polygon(0 0, 100% 100%, 0 100%); }
 
@@ -88,17 +98,17 @@
             z-index: 2;
         }
 
-        /* Effetto Zoom e Sovrapposizione al passaggio del mouse */
+        /* Effetto Zoom massiccio che invade le altre sezioni */
         .shard-half:not(.locked):hover {
-            transform: scale(1.03); /* Il triangolo esce dai suoi bordi e copre il gemello */
-            z-index: 10;
+            transform: scale(1.05); 
+            z-index: 20; /* Scavalca fisicamente le altre clip-path */
         }
         .shard-half:not(.locked):hover .h-bg {
             opacity: 0.9;
             transform: scale(1.08);
         }
 
-        /* Posizionamento Testi nel Baricentro del triangolo */
+        /* Posizionamento Testi */
         .h-content {
             position: absolute;
             display: flex;
@@ -106,13 +116,12 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            width: 60%; /* Spazio ampio per i testi */
+            width: 60%; 
             transform: translate(-50%, -50%);
             z-index: 5;
             pointer-events: none;
         }
 
-        /* Ancoraggio preciso nei punti più larghi di ogni forma */
         .clip-tl .h-content { top: 28%; left: 28%; }
         .clip-br .h-content { top: 72%; left: 72%; }
         .clip-tr .h-content { top: 28%; left: 72%; }
@@ -156,8 +165,24 @@
 
         /* Responsive Mobile */
         @media (max-width: 900px) {
-            .hybrid-grid { grid-template-columns: 1fr; height: auto; }
-            .h-col { height: 350px; margin-bottom: 20px; } /* Colonne impilate con altezza fissa */
+            .hybrid-grid { 
+                grid-template-columns: 1fr; 
+                height: auto; 
+                background: transparent; 
+                box-shadow: none; 
+                border: none; 
+                overflow: visible;
+            }
+            .h-col { 
+                height: 350px; 
+                margin-bottom: 20px; 
+                border-right: none;
+                background: var(--entry-bg);
+                border-radius: 4px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+                border-bottom: 3px solid var(--accent-color);
+                overflow: hidden; /* Ripristina l'isolamento su mobile */
+            } 
         }
     </style>
 </head>
@@ -173,9 +198,10 @@
 </header>
 
 <main>
+    <!-- IL MONOLITO UNICO -->
     <div class="hybrid-grid">
 
-        <!-- COLONNA 1: Melee (Alto Sx) / Caster (Basso Dx) -->
+        <!-- COLONNA 1 -->
         <div class="h-col">
             <a href="../units/valkyrion/valkyrion_order_sword.html" class="shard-half clip-tl">
                 <div class="h-bg" style="background-image:url('../img/valkyrion_roster_sword.jpg');"></div>
@@ -196,7 +222,7 @@
             </a>
         </div>
 
-        <!-- COLONNA 2: Support (Alto Dx) / Ranged (Basso Sx) -->
+        <!-- COLONNA 2 -->
         <div class="h-col">
             <a href="../units/valkyrion/valkyrion_order_light.html" class="shard-half clip-tr">
                 <div class="h-bg" style="background-image:url('../img/valkyrion_roster_light.jpg');"></div>
@@ -217,7 +243,7 @@
             </a>
         </div>
 
-        <!-- COLONNA 3: Hybrid (Alto Sx) / Others (Basso Dx) -->
+        <!-- COLONNA 3 -->
         <div class="h-col">
             <div class="shard-half clip-tl locked">
                 <div class="h-bg" style="background-image:url('../img/valkyrion_roster_hybrids.png');"></div>
