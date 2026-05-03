@@ -100,7 +100,9 @@ h1 {
     transform: translateY(50px);
     opacity: 0;
     transition: all 0.5s ease 0.1s;
-    max-width: 400px;
+    width: 100%;
+    max-width: 500px; /* Aumentato per contenere comodamente i titoli lunghi */
+    margin: 0 auto;   /* Forza il centraggio del blocco nel flex container */
 }
 
 .roster-name {
@@ -109,7 +111,8 @@ h1 {
     text-transform: uppercase;
     letter-spacing: 5px;
     margin: 0 0 20px 0;
-    white-space: nowrap;
+    /* Rimosso white-space: nowrap; così se un nome è enorme andrà a capo in modo armonioso */
+    text-indent: 5px; /* Compensa il vuoto del letter-spacing sull'ultima lettera per un centraggio al millimetro */
 }
 
 .roster-desc {
