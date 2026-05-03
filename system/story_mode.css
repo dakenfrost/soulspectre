@@ -140,10 +140,10 @@ h1 {
    Applica la traslazione solo alle fazioni visivamente decentrate */
 
 .valkyrion .faction-name { transform: translateX(-8px); } /* Vettore invertito verso sinistra */
-.valkyrion .engage-btn { transform: translateX(-4px); }
+.valkyrion .engage-btn { transform: translateX(-2px); }
 
 .primal .faction-name { transform: translateX(-8px); } /* Vettore invertito verso sinistra */
-.primal .engage-btn { transform: translateX(-4px); }
+.primal .engage-btn { transform: translateX(-2px); }
 
 /* Se in futuro noterai il problema su un'altra fazione, 
    ti basterà copiare questo schema, ad esempio:
