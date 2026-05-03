@@ -40,7 +40,7 @@ function getNavTemplate(base) {
                 <a href="${base}factions/valkyrion_culture.html" class="menu-link" style="color: #4db6ac">Culture</a>
             </div>
             <div class="branch-row">
-                <a href="${base}factions/valkyrion_leader.html" class="menu-link" style="color: #d4af37">Leader</a>
+                <a href="${base}factions/valkyrion_leader.html" class="menu-link" style="color: #d4af37">Leader <br><strong>The Empress / Emperor</strong></a>
             </div>
             <div class="branch-row">
                 <a href="${base}factions/valkyrion_roster.html" class="menu-link" style="color: #ef5350">Unit</a>
@@ -139,7 +139,7 @@ function getNavTemplate(base) {
                 <a href="${base}factions/forgotten_culture.html" class="menu-link" style="color: #4db6ac">Culture</a>
             </div>
             <div class="branch-row">
-                <a href="${base}factions/forgotten_leader.html" class="menu-link" style="color: #d4af37">Leader</a>
+                <a href="${base}factions/forgotten_leader.html" class="menu-link" style="color: #d4af37">Leader<br><strong style="color: #5cb88a;"> Malicott</strong></a>
             </div>
             <div class="branch-row">
                 <a href="${base}factions/forgotten_roster.html" class="menu-link" style="color: #ef5350">Unit</a>
