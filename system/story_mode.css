@@ -139,11 +139,11 @@ h1 {
 /* 2. OVERRIDE OTTICI MIRATI 
    Applica la traslazione solo alle fazioni visivamente decentrate */
 
-.valkyrion .faction-name { transform: translateX(4px); }
-.valkyrion .engage-btn { transform: translateX(2px); }
+.valkyrion .faction-name { transform: translateX(-4px); } /* Vettore invertito verso sinistra */
+.valkyrion .engage-btn { transform: translateX(-2px); }
 
-.primal .faction-name { transform: translateX(4px); }
-.primal .engage-btn { transform: translateX(2px); }
+.primal .faction-name { transform: translateX(-4px); } /* Vettore invertito verso sinistra */
+.primal .engage-btn { transform: translateX(-2px); }
 
 /* Se in futuro noterai il problema su un'altra fazione, 
    ti basterà copiare questo schema, ad esempio:
