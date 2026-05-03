@@ -219,7 +219,7 @@ h1 {
 .kharos:hover .faction-name { color: var(--kharos-color); text-shadow: 0 0 20px var(--kharos-color); }
 .kharos:hover .engage-btn { background: var(--kharos-color); border-color: var(--kharos-color); }
 
-.syndicate .shard-bg { background-image: url('../img/banners/banner_syndicate.png'); }
+.syndicate .shard-bg { background-image: url('../img/banners/banner_story_syndicate.png'); }
 /* CORRETTO */
 .syndicate:hover .shard-overlay { 
     box-shadow: inset 0 0 0 3px var(--syndicate-color), inset 0 0 100px var(--syndicate-color); 
