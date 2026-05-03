@@ -110,6 +110,7 @@ h1 {
     color: #fff;
     text-transform: uppercase;
     letter-spacing: 5px;
+    text-indent: 5px; /* Bilancia l'offset del letter-spacing */
     margin: 0 0 20px 0;
     white-space: nowrap;
 }
@@ -129,9 +130,10 @@ h1 {
     text-transform: uppercase;
     font-weight: bold;
     letter-spacing: 2px;
+    text-indent: 2px; /* Bilancia l'offset del letter-spacing */
     font-size: 0.8rem;
     transition: 0.3s;
-}
+}}
 
 /* Floating Initial (Visible when closed) */
 .shard-label {
