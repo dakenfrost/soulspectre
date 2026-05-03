@@ -3,308 +3,335 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SOULSPECTRE | Factions Archive</title>
+    <title>SOULSPECTRE | The Factions Archive</title>
+    <link rel="stylesheet" href="../system/global_nav.css">
     <style>
         :root {
-            --accent-blue: #5c9ce6;
-            --accent-green: #5cb88a;
+            --valk-color: #5c9ce6;
+            --forgotten-color: #5cb88a;
+            --kharos-color: #b71c1c;
+            --syndicate-color: #ffb300;
+            --primal-color: #a1887f;
+            --iron-color: #90a4ae;
+            --elven-color: #4db6ac;
             --bg-dark: #050505;
-            --panel-bg: rgba(10, 10, 12, 0.98);
-            --text-main: #e0e0e0;
-            --text-locked: #777;
         }
+
+        * { box-sizing: border-box; }
 
         body {
             background-color: var(--bg-dark);
-            color: var(--text-main);
+            color: #e0e0e0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
+            height: 100vh;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        #bg-image {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100vw; height: 100vh;
-            background-image: url('../img/homepage_bg.jpg'); 
-            background-size: cover;
-            background-position: center;
-            z-index: -2;
-            filter: brightness(0.15) blur(2px);
-        }
-
-        #overlay {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100vw; height: 100vh;
-            background: radial-gradient(circle, rgba(10,10,15,0.9) 0%, rgba(5,5,5,1) 100%); 
-            z-index: -1;
+            overflow: hidden;
         }
 
         header {
-            padding: 60px 20px;
+            position: absolute;
+            top: 0; left: 0; width: 100%;
+            padding: 40px;
             text-align: center;
-            width: 100%;
+            z-index: 100;
+            pointer-events: none;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
         }
 
         h1 {
-            letter-spacing: 8px;
+            letter-spacing: 12px;
             font-size: 2.5rem;
             color: #fff;
             text-transform: uppercase;
             margin: 0;
-            text-shadow: 0 0 20px rgba(92, 156, 230, 0.3);
+            text-shadow: 0 0 20px rgba(255,255,255,0.2);
         }
 
-        main {
+        /* --- SHIFTING SHARDS CONTAINER --- */
+        .shard-container {
             display: flex;
-            width: 90%;
-            max-width: 1300px;
-            gap: 40px;
-            margin-bottom: 80px;
-            align-items: flex-start;
-        }
-
-        .faction-list {
-            flex: 0 0 40%;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .faction-btn {
-            position: relative;
-            height: 90px;
-            display: flex;
-            align-items: center;
-            padding-left: 30px;
-            color: #fff;
-            text-decoration: none;
-            font-size: 1.2rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            background-size: cover;
-            background-position: center;
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            z-index: 1;
-            background-origin: border-box;
-            box-sizing: border-box;
-        }
-
-        .faction-btn::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; 
-            width: 100%; height: 100%;
-            background: linear-gradient(90deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 100%);
-            z-index: -1;
-            transition: background 0.3s ease;
-        }
-
-        .faction-btn:hover {
-            transform: translateX(15px);
-            border-color: rgba(255,255,255,0.4);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-
-        .valkyrion:hover { 
-            box-shadow: inset 10px 0 0 0 var(--accent-blue); 
-            color: var(--accent-blue); 
-        }
-
-        .forgotten:hover { 
-            box-shadow: inset 10px 0 0 0 var(--accent-green); 
-            color: var(--accent-green); 
-        }
-
-        .locked:hover {
-            box-shadow: inset 10px 0 0 0 #444;
-            color: #fff;
-        }
-
-        .valkyrion { background-image: url('../img/banners/banner_valkyrion.png'); }
-        .forgotten { background-image: url('../img/banners/banner_forgotten.png'); }
-        .kharos { background-image: url('../img/banners/banner_kharos.png'); }
-        .syndicate { background-image: url('../img/banners/banner_syndicate.png'); }
-        .primal { background-image: url('../img/banners/banner_primal.png'); }
-        .brotherhood { background-image: url('../img/banners/banner_brotherhood.png'); }
-        .elven { background-image: url('../img/banners/banner_elven.png'); }
-
-        .locked {
-            filter: grayscale(100%);
-            opacity: 0.7;
-            cursor: help;
-            color: var(--text-locked);
-        }
-
-        .locked::after {
-            content: 'DATA LOCKED';
-            position: absolute;
-            right: 20px;
-            font-size: 0.7rem;
-            letter-spacing: 2px;
-            color: #444;
-            border: 1px solid #444;
-            padding: 2px 8px;
-        }
-
-        .preview-panel {
-            flex: 1;
-            background: var(--panel-bg);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            min-height: 650px;
-            display: flex;
-            flex-direction: column;
-            position: sticky;
-            top: 40px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.9);
-            border-radius: 2px;
-            overflow: hidden;
-        }
-
-        /* Inserito #preview-video al posto di #preview-img */
-        #preview-video {
             width: 100%;
-            height: 380px;
-            object-fit: cover;
-            border-bottom: 2px solid rgba(255,255,255,0.05);
-            filter: brightness(0.8);
-            transition: opacity 0.3s ease;
+            height: 100%;
+            overflow: hidden;
             background: #000;
         }
 
-        .preview-content { padding: 40px; }
-        #preview-title { font-size: 2.2rem; margin: 0 0 20px 0; color: #fff; text-transform: uppercase; letter-spacing: 4px; }
-        #preview-desc { color: #bbb; font-size: 1.1rem; line-height: 1.9; margin: 0; }
-
-        .placeholder-text {
+        .shard {
+            position: relative;
+            flex: 1;
+            height: 100%;
+            transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 650px;
-            color: #333;
-            font-style: italic;
-            text-align: center;
-            padding: 40px;
-            font-size: 1.3rem;
-            letter-spacing: 2px;
+            text-decoration: none;
+            overflow: hidden;
+            border-right: 1px solid rgba(255,255,255,0.05);
         }
 
-        .back-link { margin: 40px 0; color: #555; text-decoration: none; transition: color 0.3s; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 3px; }
-        .back-link:hover { color: #fff; }
+        /* INVECE DEL BACKGROUND-IMAGE, STILIZZIAMO IL TAG VIDEO */
+        .shard-video {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover; /* Scala il video mantenendo le proporzioni senza deformarlo */
+            filter: grayscale(100%) brightness(0.3);
+            transition: all 0.6s ease;
+            z-index: 1;
+        }
+
+        .shard-overlay {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.9));
+            z-index: 2;
+            opacity: 0.8;
+            transition: opacity 0.4s, box-shadow 0.4s; 
+        }
+
+        /* Faction Shard Content */
+        .shard-content {
+            position: relative;
+            z-index: 10;
+            padding: 40px;
+            text-align: center;
+            transform: translateY(50px);
+            opacity: 0;
+            transition: all 0.5s ease 0.1s;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .faction-name {
+            font-size: 2rem;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            margin: 0 0 20px 0;
+            text-indent: 5px;
+        }
+
+        .faction-desc {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #ccc;
+            margin-bottom: 30px;
+        }
+
+        .engage-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border: 1px solid #fff;
+            color: #fff;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            transition: 0.3s;
+        }
+
+        /* Override Ottici */
+        .valkyrion .faction-name { transform: translateX(-16px); } 
+        .valkyrion .engage-btn { transform: translateX(-2px); }
+        .primal .faction-name { transform: translateX(-16px); } 
+        .primal .engage-btn { transform: translateX(-2px); }
+
+        /* Etichetta Chiusa */
+        .shard-label {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 5;
+            font-size: 1rem;
+            font-weight: bold;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #666;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            transition: all 0.4s;
+        }
+
+        /* --- HOVER EFFECTS GENERICI --- */
+        .shard:not(.locked):hover { flex: 5; }
+        .shard:not(.locked):hover .shard-video { filter: grayscale(0%) brightness(0.6); transform: scale(1.05); }
+        .shard:not(.locked):hover .shard-overlay { opacity: 0.4; }
+        .shard:not(.locked):hover .shard-content { opacity: 1; transform: translateY(0); }
+        .shard:not(.locked):hover .shard-label { opacity: 0; }
+
+        /* --- COLORI FAZIONI SU HOVER --- */
+        .valkyrion:hover .shard-overlay { box-shadow: inset 0 0 0 3px var(--valk-color), inset 0 0 100px var(--valk-color); }
+        .valkyrion:hover .faction-name { color: var(--valk-color); text-shadow: 0 0 20px var(--valk-color); }
+        .valkyrion:hover .engage-btn { background: var(--valk-color); border-color: var(--valk-color); }
+
+        .forgotten:hover .shard-overlay { box-shadow: inset 0 0 0 3px var(--forgotten-color), inset 0 0 100px var(--forgotten-color); }
+        .forgotten:hover .faction-name { color: var(--forgotten-color); text-shadow: 0 0 20px var(--forgotten-color); }
+        .forgotten:hover .engage-btn { background: var(--forgotten-color); border-color: var(--forgotten-color); }
+
+        .kharos:hover .shard-overlay { box-shadow: inset 0 0 0 3px var(--kharos-color), inset 0 0 100px var(--kharos-color); }
+        .kharos:hover .faction-name { color: var(--kharos-color); text-shadow: 0 0 20px var(--kharos-color); }
+        .kharos:hover .engage-btn { background: var(--kharos-color); border-color: var(--kharos-color); }
+
+        .syndicate:hover .shard-overlay { box-shadow: inset 0 0 0 3px var(--syndicate-color), inset 0 0 100px var(--syndicate-color); }
+        .syndicate:hover .faction-name { color: var(--syndicate-color); text-shadow: 0 0 20px var(--syndicate-color); }
+        .syndicate:hover .engage-btn { background: var(--syndicate-color); border-color: var(--syndicate-color); }
+
+        .primal:hover .shard-overlay { box-shadow: inset 0 0 0 3px var(--primal-color), inset 0 0 100px var(--primal-color); }
+        .primal:hover .faction-name { color: var(--primal-color); text-shadow: 0 0 20px var(--primal-color); }
+        .primal:hover .engage-btn { background: var(--primal-color); border-color: var(--primal-color); }
+
+        .brotherhood:hover .shard-overlay { box-shadow: inset 0 0 0 3px var(--iron-color), inset 0 0 100px var(--iron-color); }
+        .brotherhood:hover .faction-name { color: var(--iron-color); text-shadow: 0 0 20px var(--iron-color); }
+        .brotherhood:hover .engage-btn { background: var(--iron-color); border-color: var(--iron-color); }
+
+        .elven:hover .shard-overlay { box-shadow: inset 0 0 0 3px var(--elven-color), inset 0 0 100px var(--elven-color); }
+        .elven:hover .faction-name { color: var(--elven-color); text-shadow: 0 0 20px var(--elven-color); }
+        .elven:hover .engage-btn { background: var(--elven-color); border-color: var(--elven-color); }
+
+        /* LOCKED STATE */
+        .shard.locked { cursor: not-allowed; }
+        .shard.locked .shard-label { color: #333; }
+        .shard.locked .shard-video { filter: grayscale(100%) brightness(0.15); }
+
+        .abort-link {
+            position: absolute;
+            bottom: 30px;
+            right: 40px;
+            color: #555;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            z-index: 101;
+            transition: 0.3s;
+        }
+        .abort-link:hover { color: #fff; }
+
+        @media (max-width: 1000px) {
+            .shard-container { flex-direction: column; }
+            .shard-label { writing-mode: horizontal-tb; left: 40px; bottom: 20px; transform: none; }
+            .engage-btn { display: none; }
+            .shard:not(.locked):hover { flex: 4; }
+        }
     </style>
-    <link rel="stylesheet" href="../system/global_nav.css">
 </head>
 <body>
-
-<div id="bg-image"></div>
-<div id="overlay"></div>
-<global-navigation base="../"></global-navigation>
 
 <header>
     <h1>The Factions Archive</h1>
 </header>
 
-<main>
-    <div class="faction-list">
-        <a href="valkyrion.html" class="faction-btn valkyrion" onmouseover="updatePreview('valkyrion')">Valkyrion Empire</a>
-        <a href="forgotten.html" class="faction-btn forgotten" onmouseover="updatePreview('forgotten')">The Forgotten</a>
-        
-        <a href="javascript:void(0)" class="faction-btn kharos locked" onmouseover="updatePreview('kharos')">Kharos Dominion</a>
-        <a href="javascript:void(0)" class="faction-btn syndicate locked" onmouseover="updatePreview('syndicate')">Devil Syndicate</a>
-        <a href="javascript:void(0)" class="faction-btn primal locked" onmouseover="updatePreview('primal')">Primal Coalition</a>
-        <a href="javascript:void(0)" class="faction-btn brotherhood locked" onmouseover="updatePreview('brotherhood')">Iron Brotherhood</a>
-        <a href="javascript:void(0)" class="faction-btn elven locked" onmouseover="updatePreview('elven')">Elven Enclave</a>
+<div class="shard-container">
+    
+    <!-- VALKYRION -->
+    <a href="valkyrion.html" class="shard valkyrion">
+        <!-- Tag video con poster di fallback in caso di caricamento lento -->
+        <video class="shard-video" muted loop playsinline src="../assets/video/faction_valkyrion.mp4" poster="../img/banners/banner_valkyrion.png"></video>
+        <div class="shard-overlay"></div>
+        <div class="shard-label">Valkyrion Empire</div>
+        <div class="shard-content">
+            <h2 class="faction-name">Valkyrion Empire</h2>
+            <p class="faction-desc">A hegemony of steel and intellect. Their doctrine relies on tactical foresight and military precision. Enforce order across the continent.</p>
+            <div class="engage-btn">Inspect Data</div>
+        </div>
+    </a>
+
+    <!-- FORGOTTEN -->
+    <a href="forgotten.html" class="shard forgotten">
+        <video class="shard-video" muted loop playsinline src="../video/forgotten/faction_forgotten.mp4" poster="../img/banners/banner_forgotten.png"></video>
+        <div class="shard-overlay"></div>
+        <div class="shard-label">The Forgotten</div>
+        <div class="shard-content">
+            <h2 class="faction-name">The Forgotten</h2>
+            <p class="faction-desc">An empire born from extinction. Malicott, the Root Mother, preserved entire peoples and gave them a second life in the shadows.</p>
+            <div class="engage-btn">Inspect Data</div>
+        </div>
+    </a>
+
+    <!-- KHAROS (LOCKED) -->
+    <div class="shard kharos locked">
+        <video class="shard-video" muted loop playsinline src="../video/faction_kharos.mp4" poster="../img/banners/banner_kharos.png"></video>
+        <div class="shard-overlay"></div>
+        <div class="shard-label">■ CLASSIFIED ■</div>
     </div>
 
-    <div class="preview-panel">
-        <div id="default-content" class="placeholder-text">
-            Select an entity to initiate data scan...
-        </div>
-        <div id="active-content" style="display: none;">
-            <!-- Sostituito tag img con tag video -->
-            <video id="preview-video" muted loop playsinline></video>
-            <div class="preview-content">
-                <h2 id="preview-title"></h2>
-                <p id="preview-desc"></p>
-            </div>
-        </div>
+    <!-- SYNDICATE (LOCKED) -->
+    <div class="shard syndicate locked">
+        <video class="shard-video" muted loop playsinline src="../video/faction_syndicate.mp4" poster="../img/banners/banner_syndicate.png"></video>
+        <div class="shard-overlay"></div>
+        <div class="shard-label">■ CLASSIFIED ■</div>
     </div>
-</main>
 
-<a href="../index.html" class="back-link">← Return to Main Hub</a>
+    <!-- PRIMAL (LOCKED) -->
+    <div class="shard primal locked">
+        <video class="shard-video" muted loop playsinline src="../video/faction_primal.mp4" poster="../img/banners/banner_primal.png"></video>
+        <div class="shard-overlay"></div>
+        <div class="shard-label">■ CLASSIFIED ■</div>
+    </div>
+
+    <!-- BROTHERHOOD (LOCKED) -->
+    <div class="shard brotherhood locked">
+        <video class="shard-video" muted loop playsinline src="../video/faction_brotherhood.mp4" poster="../img/banners/banner_brotherhood.png"></video>
+        <div class="shard-overlay"></div>
+        <div class="shard-label">■ CLASSIFIED ■</div>
+    </div>
+
+    <!-- ELVEN (LOCKED) -->
+    <div class="shard elven locked">
+        <video class="shard-video" muted loop playsinline src="../video/faction_elven.mp4" poster="../img/banners/banner_elven.png"></video>
+        <div class="shard-overlay"></div>
+        <div class="shard-label">■ CLASSIFIED ■</div>
+    </div>
+
+</div>
+
+<a href="../index.html" class="abort-link">← Return to Main Hub</a>
 
 <script>
-    const data = {
-        valkyrion: {
-            title: "Valkyrion Empire",
-            desc: "A hegemony of steel and intellect. They understand that survival permits no moral errors. Their doctrine relies on tactical foresight and military precision.",
-            video: "../assets/video/faction_preview_valkyrion.mp4"
-        },
-        forgotten: {
-            title: "The Forgotten",
-            desc: "An empire born from extinction. Malicott, the Root Mother, preserved entire peoples from total annihilation and gave them a second life.",
-            video: "../video/forgotten/faction_preview_forgotten.mp4"
-        },
-        kharos: {
-            title: "Kharos Dominion [LOCKED]",
-            desc: "A five-century meritocracy. They blend brutal barbarian warfare with forbidden necromancy and advanced alchemy. Might makes Justice.",
-            video: "../video/faction_preview_kharos.mp4"
-        },
-        syndicate: {
-            title: "Devil Syndicate [LOCKED]",
-            desc: "A Lawful Evil conglomerate where profit is the only absolute. They conquer territories through economic strangulation and debt.",
-            video: "../video/faction_preview_syndicate.mp4"
-        },
-        primal: {
-            title: "Primal Coalition [LOCKED]",
-            desc: "A Chaotic Neutral alliance dedicated to the purity of instinct. They reject the suffocating laws of civilized kingdoms.",
-            video: "../video/faction_preview_primal.mp4"
-        },
-        brotherhood: {
-            title: "Iron Brotherhood [LOCKED]",
-            desc: "A Lawful Neutral collective of dwarves. In this society, individual ambition is a flaw; every citizen is a link in a grand chain.",
-            video: "../video/faction_preview_brotherhood.mp4"
-        },
-        elven: {
-            title: "Elven Enclave [LOCKED]",
-            desc: "A True Neutral isolationist power. Driven by an unwavering belief in their racial supremacy, indifferent to external chaos.",
-            video: "../video/faction_preview_elven.mp4"
+    // Controller Autoplay Video
+    // Avvia la riproduzione del video solo quando l'utente entra nello shard e la ferma quando esce.
+    document.querySelectorAll('.shard:not(.locked)').forEach(shard => {
+        const video = shard.querySelector('.shard-video');
+        
+        if (video) {
+            shard.addEventListener('mouseenter', () => {
+                video.play().catch(err => console.log("Autoplay mitigato dal browser", err));
+            });
+            
+            shard.addEventListener('mouseleave', () => {
+                video.pause();
+                // Opzionale: decommenta la riga sotto se vuoi che il video ricominci da capo ogni volta
+                // video.currentTime = 0; 
+            });
+            
+            // Gestione del click per una transizione fluida prima di cambiare pagina
+            shard.addEventListener('click', e => {
+                e.preventDefault();
+                const href = shard.getAttribute('href');
+                if (!href) return;
+                
+                const flash = document.createElement('div');
+                flash.style.position = 'fixed';
+                flash.style.inset = '0';
+                flash.style.background = '#fff';
+                flash.style.opacity = '0';
+                flash.style.zIndex = '9999';
+                flash.style.transition = 'opacity 0.15s ease';
+                document.body.appendChild(flash);
+                
+                flash.getBoundingClientRect(); // Forza reflow
+                flash.style.opacity = '1';
+                
+                setTimeout(() => { window.location.href = href; }, 150);
+            });
         }
-    };
-
-    const defaultContent = document.getElementById('default-content');
-    const activeContent = document.getElementById('active-content');
-    const pTitle = document.getElementById('preview-title');
-    const pDesc = document.getElementById('preview-desc');
-    const pVideo = document.getElementById('preview-video'); // Agganciato al nuovo ID
-
-    function updatePreview(faction) {
-        const info = data[faction];
-        if(!info) return;
-        
-        pTitle.innerText = info.title;
-        pDesc.innerText = info.desc;
-        pVideo.src = info.video; // Carica il sorgente video
-        
-        // Comanda il load e l'autoplay al browser
-        pVideo.load();
-        pVideo.play().catch(error => {
-            console.log("Autoplay mitigato:", error);
-        });
-
-        defaultContent.style.display = 'none';
-        activeContent.style.display = 'block';
-    }
+    });
 </script>
-<script src="../system/navigation.js"></script>
 
 </body>
 </html>
