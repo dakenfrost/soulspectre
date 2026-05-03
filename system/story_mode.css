@@ -110,9 +110,9 @@ h1 {
     color: #fff;
     text-transform: uppercase;
     letter-spacing: 5px;
-    padding-left: 5px; /* Bilanciamento geometrico */
     margin: 0 0 20px 0;
     white-space: nowrap;
+    transform: translateX(4px); /* Override ottico forzato verso destra */
 }
 
 .faction-desc {
@@ -124,8 +124,7 @@ h1 {
 
 .engage-btn {
     display: inline-block;
-    /* Padding sfalsato: 31px sinistra, 29px destra */
-    padding: 12px 29px 12px 31px; 
+    padding: 12px 30px; /* Ripristinato padding pulito e simmetrico */
     border: 1px solid #fff;
     color: #fff;
     text-transform: uppercase;
@@ -133,6 +132,7 @@ h1 {
     letter-spacing: 2px;
     font-size: 0.8rem;
     transition: 0.3s;
+    transform: translateX(2px); /* Override ottico forzato verso destra */
 }
 
 /* Floating Initial (Visible when closed) */
