@@ -5,46 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOULSPECTRE | Forgotten Roster</title>
     <link rel="stylesheet" href="../system/shared.css">
+    <link rel="stylesheet" href="../system/roster.css">
     <style>
         :root {
             --accent-color: #5cb88a;
-            --accent-glow:  rgba(92, 184, 138, 0.5);
-            --panel-bg:     rgba(10, 18, 12, 0.6);
+            --entry-bg:     rgb(4, 9, 6);
+            --preview-dark: rgb(4, 9, 6);
         }
-        body { line-height: 1.8; }
         #bg-image { background-image: url('../img/forgotten/forgotten_bg.jpg'); }
-        #overlay  { background: linear-gradient(to bottom, rgba(5,12,8,0.90), rgba(3,8,5,0.98)); }
-        .intro-text {
-            text-align: center; font-size: 1.1rem; color: #ccc; margin-bottom: 50px;
-            background: rgba(10,18,12,0.6); backdrop-filter: blur(5px);
-            border: 1px solid rgba(255,255,255,0.05); padding: 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-        .roster-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 30px; margin-bottom: 60px; }
-        .order-card {
-            position: relative; height: 250px;
-            border: 1px solid rgba(255,255,255,0.1); border-bottom: 3px solid var(--accent-color);
-            border-radius: 4px; overflow: hidden;
-            display: flex; align-items: flex-end; justify-content: center;
-            text-decoration: none;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.6); padding-bottom: 20px; box-sizing: border-box;
-        }
-        .order-card:not(.locked-card):hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(92,184,138,0.3); border-bottom-color: #a5d6a7; }
-        .order-bg { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-size: cover; background-position: center; transition: transform 0.5s ease; z-index: 1; }
-        .order-card:not(.locked-card):hover .order-bg { transform: scale(1.05); }
-        .order-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 35%); z-index: 2; transition: background 0.3s ease; }
-        .order-title { position: relative; z-index: 3; color: #fff; font-size: 1.6rem; text-transform: uppercase; letter-spacing: 3px; text-shadow: 0 2px 4px rgba(0,0,0,1), 0 0 10px rgba(0,0,0,0.8); margin: 0; text-align: center; padding: 0 15px; width: 100%; }
-        .malicott-card { grid-column: 1 / -1; height: 200px; border-bottom-color: var(--accent-color); }
-        .locked-card { cursor: not-allowed; border-bottom-color: #444; filter: grayscale(1) contrast(0.8); opacity: 0.6; }
-        .locked-card .order-title { color: #888; }
-        .others-card { border-bottom-color: #888; }
-        .others-card:hover { border-bottom-color: #a5d6a7; }
-        @media (max-width: 950px) {
-            .roster-grid { grid-template-columns: 1fr; }
-            .order-card { height: 200px; padding-bottom: 15px; }
-            .order-title { font-size: 1.4rem; letter-spacing: 2px; }
-        }
+        #overlay  { background: linear-gradient(to bottom, rgba(5,12,8,0.95), rgba(3,8,5,1)); }
     </style>
 </head>
 <body>
@@ -56,45 +25,147 @@
     <div class="subtitle">The Four Branches of the Forgotten</div>
 </header>
 <main>
-    <div class="intro-text">
-        Select a Branch to access its doctrine, evolution tree, and active unit roster. Citizens born for the defense of the Empire assume specific forms based on their spiritual nature , the body is merely the vessel the Mother Tree has prepared for the soul.
-    </div>
-    <div class="roster-grid">
-        <a href="../units/forgotten/forgotten_order_arborei.html" class="order-card">
-            <div class="order-bg" style="background-image: url('../img/forgotten/forgotten_roster_arborei.jpg');"></div>
-            <div class="order-overlay"></div>
-            <h2 class="order-title">Arboreal Fighters</h2>
-        </a>
-        <a href="../units/forgotten/forgotten_order_linfa.html" class="order-card">
-            <div class="order-bg" style="background-image: url('../img/forgotten/forgotten_roster_linfa.jpg');"></div>
-            <div class="order-overlay"></div>
-            <h2 class="order-title">Shadows of the Sap</h2>
-        </a>
-        <a href="../units/forgotten/forgotten_order_araldi.html" class="order-card">
-            <div class="order-bg" style="background-image: url('../img/forgotten/forgotten_roster_araldi.jpg');"></div>
-            <div class="order-overlay"></div>
-            <h2 class="order-title">Heralds of Dust</h2>
-        </a>
-        <a href="../units/forgotten/forgotten_order_sentinelle.html" class="order-card">
-            <div class="order-bg" style="background-image: url('../img/forgotten/forgotten_roster_sentinelle.jpg');"></div>
-            <div class="order-overlay"></div>
-            <h2 class="order-title">Amber Sentinels</h2>
-        </a>
-        <div class="order-card locked-card">
-            <div class="order-bg" style="background-image: url('../img/forgotten/forgotten_roster_hybrids.png');"></div>
-            <div class="order-overlay"></div>
-            <h2 class="order-title">Hybrid Units (Locked)</h2>
+    <div class="roster-layout">
+
+        <!-- LEFT: numbered list -->
+        <nav class="roster-list">
+
+            <a href="../units/forgotten/forgotten_order_arborei.html"
+               class="roster-entry" data-index="0">
+                <div class="entry-content">
+                    <h2 class="entry-title">Arboreal Fighters</h2>
+                    <span class="entry-arrow">&#9654;</span>
+                </div>
+            </a>
+
+            <a href="../units/forgotten/forgotten_order_linfa.html"
+               class="roster-entry" data-index="1">
+                <div class="entry-content">
+                    <h2 class="entry-title">Shadows of the Sap</h2>
+                    <span class="entry-arrow">&#9654;</span>
+                </div>
+            </a>
+
+            <a href="../units/forgotten/forgotten_order_araldi.html"
+               class="roster-entry" data-index="2">
+                <div class="entry-content">
+                    <h2 class="entry-title">Heralds of Dust</h2>
+                    <span class="entry-arrow">&#9654;</span>
+                </div>
+            </a>
+
+            <a href="../units/forgotten/forgotten_order_sentinelle.html"
+               class="roster-entry" data-index="3">
+                <div class="entry-content">
+                    <h2 class="entry-title">Amber Sentinels</h2>
+                    <span class="entry-arrow">&#9654;</span>
+                </div>
+            </a>
+
+            <div class="roster-entry locked-entry" data-index="4">
+                <div class="entry-content">
+                    <h2 class="entry-title">Hybrid Units</h2>
+                    <span class="lock-badge">Locked</span>
+                </div>
+            </div>
+
+            <a href="../units/forgotten/forgotten_extra.html"
+               class="roster-entry others-entry" data-index="5">
+                <div class="entry-content">
+                    <h2 class="entry-title">Others</h2>
+                    <span class="entry-arrow">&#9654;</span>
+                </div>
+            </a>
+
+        </nav>
+
+        <!-- RIGHT: preview panel -->
+        <div class="roster-preview" id="roster-preview">
+
+            <div class="preview-slide is-visible" data-index="0">
+                <div class="preview-img" style="background-image:url('../img/forgotten/forgotten_roster_arborei.jpg');"></div>
+                <div class="preview-grad"></div>
+                <div class="preview-label">
+                    <span class="preview-label-name">Mele Unit</span>
+                </div>
+            </div>
+
+            <div class="preview-slide" data-index="1">
+                <div class="preview-img" style="background-image:url('../img/forgotten/forgotten_roster_linfa.jpg');"></div>
+                <div class="preview-grad"></div>
+                <div class="preview-label">
+                    <span class="preview-label-name">Support Unit</span>
+                </div>
+            </div>
+
+            <div class="preview-slide" data-index="2">
+                <div class="preview-img" style="background-image:url('../img/forgotten/forgotten_roster_araldi.jpg');"></div>
+                <div class="preview-grad"></div>
+                <div class="preview-label">
+                    <span class="preview-label-name">Mage Unit</span>
+                </div>
+            </div>
+
+            <div class="preview-slide" data-index="3">
+                <div class="preview-img" style="background-image:url('../img/forgotten/forgotten_roster_sentinelle.jpg');"></div>
+                <div class="preview-grad"></div>
+                <div class="preview-label">
+                    <span class="preview-label-name">Ranged Unit</span>
+                </div>
+            </div>
+
+            <div class="preview-slide" data-index="4">
+                <div class="preview-img" style="background-image:url('../img/forgotten/forgotten_roster_hybrids.png'); filter:grayscale(1) brightness(0.4);"></div>
+                <div class="preview-grad"></div>
+                <div class="preview-locked-overlay">&#9632; CLASSIFIED &#9632;</div>
+                <div class="preview-label">
+                    <span class="preview-label-name" style="color:rgba(80,80,80,0.5);">Hybrid Units</span>
+                </div>
+            </div>
+
+            <div class="preview-slide" data-index="5">
+                <div class="preview-img" style="background-image:url('../img/forgotten/forgotten_roster_others.png');"></div>
+                <div class="preview-grad" style="background:linear-gradient(100deg,rgba(4,9,6,0.75) 0%,rgba(4,9,6,0.12) 50%,rgba(0,0,0,0) 100%);"></div>
+                <div class="preview-label">
+                    <span class="preview-label-name" style="color:rgba(200,200,200,0.6);">Others</span>
+                </div>
+            </div>
+
+            <div class="preview-corner"></div>
         </div>
 
-        <a href="../units/forgotten/forgotten_extra.html" class="order-card others-card">
-            <div class="order-bg" style="background-image: url('../img/forgotten/forgotten_roster_others.png');"></div>
-            <div class="order-overlay"></div>
-            <h2 class="order-title">Others</h2>
-        </a>
     </div>
     <a href="forgotten.html" class="back-link">← Return to the Forgotten Overview</a>
 </main>
 
+<script>
+    const entries = document.querySelectorAll('.roster-entry');
+    const slides  = document.querySelectorAll('.preview-slide');
+
+    function activate(idx) {
+        entries.forEach(e => e.classList.remove('is-active'));
+        slides.forEach(s  => s.classList.remove('is-visible'));
+        entries[idx].classList.add('is-active');
+        slides[idx].classList.add('is-visible');
+    }
+
+    entries.forEach((entry, idx) => {
+        entry.addEventListener('mouseenter', () => activate(idx));
+        if (!entry.classList.contains('locked-entry')) {
+            entry.addEventListener('click', e => {
+                e.preventDefault();
+                const href = entry.getAttribute('href');
+                if (!href) return;
+                const flash = document.createElement('div');
+                flash.className = 'flash';
+                document.body.appendChild(flash);
+                setTimeout(() => { window.location.href = href; }, 130);
+            });
+        }
+    });
+
+    activate(0);
+</script>
 <script src="../system/navigation.js"></script>
 </body>
 </html>

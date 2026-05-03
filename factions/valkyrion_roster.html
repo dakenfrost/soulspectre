@@ -5,28 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOULSPECTRE | Valkyrion Roster</title>
     <link rel="stylesheet" href="../system/shared.css">
+    <link rel="stylesheet" href="../system/roster.css">
     <style>
         :root {
             --accent-color: #5c9ce6;
-            --accent-glow:  rgba(92, 156, 230, 0.5);
-            --panel-bg:     rgba(15, 15, 15, 0.6);
+            --entry-bg:     rgb(5, 5, 12);
+            --preview-dark: rgb(5, 5, 12);
         }
         #bg-image { background-image: url('../img/valkyrion_bg.jpeg'); }
-        #overlay  { background: linear-gradient(to bottom, rgba(10, 10, 12, 0.90), rgba(5, 5, 5, 0.98)); }
-        body { line-height: 1.8; }
-        .intro-text { text-align: center; font-size: 1.2rem; color: #ccc; margin-bottom: 50px; background: var(--panel-bg); backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.05); padding: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        .roster-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 30px; margin-bottom: 60px; }
-        .order-card { position: relative; height: 250px; border: 1px solid rgba(255,255,255,0.1); border-bottom: 3px solid var(--accent-color); border-radius: 4px; overflow: hidden; display: flex; align-items: flex-end; justify-content: center; text-decoration: none; transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; box-shadow: 0 10px 25px rgba(0,0,0,0.6); padding-bottom: 20px; box-sizing: border-box; }
-        .order-card:not(.locked-card):hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(92,156,230,0.3); border-bottom-color: #FFD700; }
-        .order-bg { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-size: cover; background-position: center; transition: transform 0.5s ease; z-index: 1; }
-        .order-card:not(.locked-card):hover .order-bg { transform: scale(1.05); }
-        .order-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 35%); z-index: 2; transition: background 0.3s ease; }
-        .order-title { position: relative; z-index: 3; color: #fff; font-size: 1.6rem; text-transform: uppercase; letter-spacing: 3px; text-shadow: 0 2px 4px rgba(0,0,0,1), 0 0 10px rgba(0,0,0,0.8); margin: 0; text-align: center; padding: 0 15px; width: 100%; }
-        .locked-card { cursor: not-allowed; border-bottom-color: #444; filter: grayscale(1) contrast(0.8); opacity: 0.6; }
-        .locked-card .order-title { color: #888; }
-        .others-card { border-bottom-color: #888; }
-        .others-card:hover { border-bottom-color: #ccc; }
-        @media (max-width: 950px) { .roster-grid { grid-template-columns: 1fr; } .order-card { height: 200px; padding-bottom: 15px; } .order-title { font-size: 1.4rem; letter-spacing: 2px; } }
+        #overlay  { background: linear-gradient(to bottom, rgba(10,10,15,0.95), rgba(5,5,10,1)); }
     </style>
 </head>
 <body>
@@ -41,51 +28,149 @@
 </header>
 
 <main>
-    <div class="intro-text">
-        Access the tactical database. Select a Military Order to review its combat doctrine, structure, and active units.
-    </div>
+    <div class="roster-layout">
 
-    <div class="roster-grid">
-        <a href="../units/valkyrion/valkyrion_order_sword.html" class="order-card">
-            <div class="order-bg" style="background-image: url('../img/valkyrion_roster_sword.jpg');"></div>
-            <div class="order-overlay"></div>
-            <h2 class="order-title">Order of the Sword</h2>
-        </a>
+        <!-- LEFT: numbered list -->
+        <nav class="roster-list">
 
-        <a href="../units/valkyrion/valkyrion_order_light.html" class="order-card">
-            <div class="order-bg" style="background-image: url('../img/valkyrion_roster_light.jpg');"></div>
-            <div class="order-overlay"></div>
-            <h2 class="order-title">Order of the Light</h2>
-        </a>
+            <a href="../units/valkyrion/valkyrion_order_sword.html"
+               class="roster-entry" data-index="0">
+                <div class="entry-content">
+                    <h2 class="entry-title">Order of the Sword</h2>
+                    <span class="entry-arrow">&#9654;</span>
+                </div>
+            </a>
 
-        <a href="../units/valkyrion/valkyrion_order_knowledge.html" class="order-card">
-            <div class="order-bg" style="background-image: url('../img/valkyrion_roster_knowledge.jpg');"></div>
-            <div class="order-overlay"></div>
-            <h2 class="order-title">Order of Knowledge</h2>
-        </a>
+            <a href="../units/valkyrion/valkyrion_order_light.html"
+               class="roster-entry" data-index="1">
+                <div class="entry-content">
+                    <h2 class="entry-title">Order of the Light</h2>
+                    <span class="entry-arrow">&#9654;</span>
+                </div>
+            </a>
 
-        <a href="../units/valkyrion/valkyrion_order_engineering.html" class="order-card">
-            <div class="order-bg" style="background-image: url('../img/valkyrion_roster_engineering.jpg');"></div>
-            <div class="order-overlay"></div>
-            <h2 class="order-title">Order of Engineering</h2>
-        </a>
+            <a href="../units/valkyrion/valkyrion_order_knowledge.html"
+               class="roster-entry" data-index="2">
+                <div class="entry-content">
+                    <h2 class="entry-title">Order of Knowledge</h2>
+                    <span class="entry-arrow">&#9654;</span>
+                </div>
+            </a>
 
-        <div class="order-card locked-card">
-            <div class="order-bg" style="background-image: url('../img/valkyrion_roster_hybrids.png');"></div>
-            <div class="order-overlay"></div>
-            <h2 class="order-title">Hybrid Units (Locked)</h2>
+            <a href="../units/valkyrion/valkyrion_order_engineering.html"
+               class="roster-entry" data-index="3">
+                <div class="entry-content">
+                    <h2 class="entry-title">Order of Engineering</h2>
+                    <span class="entry-arrow">&#9654;</span>
+                </div>
+            </a>
+
+            <div class="roster-entry locked-entry" data-index="4">
+                <div class="entry-content">
+                    <h2 class="entry-title">Hybrid Units</h2>
+                    <span class="lock-badge">Locked</span>
+                </div>
+            </div>
+
+            <a href="../units/valkyrion/valkyrion_extra.html"
+               class="roster-entry others-entry" data-index="5">
+                <div class="entry-content">
+                    <h2 class="entry-title">Others</h2>
+                    <span class="entry-arrow">&#9654;</span>
+                </div>
+            </a>
+
+        </nav>
+
+        <!-- RIGHT: preview panel -->
+        <div class="roster-preview" id="roster-preview">
+
+            <div class="preview-slide is-visible" data-index="0">
+                <div class="preview-img" style="background-image:url('../img/valkyrion_roster_sword.jpg');"></div>
+                <div class="preview-grad"></div>
+                <div class="preview-label">
+                    <span class="preview-label-name">Mele Unit</span>
+                </div>
+            </div>
+
+            <div class="preview-slide" data-index="1">
+                <div class="preview-img" style="background-image:url('../img/valkyrion_roster_light.jpg');"></div>
+                <div class="preview-grad"></div>
+                <div class="preview-label">
+                    <span class="preview-label-name">Support Unit</span>
+                </div>
+            </div>
+
+            <div class="preview-slide" data-index="2">
+                <div class="preview-img" style="background-image:url('../img/valkyrion_roster_knowledge.jpg');"></div>
+                <div class="preview-grad"></div>
+                <div class="preview-label">
+                    <span class="preview-label-name">Mage Unit</span>
+                </div>
+            </div>
+
+            <div class="preview-slide" data-index="3">
+                <div class="preview-img" style="background-image:url('../img/valkyrion_roster_engineering.jpg');"></div>
+                <div class="preview-grad"></div>
+                <div class="preview-label">
+                    <span class="preview-label-name">Ranged Unit</span>
+                </div>
+            </div>
+
+            <div class="preview-slide" data-index="4">
+                <div class="preview-img" style="background-image:url('../img/valkyrion_roster_hybrids.png'); filter:grayscale(1) brightness(0.35);"></div>
+                <div class="preview-grad"></div>
+                <div class="preview-locked-overlay">&#9632; CLASSIFIED &#9632;</div>
+                <div class="preview-label">
+                    <span class="preview-label-num" style="color:rgba(80,80,80,0.15);">05</span>
+                    <span class="preview-label-name" style="color:rgba(80,80,80,0.5);">Hybrid Units</span>
+                </div>
+            </div>
+
+            <div class="preview-slide" data-index="5">
+                <div class="preview-img" style="background-image:url('../img/valkyrion_roster_others.png');"></div>
+                <div class="preview-grad"></div>
+                <div class="preview-label">
+                    <span class="preview-label-name" style="color:rgba(200,200,200,0.6);">Others</span>
+                </div>
+            </div>
+
+            <div class="preview-corner"></div>
         </div>
 
-        <a href="../units/valkyrion/valkyrion_extra.html" class="order-card others-card">
-            <div class="order-bg" style="background-image: url('../img/valkyrion_roster_others.png');"></div>
-            <div class="order-overlay"></div>
-            <h2 class="order-title">Others</h2>
-        </a>
     </div>
-
     <a href="../factions/valkyrion.html" class="back-link">← Return to Valkyrion Overview</a>
 </main>
 
+<script>
+    const entries = document.querySelectorAll('.roster-entry');
+    const slides  = document.querySelectorAll('.preview-slide');
+
+    function activate(idx) {
+        entries.forEach(e => e.classList.remove('is-active'));
+        slides.forEach(s  => s.classList.remove('is-visible'));
+        entries[idx].classList.add('is-active');
+        slides[idx].classList.add('is-visible');
+    }
+
+    entries.forEach((entry, idx) => {
+        entry.addEventListener('mouseenter', () => activate(idx));
+        if (!entry.classList.contains('locked-entry')) {
+            entry.addEventListener('click', e => {
+                e.preventDefault();
+                const href = entry.getAttribute('href');
+                if (!href) return;
+                const flash = document.createElement('div');
+                flash.className = 'flash';
+                document.body.appendChild(flash);
+                setTimeout(() => { window.location.href = href; }, 130);
+            });
+        }
+    });
+
+    activate(0);
+</script>
 <script src="../system/navigation.js"></script>
+
 </body>
 </html>

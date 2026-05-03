@@ -11,6 +11,9 @@ function getNavTemplate(base) {
 
 <aside class="sidebar" id="sidebar">
     <button class="close-sidebar" id="close-btn">&times;</button>
+    <div class="nav-search-wrap">
+        <input type="search" id="nav-search" class="nav-search-input" placeholder="Search..." autocomplete="off" spellcheck="false">
+    </div>
     <div class="sidebar-scroll">
     <a href="${base}index.html" class="direct-link">Main Hub</a>
 
@@ -45,7 +48,7 @@ function getNavTemplate(base) {
             </div>
                 <div class="sub-accordion-content">
                     <div class="branch-row">
-                        <a href="${base}units/valkyrion/valkyrion_order_sword.html" class="branch-unit-link">Order of the Sword</a>
+                        <a href="${base}units/valkyrion/valkyrion_order_sword.html" class="branch-unit-link">Order of the Sword<span class="branch-role role-melee">Melee</span></a>
                         <button class="branch-toggle" aria-label="expand units">▶</button>
                     </div>
                     <div class="unit-accordion-content">
@@ -62,7 +65,7 @@ function getNavTemplate(base) {
                         <a href="${base}units/valkyrion/valkyrion_knight_of_dusk.html" class="unit-link">Knight of Dusk</a>
                     </div>
                     <div class="branch-row">
-                        <a href="${base}units/valkyrion/valkyrion_order_light.html" class="branch-unit-link">Order of Light</a>
+                        <a href="${base}units/valkyrion/valkyrion_order_light.html" class="branch-unit-link">Order of Light<span class="branch-role role-support">Support</span></a>
                         <button class="branch-toggle" aria-label="expand units">▶</button>
                     </div>
                     <div class="unit-accordion-content">
@@ -79,7 +82,7 @@ function getNavTemplate(base) {
                         <a href="${base}units/valkyrion/valkyrion_angel.html" class="unit-link">Angel</a>
                     </div>
                     <div class="branch-row">
-                        <a href="${base}units/valkyrion/valkyrion_order_knowledge.html" class="branch-unit-link">Order of Knowledge</a>
+                        <a href="${base}units/valkyrion/valkyrion_order_knowledge.html" class="branch-unit-link">Order of Knowledge<span class="branch-role role-mage">Mage</span></a>
                         <button class="branch-toggle" aria-label="expand units">▶</button>
                     </div>
                     <div class="unit-accordion-content">
@@ -101,7 +104,7 @@ function getNavTemplate(base) {
                         <a href="${base}units/valkyrion/valkyrion_archon.html" class="unit-link">Archon</a>
                     </div>
                     <div class="branch-row">
-                        <a href="${base}units/valkyrion/valkyrion_order_engineering.html" class="branch-unit-link">Order of Engineering</a>
+                        <a href="${base}units/valkyrion/valkyrion_order_engineering.html" class="branch-unit-link">Order of Engineering<span class="branch-role role-ranged">Ranged</span></a>
                         <button class="branch-toggle" aria-label="expand units">▶</button>
                     </div>
                     <div class="unit-accordion-content">
@@ -144,7 +147,7 @@ function getNavTemplate(base) {
             </div>
             <div class="sub-accordion-content">
                 <div class="branch-row">
-                    <a href="${base}units/forgotten/forgotten_order_arborei.html" class="branch-unit-link">Arboreal Fighters</a>
+                    <a href="${base}units/forgotten/forgotten_order_arborei.html" class="branch-unit-link">Arboreal Fighters<span class="branch-role role-melee">Melee</span></a>
                     <button class="branch-toggle" aria-label="expand units">▶</button>
                 </div>
                 <div class="unit-accordion-content">
@@ -159,7 +162,7 @@ function getNavTemplate(base) {
                     <a href="${base}units/forgotten/forgotten_assassin_defender.html" class="unit-link">Warden</a>
                 </div>
                 <div class="branch-row">
-                    <a href="${base}units/forgotten/forgotten_order_linfa.html" class="branch-unit-link">Shadows of the Sap</a>
+                    <a href="${base}units/forgotten/forgotten_order_linfa.html" class="branch-unit-link">Shadows of the Sap<span class="branch-role role-support">Support</span></a>
                     <button class="branch-toggle" aria-label="expand units">▶</button>
                 </div>
                 <div class="unit-accordion-content">
@@ -174,7 +177,7 @@ function getNavTemplate(base) {
                     <a href="${base}units/forgotten/forgotten_emissary.html" class="unit-link">Emissary</a>
                 </div>
                 <div class="branch-row">
-                    <a href="${base}units/forgotten/forgotten_order_araldi.html" class="branch-unit-link">Heralds of Dust</a>
+                    <a href="${base}units/forgotten/forgotten_order_araldi.html" class="branch-unit-link">Heralds of Dust<span class="branch-role role-mage">Mage</span></a>
                     <button class="branch-toggle" aria-label="expand units">▶</button>
                 </div>
                 <div class="unit-accordion-content">
@@ -189,7 +192,7 @@ function getNavTemplate(base) {
                     <a href="${base}units/forgotten/forgotten_seraph_mage.html" class="unit-link">Seraph Mage</a>
                 </div>
                 <div class="branch-row">
-                    <a href="${base}units/forgotten/forgotten_order_sentinelle.html" class="branch-unit-link">Amber Sentinels</a>
+                    <a href="${base}units/forgotten/forgotten_order_sentinelle.html" class="branch-unit-link">Amber Sentinels<span class="branch-role role-ranged">Ranged</span></a>
                     <button class="branch-toggle" aria-label="expand units">▶</button>
                 </div>
                 <div class="unit-accordion-content">
@@ -298,6 +301,68 @@ class GlobalNav extends HTMLElement {
                 isOpen(panel) ? closePanel(panel) : openPanel(panel);
             });
         });
+
+        const searchInput = this.querySelector('#nav-search');
+        if (searchInput) {
+            searchInput.addEventListener('input', () => {
+                const q = searchInput.value.trim().toLowerCase();
+                const sidebarEl = document.getElementById('sidebar');
+                const scroll = sidebarEl.querySelector('.sidebar-scroll');
+
+                // Reset all
+                scroll.querySelectorAll('.search-hidden').forEach(el => el.classList.remove('search-hidden'));
+                sidebarEl.classList.remove('nav-searching');
+                if (!q) return;
+
+                sidebarEl.classList.add('nav-searching');
+
+                // Hide all links and rows by default
+                scroll.querySelectorAll('a, .branch-row, .sub-faction-row').forEach(el => {
+                    el.classList.add('search-hidden');
+                });
+
+                // Reveal matching links and their ancestor rows/panels
+                scroll.querySelectorAll('a').forEach(link => {
+                    const text = link.textContent.replace(/[\u25b6\u25bc]/g, '').trim().toLowerCase();
+                    if (!text.includes(q)) return;
+
+                    link.classList.remove('search-hidden');
+
+                    let node = link.parentElement;
+                    while (node && node !== scroll) {
+                        if (node.classList.contains('branch-row') || node.classList.contains('sub-faction-row')) {
+                            node.classList.remove('search-hidden');
+                            const innerLink = node.querySelector('a');
+                            if (innerLink) innerLink.classList.remove('search-hidden');
+                        }
+                        if (node.classList.contains('unit-accordion-content') ||
+                            node.classList.contains('sub-accordion-content')) {
+                            let prev = node.previousElementSibling;
+                            while (prev) {
+                                if (prev.classList.contains('branch-row') || prev.classList.contains('sub-faction-row')) {
+                                    prev.classList.remove('search-hidden');
+                                    const prevLink = prev.querySelector('a');
+                                    if (prevLink) prevLink.classList.remove('search-hidden');
+                                    break;
+                                }
+                                prev = prev.previousElementSibling;
+                            }
+                        }
+                        node = node.parentElement;
+                    }
+                });
+
+                // If an order header matched, also reveal its child units
+                scroll.querySelectorAll('.branch-unit-link:not(.search-hidden)').forEach(link => {
+                    const row = link.closest('.branch-row');
+                    if (!row) return;
+                    const unitPanel = row.nextElementSibling;
+                    if (unitPanel && unitPanel.classList.contains('unit-accordion-content')) {
+                        unitPanel.querySelectorAll('a').forEach(u => u.classList.remove('search-hidden'));
+                    }
+                });
+            });
+        }
     }
 }
 

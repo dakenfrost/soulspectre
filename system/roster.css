@@ -1,0 +1,280 @@
+/*
+ *  roster.css  —  shared styles for faction roster pages
+ *
+ *  Each page must define in its own <style>:
+ *    --accent-color   (main accent colour, e.g. #5cb88a or #5c9ce6)
+ *    --entry-bg       (dark base for entry cards, e.g. rgb(4,9,6))
+ *    --preview-dark   (dark base for preview gradients, e.g. rgb(4,9,6))
+ *    #bg-image        background-image
+ *    #overlay         background gradient
+ */
+
+body { line-height: 1.8; overflow-x: hidden; }
+
+/* Scanlines */
+body::after {
+    content: ''; position: fixed; inset: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent 0px, transparent 3px,
+        rgba(0,0,0,0.04) 3px, rgba(0,0,0,0.04) 4px
+    );
+    pointer-events: none; z-index: 9999;
+}
+
+header { padding-bottom: 10px; }
+
+main {
+    max-width: 1300px;
+    width: 100%;
+    padding: 0 40px 60px;
+    margin: 0 auto;
+}
+
+/* ─── SPLIT LAYOUT ─── */
+.roster-layout {
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    gap: 0;
+    min-height: 520px;
+    position: relative;
+}
+
+/* ─── LEFT: list panel ─── */
+.roster-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    position: relative;
+    z-index: 5;
+}
+
+/* Watermark */
+.roster-list::before {
+    content: 'ROSTER';
+    position: absolute;
+    bottom: -10px; left: -8px;
+    font-size: 7rem; font-weight: 900;
+    font-family: 'Arial Black', sans-serif;
+    color: color-mix(in srgb, var(--accent-color) 3.5%, transparent);
+    letter-spacing: 14px;
+    pointer-events: none; user-select: none;
+    line-height: 1; white-space: nowrap; z-index: -1;
+}
+
+/* ─── ENTRY BASE ─── */
+.roster-entry {
+    position: relative;
+    height: 76px;
+    display: flex; align-items: center;
+    text-decoration: none;
+    overflow: hidden;
+    background: color-mix(in srgb, var(--entry-bg) 92%, transparent);
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
+    transition: transform 0.10s ease;
+    cursor: pointer;
+    opacity: 0; transform: translateX(-48px);
+    animation: slideIn 0.32s cubic-bezier(0.25,0.46,0.45,0.94) forwards;
+}
+@keyframes slideIn { to { opacity: 1; transform: translateX(0); } }
+.roster-entry:nth-child(1) { animation-delay: 0.06s; }
+.roster-entry:nth-child(2) { animation-delay: 0.12s; }
+.roster-entry:nth-child(3) { animation-delay: 0.18s; }
+.roster-entry:nth-child(4) { animation-delay: 0.24s; }
+.roster-entry:nth-child(5) { animation-delay: 0.30s; }
+.roster-entry:nth-child(6) { animation-delay: 0.36s; }
+
+/* Left accent bar */
+.roster-entry::after {
+    content: ''; position: absolute;
+    left: 0; top: 0; bottom: 0; width: 4px;
+    background: var(--accent-color); z-index: 6;
+    transform: scaleY(0); transform-origin: bottom;
+    transition: transform 0.12s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+
+/* Diagonal sweep */
+.roster-entry::before {
+    content: ''; position: absolute;
+    top: -20%; left: -80%; width: 50%; height: 140%;
+    background: linear-gradient(
+        100deg,
+        transparent 0%,
+        color-mix(in srgb, var(--accent-color) 11%, transparent) 50%,
+        transparent 100%
+    );
+    transform: skewX(-20deg); z-index: 3;
+    transition: left 0.34s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+
+/* Hover + active */
+.roster-entry:not(.locked-entry):hover,
+.roster-entry.is-active {
+    transform: translateX(8px);
+    box-shadow: -4px 0 0 var(--accent-color), 6px 3px 22px rgba(0,0,0,0.9);
+}
+.roster-entry:not(.locked-entry):hover::after,
+.roster-entry.is-active::after  { transform: scaleY(1); }
+.roster-entry:not(.locked-entry):hover::before,
+.roster-entry.is-active::before { left: 130%; }
+
+.roster-entry:not(.locked-entry):hover .entry-num,
+.roster-entry.is-active .entry-num { opacity: 0.75; }
+
+.roster-entry:not(.locked-entry):hover .entry-title,
+.roster-entry.is-active .entry-title {
+    color: #fff; letter-spacing: 5px;
+    text-shadow: 0 0 20px color-mix(in srgb, var(--accent-color) 40%, transparent);
+}
+.roster-entry:not(.locked-entry):hover .entry-arrow,
+.roster-entry.is-active .entry-arrow { opacity: 1; transform: translateX(0); }
+
+/* Content */
+.entry-content {
+    position: relative; z-index: 5;
+    display: flex; align-items: center; gap: 14px;
+    padding: 0 18px; width: 100%;
+}
+.entry-num {
+    font-size: 2.1rem; font-weight: 900;
+    font-family: 'Arial Black', 'Impact', sans-serif;
+    color: var(--accent-color); opacity: 0.20;
+    min-width: 48px; line-height: 1; letter-spacing: -1px;
+    transition: opacity 0.10s ease; user-select: none;
+}
+.entry-title {
+    color: #b8b8b8; font-size: 1.15rem;
+    text-transform: uppercase; letter-spacing: 4px;
+    font-weight: 700; margin: 0; line-height: 1.2;
+    transition: color 0.10s ease, letter-spacing 0.10s ease, text-shadow 0.10s ease;
+    text-shadow: 1px 1px 6px rgba(0,0,0,1);
+}
+.entry-arrow {
+    margin-left: auto; color: var(--accent-color);
+    font-size: 0.9rem; opacity: 0; transform: translateX(-12px);
+    transition: opacity 0.10s ease, transform 0.10s ease;
+    user-select: none; flex-shrink: 0;
+}
+
+/* Locked */
+.locked-entry { cursor: not-allowed; opacity: 0.35; }
+.locked-entry .entry-num   { color: #444; }
+.locked-entry .entry-title { color: #484848; }
+.locked-entry::after       { background: #333; }
+.lock-badge {
+    margin-left: auto; font-size: 0.58rem; letter-spacing: 2px;
+    text-transform: uppercase; color: #484848;
+    border: 1px solid #2e2e2e; padding: 2px 7px; flex-shrink: 0;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%);
+}
+
+/* Others */
+.others-entry::after { background: #888; }
+.others-entry:hover,
+.others-entry.is-active {
+    box-shadow: -4px 0 0 #888, 6px 3px 22px rgba(0,0,0,0.9) !important;
+}
+.others-entry .entry-num   { color: #888; }
+.others-entry .entry-arrow { color: #888; }
+.others-entry:hover .entry-title,
+.others-entry.is-active .entry-title {
+    text-shadow: 0 0 20px rgba(160,160,160,0.3) !important;
+}
+
+/* ─── RIGHT: preview panel ─── */
+.roster-preview {
+    position: relative;
+    overflow: hidden;
+    clip-path: polygon(14px 0, 100% 0, 100% 100%, 0 100%, 0 14px);
+}
+
+.preview-slide {
+    position: absolute; inset: 0;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+}
+.preview-slide.is-visible { opacity: 1; }
+
+.preview-img {
+    width: 100%; height: 100%;
+    background-size: cover; background-position: center;
+    transition: transform 0.5s ease;
+}
+.preview-slide.is-visible .preview-img { transform: scale(1.03); }
+
+/* Gradient overlay */
+.preview-grad {
+    position: absolute; inset: 0;
+    background: linear-gradient(
+        100deg,
+        color-mix(in srgb, var(--preview-dark) 82%, transparent) 0%,
+        color-mix(in srgb, var(--preview-dark) 18%, transparent) 45%,
+        transparent 100%
+    );
+    z-index: 2;
+}
+
+/* Corner triangle */
+.preview-corner {
+    position: absolute; top: 0; left: 0;
+    width: 0; height: 0;
+    border-top: 14px solid var(--preview-dark);
+    border-right: 14px solid transparent;
+    z-index: 4;
+}
+
+/* Label */
+.preview-label {
+    position: absolute; bottom: 0; right: 0;
+    z-index: 3; padding: 18px 28px;
+    text-align: right;
+}
+.preview-label-num {
+    font-size: 5rem; font-weight: 900;
+    font-family: 'Arial Black', 'Impact', sans-serif;
+    color: color-mix(in srgb, var(--accent-color) 12%, transparent);
+    line-height: 1; user-select: none;
+    display: block; margin-bottom: -10px;
+}
+.preview-label-name {
+    font-size: 1.4rem; text-transform: uppercase;
+    letter-spacing: 5px; color: rgba(255,255,255,0.7);
+    font-weight: 700; display: block;
+    text-shadow: 0 2px 10px rgba(0,0,0,1);
+}
+
+/* Locked overlay */
+.preview-locked-overlay {
+    position: absolute; inset: 0; z-index: 5;
+    background: color-mix(in srgb, var(--preview-dark) 72%, transparent);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; letter-spacing: 4px; color: #444;
+    text-transform: uppercase;
+}
+
+/* ─── CLICK FLASH ─── */
+@keyframes Flash {
+    0%   { opacity: 0; }
+    30%  { opacity: 1; }
+    100% { opacity: 0; }
+}
+.flash {
+    position: fixed; inset: 0;
+    background: color-mix(in srgb, var(--accent-color) 18%, transparent);
+    z-index: 99999; pointer-events: none;
+    animation: Flash 0.26s ease forwards;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+    .roster-layout { grid-template-columns: 1fr; }
+    .roster-preview { min-height: 260px; clip-path: polygon(10px 0,100% 0,100% 100%,0 100%,0 10px); }
+    .preview-corner { border-top-width: 10px; border-right-width: 10px; }
+    main { padding: 0 18px 40px; }
+}
+@media (max-width: 600px) {
+    .roster-entry  { height: 62px; }
+    .entry-num     { font-size: 1.7rem; min-width: 38px; }
+    .entry-title   { font-size: 0.95rem; letter-spacing: 2.5px; }
+}
