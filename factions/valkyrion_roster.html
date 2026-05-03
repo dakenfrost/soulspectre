@@ -30,10 +30,10 @@
         
         main { max-width: 1400px; width: 100%; padding: 0 20px 60px; margin: 0 auto; }
 
-        /* ─── IL CONTENITORE PANORAMICO A SHARDS ─── */
+        /* ─── CONTENITORE PANORAMICO ─── */
         .shard-container {
             width: 100%;
-            height: 600px; /* Altezza fissa per dare spazio alle immagini */
+            height: 550px; 
             margin: 40px auto;
             position: relative;
             filter: drop-shadow(0 0 40px rgba(0,0,0,0.9));
@@ -51,16 +51,16 @@
         }
 
         /* 
-           Nuovi Tagli Poligonali "Panoramici".
-           Sfruttano tutta la larghezza creando forme dinamiche incastrate.
+           TAGLI OBLIQUI (CHEVRON GRID)
+           Nessuna convergenza centrale, aree bilanciate per leggibilità.
         */
-        .shard-melee   { clip-path: polygon(0 0, 33.3% 0, 50% 50%, 0 50%); }     
-        .shard-ranged  { clip-path: polygon(33.3% 0, 66.6% 0, 50% 50%); }  
-        .shard-hybrid  { clip-path: polygon(66.6% 0, 100% 0, 100% 50%, 50% 50%); }   
+        .shard-melee   { clip-path: polygon(0 0, 32% 0, 38% 50%, 0 50%); }     
+        .shard-ranged  { clip-path: polygon(32% 0, 68% 0, 62% 50%, 38% 50%); }  
+        .shard-hybrid  { clip-path: polygon(68% 0, 100% 0, 100% 50%, 62% 50%); }   
         
-        .shard-caster  { clip-path: polygon(0 50%, 50% 50%, 33.3% 100%, 0 100%); }   
-        .shard-support { clip-path: polygon(50% 50%, 66.6% 100%, 33.3% 100%); }
-        .shard-others  { clip-path: polygon(50% 50%, 100% 50%, 100% 100%, 66.6% 100%); } 
+        .shard-caster  { clip-path: polygon(0 50%, 38% 50%, 32% 100%, 0 100%); }   
+        .shard-support { clip-path: polygon(38% 50%, 62% 50%, 68% 100%, 32% 100%); }
+        .shard-others  { clip-path: polygon(62% 50%, 100% 50%, 100% 100%, 68% 100%); } 
 
         .shard-bg {
             position: absolute;
@@ -71,24 +71,16 @@
             transition: opacity 0.4s ease, transform 0.6s ease;
         }
 
-        /* Correzione della posizione del background per centrare le immagini nei tagli asimmetrici */
-        .shard-melee .shard-bg   { background-position: 15% 25%; }
-        .shard-ranged .shard-bg  { background-position: 50% 20%; }
-        .shard-hybrid .shard-bg  { background-position: 85% 25%; }
-        .shard-caster .shard-bg  { background-position: 15% 75%; }
-        .shard-support .shard-bg { background-position: 50% 80%; }
-        .shard-others .shard-bg  { background-position: 85% 75%; }
-
         .shard-overlay {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at center, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.8) 100%);
+            background: radial-gradient(circle at center, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.8) 100%);
             z-index: 2;
         }
 
-        /* Effetti Hover */
+        /* Hover Dynamics */
         .shard:not(.locked):hover {
-            transform: scale(1.03); /* Meno espansione, data la dimensione più grande */
+            transform: scale(1.04); 
             z-index: 10;
         }
         .shard:not(.locked):hover .shard-bg {
@@ -96,7 +88,7 @@
             transform: scale(1.05);
         }
 
-        /* Testi all'interno degli Shard */
+        /* Riposizionamento Testi Baricentrico */
         .shard-content {
             position: absolute;
             display: flex;
@@ -107,20 +99,20 @@
             transform: translate(-50%, -50%);
             z-index: 5;
             pointer-events: none;
-            width: 25%; /* Evita che il testo esca dai bordi tagliati */
+            width: 25%; 
         }
 
-        /* Coordinate adattate ai nuovi centri di massa */
-        .shard-melee .shard-content   { top: 25%; left: 16%; }
-        .shard-ranged .shard-content  { top: 20%; left: 50%; } 
-        .shard-hybrid .shard-content  { top: 25%; left: 84%; }
+        .shard-melee .shard-content   { top: 25%; left: 17%; }
+        .shard-ranged .shard-content  { top: 25%; left: 50%; } 
+        .shard-hybrid .shard-content  { top: 25%; left: 83%; }
         
-        .shard-caster .shard-content  { top: 75%; left: 16%; }
-        .shard-support .shard-content { top: 80%; left: 50%; } 
-        .shard-others .shard-content  { top: 75%; left: 84%; }
+        .shard-caster .shard-content  { top: 75%; left: 17%; }
+        .shard-support .shard-content { top: 75%; left: 50%; } 
+        .shard-others .shard-content  { top: 75%; left: 83%; }
 
+        /* Typography */
         .shard-type {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             letter-spacing: 4px;
             text-transform: uppercase;
             color: var(--accent-color);
@@ -129,7 +121,7 @@
         }
 
         .shard-name {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -143,9 +135,9 @@
             text-shadow: 0 0 15px var(--accent-color);
         }
 
-        /* Unità Bloccate */
+        /* Stato Bloccato */
         .shard.locked {
-            filter: grayscale(1) brightness(0.5);
+            filter: grayscale(1) brightness(0.4);
             cursor: not-allowed;
         }
         .shard.locked .shard-type { color: #555; }
@@ -154,24 +146,23 @@
         .back-link { display: block; text-align: center; margin-top: 40px; color: #666; text-decoration: none; padding: 20px; transition: color 0.3s ease; }
         .back-link:hover { color: var(--accent-color); }
 
+        /* Mobile Layout Stack */
         @media (max-width: 900px) {
-            .shard-container { height: 800px; } /* Più alto su mobile per compensare la larghezza ridotta */
-            /* Riposiziona i tagli per schermi stretti (layout a griglia più classica) */
-            .shard-melee   { clip-path: polygon(0 0, 50% 0, 50% 33.3%, 0 33.3%); }     
-            .shard-ranged  { clip-path: polygon(50% 0, 100% 0, 100% 33.3%, 50% 33.3%); }  
-            .shard-hybrid  { clip-path: polygon(0 33.3%, 50% 33.3%, 50% 66.6%, 0 66.6%); }   
-            .shard-caster  { clip-path: polygon(50% 33.3%, 100% 33.3%, 100% 66.6%, 50% 66.6%); }   
-            .shard-support { clip-path: polygon(0 66.6%, 50% 66.6%, 50% 100%, 0 100%); }
-            .shard-others  { clip-path: polygon(50% 66.6%, 100% 66.6%, 100% 100%, 50% 100%); } 
+            .shard-container { height: 850px; }
+            .shard-melee   { clip-path: polygon(0 0, 50% 0, 45% 33.3%, 0 33.3%); }     
+            .shard-ranged  { clip-path: polygon(50% 0, 100% 0, 100% 33.3%, 45% 33.3%); }  
+            .shard-hybrid  { clip-path: polygon(0 33.3%, 45% 33.3%, 55% 66.6%, 0 66.6%); }   
+            .shard-caster  { clip-path: polygon(45% 33.3%, 100% 33.3%, 100% 66.6%, 55% 66.6%); }   
+            .shard-support { clip-path: polygon(0 66.6%, 55% 66.6%, 50% 100%, 0 100%); }
+            .shard-others  { clip-path: polygon(55% 66.6%, 100% 66.6%, 100% 100%, 50% 100%); } 
 
-            /* Riposiziona anche i testi per il mobile */
-            .shard-content { width: 45%; }
-            .shard-melee .shard-content   { top: 16%; left: 25%; }
+            .shard-content { width: 40%; }
+            .shard-melee .shard-content   { top: 16%; left: 22%; }
             .shard-ranged .shard-content  { top: 16%; left: 75%; } 
-            .shard-hybrid .shard-content  { top: 50%; left: 25%; }
-            .shard-caster .shard-content  { top: 50%; left: 75%; }
+            .shard-hybrid .shard-content  { top: 50%; left: 22%; }
+            .shard-caster .shard-content  { top: 50%; left: 78%; }
             .shard-support .shard-content { top: 83%; left: 25%; } 
-            .shard-others .shard-content  { top: 83%; left: 75%; }
+            .shard-others .shard-content  { top: 83%; left: 78%; }
         }
     </style>
 </head>
@@ -189,7 +180,6 @@
 <main>
     <div class="shard-container">
 
-        <!-- Melee -->
         <a href="../units/valkyrion/valkyrion_order_sword.html" class="shard shard-melee">
             <div class="shard-bg" style="background-image:url('../img/valkyrion_roster_sword.jpg');"></div>
             <div class="shard-overlay"></div>
@@ -199,7 +189,6 @@
             </div>
         </a>
 
-        <!-- Ranged -->
         <a href="../units/valkyrion/valkyrion_order_engineering.html" class="shard shard-ranged">
             <div class="shard-bg" style="background-image:url('../img/valkyrion_roster_engineering.jpg');"></div>
             <div class="shard-overlay"></div>
@@ -209,7 +198,6 @@
             </div>
         </a>
 
-        <!-- Hybrid (Locked) -->
         <div class="shard shard-hybrid locked">
             <div class="shard-bg" style="background-image:url('../img/valkyrion_roster_hybrids.png');"></div>
             <div class="shard-overlay"></div>
@@ -219,7 +207,6 @@
             </div>
         </div>
 
-        <!-- Caster -->
         <a href="../units/valkyrion/valkyrion_order_knowledge.html" class="shard shard-caster">
             <div class="shard-bg" style="background-image:url('../img/valkyrion_roster_knowledge.jpg');"></div>
             <div class="shard-overlay"></div>
@@ -229,7 +216,6 @@
             </div>
         </a>
 
-        <!-- Support -->
         <a href="../units/valkyrion/valkyrion_order_light.html" class="shard shard-support">
             <div class="shard-bg" style="background-image:url('../img/valkyrion_roster_light.jpg');"></div>
             <div class="shard-overlay"></div>
@@ -239,7 +225,6 @@
             </div>
         </a>
 
-        <!-- Others -->
         <a href="../units/valkyrion/valkyrion_extra.html" class="shard shard-others">
             <div class="shard-bg" style="background-image:url('../img/valkyrion_roster_others.png'); filter: grayscale(0.5);"></div>
             <div class="shard-overlay"></div>
