@@ -9,7 +9,6 @@
         :root {
             --accent-color: #5c9ce6;
             --entry-bg:     rgb(5, 5, 12);
-            --preview-dark: rgb(5, 5, 12);
         }
         
         #bg-image { 
@@ -30,139 +29,121 @@
         
         main { max-width: 1400px; width: 100%; padding: 0 20px 60px; margin: 0 auto; }
 
-        /* ─── CONTENITORE PANORAMICO ─── */
-        .shard-container {
-            width: 100%;
-            height: 550px; 
+        /* ─── GRIGLIA RETTANGOLARE AD ALTA EFFICIENZA ─── */
+        .roster-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 colonne */
+            gap: 20px; /* Spazio uniforme tra le schede */
             margin: 40px auto;
+            width: 100%;
+        }
+
+        .roster-card {
             position: relative;
-            filter: drop-shadow(0 0 40px rgba(0,0,0,0.9));
-        }
-
-        .shard {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            display: block;
-            text-decoration: none;
-            overflow: hidden;
-            background: #0a0a0f;
-            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), z-index 0.4s;
-            transform-origin: center center;
-        }
-
-        /* 
-           TAGLI OBLIQUI (CHEVRON GRID)
-           Nessuna convergenza centrale, aree bilanciate per leggibilità.
-        */
-        .shard-melee   { clip-path: polygon(0 0, 32% 0, 38% 50%, 0 50%); }     
-        .shard-ranged  { clip-path: polygon(32% 0, 68% 0, 62% 50%, 38% 50%); }  
-        .shard-hybrid  { clip-path: polygon(68% 0, 100% 0, 100% 50%, 62% 50%); }   
-        
-        .shard-caster  { clip-path: polygon(0 50%, 38% 50%, 32% 100%, 0 100%); }   
-        .shard-support { clip-path: polygon(38% 50%, 62% 50%, 68% 100%, 32% 100%); }
-        .shard-others  { clip-path: polygon(62% 50%, 100% 50%, 100% 100%, 68% 100%); } 
-
-        .shard-bg {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-size: cover;
-            background-position: center;
-            opacity: 0.5;
-            transition: opacity 0.4s ease, transform 0.6s ease;
-        }
-
-        .shard-overlay {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at center, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.8) 100%);
-            z-index: 2;
-        }
-
-        /* Hover Dynamics */
-        .shard:not(.locked):hover {
-            transform: scale(1.04); 
-            z-index: 10;
-        }
-        .shard:not(.locked):hover .shard-bg {
-            opacity: 0.9;
-            transform: scale(1.05);
-        }
-
-        /* Riposizionamento Testi Baricentrico */
-        .shard-content {
-            position: absolute;
+            height: 280px; /* Altezza panoramica */
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            transform: translate(-50%, -50%);
-            z-index: 5;
-            pointer-events: none;
-            width: 25%; 
+            text-decoration: none;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 3px solid var(--accent-color);
+            border-radius: 4px;
+            background: var(--entry-bg);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease;
         }
 
-        .shard-melee .shard-content   { top: 25%; left: 17%; }
-        .shard-ranged .shard-content  { top: 25%; left: 50%; } 
-        .shard-hybrid .shard-content  { top: 25%; left: 83%; }
-        
-        .shard-caster .shard-content  { top: 75%; left: 17%; }
-        .shard-support .shard-content { top: 75%; left: 50%; } 
-        .shard-others .shard-content  { top: 75%; left: 83%; }
+        .rcard-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.6s ease, opacity 0.4s ease;
+            opacity: 0.6;
+            z-index: 1;
+        }
 
-        /* Typography */
-        .shard-type {
+        .rcard-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.8) 100%);
+            z-index: 2;
+            transition: background 0.4s ease;
+        }
+
+        /* Effetti Hover */
+        .roster-card:not(.locked):hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.9), 0 0 15px rgba(92,156,230,0.2);
+            border-bottom-color: #fff;
+        }
+        
+        .roster-card:not(.locked):hover .rcard-bg {
+            transform: scale(1.08);
+            opacity: 0.9;
+        }
+
+        .roster-card:not(.locked):hover .rcard-overlay {
+            background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.5) 100%);
+        }
+
+        /* Testi centrati e perfetti */
+        .rcard-content {
+            position: relative;
+            z-index: 5;
+            text-align: center;
+            width: 90%;
+            pointer-events: none;
+        }
+
+        .rcard-type {
+            display: block;
             font-size: 0.85rem;
             letter-spacing: 4px;
             text-transform: uppercase;
             color: var(--accent-color);
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             text-shadow: 0 2px 8px rgba(0,0,0,1);
         }
 
-        .shard-name {
-            font-size: 1.3rem;
+        .rcard-name {
+            display: block;
+            font-size: 1.4rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 2px;
             color: #ccc;
             text-shadow: 0 2px 10px rgba(0,0,0,1);
-            transition: color 0.3s ease, text-shadow 0.3s ease;
+            transition: color 0.3s ease, letter-spacing 0.3s ease;
         }
 
-        .shard:not(.locked):hover .shard-name {
+        .roster-card:not(.locked):hover .rcard-name {
             color: #fff;
+            letter-spacing: 3px;
             text-shadow: 0 0 15px var(--accent-color);
         }
 
         /* Stato Bloccato */
-        .shard.locked {
+        .roster-card.locked {
             filter: grayscale(1) brightness(0.4);
             cursor: not-allowed;
+            border-bottom-color: #333;
         }
-        .shard.locked .shard-type { color: #555; }
-        .shard.locked .shard-name { color: #777; }
+        .roster-card.locked .rcard-type { color: #666; }
+        .roster-card.locked .rcard-name { color: #888; }
 
-        .back-link { display: block; text-align: center; margin-top: 40px; color: #666; text-decoration: none; padding: 20px; transition: color 0.3s ease; }
+        .back-link { display: block; text-align: center; margin-top: 40px; color: #666; text-decoration: none; padding: 20px; transition: color 0.3s ease; border-top: 1px solid rgba(255,255,255,0.05); }
         .back-link:hover { color: var(--accent-color); }
 
-        /* Mobile Layout Stack */
-        @media (max-width: 900px) {
-            .shard-container { height: 850px; }
-            .shard-melee   { clip-path: polygon(0 0, 50% 0, 45% 33.3%, 0 33.3%); }     
-            .shard-ranged  { clip-path: polygon(50% 0, 100% 0, 100% 33.3%, 45% 33.3%); }  
-            .shard-hybrid  { clip-path: polygon(0 33.3%, 45% 33.3%, 55% 66.6%, 0 66.6%); }   
-            .shard-caster  { clip-path: polygon(45% 33.3%, 100% 33.3%, 100% 66.6%, 55% 66.6%); }   
-            .shard-support { clip-path: polygon(0 66.6%, 55% 66.6%, 50% 100%, 0 100%); }
-            .shard-others  { clip-path: polygon(55% 66.6%, 100% 66.6%, 100% 100%, 50% 100%); } 
-
-            .shard-content { width: 40%; }
-            .shard-melee .shard-content   { top: 16%; left: 22%; }
-            .shard-ranged .shard-content  { top: 16%; left: 75%; } 
-            .shard-hybrid .shard-content  { top: 50%; left: 22%; }
-            .shard-caster .shard-content  { top: 50%; left: 78%; }
-            .shard-support .shard-content { top: 83%; left: 25%; } 
-            .shard-others .shard-content  { top: 83%; left: 78%; }
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .roster-grid { grid-template-columns: repeat(2, 1fr); } /* 2 colonne su tablet */
+        }
+        @media (max-width: 600px) {
+            .roster-grid { grid-template-columns: 1fr; } /* 1 colonna su smartphone */
+            .roster-card { height: 220px; }
         }
     </style>
 </head>
@@ -178,59 +159,59 @@
 </header>
 
 <main>
-    <div class="shard-container">
+    <div class="roster-grid">
 
-        <a href="../units/valkyrion/valkyrion_order_sword.html" class="shard shard-melee">
-            <div class="shard-bg" style="background-image:url('../img/valkyrion_roster_sword.jpg');"></div>
-            <div class="shard-overlay"></div>
-            <div class="shard-content">
-                <span class="shard-type">Melee</span>
-                <span class="shard-name">Order of the Sword</span>
+        <a href="../units/valkyrion/valkyrion_order_sword.html" class="roster-card">
+            <div class="rcard-bg" style="background-image:url('../img/valkyrion_roster_sword.jpg');"></div>
+            <div class="rcard-overlay"></div>
+            <div class="rcard-content">
+                <span class="rcard-type">Melee</span>
+                <span class="rcard-name">Order of the Sword</span>
             </div>
         </a>
 
-        <a href="../units/valkyrion/valkyrion_order_engineering.html" class="shard shard-ranged">
-            <div class="shard-bg" style="background-image:url('../img/valkyrion_roster_engineering.jpg');"></div>
-            <div class="shard-overlay"></div>
-            <div class="shard-content">
-                <span class="shard-type">Ranged</span>
-                <span class="shard-name">Order of Engineering</span>
+        <a href="../units/valkyrion/valkyrion_order_engineering.html" class="roster-card">
+            <div class="rcard-bg" style="background-image:url('../img/valkyrion_roster_engineering.jpg');"></div>
+            <div class="rcard-overlay"></div>
+            <div class="rcard-content">
+                <span class="rcard-type">Ranged</span>
+                <span class="rcard-name">Order of Engineering</span>
             </div>
         </a>
 
-        <div class="shard shard-hybrid locked">
-            <div class="shard-bg" style="background-image:url('../img/valkyrion_roster_hybrids.png');"></div>
-            <div class="shard-overlay"></div>
-            <div class="shard-content">
-                <span class="shard-type" style="color: #444;">Classified</span>
-                <span class="shard-name">Hybrid Units</span>
+        <div class="roster-card locked">
+            <div class="rcard-bg" style="background-image:url('../img/valkyrion_roster_hybrids.png');"></div>
+            <div class="rcard-overlay"></div>
+            <div class="rcard-content">
+                <span class="rcard-type" style="color: #555;">Classified</span>
+                <span class="rcard-name">Hybrid Units</span>
             </div>
         </div>
 
-        <a href="../units/valkyrion/valkyrion_order_knowledge.html" class="shard shard-caster">
-            <div class="shard-bg" style="background-image:url('../img/valkyrion_roster_knowledge.jpg');"></div>
-            <div class="shard-overlay"></div>
-            <div class="shard-content">
-                <span class="shard-type">Caster</span>
-                <span class="shard-name">Order of Knowledge</span>
+        <a href="../units/valkyrion/valkyrion_order_knowledge.html" class="roster-card">
+            <div class="rcard-bg" style="background-image:url('../img/valkyrion_roster_knowledge.jpg');"></div>
+            <div class="rcard-overlay"></div>
+            <div class="rcard-content">
+                <span class="rcard-type">Caster</span>
+                <span class="rcard-name">Order of Knowledge</span>
             </div>
         </a>
 
-        <a href="../units/valkyrion/valkyrion_order_light.html" class="shard shard-support">
-            <div class="shard-bg" style="background-image:url('../img/valkyrion_roster_light.jpg');"></div>
-            <div class="shard-overlay"></div>
-            <div class="shard-content">
-                <span class="shard-type">Support</span>
-                <span class="shard-name">Order of the Light</span>
+        <a href="../units/valkyrion/valkyrion_order_light.html" class="roster-card">
+            <div class="rcard-bg" style="background-image:url('../img/valkyrion_roster_light.jpg');"></div>
+            <div class="rcard-overlay"></div>
+            <div class="rcard-content">
+                <span class="rcard-type">Support</span>
+                <span class="rcard-name">Order of the Light</span>
             </div>
         </a>
 
-        <a href="../units/valkyrion/valkyrion_extra.html" class="shard shard-others">
-            <div class="shard-bg" style="background-image:url('../img/valkyrion_roster_others.png'); filter: grayscale(0.5);"></div>
-            <div class="shard-overlay"></div>
-            <div class="shard-content">
-                <span class="shard-type" style="color: #888;">Misc</span>
-                <span class="shard-name" style="color: #bbb;">Others</span>
+        <a href="../units/valkyrion/valkyrion_extra.html" class="roster-card">
+            <div class="rcard-bg" style="background-image:url('../img/valkyrion_roster_others.png'); filter: grayscale(0.5);"></div>
+            <div class="rcard-overlay"></div>
+            <div class="rcard-content">
+                <span class="rcard-type" style="color: #888;">Misc</span>
+                <span class="rcard-name" style="color: #bbb;">Others</span>
             </div>
         </a>
 
@@ -240,7 +221,7 @@
 </main>
 
 <script>
-    document.querySelectorAll('.shard:not(.locked)').forEach(card => {
+    document.querySelectorAll('.roster-card:not(.locked)').forEach(card => {
         card.addEventListener('click', e => {
             e.preventDefault();
             const href = card.getAttribute('href');
