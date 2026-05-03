@@ -105,6 +105,7 @@ h1 {
     max-width: 400px;
 }
 
+/* 1. Ripristino delle classi base allo stato puro e simmetrico */
 .faction-name {
     font-size: 2rem;
     color: #fff;
@@ -112,7 +113,7 @@ h1 {
     letter-spacing: 5px;
     margin: 0 0 20px 0;
     white-space: nowrap;
-    transform: translateX(4px); /* Override ottico forzato verso destra */
+    /* Nessun override globale qui */
 }
 
 .faction-desc {
@@ -124,7 +125,7 @@ h1 {
 
 .engage-btn {
     display: inline-block;
-    padding: 12px 30px; /* Ripristinato padding pulito e simmetrico */
+    padding: 12px 30px;
     border: 1px solid #fff;
     color: #fff;
     text-transform: uppercase;
@@ -132,8 +133,22 @@ h1 {
     letter-spacing: 2px;
     font-size: 0.8rem;
     transition: 0.3s;
-    transform: translateX(2px); /* Override ottico forzato verso destra */
+    /* Nessun override globale qui */
 }
+
+/* 2. OVERRIDE OTTICI MIRATI 
+   Applica la traslazione solo alle fazioni visivamente decentrate */
+
+.valkyrion .faction-name { transform: translateX(4px); }
+.valkyrion .engage-btn { transform: translateX(2px); }
+
+.primal .faction-name { transform: translateX(4px); }
+.primal .engage-btn { transform: translateX(2px); }
+
+/* Se in futuro noterai il problema su un'altra fazione, 
+   ti basterà copiare questo schema, ad esempio:
+   .elven .faction-name { transform: translateX(3px); } 
+*/
 
 /* Floating Initial (Visible when closed) */
 .shard-label {
