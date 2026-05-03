@@ -5,15 +5,155 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOULSPECTRE | Valkyrion Roster</title>
     <link rel="stylesheet" href="../system/shared.css">
-    <link rel="stylesheet" href="../system/roster.css">
     <style>
         :root {
             --accent-color: #5c9ce6;
             --entry-bg:     rgb(5, 5, 12);
             --preview-dark: rgb(5, 5, 12);
         }
-        #bg-image { background-image: url('../img/valkyrion_bg.jpeg'); }
-        #overlay  { background: linear-gradient(to bottom, rgba(10,10,15,0.95), rgba(5,5,10,1)); }
+        
+        #bg-image { 
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background-image: url('../img/valkyrion_bg.jpeg'); 
+            background-size: cover; background-position: center; z-index: -2;
+        }
+        
+        #overlay { 
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: linear-gradient(to bottom, rgba(10,10,15,0.95), rgba(5,5,10,1)); 
+            z-index: -1;
+        }
+
+        header { padding: 60px 20px 10px 20px; text-align: center; }
+        h1 { letter-spacing: 8px; font-size: 3rem; text-transform: uppercase; margin: 0; color: #fff; text-shadow: 0 0 20px rgba(92,156,230,0.5); }
+        .subtitle { color: var(--accent-color); letter-spacing: 2px; margin-top: 5px; font-size: 1.1rem; }
+        
+        main { max-width: 1300px; width: 100%; padding: 0 20px 60px; margin: 0 auto; }
+
+        /* ─── IL DIAMANTE A SHARDS (GEOMETRIA EQUIVALENTE) ─── */
+        .diamond-container {
+            width: 100%;
+            max-width: 750px; 
+            margin: 40px auto;
+            position: relative;
+        }
+
+        .diamond-roster {
+            width: 100%;
+            padding-bottom: 100%; /* Forza l'aspect ratio 1:1 */
+            position: relative;
+            filter: drop-shadow(0 0 40px rgba(0,0,0,0.9));
+        }
+
+        .shard {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            display: block;
+            text-decoration: none;
+            overflow: hidden;
+            background: #0a0a0f;
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            transform-origin: center center;
+        }
+
+        /* Tagli Poligonali Matematici */
+        .shard-melee   { clip-path: polygon(0% 50%, 50% 0%, 50% 33.4%); }     
+        .shard-hybrid  { clip-path: polygon(0% 50%, 50% 33.3%, 50% 66.7%); }  
+        .shard-caster  { clip-path: polygon(0% 50%, 50% 66.6%, 50% 100%); }   
+        
+        .shard-ranged  { clip-path: polygon(100% 50%, 50% 0%, 50% 33.4%); }   
+        .shard-others  { clip-path: polygon(100% 50%, 50% 33.3%, 50% 66.7%); }
+        .shard-support { clip-path: polygon(100% 50%, 50% 66.6%, 50% 100%); } 
+
+        .shard-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.5;
+            transition: opacity 0.4s ease, transform 0.6s ease;
+        }
+
+        .shard-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at center, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.8) 100%);
+            z-index: 2;
+        }
+
+        /* Effetti Hover */
+        .shard:not(.locked):hover {
+            transform: scale(1.05); 
+            z-index: 10;
+        }
+        .shard:not(.locked):hover .shard-bg {
+            opacity: 0.9;
+            transform: scale(1.1);
+        }
+
+        /* Testi all'interno degli Shard */
+        .shard-content {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            width: 28%; 
+            transform: translate(-50%, -50%);
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        /* Coordinate Baricentriche */
+        .shard-melee .shard-content   { top: 28%; left: 32%; }
+        .shard-hybrid .shard-content  { top: 50%; left: 18%; } 
+        .shard-caster .shard-content  { top: 72%; left: 32%; }
+        
+        .shard-ranged .shard-content  { top: 28%; left: 68%; }
+        .shard-others .shard-content  { top: 50%; left: 82%; } 
+        .shard-support .shard-content { top: 72%; left: 68%; }
+
+        .shard-type {
+            font-size: 0.8rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--accent-color);
+            margin-bottom: 5px;
+            text-shadow: 0 2px 8px rgba(0,0,0,1);
+        }
+
+        .shard-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #ccc;
+            text-shadow: 0 2px 10px rgba(0,0,0,1);
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        .shard:not(.locked):hover .shard-name {
+            color: #fff;
+            text-shadow: 0 0 15px var(--accent-color);
+        }
+
+        /* Unità Bloccate */
+        .shard.locked {
+            filter: grayscale(1) brightness(0.5);
+            cursor: not-allowed;
+        }
+        .shard.locked .shard-type { color: #555; }
+        .shard.locked .shard-name { color: #777; }
+
+        .back-link { display: block; text-align: center; margin-top: 40px; color: #666; text-decoration: none; padding: 20px; transition: color 0.3s ease; }
+        .back-link:hover { color: var(--accent-color); }
+
+        @media (max-width: 768px) {
+            .diamond-container { max-width: 95%; }
+            .shard-name { font-size: 0.9rem; letter-spacing: 1px; }
+            .shard-type { font-size: 0.6rem; letter-spacing: 2px; }
+        }
     </style>
 </head>
 <body>
@@ -28,73 +168,77 @@
 </header>
 
 <main>
-    <div class="roster-cards">
+    <div class="diamond-container">
+        <div class="diamond-roster">
 
-        <a href="../units/valkyrion/valkyrion_order_sword.html" class="rcard">
-            <div class="rcard-img" style="background-image:url('../img/valkyrion_roster_sword.jpg');"></div>
-            <div class="rcard-overlay"></div>
-            <div class="rcard-label">
-                <span class="rcard-type">Melee Unit</span>
-                <span class="rcard-name">Order of the Sword</span>
-            </div>
-            <span class="rcard-arrow">&#9654;</span>
-        </a>
+            <!-- Melee -->
+            <a href="../units/valkyrion/valkyrion_order_sword.html" class="shard shard-melee">
+                <div class="shard-bg" style="background-image:url('../img/valkyrion_roster_sword.jpg');"></div>
+                <div class="shard-overlay"></div>
+                <div class="shard-content">
+                    <span class="shard-type">Melee</span>
+                    <span class="shard-name">Order of the Sword</span>
+                </div>
+            </a>
 
-        <a href="../units/valkyrion/valkyrion_order_light.html" class="rcard">
-            <div class="rcard-img" style="background-image:url('../img/valkyrion_roster_light.jpg');"></div>
-            <div class="rcard-overlay"></div>
-            <div class="rcard-label">
-                <span class="rcard-type">Support Unit</span>
-                <span class="rcard-name">Order of the Light</span>
+            <!-- Hybrid (Locked) -->
+            <div class="shard shard-hybrid locked">
+                <div class="shard-bg" style="background-image:url('../img/valkyrion_roster_hybrids.png');"></div>
+                <div class="shard-overlay"></div>
+                <div class="shard-content">
+                    <span class="shard-type" style="color: #444;">Classified</span>
+                    <span class="shard-name">Hybrid Units</span>
+                </div>
             </div>
-            <span class="rcard-arrow">&#9654;</span>
-        </a>
 
-        <a href="../units/valkyrion/valkyrion_order_knowledge.html" class="rcard">
-            <div class="rcard-img" style="background-image:url('../img/valkyrion_roster_knowledge.jpg');"></div>
-            <div class="rcard-overlay"></div>
-            <div class="rcard-label">
-                <span class="rcard-type">Mage Unit</span>
-                <span class="rcard-name">Order of Knowledge</span>
-            </div>
-            <span class="rcard-arrow">&#9654;</span>
-        </a>
+            <!-- Caster -->
+            <a href="../units/valkyrion/valkyrion_order_knowledge.html" class="shard shard-caster">
+                <div class="shard-bg" style="background-image:url('../img/valkyrion_roster_knowledge.jpg');"></div>
+                <div class="shard-overlay"></div>
+                <div class="shard-content">
+                    <span class="shard-type">Caster</span>
+                    <span class="shard-name">Order of Knowledge</span>
+                </div>
+            </a>
 
-        <a href="../units/valkyrion/valkyrion_order_engineering.html" class="rcard">
-            <div class="rcard-img" style="background-image:url('../img/valkyrion_roster_engineering.jpg');"></div>
-            <div class="rcard-overlay"></div>
-            <div class="rcard-label">
-                <span class="rcard-type">Ranged Unit</span>
-                <span class="rcard-name">Order of Engineering</span>
-            </div>
-            <span class="rcard-arrow">&#9654;</span>
-        </a>
+            <!-- Ranged -->
+            <a href="../units/valkyrion/valkyrion_order_engineering.html" class="shard shard-ranged">
+                <div class="shard-bg" style="background-image:url('../img/valkyrion_roster_engineering.jpg');"></div>
+                <div class="shard-overlay"></div>
+                <div class="shard-content">
+                    <span class="shard-type">Ranged</span>
+                    <span class="shard-name">Order of Engineering</span>
+                </div>
+            </a>
 
-        <div class="rcard locked-rcard">
-            <div class="rcard-img" style="background-image:url('../img/valkyrion_roster_hybrids.png'); filter:grayscale(1) brightness(0.35);"></div>
-            <div class="rcard-overlay"></div>
-            <div class="rcard-locked-overlay">&#9632; CLASSIFIED &#9632;</div>
-            <div class="rcard-label">
-                <span class="rcard-name" style="color:rgba(80,80,80,0.5);">Hybrid Units</span>
-            </div>
+            <!-- Others -->
+            <a href="../units/valkyrion/valkyrion_extra.html" class="shard shard-others">
+                <div class="shard-bg" style="background-image:url('../img/valkyrion_roster_others.png'); filter: grayscale(0.5);"></div>
+                <div class="shard-overlay"></div>
+                <div class="shard-content">
+                    <span class="shard-type" style="color: #888;">Misc</span>
+                    <span class="shard-name" style="color: #bbb;">Others</span>
+                </div>
+            </a>
+
+            <!-- Support -->
+            <a href="../units/valkyrion/valkyrion_order_light.html" class="shard shard-support">
+                <div class="shard-bg" style="background-image:url('../img/valkyrion_roster_light.jpg');"></div>
+                <div class="shard-overlay"></div>
+                <div class="shard-content">
+                    <span class="shard-type">Support</span>
+                    <span class="shard-name">Order of the Light</span>
+                </div>
+            </a>
+
         </div>
-
-        <a href="../units/valkyrion/valkyrion_extra.html" class="rcard others-rcard">
-            <div class="rcard-img" style="background-image:url('../img/valkyrion_roster_others.png');"></div>
-            <div class="rcard-overlay" style="background:linear-gradient(to top,rgba(5,5,12,0.82) 0%,rgba(5,5,12,0.30) 45%,rgba(0,0,0,0.05) 100%);"></div>
-            <div class="rcard-label">
-                <span class="rcard-type" style="color:#888;">Miscellaneous</span>
-                <span class="rcard-name" style="color:rgba(200,200,200,0.7);">Others</span>
-            </div>
-            <span class="rcard-arrow" style="color:#888;">&#9654;</span>
-        </a>
-
     </div>
+
     <a href="../factions/valkyrion.html" class="back-link">← Return to Valkyrion Overview</a>
 </main>
 
 <script>
-    document.querySelectorAll('.rcard:not(.locked-rcard)').forEach(card => {
+    document.querySelectorAll('.shard:not(.locked)').forEach(card => {
         card.addEventListener('click', e => {
             e.preventDefault();
             const href = card.getAttribute('href');
