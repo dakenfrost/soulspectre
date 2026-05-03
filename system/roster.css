@@ -1,389 +1,267 @@
-/*
- *  roster.css  —  shared styles for faction roster pages
- *
- *  Each page must define in its own <style>:
- *    --accent-color   (main accent colour, e.g. #5cb88a or #5c9ce6)
- *    --entry-bg       (dark base for entry cards, e.g. rgb(4,9,6))
- *    --preview-dark   (dark base for preview gradients, e.g. rgb(4,9,6))
- *    #bg-image        background-image
- *    #overlay         background gradient
- */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Valkyrion Roster</title>
+    <link rel="stylesheet" href="../system/shared.css">
+    <!-- Puoi rimuovere roster.css se conteneva solo la vecchia griglia quadrata -->
+    <style>
+        :root {
+            --accent-color: #5c9ce6;
+            --entry-bg:     rgb(5, 5, 12);
+            --preview-dark: rgb(5, 5, 12);
+        }
+        
+        #bg-image { 
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background-image: url('../img/valkyrion_bg.jpeg'); 
+            background-size: cover; background-position: center; z-index: -2;
+        }
+        
+        #overlay { 
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: linear-gradient(to bottom, rgba(10,10,15,0.95), rgba(5,5,10,1)); 
+            z-index: -1;
+        }
 
-body { line-height: 1.8; overflow-x: hidden; }
+        header { padding: 60px 20px 10px 20px; text-align: center; }
+        h1 { letter-spacing: 8px; font-size: 3rem; text-transform: uppercase; margin: 0; color: #fff; text-shadow: 0 0 20px rgba(92,156,230,0.5); }
+        .subtitle { color: var(--accent-color); letter-spacing: 2px; margin-top: 5px; font-size: 1.1rem; }
+        
+        main { max-width: 1300px; width: 100%; padding: 0 20px 60px; margin: 0 auto; }
 
-/* Scanlines */
-body::after {
-    content: ''; position: fixed; inset: 0;
-    background: repeating-linear-gradient(
-        0deg,
-        transparent 0px, transparent 3px,
-        rgba(0,0,0,0.04) 3px, rgba(0,0,0,0.04) 4px
-    );
-    pointer-events: none; z-index: 9999;
-}
+        /* ─── IL DIAMANTE A SHARDS (GEOMETRIA EQUIVALENTE) ─── */
+        .diamond-container {
+            width: 100%;
+            max-width: 750px; /* Dimensione massima del diamante */
+            margin: 40px auto;
+            position: relative;
+        }
 
-header { padding-bottom: 10px; }
+        /* Hack per forzare un aspect-ratio 1:1, creando un'area quadrata per il diamante */
+        .diamond-roster {
+            width: 100%;
+            padding-bottom: 100%;
+            position: relative;
+            filter: drop-shadow(0 0 40px rgba(0,0,0,0.9));
+        }
 
-main {
-    max-width: 1300px;
-    width: 100%;
-    padding: 0 40px 60px;
-    margin: 0 auto;
-}
+        /* Base dello Shard */
+        .shard {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            display: block;
+            text-decoration: none;
+            overflow: hidden;
+            background: #0a0a0f;
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            transform-origin: center center;
+        }
 
-/* ─── SPLIT LAYOUT ─── */
-.roster-layout {
-    display: grid;
-    grid-template-columns: 420px 1fr;
-    gap: 0;
-    min-height: 520px;
-    position: relative;
-}
+        /* 
+           Sezioni di Taglio Matematico.
+           Ogni frazione (33.3% e 66.6%) garantisce l'equivalenza dell'area.
+        */
+        .shard-melee   { clip-path: polygon(0% 50%, 50% 0%, 50% 33.4%); }     /* In alto a sx */
+        .shard-hybrid  { clip-path: polygon(0% 50%, 50% 33.3%, 50% 66.7%); }  /* In mezzo a sx */
+        .shard-caster  { clip-path: polygon(0% 50%, 50% 66.6%, 50% 100%); }   /* In basso a sx */
+        
+        .shard-ranged  { clip-path: polygon(100% 50%, 50% 0%, 50% 33.4%); }   /* In alto a dx */
+        .shard-others  { clip-path: polygon(100% 50%, 50% 33.3%, 50% 66.7%); }/* In mezzo a dx */
+        .shard-support { clip-path: polygon(100% 50%, 50% 66.6%, 50% 100%); } /* In basso a dx */
 
-/* ─── LEFT: list panel ─── */
-.roster-list {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    position: relative;
-    z-index: 5;
-}
+        /* Sfondo dello Shard */
+        .shard-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.5;
+            transition: opacity 0.4s ease, transform 0.6s ease;
+        }
 
-/* Watermark */
-.roster-list::before {
-    content: 'ROSTER';
-    position: absolute;
-    bottom: -10px; left: -8px;
-    font-size: 7rem; font-weight: 900;
-    font-family: 'Arial Black', sans-serif;
-    color: color-mix(in srgb, var(--accent-color) 3.5%, transparent);
-    letter-spacing: 14px;
-    pointer-events: none; user-select: none;
-    line-height: 1; white-space: nowrap; z-index: -1;
-}
+        /* Overlay sfumato per leggere il testo */
+        .shard-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at center, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.8) 100%);
+            z-index: 2;
+        }
 
-/* ─── ENTRY BASE ─── */
-.roster-entry {
-    position: relative;
-    height: 76px;
-    display: flex; align-items: center;
-    text-decoration: none;
-    overflow: hidden;
-    background: color-mix(in srgb, var(--entry-bg) 92%, transparent);
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
-    transition: transform 0.10s ease;
-    cursor: pointer;
-    opacity: 0; transform: translateX(-48px);
-    animation: slideIn 0.32s cubic-bezier(0.25,0.46,0.45,0.94) forwards;
-}
-@keyframes slideIn { to { opacity: 1; transform: translateX(0); } }
-.roster-entry:nth-child(1) { animation-delay: 0.06s; }
-.roster-entry:nth-child(2) { animation-delay: 0.12s; }
-.roster-entry:nth-child(3) { animation-delay: 0.18s; }
-.roster-entry:nth-child(4) { animation-delay: 0.24s; }
-.roster-entry:nth-child(5) { animation-delay: 0.30s; }
-.roster-entry:nth-child(6) { animation-delay: 0.36s; }
+        /* Effetti di interazione */
+        .shard:not(.locked):hover {
+            transform: scale(1.05); /* L'espansione crea fisicamente il gap visivo tra i pezzi */
+            z-index: 10;
+        }
+        .shard:not(.locked):hover .shard-bg {
+            opacity: 0.9;
+            transform: scale(1.1);
+        }
 
-/* Left accent bar */
-.roster-entry::after {
-    content: ''; position: absolute;
-    left: 0; top: 0; bottom: 0; width: 4px;
-    background: var(--accent-color); z-index: 6;
-    transform: scaleY(0); transform-origin: bottom;
-    transition: transform 0.12s cubic-bezier(0.25,0.46,0.45,0.94);
-}
+        /* Posizionamento dei Testi all'interno dei triangoli */
+        .shard-content {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            width: 28%; /* Limita la larghezza per non sbordare dal taglio */
+            transform: translate(-50%, -50%);
+            z-index: 5;
+            pointer-events: none;
+        }
 
-/* Diagonal sweep */
-.roster-entry::before {
-    content: ''; position: absolute;
-    top: -20%; left: -80%; width: 50%; height: 140%;
-    background: linear-gradient(
-        100deg,
-        transparent 0%,
-        color-mix(in srgb, var(--accent-color) 11%, transparent) 50%,
-        transparent 100%
-    );
-    transform: skewX(-20deg); z-index: 3;
-    transition: left 0.34s cubic-bezier(0.25,0.46,0.45,0.94);
-}
+        /* Coordinate precise basate sul baricentro dei triangoli */
+        .shard-melee .shard-content   { top: 28%; left: 32%; }
+        .shard-hybrid .shard-content  { top: 50%; left: 18%; } /* Più a sinistra perché è la punta */
+        .shard-caster .shard-content  { top: 72%; left: 32%; }
+        
+        .shard-ranged .shard-content  { top: 28%; left: 68%; }
+        .shard-others .shard-content  { top: 50%; left: 82%; } /* Più a destra perché è la punta */
+        .shard-support .shard-content { top: 72%; left: 68%; }
 
-/* Hover + active */
-.roster-entry:not(.locked-entry):hover,
-.roster-entry.is-active {
-    transform: translateX(8px);
-    box-shadow: -4px 0 0 var(--accent-color), 6px 3px 22px rgba(0,0,0,0.9);
-}
-.roster-entry:not(.locked-entry):hover::after,
-.roster-entry.is-active::after  { transform: scaleY(1); }
-.roster-entry:not(.locked-entry):hover::before,
-.roster-entry.is-active::before { left: 130%; }
+        /* Stile Testi */
+        .shard-type {
+            font-size: 0.8rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--accent-color);
+            margin-bottom: 5px;
+            text-shadow: 0 2px 8px rgba(0,0,0,1);
+        }
 
-.roster-entry:not(.locked-entry):hover .entry-num,
-.roster-entry.is-active .entry-num { opacity: 0.75; }
+        .shard-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #ccc;
+            text-shadow: 0 2px 10px rgba(0,0,0,1);
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
 
-.roster-entry:not(.locked-entry):hover .entry-title,
-.roster-entry.is-active .entry-title {
-    color: #fff; letter-spacing: 5px;
-    text-shadow: 0 0 20px color-mix(in srgb, var(--accent-color) 40%, transparent);
-}
-.roster-entry:not(.locked-entry):hover .entry-arrow,
-.roster-entry.is-active .entry-arrow { opacity: 1; transform: translateX(0); }
+        .shard:not(.locked):hover .shard-name {
+            color: #fff;
+            text-shadow: 0 0 15px var(--accent-color);
+        }
 
-/* Content */
-.entry-content {
-    position: relative; z-index: 5;
-    display: flex; align-items: center; gap: 14px;
-    padding: 0 18px; width: 100%;
-}
-.entry-num {
-    font-size: 2.1rem; font-weight: 900;
-    font-family: 'Arial Black', 'Impact', sans-serif;
-    color: var(--accent-color); opacity: 0.20;
-    min-width: 48px; line-height: 1; letter-spacing: -1px;
-    transition: opacity 0.10s ease; user-select: none;
-}
-.entry-title {
-    color: #b8b8b8; font-size: 1.15rem;
-    text-transform: uppercase; letter-spacing: 4px;
-    font-weight: 700; margin: 0; line-height: 1.2;
-    transition: color 0.10s ease, letter-spacing 0.10s ease, text-shadow 0.10s ease;
-    text-shadow: 1px 1px 6px rgba(0,0,0,1);
-}
-.entry-arrow {
-    margin-left: auto; color: var(--accent-color);
-    font-size: 0.9rem; opacity: 0; transform: translateX(-12px);
-    transition: opacity 0.10s ease, transform 0.10s ease;
-    user-select: none; flex-shrink: 0;
-}
+        /* Unità Bloccate/Misteriose */
+        .shard.locked {
+            filter: grayscale(1) brightness(0.5);
+            cursor: not-allowed;
+        }
+        .shard.locked .shard-type { color: #555; }
+        .shard.locked .shard-name { color: #777; }
 
-/* Locked */
-.locked-entry { cursor: not-allowed; opacity: 0.35; }
-.locked-entry .entry-num   { color: #444; }
-.locked-entry .entry-title { color: #484848; }
-.locked-entry::after       { background: #333; }
-.lock-badge {
-    margin-left: auto; font-size: 0.58rem; letter-spacing: 2px;
-    text-transform: uppercase; color: #484848;
-    border: 1px solid #2e2e2e; padding: 2px 7px; flex-shrink: 0;
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%);
-}
+        .back-link { display: block; text-align: center; margin-top: 40px; color: #666; text-decoration: none; padding: 20px; transition: color 0.3s ease; }
+        .back-link:hover { color: var(--accent-color); }
 
-/* Others */
-.others-entry::after { background: #888; }
-.others-entry:hover,
-.others-entry.is-active {
-    box-shadow: -4px 0 0 #888, 6px 3px 22px rgba(0,0,0,0.9) !important;
-}
-.others-entry .entry-num   { color: #888; }
-.others-entry .entry-arrow { color: #888; }
-.others-entry:hover .entry-title,
-.others-entry.is-active .entry-title {
-    text-shadow: 0 0 20px rgba(160,160,160,0.3) !important;
-}
+        /* Responsive */
+        @media (max-width: 768px) {
+            .diamond-container { max-width: 95%; }
+            .shard-name { font-size: 0.9rem; letter-spacing: 1px; }
+            .shard-type { font-size: 0.6rem; letter-spacing: 2px; }
+        }
+    </style>
+</head>
+<body>
 
-/* ─── RIGHT: preview panel ─── */
-.roster-preview {
-    position: relative;
-    overflow: hidden;
-    clip-path: polygon(14px 0, 100% 0, 100% 100%, 0 100%, 0 14px);
-}
+<div id="bg-image"></div>
+<div id="overlay"></div>
+<global-navigation base="../"></global-navigation>
 
-.preview-slide {
-    position: absolute; inset: 0;
-    opacity: 0;
-    transition: opacity 0.35s ease;
-    pointer-events: none;
-}
-.preview-slide.is-visible { opacity: 1; }
+<header>
+    <h1>Military Roster</h1>
+    <div class="subtitle">The Martial Forces of the Empire</div>
+</header>
 
-.preview-img {
-    width: 100%; height: 100%;
-    background-size: cover; background-position: center;
-    transition: transform 0.5s ease;
-}
-.preview-slide.is-visible .preview-img { transform: scale(1.03); }
+<main>
+    <div class="diamond-container">
+        <div class="diamond-roster">
 
-/* Gradient overlay */
-.preview-grad {
-    position: absolute; inset: 0;
-    background: linear-gradient(
-        100deg,
-        color-mix(in srgb, var(--preview-dark) 82%, transparent) 0%,
-        color-mix(in srgb, var(--preview-dark) 18%, transparent) 45%,
-        transparent 100%
-    );
-    z-index: 2;
-}
+            <!-- ALTO SINISTRA: Melee -->
+            <a href="../units/valkyrion/valkyrion_order_sword.html" class="shard shard-melee">
+                <div class="shard-bg" style="background-image:url('../img/valkyrion_roster_sword.jpg');"></div>
+                <div class="shard-overlay"></div>
+                <div class="shard-content">
+                    <span class="shard-type">Melee</span>
+                    <span class="shard-name">Order of the Sword</span>
+                </div>
+            </a>
 
-/* Corner triangle */
-.preview-corner {
-    position: absolute; top: 0; left: 0;
-    width: 0; height: 0;
-    border-top: 14px solid var(--preview-dark);
-    border-right: 14px solid transparent;
-    z-index: 4;
-}
+            <!-- MEZZO SINISTRA: Hybrid (Locked) -->
+            <div class="shard shard-hybrid locked">
+                <div class="shard-bg" style="background-image:url('../img/valkyrion_roster_hybrids.png');"></div>
+                <div class="shard-overlay"></div>
+                <div class="shard-content">
+                    <span class="shard-type" style="color: #444;">Classified</span>
+                    <span class="shard-name">Hybrid Units</span>
+                </div>
+            </div>
 
-/* Label */
-.preview-label {
-    position: absolute; bottom: 0; right: 0;
-    z-index: 3; padding: 18px 28px;
-    text-align: right;
-}
-.preview-label-num {
-    font-size: 5rem; font-weight: 900;
-    font-family: 'Arial Black', 'Impact', sans-serif;
-    color: color-mix(in srgb, var(--accent-color) 12%, transparent);
-    line-height: 1; user-select: none;
-    display: block; margin-bottom: -10px;
-}
-.preview-label-name {
-    font-size: 1.4rem; text-transform: uppercase;
-    letter-spacing: 5px; color: rgba(255,255,255,0.7);
-    font-weight: 700; display: block;
-    text-shadow: 0 2px 10px rgba(0,0,0,1);
-}
+            <!-- BASSO SINISTRA: Caster -->
+            <a href="../units/valkyrion/valkyrion_order_knowledge.html" class="shard shard-caster">
+                <div class="shard-bg" style="background-image:url('../img/valkyrion_roster_knowledge.jpg');"></div>
+                <div class="shard-overlay"></div>
+                <div class="shard-content">
+                    <span class="shard-type">Caster</span>
+                    <span class="shard-name">Order of Knowledge</span>
+                </div>
+            </a>
 
-/* Locked overlay */
-.preview-locked-overlay {
-    position: absolute; inset: 0; z-index: 5;
-    background: color-mix(in srgb, var(--preview-dark) 72%, transparent);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 0.75rem; letter-spacing: 4px; color: #444;
-    text-transform: uppercase;
-}
+            <!-- ALTO DESTRA: Ranged -->
+            <a href="../units/valkyrion/valkyrion_order_engineering.html" class="shard shard-ranged">
+                <div class="shard-bg" style="background-image:url('../img/valkyrion_roster_engineering.jpg');"></div>
+                <div class="shard-overlay"></div>
+                <div class="shard-content">
+                    <span class="shard-type">Ranged</span>
+                    <span class="shard-name">Order of Engineering</span>
+                </div>
+            </a>
 
-/* ─── CARD GRID ─── */
-.roster-cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    margin-bottom: 40px;
-}
+            <!-- MEZZO DESTRA: Others -->
+            <a href="../units/valkyrion/valkyrion_extra.html" class="shard shard-others">
+                <div class="shard-bg" style="background-image:url('../img/valkyrion_roster_others.png'); filter: grayscale(0.5);"></div>
+                <div class="shard-overlay"></div>
+                <div class="shard-content">
+                    <span class="shard-type" style="color: #888;">Misc</span>
+                    <span class="shard-name" style="color: #bbb;">Others</span>
+                </div>
+            </a>
 
-.rcard {
-    position: relative;
-    height: 340px;
-    overflow: hidden;
-    display: block;
-    text-decoration: none;
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%);
-    cursor: pointer;
-    opacity: 0;
-    transform: translateY(24px);
-    animation: cardIn 0.38s cubic-bezier(0.25,0.46,0.45,0.94) forwards;
-}
-@keyframes cardIn { to { opacity: 1; transform: translateY(0); } }
-.rcard:nth-child(1) { animation-delay: 0.06s; }
-.rcard:nth-child(2) { animation-delay: 0.12s; }
-.rcard:nth-child(3) { animation-delay: 0.18s; }
-.rcard:nth-child(4) { animation-delay: 0.24s; }
-.rcard:nth-child(5) { animation-delay: 0.30s; }
-.rcard:nth-child(6) { animation-delay: 0.36s; }
+            <!-- BASSO DESTRA: Support -->
+            <a href="../units/valkyrion/valkyrion_order_light.html" class="shard shard-support">
+                <div class="shard-bg" style="background-image:url('../img/valkyrion_roster_light.jpg');"></div>
+                <div class="shard-overlay"></div>
+                <div class="shard-content">
+                    <span class="shard-type">Support</span>
+                    <span class="shard-name">Order of the Light</span>
+                </div>
+            </a>
 
-.rcard-img {
-    position: absolute; inset: 0;
-    background-size: cover; background-position: center;
-    transition: transform 0.45s ease;
-}
-.rcard:not(.locked-rcard):hover .rcard-img { transform: scale(1.06); }
+        </div>
+    </div>
 
-.rcard-overlay {
-    position: absolute; inset: 0;
-    background: linear-gradient(
-        to top,
-        rgba(3,8,5,0.92) 0%,
-        rgba(3,8,5,0.45) 45%,
-        rgba(0,0,0,0.10) 100%
-    );
-    transition: background 0.30s ease;
-    z-index: 2;
-}
-.rcard:not(.locked-rcard):hover .rcard-overlay {
-    background: linear-gradient(
-        to top,
-        rgba(3,8,5,0.80) 0%,
-        rgba(3,8,5,0.25) 45%,
-        rgba(0,0,0,0.05) 100%
-    );
-}
+    <a href="../factions/valkyrion.html" class="back-link">← Return to Valkyrion Overview</a>
+</main>
 
-/* Left accent bar */
-.rcard::after {
-    content: ''; position: absolute;
-    left: 0; top: 0; bottom: 0; width: 4px;
-    background: var(--accent-color); z-index: 6;
-    transform: scaleY(0); transform-origin: bottom;
-    transition: transform 0.15s cubic-bezier(0.25,0.46,0.45,0.94);
-}
-.rcard:not(.locked-rcard):hover::after { transform: scaleY(1); }
+<script>
+    // Flash script mantenuto per le transizioni fluide
+    document.querySelectorAll('.shard:not(.locked)').forEach(card => {
+        card.addEventListener('click', e => {
+            e.preventDefault();
+            const href = card.getAttribute('href');
+            if (!href) return;
+            const flash = document.createElement('div');
+            flash.className = 'flash';
+            document.body.appendChild(flash);
+            setTimeout(() => { window.location.href = href; }, 130);
+        });
+    });
+</script>
+<script src="../system/navigation.js"></script>
 
-.rcard-label {
-    position: absolute; bottom: 0; left: 0; right: 0;
-    z-index: 3; padding: 18px 20px 16px;
-}
-.rcard-type {
-    display: block;
-    font-size: 0.65rem; letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--accent-color); opacity: 0.8;
-    margin-bottom: 4px;
-}
-.rcard-name {
-    display: block;
-    font-size: 1.1rem; font-weight: 700;
-    text-transform: uppercase; letter-spacing: 3px;
-    color: #d0d0d0;
-    text-shadow: 0 1px 8px rgba(0,0,0,1);
-    transition: color 0.15s ease, letter-spacing 0.15s ease;
-}
-.rcard:not(.locked-rcard):hover .rcard-name {
-    color: #fff; letter-spacing: 4px;
-    text-shadow: 0 0 18px color-mix(in srgb, var(--accent-color) 40%, transparent);
-}
-
-.rcard-arrow {
-    position: absolute; bottom: 18px; right: 18px;
-    z-index: 3; color: var(--accent-color);
-    font-size: 0.9rem; opacity: 0;
-    transform: translateX(-10px);
-    transition: opacity 0.15s ease, transform 0.15s ease;
-}
-.rcard:not(.locked-rcard):hover .rcard-arrow {
-    opacity: 1; transform: translateX(0);
-}
-
-/* Locked card */
-.locked-rcard { cursor: not-allowed; }
-.locked-rcard::after { background: #333; }
-.rcard-locked-overlay {
-    position: absolute; inset: 0; z-index: 5;
-    background: rgba(3,8,5,0.60);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 0.72rem; letter-spacing: 5px; color: #444;
-    text-transform: uppercase;
-}
-
-/* Others card – neutral accent */
-.others-rcard::after { background: #888; }
-.others-rcard .rcard-type { color: #888; }
-.others-rcard:hover .rcard-name {
-    text-shadow: 0 0 18px rgba(160,160,160,0.3) !important;
-}
-
-/* ─── RESPONSIVE ─── */
-@media (max-width: 900px) {
-    .roster-layout { grid-template-columns: 1fr; }
-    .roster-preview { min-height: 260px; clip-path: polygon(10px 0,100% 0,100% 100%,0 100%,0 10px); }
-    .preview-corner { border-top-width: 10px; border-right-width: 10px; }
-    main { padding: 0 18px 40px; }
-    .roster-cards { grid-template-columns: repeat(2, 1fr); }
-    .rcard { height: 280px; }
-}
-@media (max-width: 600px) {
-    .roster-entry  { height: 62px; }
-    .entry-num     { font-size: 1.7rem; min-width: 38px; }
-    .entry-title   { font-size: 0.95rem; letter-spacing: 2.5px; }
-    .roster-cards { grid-template-columns: 1fr; }
-    .rcard { height: 240px; }
-}
+</body>
+</html>
