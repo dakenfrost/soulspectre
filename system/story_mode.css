@@ -211,7 +211,7 @@ h1 {
 .forgotten:hover .faction-name { color: var(--forgotten-color); text-shadow: 0 0 20px var(--forgotten-color); }
 .forgotten:hover .engage-btn { background: var(--forgotten-color); border-color: var(--forgotten-color); }
 
-.kharos .shard-bg { background-image: url('../img/banners/banner_kharos.png'); }
+.kharos .shard-bg { background-image: url('../img/banners/banner_story_kharos.png'); }
 /* CORRETTO */
 .kharos:hover .shard-overlay { 
     box-shadow: inset 0 0 0 3px var(--kharos-color), inset 0 0 100px var(--kharos-color); 
