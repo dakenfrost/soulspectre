@@ -68,7 +68,7 @@ h1 {
     text-decoration: none;
     overflow: hidden;
     border-right: 1px solid rgba(255,255,255,0.05);
-    z-index: 1;
+    /* Rimosso z-index: 1 qui, lo gestiamo tramite hover */
 }
 
 .shard-bg {
@@ -79,7 +79,7 @@ h1 {
     background-position: center;
     filter: grayscale(100%) brightness(0.3);
     transition: all 0.6s ease;
-    z-index: 1;
+    z-index: 1; /* Sotto l'overlay */
 }
 
 .shard-overlay {
@@ -87,15 +87,16 @@ h1 {
     top: 0; left: 0;
     width: 100%; height: 100%;
     background: linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.9));
-    z-index: 2;
+    z-index: 2; /* Sopra l'immagine, sotto il testo */
     opacity: 0.8;
-    transition: opacity 0.4s;
+    /* Prepariamo la transizione per il box-shadow che aggiungeremo nelle classi specifiche */
+    transition: opacity 0.4s, box-shadow 0.4s; 
 }
 
 /* Faction Shard Content */
 .shard-content {
     position: relative;
-    z-index: 10;
+    z-index: 10; /* Sopra a tutto */
     padding: 40px;
     text-align: center;
     transform: translateY(50px);
@@ -149,10 +150,9 @@ h1 {
     transition: all 0.4s;
 }
 
-/* --- HOVER EFFECTS --- */
+/* --- HOVER EFFECTS GENERICI --- */
 .shard:hover {
     flex: 5;
-    z-index: 10;
 }
 
 .shard:hover .shard-bg {
@@ -173,39 +173,64 @@ h1 {
     opacity: 0;
 }
 
-/* --- FACTION SPECIFICS --- */
+/* --- FACTION SPECIFICS --- 
+   CORREZIONE: Ora applichiamo il bordo (inset box-shadow) 
+   al '.shard-overlay' quando facciamo hover sulla shard.
+*/
+
 .valkyrion .shard-bg { background-image: url('../img/banners/banner_story_valkyrion.png'); }
-.valkyrion:hover { box-shadow: inset 0 0 0 3px var(--valk-color), inset 0 0 100px var(--valk-color); }
+/* CORRETTO: Applica bordo colorato e bagliore all'overlay su hover */
+.valkyrion:hover .shard-overlay { 
+    box-shadow: inset 0 0 0 3px var(--valk-color), inset 0 0 100px var(--valk-color); 
+}
 .valkyrion:hover .faction-name { color: var(--valk-color); text-shadow: 0 0 20px var(--valk-color); }
 .valkyrion:hover .engage-btn { background: var(--valk-color); border-color: var(--valk-color); }
 
 .forgotten .shard-bg { background-image: url('../img/banners/banner_forgotten.png'); }
-.forgotten:hover { box-shadow: inset 0 0 0 3px var(--forgotten-color), inset 0 0 100px var(--forgotten-color); }
+/* CORRETTO */
+.forgotten:hover .shard-overlay { 
+    box-shadow: inset 0 0 0 3px var(--forgotten-color), inset 0 0 100px var(--forgotten-color); 
+}
 .forgotten:hover .faction-name { color: var(--forgotten-color); text-shadow: 0 0 20px var(--forgotten-color); }
 .forgotten:hover .engage-btn { background: var(--forgotten-color); border-color: var(--forgotten-color); }
 
 .kharos .shard-bg { background-image: url('../img/banners/banner_kharos.png'); }
-.kharos:hover { box-shadow: inset 0 0 0 3px var(--kharos-color), inset 0 0 100px var(--kharos-color); }
+/* CORRETTO */
+.kharos:hover .shard-overlay { 
+    box-shadow: inset 0 0 0 3px var(--kharos-color), inset 0 0 100px var(--kharos-color); 
+}
 .kharos:hover .faction-name { color: var(--kharos-color); text-shadow: 0 0 20px var(--kharos-color); }
 .kharos:hover .engage-btn { background: var(--kharos-color); border-color: var(--kharos-color); }
 
 .syndicate .shard-bg { background-image: url('../img/banners/banner_syndicate.png'); }
-.syndicate:hover { box-shadow: inset 0 0 0 3px var(--syndicate-color), inset 0 0 100px var(--syndicate-color); }
+/* CORRETTO */
+.syndicate:hover .shard-overlay { 
+    box-shadow: inset 0 0 0 3px var(--syndicate-color), inset 0 0 100px var(--syndicate-color); 
+}
 .syndicate:hover .faction-name { color: var(--syndicate-color); text-shadow: 0 0 20px var(--syndicate-color); }
 .syndicate:hover .engage-btn { background: var(--syndicate-color); border-color: var(--syndicate-color); }
 
 .primal .shard-bg { background-image: url('../img/banners/banner_primal.png'); }
-.primal:hover { box-shadow: inset 0 0 0 3px var(--primal-color), inset 0 0 100px var(--primal-color); }
+/* CORRETTO */
+.primal:hover .shard-overlay { 
+    box-shadow: inset 0 0 0 3px var(--primal-color), inset 0 0 100px var(--primal-color); 
+}
 .primal:hover .faction-name { color: var(--primal-color); text-shadow: 0 0 20px var(--primal-color); }
 .primal:hover .engage-btn { background: var(--primal-color); border-color: var(--primal-color); }
 
 .brotherhood .shard-bg { background-image: url('../img/banners/banner_brotherhood.png'); }
-.brotherhood:hover { box-shadow: inset 0 0 0 3px var(--iron-color), inset 0 0 100px var(--iron-color); }
+/* CORRETTO */
+.brotherhood:hover .shard-overlay { 
+    box-shadow: inset 0 0 0 3px var(--iron-color), inset 0 0 100px var(--iron-color); 
+}
 .brotherhood:hover .faction-name { color: var(--iron-color); text-shadow: 0 0 20px var(--iron-color); }
 .brotherhood:hover .engage-btn { background: var(--iron-color); border-color: var(--iron-color); }
 
 .elven .shard-bg { background-image: url('../img/banners/banner_elven.png'); }
-.elven:hover { box-shadow: inset 0 0 0 3px var(--elven-color), inset 0 0 100px var(--elven-color); }
+/* CORRETTO */
+.elven:hover .shard-overlay { 
+    box-shadow: inset 0 0 0 3px var(--elven-color), inset 0 0 100px var(--elven-color); 
+}
 .elven:hover .faction-name { color: var(--elven-color); text-shadow: 0 0 20px var(--elven-color); }
 .elven:hover .engage-btn { background: var(--elven-color); border-color: var(--elven-color); }
 
