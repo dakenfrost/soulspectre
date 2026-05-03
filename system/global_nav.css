@@ -151,37 +151,77 @@
     transition: max-height 0.3s ease-out;
     background: rgba(0, 0, 0, 0.5);
 }
-
-.sub-link {
-    display: block; 
-    padding: 12px 30px 12px 50px; 
-    color: #888;
-    text-decoration: none; 
-    font-size: 0.85rem; 
+.direct-link,
+.inner-link,
+.branch-unit-link,
+.menu-link,
+.unit-link {
+    display: block;
+    text-decoration: none;
     text-transform: uppercase;
-    letter-spacing: 1px; 
-    border-left: 1px solid rgba(255,255,255,0.05);
     transition: all 0.3s ease;
 }
 
-.sub-link:hover { 
+.unit-link {
+    padding: 7px 30px 7px 95px;
+    color: #3a3a3a;
+    font-size: 0.72rem;
+    letter-spacing: 0.5px;
+    border-left: 1px solid rgba(255,255,255,0.02);
+}
+
+.branch-unit-link {
+    padding: 9px 30px 9px 80px;
+    color: #555;
+    font-size: 0.78rem;
+    letter-spacing: 1px;
+    border-left: 1px solid rgba(255,255,255,0.03);
+}
+
+.inner-link {
+    padding: 12px 30px 12px 50px; 
+    color: #888;
+    font-size: 0.85rem; 
+    letter-spacing: 1px; 
+    border-left: 1px solid rgba(255,255,255,0.05);
+}
+
+.menu-link {
+    padding: 9px 30px 9px 65px;
+    font-size: 0.78rem;
+    letter-spacing: 1px;
+    border-left: 1px solid rgba(255,255,255,0.03);
+}
+
+
+
+
+/* Link Diretti */
+.direct-link {
+    padding: 18px 30px; 
+    color: #ccc; 
+    letter-spacing: 2px; 
+    font-weight: bold;
+    border-left: 3px solid transparent; 
+}
+.inner-link:hover { 
     color: var(--accent-color, #ab47bc); 
     padding-left: 55px; 
     background: rgba(255,255,255,0.03); 
 }
 
-.sub-link.locked { 
+.inner-link.locked { 
     color: #444; 
     cursor: not-allowed; 
 }
 
-.sub-link.locked:hover { 
+.inner-link.locked:hover { 
     color: #555; 
     padding-left: 50px; 
     background: none; 
 }
 
-.sub-link.locked::after { 
+.inner-link.locked::after { 
     content: " [LOCKED]"; 
     font-size: 0.65rem; 
     letter-spacing: 0; 
@@ -193,7 +233,7 @@
     align-items: stretch;
 }
 
-.sub-faction-row .sub-link {
+.sub-faction-row .inner-link {
     flex: 1;
 }
 
@@ -225,13 +265,12 @@
     background: rgba(0, 0, 0, 0.3);
 }
 
-/* Branch row (branch link + unit expand toggle) */
 .branch-row {
     display: flex;
     align-items: stretch;
 }
 
-.branch-row .sub-sub-link {
+.branch-row .branch-unit-link, .branch-row .menu-link {
     flex: 1;
 }
 
@@ -263,54 +302,16 @@
     background: rgba(0, 0, 0, 0.2);
 }
 
-.sub-sub-link {
-    display: block;
-    padding: 9px 30px 9px 65px;
-    color: #555;
-    text-decoration: none;
-    font-size: 0.78rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border-left: 1px solid rgba(255,255,255,0.03);
-    transition: all 0.3s ease;
-}
-
-.sub-sub-link:hover {
+.branch-unit-link:hover {
     color: #bbb;
     padding-left: 70px;
     background: rgba(255,255,255,0.02);
-}
-
-/* Unit links (3rd level) */
-.unit-link {
-    display: block;
-    padding: 7px 30px 7px 80px;
-    color: #3a3a3a;
-    text-decoration: none;
-    font-size: 0.72rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    border-left: 1px solid rgba(255,255,255,0.02);
-    transition: all 0.3s ease;
 }
 
 .unit-link:hover {
     color: #999;
     padding-left: 85px;
     background: rgba(255,255,255,0.02);
-}
-
-/* Link Diretti */
-.direct-link {
-    display: block; 
-    padding: 18px 30px; 
-    color: #ccc; 
-    text-decoration: none;
-    text-transform: uppercase; 
-    letter-spacing: 2px; 
-    font-weight: bold;
-    border-left: 3px solid transparent; 
-    transition: all 0.3s ease;
 }
 
 .direct-link:hover { 
