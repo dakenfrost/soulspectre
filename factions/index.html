@@ -94,13 +94,10 @@
             background-position: center;
             transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
             z-index: 1;
-
-            /* Forza l'immagine a stare dentro i limiti del box */
             background-origin: border-box;
             box-sizing: border-box;
         }
 
-        /* Overlay scuro per leggibilità */
         .faction-btn::before {
             content: '';
             position: absolute;
@@ -111,14 +108,12 @@
             transition: background 0.3s ease;
         }
 
-        /* Gestione Hover Generale */
         .faction-btn:hover {
             transform: translateX(15px);
             border-color: rgba(255,255,255,0.4);
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        /* Gestione colori tramite BOX-SHADOW INSET (Niente bordini glitchati) */
         .valkyrion:hover { 
             box-shadow: inset 10px 0 0 0 var(--accent-blue); 
             color: var(--accent-blue); 
@@ -134,7 +129,6 @@
             color: #fff;
         }
 
-        /* Banner Backgrounds */
         .valkyrion { background-image: url('../img/banners/banner_valkyrion.png'); }
         .forgotten { background-image: url('../img/banners/banner_forgotten.png'); }
         .kharos { background-image: url('../img/banners/banner_kharos.png'); }
@@ -143,7 +137,6 @@
         .brotherhood { background-image: url('../img/banners/banner_brotherhood.png'); }
         .elven { background-image: url('../img/banners/banner_elven.png'); }
 
-        /* LOCKED STATE */
         .locked {
             filter: grayscale(100%);
             opacity: 0.7;
@@ -162,7 +155,6 @@
             padding: 2px 8px;
         }
 
-        /* PREVIEW PANEL */
         .preview-panel {
             flex: 1;
             background: var(--panel-bg);
@@ -177,13 +169,15 @@
             overflow: hidden;
         }
 
-        #preview-img {
+        /* Inserito #preview-video al posto di #preview-img */
+        #preview-video {
             width: 100%;
             height: 380px;
             object-fit: cover;
             border-bottom: 2px solid rgba(255,255,255,0.05);
             filter: brightness(0.8);
             transition: opacity 0.3s ease;
+            background: #000;
         }
 
         .preview-content { padding: 40px; }
@@ -235,7 +229,8 @@
             Select an entity to initiate data scan...
         </div>
         <div id="active-content" style="display: none;">
-            <img id="preview-img" src="" alt="Faction Preview">
+            <!-- Sostituito tag img con tag video -->
+            <video id="preview-video" muted loop playsinline></video>
             <div class="preview-content">
                 <h2 id="preview-title"></h2>
                 <p id="preview-desc"></p>
@@ -251,37 +246,37 @@
         valkyrion: {
             title: "Valkyrion Empire",
             desc: "A hegemony of steel and intellect. They understand that survival permits no moral errors. Their doctrine relies on tactical foresight and military precision.",
-            img: "../img/faction_preview_valkyrion.png"
+            video: "../assets/video/faction_preview_valkyrion.mp4"
         },
         forgotten: {
             title: "The Forgotten",
             desc: "An empire born from extinction. Malicott, the Root Mother, preserved entire peoples from total annihilation and gave them a second life.",
-            img: "../img/forgotten/faction_preview_forgotten.jpg"
+            video: "../video/forgotten/faction_preview_forgotten.mp4"
         },
         kharos: {
             title: "Kharos Dominion [LOCKED]",
             desc: "A five-century meritocracy. They blend brutal barbarian warfare with forbidden necromancy and advanced alchemy. Might makes Justice.",
-            img: "../img/faction_preview_kharos.png"
+            video: "../video/faction_preview_kharos.mp4"
         },
         syndicate: {
             title: "Devil Syndicate [LOCKED]",
             desc: "A Lawful Evil conglomerate where profit is the only absolute. They conquer territories through economic strangulation and debt.",
-            img: "../img/faction_preview_syndicate.png"
+            video: "../video/faction_preview_syndicate.mp4"
         },
         primal: {
             title: "Primal Coalition [LOCKED]",
             desc: "A Chaotic Neutral alliance dedicated to the purity of instinct. They reject the suffocating laws of civilized kingdoms.",
-            img: "../img/faction_preview_primal.png"
+            video: "../video/faction_preview_primal.mp4"
         },
         brotherhood: {
             title: "Iron Brotherhood [LOCKED]",
             desc: "A Lawful Neutral collective of dwarves. In this society, individual ambition is a flaw; every citizen is a link in a grand chain.",
-            img: "../img/faction_preview_brotherhood.png"
+            video: "../video/faction_preview_brotherhood.mp4"
         },
         elven: {
             title: "Elven Enclave [LOCKED]",
             desc: "A True Neutral isolationist power. Driven by an unwavering belief in their racial supremacy, indifferent to external chaos.",
-            img: "../img/faction_preview_elven.png"
+            video: "../video/faction_preview_elven.mp4"
         }
     };
 
@@ -289,14 +284,22 @@
     const activeContent = document.getElementById('active-content');
     const pTitle = document.getElementById('preview-title');
     const pDesc = document.getElementById('preview-desc');
-    const pImg = document.getElementById('preview-img');
+    const pVideo = document.getElementById('preview-video'); // Agganciato al nuovo ID
 
     function updatePreview(faction) {
         const info = data[faction];
         if(!info) return;
+        
         pTitle.innerText = info.title;
         pDesc.innerText = info.desc;
-        pImg.src = info.img;
+        pVideo.src = info.video; // Carica il sorgente video
+        
+        // Comanda il load e l'autoplay al browser
+        pVideo.load();
+        pVideo.play().catch(error => {
+            console.log("Autoplay mitigato:", error);
+        });
+
         defaultContent.style.display = 'none';
         activeContent.style.display = 'block';
     }
