@@ -4,296 +4,87 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOULSPECTRE | Valkyrion Roster</title>
-    <link rel="stylesheet" href="../system/shared.css">
+    <link rel="stylesheet" href="../system/roster_accordion.css">
+    <link rel="stylesheet" href="../system/global_nav.css">
     <style>
-        :root {
-            /* Palette Semantica Universale per il Roster */
-            --melee-color:   #ef5350; /* Rosso Tattico */
-            --support-color: #4db6ac; /* Verde Civiltà */
-            --caster-color:  #ab47bc; /* Viola Arcano */
-            --ranged-color:  #f57c00; /* Arancione Forgia */
-            --hybrid-color:  #d4af37; /* Oro Sovrano */
-            --others-color:  #b0bec5; /* Argento Archivio */
-            --bg-dark:       #050505;
-        }
-
-        * { box-sizing: border-box; }
-
-        body {
-            background-color: var(--bg-dark);
-            color: #e0e0e0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-        }
-
-        header {
-            position: absolute;
-            top: 0; left: 0; width: 100%;
-            padding: 40px;
-            text-align: center;
-            z-index: 100;
-            pointer-events: none;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
-        }
-
-        h1 {
-            letter-spacing: 12px;
-            font-size: 2.5rem;
-            color: #fff;
-            text-transform: uppercase;
-            margin: 0;
-            text-shadow: 0 0 20px rgba(255,255,255,0.2);
-        }
-
-        .subtitle {
-            color: #888;
-            font-size: 1rem;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-        }
-
-        /* --- SHIFTING SHARDS CONTAINER --- */
-        .shard-container {
-            display: flex;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            background: #000;
-        }
-
-        .shard {
-            position: relative;
-            flex: 1;
-            height: 100%;
-            transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            overflow: hidden;
-            border-right: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .shard-bg {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background-size: cover;
-            background-position: center;
-            filter: grayscale(100%) brightness(0.3);
-            transition: all 0.6s ease;
-            z-index: 1;
-        }
-
-        .shard-overlay {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.9));
-            z-index: 2;
-            opacity: 0.8;
-            transition: opacity 0.4s, box-shadow 0.4s; 
-        }
-
-        .shard-content {
-            position: relative;
-            z-index: 10;
-            padding: 40px;
-            text-align: center;
-            transform: translateY(50px);
-            opacity: 0;
-            transition: all 0.5s ease 0.1s;
-            max-width: 400px;
-        }
-
-        .roster-name {
-            font-size: 2rem;
-            color: #fff;
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            margin: 0 0 10px 0;
-            white-space: nowrap;
-        }
-
-        .roster-desc {
-            font-size: 1rem;
-            line-height: 1.6;
-            color: #ccc;
-            margin-bottom: 30px;
-        }
-
-        .engage-btn {
-            display: inline-block;
-            padding: 12px 30px;
-            border: 1px solid #fff;
-            color: #fff;
-            text-transform: uppercase;
-            font-weight: bold;
-            letter-spacing: 2px;
-            font-size: 0.8rem;
-            transition: 0.3s;
-        }
-
-        .shard-label {
-            position: absolute;
-            bottom: 50px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 5;
-            font-size: 1rem;
-            font-weight: bold;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: #666;
-            writing-mode: vertical-rl;
-            text-orientation: mixed;
-            transition: all 0.4s;
-        }
-
-        /* --- HOVER EFFECTS GENERICI --- */
-        .shard:not(.locked):hover { flex: 5; }
-        .shard:not(.locked):hover .shard-bg { filter: grayscale(0%) brightness(0.6); transform: scale(1.05); }
-        .shard:not(.locked):hover .shard-overlay { opacity: 0.4; }
-        .shard:not(.locked):hover .shard-content { opacity: 1; transform: translateY(0); }
-        .shard:not(.locked):hover .shard-label { opacity: 0; }
-
-        /* --- ROSTER SPECIFICS --- */
-        
-        /* Melee */
-        .melee .shard-bg { background-image: url('../img/valkyrion_roster_sword.jpg'); }
-        .melee:hover .shard-overlay { box-shadow: inset 0 0 0 3px var(--melee-color), inset 0 0 100px var(--melee-color); }
-        .melee:hover .roster-name { color: var(--melee-color); text-shadow: 0 0 20px var(--melee-color); }
-        .melee:hover .engage-btn { background: var(--melee-color); border-color: var(--melee-color); }
-
-        /* Support */
-        .support .shard-bg { background-image: url('../img/valkyrion_roster_light.jpg'); }
-        .support:hover .shard-overlay { box-shadow: inset 0 0 0 3px var(--support-color), inset 0 0 100px var(--support-color); }
-        .support:hover .roster-name { color: var(--support-color); text-shadow: 0 0 20px var(--support-color); }
-        .support:hover .engage-btn { background: var(--support-color); border-color: var(--support-color); }
-
-        /* Caster */
-        .caster .shard-bg { background-image: url('../img/valkyrion_roster_knowledge.jpg'); }
-        .caster:hover .shard-overlay { box-shadow: inset 0 0 0 3px var(--caster-color), inset 0 0 100px var(--caster-color); }
-        .caster:hover .roster-name { color: var(--caster-color); text-shadow: 0 0 20px var(--caster-color); }
-        .caster:hover .engage-btn { background: var(--caster-color); border-color: var(--caster-color); }
-
-        /* Ranged */
-        .ranged .shard-bg { background-image: url('../img/valkyrion_roster_engineering.jpg'); }
-        .ranged:hover .shard-overlay { box-shadow: inset 0 0 0 3px var(--ranged-color), inset 0 0 100px var(--ranged-color); }
-        .ranged:hover .roster-name { color: var(--ranged-color); text-shadow: 0 0 20px var(--ranged-color); }
-        .ranged:hover .engage-btn { background: var(--ranged-color); border-color: var(--ranged-color); }
-
-        /* Hybrid (Locked) */
-        .hybrid .shard-bg { background-image: url('../img/valkyrion_roster_hybrids.png'); }
-        .hybrid.locked { cursor: not-allowed; }
-        .hybrid.locked .shard-label { color: #333; }
-        .hybrid.locked .shard-bg { filter: grayscale(100%) brightness(0.15); }
-
-        /* Others */
-        .others .shard-bg { background-image: url('../img/valkyrion_roster_others.png'); }
-        .others:hover .shard-overlay { box-shadow: inset 0 0 0 3px var(--others-color), inset 0 0 100px var(--others-color); }
-        .others:hover .roster-name { color: var(--others-color); text-shadow: 0 0 20px var(--others-color); }
-        .others:hover .engage-btn { background: var(--others-color); border-color: var(--others-color); }
-
-        .abort-link {
-            position: absolute;
-            bottom: 30px;
-            right: 40px;
-            color: #555;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            z-index: 101;
-            transition: 0.3s;
-        }
-        .abort-link:hover { color: #fff; }
-
-        @media (max-width: 1000px) {
-            .shard-container { flex-direction: column; }
-            .shard-label { writing-mode: horizontal-tb; left: 40px; bottom: 20px; transform: none; }
-            .engage-btn { display: none; }
-            .shard:hover { flex: 4; }
-        }
+        /* Specifica il colore secondario della fazione corrente per il sottotitolo */
+        :root { --accent-color: #5c9ce6; }
     </style>
 </head>
 <body>
+<global-navigation base="../"></global-navigation>
 
-<header>
+<header style="margin-top: 3%;">
     <h1>Military Roster</h1>
     <div class="subtitle">The Martial Forces of the Empire</div>
 </header>
 
 <div class="shard-container">
-
+    
     <!-- MELEE -->
     <a href="../units/valkyrion/valkyrion_order_sword.html" class="shard melee">
-        <div class="shard-bg"></div>
+        <div class="shard-bg" style="background-image:url('../img/valkyrion_roster_sword.jpg');"></div>
         <div class="shard-overlay"></div>
         <div class="shard-label">Melee</div>
         <div class="shard-content">
             <h2 class="roster-name">Order of the Sword</h2>
             <p class="roster-desc">Vanguard units specializing in close-quarters combat and heavy physical trauma.</p>
-            <span class="engage-btn">View Units</span>
+            <div class="engage-btn">Inspect Units</div>
         </div>
     </a>
 
     <!-- SUPPORT -->
     <a href="../units/valkyrion/valkyrion_order_light.html" class="shard support">
-        <div class="shard-bg"></div>
+        <div class="shard-bg" style="background-image:url('../img/valkyrion_roster_light.jpg');"></div>
         <div class="shard-overlay"></div>
         <div class="shard-label">Support</div>
         <div class="shard-content">
             <h2 class="roster-name">Order of the Light</h2>
             <p class="roster-desc">Divine practitioners dedicated to healing, fortification, and morale stabilization.</p>
-            <span class="engage-btn">View Units</span>
+            <div class="engage-btn">Inspect Units</div>
         </div>
     </a>
 
     <!-- CASTER -->
     <a href="../units/valkyrion/valkyrion_order_knowledge.html" class="shard caster">
-        <div class="shard-bg"></div>
+        <div class="shard-bg" style="background-image:url('../img/valkyrion_roster_knowledge.jpg');"></div>
         <div class="shard-overlay"></div>
         <div class="shard-label">Caster</div>
         <div class="shard-content">
             <h2 class="roster-name">Order of Knowledge</h2>
             <p class="roster-desc">Sanctioned battle-mages wielding destructive imperial arts and crowd control.</p>
-            <span class="engage-btn">View Units</span>
+            <div class="engage-btn">Inspect Units</div>
         </div>
     </a>
 
     <!-- RANGED -->
     <a href="../units/valkyrion/valkyrion_order_engineering.html" class="shard ranged">
-        <div class="shard-bg"></div>
+        <div class="shard-bg" style="background-image:url('../img/valkyrion_roster_engineering.jpg');"></div>
         <div class="shard-overlay"></div>
         <div class="shard-label">Ranged</div>
         <div class="shard-content">
             <h2 class="roster-name">Order of Engineering</h2>
-            <p class="roster-desc">Sharpshooters and artillery specialists providing lethal overwatch.</p>
-            <span class="engage-btn">View Units</span>
+            <p class="roster-desc">Sharpshooters and artillery specialists providing lethal overwatch from afar.</p>
+            <div class="engage-btn">Inspect Units</div>
         </div>
     </a>
 
     <!-- HYBRID (LOCKED) -->
     <div class="shard hybrid locked">
-        <div class="shard-bg"></div>
+        <div class="shard-bg" style="background-image:url('../img/valkyrion_roster_hybrids.png');"></div>
         <div class="shard-overlay"></div>
-        <div class="shard-label">■ CLASSIFIED ■</div>
+        <div class="shard-label">■ Hybrids ■</div>
     </div>
 
     <!-- OTHERS -->
     <a href="../units/valkyrion/valkyrion_extra.html" class="shard others">
-        <div class="shard-bg"></div>
+        <div class="shard-bg" style="background-image:url('../img/valkyrion_roster_others.png');"></div>
         <div class="shard-overlay"></div>
         <div class="shard-label">Misc</div>
         <div class="shard-content">
             <h2 class="roster-name">Others</h2>
-            <p class="roster-desc">Irregular forces, mercenaries, and unclassified auxiliary units.</p>
-            <span class="engage-btn">View Units</span>
+            <p class="roster-desc">Irregular forces, mercenaries, and unclassified auxiliary units operating outside standard doctrine.</p>
+            <div class="engage-btn">Inspect Units</div>
         </div>
     </a>
 
@@ -301,29 +92,6 @@
 
 <a href="../factions/valkyrion.html" class="abort-link">← Return to Overview</a>
 
-<script>
-    document.querySelectorAll('.shard:not(.locked)').forEach(card => {
-        card.addEventListener('click', e => {
-            e.preventDefault();
-            const href = card.getAttribute('href');
-            if (!href) return;
-            const flash = document.createElement('div');
-            flash.style.position = 'fixed';
-            flash.style.inset = '0';
-            flash.style.background = '#fff';
-            flash.style.opacity = '0';
-            flash.style.zIndex = '9999';
-            flash.style.transition = 'opacity 0.15s ease';
-            document.body.appendChild(flash);
-            
-            // Forza il reflow prima di applicare l'opacità
-            flash.getBoundingClientRect();
-            flash.style.opacity = '1';
-            
-            setTimeout(() => { window.location.href = href; }, 150);
-        });
-    });
-</script>
-
+<script src="../system/navigation.js"></script>
 </body>
 </html>
