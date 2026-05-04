@@ -317,38 +317,41 @@
 <a href="../index.html" class="abort-link">← Return to Main Hub</a>
 
 <script>
-    // Controller Autoplay Video
-    // Avvia la riproduzione del video solo quando l'utente entra nello shard e la ferma quando esce.
-    document.querySelectorAll('.shard:not(.locked)').forEach(shard => {
+    document.querySelectorAll('.shard').forEach(shard => {
         const video = shard.querySelector('.shard-video');
         
         if (video) {
+            // 1. Hover: tenta di far partire il video
             shard.addEventListener('mouseenter', () => {
                 video.play().catch(err => console.log("Autoplay mitigato dal browser", err));
             });
             
+            // 2. Uscita: mette in pausa
             shard.addEventListener('mouseleave', () => {
                 video.pause();
-                // Opzionale: decommenta la riga sotto se vuoi che il video ricominci da capo ogni volta
-                // video.currentTime = 0; 
             });
             
-            // Gestione del click per una transizione fluida prima di cambiare pagina
+            // 3. Click Diagnostico: Blocca il link e forza il video
             shard.addEventListener('click', e => {
-    e.preventDefault(); // Sopprime il redirect
-    
-    // Bypassiamo i controlli dell'hover e forziamo il motore video
-    if (video.paused) {
-        console.log("Comando Play manuale innescato.");
-        let playPromise = video.play();
-        if (playPromise !== undefined) {
-            playPromise.then(_ => console.log("Video avviato con successo."))
-            .catch(err => console.error("Schermo nero. Errore Codec:", err));
+                // Questo ferma il redirect!
+                e.preventDefault(); 
+                
+                console.log("Click intercettato. Redirect bloccato.");
+                
+                if (video.paused) {
+                    console.log("Tento il Play manuale...");
+                    let playPromise = video.play();
+                    if (playPromise !== undefined) {
+                        playPromise.then(_ => console.log("Successo: Video in riproduzione."))
+                        .catch(err => console.error("Schermo nero. Errore Codec:", err));
+                    }
+                } else {
+                    video.pause();
+                    console.log("Video messo in pausa.");
+                }
+            });
         }
-    } else {
-        video.pause();
-    }
-});
+    });
 </script>
 
 </body>
