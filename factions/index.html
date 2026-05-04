@@ -335,26 +335,20 @@
             
             // Gestione del click per una transizione fluida prima di cambiare pagina
             shard.addEventListener('click', e => {
-                e.preventDefault();
-                const href = shard.getAttribute('href');
-                if (!href) return;
-                
-                const flash = document.createElement('div');
-                flash.style.position = 'fixed';
-                flash.style.inset = '0';
-                flash.style.background = '#fff';
-                flash.style.opacity = '0';
-                flash.style.zIndex = '9999';
-                flash.style.transition = 'opacity 0.15s ease';
-                document.body.appendChild(flash);
-                
-                flash.getBoundingClientRect(); // Forza reflow
-                flash.style.opacity = '1';
-                
-                setTimeout(() => { window.location.href = href; }, 150);
-            });
+    e.preventDefault(); // Sopprime il redirect
+    
+    // Bypassiamo i controlli dell'hover e forziamo il motore video
+    if (video.paused) {
+        console.log("Comando Play manuale innescato.");
+        let playPromise = video.play();
+        if (playPromise !== undefined) {
+            playPromise.then(_ => console.log("Video avviato con successo."))
+            .catch(err => console.error("Schermo nero. Errore Codec:", err));
         }
-    });
+    } else {
+        video.pause();
+    }
+});
 </script>
 
 </body>
