@@ -68,6 +68,9 @@
             cursor: pointer;
             overflow: hidden;
             border-right: 1px solid rgba(255,255,255,0.05);
+            /* Placeholder background se il video fallisce */
+            background-size: cover;
+            background-position: center;
         }
 
         .shard-video {
@@ -84,11 +87,11 @@
             position: absolute;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background: linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.9));
+            background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.9));
             z-index: 2;
             opacity: 0.8;
             transition: opacity 0.4s, box-shadow 0.4s;
-            pointer-events: none; /* Permette al click di attraversare l'overlay */
+            pointer-events: none;
         }
 
         .shard-content {
@@ -102,16 +105,15 @@
             width: 100%;
             max-width: 500px;
             margin: 0 auto;
-            pointer-events: none; /* Evita che il testo blocchi il click dello shard */
+            pointer-events: none;
         }
 
         .faction-name {
-            font-size: 2rem;
+            font-size: 2.2rem;
             color: #fff;
             text-transform: uppercase;
             letter-spacing: 5px;
-            margin: 0 0 20px 0;
-            text-indent: 5px;
+            margin: 0 0 15px 0;
         }
 
         .faction-desc {
@@ -123,69 +125,79 @@
 
         .engage-btn {
             display: inline-block;
-            padding: 12px 30px;
+            padding: 12px 35px;
             border: 1px solid #fff;
             color: #fff;
             text-transform: uppercase;
             font-weight: bold;
             letter-spacing: 2px;
             font-size: 0.8rem;
-            transition: 0.3s;
         }
 
-        /* Hover Effects */
-        .shard:hover { flex: 5; }
-        .shard:hover .shard-video { filter: grayscale(0%) brightness(0.6); transform: scale(1.05); }
-        .shard:hover .shard-overlay { opacity: 0.4; }
+        /* Hover dinamico */
+        .shard:hover { flex: 6; }
+        .shard:hover .shard-video { filter: grayscale(0%) brightness(0.7); transform: scale(1.05); }
+        .shard:hover .shard-overlay { opacity: 0.3; }
         .shard:hover .shard-content { opacity: 1; transform: translateY(0); }
         .shard:hover .shard-label { opacity: 0; }
 
-        /* Faction Colors */
-        .valkyrion:hover .shard-overlay { box-shadow: inset 0 0 0 3px var(--valk-color), inset 0 0 100px var(--valk-color); }
-        .valkyrion:hover .faction-name { color: var(--valk-color); text-shadow: 0 0 20px var(--valk-color); }
-        .valkyrion:hover .engage-btn { background: var(--valk-color); border-color: var(--valk-color); }
+        /* Colori e Placeholder Immagini */
+        .valkyrion { background-image: url('../img/banners/banner_valkyrion.png'); }
+        .valkyrion:hover .shard-overlay { box-shadow: inset 0 0 0 3px var(--valk-color), inset 0 0 150px rgba(92, 156, 230, 0.4); }
+        .valkyrion:hover .faction-name { color: var(--valk-color); }
 
-        .forgotten:hover .shard-overlay { box-shadow: inset 0 0 0 3px var(--forgotten-color), inset 0 0 100px var(--forgotten-color); }
-        .forgotten:hover .faction-name { color: var(--forgotten-color); text-shadow: 0 0 20px var(--forgotten-color); }
-        .forgotten:hover .engage-btn { background: var(--forgotten-color); border-color: var(--forgotten-color); }
+        .forgotten { background-image: url('../img/banners/banner_forgotten.png'); }
+        .forgotten:hover .shard-overlay { box-shadow: inset 0 0 0 3px var(--forgotten-color), inset 0 0 150px rgba(92, 184, 138, 0.4); }
+        .forgotten:hover .faction-name { color: var(--forgotten-color); }
 
-        /* Labels */
+        .kharos { background-image: url('../img/banners/banner_kharos.png'); }
+        .kharos:hover .shard-overlay { box-shadow: inset 0 0 0 3px var(--kharos-color), inset 0 0 150px rgba(183, 28, 28, 0.4); }
+        .kharos:hover .faction-name { color: var(--kharos-color); }
+
+        .syndicate { background-image: url('../img/banners/banner_syndicate.png'); }
+        .syndicate:hover .shard-overlay { box-shadow: inset 0 0 0 3px var(--syndicate-color), inset 0 0 150px rgba(255, 179, 0, 0.4); }
+        .syndicate:hover .faction-name { color: var(--syndicate-color); }
+
+        .primal { background-image: url('../img/banners/banner_primal.png'); }
+        .primal:hover .shard-overlay { box-shadow: inset 0 0 0 3px var(--primal-color), inset 0 0 150px rgba(161, 136, 127, 0.4); }
+        .primal:hover .faction-name { color: var(--primal-color); }
+
+        .brotherhood { background-image: url('../img/banners/banner_brotherhood.png'); }
+        .brotherhood:hover .shard-overlay { box-shadow: inset 0 0 0 3px var(--iron-color), inset 0 0 150px rgba(144, 164, 174, 0.4); }
+        .brotherhood:hover .faction-name { color: var(--iron-color); }
+
+        .elven { background-image: url('../img/banners/banner_elven.png'); }
+        .elven:hover .shard-overlay { box-shadow: inset 0 0 0 3px var(--elven-color), inset 0 0 150px rgba(77, 182, 172, 0.4); }
+        .elven:hover .faction-name { color: var(--elven-color); }
+
         .shard-label {
             position: absolute;
-            bottom: 50px;
+            bottom: 60px;
             left: 50%;
             transform: translateX(-50%);
             z-index: 5;
-            font-size: 1rem;
+            font-size: 0.9rem;
             font-weight: bold;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
             text-transform: uppercase;
-            color: #666;
+            color: rgba(255,255,255,0.5);
             writing-mode: vertical-rl;
             text-orientation: mixed;
-            transition: all 0.4s;
+            transition: 0.3s;
         }
 
         .abort-link {
             position: absolute;
             bottom: 30px;
             right: 40px;
-            color: #555;
+            color: #444;
             text-decoration: none;
             text-transform: uppercase;
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             letter-spacing: 2px;
             z-index: 101;
-            transition: 0.3s;
         }
         .abort-link:hover { color: #fff; }
-
-        @media (max-width: 1000px) {
-            .shard-container { flex-direction: column; }
-            .shard-label { writing-mode: horizontal-tb; left: 40px; bottom: 20px; transform: none; }
-            .engage-btn { display: none; }
-            .shard:hover { flex: 4; }
-        }
     </style>
 </head>
 <body>
@@ -195,10 +207,9 @@
 </header>
 
 <div class="shard-container">
-    
     <!-- VALKYRION -->
     <div class="shard valkyrion" data-href="valkyrion.html">
-        <video class="shard-video" preload="auto" muted loop playsinline src="../assets/video/faction_valkyrion.mp4"></video>
+        <video class="shard-video" preload="auto" muted loop playsinline src="../assets/video/faction_valkyrion.mp4" poster="../img/banners/banner_valkyrion.png"></video>
         <div class="shard-overlay"></div>
         <div class="shard-label">Valkyrion Empire</div>
         <div class="shard-content">
@@ -210,7 +221,7 @@
 
     <!-- FORGOTTEN -->
     <div class="shard forgotten" data-href="forgotten.html">
-        <video class="shard-video" preload="auto" muted loop playsinline src="../assets/video/faction_forgotten.mp4"></video>
+        <video class="shard-video" preload="auto" muted loop playsinline src="../assets/video/faction_forgotten.mp4" poster="../img/banners/banner_forgotten.png"></video>
         <div class="shard-overlay"></div>
         <div class="shard-label">The Forgotten</div>
         <div class="shard-content">
@@ -218,68 +229,67 @@
             <p class="faction-desc">An empire born from extinction. Malicott, the Root Mother, gave them a second life in the shadows.</p>
             <div class="engage-btn">Inspect Data</div>
         </div>
-    </a>
+    </div>
 
     <!-- KHAROS -->
     <div class="shard kharos">
-        <video class="shard-video" preload="auto" muted loop playsinline src="../assets/video/faction_kharos.mp4"></video>
+        <video class="shard-video" preload="auto" muted loop playsinline src="../assets/video/faction_kharos.mp4" poster="../img/banners/banner_kharos.png"></video>
         <div class="shard-overlay"></div>
         <div class="shard-label">Kharos Dominion</div>
         <div class="shard-content">
             <h2 class="faction-name">Kharos Dominion</h2>
-            <p class="faction-desc">A meritocracy blending brutal barbarian warfare with forbidden necromancy. Might makes Justice.</p>
-            <div class="engage-btn" style="border-color:#444; color:#888; cursor:not-allowed;">Access Denied</div>
+            <p class="faction-desc">A meritocracy blending barbarian warfare with forbidden necromancy. Might makes Justice.</p>
+            <div class="engage-btn" style="border-color:#444; color:#666; cursor:not-allowed;">Access Denied</div>
         </div>
     </div>
 
     <!-- SYNDICATE -->
     <div class="shard syndicate">
-        <video class="shard-video" preload="auto" muted loop playsinline src="../assets/video/faction_syndicate.mp4"></video>
+        <video class="shard-video" preload="auto" muted loop playsinline src="../assets/video/faction_syndicate.mp4" poster="../img/banners/banner_syndicate.png"></video>
         <div class="shard-overlay"></div>
         <div class="shard-label">Devil Syndicate</div>
         <div class="shard-content">
             <h2 class="faction-name">Devil Syndicate</h2>
             <p class="faction-desc">A conglomerate where profit is the only absolute. Conquering territories through economic debt.</p>
-            <div class="engage-btn" style="border-color:#444; color:#888; cursor:not-allowed;">Access Denied</div>
+            <div class="engage-btn" style="border-color:#444; color:#666; cursor:not-allowed;">Access Denied</div>
         </div>
     </div>
 
     <!-- PRIMAL -->
     <div class="shard primal">
-        <video class="shard-video" preload="auto" muted loop playsinline src="../assets/video/faction_primal.mp4"></video>
+        <video class="shard-video" preload="auto" muted loop playsinline src="../assets/video/faction_primal.mp4" poster="../img/banners/banner_primal.png"></video>
         <div class="shard-overlay"></div>
         <div class="shard-label">Primal Coalition</div>
         <div class="shard-content">
             <h2 class="faction-name">Primal Coalition</h2>
             <p class="faction-desc">An alliance dedicated to the purity of instinct. They reject the suffocating laws of kingdoms.</p>
-            <div class="engage-btn" style="border-color:#444; color:#888; cursor:not-allowed;">Access Denied</div>
+            <div class="engage-btn" style="border-color:#444; color:#666; cursor:not-allowed;">Access Denied</div>
         </div>
     </div>
 
     <!-- BROTHERHOOD -->
     <div class="shard brotherhood">
-        <video class="shard-video" preload="auto" muted loop playsinline src="../assets/video/faction_brotherhood.mp4"></video>
+        <video class="shard-video" preload="auto" muted loop playsinline src="../assets/video/faction_brotherhood.mp4" poster="../img/banners/banner_brotherhood.png"></video>
         <div class="shard-overlay"></div>
         <div class="shard-label">Iron Brotherhood</div>
         <div class="shard-content">
             <h2 class="faction-name">Iron Brotherhood</h2>
-            <p class="faction-desc">A collective where individual ambition is a flaw; every citizen is a link in a grand chain.</p>
-            <div class="engage-btn" style="border-color:#444; color:#888; cursor:not-allowed;">Access Denied</div>
+            <p class="faction-desc">A dwarves collective where ambition is a flaw; every citizen is a link in a grand chain.</p>
+            <div class="engage-btn" style="border-color:#444; color:#666; cursor:not-allowed;">Access Denied</div>
         </div>
     </div>
 
     <!-- ELVEN -->
     <div class="shard elven">
-        <video class="shard-video" preload="auto" muted loop playsinline src="../assets/video/faction_elven.mp4"></video>
+        <video class="shard-video" preload="auto" muted loop playsinline src="../assets/video/faction_elven.mp4" poster="../img/banners/banner_elven.png"></video>
         <div class="shard-overlay"></div>
         <div class="shard-label">Elven Enclave</div>
         <div class="shard-content">
             <h2 class="faction-name">Elven Enclave</h2>
-            <p class="faction-desc">Isolationist power driven by racial supremacy. Indifferent to the external chaos of the world.</p>
-            <div class="engage-btn" style="border-color:#444; color:#888; cursor:not-allowed;">Access Denied</div>
+            <p class="faction-desc">Isolationist power driven by racial supremacy. Indifferent to the external chaos.</p>
+            <div class="engage-btn" style="border-color:#444; color:#666; cursor:not-allowed;">Access Denied</div>
         </div>
     </div>
-
 </div>
 
 <a href="../index.html" class="abort-link">← Return to Main Hub</a>
@@ -290,27 +300,21 @@
         const url = shard.getAttribute('data-href');
         
         if (video) {
-            // Hover: Play/Pause
             shard.addEventListener('mouseenter', () => {
-                video.play().catch(err => console.warn("Autoplay blocked:", err));
+                video.play().catch(() => {});
             });
-            
             shard.addEventListener('mouseleave', () => {
                 video.pause();
             });
         }
 
-        // Redirect
         shard.addEventListener('click', () => {
             if (url) {
-                // Flash effect
                 const flash = document.createElement('div');
                 flash.style.cssText = "position:fixed; inset:0; background:#fff; z-index:9999; opacity:0; transition:opacity 0.1s;";
                 document.body.appendChild(flash);
-                
                 flash.getBoundingClientRect();
                 flash.style.opacity = "1";
-                
                 setTimeout(() => { window.location.href = url; }, 100);
             }
         });
