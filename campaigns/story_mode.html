@@ -40,48 +40,66 @@
             position: relative;
         }
 
-        /* Contenitore Mappa Blindato (Mantiene il rapporto 16:9 dell'immagine) */
         .map-wrapper {
             position: relative;
             width: 100%;
             max-height: 100vh;
             max-width: calc(100vh * (16 / 9));
             aspect-ratio: 16 / 9;
-            background-image: url('../img/world_map_draft.png');
+            background-image: url('../img/world_map_draft.jpg');
             background-size: cover;
             background-position: center;
             margin: 0 auto;
         }
 
-        /* Hitbox Tattiche Invisibili */
+        /* --- PUNTI INTERATTIVI E TESTI --- */
         .poi {
             position: absolute;
             cursor: pointer;
-            width: 14%; /* Area di interazione orizzontale */
-            height: 6%;  /* Area di interazione verticale */
             transform: translate(-50%, -50%);
-            border-radius: 4px;
-            transition: all 0.2s ease;
             z-index: 10;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 8px;
+            transition: transform 0.2s ease;
         }
 
-        /* Feedback ottico al passaggio sopra il testo dell'immagine */
-        .poi:hover {
-            background: rgba(255, 255, 255, 0.05);
+        .poi-name {
+            font-family: 'Segoe UI', sans-serif;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.75rem;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 6px 12px;
             border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+            border-radius: 2px;
+            text-shadow: 0 0 5px #000;
+            white-space: nowrap;
+            transition: all 0.2s ease;
         }
 
-        /* --- COORDINATE CALIBRATE SUI TESTI DELLA MAPPA --- */
-        .pos-valkyrion   { top: 87%; left: 34%; } /* Basso a sinistra */
-        .pos-kharos      { top: 45%; left: 41%; } /* Grandi pianure */
-        .pos-elven       { top: 66%; left: 18%; } /* Isola boscosa sinistra */
-        .pos-primal      { top: 82%; left: 54%; } /* Centro-Sud */
-        .pos-devil       { top: 51%; left: 64%; } /* Zona demoniaca centrale */
-        .pos-brotherhood { top: 25%; left: 68%; } /* Montagne Nord */
-        .pos-forgotten   { top: 43%; left: 84%; } /* Foresta magica Est */
+        .poi:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .poi:hover .poi-name {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #fff;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+        }
+
+        /* --- COORDINATE TATTICHE --- */
+        .pos-valkyrion   { top: 87%; left: 34%; } 
+        .pos-kharos      { top: 45%; left: 41%; } 
+        .pos-elven       { top: 66%; left: 18%; } 
+        .pos-primal      { top: 82%; left: 54%; } 
+        .pos-devil       { top: 51%; left: 64%; } 
+        .pos-brotherhood { top: 25%; left: 68%; } 
+        .pos-forgotten   { top: 43%; left: 84%; } 
         
-        /* Ottava Fazione (Classified) - Nascosta per ora */
         .pos-classified  { top: 75%; left: 82%; opacity: 0; pointer-events: none; }
 
         /* --- COLONNA DESTRA: PANNELLO INTELLIGENCE --- */
@@ -173,21 +191,48 @@
 <global-navigation base="../"></global-navigation>
 
 <div class="war-room">
+    <!-- MAPPA INTERATTIVA -->
     <main class="map-section">
         <div class="map-wrapper">
-            <div class="poi pos-valkyrion" onmouseenter="updateIntel('valkyrion')"></div>
-            <div class="poi pos-kharos" onmouseenter="updateIntel('kharos')"></div>
-            <div class="poi pos-elven" onmouseenter="updateIntel('elven')"></div>
-            <div class="poi pos-primal" onmouseenter="updateIntel('primal')"></div>
-            <div class="poi pos-devil" onmouseenter="updateIntel('syndicate')"></div>
-            <div class="poi pos-brotherhood" onmouseenter="updateIntel('brotherhood')"></div>
-            <div class="poi pos-forgotten" onmouseenter="updateIntel('forgotten')"></div>
-            <div class="poi pos-classified"></div>
+            
+            <div class="poi pos-valkyrion" onmouseenter="updateIntel('valkyrion')">
+                <div class="poi-name">Valkyrion Empire</div>
+            </div>
+            
+            <div class="poi pos-kharos" onmouseenter="updateIntel('kharos')">
+                <div class="poi-name">Kharos Dominion</div>
+            </div>
+            
+            <div class="poi pos-elven" onmouseenter="updateIntel('elven')">
+                <div class="poi-name">Elven Enclave</div>
+            </div>
+            
+            <div class="poi pos-primal" onmouseenter="updateIntel('primal')">
+                <div class="poi-name">Primal Coalition</div>
+            </div>
+            
+            <div class="poi pos-devil" onmouseenter="updateIntel('syndicate')">
+                <div class="poi-name">Devil Syndicate</div>
+            </div>
+            
+            <div class="poi pos-brotherhood" onmouseenter="updateIntel('brotherhood')">
+                <div class="poi-name">Iron Brotherhood</div>
+            </div>
+            
+            <div class="poi pos-forgotten" onmouseenter="updateIntel('forgotten')">
+                <div class="poi-name">The Forgotten</div>
+            </div>
+            
+            <div class="poi pos-classified">
+                <div class="poi-name">Classified</div>
+            </div>
+
         </div>
         
         <a href="campaign_menu.html" class="abort-link">← Abort Deployment</a>
     </main>
 
+    <!-- PANNELLO INTELLIGENCE -->
     <aside class="intel-panel">
         <div class="video-container">
             <video id="intel-video" muted loop playsinline></video>
