@@ -21,7 +21,6 @@
             overflow: hidden;
         }
 
-        /* --- LAYOUT PRINCIPALE --- */
         .war-room {
             display: flex;
             width: 100vw;
@@ -46,61 +45,64 @@
             max-height: 100vh;
             max-width: calc(100vh * (16 / 9));
             aspect-ratio: 16 / 9;
-            background-image: url('../img/world_map_draft.png');
+            background-image: url('../img/world_map_draft.jpg');
             background-size: cover;
             background-position: center;
             margin: 0 auto;
         }
 
-        /* --- PUNTI INTERATTIVI E TESTI --- */
+        /* --- PUNTI INTERATTIVI (STEMMA + NOME) --- */
         .poi {
             position: absolute;
             cursor: pointer;
             transform: translate(-50%, -50%);
             z-index: 10;
             display: flex;
-            justify-content: center;
+            flex-direction: column; /* Icona sopra, Testo sotto */
             align-items: center;
-            padding: 8px;
             transition: transform 0.2s ease;
         }
 
+        .poi-icon {
+            width: 50px;
+            height: 50px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            margin-bottom: 8px;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.4));
+            transition: filter 0.3s ease;
+        }
+
         .poi-name {
-            font-family: 'Segoe UI', sans-serif;
             font-weight: bold;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            font-size: 0.75rem;
+            letter-spacing: 2px;
+            font-size: 0.7rem;
             color: #fff;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 6px 12px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 4px 10px;
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 2px;
-            text-shadow: 0 0 5px #000;
             white-space: nowrap;
-            transition: all 0.2s ease;
         }
 
         .poi:hover {
-            transform: translate(-50%, -50%) scale(1.1);
+            transform: translate(-50%, -50%) scale(1.15);
         }
 
-        .poi:hover .poi-name {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: #fff;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+        .poi:hover .poi-icon {
+            filter: drop-shadow(0 0 15px var(--accent-blue));
         }
 
-       /* --- COORDINATE TATTICHE RICALIBRATE --- */
-        .pos-elven       { top: 55%; left: 12%; } /* Centro dell'isola a ovest */
-        .pos-valkyrion   { top: 72%; left: 26%; } /* Sopra la cittadella fortificata */
-        .pos-kharos      { top: 35%; left: 28%; } /* Centro delle rovine nelle pianure */
-        .pos-brotherhood { top: 15%; left: 50%; } /* Catena montuosa innevata a nord */
-        .pos-devil       { top: 42%; left: 55%; } /* Centro del cratere vulcanico */
-        .pos-primal      { top: 68%; left: 45%; } /* Tra i laghi e i boschi a sud */
-        .pos-forgotten   { top: 32%; left: 82%; } /* Cuore della foresta magica a est */
-        
-        .pos-classified  { top: 75%; left: 82%; opacity: 0; pointer-events: none; }
+        /* --- COORDINATE CALIBRATE --- */
+        .pos-elven       { top: 55%; left: 12%; } 
+        .pos-valkyrion   { top: 72%; left: 26%; } 
+        .pos-kharos      { top: 35%; left: 28%; } 
+        .pos-brotherhood { top: 15%; left: 50%; } 
+        .pos-devil       { top: 42%; left: 55%; } 
+        .pos-primal      { top: 68%; left: 45%; } 
+        .pos-forgotten   { top: 32%; left: 82%; } 
 
         /* --- COLONNA DESTRA: PANNELLO INTELLIGENCE --- */
         .intel-panel {
@@ -118,7 +120,6 @@
             background: #000;
             border-bottom: 1px solid rgba(255,255,255,0.1);
             overflow: hidden;
-            position: relative;
         }
 
         #intel-video {
@@ -145,7 +146,7 @@
         }
 
         #intel-desc {
-            font-size: 1.05rem;
+            font-size: 1rem;
             line-height: 1.8;
             color: var(--text-gray);
             margin-bottom: 40px;
@@ -167,10 +168,7 @@
             display: none; 
         }
 
-        .deploy-btn:hover {
-            background: #fff;
-            color: #000;
-        }
+        .deploy-btn:hover { background: #fff; color: #000; }
 
         .abort-link {
             position: absolute;
@@ -183,7 +181,6 @@
             letter-spacing: 2px;
             z-index: 20;
         }
-        .abort-link:hover { color: #fff; }
     </style>
 </head>
 <body>
@@ -191,40 +188,42 @@
 <global-navigation base="../"></global-navigation>
 
 <div class="war-room">
-    <!-- MAPPA INTERATTIVA -->
     <main class="map-section">
         <div class="map-wrapper">
             
             <div class="poi pos-valkyrion" onmouseenter="updateIntel('valkyrion')">
+                <div class="poi-icon" style="background-image: url('../img/stemmi/stemma_valkyrion.png');"></div>
                 <div class="poi-name">Valkyrion Empire</div>
             </div>
             
             <div class="poi pos-kharos" onmouseenter="updateIntel('kharos')">
+                <div class="poi-icon" style="background-image: url('../img/stemmi/stemma_kharos.png');"></div>
                 <div class="poi-name">Kharos Dominion</div>
             </div>
             
             <div class="poi pos-elven" onmouseenter="updateIntel('elven')">
+                <div class="poi-icon" style="background-image: url('../img/stemmi/stemma_elven.png');"></div>
                 <div class="poi-name">Elven Enclave</div>
             </div>
             
             <div class="poi pos-primal" onmouseenter="updateIntel('primal')">
+                <div class="poi-icon" style="background-image: url('../img/stemmi/stemma_primal.png');"></div>
                 <div class="poi-name">Primal Coalition</div>
             </div>
             
             <div class="poi pos-devil" onmouseenter="updateIntel('syndicate')">
+                <div class="poi-icon" style="background-image: url('../img/stemmi/stemma_syndicate.png');"></div>
                 <div class="poi-name">Devil Syndicate</div>
             </div>
             
             <div class="poi pos-brotherhood" onmouseenter="updateIntel('brotherhood')">
+                <div class="poi-icon" style="background-image: url('../img/stemmi/stemma_brotherhood.png');"></div>
                 <div class="poi-name">Iron Brotherhood</div>
             </div>
             
             <div class="poi pos-forgotten" onmouseenter="updateIntel('forgotten')">
+                <div class="poi-icon" style="background-image: url('../img/stemmi/stemma_forgotten.png');"></div>
                 <div class="poi-name">The Forgotten</div>
-            </div>
-            
-            <div class="poi pos-classified">
-                <div class="poi-name">Classified</div>
             </div>
 
         </div>
@@ -232,7 +231,6 @@
         <a href="campaign_menu.html" class="abort-link">← Abort Deployment</a>
     </main>
 
-    <!-- PANNELLO INTELLIGENCE -->
     <aside class="intel-panel">
         <div class="video-container">
             <video id="intel-video" muted loop playsinline></video>
