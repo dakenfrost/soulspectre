@@ -32,8 +32,12 @@
         .map-section {
             flex: 1;
             position: relative;
-            background-image: url('../img/world_map_draft.jpg'); /* Inserisci qui la tua mappa */
-            background-size: cover;
+            background-color: #0a0a0c;
+            background-image: 
+                url('../img/world_map_draft.jpg'), 
+                linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: cover, 50px 50px, 50px 50px;
             background-position: center;
             border-right: 1px solid rgba(255,255,255,0.1);
         }
@@ -56,6 +60,7 @@
             height: 60px;
             background-size: contain;
             background-repeat: no-repeat;
+            background-position: center;
             filter: drop-shadow(0 0 15px rgba(0,0,0,0.8));
             margin-bottom: 8px;
         }
@@ -68,8 +73,9 @@
             color: #fff;
             text-shadow: 2px 2px 8px #000, 0 0 10px rgba(255,255,255,0.3);
             background: rgba(0,0,0,0.4);
-            padding: 2px 10px;
+            padding: 4px 12px;
             border-radius: 2px;
+            border: 1px solid rgba(255,255,255,0.1);
         }
 
         /* --- COLONNA DESTRA: PANNELLO INTELLIGENCE --- */
@@ -88,6 +94,7 @@
             background: #000;
             border-bottom: 1px solid rgba(255,255,255,0.1);
             overflow: hidden;
+            position: relative;
         }
 
         #intel-video {
@@ -133,7 +140,7 @@
             transition: 0.3s;
             text-align: center;
             text-decoration: none;
-            display: none; /* Appare solo quando una fazione è selezionata */
+            display: none; 
         }
 
         .deploy-btn:hover {
@@ -141,11 +148,17 @@
             color: #000;
         }
 
-        /* --- COORDINATE HOTSPOTS (Esempio) --- */
-        .pos-valkyrion { top: 25%; left: 40%; }
-        .pos-forgotten { top: 55%; left: 30%; }
-        .pos-kharos    { top: 20%; left: 15%; }
-        .pos-devil     { top: 70%; left: 50%; }
+        /* --- COORDINATE HOTSPOTS TATTICI --- */
+        .pos-valkyrion   { top: 75%; left: 27%; }
+        .pos-kharos      { top: 35%; left: 35%; }
+        .pos-elven       { top: 55%; left: 14%; }
+        .pos-primal      { top: 70%; left: 48%; }
+        .pos-devil       { top: 40%; left: 58%; }
+        .pos-brotherhood { top: 15%; left: 62%; }
+        .pos-forgotten   { top: 32%; left: 78%; }
+        
+        /* Slot per Ottava Fazione nell'area oscurata (Nascosto per ora) */
+        .pos-classified  { top: 75%; left: 82%; opacity: 0; pointer-events: none; }
 
         .abort-link {
             position: absolute;
@@ -158,6 +171,7 @@
             letter-spacing: 2px;
             z-index: 10;
         }
+        .abort-link:hover { color: #fff; }
     </style>
 </head>
 <body>
@@ -170,20 +184,50 @@
         
         <!-- POI: VALKYRION -->
         <div class="poi pos-valkyrion" onmouseenter="updateIntel('valkyrion')">
-            <div class="poi-icon" style="background-image: url('../img/icons/castle_valk.png');"></div>
-            <div class="poi-name">Valkyrion</div>
+            <div class="poi-icon" style="background-image: url('../img/banners/banner_valkyrion.png');"></div>
+            <div class="poi-name">Valkyrion Empire</div>
         </div>
 
-        <!-- POI: FORGOTTEN -->
-        <div class="poi pos-forgotten" onmouseenter="updateIntel('forgotten')">
-            <div class="poi-icon" style="background-image: url('../img/icons/roots_forgotten.png');"></div>
-            <div class="poi-name">The Forgotten</div>
+        <!-- POI: KHAROS -->
+        <div class="poi pos-kharos" onmouseenter="updateIntel('kharos')">
+            <div class="poi-icon" style="background-image: url('../img/banners/banner_kharos.png');"></div>
+            <div class="poi-name">Kharos Dominion</div>
+        </div>
+
+        <!-- POI: ELVEN ENCLAVE -->
+        <div class="poi pos-elven" onmouseenter="updateIntel('elven')">
+            <div class="poi-icon" style="background-image: url('../img/banners/banner_elven.png');"></div>
+            <div class="poi-name">Elven Enclave</div>
+        </div>
+
+        <!-- POI: PRIMAL COALITION -->
+        <div class="poi pos-primal" onmouseenter="updateIntel('primal')">
+            <div class="poi-icon" style="background-image: url('../img/banners/banner_primal.png');"></div>
+            <div class="poi-name">Primal Coalition</div>
         </div>
 
         <!-- POI: DEVIL SYNDICATE -->
         <div class="poi pos-devil" onmouseenter="updateIntel('syndicate')">
-            <div class="poi-icon" style="background-image: url('../img/icons/fire_devil.png');"></div>
+            <div class="poi-icon" style="background-image: url('../img/banners/banner_syndicate.png');"></div>
             <div class="poi-name">Devil Syndicate</div>
+        </div>
+
+        <!-- POI: IRON BROTHERHOOD -->
+        <div class="poi pos-brotherhood" onmouseenter="updateIntel('brotherhood')">
+            <div class="poi-icon" style="background-image: url('../img/banners/banner_brotherhood.png');"></div>
+            <div class="poi-name">Iron Brotherhood</div>
+        </div>
+
+        <!-- POI: THE FORGOTTEN -->
+        <div class="poi pos-forgotten" onmouseenter="updateIntel('forgotten')">
+            <div class="poi-icon" style="background-image: url('../img/banners/banner_forgotten.png');"></div>
+            <div class="poi-name">The Forgotten</div>
+        </div>
+
+        <!-- POI: CLASSIFIED (Nascosto) -->
+        <div class="poi pos-classified">
+            <div class="poi-icon" style="background-color: #333;"></div>
+            <div class="poi-name">Classified</div>
         </div>
 
         <a href="campaign_menu.html" class="abort-link">← Abort Deployment</a>
@@ -195,8 +239,8 @@
             <video id="intel-video" muted loop playsinline></video>
         </div>
         <div class="intel-body">
-            <h2 id="intel-title">Select Region</h2>
-            <p id="intel-desc">Passa il mouse sopra un centro di potere per analizzare i flussi tattici e le linee di sangue disponibili.</p>
+            <h2 id="intel-title">Awaiting Input</h2>
+            <p id="intel-desc">Select a region on the tactical map to scan territorial data and available bloodlines.</p>
             
             <a href="javascript:void(0)" id="deploy-action" class="deploy-btn">Initiate Deployment</a>
         </div>
@@ -207,21 +251,52 @@
     const factionData = {
         valkyrion: {
             title: "Valkyrion Empire",
-            desc: "Un'egemonia di acciaio e intelletto. La loro dottrina si basa sulla lungimiranza tattica e sulla precisione militare. Mantieni l'ordine assoluto sul continente.",
+            desc: "A hegemony of steel and intellect. Their doctrine relies on tactical foresight and military precision. Enforce order across the continent.",
             video: "../assets/video/faction_valkyrion.mp4",
-            link: "start_valkyrion.html"
+            link: "start_valkyrion.html",
+            btnLabel: "Deploy Forces"
         },
-        forgotten: {
-            title: "The Forgotten",
-            desc: "Un impero nato dall'estinzione. Malicott, la Madre delle Radici, ha preservato interi popoli dando loro una seconda vita nell'oscurità.",
-            video: "../assets/video/faction_forgotten.mp4",
-            link: "start_forgotten.html"
+        kharos: {
+            title: "Kharos Dominion",
+            desc: "A meritocracy blending brutal barbarian warfare with forbidden necromancy and advanced alchemy. Might makes Justice.",
+            video: "../assets/video/faction_kharos.mp4",
+            link: "start_kharos.html",
+            btnLabel: "Conquer All"
+        },
+        elven: {
+            title: "Elven Enclave",
+            desc: "Isolationist power driven by racial supremacy. They remain indifferent to external chaos, guarding their ancient borders.",
+            video: "../assets/video/faction_elven.mp4",
+            link: "start_elven.html",
+            btnLabel: "Guard Purity"
+        },
+        primal: {
+            title: "Primal Coalition",
+            desc: "An alliance dedicated to the purity of instinct. They reject the suffocating laws of civilized kingdoms for the truth of the wild.",
+            video: "../assets/video/faction_primal.mp4",
+            link: "start_primal.html",
+            btnLabel: "Release Instinct"
         },
         syndicate: {
             title: "Devil Syndicate",
-            desc: "Un conglomerato dove il profitto è l'unico assoluto. Conquistano territori attraverso lo strangolamento economico e il debito perpetuo.",
+            desc: "A conglomerate where profit is the only absolute. Conquering territories through economic strangulation and debt.",
             video: "../assets/video/faction_syndicate.mp4",
-            link: "start_syndicate.html"
+            link: "start_syndicate.html",
+            btnLabel: "Buy History"
+        },
+        brotherhood: {
+            title: "Iron Brotherhood",
+            desc: "A Lawful Neutral collective. Individual ambition is a flaw; every citizen is a link in a grand, unbreakable chain of industry.",
+            video: "../assets/video/faction_brotherhood.mp4",
+            link: "start_brotherhood.html",
+            btnLabel: "Strengthen Chain"
+        },
+        forgotten: {
+            title: "The Forgotten",
+            desc: "An empire born from extinction. Malicott, the Root Mother, preserved entire peoples and gave them a second life in the shadows.",
+            video: "../assets/video/faction_forgotten.mp4",
+            link: "start_forgotten.html",
+            btnLabel: "Rise Again"
         }
     };
 
@@ -237,14 +312,15 @@
         // Aggiorna Testi
         title.innerText = data.title;
         desc.innerText = data.desc;
+        btn.innerText = data.btnLabel;
 
-        // Aggiorna Video
+        // Gestione asincrona del video
         video.style.opacity = '0';
         setTimeout(() => {
             video.src = data.video;
-            video.play();
+            video.play().catch(e => console.log("Autoplay mitigato:", e));
             video.style.opacity = '1';
-        }, 200);
+        }, 150);
 
         // Aggiorna Bottone
         btn.style.display = 'block';
