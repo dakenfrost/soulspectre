@@ -1,103 +1,256 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SOULSPECTRE | Story Mode - Select Faction</title>
-    <link rel="stylesheet" href="../system/story_mode.css">
+    <title>SOULSPECTRE | Tactical Map - Story Mode</title>
     <link rel="stylesheet" href="../system/global_nav.css">
+    <style>
+        :root {
+            --panel-bg: rgba(5, 5, 7, 0.98);
+            --accent-blue: #5c9ce6;
+            --text-gray: #bbb;
+        }
+
+        body, html {
+            margin: 0; padding: 0;
+            height: 100vh;
+            background-color: #000;
+            color: #e0e0e0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+        }
+
+        /* --- LAYOUT PRINCIPALE --- */
+        .war-room {
+            display: flex;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        /* --- COLONNA SINISTRA: MAPPA --- */
+        .map-section {
+            flex: 1;
+            position: relative;
+            background-image: url('../img/world_map_draft.jpg'); /* Inserisci qui la tua mappa */
+            background-size: cover;
+            background-position: center;
+            border-right: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Hotspots (Punti sulla mappa) */
+        .poi {
+            position: absolute;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 10;
+        }
+
+        .poi:hover { transform: scale(1.15); }
+
+        .poi-icon {
+            width: 60px;
+            height: 60px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            filter: drop-shadow(0 0 15px rgba(0,0,0,0.8));
+            margin-bottom: 8px;
+        }
+
+        .poi-name {
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+            color: #fff;
+            text-shadow: 2px 2px 8px #000, 0 0 10px rgba(255,255,255,0.3);
+            background: rgba(0,0,0,0.4);
+            padding: 2px 10px;
+            border-radius: 2px;
+        }
+
+        /* --- COLONNA DESTRA: PANNELLO INTELLIGENCE --- */
+        .intel-panel {
+            width: 450px;
+            background: var(--panel-bg);
+            display: flex;
+            flex-direction: column;
+            box-shadow: -20px 0 50px rgba(0,0,0,0.8);
+            z-index: 100;
+        }
+
+        .video-container {
+            width: 100%;
+            height: 300px;
+            background: #000;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            overflow: hidden;
+        }
+
+        #intel-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .intel-body {
+            padding: 40px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #intel-title {
+            font-size: 2.2rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            margin: 0 0 20px 0;
+            color: #fff;
+        }
+
+        #intel-desc {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--text-gray);
+            margin-bottom: 40px;
+        }
+
+        .deploy-btn {
+            margin-top: auto;
+            padding: 18px;
+            border: 1px solid #fff;
+            background: transparent;
+            color: #fff;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 3px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-align: center;
+            text-decoration: none;
+            display: none; /* Appare solo quando una fazione è selezionata */
+        }
+
+        .deploy-btn:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        /* --- COORDINATE HOTSPOTS (Esempio) --- */
+        .pos-valkyrion { top: 25%; left: 40%; }
+        .pos-forgotten { top: 55%; left: 30%; }
+        .pos-kharos    { top: 20%; left: 15%; }
+        .pos-devil     { top: 70%; left: 50%; }
+
+        .abort-link {
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+            color: rgba(255,255,255,0.4);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            z-index: 10;
+        }
+    </style>
 </head>
 <body>
+
 <global-navigation base="../"></global-navigation>
 
-<header style="margin-top: 3%;">
-    <h1>The Cycle of Factions</h1>
-    <div class="subtitle">Select your lineage to dictate the future</div>
-</header>
-
-<div class="shard-container">
-    
-    <a href="javascript:void(0)" class="shard valkyrion">
-        <div class="shard-bg"></div>
-        <div class="shard-overlay"></div>
-        <div class="shard-label">Valkyrion Empire</div>
-        <div class="shard-content">
-            <h2 class="faction-name">Valkyrion Empire</h2>
-            <p class="faction-desc">A hegemony of steel and intellect. Their doctrine relies on tactical foresight and military precision. Enforce order across the continent.</p>
-            <div class="engage-btn">Deploy Forces</div>
+<div class="war-room">
+    <!-- MAPPA INTERATTIVA -->
+    <main class="map-section">
+        
+        <!-- POI: VALKYRION -->
+        <div class="poi pos-valkyrion" onmouseenter="updateIntel('valkyrion')">
+            <div class="poi-icon" style="background-image: url('../img/icons/castle_valk.png');"></div>
+            <div class="poi-name">Valkyrion</div>
         </div>
-    </a>
 
-    <a href="javascript:void(0)" class="shard forgotten">
-        <div class="shard-bg"></div>
-        <div class="shard-overlay"></div>
-        <div class="shard-label">The Forgotten</div>
-        <div class="shard-content">
-            <h2 class="faction-name">The Forgotten</h2>
-            <p class="faction-desc">An empire born from extinction. Malicott, the Root Mother, preserved entire peoples and gave them a second life in the shadows.</p>
-            <div class="engage-btn">Rise Again</div>
+        <!-- POI: FORGOTTEN -->
+        <div class="poi pos-forgotten" onmouseenter="updateIntel('forgotten')">
+            <div class="poi-icon" style="background-image: url('../img/icons/roots_forgotten.png');"></div>
+            <div class="poi-name">The Forgotten</div>
         </div>
-    </a>
 
-    <a href="javascript:void(0)" class="shard kharos">
-        <div class="shard-bg"></div>
-        <div class="shard-overlay"></div>
-        <div class="shard-label">Kharos Dominion</div>
-        <div class="shard-content">
-            <h2 class="faction-name">Kharos Dominion</h2>
-            <p class="faction-desc">A meritocracy blending brutal barbarian warfare with forbidden necromancy and advanced alchemy. Might makes Justice.</p>
-            <div class="engage-btn">Conquer All</div>
+        <!-- POI: DEVIL SYNDICATE -->
+        <div class="poi pos-devil" onmouseenter="updateIntel('syndicate')">
+            <div class="poi-icon" style="background-image: url('../img/icons/fire_devil.png');"></div>
+            <div class="poi-name">Devil Syndicate</div>
         </div>
-    </a>
 
-    <a href="javascript:void(0)" class="shard syndicate">
-        <div class="shard-bg"></div>
-        <div class="shard-overlay"></div>
-        <div class="shard-label">Devil Syndicate</div>
-        <div class="shard-content">
-            <h2 class="faction-name">Devil Syndicate</h2>
-            <p class="faction-desc">A conglomerate where profit is the only absolute. Conquering territories through economic strangulation and debt.</p>
-            <div class="engage-btn">Buy History</div>
+        <a href="campaign_menu.html" class="abort-link">← Abort Deployment</a>
+    </main>
+
+    <!-- PANNELLO INTELLIGENCE -->
+    <aside class="intel-panel">
+        <div class="video-container">
+            <video id="intel-video" muted loop playsinline></video>
         </div>
-    </a>
-
-    <a href="javascript:void(0)" class="shard primal">
-        <div class="shard-bg"></div>
-        <div class="shard-overlay"></div>
-        <div class="shard-label">Primal Coalition</div>
-        <div class="shard-content">
-            <h2 class="faction-name">Primal Coalition</h2>
-            <p class="faction-desc">An alliance dedicated to the purity of instinct. They reject the suffocating laws of civilized kingdoms for the truth of the wild.</p>
-            <div class="engage-btn">Release Instinct</div>
+        <div class="intel-body">
+            <h2 id="intel-title">Select Region</h2>
+            <p id="intel-desc">Passa il mouse sopra un centro di potere per analizzare i flussi tattici e le linee di sangue disponibili.</p>
+            
+            <a href="javascript:void(0)" id="deploy-action" class="deploy-btn">Initiate Deployment</a>
         </div>
-    </a>
-
-    <a href="javascript:void(0)" class="shard brotherhood">
-        <div class="shard-bg"></div>
-        <div class="shard-overlay"></div>
-        <div class="shard-label">Iron Brotherhood</div>
-        <div class="shard-content">
-            <h2 class="faction-name">Iron Brotherhood</h2>
-            <p class="faction-desc">A Lawful Neutral collective. Individual ambition is a flaw; every citizen is a link in a grand, unbreakable chain of industry.</p>
-            <div class="engage-btn">Strengthen Chain</div>
-        </div>
-    </a>
-
-    <a href="javascript:void(0)" class="shard elven">
-        <div class="shard-bg"></div>
-        <div class="shard-overlay"></div>
-        <div class="shard-label">Elven Enclave</div>
-        <div class="shard-content">
-            <h2 class="faction-name">Elven Enclave</h2>
-            <p class="faction-desc">Isolationist power driven by racial supremacy. They remain indifferent to external chaos, guarding their ancient borders.</p>
-            <div class="engage-btn">Guard Purity</div>
-        </div>
-    </a>
-
+    </aside>
 </div>
 
-<a href="campaign_menu.html" class="abort-link">← Abort Deployment</a>
+<script>
+    const factionData = {
+        valkyrion: {
+            title: "Valkyrion Empire",
+            desc: "Un'egemonia di acciaio e intelletto. La loro dottrina si basa sulla lungimiranza tattica e sulla precisione militare. Mantieni l'ordine assoluto sul continente.",
+            video: "../assets/video/faction_valkyrion.mp4",
+            link: "start_valkyrion.html"
+        },
+        forgotten: {
+            title: "The Forgotten",
+            desc: "Un impero nato dall'estinzione. Malicott, la Madre delle Radici, ha preservato interi popoli dando loro una seconda vita nell'oscurità.",
+            video: "../assets/video/faction_forgotten.mp4",
+            link: "start_forgotten.html"
+        },
+        syndicate: {
+            title: "Devil Syndicate",
+            desc: "Un conglomerato dove il profitto è l'unico assoluto. Conquistano territori attraverso lo strangolamento economico e il debito perpetuo.",
+            video: "../assets/video/faction_syndicate.mp4",
+            link: "start_syndicate.html"
+        }
+    };
 
-<script src="../system/navigation.js"></script>
+    function updateIntel(key) {
+        const data = factionData[key];
+        if (!data) return;
+
+        const video = document.getElementById('intel-video');
+        const title = document.getElementById('intel-title');
+        const desc = document.getElementById('intel-desc');
+        const btn = document.getElementById('deploy-action');
+
+        // Aggiorna Testi
+        title.innerText = data.title;
+        desc.innerText = data.desc;
+
+        // Aggiorna Video
+        video.style.opacity = '0';
+        setTimeout(() => {
+            video.src = data.video;
+            video.play();
+            video.style.opacity = '1';
+        }, 200);
+
+        // Aggiorna Bottone
+        btn.style.display = 'block';
+        btn.href = data.link;
+    }
+</script>
+
 </body>
 </html>
