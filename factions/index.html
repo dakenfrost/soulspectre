@@ -310,11 +310,6 @@
 
         shard.addEventListener('click', () => {
             if (url) {
-                const flash = document.createElement('div');
-                flash.style.cssText = "position:fixed; inset:0; background:#fff; z-index:9999; opacity:0; transition:opacity 0.1s;";
-                document.body.appendChild(flash);
-                flash.getBoundingClientRect();
-                flash.style.opacity = "1";
                 setTimeout(() => { window.location.href = url; }, 100);
             }
         });
