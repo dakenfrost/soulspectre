@@ -29,18 +29,29 @@
         }
 
         /* --- COLONNA SINISTRA: MAPPA --- */
-        .map-section {
-            flex: 1;
-            position: relative;
-            background-color: #0a0a0c;
-            background-image: 
-                url('../img/world_map_draft.png'), 
-                linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-            background-size: cover, 50px 50px, 50px 50px;
-            background-position: center;
-            border-right: 1px solid rgba(255,255,255,0.1);
-        }
+     .map-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #050505;
+    border-right: 1px solid rgba(255,255,255,0.1);
+    overflow: hidden;
+}
+
+.map-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9; /* Forza le proporzioni dell'immagine */
+    background-image: url('../img/world_map_draft.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Nascondiamo temporaneamente le icone corrotte finché non avrai dei veri loghi quadrati */
+.poi-icon {
+    display: none; 
+}
 
         /* Hotspots (Punti sulla mappa) */
         .poi {
@@ -148,14 +159,14 @@
             color: #000;
         }
 
-        /* --- COORDINATE HOTSPOTS TATTICI --- */
-        .pos-valkyrion   { top: 75%; left: 27%; }
-        .pos-kharos      { top: 35%; left: 35%; }
-        .pos-elven       { top: 55%; left: 14%; }
-        .pos-primal      { top: 70%; left: 48%; }
-        .pos-devil       { top: 40%; left: 58%; }
-        .pos-brotherhood { top: 15%; left: 62%; }
-        .pos-forgotten   { top: 32%; left: 78%; }
+       /* Nuove coordinate calibrate visivamente sul tuo ultimo screenshot */
+.pos-elven       { top: 56%; left: 12%; }
+.pos-valkyrion   { top: 76%; left: 24%; }
+.pos-kharos      { top: 40%; left: 35%; }
+.pos-devil       { top: 45%; left: 60%; }
+.pos-primal      { top: 80%; left: 52%; }
+.pos-brotherhood { top: 22%; left: 66%; }
+.pos-forgotten   { top: 38%; left: 83%; }
         
         /* Slot per Ottava Fazione nell'area oscurata (Nascosto per ora) */
         .pos-classified  { top: 75%; left: 82%; opacity: 0; pointer-events: none; }
@@ -181,57 +192,47 @@
 <div class="war-room">
     <!-- MAPPA INTERATTIVA -->
     <main class="map-section">
+    <div class="map-wrapper">
         
-        <!-- POI: VALKYRION -->
         <div class="poi pos-valkyrion" onmouseenter="updateIntel('valkyrion')">
-            <div class="poi-icon" style="background-image: url('../img/banners/banner_valkyrion.png');"></div>
+            <div class="poi-icon"></div>
             <div class="poi-name">Valkyrion Empire</div>
         </div>
 
-        <!-- POI: KHAROS -->
         <div class="poi pos-kharos" onmouseenter="updateIntel('kharos')">
-            <div class="poi-icon" style="background-image: url('../img/banners/banner_kharos.png');"></div>
+            <div class="poi-icon"></div>
             <div class="poi-name">Kharos Dominion</div>
         </div>
 
-        <!-- POI: ELVEN ENCLAVE -->
         <div class="poi pos-elven" onmouseenter="updateIntel('elven')">
-            <div class="poi-icon" style="background-image: url('../img/banners/banner_elven.png');"></div>
+            <div class="poi-icon"></div>
             <div class="poi-name">Elven Enclave</div>
         </div>
 
-        <!-- POI: PRIMAL COALITION -->
         <div class="poi pos-primal" onmouseenter="updateIntel('primal')">
-            <div class="poi-icon" style="background-image: url('../img/banners/banner_primal.png');"></div>
+            <div class="poi-icon"></div>
             <div class="poi-name">Primal Coalition</div>
         </div>
 
-        <!-- POI: DEVIL SYNDICATE -->
         <div class="poi pos-devil" onmouseenter="updateIntel('syndicate')">
-            <div class="poi-icon" style="background-image: url('../img/banners/banner_syndicate.png');"></div>
+            <div class="poi-icon"></div>
             <div class="poi-name">Devil Syndicate</div>
         </div>
 
-        <!-- POI: IRON BROTHERHOOD -->
         <div class="poi pos-brotherhood" onmouseenter="updateIntel('brotherhood')">
-            <div class="poi-icon" style="background-image: url('../img/banners/banner_brotherhood.png');"></div>
+            <div class="poi-icon"></div>
             <div class="poi-name">Iron Brotherhood</div>
         </div>
 
-        <!-- POI: THE FORGOTTEN -->
         <div class="poi pos-forgotten" onmouseenter="updateIntel('forgotten')">
-            <div class="poi-icon" style="background-image: url('../img/banners/banner_forgotten.png');"></div>
+            <div class="poi-icon"></div>
             <div class="poi-name">The Forgotten</div>
         </div>
 
-        <!-- POI: CLASSIFIED (Nascosto) -->
-        <div class="poi pos-classified">
-            <div class="poi-icon" style="background-color: #333;"></div>
-            <div class="poi-name">Classified</div>
-        </div>
-
-        <a href="campaign_menu.html" class="abort-link">← Abort Deployment</a>
-    </main>
+    </div>
+    
+    <a href="campaign_menu.html" class="abort-link">← Abort Deployment</a>
+</main>
 
     <!-- PANNELLO INTELLIGENCE -->
     <aside class="intel-panel">
