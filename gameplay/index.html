@@ -112,7 +112,7 @@
             opacity: 1;
         }
 
-        /* PAGINA DESTRA: IL CONTENUTO E L'AZIONE */
+       /* PAGINA DESTRA: IL CONTENUTO E L'AZIONE */
         .right-page {
             flex: 1;
             padding: 20px 40px;
@@ -129,7 +129,7 @@
             font-style: italic;
             opacity: 0.5;
             text-align: center;
-            font-size: 1.2rem;
+            font-size: 1.3rem; /* Leggermente ingrandito */
         }
 
         #active-content {
@@ -140,35 +140,41 @@
 
         #preview-img {
             width: 100%;
-            height: 250px;
+            height: auto; /* Rimosso il blocco a 250px */
+            aspect-ratio: 16 / 9; /* Forza l'immagine a un formato panoramico ampio */
+            max-height: 400px; /* Previene che diventi troppo gigante su schermi ultra-wide */
             object-fit: cover;
             border: 2px solid rgba(212, 196, 168, 0.2);
-            margin-bottom: 25px;
-            border-radius: 2px;
+            margin-bottom: 30px; /* Aumentato lo spazio sotto l'immagine */
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* Aggiunge un'ombra per staccarla dalla pergamena */
         }
 
         #preview-title {
-            font-size: 2rem;
+            font-size: 2.2rem; /* Aumentata la dimensione del titolo */
             margin: 0 0 15px 0;
             color: #fff;
             text-transform: uppercase;
             letter-spacing: 2px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
         }
 
         #preview-desc {
-            font-size: 1.1rem;
-            line-height: 1.8;
+            font-size: 1.2rem; /* Font più leggibile e arioso */
+            line-height: 1.9;
             margin: 0 0 40px 0;
+            color: var(--book-text);
         }
 
-        /* IL BOTTONE "APPROFONDISCI" - INEQUIVOCABILE */
+        /* IL BOTTONE "APPROFONDISCI" */
         .read-more-btn {
             margin-top: auto;
-            padding: 18px;
+            padding: 20px; /* Pulsante più massiccio */
             background-color: var(--accent-blood);
             color: #fff;
             text-transform: uppercase;
             font-weight: bold;
+            font-size: 1.1rem;
             letter-spacing: 4px;
             text-align: center;
             text-decoration: none;
