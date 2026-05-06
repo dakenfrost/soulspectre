@@ -6,15 +6,16 @@
     <title>SOULSPECTRE | The Basics</title>
     <style>
         :root {
+            --bg-color: #0a0a0a;
+            --text-main: #e0e0e0;
             --accent-blue: #5c9ce6;
             --accent-red: #d04b4b;
-            --bg-dark: #0a0a0a;
-            --panel-bg: rgba(10, 10, 12, 0.95);
-            --text-main: #e0e0e0;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --panel-bg: rgba(15, 15, 20, 0.85);
         }
 
         body {
-            background-color: var(--bg-dark);
+            background-color: var(--bg-color);
             color: var(--text-main);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
@@ -22,6 +23,7 @@
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
+            overflow-x: hidden;
         }
 
         #bg-image {
@@ -38,7 +40,7 @@
             position: fixed;
             top: 0; left: 0;
             width: 100vw; height: 100vh;
-            background: linear-gradient(135deg, rgba(15,15,20,0.95) 0%, rgba(5,5,5,0.98) 100%); 
+            background: linear-gradient(135deg, rgba(10,10,15,0.95) 0%, rgba(5,5,5,0.98) 100%); 
             z-index: -1;
         }
 
@@ -55,107 +57,87 @@
             text-transform: uppercase;
             margin: 0;
             text-shadow: 0 0 15px rgba(92, 156, 230, 0.3);
+            border-bottom: 2px solid var(--border-color);
+            display: inline-block;
+            padding-bottom: 10px;
         }
 
         main {
-            display: flex;
             width: 90%;
             max-width: 1200px;
-            gap: 40px;
-            margin-bottom: 50px;
-            align-items: flex-start;
-        }
-
-        /* SYSTEM LIST */
-        .system-list {
-            flex: 0 0 40%;
+            margin: 40px auto;
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 60px;
         }
 
-        .system-btn {
-            background: rgba(25, 25, 30, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 25px;
-            color: #fff;
-            text-decoration: none;
-            font-size: 1.2rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: all 0.3s ease;
-            border-left: 4px solid transparent;
+        /* Alternating Row Structure (Z-Pattern) */
+        .content-row {
+            display: flex;
+            align-items: center;
+            gap: 40px;
         }
 
-        .system-btn:hover {
-            background: rgba(40, 40, 55, 0.9);
-            border-left: 4px solid var(--accent-blue);
-            transform: translateX(10px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            color: var(--accent-blue);
+        .content-row.reverse {
+            flex-direction: row-reverse;
         }
 
-        /* PREVIEW PANEL */
-        .preview-panel {
+        /* Text Panel */
+        .text-panel {
             flex: 1;
             background: var(--panel-bg);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            min-height: 550px;
-            position: sticky;
-            top: 40px;
+            border: 1px solid var(--border-color);
+            padding: 40px;
             border-radius: 4px;
-            overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+            line-height: 1.6;
         }
 
-        #preview-img {
+        .text-panel h2 {
+            color: #fff;
+            margin-top: 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .text-panel p {
+            color: #ccc;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 0;
+        }
+
+        /* Image Panel */
+        .image-panel {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-panel img {
             width: 100%;
-            height: 320px;
+            max-width: 600px;
+            aspect-ratio: 16 / 9; /* Forza proporzioni rigide per stabilità del layout */
             object-fit: cover;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            filter: brightness(0.8);
+            border: 2px solid #333;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            filter: brightness(0.85) contrast(1.1);
             transition: filter 0.3s ease;
             cursor: zoom-in;
         }
 
-        #preview-img:hover {
+        .image-panel img:hover {
             filter: brightness(1) contrast(1.1);
-        }
-
-        .preview-content { padding: 35px; }
-
-        #preview-title {
-            font-size: 1.8rem;
-            margin: 0 0 15px 0;
-            color: #fff;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        #preview-desc {
-            color: #ccc;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin: 0;
-        }
-
-        .placeholder-text {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 550px;
-            color: #444;
-            font-style: italic;
-            text-align: center;
-            padding: 40px;
-            font-size: 1.2rem;
         }
 
         .back-link {
             display: block;
-            margin: 40px 0;
-            color: #666;
+            margin: 20px auto 60px auto;
+            color: #888;
             text-decoration: none;
             transition: color 0.3s;
             text-transform: uppercase;
@@ -165,6 +147,15 @@
         }
 
         .back-link:hover { color: #fff; }
+
+        @media (max-width: 900px) {
+            .content-row, .content-row.reverse {
+                flex-direction: column;
+            }
+            .text-panel, .image-panel {
+                width: 100%;
+            }
+        }
 
         /* Modal / Lightbox Logic */
         .modal {
@@ -203,7 +194,7 @@
             position: absolute;
             top: 20px;
             right: 40px;
-            color: #e0e0e0;
+            color: var(--text-main);
             font-size: 40px;
             font-weight: bold;
             cursor: pointer;
@@ -213,12 +204,6 @@
 
         .close-modal:hover {
             color: var(--accent-red);
-        }
-
-        @media (max-width: 900px) {
-            main { flex-direction: column; }
-            .system-list, .preview-panel { width: 100%; position: static; }
-            .preview-panel { min-height: auto; }
         }
     </style>
     <link rel="stylesheet" href="../system/global_nav.css">
@@ -234,111 +219,108 @@
 </header>
 
 <main>
-    <div class="system-list">
-        <a href="#" class="system-btn" onmouseover="updatePreview('capital')">The Capital</a>
-        <a href="#" class="system-btn" onmouseover="updatePreview('party')">The Party</a>
-        <a href="#" class="system-btn" onmouseover="updatePreview('combat')">The Combat System</a>
-        <a href="#" class="system-btn" onmouseover="updatePreview('provinces')">Provinces</a>
-        <a href="#" class="system-btn" onmouseover="updatePreview('awakening')">Awakening</a>
-        <a href="#" class="system-btn" onmouseover="updatePreview('victory')">Victory</a>
+    <!-- MODULE 1: THE CAPITAL -->
+    <div class="content-row">
+        <div class="image-panel">
+            <img src="../img/basics_capital.png" alt="The Capital Overview">
+        </div>
+        <div class="text-panel">
+            <h2>The Capital</h2>
+            <p>Your primary starting base and economic heart. The capital produces a base amount of resources each turn and serves as the only hub where you can construct structures and form new parties. It is permanently defended by your Leader, making it exceptionally difficult to conquer; however, its fall results in an immediate game over.</p>
+        </div>
     </div>
 
-    <div class="preview-panel" id="panel">
-        <div id="default-content" class="placeholder-text">
-            Hover over a basic system to access tactical records...
+    <!-- MODULE 2: THE PARTY -->
+    <div class="content-row reverse">
+        <div class="image-panel">
+            <img src="../img/basics_party.png" alt="Party Formation">
         </div>
-        <div id="active-content" style="display: none;">
-            <img id="preview-img" src="" alt="System Preview">
-            <div class="preview-content">
-                <h2 id="preview-title"></h2>
-                <p id="preview-desc"></p>
-            </div>
+        <div class="text-panel">
+            <h2>The Party</h2>
+            <p>The fundamental unit of military mobilization. Each party requires an officer to act as the party leader, whom you can name according to your preference. A party configuration can range from a solo leader to a full squad with up to 5 additional party members, for a maximum of 6 units per group.</p>
+        </div>
+    </div>
+
+    <!-- MODULE 3: THE COMBAT SYSTEM -->
+    <div class="content-row">
+        <div class="image-panel">
+            <img src="../img/basics_combat.png" alt="Combat Mechanics">
+        </div>
+        <div class="text-panel">
+            <h2>The Combat System</h2>
+            <p>Turn-based tactical engagements between two opposing parties. At the start of each turn, the unit with the highest initiative acts first and selects one of its available skills. In the event of identical initiative values, the acting order is determined randomly. The battle concludes only when one party is totally annihilated.</p>
+        </div>
+    </div>
+
+    <!-- MODULE 4: PROVINCES -->
+    <div class="content-row reverse">
+        <div class="image-panel">
+            <img src="../img/basics_provinces.png" alt="Map Provinces">
+        </div>
+        <div class="text-panel">
+            <h2>Provinces</h2>
+            <p>Regional territories outside the capital. Each province contains its own 'city', and establishing control over it allows you to harvest additional resources for your faction. Be advised: specific resources may be guarded by hostile enemies that must be defeated before you can successfully acquire the assets.</p>
+        </div>
+    </div>
+
+    <!-- MODULE 5: AWAKENING -->
+    <div class="content-row">
+        <div class="image-panel">
+            <img src="../img/basics_awakening.png" alt="Awakening Progression">
+        </div>
+        <div class="text-panel">
+            <h2>Awakening</h2>
+            <p>A progression system tied to the mastery of your leaders. Clearing specific dungeons increases the level of Awakening for your officers. Each new Awakening level allows you to select one out of three additional passive skills, such as increased attack power or bonus elemental damage.</p>
+        </div>
+    </div>
+
+    <!-- MODULE 6: VICTORY -->
+    <div class="content-row reverse">
+        <div class="image-panel">
+            <img src="../img/basics_victory.png" alt="Victory Conditions">
+        </div>
+        <div class="text-panel">
+            <h2>Victory</h2>
+            <p>While specific campaigns may dictate unique objectives, the standard path to victory involves total faction dominance. In normal mode, a faction wins once all other competing factions have been defeated and their respective capitals have been destroyed.</p>
         </div>
     </div>
 </main>
 
 <a href="index.html" class="back-link">← Return to Strategic Doctrine</a>
 
+<!-- Modal for Image Zoom -->
 <div id="imageModal" class="modal">
     <span class="close-modal">&times;</span>
     <img class="modal-content" id="zoomedImage">
 </div>
 
 <script>
-    const data = {
-        capital: {
-            title: "The Capital",
-            desc: "Your primary starting base and economic heart. The capital produces a base amount of resources each turn and serves as the only hub where you can construct structures and form new parties. It is permanently defended by your Leader, making it exceptionally difficult to conquer; however, its fall results in an immediate game over.",
-            img: "../img/basics_capital.png"
-        },
-        party: {
-            title: "The Party",
-            desc: "The fundamental unit of military mobilization. Each party requires an officer to act as the party leader, whom you can name according to your preference. A party configuration can range from a solo leader to a full squad with up to 5 additional party members, for a maximum of 6 units per group.",
-            img: "../img/basics_party.png"
-        },
-        combat: {
-            title: "The Combat System",
-            desc: "Turn-based tactical engagements between two opposing parties. At the start of each turn, the unit with the highest initiative acts first and selects one of its available skills. In the event of identical initiative values, the acting order is determined randomly. The battle concludes only when one party is totally annihilated.",
-            img: "../img/basics_combat.png"
-        },
-        provinces: {
-            title: "Provinces",
-            desc: "Regional territories outside the capital. Each province contains its own 'city', and establishing control over it allows you to harvest additional resources for your faction. Be advised: specific resources may be guarded by hostile enemies that must be defeated before you can successfully acquire the assets.",
-            img: "../img/basics_provinces.png"
-        },
-        awakening: {
-            title: "Awakening",
-            desc: "A progression system tied to the mastery of your leaders. Clearing specific dungeons increases the level of Awakening for your officers. Each new Awakening level allows you to select one out of three additional passive skills, such as increased attack power or bonus elemental damage.",
-            img: "../img/basics_awakening.png"
-        },
-        victory: {
-            title: "Victory",
-            desc: "While specific campaigns may dictate unique objectives, the standard path to victory involves total faction dominance. In normal mode, a faction wins once all other competing factions have been defeated and their respective capitals have been destroyed.",
-            img: "../img/basics_victory.png"
-        }
-    };
-
-    const defaultContent = document.getElementById('default-content');
-    const activeContent = document.getElementById('active-content');
-    const pTitle = document.getElementById('preview-title');
-    const pDesc = document.getElementById('preview-desc');
-    const pImg = document.getElementById('preview-img');
-
-    function updatePreview(key) {
-        const info = data[key];
-        pTitle.innerText = info.title;
-        pDesc.innerText = info.desc;
-        pImg.src = info.img;
-        
-        defaultContent.style.display = 'none';
-        activeContent.style.display = 'block';
-    }
-
-    // Lightbox Logic con Fix Display
+    // Lightbox Logic 
     document.addEventListener('DOMContentLoaded', () => {
         const modal = document.getElementById('imageModal');
         const modalImg = document.getElementById('zoomedImage');
-        const previewImg = document.getElementById('preview-img');
+        const images = document.querySelectorAll('.image-panel img');
         const closeBtn = document.querySelector('.close-modal');
 
         const closeModal = () => {
             modal.classList.remove('show');
             setTimeout(() => { 
                 modal.style.display = "none"; 
-            }, 300);
+            }, 300); 
         };
 
-        previewImg.addEventListener('click', function() {
-            // Controllo che ci sia un'immagine valida caricata
-            if (this.src && !this.src.endsWith('.html') && !this.src.endsWith('/')) { 
-                modal.style.display = "block"; // Forza il display block PRIMA dell'animazione
-                
-                setTimeout(() => {
-                    modal.classList.add('show');
-                }, 10);
-                
-                modalImg.src = this.src; 
-            }
+        images.forEach(img => {
+            img.addEventListener('click', function() {
+                if (this.src && !this.src.endsWith('.html') && !this.src.endsWith('/')) { 
+                    modal.style.display = "block"; 
+                    
+                    setTimeout(() => {
+                        modal.classList.add('show');
+                    }, 10);
+                    
+                    modalImg.src = this.src; 
+                }
+            });
         });
 
         closeBtn.addEventListener('click', closeModal);
