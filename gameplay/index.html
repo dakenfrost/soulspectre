@@ -80,6 +80,8 @@
             border-bottom: 2px solid var(--accent-blood);
             padding-bottom: 10px;
             margin-bottom: 20px;
+            opacity: 0.85;
+            text-shadow: 0px 0px 1px rgba(255, 255, 255, 0.1);
         }
 
         .index-item {
@@ -93,12 +95,15 @@
             justify-content: space-between;
             align-items: center;
             border: 1px solid transparent;
+            opacity: 0.85;
+            text-shadow: 0px 0px 1px rgba(255, 255, 255, 0.1);
         }
 
         .index-item:hover, .index-item.active {
             background: var(--hover-highlight);
             border: 1px solid rgba(212, 196, 168, 0.3);
             color: #fff;
+            opacity: 1;
         }
 
         .index-item::after {
@@ -112,14 +117,9 @@
             opacity: 1;
         }
 
-        /* Aggiungi questa riga al CSS esistente di #preview-img */
-        #preview-img {
-            cursor: zoom-in; /* Segnala che è cliccabile per lo zoom */
-        }
-
         /* --- SISTEMA LIGHTBOX (ZOOM OTTICO) --- */
         #lightbox {
-            display: none; /* Nascosto di default */
+            display: none; 
             position: fixed;
             top: 0; left: 0;
             width: 100vw; height: 100vh;
@@ -156,7 +156,7 @@
             font-style: italic;
             opacity: 0.5;
             text-align: center;
-            font-size: 1.3rem; /* Leggermente ingrandito */
+            font-size: 1.3rem; 
         }
 
         #active-content {
@@ -165,38 +165,53 @@
             height: 100%;
         }
 
+        /* IMMAGINE CON EFFETTO STAMPA ANTICA */
         #preview-img {
             width: 100%;
-            height: auto; /* Rimosso il blocco a 250px */
-            aspect-ratio: 16 / 9; /* Forza l'immagine a un formato panoramico ampio */
-            max-height: 400px; /* Previene che diventi troppo gigante su schermi ultra-wide */
+            height: auto; 
+            aspect-ratio: 16 / 9; 
+            max-height: 400px; 
             object-fit: cover;
-            border: 2px solid rgba(212, 196, 168, 0.2);
-            margin-bottom: 30px; /* Aumentato lo spazio sotto l'immagine */
-            border-radius: 4px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* Aggiunge un'ombra per staccarla dalla pergamena */
+            border: 1px solid rgba(0, 0, 0, 0.3);
+            margin-bottom: 30px; 
+            border-radius: 2px;
+            cursor: zoom-in; 
+            opacity: 0.8;
+            filter: sepia(0.4) blur(0.5px) contrast(0.9);
+            mix-blend-mode: luminosity;
+            transition: all 0.3s ease;
+        }
+
+        /* Ritorno alla nitidezza digitale su puntamento */
+        #preview-img:hover {
+            opacity: 1;
+            filter: sepia(0) blur(0) contrast(1.1);
+            mix-blend-mode: normal;
         }
 
         #preview-title {
-            font-size: 2.2rem; /* Aumentata la dimensione del titolo */
+            font-size: 2.2rem; 
             margin: 0 0 15px 0;
             color: #fff;
             text-transform: uppercase;
             letter-spacing: 2px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+            opacity: 0.85;
+            text-shadow: 0px 0px 1px rgba(255, 255, 255, 0.1);
         }
 
         #preview-desc {
-            font-size: 1.2rem; /* Font più leggibile e arioso */
+            font-size: 1.2rem; 
             line-height: 1.9;
             margin: 0 0 40px 0;
             color: var(--book-text);
+            opacity: 0.85;
+            text-shadow: 0px 0px 1px rgba(255, 255, 255, 0.1);
         }
 
         /* IL BOTTONE "APPROFONDISCI" */
         .read-more-btn {
             margin-top: auto;
-            padding: 20px; /* Pulsante più massiccio */
+            padding: 20px; 
             background-color: var(--accent-blood);
             color: #fff;
             text-transform: uppercase;
@@ -222,139 +237,3 @@
             margin: 40px 0;
             color: #666;
             text-decoration: none;
-            transition: color 0.3s;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            letter-spacing: 2px;
-        }
-
-        .back-link:hover { color: #fff; }
-
-        @media (max-width: 900px) {
-            main { flex-direction: column; gap: 20px; }
-            .left-page { border-right: none; border-bottom: 1px solid rgba(212, 196, 168, 0.2); }
-        }
-    </style>
-</head>
-<body>
-
-    <!-- SISTEMA LIGHTBOX -->
-<div id="lightbox" onclick="closeLightbox()">
-    <img id="lightbox-img" src="" alt="Zoomed Intel">
-</div>
-
-<div id="bg-image"></div>
-<global-navigation base="../"></global-navigation>
-
-<header>
-    <h1>Strategic Doctrine</h1>
-</header>
-
-<main>
-    <!-- PAGINA SINISTRA: INDICE -->
-    <div class="left-page">
-        <div class="chapter-title">Index</div>
-        <div class="index-item" onclick="updatePreview('basics')">I. The Basics</div>
-        <div class="index-item" onclick="updatePreview('map')">II. Map & Resources</div>
-        <div class="index-item" onclick="updatePreview('cities')">III. Cities & Influence</div>
-        <div class="index-item" onclick="updatePreview('officers')">IV. Officers & Parties</div>
-        <div class="index-item" onclick="updatePreview('progression')">V. Progression & Power</div>
-    </div>
-
-    <!-- PAGINA DESTRA: CONTENUTO -->
-    <div class="right-page">
-        <div id="default-content">
-            Select a chapter from the index to decrypt tactical data...
-        </div>
-        
-        <div id="active-content">
-            <img id="preview-img" src="" alt="System Preview">
-            <h2 id="preview-title"></h2>
-            <p id="preview-desc"></p>
-            
-            <a href="#" id="read-more-btn" class="read-more-btn">Access Full Chapter</a>
-        </div>
-    </div>
-</main>
-
-<a href="../index.html" class="back-link">← Return to Main Hub</a>
-
-<script>
-    // 1. DATI DEL DATABASE
-    const data = {
-        basics: {
-            title: "The Basics",
-            desc: "The core loop of SOULSPECTRE. From Capital management and Party formation to turn-based engagement logic and the absolute conditions for victory.",
-            img: "../img/game_preview_basics.jpeg",
-            link: "basics.html"
-        },
-        map: {
-            title: "Map & Resources",
-            desc: "Global navigation and economic protocols. Manage the flow of Gold, Mana, and Platinum across the Spectre-torn territories.",
-            img: "../img/game_preview_map.png",
-            link: "map_resources.html"
-        },
-        cities: {
-            title: "Cities & Influence",
-            desc: "Infrastructure management and territorial expansion. Upgrade your Capital's technology and secure Provinces to project your faction's power.",
-            img: "../img/game_preview_cities.png",
-            link: "cities.html"
-        },
-        officers: {
-            title: "Officers & Parties",
-            desc: "The martial core. Command unique leaders and organize specialized squads of up to 6 units to execute precise tactical maneuvers.",
-            img: "../img/game_preview_officers.png",
-            link: "officers.html"
-        },
-        progression: {
-            title: "Progression & Power",
-            desc: "The evolution of lethality. Master the Rogue-lite 'Power' system and the Awakening trials to achieve permanent tactical superiority.",
-            img: "../img/game_preview_progression.png",
-            link: "progression.html"
-        }
-    };
-
-    // 2. INIZIALIZZAZIONE VARIABILI DOM
-    const defaultContent = document.getElementById('default-content');
-    const activeContent = document.getElementById('active-content');
-    const pTitle = document.getElementById('preview-title');
-    const pDesc = document.getElementById('preview-desc');
-    const pImg = document.getElementById('preview-img');
-    const readBtn = document.getElementById('read-more-btn');
-    const items = document.querySelectorAll('.index-item');
-    
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-
-    // 3. FUNZIONI OPERATIVE
-    function updatePreview(key) {
-        // Aggiorna lo stato attivo visivo sull'indice
-        items.forEach(item => item.classList.remove('active'));
-        event.currentTarget.classList.add('active');
-
-        // Carica i dati
-        const info = data[key];
-        pTitle.innerText = info.title;
-        pDesc.innerText = info.desc;
-        pImg.src = info.img;
-        readBtn.href = info.link; 
-        
-        // Mostra il pannello
-        defaultContent.style.display = 'none';
-        activeContent.style.display = 'flex';
-    }
-
-    // INNESCO ZOOM LIGHTBOX
-    pImg.onclick = function() {
-        lightboxImg.src = this.src; 
-        lightbox.style.display = 'flex'; 
-    };
-
-    // CHIUSURA ZOOM LIGHTBOX
-    function closeLightbox() {
-        lightbox.style.display = 'none';
-    }
-</script>
-
-</body>
-</html>
