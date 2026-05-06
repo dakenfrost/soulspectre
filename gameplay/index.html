@@ -280,20 +280,7 @@
 <a href="../index.html" class="back-link">← Return to Main Hub</a>
 
 <script>
-    // VARIABILI LIGHTBOX
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-
-    // INNESCO ZOOM
-    pImg.onclick = function() {
-        lightboxImg.src = this.src; // Copia la sorgente dell'immagine attuale
-        lightbox.style.display = 'flex'; // Mostra l'overlay
-    };
-
-    // CHIUSURA ZOOM
-    function closeLightbox() {
-        lightbox.style.display = 'none';
-    }
+    // 1. DATI DEL DATABASE
     const data = {
         basics: {
             title: "The Basics",
@@ -327,6 +314,7 @@
         }
     };
 
+    // 2. INIZIALIZZAZIONE VARIABILI DOM
     const defaultContent = document.getElementById('default-content');
     const activeContent = document.getElementById('active-content');
     const pTitle = document.getElementById('preview-title');
@@ -334,7 +322,11 @@
     const pImg = document.getElementById('preview-img');
     const readBtn = document.getElementById('read-more-btn');
     const items = document.querySelectorAll('.index-item');
+    
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
 
+    // 3. FUNZIONI OPERATIVE
     function updatePreview(key) {
         // Aggiorna lo stato attivo visivo sull'indice
         items.forEach(item => item.classList.remove('active'));
@@ -345,11 +337,22 @@
         pTitle.innerText = info.title;
         pDesc.innerText = info.desc;
         pImg.src = info.img;
-        readBtn.href = info.link; // Associa dinamicamente il link corretto
+        readBtn.href = info.link; 
         
         // Mostra il pannello
         defaultContent.style.display = 'none';
         activeContent.style.display = 'flex';
+    }
+
+    // INNESCO ZOOM LIGHTBOX
+    pImg.onclick = function() {
+        lightboxImg.src = this.src; 
+        lightbox.style.display = 'flex'; 
+    };
+
+    // CHIUSURA ZOOM LIGHTBOX
+    function closeLightbox() {
+        lightbox.style.display = 'none';
     }
 </script>
 
