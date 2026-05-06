@@ -237,3 +237,136 @@
             margin: 40px 0;
             color: #666;
             text-decoration: none;
+            transition: color 0.3s;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+        }
+
+        .back-link:hover { color: #fff; }
+
+        @media (max-width: 900px) {
+            main { flex-direction: column; gap: 20px; }
+            .left-page { border-right: none; border-bottom: 1px solid rgba(212, 196, 168, 0.2); }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="lightbox" onclick="closeLightbox()">
+    <img id="lightbox-img" src="" alt="Zoomed Intel">
+</div>
+
+<div id="bg-image"></div>
+<global-navigation base="../"></global-navigation>
+
+<header>
+    <h1>Strategic Doctrine</h1>
+</header>
+
+<main>
+    <div class="left-page">
+        <div class="chapter-title">Index</div>
+        <div class="index-item" onclick="updatePreview('basics')">I. The Basics</div>
+        <div class="index-item" onclick="updatePreview('map')">II. Map & Resources</div>
+        <div class="index-item" onclick="updatePreview('cities')">III. Cities & Influence</div>
+        <div class="index-item" onclick="updatePreview('officers')">IV. Officers & Parties</div>
+        <div class="index-item" onclick="updatePreview('progression')">V. Progression & Power</div>
+    </div>
+
+    <div class="right-page">
+        <div id="default-content">
+            Select a chapter from the index to decrypt tactical data...
+        </div>
+        
+        <div id="active-content">
+            <img id="preview-img" src="" alt="System Preview">
+            <h2 id="preview-title"></h2>
+            <p id="preview-desc"></p>
+            
+            <a href="#" id="read-more-btn" class="read-more-btn">Access Full Chapter</a>
+        </div>
+    </div>
+</main>
+
+<a href="../index.html" class="back-link">← Return to Main Hub</a>
+
+<script>
+    // 1. DATI DEL DATABASE
+    const data = {
+        basics: {
+            title: "The Basics",
+            desc: "The core loop of SOULSPECTRE. From Capital management and Party formation to turn-based engagement logic and the absolute conditions for victory.",
+            img: "../img/game_preview_basics.jpeg",
+            link: "basics.html"
+        },
+        map: {
+            title: "Map & Resources",
+            desc: "Global navigation and economic protocols. Manage the flow of Gold, Mana, and Platinum across the Spectre-torn territories.",
+            img: "../img/game_preview_map.png",
+            link: "map_resources.html"
+        },
+        cities: {
+            title: "Cities & Influence",
+            desc: "Infrastructure management and territorial expansion. Upgrade your Capital's technology and secure Provinces to project your faction's power.",
+            img: "../img/game_preview_cities.png",
+            link: "cities.html"
+        },
+        officers: {
+            title: "Officers & Parties",
+            desc: "The martial core. Command unique leaders and organize specialized squads of up to 6 units to execute precise tactical maneuvers.",
+            img: "../img/game_preview_officers.png",
+            link: "officers.html"
+        },
+        progression: {
+            title: "Progression & Power",
+            desc: "The evolution of lethality. Master the Rogue-lite 'Power' system and the Awakening trials to achieve permanent tactical superiority.",
+            img: "../img/game_preview_progression.png",
+            link: "progression.html"
+        }
+    };
+
+    // 2. INIZIALIZZAZIONE VARIABILI DOM
+    const defaultContent = document.getElementById('default-content');
+    const activeContent = document.getElementById('active-content');
+    const pTitle = document.getElementById('preview-title');
+    const pDesc = document.getElementById('preview-desc');
+    const pImg = document.getElementById('preview-img');
+    const readBtn = document.getElementById('read-more-btn');
+    const items = document.querySelectorAll('.index-item');
+    
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    // 3. FUNZIONI OPERATIVE
+    function updatePreview(key) {
+        // Aggiorna lo stato attivo visivo sull'indice
+        items.forEach(item => item.classList.remove('active'));
+        event.currentTarget.classList.add('active');
+
+        // Carica i dati
+        const info = data[key];
+        pTitle.innerText = info.title;
+        pDesc.innerText = info.desc;
+        pImg.src = info.img;
+        readBtn.href = info.link; 
+        
+        // Mostra il pannello
+        defaultContent.style.display = 'none';
+        activeContent.style.display = 'flex';
+    }
+
+    // INNESCO ZOOM LIGHTBOX
+    pImg.onclick = function() {
+        lightboxImg.src = this.src; 
+        lightbox.style.display = 'flex'; 
+    };
+
+    // CHIUSURA ZOOM LIGHTBOX
+    function closeLightbox() {
+        lightbox.style.display = 'none';
+    }
+</script>
+
+</body>
+</html>
