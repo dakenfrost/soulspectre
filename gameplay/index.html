@@ -80,8 +80,6 @@
             border-bottom: 2px solid var(--accent-blood);
             padding-bottom: 10px;
             margin-bottom: 20px;
-            opacity: 0.85;
-            text-shadow: 0px 0px 1px rgba(255, 255, 255, 0.1);
         }
 
         .index-item {
@@ -95,15 +93,12 @@
             justify-content: space-between;
             align-items: center;
             border: 1px solid transparent;
-            opacity: 0.85;
-            text-shadow: 0px 0px 1px rgba(255, 255, 255, 0.1);
         }
 
         .index-item:hover, .index-item.active {
             background: var(--hover-highlight);
             border: 1px solid rgba(212, 196, 168, 0.3);
             color: #fff;
-            opacity: 1;
         }
 
         .index-item::after {
@@ -117,9 +112,14 @@
             opacity: 1;
         }
 
+        /* Aggiungi questa riga al CSS esistente di #preview-img */
+        #preview-img {
+            cursor: zoom-in; /* Segnala che è cliccabile per lo zoom */
+        }
+
         /* --- SISTEMA LIGHTBOX (ZOOM OTTICO) --- */
         #lightbox {
-            display: none; 
+            display: none; /* Nascosto di default */
             position: fixed;
             top: 0; left: 0;
             width: 100vw; height: 100vh;
@@ -156,7 +156,7 @@
             font-style: italic;
             opacity: 0.5;
             text-align: center;
-            font-size: 1.3rem; 
+            font-size: 1.3rem; /* Leggermente ingrandito */
         }
 
         #active-content {
@@ -165,53 +165,38 @@
             height: 100%;
         }
 
-        /* IMMAGINE CON EFFETTO STAMPA ANTICA */
         #preview-img {
             width: 100%;
-            height: auto; 
-            aspect-ratio: 16 / 9; 
-            max-height: 400px; 
+            height: auto; /* Rimosso il blocco a 250px */
+            aspect-ratio: 16 / 9; /* Forza l'immagine a un formato panoramico ampio */
+            max-height: 400px; /* Previene che diventi troppo gigante su schermi ultra-wide */
             object-fit: cover;
-            border: 1px solid rgba(0, 0, 0, 0.3);
-            margin-bottom: 30px; 
-            border-radius: 2px;
-            cursor: zoom-in; 
-            opacity: 0.8;
-            filter: sepia(0.4) blur(0.5px) contrast(0.9);
-            mix-blend-mode: luminosity;
-            transition: all 0.3s ease;
-        }
-
-        /* Ritorno alla nitidezza digitale su puntamento */
-        #preview-img:hover {
-            opacity: 1;
-            filter: sepia(0) blur(0) contrast(1.1);
-            mix-blend-mode: normal;
+            border: 2px solid rgba(212, 196, 168, 0.2);
+            margin-bottom: 30px; /* Aumentato lo spazio sotto l'immagine */
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* Aggiunge un'ombra per staccarla dalla pergamena */
         }
 
         #preview-title {
-            font-size: 2.2rem; 
+            font-size: 2.2rem; /* Aumentata la dimensione del titolo */
             margin: 0 0 15px 0;
             color: #fff;
             text-transform: uppercase;
             letter-spacing: 2px;
-            opacity: 0.85;
-            text-shadow: 0px 0px 1px rgba(255, 255, 255, 0.1);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
         }
 
         #preview-desc {
-            font-size: 1.2rem; 
+            font-size: 1.2rem; /* Font più leggibile e arioso */
             line-height: 1.9;
             margin: 0 0 40px 0;
             color: var(--book-text);
-            opacity: 0.85;
-            text-shadow: 0px 0px 1px rgba(255, 255, 255, 0.1);
         }
 
         /* IL BOTTONE "APPROFONDISCI" */
         .read-more-btn {
             margin-top: auto;
-            padding: 20px; 
+            padding: 20px; /* Pulsante più massiccio */
             background-color: var(--accent-blood);
             color: #fff;
             text-transform: uppercase;
@@ -253,7 +238,8 @@
 </head>
 <body>
 
-    <div id="lightbox" onclick="closeLightbox()">
+    <!-- SISTEMA LIGHTBOX -->
+<div id="lightbox" onclick="closeLightbox()">
     <img id="lightbox-img" src="" alt="Zoomed Intel">
 </div>
 
@@ -265,6 +251,7 @@
 </header>
 
 <main>
+    <!-- PAGINA SINISTRA: INDICE -->
     <div class="left-page">
         <div class="chapter-title">Index</div>
         <div class="index-item" onclick="updatePreview('basics')">I. The Basics</div>
@@ -274,6 +261,7 @@
         <div class="index-item" onclick="updatePreview('progression')">V. Progression & Power</div>
     </div>
 
+    <!-- PAGINA DESTRA: CONTENUTO -->
     <div class="right-page">
         <div id="default-content">
             Select a chapter from the index to decrypt tactical data...
