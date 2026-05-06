@@ -112,6 +112,33 @@
             opacity: 1;
         }
 
+        /* Aggiungi questa riga al CSS esistente di #preview-img */
+        #preview-img {
+            cursor: zoom-in; /* Segnala che è cliccabile per lo zoom */
+        }
+
+        /* --- SISTEMA LIGHTBOX (ZOOM OTTICO) --- */
+        #lightbox {
+            display: none; /* Nascosto di default */
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            cursor: zoom-out;
+            backdrop-filter: blur(5px);
+        }
+
+        #lightbox-img {
+            max-width: 95%;
+            max-height: 95vh;
+            border: 2px solid var(--accent-blood);
+            box-shadow: 0 0 50px rgba(0,0,0,1);
+            border-radius: 4px;
+        }
+
        /* PAGINA DESTRA: IL CONTENUTO E L'AZIONE */
         .right-page {
             flex: 1;
@@ -211,6 +238,11 @@
 </head>
 <body>
 
+    <!-- SISTEMA LIGHTBOX -->
+<div id="lightbox" onclick="closeLightbox()">
+    <img id="lightbox-img" src="" alt="Zoomed Intel">
+</div>
+
 <div id="bg-image"></div>
 <global-navigation base="../"></global-navigation>
 
@@ -248,6 +280,20 @@
 <a href="../index.html" class="back-link">← Return to Main Hub</a>
 
 <script>
+    // VARIABILI LIGHTBOX
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    // INNESCO ZOOM
+    pImg.onclick = function() {
+        lightboxImg.src = this.src; // Copia la sorgente dell'immagine attuale
+        lightbox.style.display = 'flex'; // Mostra l'overlay
+    };
+
+    // CHIUSURA ZOOM
+    function closeLightbox() {
+        lightbox.style.display = 'none';
+    }
     const data = {
         basics: {
             title: "The Basics",
