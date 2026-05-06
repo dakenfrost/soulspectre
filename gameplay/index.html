@@ -4,38 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOULSPECTRE | Systems & Doctrine</title>
+    <link rel="stylesheet" href="../system/global_nav.css">
     <style>
+        :root {
+            --book-text: #d4c4a8; /* Testo pergamena invecchiata */
+            --accent-blood: #8a1c1c; /* Rosso scuro tattico/araldico */
+            --hover-highlight: rgba(255, 255, 255, 0.1);
+        }
+
         body {
-            background-color: #0a0a0a;
-            color: #e0e0e0;
+            background-color: #050505;
+            color: var(--book-text);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
+            overflow-x: hidden;
         }
 
+        /* SFONDO DEL LIBRO */
         #bg-image {
             position: fixed;
             top: 0; left: 0;
             width: 100vw; height: 100vh;
-            background-image: url('../img/homepage_bg.jpg'); 
+            background-image: url('../img/open_book_bg.jpg'); /* Inserisci qui l'asset del libro aperto */
             background-size: cover;
             background-position: center;
             z-index: -2;
-        }
-
-        #overlay {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100vw; height: 100vh;
-            background: linear-gradient(135deg, rgba(15,15,20,0.95) 0%, rgba(5,5,5,0.98) 100%); 
-            z-index: -1;
+            opacity: 0.4; /* Scurito per non accecare */
         }
 
         header {
-            padding: 60px 20px;
+            padding: 40px 20px;
             text-align: center;
             width: 100%;
         }
@@ -46,74 +48,107 @@
             color: #fff;
             text-transform: uppercase;
             margin: 0;
-            text-shadow: 0 0 15px rgba(92, 156, 230, 0.3);
+            text-shadow: 0 0 20px rgba(138, 28, 28, 0.5); /* Riflesso rosso */
         }
 
+        /* LAYOUT A DUE PAGINE */
         main {
             display: flex;
             width: 90%;
-            max-width: 1200px;
-            gap: 40px;
+            max-width: 1300px;
+            min-height: 600px;
+            gap: 60px;
+            margin-top: 20px;
             margin-bottom: 50px;
-            align-items: flex-start;
         }
 
-        /* SYSTEM LIST */
-        .system-list {
-            flex: 0 0 40%;
+        /* PAGINA SINISTRA: L'INDICE */
+        .left-page {
+            flex: 1;
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 10px;
+            padding: 20px 40px;
+            border-right: 1px solid rgba(212, 196, 168, 0.2); /* Rilegatura centrale */
         }
 
-        .system-btn {
-            background: rgba(25, 25, 30, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 25px;
+        .chapter-title {
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
             color: #fff;
-            text-decoration: none;
+            border-bottom: 2px solid var(--accent-blood);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .index-item {
+            padding: 15px 20px;
             font-size: 1.2rem;
-            font-weight: bold;
+            cursor: pointer;
             text-transform: uppercase;
             letter-spacing: 2px;
-            transition: all 0.3s ease;
-            border-left: 4px solid transparent;
+            transition: all 0.2s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid transparent;
         }
 
-        .system-btn:hover {
-            background: rgba(40, 40, 55, 0.9);
-            border-left: 4px solid #5c9ce6;
-            transform: translateX(10px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            color: #5c9ce6;
+        .index-item:hover, .index-item.active {
+            background: var(--hover-highlight);
+            border: 1px solid rgba(212, 196, 168, 0.3);
+            color: #fff;
         }
 
-        /* PREVIEW PANEL */
-        .preview-panel {
+        .index-item::after {
+            content: '>';
+            color: var(--accent-blood);
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .index-item:hover::after, .index-item.active::after {
+            opacity: 1;
+        }
+
+        /* PAGINA DESTRA: IL CONTENUTO E L'AZIONE */
+        .right-page {
             flex: 1;
-            background: rgba(10, 10, 12, 0.95);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            min-height: 550px;
-            position: sticky;
-            top: 40px;
-            border-radius: 4px;
-            overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            padding: 20px 40px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        #default-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            font-style: italic;
+            opacity: 0.5;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+
+        #active-content {
+            display: none;
+            flex-direction: column;
+            height: 100%;
         }
 
         #preview-img {
             width: 100%;
-            height: 320px;
+            height: 250px;
             object-fit: cover;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            filter: brightness(0.8);
-            transition: filter 0.3s ease;
+            border: 2px solid rgba(212, 196, 168, 0.2);
+            margin-bottom: 25px;
+            border-radius: 2px;
         }
 
-        .preview-content { padding: 35px; }
-
         #preview-title {
-            font-size: 1.8rem;
+            font-size: 2rem;
             margin: 0 0 15px 0;
             color: #fff;
             text-transform: uppercase;
@@ -121,22 +156,32 @@
         }
 
         #preview-desc {
-            color: #aaa;
             font-size: 1.1rem;
             line-height: 1.8;
-            margin: 0;
+            margin: 0 0 40px 0;
         }
 
-        .placeholder-text {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 550px;
-            color: #444;
-            font-style: italic;
+        /* IL BOTTONE "APPROFONDISCI" - INEQUIVOCABILE */
+        .read-more-btn {
+            margin-top: auto;
+            padding: 18px;
+            background-color: var(--accent-blood);
+            color: #fff;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 4px;
             text-align: center;
-            padding: 40px;
-            font-size: 1.2rem;
+            text-decoration: none;
+            border: 1px solid #fff;
+            transition: 0.3s;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(138, 28, 28, 0.3);
+        }
+
+        .read-more-btn:hover {
+            background-color: #fff;
+            color: #000;
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.5);
         }
 
         .back-link {
@@ -148,23 +193,19 @@
             text-transform: uppercase;
             font-size: 0.9rem;
             letter-spacing: 2px;
-            text-align: center;
         }
 
         .back-link:hover { color: #fff; }
 
         @media (max-width: 900px) {
-            main { flex-direction: column; }
-            .system-list, .preview-panel { width: 100%; position: static; }
-            .preview-panel { min-height: auto; }
+            main { flex-direction: column; gap: 20px; }
+            .left-page { border-right: none; border-bottom: 1px solid rgba(212, 196, 168, 0.2); }
         }
     </style>
-    <link rel="stylesheet" href="../system/global_nav.css">
 </head>
 <body>
 
 <div id="bg-image"></div>
-<div id="overlay"></div>
 <global-navigation base="../"></global-navigation>
 
 <header>
@@ -172,24 +213,28 @@
 </header>
 
 <main>
-    <div class="system-list">
-        <a href="basics.html" class="system-btn" onmouseover="updatePreview('basics')">The Basics</a>
-        <a href="map_resources.html" class="system-btn" onmouseover="updatePreview('map')">Map & Resources</a>
-        <a href="cities.html" class="system-btn" onmouseover="updatePreview('cities')">Cities & Influence</a>
-        <a href="officers.html" class="system-btn" onmouseover="updatePreview('officers')">Officers & Parties</a>
-        <a href="progression.html" class="system-btn" onmouseover="updatePreview('progression')">Progression & Power</a>
+    <!-- PAGINA SINISTRA: INDICE -->
+    <div class="left-page">
+        <div class="chapter-title">Index</div>
+        <div class="index-item" onclick="updatePreview('basics')">I. The Basics</div>
+        <div class="index-item" onclick="updatePreview('map')">II. Map & Resources</div>
+        <div class="index-item" onclick="updatePreview('cities')">III. Cities & Influence</div>
+        <div class="index-item" onclick="updatePreview('officers')">IV. Officers & Parties</div>
+        <div class="index-item" onclick="updatePreview('progression')">V. Progression & Power</div>
     </div>
 
-    <div class="preview-panel" id="panel">
-        <div id="default-content" class="placeholder-text">
-            Hover over a system to decrypt tactical data...
+    <!-- PAGINA DESTRA: CONTENUTO -->
+    <div class="right-page">
+        <div id="default-content">
+            Select a chapter from the index to decrypt tactical data...
         </div>
-        <div id="active-content" style="display: none;">
+        
+        <div id="active-content">
             <img id="preview-img" src="" alt="System Preview">
-            <div class="preview-content">
-                <h2 id="preview-title"></h2>
-                <p id="preview-desc"></p>
-            </div>
+            <h2 id="preview-title"></h2>
+            <p id="preview-desc"></p>
+            
+            <a href="#" id="read-more-btn" class="read-more-btn">Access Full Chapter</a>
         </div>
     </div>
 </main>
@@ -201,27 +246,32 @@
         basics: {
             title: "The Basics",
             desc: "The core loop of SOULSPECTRE. From Capital management and Party formation to turn-based engagement logic and the absolute conditions for victory.",
-            img: "../img/game_preview_basics.jpeg"
+            img: "../img/game_preview_basics.jpeg",
+            link: "basics.html"
         },
         map: {
             title: "Map & Resources",
             desc: "Global navigation and economic protocols. Manage the flow of Gold, Mana, and Platinum across the Spectre-torn territories.",
-            img: "../img/game_preview_map.png"
+            img: "../img/game_preview_map.png",
+            link: "map_resources.html"
         },
         cities: {
             title: "Cities & Influence",
             desc: "Infrastructure management and territorial expansion. Upgrade your Capital's technology and secure Provinces to project your faction's power.",
-            img: "../img/game_preview_cities.png"
+            img: "../img/game_preview_cities.png",
+            link: "cities.html"
         },
         officers: {
             title: "Officers & Parties",
             desc: "The martial core. Command unique leaders and organize specialized squads of up to 6 units to execute precise tactical maneuvers.",
-            img: "../img/game_preview_officers.png"
+            img: "../img/game_preview_officers.png",
+            link: "officers.html"
         },
         progression: {
             title: "Progression & Power",
             desc: "The evolution of lethality. Master the Rogue-lite 'Power' system and the Awakening trials to achieve permanent tactical superiority.",
-            img: "../img/game_preview_progression.png"
+            img: "../img/game_preview_progression.png",
+            link: "progression.html"
         }
     };
 
@@ -230,18 +280,26 @@
     const pTitle = document.getElementById('preview-title');
     const pDesc = document.getElementById('preview-desc');
     const pImg = document.getElementById('preview-img');
+    const readBtn = document.getElementById('read-more-btn');
+    const items = document.querySelectorAll('.index-item');
 
     function updatePreview(key) {
+        // Aggiorna lo stato attivo visivo sull'indice
+        items.forEach(item => item.classList.remove('active'));
+        event.currentTarget.classList.add('active');
+
+        // Carica i dati
         const info = data[key];
         pTitle.innerText = info.title;
         pDesc.innerText = info.desc;
         pImg.src = info.img;
+        readBtn.href = info.link; // Associa dinamicamente il link corretto
         
+        // Mostra il pannello
         defaultContent.style.display = 'none';
-        activeContent.style.display = 'block';
+        activeContent.style.display = 'flex';
     }
 </script>
-<script src="../system/navigation.js"></script>
 
 </body>
 </html>
