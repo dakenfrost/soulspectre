@@ -22,9 +22,9 @@
  *   to fully manual mode and ignores the auto-detection logic entirely.
  *   Units without data-evo-to simply have no outgoing arrows.
  */
-/* evo-tree.js — Ultimate Evolution Tree Engine
- * Combines Set-Theory geometry (N-columns, perfect centering of hybrids) 
- * with Manual Override (data-evo-id) and Wide portraits (t-wide).
+/* evo-tree.js — Ultimate Evolution Tree Engine (Patched)
+ * Combines Set-Theory geometry, Safe-Zone gutters, 
+ * and smart Dual-Portrait handling for wide cards.
  */
 (function () {
     'use strict';
@@ -154,7 +154,6 @@
         var dataLabels = root ? root.getAttribute('data-labels') : null;
         var pathKeys = [];
 
-        // Force column order via data-labels if provided, otherwise auto-detect
         if (dataLabels) {
             pathKeys = dataLabels.split(',').map(function(s) { return s.trim().toLowerCase(); }).filter(function(s) { return s; });
         } else {
@@ -184,11 +183,10 @@
             var pathLabel = getPathLabel(tierText);
             var matchedCols = [];
             
-            // Set Theory assignment
             if (!pathLabel && tier === 0) {
-                for (var k = 0; k < numCols; k++) matchedCols.push(k); // Officers default to center of everything
+                for (var k = 0; k < numCols; k++) matchedCols.push(k); 
             } else if (!pathLabel) {
-                 for (var k = 0; k < numCols; k++) matchedCols.push(k); // Unspecified units stretch across all
+                 for (var k = 0; k < numCols; k++) matchedCols.push(k); 
             } else {
                 pathKeys.forEach(function(key, idx) {
                     if (pathLabel.toLowerCase().indexOf(key) !== -1) matchedCols.push(idx);
@@ -211,22 +209,19 @@
         var idMap = {};
         var manualMode = false;
         
-        // Build map and check if manual override is active
         units.forEach(function (u, i) { 
             if (u.evoId) { idMap[u.evoId] = i; manualMode = true; } 
         });
 
         for (var i = 0; i < units.length; i++) {
             var u = units[i];
-            if (u.tier === 0) continue; // Officers never shoot lines downwards
+            if (u.tier === 0) continue; 
             
             if (manualMode) {
-                // strict manual routing
                 u.evoToList.forEach(function (targetId) {
                     if (idMap[targetId] !== undefined) edges.push([i, idMap[targetId]]);
                 });
             } else {
-                // auto-routing based on tier+1 and Set Theory intersections
                 for (var j = 0; j < units.length; j++) {
                     var v = units[j];
                     if (v.tier !== u.tier + 1) continue;
@@ -261,7 +256,6 @@
         }
         var numCols = Math.max(1, pathKeys.length);
 
-        // Responsive Scaling
         var maxPerSlot = 1;
         var slotCounts = {};
         units.forEach(function(u) {
@@ -284,14 +278,18 @@
         canvas.style.minHeight = CANVAS_H + 'px';
         canvas.style.width = W + 'px';
 
-        // Column Geometry
-        var pad = W * (numCols > 1 ? 0.12 : 0.5);
-        var available = W - 2 * pad;
+        /* INVIOLABLE TIER LABEL SAFE-ZONE */
+        var LEFT_GUTTER = Math.max(75, W * 0.08); 
+        var RIGHT_GUTTER = W * 0.05;
+        var drawW = W - LEFT_GUTTER - RIGHT_GUTTER;
+        var zoneW = drawW / numCols;
+        
         var colCenters = [];
-        for (var i = 0; i < numCols; i++) { colCenters[i] = numCols === 1 ? W * 0.5 : pad + i * (available / (numCols - 1)); }
+        for (var i = 0; i < numCols; i++) { 
+            colCenters[i] = LEFT_GUTTER + (zoneW * i) + (zoneW / 2); 
+        }
 
-        var zoneW  = W / numCols * 0.9;
-        var CARD_W = Math.min(Math.round(220*scale), Math.max(Math.round(110*scale), Math.floor(zoneW - CARD_GAP)));
+        var CARD_W = Math.min(Math.round(220*scale), Math.max(Math.round(100*scale), Math.floor(zoneW - CARD_GAP)));
         var IMG_SZ = CARD_H - 8;
 
         var positions = units.map(function (unit, idx) {
@@ -304,7 +302,8 @@
                 avgCX /= unit.matchedCols.length;
             } else { avgCX = W * 0.5; }
 
-            var cardFinalW = unit.wide ? CARD_W + IMG_SZ : CARD_W;
+            /* A wide card gets space for exactly 1 extra square image */
+            var cardFinalW = unit.wide ? CARD_W + IMG_SZ + 3 : CARD_W; 
             var slotW  = total * cardFinalW + (total - 1) * CARD_GAP;
             var x  = avgCX - slotW / 2 + before * (cardFinalW + CARD_GAP);
             var y  = PAD_TOP + unit.tier * ROW_H;
@@ -346,10 +345,16 @@
                 'border-color:' + unit.color + ';background:' + unit.bg + ';' +
                 'box-shadow:0 0 14px ' + unit.color + '44;';
 
-            var imgW = unit.wide ? IMG_SZ * 2 : IMG_SZ;
             var imgsHTML = '';
-            if (unit.imgSrc) imgsHTML += '<div class="evo-node-img-wrap" style="width:' + imgW + 'px;height:' + IMG_SZ + 'px;"><img src="' + unit.imgSrc + '" alt="' + unit.name + '" loading="lazy" onerror="this.style.opacity=0.2"></div>';
-            if (unit.imgSrc2) imgsHTML += '<div class="evo-node-img-wrap" style="width:' + imgW + 'px;height:' + IMG_SZ + 'px;"><img src="' + unit.imgSrc2 + '" alt="" loading="lazy" onerror="this.style.opacity=0.2"></div>';
+            /* SMART PORTRAIT HANDLING */
+            if (unit.wide && !unit.imgSrc2) {
+                // Wide class with only ONE image -> Make it a panoramic block
+                imgsHTML += '<div class="evo-node-img-wrap" style="width:' + (IMG_SZ * 2 + 3) + 'px;height:' + IMG_SZ + 'px;"><img src="' + unit.imgSrc + '" alt="' + unit.name + '" loading="lazy" onerror="this.style.opacity=0.2"></div>';
+            } else {
+                // Wide class with TWO images (or normal card) -> Keep them square
+                if (unit.imgSrc) imgsHTML += '<div class="evo-node-img-wrap" style="width:' + IMG_SZ + 'px;height:' + IMG_SZ + 'px;"><img src="' + unit.imgSrc + '" alt="' + unit.name + '" loading="lazy" onerror="this.style.opacity=0.2"></div>';
+                if (unit.imgSrc2) imgsHTML += '<div class="evo-node-img-wrap" style="width:' + IMG_SZ + 'px;height:' + IMG_SZ + 'px;"><img src="' + unit.imgSrc2 + '" alt="" loading="lazy" onerror="this.style.opacity=0.2"></div>';
+            }
 
             d.innerHTML = '<div class="evo-node-label" style="font-size:'+ Math.max(0.45, 0.68*scale).toFixed(2) +'rem;">' + unit.name + '</div>' + (imgsHTML ? '<div class="evo-node-imgs">' + imgsHTML + '</div>' : '');
             canvas.appendChild(d);
@@ -363,7 +368,7 @@
                 var lbl = document.createElement('div');
                 lbl.className = 'evo-tier-lbl';
                 var y = PAD_TOP + unit.tier * ROW_H + CARD_H / 2 - 8;
-                lbl.style.cssText = 'position:absolute;left:5px;top:' + y + 'px;color:' + unit.color + ';font-size:' + Math.max(0.38, 0.58*scale).toFixed(2) + 'rem;text-transform:uppercase;letter-spacing:1px;opacity:0.5;font-weight:bold;white-space:nowrap;';
+                lbl.style.cssText = 'position:absolute;left:10px;top:' + y + 'px;color:' + unit.color + ';font-size:' + Math.max(0.38, 0.58*scale).toFixed(2) + 'rem;text-transform:uppercase;letter-spacing:1px;opacity:0.5;font-weight:bold;white-space:nowrap;';
                 lbl.textContent = TN[unit.tier] || ('T' + unit.tier);
                 canvas.appendChild(lbl);
             }
@@ -381,6 +386,9 @@
         window.addEventListener('resize', onResize);
         if (window.ResizeObserver) { var root = document.getElementById('evo-tree-root'); if (root) new ResizeObserver(onResize).observe(root); }
     }
+
+    if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', init); } else { init(); }
+})();
 
     if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', init); } else { init(); }
 })();
