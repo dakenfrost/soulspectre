@@ -40,7 +40,7 @@
         <p>Those who master both the heavy armor of the defensive path and the explosive firepower of the gunpowder line ascend to become <strong>Dragoons</strong>. Conversely, the <strong>Rangers</strong> lead the Order not from the workshop, but from the wilds, utilizing traps, tactical awareness, and lethal explosive shots as battlefield Officers.</p>
     </div>
 
-    <div id="evo-tree-root" data-bg=""></div>
+   <div id="evo-tree-root" data-bg="" data-labels="Heavy Path, Gunpowder Path"></div>
 
     <div class="unit-list-header">
         <h2>Active Roster</h2>
@@ -48,7 +48,7 @@
 
     <div class="unit-list">
 
-        <div class="unit-row t-officer">
+        <div class="unit-row t-officer" data-evo-id="ranger">
             <div class="portrait-container">
                 <img src="../../img/valkyrion_ranger_m_portrait.jpg" alt="Ranger M">
                 <img src="../../img/valkyrion_ranger_f_portrait.jpg" alt="Ranger F" class="portrait-anim">
@@ -63,7 +63,7 @@
             </div>
         </div>
         
-        <div class="unit-row t-1">
+        <div class="unit-row t-1" data-evo-id="archer" data-evo-to="crossbowman">
             <div class="portrait-container">
                 <img src="../../img/valkyrion_archer_m_portrait.jpg" alt="Archer M">
                 <img src="../../img/valkyrion_archer_f_portrait.jpg" alt="Archer F" class="portrait-anim">
@@ -78,14 +78,14 @@
             </div>
         </div>
 
-        <div class="unit-row t-2">
+        <div class="unit-row t-2" data-evo-id="crossbowman" data-evo-to="arbalester marksman">
             <div class="portrait-container">
                 <img src="../../img/valkyrion_crossbowman_m_portrait.jpg" alt="Crossbowman M">
                 <img src="../../img/valkyrion_crossbowman_f_portrait.jpg" alt="Crossbowman F" class="portrait-anim">
             </div>
             <div class="unit-info">
                 <h3 class="unit-name">Crossbowman</h3>
-                <div class="unit-tier">Classification: <span class="color-t2">Tier II</span></div>
+                <div class="unit-tier">Classification: <span class="color-t2">Tier II</span> , Heavy/Gunpowder Path</div>
                 <p class="unit-desc">Experienced archers equipped with customized mechanical crossbows. They gain the ability to launch penetrating shots that punch through the frontline.</p>
             </div>
             <div class="unit-action">
@@ -93,7 +93,7 @@
             </div>
         </div>
 
-        <div class="unit-row t-3">
+        <div class="unit-row t-3" data-evo-id="arbalester" data-evo-to="engineer">
             <div class="portrait-container">
                 <img src="../../img/valkyrion_arbalester_m_portrait.jpg" alt="Arbalester M">
                 <img src="../../img/valkyrion_arbalester_f_portrait.jpg" alt="Arbalester F" class="portrait-anim">
@@ -108,7 +108,7 @@
             </div>
         </div>
 
-        <div class="unit-row t-3">
+        <div class="unit-row t-3" data-evo-id="marksman" data-evo-to="sharpshooter">
             <div class="portrait-container">
                 <img src="../../img/valkyrion_marksman_m_portrait.jpg" alt="Marksman M">
                 <img src="../../img/valkyrion_marksman_f_portrait.jpg" alt="Marksman F" class="portrait-anim">
@@ -123,7 +123,7 @@
             </div>
         </div>
 
-        <div class="unit-row t-4">
+        <div class="unit-row t-4" data-evo-id="engineer" data-evo-to="dragoon">
             <div class="portrait-container">
                 <img src="../../img/valkyrion_engineer_m_portrait.jpg" alt="Engineer M">
                 <img src="../../img/valkyrion_engineer_f_portrait.jpg" alt="Engineer F" class="portrait-anim">
@@ -138,7 +138,7 @@
             </div>
         </div>
 
-        <div class="unit-row t-4">
+        <div class="unit-row t-4" data-evo-id="sharpshooter" data-evo-to="dragoon">
             <div class="portrait-container">
                 <img src="../../img/valkyrion_sharpshooter_m_portrait.jpg" alt="Sharpshooter M">
                 <img src="../../img/valkyrion_sharpshooter_f_portrait.jpg" alt="Sharpshooter F" class="portrait-anim">
@@ -153,7 +153,7 @@
             </div>
         </div>
 
-        <div class="unit-row t-5">
+        <div class="unit-row t-5" data-evo-id="dragoon">
             <div class="portrait-container">
                 <img src="../../img/valkyrion_dragoon_m_portrait.jpg" alt="Dragoon M">
                 <img src="../../img/valkyrion_dragoon_f_portrait.jpg" alt="Dragoon F" class="portrait-anim">
