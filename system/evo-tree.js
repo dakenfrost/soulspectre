@@ -1,30 +1,33 @@
-/* evo-tree.js — Dynamic evolution tree, shared across all order pages.
+/* evo-tree.js — Ultimate Evolution Tree Engine
  *
- * Usage:
- *   <div id="evo-tree-root" data-bg="optional/bg/image.png"></div>
- *   then include this script.
+ * ─── USAGE GUIDE & DOCUMENTATION ─────────────────────────────────────────
  *
- * Path columns:
- *   Add  ", Path Name"  at the end of the .unit-tier text to assign a unit to a
- *   named column (e.g. "Tier 2 , Defender Path").  Units with no path label are
- *   placed in a shared central column.  Any number of distinct path names is
- *   supported — columns are distributed evenly across the canvas width.
+ * 1. Basic Setup:
+ *    <div id="evo-tree-root" data-bg="optional/bg/image.png"></div>
+ *    Include this script at the bottom of your page.
  *
- * Wide units (occupy 2 column-slots horizontally):
- *   Add the class  t-wide  to the .unit-row element.
+ * 2. Path Columns (Automatic or Forced):
+ *    Add ", Path Name" at the end of the .unit-tier text (e.g. "Tier 2 , Defender Path").
+ *    To force a specific column order or declare columns upfront, use:
+ *    <div id="evo-tree-root" data-labels="Path A, Path B, Path C"></div>
  *
- * Manual edges:
- *   By default edges are computed automatically from tiers and path columns.
- *   To override, add  data-evo-id  and  data-evo-to  attributes to .unit-row:
- *     data-evo-id="squire"              — unique identifier for this unit
- *     data-evo-to="knight witch-hunter" — space-separated list of target IDs
- *   As soon as ANY unit-row in the page has data-evo-id, the script switches
- *   to fully manual mode and ignores the auto-detection logic entirely.
- *   Units without data-evo-to simply have no outgoing arrows.
- */
-/* evo-tree.js — Ultimate Evolution Tree Engine (Patched)
- * Combines Set-Theory geometry, Safe-Zone gutters, 
- * and smart Dual-Portrait handling for wide cards.
+ * 3. Hybrid Units (Converging Paths):
+ *    If a unit belongs to multiple paths, separate them with a slash in the text:
+ *    "Tier 3 , Path A/Path B". The engine will perfectly center the card between them.
+ *    Units without ANY path (like Officers) are automatically centered globally.
+ *
+ * 4. Wide Units (Dual Portraits or Panoramas):
+ *    Add the class "t-wide" to the .unit-row element. 
+ *    - If the container has 1 image, it becomes a single landscape panorama.
+ *    - If the container has 2 images, they are kept square side-by-side.
+ *
+ * 5. Manual Edges (The Override Switch):
+ *    By default, edges are computed automatically (Tier to Tier+1 based on Paths).
+ *    To override and draw lines manually, add attributes to the .unit-row:
+ *      data-evo-id="squire"              — unique ID for the source unit
+ *      data-evo-to="knight witch-hunter" — space-separated list of target IDs
+ *    IMPORTANT: As soon as ANY unit-row has data-evo-id, auto-routing is disabled.
+ * ─────────────────────────────────────────────────────────────────────────
  */
 (function () {
     'use strict';
