@@ -1,6 +1,26 @@
 /* evo-tree.js — Dynamic evolution tree, shared across all order pages.
- * Usage: add  <div id="evo-tree-root" data-bg=""></div>  where the tree should appear,
- * then include this script. Set data-bg to an image path to use a background.
+ *
+ * Usage:
+ *   <div id="evo-tree-root" data-bg="optional/bg/image.png"></div>
+ *   then include this script.
+ *
+ * Path columns:
+ *   Add  ", Path Name"  at the end of the .unit-tier text to assign a unit to a
+ *   named column (e.g. "Tier 2 , Defender Path").  Units with no path label are
+ *   placed in a shared central column.  Any number of distinct path names is
+ *   supported — columns are distributed evenly across the canvas width.
+ *
+ * Wide units (occupy 2 column-slots horizontally):
+ *   Add the class  t-wide  to the .unit-row element.
+ *
+ * Manual edges:
+ *   By default edges are computed automatically from tiers and path columns.
+ *   To override, add  data-evo-id  and  data-evo-to  attributes to .unit-row:
+ *     data-evo-id="squire"              — unique identifier for this unit
+ *     data-evo-to="knight witch-hunter" — space-separated list of target IDs
+ *   As soon as ANY unit-row in the page has data-evo-id, the script switches
+ *   to fully manual mode and ignores the auto-detection logic entirely.
+ *   Units without data-evo-to simply have no outgoing arrows.
  */
 (function () {
     'use strict';
@@ -10,7 +30,7 @@
         var s = document.createElement('style');
         s.id = 'evo-tree-style';
         s.textContent = [
-            '.evo-tree-wrapper{width:100%;margin-bottom:60px;border:1px solid rgba(255,255,255,0.1);border-radius:4px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,0.6);}',
+            '.evo-tree-wrapper{width:100%;margin-bottom:60px;border:1px solid rgba(255,255,255,0.1);border-radius:4px;overflow-x:auto;overflow-y:hidden;box-shadow:0 10px 30px rgba(0,0,0,0.6);}',
             '.evo-tree-topbar{display:flex;align-items:center;gap:14px;padding:10px 16px;background:rgba(0,0,0,0.5);border-bottom:1px solid rgba(255,255,255,0.08);}',
             '.evo-tree-topbar-title{color:#5cb88a;font-size:0.8rem;text-transform:uppercase;letter-spacing:2px;font-weight:bold;flex:1;}',
             /* zoom controls */
@@ -28,7 +48,7 @@
             '.evo-magnifier canvas{position:absolute;top:0;left:0;}',
             /* horizontal card node */
             '.evo-node{position:absolute;display:flex;align-items:center;border-radius:5px;border:2px solid;z-index:2;box-sizing:border-box;overflow:hidden;cursor:default;}',
-            '.evo-node-label{flex:1;padding:0 10px;color:#fff;font-size:0.72rem;font-weight:bold;text-transform:uppercase;letter-spacing:0.5px;white-space:normal;overflow-wrap:break-word;word-break:break-word;line-height:1.25;}',
+            '.evo-node-label{flex:1;min-width:0;padding:0 10px;color:#fff;font-size:0.68rem;font-weight:bold;text-transform:uppercase;letter-spacing:0.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.2;}',
             '.evo-node-imgs{display:flex;gap:3px;padding:4px 4px 4px 0;flex-shrink:0;}',
             '.evo-node-img-wrap{position:relative;overflow:hidden;border-radius:3px;border:1px solid rgba(255,255,255,0.25);flex-shrink:0;}',
             '.evo-node-img-wrap img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:top center;display:block;}',
@@ -37,10 +57,10 @@
     }
 
     /* ── Magnifier state ──────────────────────────────────────────────── */
-    var _magZoom = 2.5;   /* default zoom level */
-    var _magSize = 160;   /* lens diameter in px */
-    var _magEl   = null;  /* the lens DOM element */
-    var _magInner = null; /* scaled clone container inside lens */
+    var _magZoom = 2.5;
+    var _magSize = 160;
+    var _magEl   = null;
+    var _magInner = null;
     var _magActive = false;
 
     /* ── Build wrapper HTML inside #evo-tree-root ─────────────────────── */
@@ -65,47 +85,29 @@
             '</div>';
         if (bg) document.getElementById('evo-tree-canvas').style.backgroundImage = "url('" + bg + "')";
 
-        /* Wire zoom slider */
         var slider = document.getElementById('evo-zoom-slider');
         var btnM   = document.getElementById('evo-zoom-minus');
         var btnP   = document.getElementById('evo-zoom-plus');
-        if (slider) {
-            slider.addEventListener('input', function () {
-                _magZoom = parseFloat(this.value);
-            });
-        }
-        if (btnM) {
-            btnM.addEventListener('click', function () {
-                _magZoom = Math.max(1.5, parseFloat((+_magZoom - 0.25).toFixed(2)));
-                if (slider) slider.value = _magZoom;
-            });
-        }
-        if (btnP) {
-            btnP.addEventListener('click', function () {
-                _magZoom = Math.min(5, parseFloat((+_magZoom + 0.25).toFixed(2)));
-                if (slider) slider.value = _magZoom;
-            });
-        }
+        if (slider) slider.addEventListener('input', function () { _magZoom = parseFloat(this.value); });
+        if (btnM)   btnM.addEventListener('click',  function () { _magZoom = Math.max(1.5, parseFloat((+_magZoom - 0.25).toFixed(2))); if (slider) slider.value = _magZoom; });
+        if (btnP)   btnP.addEventListener('click',  function () { _magZoom = Math.min(5,   parseFloat((+_magZoom + 0.25).toFixed(2))); if (slider) slider.value = _magZoom; });
 
-        /* Create lens element (appended to body so it floats freely) */
         if (!document.getElementById('evo-magnifier')) {
             _magEl = document.createElement('div');
             _magEl.id = 'evo-magnifier';
             _magEl.className = 'evo-magnifier';
             _magEl.style.width  = _magSize + 'px';
             _magEl.style.height = _magSize + 'px';
-            /* Inner container that will hold the scaled/translated canvas clone */
             _magInner = document.createElement('div');
             _magInner.style.cssText = 'position:absolute;top:0;left:0;transform-origin:0 0;pointer-events:none;';
             _magEl.appendChild(_magInner);
             document.body.appendChild(_magEl);
         }
 
-        /* Attach mouse events to canvas */
         var canvas = document.getElementById('evo-tree-canvas');
         if (canvas) {
-            canvas.addEventListener('mouseenter', function () { _magActive = true; _magEl.style.display = 'block'; });
-            canvas.addEventListener('mouseleave', function () { _magActive = false; _magEl.style.display = 'none'; });
+            canvas.addEventListener('mouseenter', function () { _magActive = true;  _magEl.style.display = 'block'; });
+            canvas.addEventListener('mouseleave', function () { _magActive = false; _magEl.style.display = 'none';  });
             canvas.addEventListener('mousemove', onMagMove);
         }
     }
@@ -116,30 +118,21 @@
         var canvas = document.getElementById('evo-tree-canvas');
         if (!canvas) return;
 
-        /* Position lens offset from cursor so it doesn't cover it */
         var offset = _magSize / 2 + 16;
         var lx = e.clientX + offset;
         var ly = e.clientY - _magSize / 2;
-        /* Keep lens inside viewport */
         if (lx + _magSize > window.innerWidth)  lx = e.clientX - offset - _magSize;
         if (ly < 0)                              ly = 0;
         if (ly + _magSize > window.innerHeight)  ly = window.innerHeight - _magSize;
-
         _magEl.style.left = lx + 'px';
         _magEl.style.top  = ly + 'px';
 
-        /* Mouse position inside canvas */
         var rect = canvas.getBoundingClientRect();
         var mx   = e.clientX - rect.left;
         var my   = e.clientY - rect.top;
-
-        /* We want the cursor point to appear at the center of the lens.
-           With scale Z, a point (mx, my) in original space maps to
-           (mx*Z - _magSize/2, my*Z - _magSize/2) offset inside inner. */
         var tx = -mx * _magZoom + _magSize / 2;
         var ty = -my * _magZoom + _magSize / 2;
 
-        /* Sync inner size and background to canvas */
         var W = canvas.offsetWidth;
         var H = canvas.offsetHeight;
         _magInner.style.width  = W + 'px';
@@ -147,22 +140,14 @@
         _magInner.style.background = canvas.style.backgroundImage
             ? canvas.style.backgroundImage + ' center/cover' : '#050d07';
         _magInner.style.transform = 'scale(' + _magZoom + ') translate(' + (tx / _magZoom) + 'px,' + (ty / _magZoom) + 'px)';
-
-        /* Clone nodes from canvas into inner if not done / stale */
         _syncMagClone(canvas);
     }
 
-    var _magCloneVersion = 0;
     function _syncMagClone(canvas) {
-        /* Rebuild clone content on every render cycle (nodes are re-created on render) */
         var ver = parseInt(canvas.getAttribute('data-mag-ver') || '0', 10);
         if (_magInner._ver === ver) return;
         _magInner._ver = ver;
-
-        /* Remove old cloned nodes */
         while (_magInner.firstChild) _magInner.removeChild(_magInner.firstChild);
-
-        /* Clone SVG */
         var svg = canvas.querySelector('#evo-tree-svg');
         if (svg) {
             var svgClone = svg.cloneNode(true);
@@ -172,11 +157,8 @@
             svgClone.style.pointerEvents = 'none';
             _magInner.appendChild(svgClone);
         }
-
-        /* Clone .evo-node and .evo-tier-lbl elements */
         canvas.querySelectorAll('.evo-node,.evo-tier-lbl').forEach(function (el) {
-            var cl = el.cloneNode(true);
-            _magInner.appendChild(cl);
+            _magInner.appendChild(el.cloneNode(true));
         });
     }
 
@@ -194,60 +176,104 @@
     function parseUnits() {
         var rows = Array.from(document.querySelectorAll('.unit-row'));
 
-        /* First pass: collect distinct path labels in order of appearance.
-           The first path found → 'left', the second → 'right'.
-           This is fully dynamic — no hardcoded path names. */
-        var pathKeys = [];
+        /* First pass: collect distinct named path labels in order of appearance.
+         * A label only qualifies as a named column if it appears in ≥ 2 units —
+         * this filters out one-off tier descriptors like "Champion" that are
+         * written with a comma (e.g. "Tier 5 , Champion") but are NOT real paths. */
+        var labelCount = {}; /* lowercase label → count */
         rows.forEach(function (row) {
             if (/\bt-officer\b/.test(row.className)) return;
             var tierText = ((row.querySelector('.unit-tier') || {}).textContent || '').trim();
             var label = getPathLabel(tierText);
             if (label) {
                 var key = label.toLowerCase();
-                if (pathKeys.indexOf(key) === -1) pathKeys.push(key);
+                labelCount[key] = (labelCount[key] || 0) + 1;
+            }
+        });
+        var pathKeys = []; /* ordered list of lowercase path key strings (≥ 2 units) */
+        rows.forEach(function (row) {
+            if (/\bt-officer\b/.test(row.className)) return;
+            var tierText = ((row.querySelector('.unit-tier') || {}).textContent || '').trim();
+            var label = getPathLabel(tierText);
+            if (label) {
+                var key = label.toLowerCase();
+                if ((labelCount[key] || 0) >= 2 && pathKeys.indexOf(key) === -1)
+                    pathKeys.push(key);
             }
         });
 
-        /* Second pass: build unit objects with dynamic path assignment */
+        /* Second pass: build unit objects. */
         return rows.map(function (row) {
             var name = ((row.querySelector('.unit-name') || {}).textContent || '').trim();
             var tierText = ((row.querySelector('.unit-tier') || {}).textContent || '').trim();
             var imgs = row.querySelectorAll('.portrait-container img');
-            var imgSrc = imgs.length > 0 ? (imgs[0].getAttribute('src') || '') : '';
+            var imgSrc  = imgs.length > 0 ? (imgs[0].getAttribute('src') || '') : '';
             var imgSrc2 = imgs.length > 1 ? (imgs[1].getAttribute('src') || '') : '';
             var cl = row.className;
+
             var tier;
-            if (/\bt-officer\b/.test(cl)) tier = 0;
-            else if (/\bt-1\b/.test(cl)) tier = 1;
-            else if (/\bt-2\b/.test(cl)) tier = 2;
-            else if (/\bt-3\b/.test(cl)) tier = 3;
-            else if (/\bt-4\b/.test(cl)) tier = 4;
-            else if (/\bt-5\b/.test(cl)) tier = 5;
-            else tier = 1;
+            if      (/\bt-officer\b/.test(cl)) tier = 0;
+            else if (/\bt-1\b/.test(cl))       tier = 1;
+            else if (/\bt-2\b/.test(cl))       tier = 2;
+            else if (/\bt-3\b/.test(cl))       tier = 3;
+            else if (/\bt-4\b/.test(cl))       tier = 4;
+            else if (/\bt-5\b/.test(cl))       tier = 5;
+            else                                tier = 1;
+
+            /* t-wide class → unit occupies 2 horizontal slots */
+            var wide = /\bt-wide\b/.test(cl);
+
+            /* manual edge identifiers */
+            var evoId = row.getAttribute('data-evo-id') || '';
+            var evoTo = (row.getAttribute('data-evo-to') || '').trim();
+            var evoToList = evoTo ? evoTo.split(/\s+/) : [];
+
             var color = TC[tier] || '#5cb88a';
-            var pathLabel = tier === 0 ? '' : getPathLabel(tierText);
-            var path;
-            if (tier === 0 || !pathLabel) {
-                path = 'center';
-            } else {
-                var idx = pathKeys.indexOf(pathLabel.toLowerCase());
-                path = idx === 0 ? 'left' : idx === 1 ? 'right' : 'center';
-            }
-            var bg = TBG[tier] || 'rgba(0,0,0,0.7)';
-            return { name: name, tier: tier, path: path, pathLabel: pathLabel, imgSrc: imgSrc, imgSrc2: imgSrc2, color: color, bg: bg };
+            var bg    = TBG[tier] || 'rgba(0,0,0,0.7)';
+
+            var pathLabel = (tier === 0) ? '' : getPathLabel(tierText);
+            /* pathIndex: -1 = no named path (center / shared) */
+            var pathIndex = pathLabel ? pathKeys.indexOf(pathLabel.toLowerCase()) : -1;
+
+            return { name: name, tier: tier, pathLabel: pathLabel, pathIndex: pathIndex,
+                     imgSrc: imgSrc, imgSrc2: imgSrc2, color: color, bg: bg, wide: wide,
+                     evoId: evoId, evoToList: evoToList };
         });
     }
 
     /* ── Compute which units evolve into which ───────────────────────── */
+    /*
+     * Manual mode: activated when ANY unit-row has a data-evo-id attribute.
+     *   Edges come exclusively from data-evo-to lists on source units.
+     *
+     * Auto mode (fallback): tier-based rules —
+     *   Officer (tier 0) has no outgoing arrows.
+     *   Units connect T → T+1 unless they belong to different named paths.
+     */
     function computeEdges(units) {
         var edges = [];
+
+        /* Build id → index map (used only when at least one unit has evoId) */
+        var idMap = {};
+        units.forEach(function (u, i) { if (u.evoId) idMap[u.evoId] = i; });
+
         for (var i = 0; i < units.length; i++) {
-            for (var j = 0; j < units.length; j++) {
-                var u = units[i], v = units[j];
-                if (v.tier !== u.tier + 1) continue;
-                if (u.tier === 0) continue; /* Officer has no outgoing arrows */
-                if ((u.path === 'left' && v.path === 'right') || (u.path === 'right' && v.path === 'left')) continue;
-                if (u.path === 'center' || v.path === 'center' || u.path === v.path) edges.push([i, j]);
+            var u = units[i];
+            if (u.tier === 0) continue; /* officers never emit edges */
+
+            if (u.evoToList.length > 0) {
+                /* Manual override: use explicitly declared targets */
+                u.evoToList.forEach(function (targetId) {
+                    if (idMap[targetId] !== undefined) edges.push([i, idMap[targetId]]);
+                });
+            } else {
+                /* Auto mode for this unit: connect to all tier+1 units on same/unspecified path */
+                for (var j = 0; j < units.length; j++) {
+                    var v = units[j];
+                    if (v.tier !== u.tier + 1) continue;
+                    if (u.pathIndex !== -1 && v.pathIndex !== -1 && u.pathIndex !== v.pathIndex) continue;
+                    edges.push([i, j]);
+                }
             }
         }
         return edges;
@@ -260,63 +286,106 @@
         var units = parseUnits();
         if (!units.length) return;
 
-        var W = Math.max(canvas.offsetWidth || 0, canvas.clientWidth || 0, 300);
-        var CARD_H  = 66;
-        var CARD_GAP = 10;
-        var ROW_H   = CARD_H + 52;
-        var maxTier = Math.max.apply(null, units.map(function (u) { return u.tier; }));
-        var PAD_TOP = 36, PAD_BOT = 48;
+        var wrapper = canvas.parentElement;
+        var W = Math.max((wrapper ? (wrapper.clientWidth || wrapper.offsetWidth || 0) : 0) || 0, 200);
+        canvas.style.width    = W + 'px';
+        canvas.style.minWidth = '';
+
+        var PAD_SIDE = 8;
+        var maxTier  = Math.max.apply(null, units.map(function (u) { return u.tier; }));
+
+        /* ── Collect all distinct named paths in appearance order ──────── */
+        var pathKeys = [];
+        units.forEach(function (u) {
+            if (u.pathIndex !== -1 && pathKeys.indexOf(u.pathIndex) === -1)
+                pathKeys.push(u.pathIndex);
+        });
+        var numPaths = pathKeys.length;
+        var hasPaths = numPaths > 0;
+
+        /* ── Early maxPerSlot (needed for scale) ──────────────────────── */
+        var maxPerSlot = 1;
+        for (var t = 0; t <= maxTier; t++) {
+            pathKeys.forEach(function (pi) {
+                var c = units.filter(function (u) { return u.tier === t && u.pathIndex === pi && !u.wide; }).length;
+                if (c > maxPerSlot) maxPerSlot = c;
+            });
+            var cu = units.filter(function (u) { return u.tier === t && u.pathIndex === -1 && !u.wide; }).length;
+            if (cu > maxPerSlot) maxPerSlot = cu;
+        }
+
+        /* ── Scale: fit everything into W without scrolling ───────────── */
+        var BASE_ZONE = 240; /* comfortable px per path column per card slot */
+        var scale = Math.min(1, W / Math.max(1, (hasPaths ? numPaths : 1) * BASE_ZONE * maxPerSlot));
+        scale = Math.max(0.35, scale);
+
+        var CARD_H   = Math.round(66 * scale);
+        var CARD_GAP = Math.max(6, Math.round(16 * scale));  /* gap between cards in same slot */
+        var COL_GAP  = Math.max(8, Math.round(24 * scale));  /* extra padding between columns */
+        var ROW_H    = CARD_H + Math.round(52 * scale);
+        var PAD_TOP  = Math.round(36 * scale);
+        var PAD_BOT  = Math.round(48 * scale);
         var CANVAS_H = PAD_TOP + (maxTier + 1) * ROW_H + PAD_BOT;
 
         canvas.style.minHeight = CANVAS_H + 'px';
 
-        var hasPaths = units.some(function (u) { return u.path !== 'center'; });
-
-        /* max cards in any single tier+path slot → determines card width */
-        var maxPerSlot = 1;
-        for (var t = 0; t <= maxTier; t++) {
-            ['left', 'right', 'center'].forEach(function (p) {
-                var c = units.filter(function (u) { return u.tier === t && u.path === p; }).length;
-                if (c > maxPerSlot) maxPerSlot = c;
-            });
+        function colCX(pathIndex) {
+            if (!hasPaths || pathIndex === -1) return W / 2;
+            /* Rank of this pathIndex among all named paths */
+            var rank = pathKeys.indexOf(pathIndex);
+            if (rank === -1) return W / 2;
+            /* Evenly spaced: zone width = (W - 2*PAD_SIDE) / numPaths */
+            var zoneW = (W - 2 * PAD_SIDE) / numPaths;
+            return PAD_SIDE + zoneW * rank + zoneW / 2;
         }
-        var zoneW  = hasPaths ? W * 0.42 : W * 0.65;
-        var CARD_W = Math.min(240, Math.max(150, Math.floor((zoneW - (maxPerSlot - 1) * CARD_GAP) / maxPerSlot)));
+
+        /* ── Card width ───────────────────────────────────────────────── */
+        var zoneW_card = hasPaths ? (W - 2 * PAD_SIDE) / numPaths - COL_GAP : W * 0.65;
+        var CARD_W = Math.min(Math.round(240 * scale), Math.max(Math.round(60 * scale), Math.floor((zoneW_card - (maxPerSlot - 1) * CARD_GAP) / maxPerSlot)));
         var IMG_SZ = CARD_H - 8;
 
-        var colCX = {
-            left:   hasPaths ? W * 0.21 : W * 0.5,
-            center: W * 0.5,
-            right:  hasPaths ? W * 0.79 : W * 0.5
-        };
-
+        /* ── Compute positions ────────────────────────────────────────── */
         var positions = units.map(function (unit, idx) {
-            var before = units.slice(0, idx).filter(function (v) { return v.tier === unit.tier && v.path === unit.path; }).length;
-            var total  = units.filter(function (v) { return v.tier === unit.tier && v.path === unit.path; }).length;
+            var y = PAD_TOP + unit.tier * ROW_H;
+
+            /* Wide unit: card grows only by the extra image width; label area unchanged. */
+            if (unit.wide) {
+                var wideW  = CARD_W + IMG_SZ; /* normal label area + double-wide portrait */
+                var zoneCX = (unit.pathIndex !== -1) ? colCX(unit.pathIndex) : W / 2;
+                var x  = zoneCX - wideW / 2;
+                var cx = zoneCX;
+                return { x: x, y: y, cx: cx, topY: y, botY: y + CARD_H, cardW: wideW };
+            }
+
+            /* Normal unit */
+            var before = units.slice(0, idx).filter(function (v) { return v.tier === unit.tier && v.pathIndex === unit.pathIndex && !v.wide; }).length;
+            var total  = units.filter(function (v) { return v.tier === unit.tier && v.pathIndex === unit.pathIndex && !v.wide; }).length;
             var slotW  = total * CARD_W + (total - 1) * CARD_GAP;
-            var cx = colCX[unit.path] || W * 0.5;
+            var cx = colCX(unit.pathIndex);
             var x  = cx - slotW / 2 + before * (CARD_W + CARD_GAP);
-            var y  = PAD_TOP + unit.tier * ROW_H;
-            return { x: x, y: y, cx: x + CARD_W / 2, topY: y, botY: y + CARD_H };
+            return { x: x, y: y, cx: x + CARD_W / 2, topY: y, botY: y + CARD_H, cardW: CARD_W };
         });
 
-        /* SVG edges + column labels */
+        /* ── SVG: column labels + edges ───────────────────────────────── */
         var svg = document.getElementById('evo-tree-svg');
         var edges = computeEdges(units);
         var svgHTML = '';
 
+        /* Column header labels */
         if (hasPaths) {
-            var colLabels = {};
+            /* Collect first label+color per pathIndex */
+            var colMeta = {};
             units.forEach(function (u) {
-                if (u.path !== 'center' && u.pathLabel && !colLabels[u.path])
-                    colLabels[u.path] = { label: u.pathLabel, color: u.color };
+                if (u.pathIndex !== -1 && u.pathLabel && !colMeta[u.pathIndex])
+                    colMeta[u.pathIndex] = { label: u.pathLabel, color: u.color };
             });
-            Object.keys(colLabels).forEach(function (p) {
-                var pl = colLabels[p];
-                svgHTML += '<text x="' + (colCX[p] || W * 0.5) + '" y="20" fill="' + pl.color + '" font-size="10" font-family="Segoe UI,sans-serif" text-anchor="middle" font-weight="bold" opacity="0.55" letter-spacing="1">' + pl.label.toUpperCase() + '</text>';
+            Object.keys(colMeta).forEach(function (pi) {
+                var m = colMeta[pi];
+                svgHTML += '<text x="' + colCX(parseInt(pi, 10)) + '" y="20" fill="' + m.color + '" font-size="10" font-family="Segoe UI,sans-serif" text-anchor="middle" font-weight="bold" opacity="0.55" letter-spacing="1">' + m.label.toUpperCase() + '</text>';
             });
         }
 
+        /* Edge arrows */
         edges.forEach(function (e) {
             var p1 = positions[e[0]], p2 = positions[e[1]];
             var x1 = p1.cx, y1 = p1.botY + 1, x2 = p2.cx, y2 = p2.topY - 2;
@@ -328,40 +397,46 @@
         svg.innerHTML = svgHTML;
         svg.setAttribute('width', W);
         svg.setAttribute('height', CANVAS_H);
-        svg.style.width = W + 'px';
+        svg.style.width  = W + 'px';
         svg.style.height = CANVAS_H + 'px';
 
-        /* Remove old nodes */
+        /* ── Remove old nodes ─────────────────────────────────────────── */
         canvas.querySelectorAll('.evo-node,.evo-tier-lbl').forEach(function (n) { n.remove(); });
 
-        /* Render card nodes */
+        /* ── Render card nodes ────────────────────────────────────────── */
         units.forEach(function (unit, idx) {
             var pos = positions[idx];
+            var cw  = pos.cardW;
+            /* Wide cards: portrait is landscape (double width, same height as normal) */
+            var imgW = unit.wide ? IMG_SZ * 2 : IMG_SZ;
+            var imgH = IMG_SZ;
+            var labelFs = Math.max(0.45, 0.68 * scale).toFixed(2);
             var d = document.createElement('div');
             d.className = 'evo-node';
-            d.style.cssText = 'left:' + pos.x + 'px;top:' + pos.y + 'px;width:' + CARD_W + 'px;min-height:' + CARD_H + 'px;height:auto;' +
+            d.style.cssText = 'left:' + pos.x + 'px;top:' + pos.y + 'px;width:' + cw + 'px;min-height:' + CARD_H + 'px;height:auto;' +
                 'border-color:' + unit.color + ';background:' + unit.bg + ';' +
                 'box-shadow:0 0 14px ' + unit.color + '44;';
 
             var imgsHTML = '';
             if (unit.imgSrc) {
-                imgsHTML += '<div class="evo-node-img-wrap" style="width:' + IMG_SZ + 'px;height:' + IMG_SZ + 'px;">' +
+                imgsHTML += '<div class="evo-node-img-wrap" style="width:' + imgW + 'px;height:' + imgH + 'px;">' +
                     '<img src="' + unit.imgSrc + '" alt="' + unit.name + '" loading="lazy" onerror="this.style.opacity=0.2">' +
                     '</div>';
             }
             if (unit.imgSrc2) {
-                imgsHTML += '<div class="evo-node-img-wrap" style="width:' + IMG_SZ + 'px;height:' + IMG_SZ + 'px;">' +
+                imgsHTML += '<div class="evo-node-img-wrap" style="width:' + imgW + 'px;height:' + imgH + 'px;">' +
                     '<img src="' + unit.imgSrc2 + '" alt="" loading="lazy" onerror="this.style.opacity=0.2">' +
                     '</div>';
             }
 
             d.innerHTML =
-                '<div class="evo-node-label">' + unit.name + '</div>' +
+                '<div class="evo-node-label" style="font-size:' + labelFs + 'rem;">' + unit.name + '</div>' +
                 (imgsHTML ? '<div class="evo-node-imgs">' + imgsHTML + '</div>' : '');
+
             canvas.appendChild(d);
         });
 
-        /* Tier labels on left edge */
+        /* ── Tier labels on left edge ─────────────────────────────────── */
         var TN = { 0: 'Officer', 1: 'Tier I', 2: 'Tier II', 3: 'Tier III', 4: 'Tier IV', 5: 'Tier V' };
         var done = {};
         units.forEach(function (unit) {
@@ -370,7 +445,7 @@
                 var lbl = document.createElement('div');
                 lbl.className = 'evo-tier-lbl';
                 var y = PAD_TOP + unit.tier * ROW_H + CARD_H / 2 - 8;
-                lbl.style.cssText = 'position:absolute;left:5px;top:' + y + 'px;color:' + unit.color + ';font-size:0.58rem;text-transform:uppercase;letter-spacing:1px;opacity:0.5;font-weight:bold;white-space:nowrap;';
+                lbl.style.cssText = 'position:absolute;left:5px;top:' + y + 'px;color:' + unit.color + ';font-size:' + Math.max(0.38, 0.58 * scale).toFixed(2) + 'rem;text-transform:uppercase;letter-spacing:1px;opacity:0.5;font-weight:bold;white-space:nowrap;';
                 lbl.textContent = TN[unit.tier] || ('T' + unit.tier);
                 canvas.appendChild(lbl);
             }
@@ -386,7 +461,12 @@
         buildShell();
         render();
         var t;
-        window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(render, 150); });
+        function onResize() { clearTimeout(t); t = setTimeout(render, 150); }
+        window.addEventListener('resize', onResize);
+        if (window.ResizeObserver) {
+            var root = document.getElementById('evo-tree-root');
+            if (root) new ResizeObserver(onResize).observe(root);
+        }
     }
 
     if (document.readyState === 'loading') {

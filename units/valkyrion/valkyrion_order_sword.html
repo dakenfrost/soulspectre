@@ -40,9 +40,7 @@
         <p>Warriors who distinguish themselves through experience, leadership, and prowess may be personally selected by the Empress or Emperor and granted the title of <strong>Hero</strong>, serving directly under the Ruler and leading other units into battle.</p>
     </div>
 
-    <div class="tree-section">
-        <img src="../../img/valkyrion_sword_tree.png" alt="Evolution Tree">
-    </div>
+    <div id="evo-tree-root" data-bg=""></div>
 
     <div class="unit-list-header">
         <h2>Active Roster</h2>
@@ -50,7 +48,7 @@
 
     <div class="unit-list">
 
-        <div class="unit-row t-officer">
+        <div class="unit-row t-officer" data-evo-id="hero">
             <div class="portrait-container">
                 <img src="../../img/valkyrion_hero_m_portrait.jpg" alt="Hero M">
                 <img src="../../img/valkyrion_hero_f_portrait.jpg" alt="Hero F" class="portrait-anim">
@@ -65,7 +63,7 @@
             </div>
         </div>
         
-        <div class="unit-row t-1">
+        <div class="unit-row t-1" data-evo-id="squire" data-evo-to="knight witch-hunter">
             <div class="portrait-container">
                 <img src="../../img/valkyrion_squire_m_portrait.jpg" alt="Squire M">
                 <img src="../../img/valkyrion_squire_f_portrait.png" alt="Squire F" class="portrait-anim">
@@ -80,14 +78,14 @@
             </div>
         </div>
 
-        <div class="unit-row t-2">
+        <div class="unit-row t-2" data-evo-id="knight" data-evo-to="crusader paladin">
             <div class="portrait-container">
                 <img src="../../img/valkyrion_knight_m_portrait.jpg" alt="Knight M">
                 <img src="../../img/valkyrion_knight_f_portrait.jpg" alt="Knight F" class="portrait-anim">
             </div>
             <div class="unit-info">
                 <h3 class="unit-name">Knight</h3>
-                <div class="unit-tier">Classification: <span class="color-t2">Tier II</span></div>
+                <div class="unit-tier">Classification: <span class="color-t2">Tier II</span> , Knight Path</div>
                 <p class="unit-desc">Squires who advance into the Knighthood. Geared with heavy armor and displaying advanced martial arts, they are vowed to protect the weak and smite evil.</p>
             </div>
             <div class="unit-action">
@@ -95,14 +93,14 @@
             </div>
         </div>
 
-        <div class="unit-row t-2">
+        <div class="unit-row t-2" data-evo-id="witch-hunter" data-evo-to="monster-hunter">
             <div class="portrait-container">
                 <img src="../../img/valkyrion_witch_hunter_m_portrait.jpg" alt="Witch Hunter M">
                 <img src="../../img/valkyrion_witch_hunter_f_portrait.jpg" alt="Witch Hunter F" class="portrait-anim">
             </div>
             <div class="unit-info">
                 <h3 class="unit-name">Witch Hunter</h3>
-                <div class="unit-tier">Classification: <span class="color-t2">Tier II</span></div>
+                <div class="unit-tier">Classification: <span class="color-t2">Tier II</span> , Inquisition Path</div>
                 <p class="unit-desc">Inquisitors who favor wit over brute strength. Subjected to mental trials, they possess strong resistance to mind-altering spells and hunt corrupt beings.</p>
             </div>
             <div class="unit-action">
@@ -110,14 +108,14 @@
             </div>
         </div>
 
-        <div class="unit-row t-3">
+        <div class="unit-row t-3" data-evo-id="crusader" data-evo-to="holy-avenger">
             <div class="portrait-container">
                 <img src="../../img/valkyrion_crusader_m_portrait.jpg" alt="Crusader M">
                 <img src="../../img/valkyrion_crusader_f_portrait.jpg" alt="Crusader F" class="portrait-anim">
             </div>
             <div class="unit-info">
                 <h3 class="unit-name">Crusader</h3>
-                <div class="unit-tier">Classification: <span class="color-t3">Tier III</span></div>
+                <div class="unit-tier">Classification: <span class="color-t3">Tier III</span> , Knight Path</div>
                 <p class="unit-desc">Knights focused entirely on judgment. Empowered by holy fervor, they specialize in delivering swift, merciless punishment and radiant damage.</p>
             </div>
             <div class="unit-action">
@@ -125,14 +123,14 @@
             </div>
         </div>
 
-        <div class="unit-row t-3">
+        <div class="unit-row t-3" data-evo-id="paladin" data-evo-to="guardian">
             <div class="portrait-container">
                 <img src="../../img/valkyrion_paladin_m_portrait.jpg" alt="Paladin M">
                 <img src="../../img/valkyrion_paladin_f_portrait.jpg" alt="Paladin F" class="portrait-anim">
             </div>
             <div class="unit-info">
                 <h3 class="unit-name">Paladin</h3>
-                <div class="unit-tier">Classification: <span class="color-t3">Tier III</span></div>
+                <div class="unit-tier">Classification: <span class="color-t3">Tier III</span> , Knight Path</div>
                 <p class="unit-desc">Holy warriors devoted to protecting the innocent. They wield massive shields to interpose themselves between danger and their allies.</p>
             </div>
             <div class="unit-action">
@@ -140,14 +138,14 @@
             </div>
         </div>
 
-        <div class="unit-row t-3">
+        <div class="unit-row t-3" data-evo-id="monster-hunter" data-evo-to="inquisitor">
             <div class="portrait-container">
                 <img src="../../img/valkyrion_monster_hunter_m_portrait.jpg" alt="Monster Hunter M">
                 <img src="../../img/valkyrion_monster_hunter_f_portrait.jpg" alt="Monster Hunter F" class="portrait-anim">
             </div>
             <div class="unit-info">
                 <h3 class="unit-name">Monster Hunter</h3>
-                <div class="unit-tier">Classification: <span class="color-t3">Tier III</span></div>
+                <div class="unit-tier">Classification: <span class="color-t3">Tier III</span> , Inquisition Path</div>
                 <p class="unit-desc">Master Witch Hunters equipped to face supernatural threats. Their specialized silver blades and skills bypass enemy immunities.</p>
             </div>
             <div class="unit-action">
@@ -155,14 +153,14 @@
             </div>
         </div>
 
-        <div class="unit-row t-4">
+        <div class="unit-row t-4" data-evo-id="holy-avenger" data-evo-to="knight-of-dusk">
             <div class="portrait-container">
                 <img src="../../img/valkyrion_holy_avenger_m_portrait.jpg" alt="Holy Avenger M">
                 <img src="../../img/valkyrion_holy_avenger_f_portrait.jpg" alt="Holy Avenger F" class="portrait-anim">
             </div>
             <div class="unit-info">
                 <h3 class="unit-name">Holy Avenger</h3>
-                <div class="unit-tier">Classification: <span class="color-t4">Tier IV</span></div>
+                <div class="unit-tier">Classification: <span class="color-t4">Tier IV</span> , Knight Path</div>
                 <p class="unit-desc">The most zealous of Crusaders, fueled by righteous fury. They strike down enemies with relentless aggression while healing allies.</p>
             </div>
             <div class="unit-action">
@@ -170,14 +168,14 @@
             </div>
         </div>
 
-        <div class="unit-row t-4">
+        <div class="unit-row t-4" data-evo-id="guardian" data-evo-to="knight-of-dusk">
             <div class="portrait-container">
                 <img src="../../img/valkyrion_guardian_m_portrait.jpg" alt="Guardian M">
                 <img src="../../img/valkyrion_guardian_f_portrait.jpg" alt="Guardian F" class="portrait-anim">
             </div>
             <div class="unit-info">
                 <h3 class="unit-name">Guardian</h3>
-                <div class="unit-tier">Classification: <span class="color-t4">Tier IV</span></div>
+                <div class="unit-tier">Classification: <span class="color-t4">Tier IV</span> , Knight Path</div>
                 <p class="unit-desc">Unshakeable bulwarks blessed with regenerative magic. They dedicate their lives to shielding allies with unbreakable divine protection.</p>
             </div>
             <div class="unit-action">
@@ -185,14 +183,14 @@
             </div>
         </div>
 
-        <div class="unit-row t-4">
+        <div class="unit-row t-4" data-evo-id="inquisitor" data-evo-to="knight-of-dusk">
             <div class="portrait-container">
                 <img src="../../img/valkyrion_inquisitor_m_portrait.jpg" alt="Inquisitor M">
                 <img src="../../img/valkyrion_inquisitor_f_portrait.jpg" alt="Inquisitor F" class="portrait-anim">
             </div>
             <div class="unit-info">
                 <h3 class="unit-name">Inquisitor</h3>
-                <div class="unit-tier">Classification: <span class="color-t4">Tier IV</span></div>
+                <div class="unit-tier">Classification: <span class="color-t4">Tier IV</span> , Inquisition Path</div>
                 <p class="unit-desc">Hunters who have endured the darkest horrors. Possessing exceptional mental fortitude, they bind enemies in chains for final judgment.</p>
             </div>
             <div class="unit-action">
@@ -200,7 +198,7 @@
             </div>
         </div>
 
-        <div class="unit-row t-5">
+        <div class="unit-row t-5" data-evo-id="knight-of-dusk">
             <div class="portrait-container">
                 <img src="../../img/valkyrion_knight_of_dusk_m_portrait.jpg" alt="Knight of Dusk M">
                 <img src="../../img/valkyrion_knight_of_dusk_f_portrait.jpg" alt="Knight of Dusk F" class="portrait-anim">
@@ -220,6 +218,7 @@
     <a href="../../factions/valkyrion_roster.html" class="back-link">← Return to Military Roster</a>
 </main>
 
+<script src="../../system/evo-tree.js"></script>
 <script src="../../system/navigation.js"></script>
 </body>
 </html>
