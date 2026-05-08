@@ -39,7 +39,8 @@
         <p>However, a secluded sect exists within the Great Library. Composed entirely of female scholars, this militant wing treats history and mathematics as weapons. Starting as <strong>Glossants</strong>, they apply combat awareness and predictive magic to fight on the frontlines. As they advance, they diverge into evasive <strong>Strategists</strong> or heavily armored <strong>Retaliators</strong>, culminating in the peerless <strong>Archons</strong>.</p>
     </div>
 
-    <div id="evo-tree-root" data-bg=""></div>
+  <!-- Dichiariamo i 4 rami invisibili per mappare la griglia spaziale -->
+    <div id="evo-tree-root" data-bg="" data-labels="Elemental Path, Occult Path, Tactical Path, Retribution Path"></div>
 
     <div class="unit-list-header">
         <h2>Active Roster</h2>
@@ -47,7 +48,8 @@
 
     <div class="unit-list">
 
-        <div class="unit-row t-officer">
+        <!-- L'Officer non ha path esplicito: il motore lo centrerà perfettamente su tutto l'albero -->
+        <div class="unit-row t-officer t-wide">
             <div class="portrait-container">
                 <img src="../../img/valkyrion_summoner_m_portrait.jpg" alt="Summoner M">
                 <img src="../../img/valkyrion_summoner_f_portrait.jpg" alt="Summoner F" class="portrait-anim">
@@ -62,14 +64,15 @@
             </div>
         </div>
         
-        <div class="unit-row t-1">
+        <!-- Apprentice centra i primi due rami e lancia due frecce -->
+        <div class="unit-row t-1 t-wide" data-evo-id="apprentice" data-evo-to="mage witch">
             <div class="portrait-container">
                 <img src="../../img/valkyrion_apprentice_m_portrait.jpg" alt="Apprentice M">
                 <img src="../../img/valkyrion_apprentice_f_portrait.jpg" alt="Apprentice F" class="portrait-anim">
             </div>
             <div class="unit-info">
                 <h3 class="unit-name">Apprentice</h3>
-                <div class="unit-tier">Classification: <span class="color-t1">Tier I</span> , Scholar Path</div>
+                <div class="unit-tier">Classification: <span class="color-t1">Tier 1</span> , Elemental/Occult Path</div>
                 <p class="unit-desc">Young aspirants learning the fundamentals of arcane channeling. They utilize basic elemental strikes to hit multiple enemies simultaneously.</p>
             </div>
             <div class="unit-action">
@@ -77,13 +80,14 @@
             </div>
         </div>
 
-        <div class="unit-row t-1">
+        <!-- Glossant centra gli ultimi due rami ma lancia una sola freccia a Prescient -->
+        <div class="unit-row t-1" data-evo-id="glossant" data-evo-to="prescient">
             <div class="portrait-container">
                 <img src="../../img/valkyrion_glossant_portrait.jpg" alt="Glossant">
             </div>
             <div class="unit-info">
                 <h3 class="unit-name">Glossant</h3>
-                <div class="unit-tier">Classification: <span class="color-t1">Tier I</span> , Library Path</div>
+                <div class="unit-tier">Classification: <span class="color-t1">Tier 1</span> , Tactical/Retribution Path</div>
                 <p class="unit-desc">Avid readers of history and war tactics within the Great Library. They apply their studies to create a fast-paced, flexible frontline combat style.</p>
             </div>
             <div class="unit-action">
@@ -91,13 +95,13 @@
             </div>
         </div>
 
-        <div class="unit-row t-2" data-evo-to="wizard">
+        <div class="unit-row t-2" data-evo-id="mage" data-evo-to="wizard">
             <div class="portrait-container">
                 <img src="../../img/valkyrion_mage_portrait.jpg" alt="Mage">
             </div>
             <div class="unit-info">
                 <h3 class="unit-name">Mage</h3>
-                <div class="unit-tier">Classification: <span class="color-t2">Tier II</span> , Scholar Path</div>
+                <div class="unit-tier">Classification: <span class="color-t2">Tier 2</span> , Elemental Path</div>
                 <p class="unit-desc">Male scholars who maximize structured magical damage. They focus on raw destructive output through concentrated fire and air spells.</p>
             </div>
             <div class="unit-action">
@@ -105,13 +109,13 @@
             </div>
         </div>
 
-        <div class="unit-row t-2" data-evo-to="sorceress">
+        <div class="unit-row t-2" data-evo-id="witch" data-evo-to="sorceress">
             <div class="portrait-container">
                 <img src="../../img/valkyrion_witch_portrait.jpg" alt="Witch">
             </div>
             <div class="unit-info">
                 <h3 class="unit-name">Witch</h3>
-                <div class="unit-tier">Classification: <span class="color-t2">Tier II</span> , Scholar Path</div>
+                <div class="unit-tier">Classification: <span class="color-t2">Tier 2</span> , Occult Path</div>
                 <p class="unit-desc">Female scholars attuned to primal energies. They utilize natural magic to unleash toxic roots and impair the enemy's vital functions.</p>
             </div>
             <div class="unit-action">
@@ -119,13 +123,14 @@
             </div>
         </div>
 
-        <div class="unit-row t-2">
+        <!-- Prescient unisce due rami e lancia due frecce separate in basso -->
+        <div class="unit-row t-2" data-evo-id="prescient" data-evo-to="strategist retaliator">
             <div class="portrait-container">
                 <img src="../../img/valkyrion_prescient_portrait.jpg" alt="Prescient">
             </div>
             <div class="unit-info">
                 <h3 class="unit-name">Prescient</h3>
-                <div class="unit-tier">Classification: <span class="color-t2">Tier II</span> , Library Path</div>
+                <div class="unit-tier">Classification: <span class="color-t2">Tier 2</span> , Tactical/Retribution Path</div>
                 <p class="unit-desc">Expert Glossants who utilize magical circlets to process battlefield data, reading opponent movements to become formidable, agile fighters.</p>
             </div>
             <div class="unit-action">
@@ -139,7 +144,7 @@
             </div>
             <div class="unit-info">
                 <h3 class="unit-name">Wizard</h3>
-                <div class="unit-tier">Classification: <span class="color-t3">Tier III</span> , Scholar Path</div>
+                <div class="unit-tier">Classification: <span class="color-t3">Tier 3</span> , Elemental Path</div>
                 <p class="unit-desc">Advanced Mages who have learned to conjure structural arcane armor, protecting their weak physical defenses while maintaining heavy bombardment.</p>
             </div>
             <div class="unit-action">
@@ -153,7 +158,7 @@
             </div>
             <div class="unit-info">
                 <h3 class="unit-name">Sorceress</h3>
-                <div class="unit-tier">Classification: <span class="color-t3">Tier III</span> , Scholar Path</div>
+                <div class="unit-tier">Classification: <span class="color-t3">Tier 3</span> , Occult Path</div>
                 <p class="unit-desc">Experienced Witches possessing intensive knowledge of dark elements. They blind and debilitate enemy lines, weakening their offensive potential.</p>
             </div>
             <div class="unit-action">
@@ -167,7 +172,7 @@
             </div>
             <div class="unit-info">
                 <h3 class="unit-name">Strategist</h3>
-                <div class="unit-tier">Classification: <span class="color-t3">Tier III</span> , Library Path</div>
+                <div class="unit-tier">Classification: <span class="color-t3">Tier 3</span> , Tactical Path</div>
                 <p class="unit-desc">Prescients with extensive knowledge of warfare. They dictate the flow of battle, deploying complex strategies and evading strikes through predictive calculation.</p>
             </div>
             <div class="unit-action">
@@ -175,13 +180,13 @@
             </div>
         </div>
 
-        <div class="unit-row t-3" data-evo-to="vindicator">
+        <div class="unit-row t-3" data-evo-id="retaliator" data-evo-to="vindicator">
             <div class="portrait-container">
                 <img src="../../img/valkyrion_retaliator_portrait.jpg" alt="Retaliator">
             </div>
             <div class="unit-info">
                 <h3 class="unit-name">Retaliator</h3>
-                <div class="unit-tier">Classification: <span class="color-t3">Tier III</span> , Library Path</div>
+                <div class="unit-tier">Classification: <span class="color-t3">Tier 3</span> , Retribution Path</div>
                 <p class="unit-desc">Prescients who apply knowledge to metallurgy. Instead of dodging, they channel kinetic force through reinforced armor to unleash brutal counterattacks.</p>
             </div>
             <div class="unit-action">
@@ -189,13 +194,13 @@
             </div>
         </div>
 
-        <div class="unit-row t-4" data-evo-id="thaumaturge">
+        <div class="unit-row t-4" data-evo-id="thaumaturge" data-evo-to="magus">
             <div class="portrait-container">
                 <img src="../../img/valkyrion_thaumaturge_portrait.jpg" alt="Thaumaturge">
             </div>
             <div class="unit-info">
                 <h3 class="unit-name">Thaumaturge</h3>
-                <div class="unit-tier">Classification: <span class="color-t4">Tier IV</span> , Scholar Path</div>
+                <div class="unit-tier">Classification: <span class="color-t4">Tier 4</span> , Elemental Path</div>
                 <p class="unit-desc">The peak of structured magic. Capable of conjuring impossible spells, they rain pure destruction and meteor storms upon the adversary.</p>
             </div>
             <div class="unit-action">
@@ -203,13 +208,13 @@
             </div>
         </div>
 
-        <div class="unit-row t-4" data-evo-id="hexarch">
+        <div class="unit-row t-4" data-evo-id="hexarch" data-evo-to="magus">
             <div class="portrait-container">
                 <img src="../../img/valkyrion_hexarch_portrait.jpg" alt="Hexarch">
             </div>
             <div class="unit-info">
                 <h3 class="unit-name">Hexarch</h3>
-                <div class="unit-tier">Classification: <span class="color-t4">Tier IV</span> , Scholar Path</div>
+                <div class="unit-tier">Classification: <span class="color-t4">Tier 4</span> , Occult Path</div>
                 <p class="unit-desc">The absolute masters of nature and curses. Their hexes bypass magical resistances, draining the life and accuracy from entire enemy formations.</p>
             </div>
             <div class="unit-action">
@@ -217,13 +222,13 @@
             </div>
         </div>
 
-        <div class="unit-row t-4" data-evo-id="enlightened">
+        <div class="unit-row t-4" data-evo-id="enlightened" data-evo-to="archon">
             <div class="portrait-container">
                 <img src="../../img/valkyrion_enlightened_portrait.jpg" alt="Enlightened">
             </div>
             <div class="unit-info">
                 <h3 class="unit-name">Enlightened</h3>
-                <div class="unit-tier">Classification: <span class="color-t4">Tier IV</span> , Library Path</div>
+                <div class="unit-tier">Classification: <span class="color-t4">Tier 4</span> , Tactical Path</div>
                 <p class="unit-desc">Master Strategists with absolute tactical awareness. Their precognitive abilities make them virtually untouchable on the frontlines.</p>
             </div>
             <div class="unit-action">
@@ -231,13 +236,13 @@
             </div>
         </div>
 
-        <div class="unit-row t-4" data-evo-id="vindicator">
+        <div class="unit-row t-4" data-evo-id="vindicator" data-evo-to="archon">
             <div class="portrait-container">
                 <img src="../../img/valkyrion_vindicator_portrait.jpg" alt="Vindicator">
             </div>
             <div class="unit-info">
                 <h3 class="unit-name">Vindicator</h3>
-                <div class="unit-tier">Classification: <span class="color-t4">Tier IV</span> , Library Path</div>
+                <div class="unit-tier">Classification: <span class="color-t4">Tier 4</span> , Retribution Path</div>
                 <p class="unit-desc">Walking fortresses of the Great Library. Clad in spiked, magically-enhanced plating, they return passive kinetic damage to any who dare strike them.</p>
             </div>
             <div class="unit-action">
@@ -245,13 +250,13 @@
             </div>
         </div>
 
-        <div class="unit-row t-5 t-wide">
+        <div class="unit-row t-5 t-wide" data-evo-id="magus">
             <div class="portrait-container wide">
                 <img src="../../img/valkyrion_magus_portrait.png" alt="Magus (Twin Entity)">
             </div>
             <div class="unit-info">
                 <h3 class="unit-name">Magus</h3>
-                <div class="unit-tier">Classification: <span class="color-t5">Tier V (Champion)</span> , Scholar Path</div>
+                <div class="unit-tier">Classification: <span class="color-t5">Tier 5 , Champion</span> , Elemental/Occult Path</div>
                 <p class="unit-desc">A single soul controlling both a male and female body simultaneously. They wield absolute mastery over both structured and natural magic, obliterating all resistances.</p>
             </div>
             <div class="unit-action">
@@ -259,13 +264,13 @@
             </div>
         </div>
 
-        <div class="unit-row t-5">
+        <div class="unit-row t-5" data-evo-id="archon">
             <div class="portrait-container">
                 <img src="../../img/valkyrion_archon_portrait.jpg" alt="Archon">
             </div>
             <div class="unit-info">
                 <h3 class="unit-name">Archon</h3>
-                <div class="unit-tier">Classification: <span class="color-t5">Tier V (Champion)</span> , Library Path</div>
+                <div class="unit-tier">Classification: <span class="color-t5">Tier 5 , Champion</span> , Tactical/Retribution Path</div>
                 <p class="unit-desc">The martial apex of the Great Library. Master of both predictive evasion and kinetic armor, they deploy flawless tactics and devastating shockwaves.</p>
             </div>
             <div class="unit-action">
