@@ -50,7 +50,6 @@
             '.evo-magnifier{position:fixed;pointer-events:none;border-radius:50%;border:2px solid rgba(92,184,138,0.6);box-shadow:0 0 0 1px rgba(0,0,0,0.5),0 4px 24px rgba(0,0,0,0.8);overflow:hidden;z-index:9999;display:none;background:#050d07;}',
             '.evo-magnifier canvas{position:absolute;top:0;left:0;}',
             '.evo-node{position:absolute;display:flex;align-items:center;border-radius:5px;border:2px solid;z-index:2;box-sizing:border-box;overflow:hidden;cursor:default;}',
-            /* Text wrapping patch applied to .evo-node-label */
             '.evo-node-label{flex:1;min-width:0;padding:0 10px;color:#fff;font-size:0.68rem;font-weight:bold;text-transform:uppercase;letter-spacing:0.5px;white-space:normal;word-wrap:break-word;line-height:1.2;text-align:left;}',
             '.evo-node-imgs{display:flex;gap:3px;padding:4px 4px 4px 0;flex-shrink:0;}',
             '.evo-node-img-wrap{position:relative;overflow:hidden;border-radius:3px;border:1px solid rgba(255,255,255,0.25);flex-shrink:0;}',
@@ -147,7 +146,6 @@
         canvas.querySelectorAll('.evo-node,.evo-tier-lbl').forEach(function (el) { _magInner.appendChild(el.cloneNode(true)); });
     }
 
-    /* Updated Core Colors (Hex + RGBA) */
     var TC  = { 0: '#555555', 1: '#b0bec5', 2: '#81c784', 3: '#64b5f6', 4: '#ba68c8', 5: '#ffb300', 6: '#e53935' };
     var TBG = { 0: 'rgba(85,85,85,0.82)', 1: 'rgba(176,190,197,0.82)', 2: 'rgba(129,199,132,0.82)', 3: 'rgba(100,181,246,0.82)', 4: 'rgba(186,104,200,0.82)', 5: 'rgba(255,179,0,0.82)', 6: 'rgba(229,57,53,0.82)' };
 
@@ -180,7 +178,6 @@
             var imgs = row.querySelectorAll('.portrait-container img');
             var cl = row.className;
             
-            /* Tier 6 regex added */
             var tier = /\bt-officer\b/.test(cl) ? 0 : /\bt-1\b/.test(cl) ? 1 : /\bt-2\b/.test(cl) ? 2 : /\bt-3\b/.test(cl) ? 3 : /\bt-4\b/.test(cl) ? 4 : /\bt-5\b/.test(cl) ? 5 : /\bt-6\b/.test(cl) ? 6 : 1;
             var wide = /\bt-wide\b/.test(cl);
             var evoId = row.getAttribute('data-evo-id') || '';
@@ -284,7 +281,6 @@
         canvas.style.minHeight = CANVAS_H + 'px';
         canvas.style.width = W + 'px';
 
-        /* INVIOLABLE TIER LABEL SAFE-ZONE */
         var LEFT_GUTTER = Math.max(90, W * 0.08); 
         var RIGHT_GUTTER = W * 0.05;
         var drawW = W - LEFT_GUTTER - RIGHT_GUTTER;
@@ -319,7 +315,6 @@
         var edges = computeEdges(units);
         var svgHTML = '';
 
-        /* SVG Text Patch: High contrast stroke applied to path labels */
         if (numCols > 1) {
             pathKeys.forEach(function (label, i) {
                 if (!label) return;
@@ -331,8 +326,16 @@
             var p1 = positions[e[0]], p2 = positions[e[1]];
             var x1 = p1.cx, y1 = p1.botY + 1, x2 = p2.cx, y2 = p2.topY - 2;
             var my = (y1 + y2) / 2;
-            svgHTML += '<path d="M' + x1 + ',' + y1 + ' C' + x1 + ',' + my + ' ' + x2 + ',' + my + ' ' + x2 + ',' + y2 + '" stroke="' + units[e[1]].color + '" stroke-width="1.8" fill="none" stroke-opacity="0.5"/>';
-            svgHTML += '<polygon points="' + x2 + ',' + y2 + ' ' + (x2 - 4) + ',' + (y2 - 7) + ' ' + (x2 + 4) + ',' + (y2 - 7) + '" fill="' + units[e[1]].color + '" opacity="0.45"/>';
+            
+            // Scaled arrowhead dimensions
+            var aw = Math.max(6, 8 * scale); 
+            var ah = Math.max(8, 12 * scale);
+            
+            // Path (Thicker, more opaque)
+            svgHTML += '<path d="M' + x1 + ',' + y1 + ' C' + x1 + ',' + my + ' ' + x2 + ',' + my + ' ' + x2 + ',' + y2 + '" stroke="' + units[e[1]].color + '" stroke-width="2.5" fill="none" stroke-opacity="0.85"/>';
+            
+            // Arrowhead (Larger, fully opaque)
+            svgHTML += '<polygon points="' + x2 + ',' + y2 + ' ' + (x2 - aw) + ',' + (y2 - ah) + ' ' + (x2 + aw) + ',' + (y2 - ah) + '" fill="' + units[e[1]].color + '" opacity="1"/>';
         });
 
         svg.innerHTML = svgHTML;
@@ -372,7 +375,6 @@
                 lbl.className = 'evo-tier-lbl';
                 var y = PAD_TOP + unit.tier * ROW_H + CARD_H / 2 - 12;
                 
-                /* HTML Text Patch: High contrast dark pill background applied to tier labels */
                 lbl.style.cssText = 'position:absolute;left:10px;top:' + y + 'px;color:' + unit.color + ';background:rgba(0,0,0,0.75);padding:4px 10px;border-radius:4px;border:1px solid ' + unit.color + '44;box-shadow:0 2px 8px rgba(0,0,0,0.8);font-size:' + Math.max(0.38, 0.58*scale).toFixed(2) + 'rem;text-transform:uppercase;letter-spacing:1px;font-weight:bold;white-space:nowrap;z-index:5;';
                 
                 lbl.textContent = TN[unit.tier] || ('T' + unit.tier);
