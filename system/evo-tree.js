@@ -191,8 +191,13 @@
             } else if (!pathLabel) {
                  for (var k = 0; k < numCols; k++) matchedCols.push(k); 
             } else {
+                /* CORE-KEY MATCHING PATCH */
+                var rawLabel = pathLabel.toLowerCase();
                 pathKeys.forEach(function(key, idx) {
-                    if (pathLabel.toLowerCase().indexOf(key) !== -1) matchedCols.push(idx);
+                    var coreKey = key.replace(/\s*path\s*/g, '').trim();
+                    if (rawLabel.indexOf(coreKey) !== -1 || rawLabel.indexOf(key) !== -1) {
+                        matchedCols.push(idx);
+                    }
                 });
                 if (matchedCols.length === 0) { for (var k = 0; k < numCols; k++) matchedCols.push(k); }
             }
@@ -327,14 +332,10 @@
             var x1 = p1.cx, y1 = p1.botY + 1, x2 = p2.cx, y2 = p2.topY - 2;
             var my = (y1 + y2) / 2;
             
-            // Scaled arrowhead dimensions
             var aw = Math.max(6, 8 * scale); 
             var ah = Math.max(8, 12 * scale);
             
-            // Path (Thicker, more opaque)
             svgHTML += '<path d="M' + x1 + ',' + y1 + ' C' + x1 + ',' + my + ' ' + x2 + ',' + my + ' ' + x2 + ',' + y2 + '" stroke="' + units[e[1]].color + '" stroke-width="2.5" fill="none" stroke-opacity="0.85"/>';
-            
-            // Arrowhead (Larger, fully opaque)
             svgHTML += '<polygon points="' + x2 + ',' + y2 + ' ' + (x2 - aw) + ',' + (y2 - ah) + ' ' + (x2 + aw) + ',' + (y2 - ah) + '" fill="' + units[e[1]].color + '" opacity="1"/>';
         });
 
