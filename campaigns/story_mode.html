@@ -104,7 +104,7 @@
         .pos-primal      { top: 68%; left: 45%; } 
         .pos-forgotten   { top: 32%; left: 82%; } 
 
-        /* --- COLONNA DESTRA: PANNELLO INTELLIGENCE --- */
+       /* --- COLONNA DESTRA: PANNELLO INTELLIGENCE --- */
         .intel-panel {
             width: 450px;
             background: var(--panel-bg);
@@ -114,20 +114,18 @@
             z-index: 100;
         }
 
-       .video-container {
+        .video-container {
             width: 100%;
-            /* Aria laterale ridotta per consentire l'espansione, spazio superiore mantenuto */
             padding: 30px 30px 0 30px; 
             box-sizing: border-box;
             background: transparent;
-            border-bottom: none;
         }
 
         #intel-video {
             width: 100%;
-            height: 480px; /* Asse Y raddoppiato per riempire lo spazio vuoto in basso */
+            height: 480px; 
             object-fit: cover;
-            object-position: top center; /* Mantiene a fuoco il volto e l'armatura alta */
+            object-position: top center; 
             border-radius: 6px;
             box-shadow: 0 15px 40px rgba(0,0,0,0.9);
             border: 1px solid rgba(255,255,255,0.12);
@@ -136,11 +134,18 @@
         }
 
         .intel-body {
-            /* Padding laterale allineato al blocco video (30px) */
             padding: 40px 30px 30px 30px; 
             flex-grow: 1;
             display: flex;
             flex-direction: column;
+        }
+
+        #intel-title {
+            font-size: 2.2rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            margin: 0 0 20px 0;
+            color: #fff;
         }
 
         #intel-desc {
