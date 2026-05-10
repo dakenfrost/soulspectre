@@ -116,22 +116,25 @@
 
         .video-container {
             width: 100%;
-            height: 300px;
-            background: #000;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            overflow: hidden;
+            /* Iniezione di spazio negativo: 40px sopra, destra e sinistra, 0 sotto */
+            padding: 40px 40px 0 40px; 
+            box-sizing: border-box;
         }
 
         #intel-video {
             width: 100%;
-            height: 100%;
+            height: 220px; /* Altezza fissata per mantenere un rapporto d'aspetto stabile */
             object-fit: cover;
+            border-radius: 6px; /* Incastonatura moderna */
+            box-shadow: 0 12px 35px rgba(0,0,0,0.8); /* Elevazione ottica dal fondo piatto */
+            border: 1px solid rgba(255,255,255,0.15); /* Cornice perimetrale di contenimento */
             opacity: 0;
             transition: opacity 0.5s ease;
         }
 
         .intel-body {
-            padding: 40px;
+            /* Regolazione del raccordo: ridotto il padding superiore a 30px per bilanciare il blocco video */
+            padding: 30px 40px 40px 40px; 
             flex-grow: 1;
             display: flex;
             flex-direction: column;
