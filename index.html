@@ -144,6 +144,35 @@
             letter-spacing: 2px;
         }
 
+        /* BANNER COMUNICAZIONI (SYSTEM LOG) */
+        .sys-announcement {
+            background: rgba(5, 5, 8, 0.75);
+            border: 1px solid rgba(92, 156, 230, 0.2);
+            border-left: 4px solid #5c9ce6;
+            padding: 16px 24px;
+            margin: 0 auto 40px auto; 
+            max-width: 1000px;
+            border-radius: 2px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+        }
+
+        .sys-announcement p {
+            margin: 0;
+            color: #cccccc;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            letter-spacing: 1px;
+        }
+
+        .sys-announcement .highlight {
+            color: #5c9ce6;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-right: 10px;
+        }
+
         /* RESPONSIVE: Torna a 2 o 1 colonna sui piccoli schermi */
         @media (max-width: 1100px) {
             .main-nav { grid-template-columns: repeat(2, 1fr); }
