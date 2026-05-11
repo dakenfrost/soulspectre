@@ -1,108 +1,91 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOULSPECTRE | Forgotten Roster</title>
-    <link rel="stylesheet" href="../system/shared.css">
-    <link rel="stylesheet" href="../system/roster.css">
+    <link rel="stylesheet" href="../system/roster_accordion.css">
+    <link rel="stylesheet" href="../system/global_nav.css">
     <style>
-        :root {
-            --accent-color: #5cb88a;
-            --entry-bg:     rgb(4, 9, 6);
-            --preview-dark: rgb(4, 9, 6);
-        }
-        #bg-image { background-image: url('../img/forgotten/forgotten_bg.jpg'); }
-        #overlay  { background: linear-gradient(to bottom, rgba(5,12,8,0.95), rgba(3,8,5,1)); }
+        /* Specifica il colore secondario della fazione corrente per il sottotitolo */
+        :root { --accent-color: #5cb88a; }
     </style>
 </head>
 <body>
-<div id="bg-image"></div>
-<div id="overlay"></div>
 <global-navigation base="../"></global-navigation>
-<header>
+
+<header style="margin-top: 3%;">
     <h1>Military Roster</h1>
     <div class="subtitle">The Four Branches of the Forgotten</div>
 </header>
-<main>
-    <div class="roster-cards">
 
-        <a href="../units/forgotten/forgotten_order_arborei.html" class="rcard">
-            <div class="rcard-img" style="background-image:url('../img/forgotten/forgotten_roster_arborei.jpg');"></div>
-            <div class="rcard-overlay"></div>
-            <div class="rcard-label">
-                <span class="rcard-type">Melee Unit</span>
-                <span class="rcard-name">Arboreal Fighters</span>
-            </div>
-            <span class="rcard-arrow">&#9654;</span>
-        </a>
-
-        <a href="../units/forgotten/forgotten_order_linfa.html" class="rcard">
-            <div class="rcard-img" style="background-image:url('../img/forgotten/forgotten_roster_linfa.jpg');"></div>
-            <div class="rcard-overlay"></div>
-            <div class="rcard-label">
-                <span class="rcard-type">Support Unit</span>
-                <span class="rcard-name">Shadows of the Sap</span>
-            </div>
-            <span class="rcard-arrow">&#9654;</span>
-        </a>
-
-        <a href="../units/forgotten/forgotten_order_araldi.html" class="rcard">
-            <div class="rcard-img" style="background-image:url('../img/forgotten/forgotten_roster_araldi.jpg');"></div>
-            <div class="rcard-overlay"></div>
-            <div class="rcard-label">
-                <span class="rcard-type">Mage Unit</span>
-                <span class="rcard-name">Heralds of Dust</span>
-            </div>
-            <span class="rcard-arrow">&#9654;</span>
-        </a>
-
-        <a href="../units/forgotten/forgotten_order_sentinelle.html" class="rcard">
-            <div class="rcard-img" style="background-image:url('../img/forgotten/forgotten_roster_sentinelle.jpg');"></div>
-            <div class="rcard-overlay"></div>
-            <div class="rcard-label">
-                <span class="rcard-type">Ranged Unit</span>
-                <span class="rcard-name">Amber Sentinels</span>
-            </div>
-            <span class="rcard-arrow">&#9654;</span>
-        </a>
-
-        <div class="rcard locked-rcard">
-            <div class="rcard-img" style="background-image:url('../img/forgotten/forgotten_roster_hybrids.png'); filter:grayscale(1) brightness(0.4);"></div>
-            <div class="rcard-overlay"></div>
-            <div class="rcard-locked-overlay">&#9632; CLASSIFIED &#9632;</div>
-            <div class="rcard-label">
-                <span class="rcard-name" style="color:rgba(80,80,80,0.5);">Hybrid Units</span>
-            </div>
+<div class="shard-container">
+    
+    <a href="../units/forgotten/forgotten_order_arborei.html" class="shard melee">
+        <div class="shard-bg" style="background-image:url('../img/forgotten/forgotten_roster_arborei.jpg');"></div>
+        <div class="shard-overlay"></div>
+        <div class="shard-label">Melee</div>
+        <div class="shard-content">
+            <h2 class="roster-name">Arboreal Fighters</h2>
+            <p class="roster-desc">Frontline warriors adapted to the untamed wilds, specializing in relentless close-quarters combat.</p>
+            <div class="engage-btn">Inspect Units</div>
         </div>
+    </a>
 
-        <a href="../units/forgotten/forgotten_extra.html" class="rcard others-rcard">
-            <div class="rcard-img" style="background-image:url('../img/forgotten/forgotten_roster_others.png');"></div>
-            <div class="rcard-overlay" style="background:linear-gradient(to top,rgba(3,8,5,0.82) 0%,rgba(3,8,5,0.30) 45%,rgba(0,0,0,0.05) 100%);"></div>
-            <div class="rcard-label">
-                <span class="rcard-type" style="color:#888;">Miscellaneous</span>
-                <span class="rcard-name" style="color:rgba(200,200,200,0.7);">Others</span>
-            </div>
-            <span class="rcard-arrow" style="color:#888;">&#9654;</span>
-        </a>
+    <a href="../units/forgotten/forgotten_order_linfa.html" class="shard support">
+        <div class="shard-bg" style="background-image:url('../img/forgotten/forgotten_roster_linfa.jpg');"></div>
+        <div class="shard-overlay"></div>
+        <div class="shard-label">Support</div>
+        <div class="shard-content">
+            <h2 class="roster-name">Shadows of the Sap</h2>
+            <p class="roster-desc">Mystic healers and stalkers utilizing the ancient lifeblood of the forest to sustain their allies.</p>
+            <div class="engage-btn">Inspect Units</div>
+        </div>
+    </a>
 
+    <a href="../units/forgotten/forgotten_order_araldi.html" class="shard caster">
+        <div class="shard-bg" style="background-image:url('../img/forgotten/forgotten_roster_araldi.jpg');"></div>
+        <div class="shard-overlay"></div>
+        <div class="shard-label">Caster</div>
+        <div class="shard-content">
+            <h2 class="roster-name">Heralds of Dust</h2>
+            <p class="roster-desc">Ancient spellcasters channeling forgotten magic and corrosive elements to decimate enemy ranks.</p>
+            <div class="engage-btn">Inspect Units</div>
+        </div>
+    </a>
+
+    <a href="../units/forgotten/forgotten_order_sentinelle.html" class="shard ranged">
+        <div class="shard-bg" style="background-image:url('../img/forgotten/forgotten_roster_sentinelle.jpg');"></div>
+        <div class="shard-overlay"></div>
+        <div class="shard-label">Ranged</div>
+        <div class="shard-content">
+            <h2 class="roster-name">Amber Sentinels</h2>
+            <p class="roster-desc">Elite marksmen utilizing crystallized amber weaponry to deliver lethal precision from afar.</p>
+            <div class="engage-btn">Inspect Units</div>
+        </div>
+    </a>
+
+    <div class="shard hybrid locked">
+        <div class="shard-bg" style="background-image:url('../img/forgotten/forgotten_roster_hybrids.png');"></div>
+        <div class="shard-overlay"></div>
+        <div class="shard-label">■ Hybrids ■</div>
     </div>
-    <a href="forgotten.html" class="back-link">← Return to the Forgotten Overview</a>
-</main>
 
-<script>
-    document.querySelectorAll('.rcard:not(.locked-rcard)').forEach(card => {
-        card.addEventListener('click', e => {
-            e.preventDefault();
-            const href = card.getAttribute('href');
-            if (!href) return;
-            const flash = document.createElement('div');
-            flash.className = 'flash';
-            document.body.appendChild(flash);
-            setTimeout(() => { window.location.href = href; }, 130);
-        });
-    });
-</script>
+    <a href="../units/forgotten/forgotten_extra.html" class="shard others">
+        <div class="shard-bg" style="background-image:url('../img/forgotten/forgotten_roster_others.png');"></div>
+        <div class="shard-overlay"></div>
+        <div class="shard-label">Misc</div>
+        <div class="shard-content">
+            <h2 class="roster-name">Others</h2>
+            <p class="roster-desc">Irregular anomalies, wandering beasts, and unclassified entities bound to the Root Mother's will.</p>
+            <div class="engage-btn">Inspect Units</div>
+        </div>
+    </a>
+
+</div>
+
+<a href="../factions/forgotten.html" class="abort-link">← Return to Overview</a>
+
 <script src="../system/navigation.js"></script>
 </body>
 </html>
