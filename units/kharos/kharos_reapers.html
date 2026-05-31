@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | The Reapers</title>
+    <style>
+    :root {
+        /* Colori adattati per Kharos Dominion */
+        --order-accent: #e53935;  
+        --order-glow:       rgba(229, 57, 53, 0.3);
+        --order-accent-bg:   rgba(229, 57, 53, 0.1);
+        --order-accent-dim:  rgba(229, 57, 53, 0.3);
+        --bg-image-url:     url('../img/kharos_bg.jpeg');
+    }
+    </style>
+    <link rel="stylesheet" href="../../system/style_order.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+<global-navigation></global-navigation>
+
+<header>
+    <h1>The Reapers</h1>
+    <div class="subtitle">Necromancy & Undead Support</div>
+</header>
+
+<main>
+    <div class="intro-banner">
+        <img src="../../img/kharos_reapers_intro.png" alt="The Reapers - Banner">
+    </div>
+
+    <div class="lore-section">
+        <h2>The Flesh Engineers</h2>
+        <p>The Reapers serve as the indispensable support branch of the Kharos Dominion. These necromancers bolster the army's ranks with mindless undead bound eternally to their will. Such creations are incredibly flexible, granting the Dominion's forces immense adaptability and endless reinforcements on the battlefield.</p>
+        <p>Led by reclusive <strong>Necromancers</strong>, this branch holds zero reverence for the deceased. To them, corpses are merely raw materials for dark experiments—fuel for the creation of ever-more-powerful minions. The cheapest and most common of these materials is the basic <strong>Skeleton</strong>.</p>
+        <p>As these undead are exposed to dark magic and warfare, they can be molded along different paths. They might be given rusted blades to become <strong>Fighters</strong> and eventually heavily armored <strong>Champions</strong>, fused with rotting meat to form unstoppable <strong>Zombies</strong> and <strong>Flesh Golems</strong>, or handed a bow to become deadly, truesight-gifted <strong>Snipers</strong>. All these dark arts culminate in the ultimate necromantic masterpiece: the dreaded <strong>Death Dragon</strong>.</p>
+    </div>
+
+   <div id="evo-tree-root" data-bg="../../img/kharos_reapers_background.png" data-labels="Melee Path, Abomination Path, Ranged Path"></div>
+
+    <div class="unit-list-header">
+        <h2>Active Roster</h2>
+    </div>
+
+    <div class="unit-list">
+
+        <!-- OFFICER -->
+        <div class="unit-row t-officer" data-evo-id="necromancer">
+            <div class="portrait-container">
+                <img src="../../img/kharos_necromancer_m_portrait.jpg" alt="Necromancer M">
+                <img src="../../img/kharos_necromancer_f_portrait.jpg" alt="Necromancer F" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Necromancer</h3>
+                <div class="unit-tier">Classification: <span class="color-officer">Officer</span></div>
+                <p class="unit-desc">Spellcasters who have mastered shadow magic to bolster their undead creations. They view living beings as "too expensive and slow to grow," preferring the company of their silent minions.</p>
+            </div>
+            <div class="unit-action">
+                <a href="kharos_necromancer.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+        
+        <!-- TIER 1 -->
+        <div class="unit-row t-1" data-evo-id="skeleton" data-evo-to="skeleton-fighter skeleton-archer">
+            <div class="portrait-container">
+                <img src="../../img/kharos_skeleton_portrait.jpg" alt="Skeleton">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Skeleton</h3>
+                <div class="unit-tier">Classification: <span class="color-t1">Tier I</span></div>
+                <p class="unit-desc">Lacking both soul and mind, they are completely immune to fear and mental effects. Weak but incredibly cheap to mass-produce.</p>
+            </div>
+            <div class="unit-action">
+                <a href="kharos_skeleton.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <!-- TIER 2 -->
+        <div class="unit-row t-2" data-evo-id="skeleton-fighter" data-evo-to="skeleton-warrior zombie">
+            <div class="portrait-container">
+                <img src="../../img/kharos_skeleton_fighter_portrait.jpg" alt="Skeleton Fighter">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Skeleton Fighter</h3>
+                <div class="unit-tier">Classification: <span class="color-t2">Tier II</span> , Melee/Abomination Path</div>
+                <p class="unit-desc">Basic skeletons equipped with scavenged gear to slightly improve their durability on the frontline.</p>
+            </div>
+            <div class="unit-action">
+                <a href="kharos_skeleton_fighter.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-2" data-evo-id="skeleton-archer" data-evo-to="skeleton-bowman">
+            <div class="portrait-container">
+                <img src="../../img/kharos_skeleton_archer_portrait.jpg" alt="Skeleton Archer">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Skeleton Archer</h3>
+                <div class="unit-tier">Classification: <span class="color-t2">Tier II</span> , Ranged Path</div>
+                <p class="unit-desc">Specialized in long-range combat, using rudimentary bows to rain poisoned arrows upon the enemy forces.</p>
+            </div>
+            <div class="unit-action">
+                <a href="kharos_skeleton_archer.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <!-- TIER 3 -->
+        <div class="unit-row t-3" data-evo-id="skeleton-warrior" data-evo-to="skeleton-champion">
+            <div class="portrait-container">
+                <img src="../../img/kharos_skeleton_warrior_portrait.jpg" alt="Skeleton Warrior">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Skeleton Warrior</h3>
+                <div class="unit-tier">Classification: <span class="color-t3">Tier III</span> , Melee Path</div>
+                <p class="unit-desc">Fighters whose bones have been reinforced with dense shadow energy to effectively mitigate incoming physical damage.</p>
+            </div>
+            <div class="unit-action">
+                <a href="kharos_skeleton_warrior.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-3" data-evo-id="zombie" data-evo-to="flesh-golem">
+            <div class="portrait-container">
+                <img src="../../img/kharos_zombie_portrait.jpg" alt="Zombie">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Zombie</h3>
+                <div class="unit-tier">Classification: <span class="color-t3">Tier III</span> , Abomination Path</div>
+                <p class="unit-desc">Foregoing equipment, these units are grafted with putrid, regenerative skin. They are slower, but far more resilient than regular skeletons.</p>
+            </div>
+            <div class="unit-action">
+                <a href="kharos_zombie.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-3" data-evo-id="skeleton-bowman" data-evo-to="skeleton-sniper">
+            <div class="portrait-container">
+                <img src="../../img/kharos_skeleton_bowman_portrait.jpg" alt="Skeleton Bowman">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Skeleton Bowman</h3>
+                <div class="unit-tier">Classification: <span class="color-t3">Tier III</span> , Ranged Path</div>
+                <p class="unit-desc">Enhanced with dark arts to see through magical darkness and illusions, making them the absolute bane of hidden foes.</p>
+            </div>
+            <div class="unit-action">
+                <a href="kharos_skeleton_bowman.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <!-- TIER 4 -->
+        <div class="unit-row t-4" data-evo-id="skeleton-champion" data-evo-to="death-dragon">
+            <div class="portrait-container">
+                <img src="../../img/kharos_skeleton_champion_portrait.jpg" alt="Skeleton Champion">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Skeleton Champion</h3>
+                <div class="unit-tier">Classification: <span class="color-t4">Tier IV</span> , Melee Path</div>
+                <p class="unit-desc">Skeletons possessing unmatched combat prowess. Clad in full plate gear, they are versatile and incredibly deadly frontline fighters.</p>
+            </div>
+            <div class="unit-action">
+                <a href="kharos_skeleton_champion.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-4" data-evo-id="flesh-golem" data-evo-to="death-dragon">
+            <div class="portrait-container">
+                <img src="../../img/kharos_flesh_golem_portrait.jpg" alt="Flesh Golem">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Flesh Golem</h3>
+                <div class="unit-tier">Classification: <span class="color-t4">Tier IV</span> , Abomination Path</div>
+                <p class="unit-desc">A horrifying abomination created by fusing multiple zombies together. They can regenerate rapidly by consuming the flesh of the fallen.</p>
+            </div>
+            <div class="unit-action">
+                <a href="kharos_flesh_golem.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-4" data-evo-id="skeleton-sniper" data-evo-to="death-dragon">
+            <div class="portrait-container">
+                <img src="../../img/kharos_skeleton_sniper_portrait.jpg" alt="Skeleton Sniper">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Skeleton Sniper</h3>
+                <div class="unit-tier">Classification: <span class="color-t4">Tier IV</span> , Ranged Path</div>
+                <p class="unit-desc">Possessing supernatural perception, they can strike an enemy's weak spots from afar for massive, critical damage.</p>
+            </div>
+            <div class="unit-action">
+                <a href="kharos_skeleton_sniper.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <!-- TIER 5 (CHAMPION UNIT - LARGE) -->
+        <div class="unit-row t-5 t-wide" data-evo-id="death-dragon">
+            <div class="portrait-container wide">
+                <img src="../../img/kharos_death_dragon_portrait.png" alt="Death Dragon">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Death Dragon</h3>
+                <div class="unit-tier">Classification: <span class="color-t5">Tier V (Champion Unit)</span> , Masterpiece</div>
+                <p class="unit-desc">The masterpiece of any Necromancer’s career. Constructed from countless corpses and infused with overwhelming dark power, it decimates platoons with its corrosive poison breath.</p>
+            </div>
+            <div class="unit-action">
+                <a href="kharos_death_dragon.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+    </div>
+
+    <a href="../../factions/kharos_roster.html" class="back-link">← Return to Military Roster</a>
+</main>
+
+<script src="../../system/evo-tree.js"></script>
+<script src="../../system/navigation.js"></script>
+</body>
+</html>
