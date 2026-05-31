@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | The Outsiders</title>
+    <style>
+    :root {
+        /* Colori adattati per Kharos Dominion */
+        --order-accent: #e53935;  
+        --order-glow:       rgba(229, 57, 53, 0.3);
+        --order-accent-bg:   rgba(229, 57, 53, 0.1);
+        --order-accent-dim:  rgba(229, 57, 53, 0.3);
+        --bg-image-url:     url('../img/kharos_bg.jpeg');
+    }
+    </style>
+    <link rel="stylesheet" href="../../system/style_order.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+<global-navigation></global-navigation>
+
+<header>
+    <h1>The Outsiders</h1>
+    <div class="subtitle">Mercenaries & Irregular Warfare</div>
+</header>
+
+<main>
+    <div class="intro-banner">
+        <img src="../../img/kharos_outsiders_intro.png" alt="The Outsiders - Banner">
+    </div>
+
+    <div class="lore-section">
+        <h2>The Shadows of the Dominion</h2>
+        <p>The <strong>Outsiders</strong> are a loose collective of individuals who prefer to work alone or in small, highly specialized cells. This chaotic group is home to all sorts of rogues: mercenaries, thieves, bounty hunters, and even renegade alchemists rejected by traditional societies.</p>
+        <p>Typically, each cell falls under the jurisdiction of an <strong>Overseer</strong>, a calculating veteran who monitors their activities, supplies experimental armaments, and ensures that all brutal contracts are fulfilled to the letter. These bands are led into the most challenging and high-stakes missions by agile <strong>Rogues</strong>, masters of guerrilla warfare.</p>
+        <p>The standard operative begins as a common <strong>Thief</strong> or <strong>Bandit</strong>, using dirty tricks and throwing daggers. As they survive and amass wealth, they either refine their precision to become lethal <strong>Mercenaries</strong> and <strong>Bounty Hunters</strong>, or trade their blades for volatile chemicals to serve as devastating <strong>Bombers</strong> and <strong>Alchemists</strong>.</p>
+    </div>
+
+   <div id="evo-tree-root" data-bg="../../img/kharos_outsiders_background.png" data-labels="Precision Path, Explosives Path"></div>
+
+    <div class="unit-list-header">
+        <h2>Active Roster</h2>
+    </div>
+
+    <div class="unit-list">
+
+        <!-- OFFICER -->
+        <div class="unit-row t-officer" data-evo-id="rogue">
+            <div class="portrait-container">
+                <img src="../../img/kharos_rogue_m_portrait.jpg" alt="Rogue M">
+                <img src="../../img/kharos_rogue_f_portrait.jpg" alt="Rogue F" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Rogue</h3>
+                <div class="unit-tier">Classification: <span class="color-officer">Officer</span></div>
+                <p class="unit-desc">Masters of subtlety and combat, they lead the Outsiders through experience and guerrilla tactics. Their extreme agility makes them capable of striking and vanishing before the enemy can react.</p>
+            </div>
+            <div class="unit-action">
+                <a href="kharos_rogue.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+        
+        <!-- TIER 1 -->
+        <div class="unit-row t-1" data-evo-id="thief" data-evo-to="bandit">
+            <div class="portrait-container">
+                <img src="../../img/kharos_thief_m_portrait.jpg" alt="Thief M">
+                <img src="../../img/kharos_thief_f_portrait.jpg" alt="Thief F" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Thief</h3>
+                <div class="unit-tier">Classification: <span class="color-t1">Tier I</span></div>
+                <p class="unit-desc">The most common operative. While not resilient, they possess the distinct advantage of striking from a distance with sharpened throwing daggers.</p>
+            </div>
+            <div class="unit-action">
+                <a href="kharos_thief.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <!-- TIER 2 -->
+        <div class="unit-row t-2" data-evo-id="bandit" data-evo-to="mercenary bomber">
+            <div class="portrait-container">
+                <img src="../../img/kharos_bandit_m_portrait.jpg" alt="Bandit M">
+                <img src="../../img/kharos_bandit_f_portrait.jpg" alt="Bandit F" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Bandit</h3>
+                <div class="unit-tier">Classification: <span class="color-t2">Tier II</span></div>
+                <p class="unit-desc">Experienced thieves who utilize 'dirty' tactics, such as throwing dirt to blind opponents, alongside improved gear to gain the upper hand.</p>
+            </div>
+            <div class="unit-action">
+                <a href="kharos_bandit.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <!-- TIER 3 -->
+        <div class="unit-row t-3" data-evo-id="mercenary" data-evo-to="veteran bounty-hunter">
+            <div class="portrait-container">
+                <img src="../../img/kharos_mercenary_m_portrait.jpg" alt="Mercenary M">
+                <img src="../../img/kharos_mercenary_f_portrait.jpg" alt="Mercenary F" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Mercenary</h3>
+                <div class="unit-tier">Classification: <span class="color-t3">Tier III</span> , Precision Path</div>
+                <p class="unit-desc">Professional soldiers whose extensive combat experience makes their ranged strikes exceptionally accurate and deadly.</p>
+            </div>
+            <div class="unit-action">
+                <a href="kharos_mercenary.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-3" data-evo-id="bomber" data-evo-to="demolisher alchemist">
+            <div class="portrait-container">
+                <img src="../../img/kharos_bomber_m_portrait.jpg" alt="Bomber M">
+                <img src="../../img/kharos_bomber_f_portrait.jpg" alt="Bomber F" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Bomber</h3>
+                <div class="unit-tier">Classification: <span class="color-t3">Tier III</span> , Explosives Path</div>
+                <p class="unit-desc">Bandits who trade daggers for volatile explosives. They are highly efficient at clearing out large, clustered groups of enemies with toxic blasts.</p>
+            </div>
+            <div class="unit-action">
+                <a href="kharos_bomber.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <!-- TIER 4 -->
+        <div class="unit-row t-4" data-evo-id="veteran" data-evo-to="overseer">
+            <div class="portrait-container">
+                <img src="../../img/kharos_veteran_m_portrait.jpg" alt="Veteran M">
+                <img src="../../img/kharos_veteran_f_portrait.jpg" alt="Veteran F" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Veteran</h3>
+                <div class="unit-tier">Classification: <span class="color-t4">Tier IV</span> , Precision Path</div>
+                <p class="unit-desc">Outfitted with superior gear, these seasoned fighters use Flash Bombs to blind enemies and control the flow of the entire battlefield.</p>
+            </div>
+            <div class="unit-action">
+                <a href="kharos_veteran.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-4" data-evo-id="bounty-hunter" data-evo-to="overseer">
+            <div class="portrait-container">
+                <img src="../../img/kharos_bounty_hunter_m_portrait.jpg" alt="Bounty Hunter M">
+                <img src="../../img/kharos_bounty_hunter_f_portrait.jpg" alt="Bounty Hunter F" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Bounty Hunter</h3>
+                <div class="unit-tier">Classification: <span class="color-t4">Tier IV</span> , Precision Path</div>
+                <p class="unit-desc">Specialists in neutralizing single high-value targets. They employ debilitating poison darts and heavy nets to secure their human prey.</p>
+            </div>
+            <div class="unit-action">
+                <a href="kharos_bounty_hunter.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-4" data-evo-id="demolisher" data-evo-to="overseer">
+            <div class="portrait-container">
+                <img src="../../img/kharos_demolisher_m_portrait.jpg" alt="Demolisher M">
+                <img src="../../img/kharos_demolisher_f_portrait.jpg" alt="Demolisher F" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Demolisher</h3>
+                <div class="unit-tier">Classification: <span class="color-t4">Tier IV</span> , Explosives Path</div>
+                <p class="unit-desc">Specialists in high-yield explosives. Their heavy gear is strictly reinforced to resist the very blasts they create, allowing for reckless devastation.</p>
+            </div>
+            <div class="unit-action">
+                <a href="kharos_demolisher.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-4" data-evo-id="alchemist" data-evo-to="overseer">
+            <div class="portrait-container">
+                <img src="../../img/kharos_alchemist_m_portrait.jpg" alt="Alchemist M">
+                <img src="../../img/kharos_alchemist_f_portrait.jpg" alt="Alchemist F" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Alchemist</h3>
+                <div class="unit-tier">Classification: <span class="color-t4">Tier IV</span> , Explosives Path</div>
+                <p class="unit-desc">Bombers who pivoted to chemical research. They use potions and combat drugs to bolster allies, having developed a complete immunity to poison.</p>
+            </div>
+            <div class="unit-action">
+                <a href="kharos_alchemist.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <!-- TIER 5 (CHAMPION UNIT) -->
+        <div class="unit-row t-5 t-wide" data-evo-id="overseer">
+            <div class="portrait-container wide">
+                <img src="../../img/kharos_overseer_portrait.png" alt="Overseer">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Overseer</h3>
+                <div class="unit-tier">Classification: <span class="color-t5">Tier V (Champion Unit)</span></div>
+                <p class="unit-desc">Veterans entrusted with total supervision of logistics and experimental armaments. They do not fight for glory, but for results; every order given is part of a cold, calculated plan.</p>
+            </div>
+            <div class="unit-action">
+                <a href="kharos_overseer.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+    </div>
+
+    <a href="../../factions/kharos_roster.html" class="back-link">← Return to Military Roster</a>
+</main>
+
+<script src="../../system/evo-tree.js"></script>
+<script src="../../system/navigation.js"></script>
+</body>
+</html>
