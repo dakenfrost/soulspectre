@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Kharos Dominion</title>
+    <link rel="stylesheet" href="../system/shared.css">
+    <link rel="stylesheet" href="../system/faction.css">
+    <style>
+        :root {
+            /* Colori adattati per il Kharos Dominion */
+            --accent-color: #e53935; 
+            --accent-glow:  rgba(229, 57, 53, 0.5);
+            --panel-bg:     rgba(15, 10, 10, 0.8);
+        }
+        #bg-image { background-image: url('../img/kharos_bg.jpeg'); }
+        #overlay  { background: linear-gradient(to bottom, rgba(18, 8, 8, 0.85), rgba(10, 4, 4, 0.95)); }
+    </style>
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+<global-navigation base="../"></global-navigation>
+
+<!-- Left: hero video panel -->
+<div class="hero-panel">
+    <video src="../img/kharos_hero.mp4" autoplay loop muted playsinline></video>
+    <div class="hero-panel-border"></div>
+</div>
+
+<!-- Right: all page content -->
+<div class="page-content">
+    <header>
+        <h1>Kharos Dominion</h1>
+        <div class="tagline">Authentic warriors who have thrown their masks away to embrace their full self.</div>
+    </header>
+
+    <main>
+        <div class="quote">
+            "The condition of man... is a condition of war of everyone against everyone."
+            <span class="quote-author">— Thomas Hobbes, Leviathan</span>
+        </div>
+
+        <div class="split-text">
+            <h2>The Law of the Strong</h2>
+            <p>The Kharos Dominion is over five hundred years old. Evolving from a simple bandit group into a massive kingdom wielding advanced technology, they are bound by the pursuit of absolute freedom and power. They operate on a brutal but highly efficient meritocracy where "Might makes Justice." Everyone is welcome, provided they can prove their strength and utility. For them, conventional morality is merely a mask; they prefer to act authentically, replacing those unfit for their roles to ensure the best are always in charge.</p>
+
+            <p>At the apex of this ruthless society stands the <strong>Warchief</strong>. Inheriting the crown and the legendary axe of the first Warchief, Themis, they are the absolute ruler. Their authority is undeniable, proven by conquering the Chieftains in the ultimate test of superiority.</p>
+
+            <h2 class="tactics-title">The Day of Evolution & Society</h2>
+            <p>Order is maintained through the <strong>Day of Evolution</strong>, an annual tournament where any subordinate can challenge their leader—be it in martial prowess, tactical acumen, or scholarly knowledge. To support this brutal engine, citizens undergo rigorous combat training from childhood before choosing martial or civil specializations.</p>
+            <p>Beneath the Warchief, the Dominion is splintered into independent tribes led by Chieftains. It is also home to specialized organizations like the Reapers, The Boundless, and independent Outsiders. Above the internal chaos, the <strong>Overseers</strong> stand as an impartial authority, ensuring that the rules of every duel, experiment, and mission are executed without interference.</p>
+        </div>
+
+        <div class="p5-menu">
+            <div class="p5-menu-header">
+                <span class="p5-menu-line"></span>
+                <span class="p5-menu-title">Explore the Dominion</span>
+                <span class="p5-menu-line"></span>
+            </div>
+            <nav class="p5-nav-grid">
+                <a href="kharos_lore.html" class="p5-card" style="--c:#b0bec5;--cs:rgba(176,190,197,0.6)">
+                    <div class="p5-card-inner">
+                        <img src="../img/icon_lore.png" class="p5-card-icon" alt="">
+                        <span class="p5-card-num">01</span>
+                        <span class="p5-card-label">Lore</span>
+                    </div>
+                </a>
+                <a href="kharos_culture.html" class="p5-card" style="--c:#5c9ce6;--cs:rgba(92,156,230,0.6)">
+                    <div class="p5-card-inner">
+                        <img src="../img/icon_culture.png" class="p5-card-icon" alt="">
+                        <span class="p5-card-num">02</span>
+                        <span class="p5-card-label">Culture</span>
+                    </div>
+                </a>
+                <a href="kharos_leader.html" class="p5-card" style="--c:#d4af37;--cs:rgba(212,175,55,0.6)">
+                    <div class="p5-card-inner">
+                        <img src="../img/icon_leader.png" class="p5-card-icon" alt="">
+                        <span class="p5-card-num">03</span>
+                        <span class="p5-card-label">Leader</span>
+                    </div>
+                </a>
+                <a href="kharos_roster.html" class="p5-card" style="--c:#ef5350;--cs:rgba(239,83,80,0.6)">
+                    <div class="p5-card-inner">
+                        <img src="../img/icon_units.png" class="p5-card-icon" alt="">
+                        <span class="p5-card-num">04</span>
+                        <span class="p5-card-label">Units</span>
+                    </div>
+                </a>
+                <a href="kharos_spells.html" class="p5-card" style="--c:#ab47bc;--cs:rgba(171,71,188,0.6)">
+                    <div class="p5-card-inner">
+                        <img src="../img/icon_spells.png" class="p5-card-icon" alt="">
+                        <span class="p5-card-num">05</span>
+                        <span class="p5-card-label">Spells</span>
+                    </div>
+                </a>
+                <a href="kharos_buildings.html" class="p5-card" style="--c:#f57c00;--cs:rgba(245,124,0,0.6)">
+                    <div class="p5-card-inner">
+                        <img src="../img/icon_buildings.png" class="p5-card-icon" alt="">
+                        <span class="p5-card-num">06</span>
+                        <span class="p5-card-label">Buildings</span>
+                    </div>
+                </a>
+            </nav>
+        </div>
+
+        <a href="index.html" class="back-link">&larr; Return to the Factions Archive</a>
+    </main>
+</div>
+
+<script src="../system/navigation.js"></script>
+</body>
+</html>
