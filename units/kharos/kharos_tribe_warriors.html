@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Tribe Warriors</title>
+    <style>
+    :root {
+        /* Colori adattati per Kharos Dominion */
+        --order-accent: #e53935;  
+        --order-glow:       rgba(229, 57, 53, 0.3);
+        --order-accent-bg:   rgba(229, 57, 53, 0.1);
+        --order-accent-dim:  rgba(229, 57, 53, 0.3);
+        --bg-image-url:     url('../img/kharos_bg.jpeg');
+    }
+    </style>
+    <link rel="stylesheet" href="../../system/style_order.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+<global-navigation></global-navigation>
+
+<header>
+    <h1>Tribe Warriors</h1>
+    <div class="subtitle">Brutality & Relentless Force</div>
+</header>
+
+<main>
+    <div class="intro-banner">
+        <img src="../../img/kharos_tribe_intro.png" alt="Tribe Warriors - Banner">
+    </div>
+
+    <div class="lore-section">
+        <h2>The Backbone of the Dominion</h2>
+        <p>The largest group within the Kharos Dominion are the Tribes. Each Tribe is ruled by a Chieftain, who is strictly responsible for the martial training of his tribesmen. The words of a Chieftain are absolute, as he is the voice of the Warchief.</p>
+        <p>Fighting styles vary widely across the tribes. While many choose to rely on raw strength and wield massive weapons as bulky <strong>Thugs</strong>, others prefer agile equipment and rapid strikes, starting their violent careers as swift <strong>Fighters</strong>.</p>
+        <p>As they survive the endless conflicts, Thugs can eventually evolve into armor-crushing <strong>Destroyers</strong> or resilient <strong>Champions</strong>. Meanwhile, Fighters branch into either deadly <strong>Assassins</strong> adept at ambushes, or relentless <strong>Berserkers</strong> who thrive on the edge of death.</p>
+        <p>At the absolute pinnacle of the tribes, one might rarely find the <strong>Conquerors</strong>—incredible beings who display skills far beyond normal human limitations, revered as living weapons of the Dominion.</p>
+    </div>
+
+   <div id="evo-tree-root" data-bg="../../img/kharos_tribe_background.png" data-labels="Brute Path, Agile Path"></div>
+
+    <div class="unit-list-header">
+        <h2>Active Roster</h2>
+    </div>
+
+    <div class="unit-list">
+
+        <!-- OFFICER -->
+        <div class="unit-row t-officer" data-evo-id="chieftain">
+            <div class="portrait-container">
+                <img src="../../img/kharos_chieftain_m_portrait.jpg" alt="Chieftain M">
+                <img src="../../img/kharos_chieftain_f_portrait.jpg" alt="Chieftain F" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Chieftain</h3>
+                <div class="unit-tier">Classification: <span class="color-officer">Officer</span></div>
+                <p class="unit-desc">Handpicked by the Warchief, these mighty warriors command their groups with an iron fist. They wield massive axes and intimidate enemies with their mere presence.</p>
+            </div>
+            <div class="unit-action">
+                <a href="kharos_chieftain.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+        
+        <!-- TIER 1 -->
+        <div class="unit-row t-1" data-evo-id="thug" data-evo-to="basher">
+            <div class="portrait-container">
+                <img src="../../img/kharos_thug_m_portrait.jpg" alt="Thug M">
+                <img src="../../img/kharos_thug_f_portrait.jpg" alt="Thug F" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Thug</h3>
+                <div class="unit-tier">Classification: <span class="color-t1">Tier I</span> , Brute Path</div>
+                <p class="unit-desc">The basic warrior who prefers brawn over brains. These bulky individuals use big, rudimentary clubs to mercilessly batter their foes.</p>
+            </div>
+            <div class="unit-action">
+                <a href="kharos_thug.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-1" data-evo-id="fighter" data-evo-to="raider">
+            <div class="portrait-container">
+                <img src="../../img/kharos_fighter_m_portrait.jpg" alt="Fighter M">
+                <img src="../../img/kharos_fighter_f_portrait.jpg" alt="Fighter F" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Fighter</h3>
+                <div class="unit-tier">Classification: <span class="color-t1">Tier I</span> , Agile Path</div>
+                <p class="unit-desc">Warriors who prefer an agile combat style. While not as tough as Thugs, they are much faster, making them perfect for quick, overwhelming alpha strikes.</p>
+            </div>
+            <div class="unit-action">
+                <a href="kharos_fighter.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <!-- TIER 2 -->
+        <div class="unit-row t-2" data-evo-id="basher" data-evo-to="mauler warrior">
+            <div class="portrait-container">
+                <img src="../../img/kharos_basher_m_portrait.jpg" alt="Basher M">
+                <img src="../../img/kharos_basher_f_portrait.jpg" alt="Basher F" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Basher</h3>
+                <div class="unit-tier">Classification: <span class="color-t2">Tier II</span> , Brute Path</div>
+                <p class="unit-desc">Thugs who have survived long enough to gain experience. They wield refined, heavier clubs and are protected by better armor.</p>
+            </div>
+            <div class="unit-action">
+                <a href="kharos_basher.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-2" data-evo-id="raider" data-evo-to="ambusher rager">
+            <div class="portrait-container">
+                <img src="../../img/kharos_raider_m_portrait.jpg" alt="Raider M">
+                <img src="../../img/kharos_raider_f_portrait.jpg" alt="Raider F" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Raider</h3>
+                <div class="unit-tier">Classification: <span class="color-t2">Tier II</span> , Agile Path</div>
+                <p class="unit-desc">Veteran Fighters who have learned dirty tricks on the battlefield, integrating debilitating low blows into their rapid strikes.</p>
+            </div>
+            <div class="unit-action">
+                <a href="kharos_raider.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <!-- TIER 3 -->
+        <div class="unit-row t-3" data-evo-id="mauler" data-evo-to="destroyer">
+            <div class="portrait-container">
+                <img src="../../img/kharos_mauler_m_portrait.jpg" alt="Mauler M">
+                <img src="../../img/kharos_mauler_f_portrait.jpg" alt="Mauler F" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Mauler</h3>
+                <div class="unit-tier">Classification: <span class="color-t3">Tier III</span> , Brute Path</div>
+                <p class="unit-desc">Bashers specialized in pure destruction. They wield massive warhammers to crush enemy bones and bypass heavy armor entirely.</p>
+            </div>
+            <div class="unit-action">
+                <a href="kharos_mauler.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-3" data-evo-id="warrior" data-evo-to="champion">
+            <div class="portrait-container">
+                <img src="../../img/kharos_warrior_m_portrait.jpg" alt="Warrior M">
+                <img src="../../img/kharos_warrior_f_portrait.jpg" alt="Warrior F" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Warrior</h3>
+                <div class="unit-tier">Classification: <span class="color-t3">Tier III</span> , Brute Path</div>
+                <p class="unit-desc">Bashers who adopt a slightly more defensive approach. Wielding greataxes, they are proficient at absorbing the blood they spill to heal their own wounds.</p>
+            </div>
+            <div class="unit-action">
+                <a href="kharos_warrior.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-3" data-evo-id="ambusher" data-evo-to="assassin">
+            <div class="portrait-container">
+                <img src="../../img/kharos_ambusher_m_portrait.jpg" alt="Ambusher M">
+                <img src="../../img/kharos_ambusher_f_portrait.jpg" alt="Ambusher F" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Ambusher</h3>
+                <div class="unit-tier">Classification: <span class="color-t3">Tier III</span> , Agile Path</div>
+                <p class="unit-desc">Raiders who prefer to strike from the shadows. While not highly resilient, they possess the uncanny ability to hide and bleed their targets dry.</p>
+            </div>
+            <div class="unit-action">
+                <a href="kharos_ambusher.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-3" data-evo-id="rager" data-evo-to="berserker">
+            <div class="portrait-container">
+                <img src="../../img/kharos_rager_m_portrait.jpg" alt="Rager M">
+                <img src="../../img/kharos_rager_f_portrait.jpg" alt="Rager F" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Rager</h3>
+                <div class="unit-tier">Classification: <span class="color-t3">Tier III</span> , Agile Path</div>
+                <p class="unit-desc">Raiders who embrace their inner fury. Their durability is low, but their physical strength increases drastically the closer they are to death.</p>
+            </div>
+            <div class="unit-action">
+                <a href="kharos_rager.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <!-- TIER 4 -->
+        <div class="unit-row t-4" data-evo-id="destroyer">
+            <div class="portrait-container">
+                <img src="../../img/kharos_destroyer_m_portrait.jpg" alt="Destroyer M">
+                <img src="../../img/kharos_destroyer_f_portrait.jpg" alt="Destroyer F" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Destroyer</h3>
+                <div class="unit-tier">Classification: <span class="color-t4">Tier IV</span> , Brute Path</div>
+                <p class="unit-desc">Maulers who have mastered the way of the greathammer. These towering hulks effortlessly crush armor, turning enemy defenses into extra damage.</p>
+            </div>
+            <div class="unit-action">
+                <a href="kharos_destroyer.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-4" data-evo-id="champion">
+            <div class="portrait-container">
+                <img src="../../img/kharos_champion_m_portrait.jpg" alt="Champion M">
+                <img src="../../img/kharos_champion_f_portrait.jpg" alt="Champion F" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Champion</h3>
+                <div class="unit-tier">Classification: <span class="color-t4">Tier IV</span> , Brute Path</div>
+                <p class="unit-desc">Expert Warriors who have reached the absolute peak of offense and defense, thriving on the frontlines through sheer bloodlust and self-healing.</p>
+            </div>
+            <div class="unit-action">
+                <a href="kharos_champion.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-4" data-evo-id="assassin">
+            <div class="portrait-container">
+                <img src="../../img/kharos_assassin_m_portrait.jpg" alt="Assassin M">
+                <img src="../../img/kharos_assassin_f_portrait.jpg" alt="Assassin F" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Assassin</h3>
+                <div class="unit-tier">Classification: <span class="color-t4">Tier IV</span> , Agile Path</div>
+                <p class="unit-desc">Ambushers who have perfected the art of stealth. They begin battles unseen and specialize in delivering fatal, bleeding strikes to vulnerable targets.</p>
+            </div>
+            <div class="unit-action">
+                <a href="kharos_assassin.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-4" data-evo-id="berserker">
+            <div class="portrait-container">
+                <img src="../../img/kharos_berserker_m_portrait.jpg" alt="Berserker M">
+                <img src="../../img/kharos_berserker_f_portrait.jpg" alt="Berserker F" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Berserker</h3>
+                <div class="unit-tier">Classification: <span class="color-t4">Tier IV</span> , Agile Path</div>
+                <p class="unit-desc">Ragers consumed by unmatched fury. They deal an absurd, terrifying amount of damage, turning themselves into priority threats on the battlefield.</p>
+            </div>
+            <div class="unit-action">
+                <a href="kharos_berserker.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <!-- TIER 5 (CHAMPION UNIT) -->
+        <div class="unit-row t-5" data-evo-id="conqueror">
+            <div class="portrait-container">
+                <img src="../../img/kharos_conqueror_m_portrait.jpg" alt="Conqueror M">
+                <img src="../../img/kharos_conqueror_f_portrait.jpg" alt="Conqueror F" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Conqueror</h3>
+                <div class="unit-tier">Classification: <span class="color-t5">Tier V (Champion Unit)</span></div>
+                <p class="unit-desc">Chosen by fate or sheer willpower. More akin to monsters than humans, they feed on the life essence of those they slay and effortlessly shatter the very ground beneath them.</p>
+            </div>
+            <div class="unit-action">
+                <a href="kharos_conqueror.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+    </div>
+
+    <a href="../../factions/kharos_roster.html" class="back-link">← Return to Military Roster</a>
+</main>
+
+<script src="../../system/evo-tree.js"></script>
+<script src="../../system/navigation.js"></script>
+</body>
+</html>
