@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Conqueror</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Conqueror",
+  "faction": "Kharos",
+  "subtitle": "Tribe Warriors - Tier 5 (Champion)",
+  "accent": "#ffb300",
+  "bgImage": "../../img/kharos_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/kharos.html",              "label": "Kharos Dominion" },
+    { "href": "../../factions/kharos_roster.html",       "label": "Roster" },
+    { "href": "kharos_tribe_warriors.html",              "label": "Tribe Warriors" },
+    {                                                    "label": "Conqueror" }
+  ],
+
+  "combat": [
+    "../../img/kharos_conqueror_m_combat.jpg",
+    "../../img/kharos_conqueror_f_combat.jpg"
+  ],
+
+  "bio": {
+    "title": "Apex of the Horde",
+    "paragraphs": [
+      "Chosen by fate or forged through sheer, unbreakable willpower, Conquerors represent the absolute apex of the Dominion's martial prowess.",
+      "They have pushed their bodies so far beyond natural limits that they are more akin to monsters than humans. Operating as one-person armies, they sustain their relentless rampages by literally feeding on the life essence of those they slay, crushing all opposition with apocalyptic force."
+    ]
+  },
+
+  "stats": {
+    "hp": 350,
+    "atk": 125,
+    "ini": 50,
+    "arm": "20%"
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Devastating Slash",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Deals heavy <span class=\"dmg-phys\">Physical</span> damage to one enemy (melee). Has a <strong>20% chance to <span class=\"highlight-debuff\">Stun</span></strong> the target. If the target is in the backrow, the chance to stun increases to <strong>30%</strong>."
+    },
+    {
+      "type": "active",
+      "name": "Whirlwind",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "A violent spin attack that deals <span class=\"dmg-phys\">Physical</span> damage to all enemies around the unit (melee). Hits the targets multiple times, dealing <strong>50% of the unit's attack 3 times</strong>."
+    },
+    {
+      "type": "passive",
+      "name": "Relentless Soul",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "The ultimate amalgamation of tribal traits. Gains <strong>10% of their missing health</strong> as extra base attack and restores <strong>15% of any damage dealt as HP</strong>. Furthermore, all skills <strong>bypass up to 20% of the target's Armor</strong>; any bypassed armor directly increases the damage dealt by the same amount."
+    },
+    {
+      "type": "ultimate",
+      "name": "Ground Break",
+      "icon": "../../img/base_ultimate_skill.png",
+      "desc": "Shatters the earth itself. Deals massive <span class=\"dmg-phys\">Physical</span> damage to all enemies in front of the unit (melee) and guarantees a <span class=\"highlight-debuff\">Stun</span> on all hit targets for 1 turn."
+    }
+  ],
+
+  "gallery": [
+    "../../img/kharos_conqueror_extra_1.jpg",
+    "../../img/kharos_conqueror_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "kharos_tribe_warriors.html",
+    "label": "Return to Tribe Warriors"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>
