@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Bandit</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Bandit",
+  "faction": "Kharos",
+  "subtitle": "The Outsiders - Tier 2",
+  "accent": "#81c784",
+  "bgImage": "../../img/kharos_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/kharos.html",              "label": "Kharos Dominion" },
+    { "href": "../../factions/kharos_roster.html",       "label": "Roster" },
+    { "href": "kharos_outsiders.html",                   "label": "The Outsiders" },
+    {                                                    "label": "Bandit" }
+  ],
+
+  "combat": [
+    "../../img/kharos_bandit_m_combat.png",
+    "../../img/kharos_bandit_f_combat.png"
+  ],
+
+  "bio": {
+    "title": "Dirty Fighters",
+    "paragraphs": [
+      "Experienced thieves who have survived long enough to upgrade their rudimentary arsenal. Bandits utilize improved gear and have no qualms about fighting unfairly.",
+      "They heavily rely on 'dirty' tactics and underhanded methods to disorient their foes, ensuring they always have the upper hand before moving in for the kill."
+    ]
+  },
+
+  "stats": {
+    "hp": 130,
+    "atk": 40,
+    "ini": 50
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Throw Knife",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Hurls a sharpened dagger with practiced accuracy, dealing <span class=\"dmg-phys\">Physical</span> damage to one enemy (ranged)."
+    },
+    {
+      "type": "active",
+      "name": "Throw Dirt",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Throws a handful of blinding debris at the target's eyes. Applies the <span class=\"dmg-phys\">Physical</span> Debuff <span class=\"highlight-debuff\">Blinded</span> to an enemy (ranged) for <strong>3 turns</strong>. While Blinded, the target's chance to hit is lowered by <strong>50%</strong>."
+    }
+  ],
+
+  "gallery": [
+    "../../img/kharos_bandit_extra_1.jpg",
+    "../../img/kharos_bandit_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "kharos_outsiders.html",
+    "label": "Return to The Outsiders"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>
