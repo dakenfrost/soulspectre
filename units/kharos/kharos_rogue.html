@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Rogue</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Rogue",
+  "faction": "Kharos",
+  "subtitle": "The Outsiders - Officer",
+  "accent": "#e53935",
+  "bgImage": "../../img/kharos_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/kharos.html",              "label": "Kharos Dominion" },
+    { "href": "../../factions/kharos_roster.html",       "label": "Roster" },
+    { "href": "kharos_outsiders.html",                   "label": "The Outsiders" },
+    {                                                    "label": "Rogue" }
+  ],
+
+  "combat": [
+    "../../img/kharos_rogue_m_combat.png",
+    "../../img/kharos_rogue_f_combat.png"
+  ],
+
+  "bio": {
+    "title": "Masters of Guerrilla Warfare",
+    "paragraphs": [
+      "Masters of subtlety and combat, Rogues lead the Outsiders through hard-won experience and an extensive, lethal knowledge of guerrilla tactics.",
+      "While they pointedly lack heavy armor, their extreme agility makes them versatile warriors capable of striking critical blows and vanishing entirely before the enemy can even react to the ambush.<br><br><strong>Dodge Chance:</strong> 15%"
+    ]
+  },
+
+  "stats": {
+    "hp": 100,
+    "atk": 50,
+    "ini": 60,
+    "dodge": 15
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Stab",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "A quick, precise thrust dealing <span class=\"dmg-phys\">Physical</span> damage to one enemy (melee)."
+    },
+    {
+      "type": "active",
+      "name": "Retaliation",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Prepares for incoming strikes. Applies <span class=\"highlight-buff\">Retaliation</span> to self for 1 turn. If attacked by a <span class=\"dmg-phys\">Physical</span> melee attack during this time, the Rogue <strong>cancels that attack entirely</strong> and immediately strikes back at the attacker."
+    },
+    {
+      "type": "passive",
+      "name": "Subtle Insight",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Coordinates the warband's lethal methods. <span class=\"highlight-debuff\">Bleeding</span> and <span class=\"dmg-poison\">Poison</span> damage dealt by the entire group is <strong>increased by 5</strong>. Furthermore, the <strong>Dodge chance of the group is increased by 5%</strong>."
+    },
+    {
+      "type": "ultimate",
+      "name": "Vanish",
+      "icon": "../../img/base_ultimate_skill.png",
+      "desc": "Melts into the shadows. Applies <span class=\"highlight-buff\">Vanish</span> to self for 2 turns, rendering them <strong>untargetable by direct enemy skills</strong>, and instantly <strong>heals 50% of their maximum HP</strong>. While in Vanish, using <em>Stab</em> dispels the Vanish state but inflicts <span class=\"highlight-debuff\">Bleeding</span> for 1 turn equal to <strong>100% of the damage done by Stab</strong>."
+    }
+  ],
+
+  "gallery": [
+    "../../img/kharos_rogue_extra_1.jpg",
+    "../../img/kharos_rogue_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "kharos_outsiders.html",
+    "label": "Return to The Outsiders"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>
