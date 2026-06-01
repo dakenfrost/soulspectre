@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Bomber</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Bomber",
+  "faction": "Kharos",
+  "subtitle": "The Outsiders - Tier 3",
+  "accent": "#64b5f6",
+  "bgImage": "../../img/kharos_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/kharos.html",              "label": "Kharos Dominion" },
+    { "href": "../../factions/kharos_roster.html",       "label": "Roster" },
+    { "href": "kharos_outsiders.html",                   "label": "The Outsiders" },
+    {                                                    "label": "Bomber" }
+  ],
+
+  "combat": [
+    "../../img/kharos_bomber_m_combat.png",
+    "../../img/kharos_bomber_f_combat.png"
+  ],
+
+  "bio": {
+    "title": "Demolition Specialists",
+    "paragraphs": [
+      "Renegade bandits who have traded their traditional daggers for volatile explosives and rudimentary chemical concoctions.",
+      "While less subtle than their knife-wielding counterparts, they are incomparably more efficient at devastating large, clumped groups of enemies with wide-reaching blasts."
+    ]
+  },
+
+  "stats": {
+    "hp": 160,
+    "atk": 50,
+    "ini": 50
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Throw Bomb",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Throws a volatile explosive. Deals <span class=\"dmg-phys\">Physical</span> damage to one enemy (ranged) and all units positioned near the primary target."
+    },
+    {
+      "type": "active",
+      "name": "Throw Toxic Bomb",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Deploys a chemical payload. Deals <span class=\"dmg-poison\">Poison</span> damage to one enemy (ranged) and all units near them. Inflicts <span class=\"highlight-debuff\">Poison</span> for 2 turns, dealing secondary damage equal to 50% of the Bomber's attack."
+    },
+    {
+      "type": "passive",
+      "name": "Explosion Veteran",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Having spent so much time handling explosives, they have learned how to mitigate blast impacts. <strong>Takes only 25% damage</strong> from any enemy active skill that hits more than one target at a time."
+    }
+  ],
+
+  "gallery": [
+    "../../img/kharos_bomber_extra_1.jpg",
+    "../../img/kharos_bomber_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "kharos_outsiders.html",
+    "label": "Return to The Outsiders"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>
