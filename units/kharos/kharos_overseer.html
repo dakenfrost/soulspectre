@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Overseer</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Overseer",
+  "faction": "Kharos",
+  "subtitle": "The Outsiders - Tier 5 (Champion)",
+  "accent": "#ffb300",
+  "bgImage": "../../img/kharos_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/kharos.html",              "label": "Kharos Dominion" },
+    { "href": "../../factions/kharos_roster.html",       "label": "Roster" },
+    { "href": "kharos_outsiders.html",                   "label": "The Outsiders" },
+    {                                                    "label": "Overseer" }
+  ],
+
+  "combat": [
+    "../../img/kharos_overseer_m_combat.png",
+    "../../img/kharos_overseer_f_combat.png"
+  ],
+
+  "bio": {
+    "title": "Tactical Architect",
+    "paragraphs": [
+      "A veteran entrusted with the total supervision of logistics, contracts, and experimental armaments. They do not fight for glory, but for cold, calculated results.",
+      "Every bomb thrown, every drug administered, and every order given is part of a complex strategy. Their tactical experience is invaluable, making them the ultimate commanders for the Dominion's irregular forces.<br><br><strong>Immunities:</strong> Poison."
+    ]
+  },
+
+  "stats": {
+    "hp": 300,
+    "atk": 100,
+    "ini": 50
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Throw Shrapnel Bomb",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Deals <span class=\"dmg-phys\">Physical</span> damage to one enemy (ranged) and all units in the immediate area. Has a <strong>20% chance to apply <span class=\"highlight-debuff\">Bleeding</span></strong> for 1 turn, dealing secondary damage equal to 50% of the Overseer's attack."
+    },
+    {
+      "type": "active",
+      "name": "Throw Power-Drug Bomb",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Administers an potent combat cocktail. Heals an ally (ranged) and all targets near them for <strong>50% of attack</strong>. Grants the <span class=\"highlight-buff\">Drugged</span> effect (damage +50% for 2 turns). <em>Warning: When Drugged expires, inflicts <span class=\"highlight-debuff\">Abstinence</span> for 1 turn, reducing damage by 50%.</em>"
+    },
+    {
+      "type": "passive",
+      "name": "Master of Tools",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "The Overseer utilizes every advantage. <strong>Passives:</strong> When below 50% HP, heals 50% max HP (1/battle). Takes only <strong>25% damage</strong> from multi-target active skills. Accuracy increased by <strong>20%</strong>. <span class=\"highlight-debuff\">Bleeding</span> damage increased by 10."
+    },
+    {
+      "type": "ultimate",
+      "name": "Armament L-33T",
+      "icon": "../../img/base_ultimate_skill.png",
+      "desc": "Deploys a specialized experimental warhead. Deals <strong>50% Physical damage</strong> to one enemy (ranged) and all units near it. Inflicts <span class=\"highlight-debuff\">Bleeding</span> (1 turn, 50% attack) and <span class=\"highlight-debuff\">Poison</span> (1 turn, 50% attack)."
+    }
+  ],
+
+  "gallery": [
+    "../../img/kharos_overseer_extra_1.jpg",
+    "../../img/kharos_overseer_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "kharos_outsiders.html",
+    "label": "Return to The Outsiders"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>
