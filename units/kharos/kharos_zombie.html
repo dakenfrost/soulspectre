@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Zombie</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Zombie",
+  "faction": "Kharos",
+  "subtitle": "The Reapers - Tier 3",
+  "accent": "#64b5f6",
+  "bgImage": "../../img/kharos_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/kharos.html",              "label": "Kharos Dominion" },
+    { "href": "../../factions/kharos_roster.html",       "label": "Roster" },
+    { "href": "kharos_reapers.html",                     "label": "The Reapers" },
+    {                                                    "label": "Zombie" }
+  ],
+
+  "combat": [
+    "../../img/kharos_zombie_combat.jpg"
+  ],
+
+  "bio": {
+    "title": "Putrid Flesh",
+    "paragraphs": [
+      "Foregoing armor and standard equipment, these reanimated corpses are grafted with putrid, mutating skin. This necromantic modification makes them slower, but far more resilient than standard skeletons.",
+      "They function as self-sustaining meat shields on the battlefield, tearing into the living to repair their own decaying bodies.<br><br><strong>Immunities:</strong> Soul, Mind, Poison."
+    ]
+  },
+
+  "stats": {
+    "hp": 235,
+    "atk": 60,
+    "ini": 40
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Assault",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Throws their putrid mass forward, dealing <span class=\"dmg-phys\">Physical</span> damage to one enemy (melee)."
+    },
+    {
+      "type": "active",
+      "name": "Bite",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Tears into the target, dealing <span class=\"dmg-phys\">Physical</span> damage to one enemy (melee) and instantly <strong>healing the Zombie for 100% of the damage dealt</strong>."
+    },
+    {
+      "type": "passive",
+      "name": "Regeneration",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Their grafted skin constantly knits itself back together. Passively <strong>restores 10% of max HP each turn</strong>."
+    }
+  ],
+
+  "gallery": [
+    "../../img/kharos_zombie_extra_1.jpg",
+    "../../img/kharos_zombie_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "kharos_reapers.html",
+    "label": "Return to The Reapers"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>
