@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Basher</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Basher",
+  "faction": "Kharos",
+  "subtitle": "Tribe Warriors - Tier 2",
+  "accent": "#81c784",
+  "bgImage": "../../img/kharos_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/kharos.html",              "label": "Kharos Dominion" },
+    { "href": "../../factions/kharos_roster.html",       "label": "Roster" },
+    { "href": "kharos_tribe_warriors.html",              "label": "Tribe Warriors" },
+    {                                                    "label": "Basher" }
+  ],
+
+  "combat": [
+    "../../img/kharos_basher_m_combat.jpg"
+  ],
+
+  "bio": {
+    "title": "Refined Brutality",
+    "paragraphs": [
+      "Thugs who survive the chaotic skirmishes of the Dominion long enough to gain true combat experience evolve into Bashers.",
+      "Casting aside their rudimentary weapons, they arm themselves with heavier, more refined clubs and superior armor. They are the hardened core of the tribal infantry, capable of delivering crushing blows that easily shatter enemy defenses."
+    ]
+  },
+
+  "stats": {
+    "hp": 170,
+    "atk": 60,
+    "ini": 40
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Smash",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Deals <span class=\"dmg-phys\">Physical</span> damage to one enemy (melee)."
+    },
+    {
+      "type": "active",
+      "name": "Heavy Blow",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "A devastating swing that deals <span class=\"dmg-phys\">Physical</span> damage equal to <strong>150% of their attack</strong> to one enemy (melee)."
+    }
+  ],
+
+  "gallery": [
+    "../../img/kharos_basher_extra_1.jpg",
+    "../../img/kharos_basher_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "kharos_tribe_warriors.html",
+    "label": "Return to Tribe Warriors"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>
