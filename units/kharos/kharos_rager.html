@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Rager</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Rager",
+  "faction": "Kharos",
+  "subtitle": "Tribe Warriors - Tier 3",
+  "accent": "#64b5f6",
+  "bgImage": "../../img/kharos_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/kharos.html",              "label": "Kharos Dominion" },
+    { "href": "../../factions/kharos_roster.html",       "label": "Roster" },
+    { "href": "kharos_tribe_warriors.html",              "label": "Tribe Warriors" },
+    {                                                    "label": "Rager" }
+  ],
+
+  "combat": [
+    "../../img/kharos_rager_f_combat.jpg"
+  ],
+
+  "bio": {
+    "title": "Embrace the Fury",
+    "paragraphs": [
+      "Raiders who fully embrace their raw, untamed strength and forego all defensive tactics in favor of a full-scale offensive become Ragers.",
+      "While their physical durability remains alarmingly low for frontline fighters, their sheer destructive power scales directly with their pain. Propelled by adrenaline and bloodlust, the closer they are to death, the more terrifying and relentless their strikes become."
+    ]
+  },
+
+  "stats": {
+    "hp": 180,
+    "atk": 40,
+    "ini": 60
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Slash",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Deals <span class=\"dmg-phys\">Physical</span> damage to one enemy (melee) <strong>twice</strong> in rapid succession."
+    },
+    {
+      "type": "active",
+      "name": "Frenzy",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Pushes the body beyond its limits to increase attack power by <strong>30% for 2 turns</strong>. Upon activation, the Rager immediately uses their Base Skill before their current turn ends."
+    },
+    {
+      "type": "passive",
+      "name": "Rage",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Pain fuels the fire. The Rager gains <strong>10% of their missing health</strong> as extra base attack power."
+    }
+  ],
+
+  "gallery": [
+    "../../img/kharos_rager_extra_1.jpg",
+    "../../img/kharos_rager_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "kharos_tribe_warriors.html",
+    "label": "Return to Tribe Warriors"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>
