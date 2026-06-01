@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Skeleton Sniper</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Skeleton Sniper",
+  "faction": "Kharos",
+  "subtitle": "The Reapers - Tier 4",
+  "accent": "#ba68c8",
+  "bgImage": "../../img/kharos_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/kharos.html",              "label": "Kharos Dominion" },
+    { "href": "../../factions/kharos_roster.html",       "label": "Roster" },
+    { "href": "kharos_reapers.html",                     "label": "The Reapers" },
+    {                                                    "label": "Skeleton Sniper" }
+  ],
+
+  "combat": [
+    "../../img/kharos_skeleton_sniper_combat.png"
+  ],
+
+  "bio": {
+    "title": "Supernatural Precision",
+    "paragraphs": [
+      "The pinnacle of the Reapers' ranged corps, Skeleton Snipers possess a terrifying, supernatural perception that transcends mortal sight. They patiently analyze the battlefield, waiting for the perfect moment to strike enemy weak spots for massive critical damage.",
+      "Operating with lethal efficiency, there is nowhere to hide from their gaze. Evasion and camouflage are rendered useless against their magically enhanced tracking.<br><br><strong>Immunities:</strong> Soul, Mind, Bleeding, Poison."
+    ]
+  },
+
+  "stats": {
+    "hp": 150,
+    "atk": 80,
+    "ini": 60
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Bow Shot",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Fires a deadly projectile, dealing <span class=\"dmg-phys\">Physical</span> damage to one enemy (ranged)."
+    },
+    {
+      "type": "active",
+      "name": "Poison Shot",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Shoots a highly toxic arrow that deals <span class=\"dmg-phys\">Physical</span> damage (ranged) and inflicts <span class=\"highlight-debuff\">Poison</span> for 2 turns, dealing secondary damage equal to <strong>50% of their Attack</strong>."
+    },
+    {
+      "type": "passive",
+      "name": "Implacable Truesight",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Their gaze is inescapable. Entirely <strong>ignores Invisibility and <span class=\"highlight-buff\">Stealth</span></strong>. Furthermore, deals an additional <strong>+50% damage</strong> to any target currently attempting to use Invisible or Stealthed states."
+    }
+  ],
+
+  "gallery": [
+    "../../img/kharos_skeleton_sniper_extra_1.jpg",
+    "../../img/kharos_skeleton_sniper_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "kharos_reapers.html",
+    "label": "Return to The Reapers"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>
