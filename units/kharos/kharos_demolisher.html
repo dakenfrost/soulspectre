@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Demolisher</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Demolisher",
+  "faction": "Kharos",
+  "subtitle": "The Outsiders - Tier 4",
+  "accent": "#ba68c8",
+  "bgImage": "../../img/kharos_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/kharos.html",              "label": "Kharos Dominion" },
+    { "href": "../../factions/kharos_roster.html",       "label": "Roster" },
+    { "href": "kharos_outsiders.html",                   "label": "The Outsiders" },
+    {                                                    "label": "Demolisher" }
+  ],
+
+  "combat": [
+    "../../img/kharos_demolisher_m_combat.png",
+    "../../img/kharos_demolisher_f_combat.png"
+  ],
+
+  "bio": {
+    "title": "Architects of Ruin",
+    "paragraphs": [
+      "Specialists in high-yield explosives, Demolishers are the heavy artillery of the Outsiders faction.",
+      "Every piece of their gear is meticulously reinforced to resist the concussive force of the very blasts they create, allowing them to remain mobile and aggressive in the heart of the inferno they unleash."
+    ]
+  },
+
+  "stats": {
+    "hp": 200,
+    "atk": 80,
+    "ini": 50
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Throw High Explosive Bomb",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Deploys a devastating high-yield explosive. Deals <span class=\"dmg-phys\">Physical</span> damage to one enemy (ranged) and all units in the immediate area. Has a <strong>10% chance to <span class=\"highlight-debuff\">Stun</span></strong> the targets for 1 turn."
+    },
+    {
+      "type": "active",
+      "name": "Throw Venomous Bomb",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Launches a volatile, toxin-filled payload. Deals <span class=\"dmg-poison\">Poison</span> damage to one enemy (ranged) and all units near them. Inflicts <span class=\"highlight-debuff\">Poison</span> for 3 turns, dealing secondary damage equal to 50% of the Demolisher's attack."
+    },
+    {
+      "type": "passive",
+      "name": "Explosion Master",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Their reinforced armor and experience allow them to shrug off blast waves. <strong>Takes only 50% damage</strong> from any enemy active skill that hits more than one target at a time."
+    }
+  ],
+
+  "gallery": [
+    "../../img/kharos_demolisher_extra_1.jpg",
+    "../../img/kharos_demolisher_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "kharos_outsiders.html",
+    "label": "Return to The Outsiders"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>
