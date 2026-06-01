@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Chieftain</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Chieftain",
+  "faction": "Kharos",
+  "subtitle": "Tribe Warriors - Officer",
+  "accent": "#e53935",
+  "bgImage": "../../img/kharos_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/kharos.html",              "label": "Kharos Dominion" },
+    { "href": "../../factions/kharos_roster.html",       "label": "Roster" },
+    { "href": "kharos_tribe_warriors.html",              "label": "Tribe Warriors" },
+    {                                                    "label": "Chieftain" }
+  ],
+
+  "combat": [
+    "../../img/kharos_chieftain_m_combat.jpg",
+    "../../img/kharos_chieftain_f_combat.jpg"
+  ],
+
+  "bio": {
+    "title": "The Warchief's Chosen",
+    "paragraphs": [
+      "Handpicked by the Warchief themselves, these mighty warriors are entrusted with commanding the tribal groups with an iron fist.",
+      "Wielding massive axes and leading entirely by example, a Chieftain intimidates both their enemies and their own subordinates through their mere presence. They rely on fear, raw strength, and unyielding momentum to shatter any opposing battle line."
+    ]
+  },
+
+  "stats": {
+    "hp": 150,
+    "atk": 50,
+    "ini": 50
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Commanding Slash",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Slashes with their mighty axe, dealing <span class=\"dmg-phys\">Physical</span> damage to one enemy (melee). The brutal cut inflicts <span class=\"highlight-debuff\">Bleeding</span> for 1 turn, dealing secondary damage equal to <strong>50% of their attack</strong>."
+    },
+    {
+      "type": "active",
+      "name": "Warcry",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Unleashes a terrifying shout to rally the warband. All units in the group gain the <span class=\"highlight-buff\">Warcry</span> buff, which <strong>increases damage done by 10% for 2 turns</strong>."
+    },
+    {
+      "type": "passive",
+      "name": "Intimidating Presence",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "The Chieftain's sheer ferocity inspires allies and terrifies foes. Allied units in the group gain a flat <strong>+5 damage on Physical attacks</strong>. Concurrently, enemy units deal <strong>5 less Physical damage</strong> when directly attacking the Chieftain."
+    },
+    {
+      "type": "ultimate",
+      "name": "Bloodlust",
+      "icon": "../../img/base_ultimate_skill.png",
+      "desc": "Enters a state of absolute frenzy, pushing past mortal limits. For <strong>2 turns</strong>, the Chieftain gains <span class=\"highlight-buff\">+40% damage</span>, <span class=\"highlight-buff\">+10 Initiative</span>, <strong>restores 10% of any damage dealt as HP</strong>, and their <strong>HP cannot drop below 1</strong>."
+    }
+  ],
+
+  "gallery": [
+    "../../img/kharos_chieftain_extra_1.jpg",
+    "../../img/kharos_chieftain_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "kharos_tribe_warriors.html",
+    "label": "Return to Tribe Warriors"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>
