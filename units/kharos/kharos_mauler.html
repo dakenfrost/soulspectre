@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Mauler</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Mauler",
+  "faction": "Kharos",
+  "subtitle": "Tribe Warriors - Tier 3",
+  "accent": "#64b5f6",
+  "bgImage": "../../img/kharos_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/kharos.html",              "label": "Kharos Dominion" },
+    { "href": "../../factions/kharos_roster.html",       "label": "Roster" },
+    { "href": "kharos_tribe_warriors.html",              "label": "Tribe Warriors" },
+    {                                                    "label": "Mauler" }
+  ],
+
+  "combat": [
+    "../../img/kharos_mauler_m_combat.jpg"
+  ],
+
+  "bio": {
+    "title": "Unstoppable Destruction",
+    "paragraphs": [
+      "Bashers who specialize in pure, unadulterated destruction evolve into Maulers. Foregoing precision and speed for raw concussive force, they act as the wrecking balls of the Dominion's frontline.",
+      "Wielding massive warhammers, their sole purpose is to crush enemy bones and shatter heavy defenses. They are living proof that no armor in the world is thick enough to withstand the true might of Kharos."
+    ]
+  },
+
+  "stats": {
+    "hp": 220,
+    "atk": 90,
+    "ini": 40
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Heavy Smash",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Deals heavy <span class=\"dmg-phys\">Physical</span> damage to one enemy (melee). The sheer impact carries a <strong>10% chance to inflict <span class=\"highlight-debuff\">Stun</span></strong> on the target."
+    },
+    {
+      "type": "active",
+      "name": "Mortal Blow",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "A devastating overhead swing dealing <span class=\"dmg-phys\">Physical</span> damage equal to <strong>150% of their attack</strong> to one enemy (melee), with a <strong>20% chance to <span class=\"highlight-debuff\">Stun</span></strong> the target."
+    },
+    {
+      "type": "passive",
+      "name": "Crushing Strikes",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "The kinetic power of the Mauler's hammer is enough to cave in even the thickest plating. All skills <strong>bypass up to 20% of the target's Armor</strong>."
+    }
+  ],
+
+  "gallery": [
+    "../../img/kharos_mauler_extra_1.jpg",
+    "../../img/kharos_mauler_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "kharos_tribe_warriors.html",
+    "label": "Return to Tribe Warriors"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>
