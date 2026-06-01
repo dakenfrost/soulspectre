@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Berserker</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Berserker",
+  "faction": "Kharos",
+  "subtitle": "Tribe Warriors - Tier 4",
+  "accent": "#ba68c8",
+  "bgImage": "../../img/kharos_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/kharos.html",              "label": "Kharos Dominion" },
+    { "href": "../../factions/kharos_roster.html",       "label": "Roster" },
+    { "href": "kharos_tribe_warriors.html",              "label": "Tribe Warriors" },
+    {                                                    "label": "Berserker" }
+  ],
+
+  "combat": [
+    "../../img/kharos_berserker_f_combat.jpg"
+  ],
+
+  "bio": {
+    "title": "Unmatched Fury",
+    "paragraphs": [
+      "Ragers who are entirely consumed by their own unmatched fury ascend to the terrifying rank of Berserkers. Stripped of all remaining survival instincts and inhibitions, they become pure engines of destruction on the battlefield.",
+      "While their baseline durability is still dangerously low for a frontline fighter, they deal an absurd, escalating amount of damage. Propelled by blood frenzy, they turn their own grievous wounds into lethal strength, making them an absolute priority threat for any opposing army."
+    ]
+  },
+
+  "stats": {
+    "hp": 230,
+    "atk": 60,
+    "ini": 60
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Slash",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Deals <span class=\"dmg-phys\">Physical</span> damage to one enemy (melee) <strong>twice</strong> in a flurry of violent strikes."
+    },
+    {
+      "type": "active",
+      "name": "Blood Frenzy",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Pushes their physical limits to increase attack power by <strong>40% for 2 turns</strong>. Upon activation, the Berserker enters a blood-drunk state and <strong>immediately uses their Base Skill</strong> before their current turn ends."
+    },
+    {
+      "type": "passive",
+      "name": "Rage",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Agony is quickly converted into raw power. The Berserker gains <strong>10% of their missing health</strong> as extra base attack."
+    }
+  ],
+
+  "gallery": [
+    "../../img/kharos_berserker_extra_1.jpg",
+    "../../img/kharos_berserker_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "kharos_tribe_warriors.html",
+    "label": "Return to Tribe Warriors"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>
