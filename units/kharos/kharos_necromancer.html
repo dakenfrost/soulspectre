@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Necromancer</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Necromancer",
+  "faction": "Kharos",
+  "subtitle": "The Reapers - Officer",
+  "accent": "#e53935",
+  "bgImage": "../../img/kharos_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/kharos.html",              "label": "Kharos Dominion" },
+    { "href": "../../factions/kharos_roster.html",       "label": "Roster" },
+    { "href": "kharos_the_reapers.html",                 "label": "The Reapers" },
+    {                                                    "label": "Necromancer" }
+  ],
+
+  "combat": [
+    "../../img/kharos_necromancer_m_combat.jpg",
+    "../../img/kharos_necromancer_f_combat.jpg"
+  ],
+
+  "bio": {
+    "title": "Masters of the Macabre",
+    "paragraphs": [
+      "These spellcasters have fully mastered the dark arts of necromancy, allowing them to wield shadow magic and bolster their terrifying undead creations. They are highly valued within the Dominion as they provide the quickest, most ruthless means to replenish the ranks immediately after a battle.",
+      "Because they view living beings as 'too expensive and slow to grow into effective soldiers,' Necromancers tend to be extremely reclusive. They vastly prefer the cold, unquestioning company of their silent minions over the chaotic presence of the living."
+    ]
+  },
+
+  "stats": {
+    "hp": 75,
+    "atk": 30,
+    "ini": 40
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Death Nova",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Unleashes a burst of shadow, dealing <span class=\"dmg-dark\">Dark</span> damage to the entire enemy group."
+    },
+    {
+      "type": "active",
+      "name": "Death Coil",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Channels concentrated necrotic energy. Deals <span class=\"dmg-dark\">Dark</span> damage equal to <strong>200% of their attack</strong> to one enemy. Alternatively, can be cast on an allied Undead unit to <strong>heal them for 300%</strong> of the Necromancer's attack."
+    },
+    {
+      "type": "passive",
+      "name": "Necromantic Arts",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "The Necromancer's mere presence empowers the dead. All allied Undead units in the group gain a flat <strong>+5 Physical damage</strong>. Furthermore, all allied units recover <strong>5 HP</strong> every time they use a skill that deals damage."
+    },
+    {
+      "type": "ultimate",
+      "name": "Unholy Pact",
+      "icon": "../../img/base_ultimate_skill.png",
+      "desc": "A ruthless sacrifice for the greater good of the horde. <strong>Instantly kills an allied Undead unit</strong>. In exchange, the entire group gains <strong>+30% of the sacrificed unit’s Attack</strong> for 2 turns, and is <strong>healed for 30% of the sacrificed unit’s max HP</strong>."
+    }
+  ],
+
+  "gallery": [
+    "../../img/kharos_necromancer_extra_1.jpg",
+    "../../img/kharos_necromancer_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "kharos_the_reapers.html",
+    "label": "Return to The Reapers"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>
