@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Ambusher</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Ambusher",
+  "faction": "Kharos",
+  "subtitle": "Tribe Warriors - Tier 3",
+  "accent": "#64b5f6",
+  "bgImage": "../../img/kharos_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/kharos.html",              "label": "Kharos Dominion" },
+    { "href": "../../factions/kharos_roster.html",       "label": "Roster" },
+    { "href": "kharos_tribe_warriors.html",              "label": "Tribe Warriors" },
+    {                                                    "label": "Ambusher" }
+  ],
+
+  "combat": [
+    "../../img/kharos_ambusher_f_combat.jpg"
+  ],
+
+  "bio": {
+    "title": "Lethal Shadows",
+    "paragraphs": [
+      "Raiders who prefer to strike from the unseen darkness evolve into Ambushers. While they sacrifice raw physical resilience, they develop an uncanny ability to meld with the shadows on the battlefield.",
+      "Masters of surprise attacks and misdirection, they lie in wait for the perfect moment to strike. They specialize in bleeding out their prey with sudden, devastating slashes before slipping seamlessly back into the void."
+    ]
+  },
+
+  "stats": {
+    "hp": 160,
+    "atk": 75,
+    "ini": 60
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Slash",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Deals <span class=\"dmg-phys\">Physical</span> damage to one enemy (melee). If attacking from <span class=\"highlight-buff\">Stealth</span>, the unit exits Stealth and applies <span class=\"highlight-debuff\">Bleeding</span> for 1 turn, dealing damage equal to 75% of their attack."
+    },
+    {
+      "type": "active",
+      "name": "Stealth",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Grants the <span class=\"highlight-buff\">Stealth</span> buff for 2 turns. While stealthed, the Ambusher cannot be directly targeted by enemy skills and does not count as occupying their space (allowing enemy attacks to pass through to the backrow)."
+    },
+    {
+      "type": "passive",
+      "name": "Emergency Escape",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Survival instincts take over when gravely wounded. The Ambusher automatically enters <span class=\"highlight-buff\">Stealth</span> when their HP drops below 30%."
+    }
+  ],
+
+  "gallery": [
+    "../../img/kharos_ambusher_extra_1.jpg",
+    "../../img/kharos_ambusher_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "kharos_tribe_warriors.html",
+    "label": "Return to Tribe Warriors"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>
