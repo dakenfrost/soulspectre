@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Feral Druid</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Feral Druid",
+  "faction": "Kharos",
+  "subtitle": "The Boundless - Tier 3",
+  "accent": "#64b5f6",
+  "bgImage": "../../img/kharos_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/kharos.html",              "label": "Kharos Dominion" },
+    { "href": "../../factions/kharos_roster.html",       "label": "Roster" },
+    { "href": "kharos_boundless.html",                   "label": "The Boundless" },
+    {                                                    "label": "Feral Druid" }
+  ],
+
+  "combat": [
+    "../../img/kharos_feral_druid_combat.png"
+  ],
+
+  "bio": {
+    "title": "Ursine Juggernauts",
+    "paragraphs": [
+      "Experienced druids who have completely synchronized their spirits with the primeval wilderness gain the ability to physically shift into massive, hulking bears.",
+      "In this form, they sacrifice none of their ferocity while gaining immense toughness and brute strength, making them formidable frontline foes capable of breaking enemy formations and crushing armor with ease."
+    ]
+  },
+
+  "stats": {
+    "hp": 190,
+    "atk": 75,
+    "ini": 50
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Rend",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Slashes violently with heavy claws, dealing <span class=\"dmg-phys\">Physical</span> damage to one enemy (melee)."
+    },
+    {
+      "type": "active",
+      "name": "Pounce",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Throws their massive weight onto the target. Deals <span class=\"dmg-phys\">Physical</span> damage (melee) and inflicts a <span class=\"highlight-debuff\">Stun</span> for 1 turn."
+    },
+    {
+      "type": "passive",
+      "name": "Feral Strength",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Their sheer physical power causes grievous wounds. All attacks have a <strong>30% chance to inflict <span class=\"highlight-debuff\">Bleeding</span></strong> for 1 turn, which deals secondary damage equal to <strong>50% of their attack</strong>."
+    }
+  ],
+
+  "gallery": [
+    "../../img/kharos_feral_druid_extra_1.jpg",
+    "../../img/kharos_feral_druid_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "kharos_boundless.html",
+    "label": "Return to The Boundless"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>
