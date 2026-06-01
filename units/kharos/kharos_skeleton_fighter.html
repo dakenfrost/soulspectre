@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Skeleton Fighter</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Skeleton Fighter",
+  "faction": "Kharos",
+  "subtitle": "The Reapers - Tier 2",
+  "accent": "#81c784",
+  "bgImage": "../../img/kharos_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/kharos.html",              "label": "Kharos Dominion" },
+    { "href": "../../factions/kharos_roster.html",       "label": "Roster" },
+    { "href": "kharos_reapers.html",                     "label": "The Reapers" },
+    {                                                    "label": "Skeleton Fighter" }
+  ],
+
+  "combat": [
+    "../../img/kharos_skeleton_fighter_combat.jpg"
+  ],
+
+  "bio": {
+    "title": "Armored Thralls",
+    "paragraphs": [
+      "Equipped with basic gear to improve their durability on the battlefield, Skeleton Fighters represent a structural upgrade over standard undead thralls.",
+      "Though they still lack any semblance of independent thought, the addition of rusted armor and wider-reaching weapons allows them to anchor the Reapers' frontline much more effectively.<br><br><strong>Immunities:</strong> Soul, Mind, Bleeding, Poison."
+    ]
+  },
+
+  "stats": {
+    "hp": 135,
+    "atk": 50,
+    "ini": 50
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Slash",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Deals <span class=\"dmg-phys\">Physical</span> damage to one enemy (melee)."
+    },
+    {
+      "type": "active",
+      "name": "Wide Cut",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Executes a broad, sweeping strike. Deals <span class=\"dmg-phys\">Physical</span> damage to all enemies in front of the unit."
+    }
+  ],
+
+  "gallery": [
+    "../../img/kharos_skeleton_fighter_extra_1.jpg",
+    "../../img/kharos_skeleton_fighter_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "kharos_reapers.html",
+    "label": "Return to The Reapers"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>
