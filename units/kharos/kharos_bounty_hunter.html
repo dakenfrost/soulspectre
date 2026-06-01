@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Bounty Hunter</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Bounty Hunter",
+  "faction": "Kharos",
+  "subtitle": "The Outsiders - Tier 4",
+  "accent": "#ba68c8",
+  "bgImage": "../../img/kharos_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/kharos.html",              "label": "Kharos Dominion" },
+    { "href": "../../factions/kharos_roster.html",       "label": "Roster" },
+    { "href": "kharos_outsiders.html",                   "label": "The Outsiders" },
+    {                                                    "label": "Bounty Hunter" }
+  ],
+
+  "combat": [
+    "../../img/kharos_bounty_hunter_m_combat.png",
+    "../../img/kharos_bounty_hunter_f_combat.png"
+  ],
+
+  "bio": {
+    "title": "Lethal Trackers",
+    "paragraphs": [
+      "Ruthless professionals operating on the fringes of the Dominion's military structure, Bounty Hunters are absolute specialists in isolating and neutralizing single high-value targets.",
+      "Rather than engaging in drawn-out melees, they rely on specialized equipment—such as debilitating toxins and reinforced weighted nets—to safely secure or eliminate their prey with minimal risk to themselves."
+    ]
+  },
+
+  "stats": {
+    "hp": 200,
+    "atk": 80,
+    "ini": 50
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Poison Dart",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Fires a precise, coated projectile. Deals <span class=\"dmg-phys\">Physical</span> damage to one enemy (ranged) and applies <span class=\"highlight-debuff\">Poison</span> for <strong>2 turns</strong>, dealing secondary damage equal to 50% of the unit's attack."
+    },
+    {
+      "type": "active",
+      "name": "Prison Net",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Throws a heavy, magically reinforced net. Inflicts a <span class=\"highlight-debuff\">Stun</span> on the target for <strong>2 turns</strong>. This effect <strong>cannot be dispelled</strong>. <em>Note: Ineffective against Large units.</em>"
+    },
+    {
+      "type": "passive",
+      "name": "Human Hunter",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Expertise in anatomy and psychological warfare against their own kind. All damage dealt to <strong>Human</strong> targets is <strong>increased by 10</strong>."
+    }
+  ],
+
+  "gallery": [
+    "../../img/kharos_bounty_hunter_extra_1.jpg",
+    "../../img/kharos_bounty_hunter_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "kharos_outsiders.html",
+    "label": "Return to The Outsiders"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>
