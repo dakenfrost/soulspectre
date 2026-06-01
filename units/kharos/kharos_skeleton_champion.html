@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Skeleton Champion</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Skeleton Champion",
+  "faction": "Kharos",
+  "subtitle": "The Reapers - Tier 4",
+  "accent": "#ba68c8",
+  "bgImage": "../../img/kharos_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/kharos.html",              "label": "Kharos Dominion" },
+    { "href": "../../factions/kharos_roster.html",       "label": "Roster" },
+    { "href": "kharos_reapers.html",                     "label": "The Reapers" },
+    {                                                    "label": "Skeleton Champion" }
+  ],
+
+  "combat": [
+    "../../img/kharos_skeleton_champion_combat.jpg"
+  ],
+
+  "bio": {
+    "title": "Elite Undead Vanguard",
+    "paragraphs": [
+      "Skeletons that display unmatched combat prowess are elevated and outfitted with full plate gear, ascending to the rank of Skeleton Champions.",
+      "Serving as versatile and exceedingly deadly frontline fighters, they represent the apex of the Reapers' skeletal infantry, shrugging off blows that would decimate lesser units.<br><br><strong>Immunities:</strong> Soul, Mind, Bleeding, Poison."
+    ]
+  },
+
+  "stats": {
+    "hp": 320,
+    "atk": 120,
+    "ini": 50
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Focus Slash",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "A highly precise strike that deals <span class=\"dmg-phys\">Physical</span> damage to one enemy (melee). <strong>This attack cannot miss.</strong>"
+    },
+    {
+      "type": "active",
+      "name": "Wide Cut",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Executes a broad, sweeping strike. Deals <span class=\"dmg-phys\">Physical</span> damage to all enemies in front of the unit."
+    },
+    {
+      "type": "passive",
+      "name": "Tough Armor",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Equipped with thick, reinforced plating that passively <strong>reduces all incoming damage by 10</strong>."
+    }
+  ],
+
+  "gallery": [
+    "../../img/kharos_skeleton_champion_extra_1.jpg",
+    "../../img/kharos_skeleton_champion_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "kharos_reapers.html",
+    "label": "Return to The Reapers"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>
