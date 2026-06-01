@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Warrior</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Warrior",
+  "faction": "Kharos",
+  "subtitle": "Tribe Warriors - Tier 3",
+  "accent": "#64b5f6",
+  "bgImage": "../../img/kharos_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/kharos.html",              "label": "Kharos Dominion" },
+    { "href": "../../factions/kharos_roster.html",       "label": "Roster" },
+    { "href": "kharos_tribe_warriors.html",              "label": "Tribe Warriors" },
+    {                                                    "label": "Warrior" }
+  ],
+
+  "combat": [
+    "../../img/kharos_warrior_m_combat.jpg"
+  ],
+
+  "bio": {
+    "title": "Blood-Soaked Defenders",
+    "paragraphs": [
+      "Bashers who prefer a more calculated and defensive approach on the frontline evolve into Warriors. Rather than relying solely on overwhelming force, they learn to endure.",
+      "Wielding heavy greataxes, they are heavily armored and highly proficient in a brutal form of battlefield sustain. They thrive in the thick of combat, absorbing the vital energy from the blood they spill to heal their own wounds and outlast their enemies."
+    ]
+  },
+
+  "stats": {
+    "hp": 190,
+    "atk": 90,
+    "ini": 40,
+    "arm": "20%"
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Slash",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Executes a sweeping strike, dealing <span class=\"dmg-phys\">Physical</span> damage to one enemy (melee)."
+    },
+    {
+      "type": "active",
+      "name": "Second Wind",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Taps into deep reserves of stamina and sheer willpower to <strong>restore 50% of their maximum HP</strong>, keeping the Warrior firmly in the fight."
+    },
+    {
+      "type": "passive",
+      "name": "Thirst for Blood",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "The bloodshed sustains them. The Warrior passively <strong>restores 10% of any damage dealt as HP</strong>, making them incredibly difficult to take down in prolonged engagements."
+    }
+  ],
+
+  "gallery": [
+    "../../img/kharos_warrior_extra_1.jpg",
+    "../../img/kharos_warrior_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "kharos_tribe_warriors.html",
+    "label": "Return to Tribe Warriors"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>
