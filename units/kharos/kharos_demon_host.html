@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Demon Host</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Demon Host",
+  "faction": "Kharos",
+  "subtitle": "The Boundless - Tier 4",
+  "accent": "#ba68c8",
+  "bgImage": "../../img/kharos_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/kharos.html",              "label": "Kharos Dominion" },
+    { "href": "../../factions/kharos_roster.html",       "label": "Roster" },
+    { "href": "kharos_boundless.html",                   "label": "The Boundless" },
+    {                                                    "label": "Demon Host" }
+  ],
+
+  "combat": [
+    "../../img/kharos_demon_host_m_combat.png",
+    "../../img/kharos_demon_host_f_combat.png"
+  ],
+
+  "bio": {
+    "title": "Vessels of the Void",
+    "paragraphs": [
+      "The grim result when a summoned demon completely overrides and takes total control of a Possessed cultist's body.",
+      "In this final, irreversible stage of possession, the host's hair turns entirely white and the original mortal soul is completely extinguished. What remains is no longer human, but rather a pure, relentless engine of destruction directed by chaotic forces.<br><br><strong>Protections:</strong> Fire."
+    ]
+  },
+
+  "stats": {
+    "hp": 145,
+    "atk": 80,
+    "ini": 40
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Mind Blast",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Projects raw mental trauma, dealing <span class=\"dmg-mind\">Mind</span> damage to one enemy. Has a <strong>40% chance to <span class=\"highlight-debuff\">Paralyze</span></strong> the target for 1 turn."
+    },
+    {
+      "type": "active",
+      "name": "Haunt Mind",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Invades the victim's psyche. Deals <span class=\"dmg-mind\">Mind</span> damage equal to <strong>150% of their attack</strong> to one enemy, and instantly inflicts <span class=\"highlight-debuff\">Paralyze</span> on them for <strong>2 turns</strong>."
+    },
+    {
+      "type": "passive",
+      "name": "Demon Control",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "The possessing entity aggressively maintains its grip on reality. <strong>Dispels one debuff</strong> on themselves at the start of each turn. Furthermore, <strong>even if disabled by a debuff, the Demon Host can still act on their turn</strong>."
+    }
+  ],
+
+  "gallery": [
+    "../../img/kharos_demon_host_extra_1.jpg",
+    "../../img/kharos_demon_host_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "kharos_boundless.html",
+    "label": "Return to The Boundless"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>
