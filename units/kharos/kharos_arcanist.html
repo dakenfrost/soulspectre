@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Arcanist</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Arcanist",
+  "faction": "Kharos",
+  "subtitle": "The Boundless - Officer",
+  "accent": "#e53935",
+  "bgImage": "../../img/kharos_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/kharos.html",              "label": "Kharos Dominion" },
+    { "href": "../../factions/kharos_roster.html",       "label": "Roster" },
+    { "href": "kharos_boundless.html",                   "label": "The Boundless" },
+    {                                                    "label": "Arcanist" }
+  ],
+
+  "combat": [
+    "../../img/kharos_arcanist_m_combat.png",
+    "../../img/kharos_arcanist_f_combat.png"
+  ],
+
+  "bio": {
+    "title": "Scholars of the Dominion",
+    "paragraphs": [
+      "The most enlightened scholars of the Dominion, Arcanists possess vast magical knowledge. They are trained from a young age to master both the fundamentals of magic and the dangerous intricacies of extra-planar contracts.",
+      "By rigorously cleansing their minds and hearts, they become incredibly resistant to outside influences. They use their arcane arts to protect the Dominion from existential threats—and sometimes, even from its own rebellious or corrupted members.<br><br><strong>Protections:</strong> Mind."
+    ]
+  },
+
+  "stats": {
+    "hp": 75,
+    "atk": 40,
+    "ini": 40
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Arcane Shield",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Channels protective magic to grant a <span class=\"highlight-buff\">Shield</span> equal to the Arcanist's attack value to any friendly unit."
+    },
+    {
+      "type": "active",
+      "name": "Energy Manipulation",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Weaves a broad protective matrix. All units in the group gain a <span class=\"highlight-buff\">Shield</span> equal to <strong>50% of their own attack value</strong>. Additionally, perfectly <strong>dispels one debuff</strong> from each member of the group."
+    },
+    {
+      "type": "passive",
+      "name": "Keeper Protection",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "A latent magical aura protects the warband. All allied units gain <strong>+5 Shield points</strong> at the start of their turn. If an ally is below 50% HP, the ward strengthens, granting them <strong>10 Shield points</strong> instead."
+    },
+    {
+      "type": "ultimate",
+      "name": "Absolute Command",
+      "icon": "../../img/base_ultimate_skill.png",
+      "desc": "Overrides the laws of life and death through sheer magical authority. <strong>Resurrects an allied unit</strong>, returning them to the battlefield with <strong>50% of their original maximum HP</strong>."
+    }
+  ],
+
+  "gallery": [
+    "../../img/kharos_arcanist_extra_1.jpg",
+    "../../img/kharos_arcanist_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "kharos_boundless.html",
+    "label": "Return to The Boundless"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>
