@@ -1,1 +1,81 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Raider</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Raider",
+  "faction": "Kharos",
+  "subtitle": "Tribe Warriors - Tier 2",
+  "accent": "#81c784",
+  "bgImage": "../../img/kharos_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/kharos.html",              "label": "Kharos Dominion" },
+    { "href": "../../factions/kharos_roster.html",       "label": "Roster" },
+    { "href": "kharos_tribe_warriors.html",              "label": "Tribe Warriors" },
+    {                                                    "label": "Raider" }
+  ],
+
+  "combat": [
+    "../../img/kharos_raider_f_combat.png"
+  ],
+
+  "bio": {
+    "title": "Unfair Advantage",
+    "paragraphs": [
+      "Fighters who survive the brutal reality of Dominion warfare eventually evolve into Raiders. They learn quickly that honor on the battlefield is a fast track to the grave.",
+      "As veteran skirmishers, they incorporate dirty tricks and unpredictable maneuvers into their combat style. Their willingness to strike where it hurts the most makes them incredibly dangerous adversaries in close-quarters engagements."
+    ]
+  },
+
+  "stats": {
+    "hp": 130,
+    "atk": 50,
+    "ini": 60
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Slash",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Deals <span class=\"dmg-phys\">Physical</span> damage to one enemy (melee)."
+    },
+    {
+      "type": "active",
+      "name": "Low Blow",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Executes a dirty and unexpected strike. Has an <strong>80% chance to inflict <span class=\"highlight-debuff\">Stun</span></strong> on an enemy for 1 turn."
+    }
+  ],
+
+  "gallery": [
+    "../../img/kharos_raider_extra_1.jpg",
+    "../../img/kharos_raider_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "kharos_tribe_warriors.html",
+    "label": "Return to Tribe Warriors"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>
