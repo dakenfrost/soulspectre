@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Veteran</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Veteran",
+  "faction": "Kharos",
+  "subtitle": "The Outsiders - Tier 4",
+  "accent": "#ba68c8",
+  "bgImage": "../../img/kharos_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/kharos.html",              "label": "Kharos Dominion" },
+    { "href": "../../factions/kharos_roster.html",       "label": "Roster" },
+    { "href": "kharos_outsiders.html",                   "label": "The Outsiders" },
+    {                                                    "label": "Veteran" }
+  ],
+
+  "combat": [
+    "../../img/kharos_veteran_m_combat.png",
+    "../../img/kharos_veteran_f_combat.png"
+  ],
+
+  "bio": {
+    "title": "Elite Skirmishers",
+    "paragraphs": [
+      "The pinnacle of the Outsiders' conventional forces. Veterans have survived countless engagements and are outfitted with vastly superior gear compared to their lesser counterparts.",
+      "Instead of relying merely on stealth or simple tricks, they use tactical tools like Flash Bombs to actively blind groups of enemies and completely control the flow and pacing of the battlefield."
+    ]
+  },
+
+  "stats": {
+    "hp": 230,
+    "atk": 80,
+    "ini": 50
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Throw Axe",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Hurls a heavy throwing axe, dealing <span class=\"dmg-phys\">Physical</span> damage to one enemy (ranged). Has a <strong>10% chance to apply <span class=\"highlight-debuff\">Bleeding</span></strong> for 1 turn, dealing secondary damage equal to 50% of the unit's attack."
+    },
+    {
+      "type": "active",
+      "name": "Flash Bomb",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Detonates a high-intensity explosive payload. Applies the <span class=\"dmg-phys\">Physical</span> Debuff <span class=\"highlight-debuff\">Blinded</span> to <strong>all enemies in a line</strong> (ranged) for <strong>3 turns</strong>. While Blinded, the targets' chance to hit is lowered by <strong>50%</strong>."
+    },
+    {
+      "type": "passive",
+      "name": "Expertise",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Their unparalleled combat mastery guarantees devastating precision. <strong>Increases Accuracy for all skills by 20%</strong>."
+    }
+  ],
+
+  "gallery": [
+    "../../img/kharos_veteran_extra_1.jpg",
+    "../../img/kharos_veteran_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "kharos_outsiders.html",
+    "label": "Return to The Outsiders"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>
