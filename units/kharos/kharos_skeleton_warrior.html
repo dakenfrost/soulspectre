@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Skeleton Warrior</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Skeleton Warrior",
+  "faction": "Kharos",
+  "subtitle": "The Reapers - Tier 3",
+  "accent": "#64b5f6",
+  "bgImage": "../../img/kharos_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/kharos.html",              "label": "Kharos Dominion" },
+    { "href": "../../factions/kharos_roster.html",       "label": "Roster" },
+    { "href": "kharos_reapers.html",                     "label": "The Reapers" },
+    {                                                    "label": "Skeleton Warrior" }
+  ],
+
+  "combat": [
+    "../../img/kharos_skeleton_warrior_combat.jpg"
+  ],
+
+  "bio": {
+    "title": "Shadow-Forged Vanguard",
+    "paragraphs": [
+      "A step above standard fighters, Skeleton Warriors have their very bones reinforced with dark shadow energy to mitigate incoming damage.",
+      "This unnatural hardening process makes them incredibly resilient frontline troops for the Reapers, capable of withstanding heavy blows that would shatter normal undead.<br><br><strong>Immunities:</strong> Soul, Mind, Bleeding, Poison."
+    ]
+  },
+
+  "stats": {
+    "hp": 185,
+    "atk": 75,
+    "ini": 50
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Slash",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Deals <span class=\"dmg-phys\">Physical</span> damage to one enemy (melee)."
+    },
+    {
+      "type": "active",
+      "name": "Wide Cut",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Executes a broad, sweeping strike. Deals <span class=\"dmg-phys\">Physical</span> damage to all enemies in front of the unit."
+    },
+    {
+      "type": "passive",
+      "name": "Tough Bones",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Their shadow-reinforced skeletal structure passively <strong>reduces all incoming damage by 5</strong>."
+    }
+  ],
+
+  "gallery": [
+    "../../img/kharos_skeleton_warrior_extra_1.jpg",
+    "../../img/kharos_skeleton_warrior_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "kharos_reapers.html",
+    "label": "Return to The Reapers"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>
