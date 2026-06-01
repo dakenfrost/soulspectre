@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Thief</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Thief",
+  "faction": "Kharos",
+  "subtitle": "The Outsiders - Tier 1",
+  "accent": "#b0bec5",
+  "bgImage": "../../img/kharos_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/kharos.html",              "label": "Kharos Dominion" },
+    { "href": "../../factions/kharos_roster.html",       "label": "Roster" },
+    { "href": "kharos_outsiders.html",                   "label": "The Outsiders" },
+    {                                                    "label": "Thief" }
+  ],
+
+  "combat": [
+    "../../img/kharos_thief_m_combat.png",
+    "../../img/kharos_thief_f_combat.png"
+  ],
+
+  "bio": {
+    "title": "Opportunistic Skirmishers",
+    "paragraphs": [
+      "The most common operative found within the ranks of the Outsiders. These opportunists rely on speed and sleight of hand rather than brute strength.",
+      "While they are nowhere near as resilient as dedicated frontline fighters, they possess the distinct tactical advantage of striking from a safe distance with expertly balanced, sharpened throwing daggers."
+    ]
+  },
+
+  "stats": {
+    "hp": 80,
+    "atk": 20,
+    "ini": 50
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Throw Knife",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Hurls a sharpened dagger with practiced accuracy, dealing <span class=\"dmg-phys\">Physical</span> damage to one enemy (ranged)."
+    }
+  ],
+
+  "gallery": [
+    "../../img/kharos_thief_extra_1.jpg",
+    "../../img/kharos_thief_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "kharos_outsiders.html",
+    "label": "Return to The Outsiders"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>
