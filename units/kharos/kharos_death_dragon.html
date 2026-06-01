@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Death Dragon</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Death Dragon",
+  "faction": "Kharos",
+  "subtitle": "The Reapers - Tier 5 (Champion)",
+  "accent": "#ffb300",
+  "bgImage": "../../img/kharos_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/kharos.html",              "label": "Kharos Dominion" },
+    { "href": "../../factions/kharos_roster.html",       "label": "Roster" },
+    { "href": "kharos_reapers.html",                     "label": "The Reapers" },
+    {                                                    "label": "Death Dragon" }
+  ],
+
+  "combat": [
+    "../../img/kharos_death_dragon_combat.png"
+  ],
+
+  "bio": {
+    "title": "The Necromancer's Masterpiece",
+    "paragraphs": [
+      "The undisputed masterpiece of any high-ranking Necromancer’s career. This terrifying monstrosity is painstakingly constructed from the fused remnants of countless corpses and infused with an overwhelming concentration of dark power.",
+      "Striking pure terror into the hearts of even the bravest foes, it acts as a walking engine of extinction, capable of decimating entire platoons with its corrosive breath.<br><br><strong>Size:</strong> Large (Counts as 2 units)<br><strong>Immunities:</strong> Soul, Mind, Poison."
+    ]
+  },
+
+  "stats": {
+    "hp": 600,
+    "atk": 80,
+    "ini": 40
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Poison Breath",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Exhales a cloud of toxic fumes, dealing <span class=\"dmg-poison\">Poison</span> damage to the entire enemy group."
+    },
+    {
+      "type": "active",
+      "name": "Relentless Assault",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Unleashes a savage flurry of attacks. Strikes a single enemy (melee) with <strong>3 consecutive <span class=\"dmg-phys\">Physical</span> attacks</strong>."
+    },
+    {
+      "type": "passive",
+      "name": "Undead Abomination",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "A perfect synthesis of necromantic resilience. Entirely <strong>ignores Invisibility and <span class=\"highlight-buff\">Stealth</span></strong>. Passively <strong>restores 15% of max HP each turn</strong>, and its massive bulk <strong>reduces all incoming damage by 10</strong>."
+    },
+    {
+      "type": "ultimate",
+      "name": "Death Breath",
+      "icon": "../../img/base_ultimate_skill.png",
+      "desc": "Channels the deepest essence of the void. Exhales pure necrotic energy, dealing devastating <span class=\"dmg-dark\">Dark</span> damage to the entire enemy group <strong>twice</strong>."
+    }
+  ],
+
+  "gallery": [
+    "../../img/kharos_death_dragon_extra_1.jpg",
+    "../../img/kharos_death_dragon_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "kharos_reapers.html",
+    "label": "Return to The Reapers"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>
