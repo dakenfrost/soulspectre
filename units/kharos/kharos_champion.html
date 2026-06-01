@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Champion</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Champion",
+  "faction": "Kharos",
+  "subtitle": "Tribe Warriors - Tier 4",
+  "accent": "#ba68c8",
+  "bgImage": "../../img/kharos_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/kharos.html",              "label": "Kharos Dominion" },
+    { "href": "../../factions/kharos_roster.html",       "label": "Roster" },
+    { "href": "kharos_tribe_warriors.html",              "label": "Tribe Warriors" },
+    {                                                    "label": "Champion" }
+  ],
+
+  "combat": [
+    "../../img/kharos_champion_m_combat.jpg"
+  ],
+
+  "bio": {
+    "title": "The Apex of War",
+    "paragraphs": [
+      "Expert Warriors who have survived countless battles and shed rivers of blood finally ascend to the rank of Champions. They represent the absolute pinnacle of martial prowess within the tribal forces.",
+      "Having reached the perfect, terrifying balance of offense and defense, they carve through enemy lines with relentless fury, sustaining their crusade by absorbing the life essence of those they slaughter."
+    ]
+  },
+
+  "stats": {
+    "hp": 250,
+    "atk": 120,
+    "ini": 40,
+    "arm": "20%"
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Mortal Blow",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Executes a lethal strike, dealing <span class=\"dmg-phys\">Physical</span> damage to one enemy (melee)."
+    },
+    {
+      "type": "active",
+      "name": "Life Surge",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Taps into immense, primal vitality to instantly <strong>restore 75% of their maximum HP</strong>, allowing them to endure the heaviest assaults."
+    },
+    {
+      "type": "passive",
+      "name": "Blood for Blood",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "The Champion thrives in the carnage. Passively <strong>restores 15% of any damage dealt as HP</strong>."
+    }
+  ],
+
+  "gallery": [
+    "../../img/kharos_champion_extra_1.jpg",
+    "../../img/kharos_champion_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "kharos_tribe_warriors.html",
+    "label": "Return to Tribe Warriors"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>
