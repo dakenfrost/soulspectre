@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Black Demon</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Black Demon",
+  "faction": "Kharos",
+  "subtitle": "Summon - Tier 5",
+  "accent": "#ba68c8",
+  "bgImage": "../../img/kharos_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/kharos.html",              "label": "Kharos Dominion" },
+    { "href": "../../factions/kharos_roster.html",       "label": "Roster" },
+    { "href": "kharos_summon.html",                      "label": "Summons" },
+    {                                                    "label": "Black Demon" }
+  ],
+
+  "combat": [
+    "../../img/kharos_summon_black_demon_combat.png"
+  ],
+
+  "bio": {
+    "title": "Abyssal Ravager",
+    "paragraphs": [
+      "The Black Demon is a manifestation of pure, unadulterated hostility pulled from the deepest reaches of the Void. It does not exist within the physical laws of Kharos; it is a walking shadow that hungers for the light of living souls, growing more potent with every death it witnesses.",
+      "On the battlefield, it is an apex predator of carnage. It does not tactically maneuver or guard; it simply seeks the nearest source of life and obliterates it. Once it tastes blood, its presence becomes increasingly oppressive, radiating a dark energy that consumes both the battlefield and the sanity of those standing against it."
+    ]
+  },
+
+  "stats": {
+    "hp": 350,
+    "atk": 200,
+    "ini": 55,
+    "size": "2"
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Relentless Assault",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "A flurry of dark-infused strikes. Deals <span class=\"dmg-phys\">Physical Damage</span> equal to 50% of Attack to a single target (melee)."
+    },
+    {
+      "type": "active",
+      "name": "Black Nova",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Detonates the Void's essence in a wide radius. Deals <span class=\"dmg-dark\">Dark Damage</span> equal to 75% of Attack to all enemies."
+    },
+    {
+      "type": "passive",
+      "name": "Unchained Brutality",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "The carnage fuels its existence. If an enemy unit dies, this unit <span class=\"highlight-heal\">heals for 25% of its maximum Health</span> and gains a permanent <span class=\"highlight-buff\">+10% damage buff</span>."
+    }
+  ],
+
+  "gallery": [
+    "../../img/summon/kharos_summon_black_demon_gallery1.jpg",
+    "../../img/summon/kharos_summon_black_demon_gallery2.jpg",
+    "../../img/summon/kharos_summon_black_demon_gallery3.jpg"
+  ],
+
+  "backLink": {
+    "href":  "kharos_summon.html",
+    "label": "Return to Summons"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+</body>
+</html>
