@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Marksman</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Marksman",
+  "faction": "Kharos",
+  "subtitle": "Others - Tier 4",
+  "accent": "#ba68c8",
+  "bgImage": "../../img/kharos_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/kharos.html",              "label": "Kharos Dominion" },
+    { "href": "../../factions/kharos_roster.html",       "label": "Roster" },
+    { "href": "kharos_extra.html",                       "label": "Others" },
+    {                                                    "label": "Marksman" }
+  ],
+
+  "combat": [
+    "../../img/kharos_extra_marksman_combat.png"
+  ],
+
+  "bio": {
+    "title": "Lethal Trackers",
+    "paragraphs": [
+      "Marksmen represent the absolute pinnacle of ranged lethality in the Dominion. Unlike common freebooters, these elite archers have honed their deadly craft in the harshest wilderness of Kharos, learning to track, stalk, and eliminate targets from extreme distances without ever revealing their position.",
+      "Frequently contracted as high-profile assassins by rival Clan Chiefs or Cartel Corsairs, a Marksman relies on absolute focus and preternatural senses. They are trained to perceive the slightest environmental disturbances, allowing them to pierce through magical concealment and deliver a single, inescapable execution shot."
+    ]
+  },
+
+  "stats": {
+    "hp": 150,
+    "atk": 90,
+    "ini": 55
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Bow Shot",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Fires a precise arrow at the target. Deals <span class=\"dmg-phys\">Physical</span> damage to one enemy (ranged)."
+    },
+    {
+      "type": "active",
+      "name": "Hawk Shot",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Unleashes a perfectly calculated projectile that tracks the target's movements. Deals <span class=\"dmg-phys\">Physical</span> damage equal to <strong>150% of Attack</strong> to one enemy (ranged). This attack <span class=\"highlight-buff\">cannot be dodged</span>."
+    },
+    {
+      "type": "passive",
+      "name": "Sharp Senses",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Perceives the imperceptible. This unit can target enemies hidden by <span class=\"highlight-buff\">Stealth</span>, <span class=\"highlight-buff\">Vanish</span>, or any other invisible state. Attacks against such targets deal <strong>25% more damage</strong>."
+    }
+  ],
+
+  "gallery": [
+    "../../img/extra/kharos_extra_marksman_gallery1.jpg",
+    "../../img/extra/kharos_extra_marksman_gallery2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "kharos_extra.html",
+    "label": "Return to Others"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+</body>
+</html>
