@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Ursus, the White Bear</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Ursus, the White Bear",
+  "faction": "Kharos",
+  "subtitle": "Hero - Tier 3",
+  "accent": "#ef5350",
+  "bgImage": "../../img/kharos_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/kharos.html",              "label": "Kharos Dominion" },
+    { "href": "../../factions/kharos_roster.html",       "label": "Roster" },
+    { "href": "kharos_heroes.html",                      "label": "Heroes" },
+    {                                                    "label": "Ursus" }
+  ],
+
+  "combat": [
+    "../../img/hero/kharos_hero_ursus_combat.png"
+  ],
+
+  "bio": {
+    "title": "The Apex Predator",
+    "paragraphs": [
+      "A living legend among the tribal clans, Ursus is not entirely human, nor entirely beast. He is a massive, towering entity of frost-white fur and scarred muscle, embodying the raw, untamed savagery of the Dominion's frozen borders. Many tribal chieftains have attempted to tame or break him; all have failed, leaving Ursus to wander as an independent, devastating force of nature.",
+      "In battle, Ursus relies on sheer, overwhelming physical mass. His roaring presence alone is enough to shatter the psychological resolve of an entire enemy frontline. Weapons that would fell a normal warrior barely pierce his dense hide, allowing him to plow through defenses and tear his prey apart with massive, bloody swipes."
+    ]
+  },
+
+  "stats": {
+    "hp": 300,
+    "atk": 90,
+    "ini": 40
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Rending Slash",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Tears into the enemy with massive claws. Deals <span class=\"dmg-phys\">Physical Damage</span> to an enemy (melee). Has a <strong>50% chance</strong> to apply <span class=\"highlight-debuff\">Bleeding</span> for 1 turn, dealing secondary damage equal to 50% of Attack."
+    },
+    {
+      "type": "active",
+      "name": "Intimidating Shout",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Unleashes a deafening, primal roar. Deals <span class=\"dmg-mind\">Mind Damage</span> equal to <strong>50% of Attack</strong> to all enemies. Has a <strong>50% chance</strong> to apply <span class=\"highlight-debuff\">Fear</span> to the targets for 1 turn, preventing them from taking any action."
+    },
+    {
+      "type": "passive",
+      "name": "Thick Skin",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Protected by layers of dense muscle and scarred hide. Reduces all incoming damage taken by <strong>10</strong>. Ursus is completely <span class=\"highlight-buff\">immune</span> to Stun and Knockdown effects."
+    }
+  ],
+
+  "gallery": [
+    "../../img/hero/kharos_hero_ursus_gallery1.jpg",
+    "../../img/hero/kharos_hero_ursus_gallery2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "kharos_heroes.html",
+    "label": "Return to Heroes"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+</body>
+</html>
