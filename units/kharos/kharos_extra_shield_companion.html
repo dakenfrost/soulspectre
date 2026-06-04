@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Shield Companion</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Shield Companion",
+  "faction": "Kharos",
+  "subtitle": "Others - Tier 4",
+  "accent": "#ba68c8",
+  "bgImage": "../../img/kharos_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/kharos.html",              "label": "Kharos Dominion" },
+    { "href": "../../factions/kharos_roster.html",       "label": "Roster" },
+    { "href": "kharos_extra.html",                       "label": "Others" },
+    {                                                    "label": "Shield Companion" }
+  ],
+
+  "combat": [
+    "../../img/kharos_extra_shield_companion_combat.png"
+  ],
+
+  "bio": {
+    "title": "Elite Bodyguards",
+    "paragraphs": [
+      "Shield Companions are the elite bodyguards tasked with protecting the Dominion's high-ranking figures, overseers, and influential warlords. Their bodies are heavily conditioned through grueling physical regimes, allowing them to withstand punishment that would leave a standard warrior broken.",
+      "In the brutal hierarchy of Kharos, their role is paramount—they are the wall that ensures their charge survives the next ambush. They fight not for personal glory, but with the cold, unwavering devotion of a living shield, expertly neutralizing threats before they can reach those they are sworn to protect."
+    ]
+  },
+
+  "stats": {
+    "hp": 300,
+    "atk": 75,
+    "ini": 45,
+    "armor": "20%"
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Crippling Slash",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Executes a weighted strike meant to hamper the enemy. Deals <span class=\"dmg-phys\">Physical</span> damage to a target (melee). If successful, applies <span class=\"highlight-debuff\">Weakened</span> for 1 turn, reducing damage dealt by 25%."
+    },
+    {
+      "type": "active",
+      "name": "Guard",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Positions themselves as a human barricade. Applies <span class=\"highlight-buff\">Cover</span> to a friendly unit for 2 turns; all damage directed at the covered ally is transferred to this unit instead."
+    },
+    {
+      "type": "passive",
+      "name": "Bound Protector",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "An unyielding guardian. When <span class=\"highlight-buff\">Cover</span> is active, this unit gains <strong>+15% Armor</strong> and <strong>-10 Damage Taken</strong>. When not covering an ally, the <span class=\"highlight-debuff\">Weakened</span> debuff applied by <em>Crippling Slash</em> reduces enemy damage by 50% instead of 25%."
+    }
+  ],
+
+  "gallery": [
+    "../../img/extra/kharos_extra_shield_companion_gallery1.jpg",
+    "../../img/extra/kharos_extra_shield_companion_gallery2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "kharos_extra.html",
+    "label": "Return to Others"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+</body>
+</html>
