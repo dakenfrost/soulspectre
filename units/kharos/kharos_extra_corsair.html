@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Corsair</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Corsair",
+  "faction": "Kharos",
+  "subtitle": "Others - Tier 4",
+  "accent": "#ba68c8",
+  "bgImage": "../../img/kharos_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/kharos.html",              "label": "Kharos Dominion" },
+    { "href": "../../factions/kharos_roster.html",       "label": "Roster" },
+    { "href": "kharos_extra.html",                       "label": "Others" },
+    {                                                    "label": "Corsair" }
+  ],
+
+  "combat": [
+    "../../img/kharos_extra_corsair_combat.png"
+  ],
+
+  "bio": {
+    "title": "Cartel Architects",
+    "paragraphs": [
+      "Corsairs are the ruthless architects of the Dominion's sprawling black markets and crime cartels. Far from being mere thugs, they are charismatic and cunning leaders who command absolute loyalty from their subordinates through a calculated mix of fear, intimidation, and shared profit.",
+      "In combat, they prefer to orchestrate the chaos, utilizing primitive but devastating twin handguns to enforce their will. A Corsair never fights fair; they wait for their enemies to be wounded and distracted by the frontlines before delivering the executioner's shot, all while bellowing orders that drive their crew into a frenzied bloodlust."
+    ]
+  },
+
+  "stats": {
+    "hp": 140,
+    "atk": 80,
+    "ini": 60
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Double Shot",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Fires both handguns in rapid succession. Deals <span class=\"dmg-phys\">Physical</span> damage to one enemy twice, each hit dealing <strong>50% of Attack</strong> (ranged)."
+    },
+    {
+      "type": "active",
+      "name": "Rally the Boys",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Issues a commanding roar to their subordinates. Buffs the entire allied party with <span class=\"highlight-buff\">Rallied</span> for <strong>2 turns</strong>. Units with this buff deal <strong>20% more damage</strong>."
+    },
+    {
+      "type": "passive",
+      "name": "Opportunist",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Thrives on the weakness of their prey. For every <strong>25% HP</strong> the target is missing before the attack, the Corsair's total damage is increased by <strong>25%</strong>."
+    }
+  ],
+
+  "gallery": [
+    "../../img/extra/kharos_extra_corsair_gallery1.jpg",
+    "../../img/extra/kharos_extra_corsair_gallery2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "kharos_extra.html",
+    "label": "Return to Others"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+</body>
+</html>
