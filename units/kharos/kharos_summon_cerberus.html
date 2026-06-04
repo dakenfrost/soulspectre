@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Cerberus</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Cerberus",
+  "faction": "Kharos",
+  "subtitle": "Summon - Tier 3",
+  "accent": "#ff9800",
+  "bgImage": "../../img/kharos_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/kharos.html",              "label": "Kharos Dominion" },
+    { "href": "../../factions/kharos_roster.html",       "label": "Roster" },
+    { "href": "kharos_summon.html",                      "label": "Summons" },
+    {                                                    "label": "Cerberus" }
+  ],
+
+  "combat": [
+    "../../img/kharos_summon_cerberus_combat.png"
+  ],
+
+  "bio": {
+    "title": "The Gatekeeper of the Wastes",
+    "paragraphs": [
+      "A monstrosity of the Kharos borderlands, the Cerberus is a multi-headed beast of scorched fur and eternal aggression. Summoned from the deepest pits of the Dominion's volcanic heart, it serves as the ultimate perimeter defense, possessing a primal instinct that makes hiding from it impossible.",
+      "The Cerberus does not hunt in the conventional sense; it traps. With three sets of jaws constantly snapping and a breath of liquid fire, it forces any intruder into a position where escape is not an option. It is the living manifestation of the Dominion's paranoia—vigilant, lethal, and burning with unquenchable malice."
+    ]
+  },
+
+  "stats": {
+    "hp": 160,
+    "atk": 100,
+    "ini": 55,
+    "size": "2",
+    "advanced": [
+      { "label": "Immunities", "value": "Fire" }
+    ]
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Triple Bite",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "The beast strikes with all three heads simultaneously. Deals <span class=\"dmg-phys\">Physical Damage</span> equal to 50% of Attack to a single target, three times."
+    },
+    {
+      "type": "active",
+      "name": "Fire Breath",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Incinerates the area with a torrent of flame. Deals 50% of Attack as <span class=\"dmg-fire\">Fire Damage</span> to an entire enemy group."
+    },
+    {
+      "type": "passive",
+      "name": "Watchdog",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Nothing escapes the beast's senses. Can target enemies in stealth, vanish, or any invisible state, and deals <strong>300% damage</strong> to them."
+    }
+  ],
+
+  "gallery": [
+    "../../img/summon/kharos_summon_cerberus_gallery1.jpg",
+    "../../img/summon/kharos_summon_cerberus_gallery2.jpg",
+    "../../img/summon/kharos_summon_cerberus_gallery3.jpg"
+  ],
+
+  "backLink": {
+    "href":  "kharos_summon.html",
+    "label": "Return to Summons"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+</body>
+</html>
