@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Murray, the Pirate Skeleton</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Murray, the Pirate Skeleton",
+  "faction": "Kharos",
+  "subtitle": "Hero - Tier 2",
+  "accent": "#ef5350",
+  "bgImage": "../../img/kharos_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/kharos.html",              "label": "Kharos Dominion" },
+    { "href": "../../factions/kharos_roster.html",       "label": "Roster" },
+    { "href": "kharos_heroes.html",                      "label": "Heroes" },
+    {                                                    "label": "Murray" }
+  ],
+
+  "combat": [
+    "../../img/hero/kharos_hero_murray_combat.png"
+  ],
+
+  "bio": {
+    "title": "The Demonic Skull of the Seas",
+    "paragraphs": [
+      "An anomalous undead entity within the Dominion's ranks, Murray is a reanimated skeleton who retained entirely too much of his previous life's personality. Far from the mindless thralls typically raised by necromancy, he is fiercely independent, delusionally confident, and possesses an irrepressible flair for theatrical intimidation.",
+      "Lacking flesh means he is entirely immune to biological toxins and bleeding. In combat, his incessant mockery and exaggerated threats serve a dual purpose: they either infuriate the enemy into making irrational tactical errors, or they hype Murray up into a state of megalomaniacal confidence that drastically increases his destructive output."
+    ]
+  },
+
+  "stats": {
+    "hp": 180,
+    "atk": 50,
+    "ini": 50,
+    "advanced": [
+      { "label": "Immunities", "value": "Bleeding, Poison" }
+    ]
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Slash",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "A standard, aggressive cut. Deals <span class=\"dmg-phys\">Physical Damage</span> to a target (melee)."
+    },
+    {
+      "type": "active",
+      "name": "Skull Toss",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Weaponizes his own anatomy (or a spare). Deals <span class=\"dmg-phys\">Physical Damage</span> to a target (ranged)."
+    },
+    {
+      "type": "passive",
+      "name": "Chatty Pirate",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Never shuts up. At the end of his turn, Murray has a <strong>50% chance</strong> to <span class=\"highlight-debuff\">Taunt</span> a random enemy unit for 1 turn (the taunted unit must attack him with a skill, or forfeit their turn). If the taunt does not trigger, Murray instead gains <span class=\"highlight-buff\">Boosted Morale</span> for his next turn, increasing his Attack by <strong>50%</strong>."
+    }
+  ],
+
+  "gallery": [
+    "../../img/hero/kharos_hero_murray_gallery1.jpg",
+    "../../img/hero/kharos_hero_murray_gallery2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "kharos_heroes.html",
+    "label": "Return to Heroes"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+</body>
+</html>
