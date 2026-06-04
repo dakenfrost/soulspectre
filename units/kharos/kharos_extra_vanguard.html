@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Vanguard</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Vanguard",
+  "faction": "Kharos",
+  "subtitle": "Others - Tier 3",
+  "accent": "#64b5f6",
+  "bgImage": "../../img/kharos_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/kharos.html",              "label": "Kharos Dominion" },
+    { "href": "../../factions/kharos_roster.html",       "label": "Roster" },
+    { "href": "kharos_extra.html",                       "label": "Others" },
+    {                                                    "label": "Vanguard" }
+  ],
+
+  "combat": [
+    "../../img/kharos_extra_vanguard_combat.png"
+  ],
+
+  "bio": {
+    "title": "Agile Shock Troops",
+    "paragraphs": [
+      "Vanguards are veteran soldiers characterized by their extreme agility and aggressive combat style. In a Dominion that often favors heavy, brutal force, these warriors strip away cumbersome armor to maximize their speed, designed to hit fast and hard before the enemy can even react.",
+      "Masters of rapid, overwhelming offense, they press the advantage with relentless flurries of blows. A Vanguard's primary objective is not merely to defeat their opponent in a duel, but to carve through the frontlines with such blinding speed that the enemy formation collapses from the sheer shock of the assault."
+    ]
+  },
+
+  "stats": {
+    "hp": 150,
+    "atk": 60,
+    "ini": 65,
+    "dodge": "15%"
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Double Slash",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Executes a rapid twin strike. Deals <span class=\"dmg-phys\">Physical</span> damage to a target twice, each hit dealing <strong>50% of Attack</strong> (melee)."
+    },
+    {
+      "type": "active",
+      "name": "Flurry of Blows",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Unleashes a blinding sequence of attacks. Deals <span class=\"dmg-phys\">Physical</span> damage to a target at <strong>100% of Attack</strong>, followed by a second strike at <strong>50% of Attack</strong>. Has a <strong>30% chance</strong> to deliver a third strike at <strong>50% of Attack</strong>."
+    },
+    {
+      "type": "passive",
+      "name": "Nimble Frontliner",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Relies on superior footwork to evade incoming strikes. Grants an additional <strong>+10% chance to Dodge</strong> specifically against melee attacks."
+    }
+  ],
+
+  "gallery": [
+    "../../img/extra/kharos_extra_vanguard_gallery1.jpg",
+    "../../img/extra/kharos_extra_vanguard_gallery2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "kharos_extra.html",
+    "label": "Return to Others"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+</body>
+</html>
