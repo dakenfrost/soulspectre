@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Villager</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Villager",
+  "faction": "Kharos",
+  "subtitle": "Others - Tier 0",
+  "accent": "#9e9e9e",
+  "bgImage": "../../img/kharos_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/kharos.html",              "label": "Kharos Dominion" },
+    { "href": "../../factions/kharos_roster.html",       "label": "Roster" },
+    { "href": "kharos_extra.html",                       "label": "Others" },
+    {                                                    "label": "Villager" }
+  ],
+
+  "combat": [
+    "../../img/kharos_extra_villager_combat.png"
+  ],
+
+  "bio": {
+    "title": "Dominion Commoners",
+    "paragraphs": [
+      "Despite being ordinary civilians, the harsh culture of the Dominion ensures they can still hold their own in combat when their survival is on the line."
+    ]
+  },
+
+  "stats": {
+    "hp": 65,
+    "atk": 20,
+    "ini": 40
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Slash",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Executes a simple but desperate strike. Deals <span class=\"dmg-phys\">Physical</span> damage to one enemy (melee)."
+    }
+  ],
+
+  "gallery": [
+    "../../img/extra/kharos_extra_villager_gallery1.jpg",
+    "../../img/extra/kharos_extra_villager_gallery2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "kharos_extra.html",
+    "label": "Return to Others"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+</body>
+</html>
