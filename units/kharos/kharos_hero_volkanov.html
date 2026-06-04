@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Volkanov, the Legendary Smith</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Volkanov, the Legendary Smith",
+  "faction": "Kharos",
+  "subtitle": "Hero - Tier 6",
+  "accent": "#ef5350",
+  "bgImage": "../../img/kharos_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/kharos.html",              "label": "Kharos Dominion" },
+    { "href": "../../factions/kharos_roster.html",       "label": "Roster" },
+    { "href": "kharos_heroes.html",                      "label": "Heroes" },
+    {                                                    "label": "Volkanov" }
+  ],
+
+  "combat": [
+    "../../img/hero/kharos_hero_volkanov_combat.png"
+  ],
+
+  "bio": {
+    "title": "Vessel of the Dark Blade",
+    "paragraphs": [
+      "Volkanov was once the most revered blacksmith in the Dominion, dedicating his entire existence to the obsessive pursuit of forging the ultimate sword. He ultimately succeeded in his life's work, but the masterpiece was born with a malevolent sentience. Weaponizing his own boundless ambition and greed against him, the cursed blade consumed his soul entirely.",
+      "Now, Volkanov is no longer the master, but merely the physical vessel. The blade controls his body, driving him into a permanent, bloodthirsty frenzy. It hungers endlessly for souls and slaughter, wielding its former creator with terrifying, flawless precision and cutting through all conventional defenses to feast upon the life force of its victims."
+    ]
+  },
+
+  "stats": {
+    "hp": 1000,
+    "atk": 200,
+    "ini": 50,
+    "Immunities", "value": "Dark, Mind"
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Flawless Slash",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "A swing executed with impossible, unnatural perfection. Deals <span class=\"dmg-phys\">Physical Damage</span> to a target (melee). Increases the Accuracy of this attack by <strong>20%</strong>."
+    },
+    {
+      "type": "active",
+      "name": "Frenzy Assault",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "The blade forces his body into a rapid blur of motion. Attacks a target (melee) <strong>3 times</strong>, with each strike dealing <strong>50% of his Attack</strong>."
+    },
+    {
+      "type": "passive",
+      "name": "Cursed Masterpiece",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "The weapon's dark power is absolute. Volkanov is completely <span class=\"highlight-buff\">Immune to Crowd Control Effects</span>, and all of his skills <strong>completely ignore Armor and flat Damage Reduction</strong>. When he kills an enemy, he <span class=\"highlight-heal\">restores 10% of his Health</span> and gains a permanent <span class=\"highlight-buff\">Soul Eater</span> buff, increasing his Attack by <strong>10% of the slain enemy's Attack</strong>. Enemies slain by Volkanov are permanently removed from battle (cannot be revived)."
+    },
+    {
+      "type": "ultimate",
+      "name": "Unleashed Psychosis",
+      "icon": "../../img/base_ultimate_skill.png",
+      "desc": "Projects the sword's maddening hunger into the minds of the weak. Deals <span class=\"dmg-mind\">Mind Damage</span> to all enemies. Targets have a <strong>50% chance</strong> to be afflicted with the <span class=\"highlight-debuff\">Psychosis</span> debuff (Mind) for 1 turn, forcing them to attack a random target (including their own allies). Friendly targets are fully vulnerable to collateral damage from 'whole group' or 'in front' AOE skills."
+    }
+  ],
+
+  "gallery": [
+    "../../img/hero/kharos_hero_volkanov_gallery1.jpg",
+    "../../img/hero/kharos_hero_volkanov_gallery2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "kharos_heroes.html",
+    "label": "Return to Heroes"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+</body>
+</html>
