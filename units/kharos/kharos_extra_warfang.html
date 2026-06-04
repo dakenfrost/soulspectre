@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Warfang</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Warfang",
+  "faction": "Kharos",
+  "subtitle": "Others - Tier 3",
+  "accent": "#64b5f6",
+  "bgImage": "../../img/kharos_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/kharos.html",              "label": "Kharos Dominion" },
+    { "href": "../../factions/kharos_roster.html",       "label": "Roster" },
+    { "href": "kharos_extra.html",                       "label": "Others" },
+    {                                                    "label": "Warfang" }
+  ],
+
+  "combat": [
+    "../../img/kharos_extra_warfang_combat.png"
+  ],
+
+  "bio": {
+    "title": "Lethal Polearm Masters",
+    "paragraphs": [
+      "Warfangs are spearmen of exceptional prowess within the Dominion's ranks. While many tribal fighters rely on wild, brutish swings, Warfangs have mastered the discipline of distance and penetration, turning their polearms into instruments of surgical slaughter.",
+      "They strike with enough kinetic force to impale multiple targets in a single thrust, or hurl their weapons with the velocity of a ballista bolt. The jagged, cruel design of their spearheads ensures that even those who survive the initial impact are left bleeding out on the battlefield."
+    ]
+  },
+
+  "stats": {
+    "hp": 150,
+    "atk": 40,
+    "ini": 40
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Spear Stab",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Executes a powerful thrust. Deals <span class=\"dmg-phys\">Physical</span> damage to a target (melee) and to the enemy directly behind them, if possible."
+    },
+    {
+      "type": "active",
+      "name": "Spear Throw",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Hurls the spear with devastating force. Deals <span class=\"dmg-phys\">Physical</span> damage to one target equal to <strong>150% of Attack</strong> (ranged)."
+    },
+    {
+      "type": "passive",
+      "name": "Sharp Spear",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "The jagged blade tears through flesh. <em>Spear Stab</em> has a <strong>25% chance</strong> to apply <span class=\"highlight-debuff\">Bleeding</span> for 1 turn (dealing 50% of attack as secondary damage). <em>Spear Throw</em> has a <strong>50% chance</strong> to apply this effect instead."
+    }
+  ],
+
+  "gallery": [
+    "../../img/extra/kharos_extra_warfang_gallery1.jpg",
+    "../../img/extra/kharos_extra_warfang_gallery2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "kharos_extra.html",
+    "label": "Return to Others"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+</body>
+</html>
