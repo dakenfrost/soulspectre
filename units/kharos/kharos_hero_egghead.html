@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Egghead, the Mad Scientist</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Egghead, the Mad Scientist",
+  "faction": "Kharos",
+  "subtitle": "Hero - Tier 4",
+  "accent": "#ef5350",
+  "bgImage": "../../img/kharos_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/kharos.html",              "label": "Kharos Dominion" },
+    { "href": "../../factions/kharos_roster.html",       "label": "Roster" },
+    { "href": "kharos_heroes.html",                      "label": "Heroes" },
+    {                                                    "label": "Egghead" }
+  ],
+
+  "combat": [
+    "../../img/hero/kharos_hero_egghead_combat.png"
+  ],
+
+  "bio": {
+    "title": "The Volatile Alchemist",
+    "paragraphs": [
+      "Egghead is an erratic alchemist with a dangerous obsession for volatile chemicals, leading most sensible people to run at the very sight of him. Driven by a maniacal curiosity rather than any true loyalty to the Dominion, he views the battlefield merely as a live-fire testing ground for his highly unstable concoctions.",
+      "Because of his constant exposure to lethal fumes and acidic burns, his body has developed a complete immunity to toxins. In combat, his unpredictable nature makes him a terrifying wildcard; his experimental explosives and corrosive gases can obliterate enemy formations in seconds, provided his reckless methodology does not accidentally detonate the payload in his own hands first."
+    ]
+  },
+
+  "stats": {
+    "hp": 300,
+    "atk": 100,
+    "ini": 50,
+    "advanced": [
+      { "label": "Immunities", "value": "Poison" }
+    ]
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Throw Bomb",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Hurls an unstable explosive payload. Deals <span class=\"dmg-phys\">Physical Damage</span> to one enemy (ranged) and all units adjacent to them."
+    },
+    {
+      "type": "active",
+      "name": "Throw Toxic Poison",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Unleashes a cloud of highly corrosive gas. Deals <span class=\"dmg-poison\">Poison Damage</span> equal to <strong>50% of Attack</strong> to all enemies and applies <span class=\"highlight-debuff\">Poison</span> for 2 turns (dealing secondary damage equal to 25% of Attack each turn)."
+    },
+    {
+      "type": "passive",
+      "name": "Chaotic Science",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "His methodology is a statistical nightmare. Each time he uses a skill, one of the following outcomes occurs: <strong>50% chance</strong> of a standard execution; <strong>25% chance</strong> of a hyper-reaction, increasing the skill's damage by <strong>50%</strong>; <strong>25% chance</strong> of a critical backfire, causing Egghead to take damage equal to <strong>50% of his Attack</strong>."
+    }
+  ],
+
+  "gallery": [
+    "../../img/hero/kharos_hero_egghead_gallery1.jpg",
+    "../../img/hero/kharos_hero_egghead_gallery2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "kharos_heroes.html",
+    "label": "Return to Heroes"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+</body>
+</html>
