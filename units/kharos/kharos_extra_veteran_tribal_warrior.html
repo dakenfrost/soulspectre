@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Veteran Tribal Warrior</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Veteran Tribal Warrior",
+  "faction": "Kharos",
+  "subtitle": "Others - Tier 4",
+  "accent": "#ba68c8",
+  "bgImage": "../../img/kharos_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/kharos.html",              "label": "Kharos Dominion" },
+    { "href": "../../factions/kharos_roster.html",       "label": "Roster" },
+    { "href": "kharos_extra.html",                       "label": "Others" },
+    {                                                    "label": "Veteran Tribal Warrior" }
+  ],
+
+  "combat": [
+    "../../img/kharos_extra_veteran_tribal_warrior_combat.png"
+  ],
+
+  "bio": {
+    "title": "The Indomitable Elite",
+    "paragraphs": [
+      "The absolute elite of the Kharos tribal clans. These warriors have survived decades of endless warfare, natural selection, and internal purges. Their bodies are no longer just flesh and bone; they are heavily conditioned weapons forged in the crucible of the Dominion's harshest environments.",
+      "In battle, a Veteran Tribal Warrior is an unstoppable juggernaut. They have mastered the fanatic rage of their youth, tempering it into a cold, terrifying resilience. The more punishment they take, the more lethal and unyielding they become, wading through enemy lines with brutal, calculated devastation."
+    ]
+  },
+
+  "stats": {
+    "hp": 250,
+    "atk": 100,
+    "ini": 50
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Brutal Slash",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Executes a crushing melee strike. Deals <span class=\"dmg-phys\">Physical</span> damage to one enemy (melee). Has a <strong>50% chance</strong> to apply <span class=\"highlight-debuff\">Bleeding</span> for 1 turn, dealing secondary damage equal to 50% of Attack."
+    },
+    {
+      "type": "active",
+      "name": "Devastating Charge",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Crashes into the enemy with the force of a battering ram. Deals <span class=\"dmg-phys\">Physical</span> damage equal to <strong>50% of Attack</strong> to one enemy (melee) and <span class=\"highlight-debuff\">Stuns</span> them for 1 turn."
+    },
+    {
+      "type": "passive",
+      "name": "Tempered Enrage",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Converts physical trauma into absolute stopping power. For every <strong>50 Health</strong> missing, this unit gains a <span class=\"highlight-buff\">+15 Attack</span> bonus and <span class=\"highlight-buff\">10 Damage Reduction</span>."
+    }
+  ],
+
+  "gallery": [
+    "../../img/extra/kharos_extra_veteran_tribal_warrior_gallery1.jpg",
+    "../../img/extra/kharos_extra_veteran_tribal_warrior_gallery2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "kharos_extra.html",
+    "label": "Return to Others"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+</body>
+</html>
