@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Jenova, the Bandit Princess</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Jenova, the Bandit Princess",
+  "faction": "Kharos",
+  "subtitle": "Hero - Tier 2",
+  "accent": "#ef5350",
+  "bgImage": "../../img/kharos_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/kharos.html",              "label": "Kharos Dominion" },
+    { "href": "../../factions/kharos_roster.html",       "label": "Roster" },
+    { "href": "kharos_heroes.html",                      "label": "Heroes" },
+    {                                                    "label": "Jenova" }
+  ],
+
+  "combat": [
+    "../../img/hero/kharos_hero_jenova_combat.png"
+  ],
+
+  "bio": {
+    "title": "Royalty of the Wastes",
+    "paragraphs": [
+      "In the Kharos Dominion, titles of nobility are not inherited through bloodlines; they are carved out of the wilderness with violence and cunning. Jenova rules over a vast network of brigands and cutthroats, combining an aristocratic arrogance with the lethal, pragmatic street-smarts required to survive in the badlands.",
+      "She views close-quarters combat as crude and beneath her station. Instead, she dictates the flow of battle from a distance, overwhelming her adversaries with a relentless barrage of toxic blades. Her poisons are specifically distilled to paralyze and corrode, ensuring that anyone who challenges her reign dies a slow, agonizing death."
+    ]
+  },
+
+  "stats": {
+    "hp": 140,
+    "atk": 40,
+    "ini": 50
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Toss Knife",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Throws a throwing knife with lethal precision. Deals <span class=\"dmg-phys\">Physical Damage</span> to a target (ranged)."
+    },
+    {
+      "type": "active",
+      "name": "Rain of Knives",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Unleashes a coordinated barrage of blades. Deals <span class=\"dmg-phys\">Physical Damage</span> equal to <strong>50% of Attack</strong> to the entire enemy group."
+    },
+    {
+      "type": "passive",
+      "name": "Poisonous Knives",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Every blade is coated in a corrosive toxin. All of Jenova's skills have a <strong>25% chance</strong> to apply <span class=\"highlight-debuff\">Poison</span> for 2 turns. Poisoned units suffer secondary <span class=\"dmg-poison\">Poison Damage</span> equal to 50% of her Attack."
+    }
+  ],
+
+  "gallery": [
+    "../../img/hero/kharos_hero_jenova_gallery1.jpg",
+    "../../img/hero/kharos_hero_jenova_gallery2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "kharos_heroes.html",
+    "label": "Return to Heroes"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+</body>
+</html>
