@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Themis, the First Warchief</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Themis, the First Warchief",
+  "faction": "Kharos",
+  "subtitle": "Hero - Tier 7",
+  "accent": "#ef5350",
+  "bgImage": "../../img/kharos_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/kharos.html",              "label": "Kharos Dominion" },
+    { "href": "../../factions/kharos_roster.html",       "label": "Roster" },
+    { "href": "kharos_heroes.html",                      "label": "Heroes" },
+    {                                                    "label": "Themis" }
+  ],
+
+  "combat": [
+    "../../img/hero/kharos_hero_themis_combat.png"
+  ],
+
+  "bio": {
+    "title": "The Iron Unifier",
+    "paragraphs": [
+      "Themis is the foundational myth of the Kharos Dominion—the legendary conqueror and unifier who brought the entire, fractured territory under his singular iron rule. Ancient scrolls and oral traditions claim that his physical strength was so monumental that his blows could literally shatter mountain ranges, reshaping the very geography of the world.",
+      "His existence is synonymous with absolute power. He does not lead through strategy or manipulation, but through the overwhelming certainty of his presence. To stand before Themis is to witness the zenith of martial potential; he is the origin of the Dominion's philosophy that might is not just the path to order, but the only reality worth acknowledging."
+    ]
+  },
+
+  "stats": {
+    "hp": 1500,
+    "atk": 250,
+    "ini": 50
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Devastating Slash",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "A strike of cataclysmic scale. Deals <span class=\"dmg-phys\">Physical Damage</span> to all targets positioned directly in front of Themis."
+    },
+    {
+      "type": "active",
+      "name": "Roar of the Soul",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Forces enemies to confront their own insignificance. Deals <span class=\"dmg-phys\">Physical Damage</span> (50% of Attack) and <span class=\"dmg-mind\">Mind Damage</span> (50% of Attack) to all enemies. Targets are afflicted with <span class=\"highlight-debuff\">Fear</span> for 1 turn, preventing them from taking any action on their turn."
+    },
+    {
+      "type": "passive",
+      "name": "Will of Survival",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "The Warchief cannot be tamed. Themis is <span class=\"highlight-buff\">Immune to all Crowd Control effects</span>. For every 20% of his Maximum Health lost, he gains an additional <span class=\"highlight-buff\">+5% Attack</span> bonus."
+    },
+    {
+      "type": "ultimate",
+      "name": "Annihilation",
+      "icon": "../../img/base_ultimate_skill.png",
+      "desc": "The final authority. Destroys the world. The game ends immediately."
+    }
+  ],
+
+  "gallery": [
+    "../../img/hero/kharos_hero_themis_gallery1.jpg",
+    "../../img/hero/kharos_hero_themis_gallery2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "kharos_heroes.html",
+    "label": "Return to Heroes"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+</body>
+</html>
