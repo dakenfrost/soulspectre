@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Sellsword</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Sellsword",
+  "faction": "Kharos",
+  "subtitle": "Others - Tier 2",
+  "accent": "#81c784",
+  "bgImage": "../../img/kharos_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/kharos.html",              "label": "Kharos Dominion" },
+    { "href": "../../factions/kharos_roster.html",       "label": "Roster" },
+    { "href": "kharos_extra.html",                       "label": "Others" },
+    {                                                    "label": "Sellsword" }
+  ],
+
+  "combat": [
+    "../../img/kharos_extra_sellsword_combat.png"
+  ],
+
+  "bio": {
+    "title": "Pragmatic Blades for Hire",
+    "paragraphs": [
+      "Sellswords are experienced combatants and seasoned duelists who have abandoned tribal or guild allegiances in favor of raw profit. In the Dominion, where strength is the only universal law, offering lethal skills to the highest bidder is a highly lucrative and socially acceptable profession.",
+      "Unlike mindless berserkers or inexperienced initiates, Sellswords fight with cold, calculated efficiency. They rely heavily on footwork and reading their opponent's movements, preferring to bait enemies into overcommitting before delivering a punishing counter-strike."
+    ]
+  },
+
+  "stats": {
+    "hp": 120,
+    "atk": 40,
+    "ini": 55,
+    "dodge": "15%"
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Slash",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Executes a precise and measured strike. Deals <span class=\"dmg-phys\">Physical</span> damage to one enemy (melee)."
+    },
+    {
+      "type": "active",
+      "name": "Feint",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Enters a tactical <span class=\"highlight-buff\">Feint</span> stance for 1 turn, increasing <strong>Dodge by 20%</strong>. If struck by a melee attack and successfully dodges it, the Sellsword immediately executes a devastating counter-attack, dealing <span class=\"dmg-phys\">Physical</span> damage equal to <strong>200% of Attack</strong> to the attacker."
+    }
+  ],
+
+  "gallery": [
+    "../../img/extra/kharos_extra_sellsword_gallery1.jpg",
+    "../../img/extra/kharos_extra_sellsword_gallery2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "kharos_extra.html",
+    "label": "Return to Others"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+</body>
+</html>
