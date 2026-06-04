@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Tribal Warrior</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Tribal Warrior",
+  "faction": "Kharos",
+  "subtitle": "Others - Tier 2",
+  "accent": "#81c784",
+  "bgImage": "../../img/kharos_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/kharos.html",              "label": "Kharos Dominion" },
+    { "href": "../../factions/kharos_roster.html",       "label": "Roster" },
+    { "href": "kharos_extra.html",                       "label": "Others" },
+    {                                                    "label": "Tribal Warrior" }
+  ],
+
+  "combat": [
+    "../../img/kharos_extra_tribal_warrior_combat.png"
+  ],
+
+  "bio": {
+    "title": "Clan Frontliners",
+    "paragraphs": [
+      "Having survived their brutal rites of passage, these fully initiated fighters form the sturdy backbone of the Dominion's tribal warbands. They wear the scars of their initiation with pride, relying on raw physical endurance and heavy, savage weaponry to break enemy lines.",
+      "A Tribal Warrior does not flinch in the face of danger. In combat, they act as the shock vanguard, using their sheer bulk and momentum to crash into enemy shields, disrupting formations and leaving their foes disoriented and vulnerable to a swift execution."
+    ]
+  },
+
+  "stats": {
+    "hp": 150,
+    "atk": 50,
+    "ini": 50
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Slash",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Executes a brutal melee strike. Deals <span class=\"dmg-phys\">Physical</span> damage to one enemy (melee)."
+    },
+    {
+      "type": "active",
+      "name": "Charge",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Hurls their entire body weight into the opponent. Deals <span class=\"dmg-phys\">Physical</span> damage equal to <strong>25% of Attack</strong> to one enemy (melee) and <span class=\"highlight-debuff\">Stuns</span> them for 1 turn."
+    }
+  ],
+
+  "gallery": [
+    "../../img/extra/kharos_extra_tribal_warrior_gallery1.jpg",
+    "../../img/extra/kharos_extra_tribal_warrior_gallery2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "kharos_extra.html",
+    "label": "Return to Others"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+</body>
+</html>
