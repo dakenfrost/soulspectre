@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Silenia, the Grey Eminence</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Silenia, the Grey Eminence",
+  "faction": "Kharos",
+  "subtitle": "Hero - Tier 6",
+  "accent": "#ef5350",
+  "bgImage": "../../img/kharos_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/kharos.html",              "label": "Kharos Dominion" },
+    { "href": "../../factions/kharos_roster.html",       "label": "Roster" },
+    { "href": "kharos_heroes.html",                      "label": "Heroes" },
+    {                                                    "label": "Silenia" }
+  ],
+
+  "combat": [
+    "../../img/hero/kharos_hero_silenia_combat.png"
+  ],
+
+  "bio": {
+    "title": "The Warchief's Shadow",
+    "paragraphs": [
+      "In a society ruled by brute strength and overt conquest, Silenia is the invisible thread that binds the Kharos Dominion together. Her existence is an absolute secret, known exclusively to the Warchief, a select few Overseers, and highest-ranking Clan Chiefs. She is the ultimate pragmatist, orchestrating assassinations, alliances, and betrayals from the shadows to ensure the Dominion's brutal 'greater good' is served without fail.",
+      "She views living allies and enemies alike merely as tools and resources to be managed. If a pawn falls in battle before its usefulness is exhausted, Silenia simply seizes direct control of their nervous system through her dark arts, forcibly returning their corpse to the frontline. To her, death is not an excuse to stop fighting."
+    ]
+  },
+
+  "stats": {
+    "hp": 800,
+    "atk": 100,
+    "ini": 65,
+    "dodge": "10%"
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Dual Accurate Slash",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Strikes with surgical precision. Deals <span class=\"dmg-phys\">Physical Damage</span> to a target (melee) twice. This attack <strong>cannot miss</strong>."
+    },
+    {
+      "type": "active",
+      "name": "Mirror Image",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Fractures the enemy's perception. Silenia gains <strong>4 stacks</strong> of the <span class=\"highlight-buff\">Mirror Image</span> buff. Each time she is hit by an enemy skill, there is a <strong>50% chance</strong> to completely negate the incoming damage. If damage is successfully mitigated, one stack of Mirror Image is removed."
+    },
+    {
+      "type": "passive",
+      "name": "Puppet Master",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Refuses to let her pieces leave the board. If an ally is dead at the start of the turn, she applies the <span class=\"highlight-buff\">Connecting</span> buff on them for 1 turn. At the start of any turn, if an ally has the Connecting buff, it transforms into a permanent <span class=\"highlight-buff\">Puppet String</span> buff, and the ally <span class=\"highlight-heal\">revives with 25% of their Maximum Health</span>. If the unit dies again, all buffs are lost normally."
+    },
+    {
+      "type": "ultimate",
+      "name": "Army of Puppets",
+      "icon": "../../img/base_ultimate_skill.png",
+      "desc": "Seizes the battlefield. Applies <span class=\"highlight-buff\">Puppet String</span> to <strong>all</strong> dead allies, <span class=\"highlight-heal\">reviving them with 25% of their Maximum Health</span>. If a target already possesses the Puppet String buff, they instead gain <span class=\"highlight-buff\">Empowering String</span> for 2 turns, increasing their damage output by <strong>25%</strong>."
+    }
+  ],
+
+  "gallery": [
+    "../../img/hero/kharos_hero_silenia_gallery1.jpg",
+    "../../img/hero/kharos_hero_silenia_gallery2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "kharos_heroes.html",
+    "label": "Return to Heroes"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+</body>
+</html>
