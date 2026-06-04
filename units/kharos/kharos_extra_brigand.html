@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Brigand</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Brigand",
+  "faction": "Kharos",
+  "subtitle": "Others - Tier 3",
+  "accent": "#64b5f6",
+  "bgImage": "../../img/kharos_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/kharos.html",              "label": "Kharos Dominion" },
+    { "href": "../../factions/kharos_roster.html",       "label": "Roster" },
+    { "href": "kharos_extra.html",                       "label": "Others" },
+    {                                                    "label": "Brigand" }
+  ],
+
+  "combat": [
+    "../../img/kharos_extra_brigand_combat.png"
+  ],
+
+  "bio": {
+    "title": "Expert Ranged Outlaws",
+    "paragraphs": [
+      "Brigands are seasoned outlaws who have elevated ambush tactics and ranged warfare into a deadly science. Operating beyond the direct control of the Clan Chiefs, they form independent bands that strike enemy supply lines and vulnerable flanks with coordinated, lethal precision.",
+      "Armed with heavy crossbows, they are masters of exploiting the terrain to their advantage. A Brigand is trained to maintain absolute composure under fire, patiently holding their ground behind cover to line up the perfect, armor-piercing shot, ensuring maximum devastation with a single pull of the trigger."
+    ]
+  },
+
+  "stats": {
+    "hp": 110,
+    "atk": 60,
+    "ini": 60
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Crossbow Shot",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Fires a heavy bolt at the target. Deals <span class=\"dmg-phys\">Physical</span> damage to one enemy (ranged)."
+    },
+    {
+      "type": "active",
+      "name": "Steady Aim",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Focuses entirely on the target's vital points. Enters a <span class=\"highlight-buff\">Steadying</span> stance until the end of their next turn. While in this stance, the damage of <em>Crossbow Shot</em> is increased by a massive <strong>300%</strong>."
+    },
+    {
+      "type": "passive",
+      "name": "Cover Expert",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Highly adept at utilizing environmental protection. Increases <strong>Dodge by 30%</strong> specifically against <span class=\"dmg-phys\">Physical</span> ranged attacks."
+    }
+  ],
+
+  "gallery": [
+    "../../img/extra/kharos_extra_brigand_gallery1.jpg",
+    "../../img/extra/kharos_extra_brigand_gallery2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "kharos_extra.html",
+    "label": "Return to Others"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+</body>
+</html>
