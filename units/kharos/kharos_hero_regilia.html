@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Regilia, the Ultima Weapon</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Regilia, the Ultima Weapon",
+  "faction": "Kharos",
+  "subtitle": "Hero - Tier 5",
+  "accent": "#ef5350",
+  "bgImage": "../../img/kharos_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/kharos.html",              "label": "Kharos Dominion" },
+    { "href": "../../factions/kharos_roster.html",       "label": "Roster" },
+    { "href": "kharos_heroes.html",                      "label": "Heroes" },
+    {                                                    "label": "Regilia" }
+  ],
+
+  "combat": [
+    "../../img/hero/kharos_hero_regilia_combat.png"
+  ],
+
+  "bio": {
+    "title": "The Broken Knight",
+    "paragraphs": [
+      "Speculated by many to be the result of a dark experiment, the truth of Regilia's existence is a grim tragedy. Kidnapped as a child by the Valkyrion Empire, she was subjected to unspeakable violence and forced to grow up as a knight bound to their brutal service. To finalize her subjugation, she was physically 'enhanced' with experimental technology, wielding a mechanical spear capable of firing devastating beams of arcane energy.",
+      "The extreme trauma of her upbringing and the invasive cybernetics completely eradicated her capacity to feel emotions. Referred to as the 'last resort' by the few who know of her existence, Regilia no longer operates as a human being. She is the Ultima Weapon—executing absolute, catastrophic destruction without a single shred of hesitation or remorse."
+    ]
+  },
+
+  "stats": {
+    "hp": 400,
+    "atk": 125,
+    "ini": 50,
+    "armor": "20%"
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Impale",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Executes a piercing thrust with catastrophic force. Deals <span class=\"dmg-phys\">Physical Damage</span> to one enemy (melee) and <strong>50% of that damage</strong> to the enemy positioned directly behind the primary target, if one exists."
+    },
+    {
+      "type": "active",
+      "name": "Arcane Spear",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Fires a concentrated energy beam from her mechanical spear. Deals <span class=\"dmg-arcane\">Arcane Damage</span> to a target (ranged). If an enemy is defeated by this attack, the skill's cooldown is instantly <span class=\"highlight-buff\">reduced to 0</span>."
+    },
+    {
+      "type": "passive",
+      "name": "Mechanical Armor",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Integrated cybernetics maintain her operational status. At the start of her turn, Regilia <span class=\"highlight-heal\">regains 10% of her Maximum Health</span> and automatically <span class=\"highlight-buff\">removes all debuffs</span> currently affecting her."
+    },
+    {
+      "type": "ultimate",
+      "name": "Limit Break",
+      "icon": "../../img/base_ultimate_skill.png",
+      "desc": "Disengages all safety limiters to unleash her maximum output. Deals damage equal to <strong>100% of her Attack</strong> as <span class=\"dmg-arcane\">Arcane Damage</span> to all enemies. If any enemy survives the blast, the resulting system overload causes Regilia to suffer <strong>50% of her Maximum Health</strong> as <span class=\"dmg-plain\">Plain Damage</span> (this self-inflicted damage cannot be reduced or mitigated)."
+    }
+  ],
+
+  "gallery": [
+    "../../img/hero/kharos_hero_regilia_gallery1.jpg",
+    "../../img/hero/kharos_hero_regilia_gallery2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "kharos_heroes.html",
+    "label": "Return to Heroes"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+</body>
+</html>
