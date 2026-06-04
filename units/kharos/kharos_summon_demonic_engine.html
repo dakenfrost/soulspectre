@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Demonic Engine</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Demonic Engine",
+  "faction": "Kharos",
+  "subtitle": "Summon - Tier 5",
+  "accent": "#ffb300",
+  "bgImage": "../../img/kharos_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/kharos.html",              "label": "Kharos Dominion" },
+    { "href": "../../factions/kharos_roster.html",       "label": "Roster" },
+    { "href": "kharos_summon.html",                      "label": "Summons" },
+    {                                                    "label": "Demonic Engine" }
+  ],
+
+  "combat": [
+    "../../img/kharos_summon_demonic_engine_combat.png"
+  ],
+
+  "bio": {
+    "title": "The Iron Blight",
+    "paragraphs": [
+      "A terrifying fusion of twisted Kharos metallurgy and shackled abyssal entities. The Demonic Engine is not a creature in the traditional sense, but a mobile fortress of razor-sharp steel and forbidden power. Its existence is a mockery of natural law, fueled by the agonizing screams of the soul trapped within its furnace.",
+      "On the battlefield, it is an unstoppable wall of destruction. It does not think, it does not feel, and it does not waver. It simply grinds everything in its path into dust, firing thunderous ordnance from its main cannon while sweeping aside infantry with massive, mechanical blades that move with impossible speed."
+    ]
+  },
+
+  "stats": {
+    "hp": 400,
+    "atk": 120,
+    "ini": 50,
+    "armor": "30%",
+    "size": "2",
+    "immunities" : "Soul, Mind, Poison" 
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Cannon Shoot",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Fires a devastating projectile from the engine's integrated artillery. Deals <span class=\"dmg-phys\">Physical Damage</span> to one enemy (ranged)."
+    },
+    {
+      "type": "active",
+      "name": "Mechanical Cleave",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Swings massive, jagged mechanical blades in a wide arc. Deals <span class=\"dmg-phys\">Physical Damage</span> to all targets positioned directly in front of the unit."
+    },
+    {
+      "type": "passive",
+      "name": "Metal Juggernaut",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Forged for absolute dominance. Decreases all final damage taken by <strong>10</strong>. This unit is <span class=\"highlight-buff\">immune</span> to Stun and Knockdown effects."
+    }
+  ],
+
+  "gallery": [
+    "../../img/summon/kharos_summon_demonic_engine_gallery1.jpg",
+    "../../img/summon/kharos_summon_demonic_engine_gallery2.jpg",
+    "../../img/summon/kharos_summon_demonic_engine_gallery3.jpg"
+  ],
+
+  "backLink": {
+    "href":  "kharos_summon.html",
+    "label": "Return to Summons"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+</body>
+</html>
