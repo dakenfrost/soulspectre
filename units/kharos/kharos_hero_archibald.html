@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Archibald, the Arena Warrior</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Archibald, the Arena Warrior",
+  "faction": "Kharos",
+  "subtitle": "Hero - Tier 3",
+  "accent": "#ef5350",
+  "bgImage": "../../img/kharos_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/kharos.html",              "label": "Kharos Dominion" },
+    { "href": "../../factions/kharos_roster.html",       "label": "Roster" },
+    { "href": "kharos_heroes.html",                      "label": "Heroes" },
+    {                                                    "label": "Archibald" }
+  ],
+
+  "combat": [
+    "../../img/hero/kharos_hero_archibald_combat.png"
+  ],
+
+  "bio": {
+    "title": "Champion of the Blood Pits",
+    "paragraphs": [
+      "Archibald was forged in the brutal, roaring colosseums of the Dominion, where survival is the only currency that matters. Unlike those who fight for honor or rank, he fights purely to outlast the impossible odds consistently thrown at him by sadistic pit masters.",
+      "His combat style is highly defensive and opportunistic. Accustomed to fighting multiple beasts or gladiators at once, Archibald actively thrives when surrounded. He relies on a heavy shield not just to weather the storm of blows, but to fracture skulls and break the momentum of overly aggressive opponents."
+    ]
+  },
+
+  "stats": {
+    "hp": 250,
+    "atk": 75,
+    "ini": 50
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Slash",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Executes a disciplined, heavy swing. Deals <span class=\"dmg-phys\">Physical Damage</span> to a target (melee)."
+    },
+    {
+      "type": "active",
+      "name": "Shield Combo",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "A punishing one-two maneuver. Deals <span class=\"dmg-phys\">Physical Damage</span> to an enemy (melee), followed immediately by a brutal shield bash dealing <strong>50% of Attack</strong> that <span class=\"highlight-debuff\">Stuns</span> the target for 1 turn."
+    },
+    {
+      "type": "passive",
+      "name": "Unyield Gladiator",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Forged to survive the swarm. Archibald gains <strong>+5% Armor</strong> for every living enemy unit. If the enemy team outnumbers his own, he gains an additional <strong>+5% Armor</strong> and <span class=\"highlight-heal\">regains 5% of his Maximum Health</span> at the start of his turn for each surplus enemy."
+    }
+  ],
+
+  "gallery": [
+    "../../img/hero/kharos_hero_archibald_gallery1.jpg",
+    "../../img/hero/kharos_hero_archibald_gallery2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "kharos_heroes.html",
+    "label": "Return to Heroes"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+</body>
+</html>
