@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Ashali, the Silent Shadow</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Ashali, the Silent Shadow",
+  "faction": "Kharos",
+  "subtitle": "Hero - Tier 4",
+  "accent": "#ef5350",
+  "bgImage": "../../img/kharos_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/kharos.html",              "label": "Kharos Dominion" },
+    { "href": "../../factions/kharos_roster.html",       "label": "Roster" },
+    { "href": "kharos_heroes.html",                      "label": "Heroes" },
+    {                                                    "label": "Ashali" }
+  ],
+
+  "combat": [
+    "../../img/hero/kharos_hero_ashali_combat.png"
+  ],
+
+  "bio": {
+    "title": "The Unseen Executioner",
+    "paragraphs": [
+      "Ashali is a silent assassin widely considered the absolute best in the entire Dominion. In a culture defined by loud, brutal combat and legendary sagas, there are ironically no stories about her—simply because no one has ever survived an encounter to tell them.",
+      "She strikes with surgical precision, utilizing a combat style completely devoid of wasted movement. By manipulating shadows and the battlefield's chaos, she seamlessly fades in and out of the physical realm, delivering fatal, bleeding strikes to vulnerable targets before evaporating back into the darkness."
+    ]
+  },
+
+  "stats": {
+    "hp": 250,
+    "atk": 125,
+    "ini": 60
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Backstab",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "A lethal, targeted strike. Deals <span class=\"dmg-phys\">Physical Damage</span> to one enemy (melee). If attacking from <span class=\"highlight-buff\">Stealth</span>, Ashali exits Stealth and applies <span class=\"highlight-debuff\">Bleeding</span> for 1 turn, dealing secondary damage equal to <strong>75% of her Attack</strong>."
+    },
+    {
+      "type": "active",
+      "name": "Vanishing Strike",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Strikes the target and immediately blends into the surroundings. Attacks an enemy (melee), then grants herself the <span class=\"highlight-buff\">Stealth</span> buff for 2 turns. While stealthed, she cannot be directly targeted by enemy skills and does not count as occupying her space (allowing enemy attacks to bypass her and hit the backrow)."
+    },
+    {
+      "type": "passive",
+      "name": "Subtle Tactics",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "A master of positioning and evasion. Ashali begins the fight in <span class=\"highlight-buff\">Stealth</span>. Additionally, her survival instincts automatically trigger <span class=\"highlight-buff\">Stealth</span> whenever her HP drops below <strong>30%</strong>."
+    }
+  ],
+
+  "gallery": [
+    "../../img/hero/kharos_hero_ashali_gallery1.jpg",
+    "../../img/hero/kharos_hero_ashali_gallery2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "kharos_heroes.html",
+    "label": "Return to Heroes"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+</body>
+</html>
