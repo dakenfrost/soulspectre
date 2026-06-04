@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Trained Tribal Warrior</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Trained Tribal Warrior",
+  "faction": "Kharos",
+  "subtitle": "Others - Tier 3",
+  "accent": "#64b5f6",
+  "bgImage": "../../img/kharos_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/kharos.html",              "label": "Kharos Dominion" },
+    { "href": "../../factions/kharos_roster.html",       "label": "Roster" },
+    { "href": "kharos_extra.html",                       "label": "Others" },
+    {                                                    "label": "Trained Tribal Warrior" }
+  ],
+
+  "combat": [
+    "../../img/kharos_extra_trained_tribal_warrior_combat.png"
+  ],
+
+  "bio": {
+    "title": "Grizzled Veterans",
+    "paragraphs": [
+      "Grizzled veterans of the tribal clans, these warriors have survived countless skirmishes and brutal internal power struggles. Their bodies are heavily muscled and covered in ritualistic scars, standing as a testament to their unbroken, ardent will and absolute loyalty to the Dominion's philosophy of strength.",
+      "Unlike fresh initiates, a Trained Tribal Warrior understands how to weaponize their own suffering. As their blood flows and their wounds mount on the battlefield, their fighting spirit only intensifies. They enter a state of fanatical rage that turns impending death into an engine of unstoppable destruction."
+    ]
+  },
+
+  "stats": {
+    "hp": 200,
+    "atk": 75,
+    "ini": 50
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Slash",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Executes a heavy, experienced melee strike. Deals <span class=\"dmg-phys\">Physical</span> damage to one enemy (melee)."
+    },
+    {
+      "type": "active",
+      "name": "Charge",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Barrels into the enemy formation with overwhelming momentum. Deals <span class=\"dmg-phys\">Physical</span> damage equal to <strong>25% of Attack</strong> to one enemy (melee) and <span class=\"highlight-debuff\">Stuns</span> them for 1 turn."
+    },
+    {
+      "type": "passive",
+      "name": "Enrage",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Pain fuels the warrior's fury. For every <strong>50 Health</strong> missing from this unit, it gains a permanent <span class=\"highlight-buff\">+15 Attack</span> bonus during the battle."
+    }
+  ],
+
+  "gallery": [
+    "../../img/extra/kharos_extra_trained_tribal_warrior_gallery1.jpg",
+    "../../img/extra/kharos_extra_trained_tribal_warrior_gallery2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "kharos_extra.html",
+    "label": "Return to Others"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+</body>
+</html>
