@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Highwayman</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Highwayman",
+  "faction": "Kharos",
+  "subtitle": "Others - Tier 2",
+  "accent": "#81c784",
+  "bgImage": "../../img/kharos_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/kharos.html",              "label": "Kharos Dominion" },
+    { "href": "../../factions/kharos_roster.html",       "label": "Roster" },
+    { "href": "kharos_extra.html",                       "label": "Others" },
+    {                                                    "label": "Highwayman" }
+  ],
+
+  "combat": [
+    "../../img/kharos_extra_highwayman_combat.png"
+  ],
+
+  "bio": {
+    "title": "Apex Road Predators",
+    "paragraphs": [
+      "Highwaymen are the apex predators of the Dominion's trade routes. Unlike common looters, they are highly organized and patient, setting up lethal kill zones along the treacherous roads that connect Kharos settlements.",
+      "They favor heavy crossbows for their armor-piercing capabilities, often coating their bolts in toxic substances to ensure that even a grazing hit proves fatal. They strike from the shadows, prioritizing high-value targets and crippling enemy logistics before vanishing back into the wilderness."
+    ]
+  },
+
+  "stats": {
+    "hp": 80,
+    "atk": 40,
+    "ini": 60
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Crossbow Shot",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Fires a heavy bolt with deadly precision. Deals <span class=\"dmg-phys\">Physical</span> damage to one enemy (ranged)."
+    },
+    {
+      "type": "active",
+      "name": "Poisonous Arrow",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Shoots a bolt coated in lethargic toxins. Deals <span class=\"dmg-phys\">Physical</span> damage to one enemy (ranged) and applies <span class=\"highlight-debuff\">Poison</span> for <strong>2 turns</strong>, dealing secondary damage equal to 50% of the attack."
+    }
+  ],
+
+  "gallery": [
+    "../../img/extra/kharos_extra_highwayman_gallery1.jpg",
+    "../../img/extra/kharos_extra_highwayman_gallery2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "kharos_extra.html",
+    "label": "Return to Others"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+</body>
+</html>
