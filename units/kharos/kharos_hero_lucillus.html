@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Lucillus, the Half Demon</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Lucillus, the Half Demon",
+  "faction": "Kharos",
+  "subtitle": "Hero - Tier 5",
+  "accent": "#ef5350",
+  "bgImage": "../../img/kharos_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/kharos.html",              "label": "Kharos Dominion" },
+    { "href": "../../factions/kharos_roster.html",       "label": "Roster" },
+    { "href": "kharos_heroes.html",                      "label": "Heroes" },
+    {                                                    "label": "Lucillus" }
+  ],
+
+  "combat": [
+    "../../img/hero/kharos_hero_lucillus_combat.png"
+  ],
+
+  "bio": {
+    "title": "The Corrupted Warlock",
+    "paragraphs": [
+      "Lucillus is a grim testament to the absolute lengths some will go for power within the Dominion. Bound by an irreversible demonic contract, his physical mutations have transformed him into a terrifying hybrid of human and fiend, stripping away his mortality to leave only a conduit for abyssal energies.",
+      "His cursed anatomy grants him absolute immunity to infernal and void magic, alongside a terrifying regenerative factor. In combat, he wields catastrophic elemental forces, shifting seamlessly between raining fire upon enemy formations and collapsing their defenses with crushing gravitational distortions drawn directly from the Void."
+    ]
+  },
+
+  "stats": {
+    "hp": 280,
+    "atk": 80,
+    "ini": 40,
+    "immunities", "value": "Fire, Dark"
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Fire Rain",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Calls down a torrent of flames. Deals <span class=\"dmg-fire\">Fire Damage</span> to enemies in a group. Has a <strong>20% chance</strong> to apply <span class=\"highlight-debuff\">Burn</span> for 1 turn, dealing secondary damage equal to 50% of his Attack."
+    },
+    {
+      "type": "active",
+      "name": "Gravity Hole",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Warps the battlefield's physics. Deals <span class=\"dmg-dark\">Dark Damage</span> to all enemies in a group and applies <span class=\"highlight-debuff\">Slowed</span> for 2 turns, which reduces their Initiative by <strong>10</strong>."
+    },
+    {
+      "type": "passive",
+      "name": "Half Demon",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Fueled by hellish vitality. At the start of his turn, Lucillus <span class=\"highlight-heal\">restores 70 HP</span>. He is completely <span class=\"highlight-buff\">Immune to Crowd Control Effects</span>."
+    },
+    {
+      "type": "ultimate",
+      "name": "Hellfire Blast",
+      "icon": "../../img/base_ultimate_skill.png",
+      "desc": "Merges the elements of his damnation into a catastrophic explosion. Deals <strong>75% of his Attack</strong> as <span class=\"dmg-fire\">Fire Damage</span> and <strong>75% of his Attack</strong> as <span class=\"dmg-dark\">Dark Damage</span> to all enemies in a group."
+    }
+  ],
+
+  "gallery": [
+    "../../img/hero/kharos_hero_lucillus_gallery1.jpg",
+    "../../img/hero/kharos_hero_lucillus_gallery2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "kharos_heroes.html",
+    "label": "Return to Heroes"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+</body>
+</html>
