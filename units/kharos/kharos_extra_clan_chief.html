@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Clan Chief</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Clan Chief",
+  "faction": "Kharos",
+  "subtitle": "Others - Tier 5",
+  "accent": "#ffb300",
+  "bgImage": "../../img/kharos_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/kharos.html",              "label": "Kharos Dominion" },
+    { "href": "../../factions/kharos_roster.html",       "label": "Roster" },
+    { "href": "kharos_extra.html",                       "label": "Others" },
+    {                                                    "label": "Clan Chief" }
+  ],
+
+  "combat": [
+    "../../img/kharos_extra_clan_chief_combat.png"
+  ],
+
+  "bio": {
+    "title": "Warlord of the Wastes",
+    "paragraphs": [
+      "The absolute authority within their clan, the Clan Chief has risen to the top of the Dominion's brutal hierarchy by surviving every challenge, betrayal, and war that Kharos could throw at them. They are living embodiments of the rule of the fittest, possessing strength that borders on the superhuman.",
+      "To follow a Clan Chief is to follow a force of nature. In the heat of battle, they do not merely lead—they dominate. Their presence alone terrifies the weak and galvanizes their own warriors, as they carve a path through enemy lines with strikes that can shatter both shields and spirits alike."
+    ]
+  },
+
+  "stats": {
+    "hp": 800,
+    "atk": 150,
+    "ini": 50
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Rendering Slash",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "A brutal, armor-shredding strike. Deals <span class=\"dmg-phys\">Physical</span> damage to one target (melee), <span class=\"highlight-buff\">ignoring 20% of Armor</span>, and applies <span class=\"highlight-debuff\">Bleeding</span> for 1 turn (dealing 50% of Attack)."
+    },
+    {
+      "type": "active",
+      "name": "Massive Cleave",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Swings with terrifying force. Deals <span class=\"dmg-phys\">Physical</span> damage to enemies in a line directly in front of the user (AOE), with a <strong>25% chance</strong> to <span class=\"highlight-debuff\">Stun</span> targets for 1 turn."
+    },
+    {
+      "type": "passive",
+      "name": "Apex of the Clan",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "The pinnacle of combat mastery. All incoming <span class=\"dmg-phys\">Physical</span> melee damage has a <strong>25% chance</strong> to be <span class=\"highlight-buff\">Parried</span> (reducing damage to 0). This unit is completely <span class=\"highlight-buff\">Immune to Crowd Control Effects</span> (Stun, Fear, Charm, etc)."
+    },
+    {
+      "type": "ultimate",
+      "name": "Crushing Shockwave",
+      "icon": "../../img/base_ultimate_skill.png",
+      "desc": "Strikes the ground to release a catastrophic kinetic pulse. Deals <span class=\"dmg-phys\">Physical</span> damage to the entire enemy group."
+    }
+  ],
+
+  "gallery": [
+    "../../img/extra/kharos_extra_clan_chief_gallery1.jpg",
+    "../../img/extra/kharos_extra_clan_chief_gallery2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "kharos_extra.html",
+    "label": "Return to Others"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+</body>
+</html>
