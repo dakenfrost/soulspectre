@@ -12,9 +12,111 @@
             --accent-glow:  rgba(229, 57, 53, 0.5);
             --panel-bg:     rgba(15, 10, 10, 0.7);
         }
-        body { line-height: 1.8; }
-        #bg-image { background-image: url('../img/kharos_bg.jpeg'); }
-        #overlay  { background: linear-gradient(to bottom, rgba(12, 8, 8, 0.90), rgba(5, 3, 3, 0.98)); }
+        
+        body { 
+            line-height: 1.8; 
+        }
+        
+        #bg-image { 
+            background-image: url('../img/kharos_bg.jpeg'); 
+        }
+        
+        #overlay  { 
+            background: linear-gradient(to bottom, rgba(12, 8, 8, 0.90), rgba(5, 3, 3, 0.98)); 
+        }
+
+        /* SOVRASCRITTURA LAYOUT PER IMMAGINI PANORAMICHE */
+        .split-section {
+            display: flex;
+            flex-direction: column; /* Forza l'immagine sopra e il testo sotto */
+            background: var(--panel-bg);
+            border: 1px solid rgba(229, 57, 53, 0.2);
+            border-radius: 8px;
+            margin-bottom: 50px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: border-color 0.3s ease;
+        }
+
+        .split-section:hover {
+            border-color: rgba(229, 57, 53, 0.5);
+        }
+
+        .section-image {
+            width: 100%;
+            /* Imposta le proporzioni panoramiche (es. 21:9 o 2:1) */
+            aspect-ratio: 21 / 9; 
+            border-bottom: 1px solid rgba(229, 57, 53, 0.3);
+            overflow: hidden;
+        }
+
+        .section-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Assicura che l'immagine riempia lo spazio senza deformarsi */
+            display: block;
+        }
+
+        .section-text {
+            padding: 40px;
+        }
+
+        .section-text h2 {
+            color: #fff;
+            font-size: 2.2rem;
+            margin-top: 0;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        .section-text p {
+            color: #e0e0e0;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .section-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* STILIZZAZIONE DELLE CITAZIONI (QUOTE) */
+        .quote {
+            border-left: 4px solid var(--accent-color);
+            background: rgba(229, 57, 53, 0.05);
+            padding: 20px 25px;
+            margin: 30px 0;
+            font-style: italic;
+            color: #d0d0d0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .quote-author {
+            display: block;
+            margin-top: 12px;
+            font-weight: bold;
+            color: var(--accent-color);
+            font-style: normal;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: var(--accent-color);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: bold;
+            transition: text-shadow 0.3s;
+        }
+        
+        .back-link:hover {
+            text-shadow: 0 0 10px var(--accent-glow);
+        }
     </style>
 </head>
 <body>
@@ -29,9 +131,9 @@
 </header>
 
 <main>
-    <div class="split-section" style="border: none; background: rgba(15,15,15,0.5); backdrop-filter: none; box-shadow: none; margin-bottom: 30px;">
+    <div class="split-section" style="border: none; background: rgba(15,15,15,0.5); box-shadow: none; margin-bottom: 30px;">
         <div class="section-text" style="padding: 20px; text-align: center;">
-            <p style="text-align: center; margin: 0;">In this section, we explore the faction’s lore, analyzing its history, culture, and relationships with other factions.</p>
+            <p style="text-align: center; margin: 0; color: #aaa;">In this section, we explore the faction’s lore, analyzing its history, culture, and relationships with other factions.</p>
         </div>
     </div>
 
@@ -131,7 +233,9 @@
         </div>
     </div>
 
-    <a href="kharos.html" class="back-link">← Return to Kharos Overview</a>
+    <div style="text-align: center; margin-top: 40px; margin-bottom: 40px;">
+        <a href="kharos.html" class="back-link">← Return to Kharos Overview</a>
+    </div>
 </main>
 
 <script src="../system/navigation.js"></script>
