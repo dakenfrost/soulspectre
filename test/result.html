@@ -72,7 +72,7 @@
         }
 
         .faction-name {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 4px;
@@ -90,7 +90,6 @@
             padding: 0 10px;
         }
 
-        /* STRUTTURA GRAFICO COMPARATIVO */
         .chart-section {
             border-top: 1px solid var(--border-color);
             padding-top: 30px;
@@ -114,8 +113,8 @@
         }
 
         .bar-label {
-            width: 130px;
-            font-size: 0.9rem;
+            width: 170px;
+            font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 1px;
             font-weight: 600;
@@ -146,7 +145,6 @@
             color: var(--text-muted);
         }
 
-        /* PULSANTI DI NAVIGAZIONE */
         .nav-block {
             display: flex;
             gap: 15px;
@@ -192,8 +190,8 @@
                 text-align: center;
             }
             .bar-label {
-                width: 100px;
-                font-size: 0.8rem;
+                width: 120px;
+                font-size: 0.75rem;
             }
         }
     </style>
@@ -221,7 +219,6 @@
 </div>
 
 <script>
-    // Database dei testi e della lore delle fazioni per il report di output (Bilingue)
     const factionProfiles = {
         en: {
             label: "You belong to:",
@@ -229,40 +226,97 @@
             btnFaction: "Visit Faction Page",
             btnHome: "Back to Home",
             factions: {
-                K: { name: "Kharos", desc: "You don't fear conflict; for you, it is the fundamental engine of growth. Any obstacle in your path will soon regret standing in your way. You are a person of iron will, ready to get your hands dirty to seize everything life has to offer. Kharos is your domain: free from the shackles of 'morality', it is just you and your raw strength against the world. Prove your true value, and nothing will be able to stop you.", link: "../factions/kharos.html" },
-                V: { name: "Valkyrion", desc: "You see the world for what it is: a silent void. Yet, you refuse to let that turn you into a beast. You carry the burden of the anti-nihilist, choosing order, duty, and solidarity not because a god demands it, but because it is the only way to make this mortal journey dignified. Valkyrion is for those who hold the line, fighting for the future even when the present offers no hope.", link: "../factions/valkyrion.html" },
-                D: { name: "Diavoli", desc: "You have transcended the need for brute strength. You look at the void and see a chess board waiting to be played. You are a master of systems and contracts, capable of turning chaos into a resource. In your domain, success is not won by sweat, but by precision. You don't need to be the strongest; you just need to be the one who owns the rules everyone else follows.", link: "../factions/diavoli.html" },
-                N: { name: "Nani", desc: "You have realized that the individual is but a fleeting flicker. Your greatness lies in the collective. You find your purpose by merging your soul with the monumental machinery of the state and the people. You are the rock upon which progress is built. With you, the collective never fails, and the work, eternal and indifferent to time, will always outlast your own brief existence.", link: "../factions/nani.html" },
-                I: { name: "Isolazionisti", desc: "You are the Architect of your own Silence. You understand that the world's chaos is a tax you refuse to pay. By stepping outside the game, you reclaim your most precious resource: your peace. Your strength lies in your independence; you are the horizon that cannot be reached and the storm that has decided not to rage, simply because you don't need the validation of the arena.", link: "../factions/isolazionista.html" },
-                M: { name: "Dimenticati", desc: "You carry a lantern in the darkness, not to conquer it, but to show the way to those who have lost their path. You know that pain is the only truth, but connection is the only cure. Your strength is not in conquest, but in the radical, dangerous act of caring when it is easier to be cold. In your sanctuary, wounds aren't hidden—they are finally allowed to heal.", link: "../factions/forgottens.html" }
+                K: { 
+                    name: "Kharos Dominion", 
+                    img: "../img/kharos.jpg",
+                    desc: "You are the manifestation of the Nietzschean Overman: a force of nature that does not wait for permission to exist. You understand that the old moral structures are crumbling husks, and you take upon yourself the burden of creating a new era through pure, unadulterated Will to Power. Your existence is a violent affirmation of life that demands reality to bend to your vision.<br><br>The Kharos Dominion is your domain, not because it is 'evil', but because it is the only place where the strong are not forced to apologize for their existence. Here, conflict is the forge where you constantly overcome yourself. You are the architect of your own values; you do not follow the herd, you lead them—or you trample them if they stand in the path of your evolution.", 
+                    link: "../factions/kharos.html" 
+                },
+                V: { 
+                    name: "Valkyrion Empire", 
+                    img: "../img/valkyrion.jpg",
+                    desc: "You are the ultimate existentialist hero, the one who looks into the abyss and, instead of screaming, offers a helping hand to those falling. You know that existence has no pre-written script, and that the universe is essentially cold and indifferent. Yet, you have decided that 'Meaning' is a construct you are brave enough to build. You are the guardian of the human spirit in a desert of dust.<br><br>The Valkyrion Empire is your bastion because it represents the dignity of the struggle. You choose to act with honor not because of divine command, but because you know that in this fleeting, absurd reality, kindness and discipline are the only true rebellions left. You hold the line, for yourself and for those who lack the strength to look at the void.", 
+                    link: "../factions/valkyrion.html" 
+                },
+                D: { 
+                    name: "Devil Syndacate", 
+                    img: "../img/diavoli.jpg",
+                    desc: "You have realized that the world is not a place to be conquered by steel, but a system to be decoded and mastered. You are a Machiavellian strategist who sees through the charade of 'noble intentions'. For you, the truth is found in the mechanisms of power: contracts, leverage, and the cold calculation of interests. You are the invisible hand that moves the pieces.<br><br>In the Devil Syndacate, you don't waste energy being the 'hero' or the 'villain'. You are the referee who wrote the rulebook. You turn chaos into order, and order into profit. By understanding the dependencies of others, you become the only truly free person in the room: you don't fight the system, you own it.", 
+                    link: "../factions/diavoli.html" 
+                },
+                N: { 
+                    name: "Iron Brotherhood", 
+                    img: "../img/nani.jpg",
+                    desc: "You find the terror of individual solitude unbearable, so you choose the path of the collective. You represent the height of materialist discipline. For you, meaning is not found in the ego, but in the rhythm of the great machine. You are the brick in the wall, the gear in the engine, the necessary component of a grand design that survives far longer than any single life.<br><br>The Iron Brotherhood is your home because it provides the ultimate answer to nihilism: total dedication to a purpose larger than yourself. You lose the anxiety of the 'Self' by gaining the strength of the 'We'. Your legacy is not a statue, but the infrastructure of a nation that will outlast the stars.", 
+                    link: "../factions/nani.html" 
+                },
+                I: { 
+                    name: "Elven Enclave", 
+                    img: "../img/isolazionisti.jpg",
+                    desc: "You are the Schopenhauerian sage who has realized that the world is a theater of vain ambitions and suffering. You have achieved a radical intellectual independence. By opting out of the social arena, you are not running away—you are rising above. You have decided that your peace is worth more than any social validation, and your silence is your greatest weapon.<br><br>The Elven Enclave is your domain; it is the ultimate expression of autonomy. While others exhaust themselves fighting for status or belonging, you watch from the threshold. You are the silent horizon that refuses to be measured. You don't need the world to agree with you; you simply refuse to be part of its noise.", 
+                    link: "../factions/isolazionista.html" 
+                },
+                M: { 
+                    name: "Forgottens", 
+                    img: "../img/dimenticati.jpg",
+                    desc: "You are the keeper of the 'Radical Compassion'. You understand that existence is a series of scars, and you have chosen the most courageous path: to be the one who heals. While others seek to harden themselves to stop feeling, you have expanded your capacity to suffer with others. You know that empathy is not a weakness, but the only technology capable of fixing a broken world.<br><br>The Forgottens are your sanctuary. It is a testament to the belief that the value of life is found in the moments we share the load of our common trauma. You don't build monuments to power; you build bridges to souls. Here, the broken are not discarded—they are the foundation of a new kind of strength.", 
+                    link: "../factions/forgottens.html" 
+                }
             }
         },
         it: {
-            label: "Fai parte dei:",
+            label: "Fai parte di:",
             chartTitle: "Ripartizione Ideologica",
             btnFaction: "Visita Pagina Fazione",
             btnHome: "Torna alla Home",
             factions: {
-                K: { name: "Kharos", desc: "Non hai paura del conflitto, anzi: per te è parte fondamentale della crescita e qualsiasi ostacolo davanti a te rimpiangerà di essersi messo in mezzo. Sei una persona forte e determinata che non ha paura di sporcarsi le mani per ottenere il massimo che la vita ha da offrire. Il dominio di Kharos è fatto apposta per te: libero dai gioghi morali, ci sei solo tu e la tua forza contro quella di chiunque altro. Dimostra il tuo valore e nessuno potrà fermarti.", link: "../factions/kharos.html" },
-                V: { name: "Valkyrion", desc: "Vedi il mondo per ciò che è: un vuoto silenzioso. Eppure, ti rifiuti di trasformarti in una bestia. Porti sulle spalle il peso dell'anti-nichilista, scegliendo il dovere, la disciplina e la solidarietà non perché qualcuno te lo imponga, ma perché è l'unico modo per rendere questo viaggio mortale degno di essere vissuto. Valkyrion è per chi tiene la linea, combattendo per il futuro anche quando il presente non offre alcuna speranza.", link: "../factions/valkyrion.html" },
-                D: { name: "Diavoli", desc: "Hai superato il bisogno della forza bruta. Guardi il vuoto e vedi una scacchiera che attende di essere giocata. Sei un maestro di sistemi e contratti, capace di convertire il caos in risorsa. Nel tuo dominio, il successo non si ottiene col sudore, ma con la precisione. Non hai bisogno di essere il più forte; ti basta essere colui che possiede le regole che tutti gli altri sono costretti a seguire.", link: "../factions/diavoli.html" },
-                N: { name: "Nani", desc: "Hai compreso che l'individuo è solo un lampo passeggero. La tua grandezza risiede nel collettivo. Trovi il tuo scopo fondendo la tua anima con la monumentale macchina dello Stato e della produzione. Sei la roccia su cui è costruito il progresso. Con te, il gruppo non fallisce mai, e il lavoro, eterno e indifferente al tempo, durerà sempre più della tua breve esistenza.", link: "../factions/nani.html" },
-                I: { name: "Isolazionisti", desc: "Sei l'architetto del tuo Silenzio. Hai capito che il caos del mondo è una tassa che ti rifiuti di pagare. Uscendo dal gioco, riprendi possesso della tua risorsa più preziosa: la tua pace. La tua forza risiede nell'indipendenza; sei l'orizzonte che non può essere raggiunto e la tempesta che ha deciso di non infuriare, semplicemente perché non hai bisogno della validazione dell'arena.", link: "../factions/isolazionista.html" },
-                M: { name: "Dimenticati", desc: "Porti una lanterna nell'oscurità, non per conquistarla, ma per mostrare la strada a chi ha perso la via. Sai che il dolore è l'unica verità, ma la connessione è l'unica cura. La tua forza non è nella conquista, ma nell'atto radicale e pericoloso di prenderti cura degli altri quando è più facile essere freddi. Nel tuo santuario, le ferite non vengono nascoste: finalmente possono guarire.", link: "../factions/forgottens.html" }
+                K: { 
+                    name: "Dominio di Kharos", 
+                    img: "../img/kharos.jpg",
+                    desc: "Sei la manifestazione del Superuomo nietzschiano: una forza della natura che non aspetta il permesso per esistere. Comprendi che le vecchie strutture morali sono gusci vuoti e ti fai carico della responsabilità di creare una nuova era attraverso la pura e incontaminata Volontà di Potenza. La tua esistenza è un'affermazione violenta della vita che pretende che la realtà si pieghi alla tua visione.<br><br>Il Dominio di Kharos è il tuo habitat, non perché sia 'malvagio', ma perché è l'unico luogo in cui i forti non sono costretti a scusarsi per la propria esistenza. Qui, il conflitto è la fucina in cui superi costantemente te stesso. Sei l'architetto dei tuoi valori; non segui il gregge, lo guidi — o lo calpesti se si mette sul sentiero della tua evoluzione.", 
+                    link: "../factions/kharos.html" 
+                },
+                V: { 
+                    name: "Impero di Valkyrion", 
+                    img: "../img/valkyrion.jpg",
+                    desc: "Sei l'eroe esistenzialista per eccellenza, colui che guarda nell'abisso e, invece di urlare, offre la mano a chi sta cadendo. Sai che l'esistenza non ha un copione pre-scritto e che l'universo è fondamentalmente freddo e indifferente. Eppure, hai deciso che il 'Senso' è un costrutto che hai il coraggio di costruire. Sei il guardiano dello spirito umano in un deserto di polvere.<br><br>L'Impero di Valkyrion è il tuo baluardo perché rappresenta la dignità della lotta. Scegli di agire con onore non per comando divino, ma perché sai che in questa realtà fugace e assurda, la gentilezza e la disciplina sono le uniche vere forme di rivolta rimaste. Tieni la linea, per te stesso e per chi non ha la forza di guardare il vuoto.", 
+                    link: "../factions/valkyrion.html" 
+                },
+                D: { 
+                    name: "Sindacato Diabolico", 
+                    img: "../img/diavoli.jpg",
+                    desc: "Hai compreso che il mondo non è un luogo da conquistare con l'acciaio, ma un sistema da decodificare e dominare. Sei uno stratega machiavellico che vede attraverso la farsa delle 'nobili intenzioni'. Per te, la verità si cela nei meccanismi del potere: contratti, leve, e il calcolo freddo degli interessi. Sei la mano invisibile che muove le fila.<br><br>Nel Sindacato Diabolico, non sprechi energie a fare l'eroe o il cattivo. Sei l'arbitro che ha scritto il regolamento. Trasformi il caos in ordine, e l'ordine in profitto. Comprendendo le dipendenze altrui, diventi l'unica persona realmente libera nella stanza: non combatti il sistema, lo possiedi.", 
+                    link: "../factions/diavoli.html" 
+                },
+                N: { 
+                    name: "Fratellanza di Ferro", 
+                    img: "../img/nani.jpg",
+                    desc: "Trovi il terrore della solitudine individuale insopportabile, così scegli la via del collettivo. Rappresenti l'apice della disciplina materialista. Per te, il significato non si trova nell'ego, ma nel ritmo della grande macchina. Sei il mattone nel muro, l'ingranaggio nel motore, la componente necessaria di un disegno grandioso che sopravvive molto più a lungo di ogni singola vita.<br><br>La Fratellanza di Ferro è la tua casa perché fornisce la risposta definitiva al nichilismo: la dedizione totale a uno scopo più grande di te. Perdi l'ansia dell''Io' guadagnando la forza del 'Noi'. La tua eredità non è una statua, ma l'infrastruttura di una nazione che vivrà oltre le stelle.", 
+                    link: "../factions/nani.html" 
+                },
+                I: { 
+                    name: "Enclave Elfica", 
+                    img: "../img/isolazionisti.jpg",
+                    desc: "Sei il saggio schopenhaueriano che ha compreso che il mondo è un teatro di vane ambizioni e sofferenza. Hai raggiunto una radicale indipendenza intellettuale. Uscendo dall'arena sociale, non stai scappando: ti stai elevando. Hai deciso che la tua pace vale più di qualsiasi validazione sociale, e il tuo silenzio è la tua arma più affilata.<br><br>L'Enclave Elfica è il tuo dominio; è l'espressione ultima dell'autonomia. Mentre altri si sfiniscono lottando per lo status o l'appartenenza, tu osservi dalla soglia. Sei l'orizzonte che non può essere misurato. Non hai bisogno che il mondo sia d'accordo con te; semplicemente, ti rifiuti di far parte del suo rumore.", 
+                    link: "../factions/isolazionista.html" 
+                },
+                M: { 
+                    name: "Dimenticati", 
+                    img: "../img/dimenticati.jpg",
+                    desc: "Sei il custode della 'Compassione Radicale'. Comprendi che l'esistenza è una serie di cicatrici, e hai scelto la via più coraggiosa: essere colui che guarisce. Mentre altri cercano di indurirsi per smettere di sentire, tu hai espanso la tua capacità di soffrire con gli altri. Sai che l'empatia non è una debolezza, ma l'unica tecnologia in grado di aggiustare un mondo a pezzi.<br><br>I Dimenticati sono il tuo santuario. È la testimonianza della convinzione che il valore della vita si trovi nei momenti in cui condividiamo il peso del nostro trauma comune. Non costruisci monumenti al potere; costruisci ponti verso le anime. Qui, i rotti non vengono scartati: sono le fondamenta di un nuovo tipo di forza.", 
+                    link: "../factions/forgottens.html" 
+                }
             }
         }
     };
 
-    // Estrazione parametri URL
     const urlParams = new URLSearchParams(window.location.search);
     
-    // Determina lingua (default EN)
     let lang = urlParams.get('ln');
     if (!lang || !factionProfiles[lang]) {
         lang = 'en';
     }
 
-    // Mappa dei punteggi estratti
     const keys = ['K', 'V', 'D', 'N', 'I', 'M'];
     const scores = {};
     let winnerCode = 'K';
@@ -271,30 +325,25 @@
     keys.forEach(k => {
         const val = parseInt(urlParams.get(k) || 0);
         scores[k] = val;
-        // Algoritmo di rilevamento vincitore assoluto/dominante
         if (val > maxScore) {
             maxScore = val;
             winnerCode = k;
         }
     });
 
-    // Aggiornamento Elementi UI statici in base alla lingua
     const currentTextSet = factionProfiles[lang];
     document.getElementById('ui-label').textContent = currentTextSet.label;
     document.getElementById('ui-chart-title').textContent = currentTextSet.chartTitle;
     document.getElementById('ui-faction-link').textContent = currentTextSet.btnFaction;
     document.getElementById('ui-home-link').textContent = currentTextSet.btnHome;
 
-    // Assegnazione dati Fazione Vincitrice
     const winnerProfile = currentTextSet.factions[winnerCode];
     document.getElementById('ui-faction-name').textContent = winnerProfile.name;
-    document.getElementById('ui-description').textContent = winnerProfile.desc;
+    document.getElementById('ui-description').innerHTML = winnerProfile.desc;
     document.getElementById('ui-faction-link').href = winnerProfile.link;
 
-    // Se hai immagini specifiche di fazione (es: img/faction_K.png), puoi de-commentare la riga sotto:
-    // document.getElementById('faction-banner').src = `../img/btn_${winnerProfile.name.toLowerCase()}.png`;
+    document.getElementById('faction-banner').src = winnerProfile.img;
 
-    // Costruzione dinamica del Grafico Comparativo in fondo alla pagina
     const chartContainer = document.getElementById('chart-rows-container');
     const totalQuestions = 8;
 
@@ -314,7 +363,6 @@
         `;
         chartContainer.appendChild(row);
 
-        // Attiva l'animazione della barra con un leggero ritardo d'esecuzione temporale
         setTimeout(() => {
             const fillEl = document.getElementById(`bar-${k}`);
             if (fillEl) fillEl.style.width = `${percentage}%`;
