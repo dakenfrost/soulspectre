@@ -44,12 +44,12 @@
             text-align: center;
         }
 
-        .faction-img-wrapper {
+       .faction-img-wrapper {
             width: 100%;
-            /* Impostiamo un aspect-ratio 1:1 per il quadrato perfetto */
-            aspect-ratio: 1 / 1; 
-            max-width: 400px; /* Limita la grandezza per non renderla enorme su schermi desktop */
-            margin: 0 auto 30px auto; /* Centra il quadrato e crea spazio sotto */
+            /* 800 / 1200 = 0.666, ovvero 2/3 */
+            aspect-ratio: 1200 / 800; 
+            max-width: 900px; /* Mantiene la larghezza coerente con il container */
+            margin: 0 auto 30px auto;
             background-color: #1a1a1f;
             border: 1px solid var(--border-color);
             border-radius: 4px;
@@ -62,10 +62,11 @@
         .faction-img-wrapper img {
             width: 100%;
             height: 100%;
-            /* 'cover' riempie il quadrato. Se vuoi che si veda tutta l'immagine senza tagli, usa 'contain' */
+            /* 'cover' riempie perfettamente il rettangolo 3:2 */
             object-fit: cover; 
+            /* Assicura che l'immagine sia centrata se le proporzioni non coincidono esattamente */
+            object-position: center; 
         }
-
         .result-label {
             font-size: 0.9rem;
             text-transform: uppercase;
