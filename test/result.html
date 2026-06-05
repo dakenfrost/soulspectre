@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Result Alignment</title>
+    <style>
+        :root {
+            --bg-color: #0a0a0a;
+            --container-bg: #111113;
+            --border-color: #222227;
+            --text-color: #e0e0e0;
+            --text-muted: #777785;
+            --accent-color: #5c9ce6;
+            --button-bg: #18181c;
+            --button-hover: #22222a;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .result-container {
+            background-color: var(--container-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            max-width: 750px;
+            width: 100%;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.7);
+            text-align: center;
+        }
+
+        .faction-img-wrapper {
+            width: 100%;
+            height: 250px;
+            background-color: #1a1a1f;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .faction-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .result-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+
+        .faction-name {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: #fff;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(92, 156, 230, 0.2);
+        }
+
+        .faction-description {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #cccccc;
+            margin-bottom: 40px;
+            text-align: left;
+            padding: 0 10px;
+        }
+
+        /* STRUTTURA GRAFICO COMPARATIVO */
+        .chart-section {
+            border-top: 1px solid var(--border-color);
+            padding-top: 30px;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+
+        .chart-title {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-color);
+            margin-bottom: 20px;
+        }
+
+        .chart-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 14px;
+            gap: 15px;
+        }
+
+        .bar-label {
+            width: 130px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            color: #b0b0b5;
+        }
+
+        .bar-container {
+            flex-grow: 1;
+            height: 12px;
+            background-color: #1a1a1f;
+            border: 1px solid #25252a;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .bar-fill {
+            height: 100%;
+            background-color: var(--accent-color);
+            width: 0%;
+            transition: width 1s cubic-bezier(0.1, 0.8, 0.2, 1);
+        }
+
+        .bar-score {
+            width: 30px;
+            font-size: 0.9rem;
+            text-align: right;
+            font-weight: bold;
+            color: var(--text-muted);
+        }
+
+        /* PULSANTI DI NAVIGAZIONE */
+        .nav-block {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .nav-btn {
+            display: inline-block;
+            background-color: var(--button-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            padding: 14px 28px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-btn:hover {
+            background-color: var(--button-hover);
+            border-color: var(--accent-color);
+            color: #fff;
+        }
+
+        .nav-btn.primary {
+            border-color: var(--accent-color);
+            background-color: rgba(92, 156, 230, 0.05);
+        }
+
+        .nav-btn.primary:hover {
+            background-color: rgba(92, 156, 230, 0.15);
+        }
+
+        @media (max-width: 600px) {
+            .nav-block {
+                flex-direction: column;
+            }
+            .nav-btn {
+                width: 100%;
+                text-align: center;
+            }
+            .bar-label {
+                width: 100px;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="result-container">
+    <div class="faction-img-wrapper">
+        <img id="faction-banner" src="../img/homepage_bg.jpg" alt="Faction Banner">
+    </div>
+
+    <div id="ui-label" class="result-label">Alignment Result</div>
+    <div id="ui-faction-name" class="faction-name">Faction</div>
+    <div id="ui-description" class="faction-description">Processing tactical analysis...</div>
+
+    <div class="chart-section">
+        <div id="ui-chart-title" class="chart-title">Ideological Breakdown</div>
+        <div id="chart-rows-container"></div>
+    </div>
+
+    <div class="nav-block">
+        <a id="ui-faction-link" href="../factions/index.html" class="nav-btn primary">Visit Faction Page</a>
+        <a id="ui-home-link" href="../index.html" class="nav-btn">Back to Home</a>
+    </div>
+</div>
+
+<script>
+    // Database dei testi e della lore delle fazioni per il report di output (Bilingue)
+    const factionProfiles = {
+        en: {
+            label: "You belong to:",
+            chartTitle: "Ideological Breakdown",
+            btnFaction: "Visit Faction Page",
+            btnHome: "Back to Home",
+            factions: {
+                K: { name: "Kharos", desc: "You reject social masks and performative victimhood. You know the universe has no intrinsic meaning, so you shape your own through raw performance, personal growth, and evolutionary strength. You refuse to let anyone dictate your rules.", link: "../factions/kharos.html" },
+                V: { name: "Valkyrion", desc: "You acknowledge the harsh, silent void of the world, but you actively choose resistance over nihilistic decay. You embrace duty, discipline, and defensive solidarity to make this mortal wait dignified and a little better for those around you.", link: "../factions/valkyrion.html" },
+                D: { name: "Diavoli", desc: "You look at the moral void and see an architecture of absolute opportunity. You don't care about self-improvement or saving the world; you navigate rules, map systems, and craft binding contracts to turn everyone else into a resource.", link: "../factions/diavoli.html" },
+                N: { name: "Nani", desc: "You understand that an isolated individual is insignificant against existential infinity. You willingly surrender your ego to become a reliable, resilient gear inside the massive machinery of production, state, and collective progress.", link: "../factions/nani.html" },
+                I: { name: "Isolazionisti", desc: "Your primary answer to the chaos of the world is radical subtraction. You are perfectly fine on your own and choose to step completely outside the social arena, demanding nothing but to be left in peace.", link: "../factions/isolazionista.html" },
+                M: { name: "Dimenticati", desc: "You build an emotional sanctuary against external trauma. Instead of hardening yourself or exploiting systems, you choose empathy, deep listening, and mutual healing as the ultimate shield to sew up open wounds.", link: "../factions/dimenticati.html" }
+            }
+        },
+        it: {
+            label: "Fai parte dei:",
+            chartTitle: "Ripartizione Ideologica",
+            btnFaction: "Visita Pagina Fazione",
+            btnHome: "Torna alla Home",
+            factions: {
+                K: { name: "Kharos", desc: "Rifiuti le maschere sociali e il vittimismo performativo. Sai che l'universo non ha un significato intrinseco, quindi crei il tuo attraverso la performance pura, la crescita e la forza evolutiva. Rifiuti che qualcuno detti le tue regole.", link: "../factions/kharos.html" },
+                V: { name: "Valkyrion", desc: "Prendi atto del vuoto crudo del mondo, ma scegli deliberatamente la rivolta e la resistenza al declino. Ti imponi la disciplina, il dovere e la solidarietà per rendere questa attesa mortale dignitosa e migliore per chi ti circonda.", link: "../factions/valkyrion.html" },
+                D: { name: "Diavoli", desc: "Guardi il vuoto morale e vedi un'architettura di pura opportunità. Non ti interessa migliorare te stesso o salvare il mondo; manipoli le regole e stringi contratti per convertire ogni risorsa e individuo a tuo vantaggio.", link: "../factions/diavoli.html" },
+                N: { name: "Nani", desc: "Sai che l'individuo isolato è insignificante davanti all'infinito esistenziale. Accetti di annullare il tuo 'Io' per diventare un ingranaggio affidabile e protetto all'interno della grande macchina dello Stato e della produzione comune.", link: "../factions/nani.html" },
+                I: { name: "Isolazionisti", desc: "La tua risposta al caos esterno è la sottrazione radicale. Stai bene con te stesso e scegli di tirarti fuori dalle dinamiche e dalle pretese della società, esigendo unicamente di non essere rotto il cazzo.", link: "../factions/isolazionista.html" },
+                M: { name: "Dimenticati", desc: "Costruisci un rifugio emotivo contro i traumi esterni. Invece di incattivirti o sfruttare il sistema, scegli l'empatia, l'accoglienza e la guarigione comune come unico porto sicuro in cui ricucire le ferite aperte.", link: "../factions/dimenticati.html" }
+            }
+        }
+    };
+
+    // Estrazione parametri URL
+    const urlParams = new URLSearchParams(window.location.search);
+    
+    // Determina lingua (default EN)
+    let lang = urlParams.get('ln');
+    if (!lang || !factionProfiles[lang]) {
+        lang = 'en';
+    }
+
+    // Mappa dei punteggi estratti
+    const keys = ['K', 'V', 'D', 'N', 'I', 'M'];
+    const scores = {};
+    let winnerCode = 'K';
+    let maxScore = -1;
+
+    keys.forEach(k => {
+        const val = parseInt(urlParams.get(k) || 0);
+        scores[k] = val;
+        // Algoritmo di rilevamento vincitore assoluto/dominante
+        if (val > maxScore) {
+            maxScore = val;
+            winnerCode = k;
+        }
+    });
+
+    // Aggiornamento Elementi UI statici in base alla lingua
+    const currentTextSet = factionProfiles[lang];
+    document.getElementById('ui-label').textContent = currentTextSet.label;
+    document.getElementById('ui-chart-title').textContent = currentTextSet.chartTitle;
+    document.getElementById('ui-faction-link').textContent = currentTextSet.btnFaction;
+    document.getElementById('ui-home-link').textContent = currentTextSet.btnHome;
+
+    // Assegnazione dati Fazione Vincitrice
+    const winnerProfile = currentTextSet.factions[winnerCode];
+    document.getElementById('ui-faction-name').textContent = winnerProfile.name;
+    document.getElementById('ui-description').textContent = winnerProfile.desc;
+    document.getElementById('ui-faction-link').href = winnerProfile.link;
+
+    // Se hai immagini specifiche di fazione (es: img/faction_K.png), puoi de-commentare la riga sotto:
+    // document.getElementById('faction-banner').src = `../img/btn_${winnerProfile.name.toLowerCase()}.png`;
+
+    // Costruzione dinamica del Grafico Comparativo in fondo alla pagina
+    const chartContainer = document.getElementById('chart-rows-container');
+    const totalQuestions = 8;
+
+    keys.forEach(k => {
+        const score = scores[k];
+        const percentage = (score / totalQuestions) * 100;
+        const factionName = currentTextSet.factions[k].name;
+
+        const row = document.createElement('div');
+        row.className = 'chart-row';
+        row.innerHTML = `
+            <div class="bar-label">${factionName}</div>
+            <div class="bar-container">
+                <div class="bar-fill" id="bar-${k}"></div>
+            </div>
+            <div class="bar-score">${score}</div>
+        `;
+        chartContainer.appendChild(row);
+
+        // Attiva l'animazione della barra con un leggero ritardo d'esecuzione temporale
+        setTimeout(() => {
+            const fillEl = document.getElementById(`bar-${k}`);
+            if (fillEl) fillEl.style.width = `${percentage}%`;
+        }, 100);
+    });
+</script>
+
+</body>
+</html>
