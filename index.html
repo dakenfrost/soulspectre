@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SOULSPECTRE | Archivio Centrale</title>
+    <title>SOULSPECTRE | Central Archive</title>
     <style>
         body {
             background-color: #0a0a0a;
@@ -42,7 +42,7 @@
 
         /* LOGO INGRANDITO */
         .logo-container img {
-            max-width: 900px; /* Aumentato da 500px */
+            max-width: 900px;
             width: 95%;
             filter: drop-shadow(0 0 30px rgba(92, 156, 230, 0.2));
         }
@@ -57,25 +57,26 @@
 
         main {
             width: 100%;
-            max-width: 1400px; /* Aumentato per far spazio ai 4 bottoni */
+            max-width: 1400px;
             padding: 40px 20px;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            align-items: center; /* Allinea i figli al centro */
         }
 
         /* GRID A 4 COLONNE ORIZZONTALI */
         .main-nav {
             display: grid;
-            grid-template-columns: repeat(4, 1fr); /* Cambiato da 2 a 4 */
+            grid-template-columns: repeat(4, 1fr);
             gap: 20px;
             width: 100%;
         }
 
         .nav-card {
             position: relative;
-            height: 220px; /* Leggermente ridotto per mantenere le proporzioni */
+            height: 220px;
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 4px;
             overflow: hidden;
@@ -111,7 +112,7 @@
             position: relative;
             z-index: 3;
             color: #fff;
-            font-size: 1.4rem; /* Leggermente ridotto per stare su una riga sola */
+            font-size: 1.4rem;
             font-weight: bold;
             letter-spacing: 2px;
             text-transform: uppercase;
@@ -135,15 +136,6 @@
             background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.7) 100%);
         }
 
-        footer {
-            padding: 40px 20px;
-            text-align: center;
-            width: 100%;
-            font-size: 0.8rem;
-            color: #444;
-            letter-spacing: 2px;
-        }
-
         /* BANNER COMUNICAZIONI (SYSTEM LOG) */
         .sys-announcement {
             background: rgba(5, 5, 8, 0.75);
@@ -152,6 +144,7 @@
             padding: 16px 24px;
             margin: 0 auto 40px auto; 
             max-width: 1000px;
+            width: 100%;
             border-radius: 2px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(4px);
@@ -173,7 +166,62 @@
             margin-right: 10px;
         }
 
-        /* RESPONSIVE: Torna a 2 o 1 colonna sui piccoli schermi */
+        /* NUOVO BOTTONE TEST PSICOLOGICO */
+        .test-banner-container {
+            margin-top: 50px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .test-banner-btn {
+            display: inline-block;
+            background: linear-gradient(to right, rgba(20, 20, 25, 0.9), rgba(30, 30, 38, 0.9));
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            padding: 24px 60px;
+            border: 1px solid rgba(92, 156, 230, 0.3);
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .test-banner-btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 50%; height: 100%;
+            background: linear-gradient(to right, transparent, rgba(92, 156, 230, 0.1), transparent);
+            transform: skewX(-20deg);
+            transition: all 0.7s ease;
+        }
+
+        .test-banner-btn:hover {
+            border-color: rgba(92, 156, 230, 0.8);
+            box-shadow: 0 0 25px rgba(92, 156, 230, 0.3), inset 0 0 10px rgba(92, 156, 230, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .test-banner-btn:hover::before {
+            left: 200%;
+        }
+
+        footer {
+            padding: 40px 20px;
+            text-align: center;
+            width: 100%;
+            font-size: 0.8rem;
+            color: #444;
+            letter-spacing: 2px;
+        }
+
+        /* RESPONSIVE */
         @media (max-width: 1100px) {
             .main-nav { grid-template-columns: repeat(2, 1fr); }
         }
@@ -181,6 +229,12 @@
         @media (max-width: 600px) {
             .main-nav { grid-template-columns: 1fr; }
             .logo-container img { max-width: 100%; }
+            .test-banner-btn {
+                padding: 20px 30px;
+                font-size: 1.1rem;
+                width: 100%;
+                text-align: center;
+            }
         }
     </style>
     <link rel="stylesheet" href="system/global_nav.css">
@@ -223,6 +277,10 @@
             <img src="img/btn_creators.png" class="card-bg" alt="">
             <span class="card-label">Credits</span>
         </a>
+    </div>
+
+    <div class="test-banner-container">
+        <a href="test_engine.html?ln=en" class="test-banner-btn">Take the Faction Test</a>
     </div>
 </main>
 
