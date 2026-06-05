@@ -46,11 +46,13 @@
 
         .faction-img-wrapper {
             width: 100%;
-            height: 250px;
+            /* Impostiamo un aspect-ratio 1:1 per il quadrato perfetto */
+            aspect-ratio: 1 / 1; 
+            max-width: 400px; /* Limita la grandezza per non renderla enorme su schermi desktop */
+            margin: 0 auto 30px auto; /* Centra il quadrato e crea spazio sotto */
             background-color: #1a1a1f;
             border: 1px solid var(--border-color);
             border-radius: 4px;
-            margin-bottom: 30px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -60,7 +62,8 @@
         .faction-img-wrapper img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            /* 'cover' riempie il quadrato. Se vuoi che si veda tutta l'immagine senza tagli, usa 'contain' */
+            object-fit: cover; 
         }
 
         .result-label {
