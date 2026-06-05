@@ -37,18 +37,17 @@
             background-color: var(--container-bg);
             border: 1px solid var(--border-color);
             border-radius: 6px;
-            max-width: 750px;
+            max-width: 900px;
             width: 100%;
             padding: 40px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.7);
             text-align: center;
         }
 
-       .faction-img-wrapper {
+        .faction-img-wrapper {
             width: 100%;
-            /* 800 / 1200 = 0.666, ovvero 2/3 */
             aspect-ratio: 1200 / 800; 
-            max-width: 900px; /* Mantiene la larghezza coerente con il container */
+            max-width: 900px;
             margin: 0 auto 30px auto;
             background-color: #1a1a1f;
             border: 1px solid var(--border-color);
@@ -62,11 +61,10 @@
         .faction-img-wrapper img {
             width: 100%;
             height: 100%;
-            /* 'cover' riempie perfettamente il rettangolo 3:2 */
             object-fit: cover; 
-            /* Assicura che l'immagine sia centrata se le proporzioni non coincidono esattamente */
-            object-position: center; 
+            object-position: center;
         }
+
         .result-label {
             font-size: 0.9rem;
             text-transform: uppercase;
@@ -83,6 +81,16 @@
             color: #fff;
             margin-bottom: 20px;
             text-shadow: 0 0 20px rgba(92, 156, 230, 0.2);
+        }
+
+        .quote-header {
+            font-style: italic;
+            color: var(--accent-color);
+            border-left: 3px solid var(--accent-color);
+            padding-left: 15px;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            font-family: Georgia, serif;
         }
 
         .faction-description {
@@ -233,37 +241,37 @@
                 K: { 
                     name: "Kharos Dominion", 
                     img: "../img/kharos_result.png",
-                    desc: "You are the manifestation of the Nietzschean Overman: a force of nature that does not wait for permission to exist. You understand that the old moral structures are crumbling husks, and you take upon yourself the burden of creating a new era through pure, unadulterated Will to Power. Your existence is a violent affirmation of life that demands reality to bend to your vision.<br><br>The Kharos Dominion is your domain, not because it is 'evil', but because it is the only place where the strong are not forced to apologize for their existence. Here, conflict is the forge where you constantly overcome yourself. You are the architect of your own values; you do not follow the herd, you lead them—or you trample them if they stand in the path of your evolution.", 
+                    desc: "<div class='quote-header'>\"If nothing matters, everything is permitted.\" — Albert Camus</div><br>You are the manifestation of the Nietzschean Overman: a force of nature that does not wait for permission to exist. You understand that the old moral structures are crumbling husks, and you take upon yourself the burden of creating a new era through pure, unadulterated Will to Power. Your existence is a violent affirmation of life that demands reality to bend to your vision.<br><br>The Kharos Dominion is your domain, not because it is 'evil', but because it is the only place where the strong are not forced to apologize for their existence. Here, conflict is the forge where you constantly overcome yourself. You are the architect of your own values; you do not follow the herd, you lead them—or you trample them if they stand in the path of your evolution.", 
                     link: "../factions/kharos.html" 
                 },
                 V: { 
                     name: "Valkyrion Empire", 
                     img: "../img/valkyrion_result.png",
-                    desc: "You are the ultimate existentialist hero, the one who looks into the abyss and, instead of screaming, offers a helping hand to those falling. You know that existence has no pre-written script, and that the universe is essentially cold and indifferent. Yet, you have decided that 'Meaning' is a construct you are brave enough to build. You are the guardian of the human spirit in a desert of dust.<br><br>The Valkyrion Empire is your bastion because it represents the dignity of the struggle. You choose to act with honor not because of divine command, but because you know that in this fleeting, absurd reality, kindness and discipline are the only true rebellions left. You hold the line, for yourself and for those who lack the strength to look at the void.", 
+                    desc: "<div class='quote-header'>\"Man is nothing else but what he purposes, he exists only in so far as he realises himself, he is therefore nothing else but the sum of his actions.\" — Jean-Paul Sartre</div><br>You are the ultimate existentialist hero, the one who looks into the abyss and, instead of screaming, offers a helping hand to those falling. You know that existence has no pre-written script, and that the universe is essentially cold and indifferent. Yet, you have decided that 'Meaning' is a construct you are brave enough to build. You are the guardian of the human spirit in a desert of dust.<br><br>The Valkyrion Empire is your bastion because it represents the dignity of the struggle. You choose to act with honor not because of divine command, but because you know that in this fleeting, absurd reality, kindness and discipline are the only true rebellions left. You hold the line, for yourself and for those who lack the strength to look at the void.", 
                     link: "../factions/valkyrion.html" 
                 },
                 D: { 
                     name: "Devil Syndacate", 
                     img: "../img/syndicate_result.png",
-                    desc: "You have realized that the world is not a place to be conquered by steel, but a system to be decoded and mastered. You are a Machiavellian strategist who sees through the charade of 'noble intentions'. For you, the truth is found in the mechanisms of power: contracts, leverage, and the cold calculation of interests. You are the invisible hand that moves the pieces.<br><br>In the Devil Syndacate, you don't waste energy being the 'hero' or the 'villain'. You are the referee who wrote the rulebook. You turn chaos into order, and order into profit. By understanding the dependencies of others, you become the only truly free person in the room: you don't fight the system, you own it.", 
+                    desc: "<div class='quote-header'>\"It is not from the benevolence of the butcher, the brewer, or the baker, that we expect our dinner, but from regard to their own interest.\" — Adam Smith</div><br>You have realized that the world is not a place to be conquered by steel, but a system to be decoded and mastered. You are a Machiavellian strategist who sees through the charade of 'noble intentions'. For you, the truth is found in the mechanisms of power: contracts, leverage, and the cold calculation of interests. You are the invisible hand that moves the pieces.<br><br>In the Devil Syndacate, you don't waste energy being the 'hero' or the 'villain'. You are the referee who wrote the rulebook. You turn chaos into order, and order into profit. By understanding the dependencies of others, you become the only truly free person in the room: you don't fight the system, you own it.", 
                     link: "../factions/diavoli.html" 
                 },
                 N: { 
                     name: "Iron Brotherhood", 
                     img: "../img/brotherhood_result.png",
-                    desc: "You find the terror of individual solitude unbearable, so you choose the path of the collective. You represent the height of materialist discipline. For you, meaning is not found in the ego, but in the rhythm of the great machine. You are the brick in the wall, the gear in the engine, the necessary component of a grand design that survives far longer than any single life.<br><br>The Iron Brotherhood is your home because it provides the ultimate answer to nihilism: total dedication to a purpose larger than yourself. You lose the anxiety of the 'Self' by gaining the strength of the 'We'. Your legacy is not a statue, but the infrastructure of a nation that will outlast the stars.", 
+                    desc: "<div class='quote-header'>\"From each according to his ability, to each according to his needs.\" — Karl Marx & Friedrich Engels</div><br>You find the terror of individual solitude unbearable, so you choose the path of the collective. You represent the height of materialist discipline. For you, meaning is not found in the ego, but in the rhythm of the great machine. You are the brick in the wall, the gear in the engine, the necessary component of a grand design that survives far longer than any single life.<br><br>The Iron Brotherhood is your home because it provides the ultimate answer to nihilism: total dedication to a purpose larger than yourself. You lose the anxiety of the 'Self' by gaining the strength of the 'We'. Your legacy is not a statue, but the infrastructure of a nation that will outlast the stars.", 
                     link: "../factions/nani.html" 
                 },
                 I: { 
                     name: "Elven Enclave", 
                     img: "../img/enclave_result.png",
-                    desc: "You are the Schopenhauerian sage who has realized that the world is a theater of vain ambitions and suffering. You have achieved a radical intellectual independence. By opting out of the social arena, you are not running away—you are rising above. You have decided that your peace is worth more than any social validation, and your silence is your greatest weapon.<br><br>The Elven Enclave is your domain; it is the ultimate expression of autonomy. While others exhaust themselves fighting for status or belonging, you watch from the threshold. You are the silent horizon that refuses to be measured. You don't need the world to agree with you; you simply refuse to be part of its noise.", 
+                    desc: "<div class='quote-header'>\"A nation should be of one mind. ... Let the nation be great; let it mend its own affairs, and leave off meddling with other nations.\" — Ralph Waldo Emerson</div><br>You are the Schopenhauerian sage who has realized that the world is a theater of vain ambitions and suffering. You have achieved a radical intellectual independence. By opting out of the social arena, you are not running away—you are rising above. You have decided that your peace is worth more than any social validation, and your silence is your greatest weapon.<br><br>The Elven Enclave is your domain; it is the ultimate expression of autonomy. While others exhaust themselves fighting for status or belonging, you watch from the threshold. You are the silent horizon that refuses to be measured. You don't need the world to agree with you; you simply refuse to be part of its noise.", 
                     link: "../factions/isolazionista.html" 
                 },
                 M: { 
                     name: "Forgottens", 
                     img: "../img/forgottens_result.png",
-                    desc: "You are the keeper of the 'Radical Compassion'. You understand that existence is a series of scars, and you have chosen the most courageous path: to be the one who heals. While others seek to harden themselves to stop feeling, you have expanded your capacity to suffer with others. You know that empathy is not a weakness, but the only technology capable of fixing a broken world.<br><br>The Forgottens are your sanctuary. It is a testament to the belief that the value of life is found in the moments we share the load of our common trauma. You don't build monuments to power; you build bridges to souls. Here, the broken are not discarded—they are the foundation of a new kind of strength.", 
+                    desc: "<div class='quote-header'>\"Creation is the great redemption from suffering and all life's growing light. But the creator must be suffering if needed and accept much change.\" — Friedrich Nietzsche</div><br>You are the keeper of the 'Radical Compassion'. You understand that existence is a series of scars, and you have chosen the most courageous path: to be the one who heals. While others seek to harden themselves to stop feeling, you have expanded your capacity to suffer with others. You know that empathy is not a weakness, but the only technology capable of fixing a broken world.<br><br>The Forgottens are your sanctuary. It is a testament to the belief that the value of life is found in the moments we share the load of our common trauma. You don't build monuments to power; you build bridges to souls. Here, the broken are not discarded—they are the foundation of a new kind of strength.", 
                     link: "../factions/forgottens.html" 
                 }
             }
@@ -277,37 +285,37 @@
                 K: { 
                     name: "Dominio di Kharos", 
                     img: "../img/kharos_result.png",
-                    desc: "Sei la manifestazione del Superuomo nietzschiano: una forza della natura che non aspetta il permesso per esistere. Comprendi che le vecchie strutture morali sono gusci vuoti e ti fai carico della responsabilità di creare una nuova era attraverso la pura e incontaminata Volontà di Potenza. La tua esistenza è un'affermazione violenta della vita che pretende che la realtà si pieghi alla tua visione.<br><br>Il Dominio di Kharos è il tuo habitat, non perché sia 'malvagio', ma perché è l'unico luogo in cui i forti non sono costretti a scusarsi per la propria esistenza. Qui, il conflitto è la fucina in cui superi costantemente te stesso. Sei l'architetto dei tuoi valori; non segui il gregge, lo guidi — o lo calpesti se si mette sul sentiero della tua evoluzione.", 
+                    desc: "<div class='quote-header'>\"Se nulla ha importanza, tutto è permesso.\" — Albert Camus</div><br>Sei la manifestazione del Superuomo nietzschiano: una forza della natura che non aspetta il permesso per esistere. Comprendi che le vecchie strutture morali sono gusci vuoti e ti fai carico della responsabilità di creare una nuova era attraverso la pura e incontaminata Volontà di Potenza. La tua esistenza è un'affermazione violenta della vita che pretende che la realtà si pieghi alla tua visione.<br><br>Il Dominio di Kharos è il tuo habitat, non perché sia 'malvagio', ma perché è l'unico luogo in cui i forti non sono costretti a scusarsi per la propria esistenza. Qui, il conflitto è la fucina in cui superi costantemente te stesso. Sei l'architetto dei tuoi valori; non segui il gregge, lo guidi — o lo calpesti se si mette sul sentiero della tua evoluzione.", 
                     link: "../factions/kharos.html" 
                 },
                 V: { 
                     name: "Impero di Valkyrion", 
                     img: "../img/valkyrion_result.png",
-                    desc: "Sei l'eroe esistenzialista per eccellenza, colui che guarda nell'abisso e, invece di urlare, offre la mano a chi sta cadendo. Sai che l'esistenza non ha un copione pre-scritto e che l'universo è fondamentalmente freddo e indifferente. Eppure, hai deciso che il 'Senso' è un costrutto che hai il coraggio di costruire. Sei il guardiano dello spirito umano in un deserto di polvere.<br><br>L'Impero di Valkyrion è il tuo baluardo perché rappresenta la dignità della lotta. Scegli di agire con onore non per comando divino, ma perché sai che in questa realtà fugace e assurda, la gentilezza e la disciplina sono le uniche vere forme di rivolta rimaste. Tieni la linea, per te stesso e per chi non ha la forza di guardare il vuoto.", 
+                    desc: "<div class='quote-header'>\"L'uomo non è altro che ciò che egli progetta, non esiste che nella misura in cui si realizza, non è dunque nient'altro che l'insieme dei suoi atti.\" — Jean-Paul Sartre</div><br>Sei l'eroe esistenzialista per eccellenza, colui che guarda nell'abisso e, invece di urlare, offre la mano a chi sta cadendo. Sai che l'esistenza non ha un copione pre-scritto e che l'universo è fondamentalmente freddo e indifferente. Eppure, hai deciso che il 'Senso' è un costrutto che hai il coraggio di costruire. Sei il guardiano dello spirito umano in un deserto di polvere.<br><br>L'Impero di Valkyrion è il tuo baluardo perché rappresenta la dignità della lotta. Scegli di agire con onore non per comando divino, ma perché sai che in questa realtà fugace e assurda, la gentilezza e la disciplina sono le uniche vere forme di rivolta rimaste. Tieni la linea, per te stesso e per chi non ha la forza di guardare il vuoto.", 
                     link: "../factions/valkyrion.html" 
                 },
                 D: { 
                     name: "Sindacato Diabolico", 
                     img: "../img/syndicate_result.png",
-                    desc: "Hai compreso che il mondo non è un luogo da conquistare con l'acciaio, ma un sistema da decodificare e dominare. Sei uno stratega machiavellico che vede attraverso la farsa delle 'nobili intenzioni'. Per te, la verità si cela nei meccanismi del potere: contratti, leve, e il calcolo freddo degli interessi. Sei la mano invisibile che muove le fila.<br><br>Nel Sindacato Diabolico, non sprechi energie a fare l'eroe o il cattivo. Sei l'arbitro che ha scritto il regolamento. Trasformi il caos in ordine, e l'ordine in profitto. Comprendendo le dipendenze altrui, diventi l'unica persona realmente libera nella stanza: non combatti il sistema, lo possiedi.", 
+                    desc: "<div class='quote-header'>\"Non è dalla benevolenza del macellaio, del birraio o del fornaio che ci aspettiamo il nostro pranzo, ma dalla cura che essi hanno per il proprio interesse.\" — Adam Smith</div><br>Hai compreso che il mondo non è un luogo da conquistare con l'acciaio, ma un sistema da decodificare e dominare. Sei uno stratega machiavellico che vede attraverso la farsa delle 'nobili intenzioni'. Per te, la verità si cela nei meccanismi del potere: contratti, leve, e il calcolo freddo degli interessi. Sei la mano invisibile che muove le fila.<br><br>Nel Sindacato Diabolico, non sprechi energie a fare l'eroe o il cattivo. Sei l'arbitro che ha scritto il regolamento. Trasformi il caos in ordine, e l'ordine in profitto. Comprendendo le dipendenze altrui, diventi l'unica persona realmente libera nella stanza: non combatti il sistema, lo possiedi.", 
                     link: "../factions/diavoli.html" 
                 },
                 N: { 
                     name: "Fratellanza di Ferro", 
                     img: "../img/brotherhood_result.png",
-                    desc: "Trovi il terrore della solitudine individuale insopportabile, così scegli la via del collettivo. Rappresenti l'apice della disciplina materialista. Per te, il significato non si trova nell'ego, ma nel ritmo della grande macchina. Sei il mattone nel muro, l'ingranaggio nel motore, la componente necessaria di un disegno grandioso che sopravvive molto più a lungo di ogni singola vita.<br><br>La Fratellanza di Ferro è la tua casa perché fornisce la risposta definitiva al nichilismo: la dedizione totale a uno scopo più grande di te. Perdi l'ansia dell''Io' guadagnando la forza del 'Noi'. La tua eredità non è una statua, ma l'infrastruttura di una nazione che vivrà oltre le stelle.", 
+                    desc: "<div class='quote-header'>\"Da ciascuno secondo le sue capacità, a ciascuno secondo i suoi bisogni.\" — Karl Marx & Friedrich Engels</div><br>Trovi il terrore della solitudine individuale insopportabile, così scegli la via del collettivo. Rappresenti l'apice della disciplina materialista. Per te, il significato non si trova nell'ego, ma nel ritmo della grande macchina. Sei il mattone nel muro, l'ingranaggio nel motore, la componente necessaria di un disegno grandioso che sopravvive molto più a lungo di ogni singola vita.<br><br>La Fratellanza di Ferro è la tua casa perché fornisce la risposta definitiva al nichilismo: la dedizione totale a uno scopo più grande di te. Perdi l'ansia dell''Io' guadagnando la forza del 'Noi'. La tua eredità non è una statua, ma l'infrastruttura di una nazione che vivrà oltre le stelle.", 
                     link: "../factions/nani.html" 
                 },
                 I: { 
                     name: "Enclave Elfica", 
                     img: "../img/enclave_result.png",
-                    desc: "Sei il saggio schopenhaueriano che ha compreso che il mondo è un teatro di vane ambizioni e sofferenza. Hai raggiunto una radicale indipendenza intellettuale. Uscendo dall'arena sociale, non stai scappando: ti stai elevando. Hai deciso che la tua pace vale più di qualsiasi validazione sociale, e il tuo silenzio è la tua arma più affilata.<br><br>L'Enclave Elfica è il tuo dominio; è l'espressione ultima dell'autonomia. Mentre altri si sfiniscono lottando per lo status o l'appartenenza, tu osservi dalla soglia. Sei l'orizzonte che non può essere misurato. Non hai bisogno che il mondo sia d'accordo con te; semplicemente, ti rifiuti di far parte del suo rumore.", 
+                    desc: "<div class='quote-header'>\"Una nazione dovrebbe avere una sola mente... Lasciamo che la nazione sia grande; che si occupi dei propri affari e smetta di intromettersi con le altre nazioni.\" — Ralph Waldo Emerson</div><br>Sei il saggio schopenhaueriano che ha compreso che il mondo è un teatro di vane ambizioni e sofferenza. Hai raggiunto una radicale indipendenza intellettuale. Uscendo dall'arena sociale, non stai scappando: ti stai elevando. Hai deciso che la tua pace vale più di qualsiasi validazione sociale, e il tuo silenzio è la tua arma più affilata.<br><br>L'Enclave Elfica è il tuo dominio; è l'espressione ultima dell'autonomia. Mentre altri si sfiniscono lottando per lo status o l'appartenenza, tu osservi dalla soglia. Sei l'orizzonte che non può essere misurato. Non hai bisogno che il mondo sia d'accordo con te; semplicemente, ti rifiuti di far parte del suo rumore.", 
                     link: "../factions/isolazionista.html" 
                 },
                 M: { 
                     name: "Dimenticati", 
                     img: "../img/forgottens_result.png",
-                    desc: "Sei il custode della 'Compassione Radicale'. Comprendi che l'esistenza è una serie di cicatrici, e hai scelto la via più coraggiosa: essere colui che guarisce. Mentre altri cercano di indurirsi per smettere di sentire, tu hai espanso la tua capacità di soffrire con gli altri. Sai che l'empatia non è una debolezza, ma l'unica tecnologia in grado di aggiustare un mondo a pezzi.<br><br>I Dimenticati sono il tuo santuario. È la testimonianza della convinzione che il valore della vita si trovi nei momenti in cui condividiamo il peso del nostro trauma comune. Non costruisci monumenti al potere; costruisci ponti verso le anime. Qui, i rotti non vengono scartati: sono le fondamenta di un nuovo tipo di forza.", 
+                    desc: "<div class='quote-header'>\"La creazione è la grande redenzione dal dolore e la via per alleviare la vita. Ma perché il creatore esista, sono necessarie sofferenza e molte trasformazioni.\" — Friedrich Nietzsche</div><br>Sei il custode della 'Compassione Radicale'. Comprendi che l'esistenza è una serie di cicatrici, e hai scelto la via più coraggiosa: essere colui che guarisce. Mentre altri cercano di indurirsi per smettere di sentire, tu hai espanso la tua capacità di soffrire con gli altri. Sai che l'empatia non è una debolezza, ma l'unica tecnologia in grado di aggiustare un mondo a pezzi.<br><br>I Dimenticati sono il tuo santuario. È la testimonianza della convinzione che il valore della vita si trovi nei momenti in cui condividiamo il peso del nostro trauma comune. Non costruisci monumenti al potere; costruisci ponti verso le anime. Qui, i rotti non vengono scartati: sono le fondamenta di un nuovo tipo di forza.", 
                     link: "../factions/forgottens.html" 
                 }
             }
