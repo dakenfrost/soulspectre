@@ -1,1 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoulSpectre - Archetype Alignment Test</title>
+    <style>
+        :root {
+            --bg-color: #121214;
+            --container-bg: #1a1a1e;
+            --border-color: #2d2d34;
+            --text-color: #e2e2e9;
+            --text-muted: #8e8e9f;
+            --accent-color: #a3333d;
+            --accent-hover: #c43e4a;
+            --button-bg: #222227;
+            --button-hover: #2a2a32;
+        }
 
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .test-container {
+            background-color: var(--container-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            max-width: 650px;
+            width: 100%;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .header {
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 1.4rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-color);
+        }
+
+        .progress-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .progress {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .question-text {
+            font-size: 1.15rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option-btn {
+            background-color: var(--button-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            padding: 16px 20px;
+            border-radius: 6px;
+            text-align: left;
+            font-size: 0.95rem;
+            line-height: 1.4;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            width: 100%;
+        }
+
+        .option-btn:hover {
+            background-color: var(--button-hover);
+            border-color: var(--accent-color);
+        }
+
+        .option-btn:active {
+            transform: scale(0.99);
+        }
+
+        /* MENU A TENDINA PER LA LINGUA */
+        .lang-dropdown {
+            background-color: var(--button-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .lang-dropdown:hover {
+            border-color: var(--text-muted);
+        }
+
+        .lang-dropdown option {
+            background-color: var(--container-bg);
+            color: var(--text-color);
+        }
+
+        @media (max-width: 480px) {
+            .test-container {
+                padding: 20px;
+            }
+            .question-text {
+                font-size: 1rem;
+            }
+            .option-btn {
+                font-size: 0.9rem;
+                padding: 12px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="test-container">
+    <div class="header">
+        <h1 id="title-text">SoulSpectre Test</h1>
+        <div class="progress-container">
+            <span id="progress-indicator" class="progress">0 / 8</span>
+            <select id="lang-select" class="lang-dropdown">
+                <option value="en">EN</option>
+                <option value="it">IT</option>
+            </select>
+        </div>
+    </div>
+
+    <div id="quiz-body">
+        <div id="question-el" class="question-text">Loading question...</div>
+        <div id="options-el" class="options-list"></div>
+    </div>
+</div>
+
+<script>
+    const localization = {
+        en: {
+            title: "Faction Alignment",
+            tieTitle: "Critical Tie-Breaker",
+            progress: "Question",
+            tieLabel: "Tie-Breaker",
+            questions: [
+                {
+                    text: "You are betrayed by your best friend, what do you do?",
+                    options: [
+                        { text: "Change friends, clearly I chose poorly.", faction: "D" },
+                        { text: "I feel hurt and upset, but I won't seek revenge because it achieves nothing.", faction: "V" },
+                        { text: "I confront them to understand, and eventually attack if they acted maliciously.", faction: "K" },
+                        { text: "I don't have a specific best friend, all my friends are on the same level.", faction: "N" },
+                        { text: "I don't care why they did it, I erase them from my life and withdraw. The fewer people around me, the better.", faction: "I" },
+                        { text: "I try to understand the wound or motive; if they sincerely repent, I'm ready to forgive and welcome them back.", faction: "M" }
+                    ]
+                },
+                {
+                    text: "At work/school you are assigned a group project, but one member is doing absolutely nothing. What do you do?",
+                    options: [
+                        { text: "Ignore them and do their part too. I have no time to waste arguing, I just want the project to succeed for everyone.", faction: "V" },
+                        { text: "Confront them in front of everyone and tell them clearly that if they don't work, they're out. No parasites.", faction: "K" },
+                        { text: "Talk to the boss/professor to get them officially excluded or lower their grade. There are rules and they must be applied.", faction: "D" },
+                        { text: "Split tasks into microscopic, equal parts so one person's absence is covered automatically by the assembly line.", faction: "N" },
+                        { text: "Split from the group and ask to do the project completely alone. Faster, better, no dealing with anyone.", faction: "I" },
+                        { text: "Speak with them privately to see if they're going through a hard time, and offer to help them catch up.", faction: "M" }
+                    ]
+                },
+                {
+                    text: "You find a wallet full of money on the ground with the owner's documents inside. What do you do?",
+                    options: [
+                        { text: "Return it immediately with all the money inside. I hope someone would do the same for me, we must help each other.", faction: "V" },
+                        { text: "Take the money and throw away the wallet. Whoever lost it was naive or weak, carelessness carries a price.", faction: "K" },
+                        { text: "Check if there's a reward or if I can claim a legitimate 'ransom' from the owner for finding it.", faction: "D" },
+                        { text: "Hand it over to the lost and found office or competent authorities. It's not my job to handle it, proper channels exist.", faction: "N" },
+                        { text: "Leave it exactly where it is. I don't want trouble, reports, or anyone dragging me into this.", faction: "I" },
+                        { text: "Do everything to track down the owner directly, not out of duty or for the guards, but because I know how painful and destabilizing it is to lose your things.", faction: "M" }
+                    ]
+                },
+                {
+                    text: "Someone heavily insults your way of life or choices in front of other people. How do you react?",
+                    options: [
+                        { text: "Answer back sharply, dismantling their arguments with logic and attacking their weak spots.", faction: "K" },
+                        { text: "Let them talk and smile. Their opinion doesn't change who I am, I don't waste energy on frustrated people.", faction: "V" },
+                        { text: "Find out who they are and see if I can use this public outburst to discredit them with their superiors or acquaintances.", faction: "D" },
+                        { text: "Defend myself by shielding behind my group of friends or colleagues; my circle knows who I am and their opinion means nothing against our community.", faction: "N" },
+                        { text: "Get up and leave without a word. Erase that person and that place from my mental geography forever.", faction: "I" },
+                        { text: "Feel hurt but try not to respond with violence; I prefer to temporarily step away to protect my peace and that of those close to me.", faction: "M" }
+                    ]
+                },
+                {
+                    text: "You are at a dinner and an acquaintance expresses a patently false or ignorant opinion on a topic you know perfectly. What do you do?",
+                    options: [
+                        { text: "Correct them immediately in front of everyone, dismantling their thesis with hard data to reestablish truth and prove my competence.", faction: "K" },
+                        { text: "Let it slide. Everyone has a right to their illusions, it's not worth ruining the evening's atmosphere over something so small.", faction: "V" },
+                        { text: "Play along ironically or mock-agree, amusing myself by seeing how ridiculous they make themselves look.", faction: "D" },
+                        { text: "Only intervene if the opinion harms the group or someone present; otherwise, I conform to the general silence of the table.", faction: "N" },
+                        { text: "Exclude myself from the conversation, pour a drink, and look at my phone waiting for the dinner to end. Not my business.", faction: "I" },
+                        { text: "Try to integrate them into the discussion by asking open questions to lead them to the correct answer themselves without making them feel humiliated.", faction: "M" }
+                    ]
+                },
+                {
+                    text: "You are offered a major promotion at work, but it requires relocating to another city and disrupting your current routine. How do you decide?",
+                    options: [
+                        { text: "Accept immediately. It's the perfect opportunity to test my limits, accumulate power, and evolve my career to the highest level.", faction: "K" },
+                        { text: "Carefully evaluate the impact on my current context and those who depend on me; I only accept if it guarantees greater future stability for everyone.", faction: "V" },
+                        { text: "Use the offer as leverage with my current company to demand an immediate raise without moving an inch.", faction: "D" },
+                        { text: "Accept if I feel my relocation serves the common good of the company or department, otherwise I stay where the machine needs my gear.", faction: "N" },
+                        { text: "Refuse without a second thought. My home, my space, and my daily peace have no price tag.", faction: "I" },
+                        { text: "Accept only if the new reality allows me to bring the people I am bonded with, or if the environment conveys warmth and welcome.", faction: "M" }
+                    ]
+                },
+                {
+                    text: "During a heated argument with your partner or a very close person, they burst into tears out of frustration. How do you react?",
+                    options: [
+                        { text: "Stay cold. Crying doesn't change the facts of the argument; I demand we return to raw logic to solve the issue.", faction: "K" },
+                        { text: "Take a step back, put pride aside, and try to calm the waters, even if I am convinced I am right. The relationship matters more than the bicker.", faction: "V" },
+                        { text: "Use that moment of emotional breakdown to close the argument in my favor, leveraging their guilt to get what I wanted.", faction: "D" },
+                        { text: "Freeze and try to apply a standard solution or recall our previous agreements to reestablish the set order.", faction: "N" },
+                        { text: "Feel extremely uncomfortable, get up, and go to another room until the emotional storm blows over on its own.", faction: "I" },
+                        { text: "Interrupt any discussion instantly, hold them tight, and focus only on comforting their pain, completely forgetting the reason for the fight.", faction: "M" }
+                    ]
+                },
+                {
+                    text: "A competing company challenges your use of an idea or project you believe is yours, threatening legal action. What do you do?",
+                    options: [
+                        { text: "Go to war. Prepare the most aggressive offensive possible to destroy their market credibility and prove who is stronger.", faction: "K" },
+                        { text: "Seek a reasonable mediation to avoid a clash that would drain both sides' resources, aiming for a balanced solution.", faction: "V" },
+                        { text: "Carefully study their accusation to find legal loopholes or skeletons in the closet to blackmail them and extort a profitable deal.", faction: "D" },
+                        { text: "Rely blindly on the legal team of my union or corporate organization: the structure will defend me as I have always defended it.", faction: "N" },
+                        { text: "Withdraw the project or modify it radically just to avoid dealing with lawyers, courts, and wastes of time. My peace is non-negotiable.", faction: "I" },
+                        { text: "Seek a private, informal meeting with the counterparty to see if there was a misunderstanding and find a human solution before a bureaucratic one.", faction: "M" }
+                    ]
+                }
+            ],
+            tieBreaker: {
+                text: "When you die, what do you want to be remembered for?",
+                options: [
+                    { text: "That I never backed down in the face of hardship.", faction: "K" },
+                    { text: "That I left the world a little better than I found it.", faction: "V" },
+                    { text: "On the concrete and material things I managed to build or accumulate.", faction: "D" },
+                    { text: "On my contribution to the success and growth of my group or country.", faction: "N" },
+                    { text: "For nothing. I prefer to vanish without a trace and remain at peace.", faction: "I" },
+                    { text: "That I helped those who suffered, offering a safe haven in times of need.", faction: "M" }
+                ]
+            }
+        },
+        it: {
+            title: "Allineamento Fazione",
+            tieTitle: "Spareggio Critico",
+            progress: "Domanda",
+            tieLabel: "Spareggio",
+            questions: [
+                {
+                    text: "Sei stato tradito dal tuo migliore amico, cosa fai?",
+                    options: [
+                        { text: "Cambio amico, evidentemente ho scelto male.", faction: "D" },
+                        { text: "Mi dispiaccio e ci sto male, però non mi vendico perché non porterebbe a nulla.", faction: "V" },
+                        { text: "Lo affronto per capire ed eventualmente attaccarlo se si è comportato male.", faction: "K" },
+                        { text: "Non ho uno specifico migliore amico, tutti i miei amici sono sullo stesso piano.", faction: "N" },
+                        { text: "Non mi importa del perché lo abbia fatto, lo cancello dalla mia vita e mi chiudo nel mio. Meno persone ho attorno, meglio sto.", faction: "I" },
+                        { text: "Cerco di capire la ferita o il motivo che lo ha spinto a farlo; se si pente sinceramente, sono disposto a perdonarlo e accoglierlo di nuovo.", faction: "M" }
+                    ]
+                },
+                {
+                    text: "Al lavoro/scuola ti viene assegnato un progetto di gruppo, ma un membro non sta facendo assolutamente nulla. Cosa fai?",
+                    options: [
+                        { text: "Lo ignoro e faccio anche la sua parte. Non ho tempo da perdere a litigare, voglio solo che il progetto finisca bene per tutti.", faction: "V" },
+                        { text: "Lo affronto davanti a tutti e gli dico chiaramente che se non lavora è fuori dal gruppo. Niente parassiti.", faction: "K" },
+                        { text: "Parlo con il capo/professore per farlo escludere ufficialmente o fargli scalare il voto. Ci sono delle regole e vanno applicate.", faction: "D" },
+                        { text: "Ci dividiamo i compiti in parti microscopiche e uguali in modo che l'assenza di uno venga coperta automaticamente dalla catena di montaggio.", faction: "N" },
+                        { text: "Mi stacco dal gruppo e chiedo di fare il progetto completamente da solo. Faccio prima, faccio meglio e non devo relazionarmi con nessuno.", faction: "I" },
+                        { text: "Parlo con lui privatamente per capire se sta attraversando un momento difficile o se ha problemi personali, e mi offro di aiutarlo a recuperare.", faction: "M" }
+                    ]
+                },
+                {
+                    text: "Trovi per terra un portafoglio pieno di soldi con dentro i documenti del proprietario. Cosa fai?",
+                    options: [
+                        { text: "Lo restituisco subito con tutti i soldi dentro. Spero che qualcuno farebbe lo stesso con me, dobbiamo aiutarci tra noi.", faction: "V" },
+                        { text: "Prendo i soldi e butto il portafoglio. Chi lo ha perso è stato ingenuo o debole, la distrazione si paga.", faction: "K" },
+                        { text: "Guardo se c'è una ricompensa o se posso chiedere un 'riscatto' legittimo al proprietario per averglielo ritrovato.", faction: "D" },
+                        { text: "Lo consegno all'ufficio oggetti smarriti o alle autorità competenti. Non è compito mio gestire la cosa, ci sono organi appositi.", faction: "N" },
+                        { text: "Lo lascio esattamente dove si trova. Non voglio grane, non voglio denunce, non voglio che nessuno mi tiri in mezzo a questa storia.", faction: "I" },
+                        { text: "Faccio di tutto per rintracciare il proprietario direttamente, non per dovere o per le guardie, ma perché so quanto possa essere doloroso e destabilizzante perdere le proprie cose.", faction: "M" }
+                    ]
+                },
+                {
+                    text: "Qualcuno insulta pesantemente il tuo modo di vivere o le tue scelte davanti ad altre persone. Come reagisci?",
+                    options: [
+                        { text: "Gli rispondo a tono, smontando le sue argomentazioni con logica ed eventualmente attaccandolo sui suoi punti deboli.", faction: "K" },
+                        { text: "Lo lascio parlare e gli sorrido. La sua opinione non cambia chi sono, non spreco energie con chi è frustrato.", faction: "V" },
+                        { text: "Cerco di capire chi è e se posso usare questa sua uscita pubblica per metterlo in cattiva luce con i suoi superiori o conoscenti.", faction: "D" },
+                        { text: "Mi difendo facendo scudo con il mio gruppo di amici o colleghi; la mia cerchia sa chi sono e la sua opinione non conta nulla contro la nostra comunità.", faction: "N" },
+                        { text: "Mi alzo e me ne vado senza dire una parola. Cancello quella persona e quel posto dalla mia geografia mentale per sempre.", faction: "I" },
+                        { text: "Rimango ferito ma cerco di non rispondere con violenza; preferisco allontanarmi temporaneamente dal gruppo per proteggere la mia pace e quella delle persone che mi stanno vicine.", faction: "M" }
+                    ]
+                },
+                {
+                    text: "Sei a una cena e un conoscente esprime un'opinione palesemente falsa o ignorante su un argomento che tu conosci alla perfezione. Cosa fai?",
+                    options: [
+                        { text: "Lo correggo immediatamente davanti a tutti, smontando la sua tesi dati alla mano per ristabilire la verità e dimostrare la mia competenza.", faction: "K" },
+                        { text: "Lascio correre senza dire nulla. Ognuno ha diritto alle sue illusioni e non vale la pena rovinare l'atmosfera della serata per così poco.", faction: "V" },
+                        { text: "Gli do corda in modo ironico o finto accondiscendente, divertendomi a vedere fino a che punto si rende ridicolo da solo.", faction: "D" },
+                        { text: "Intervengo solo se l'opinione danneggia il gruppo o qualcuno dei presenti; altrimenti mi adeguo al silenzio generale del tavolo.", faction: "N" },
+                        { text: "Mi escludo dalla conversazione, mi verso da bere e inizio a guardare il telefono aspettando che la cena finisca. Non è affar mio.", faction: "I" },
+                        { text: "Provo a integrarlo nel discorso ponendogli delle domande aperte per farlo arrivare alla risposta corretta da solo, senza farlo sentire umiliato.", faction: "M" }
+                    ]
+                },
+                {
+                    text: "Ti viene offerta una promozione importante sul lavoro, ma questo richiede di trasferirti in un'altra città e stravolgere la tua routine attuale. Come decidi?",
+                    options: [
+                        { text: "Accetto subito. È l'occasione perfetta per testare i miei limiti, accumulare potere ed evolvere la mia carriera verso il massimo livello.", faction: "K" },
+                        { text: "Valuto attentamente l'impatto sul mio attuale contesto e sulle persone che dipendono da me; accetto solo se questo garantisce una maggiore stabilità futura per tutti.", faction: "V" },
+                        { text: "Uso l'offerta come leva contrattuale con la mia attuale azienda per chiedere un aumento di stipendio immediato senza dovermi muovere di un millimetro.", faction: "D" },
+                        { text: "Accetto se sento che il mio trasferimento è utile al bene comune dell'azienda o del reparto, altrimenti rimango dove l'ingranaggio ha bisogno di me.", faction: "N" },
+                        { text: "Rifiuto senza pensarci due volte. La mia casa, i miei spazi e la mia tranquillità quotidiana non hanno un prezzo in denaro.", faction: "I" },
+                        { text: "Accetto solo se la nuova realtà mi permette di portare con me le persone a cui sono legato o se l'ambiente mi trasmette un senso di calore e accoglienza.", faction: "M" }
+                    ]
+                },
+                {
+                    text: "Durante una discussione accesa con il tuo partner o una persona molto vicina, questa scoppia a piangere per la frustrazione. Come reagisci?",
+                    options: [
+                        { text: "Resto freddo. Il pianto non cambia i fatti della discussione; pretendo che si torni alla logica nuda e cruda per risolvere il problema.", faction: "K" },
+                        { text: "Faccio un passo indietro, metto da parte l'orgoglio e cerco di calmare le acque, anche se sono convinto di avere ragione. La relazione vale più del bisticcio.", faction: "V" },
+                        { text: "Uso quel momento di crollo emotivo per chiudere la discussione a mio favore, facendo leva sul suo senso di colpa per ottenere ciò che volevo.", faction: "D" },
+                        { text: "Rimango interdetto e cerco di applicare una soluzione standard o di richiamare i nostri accordi precedenti per ristabilire l'ordine prestabilito.", faction: "N" },
+                        { text: "Mi sento estremamente a disagio, mi alzo e vado in un'altra stanza finché la tempesta emotiva non si è placata da sola.", faction: "I" },
+                        { text: "Interrompo immediatamente qualsiasi discorso, la stringo forte a me e mi focalizzo solo sul confortare il suo dolore, dimenticando completamente il motivo del litigio.", faction: "M" }
+                    ]
+                },
+                {
+                    text: "Un'azienda concorrente ti contesta l'utilizzo di un'idea o di un progetto che ritieni tuo, minacciando vie legali. Come ti muovi?",
+                    options: [
+                        { text: "Scendo in guerra. Preparo l'offensiva più aggressiva possibile per distruggere la loro credibilità sul mercato e dimostrare chi è il più forte.", faction: "K" },
+                        { text: "Cerco una mediazione ragionevole per evitare uno scontro che logorerebbe le risorse di entrambi, puntando a una soluzione equilibrata.", faction: "V" },
+                        { text: "Studio attentamente il loro impianto accusatorio per trovare cavilli legali o scheletri nell'armadio con cui ricattarli ed estorcere un accordo vantaggioso.", faction: "D" },
+                        { text: "Mi affido ciecamente al team legale del mio sindacato o della mia organizzazione corporativa: la struttura mi difenderà come io ho sempre difeso lei.", faction: "N" },
+                        { text: "Ritiro il progetto o lo modifico radicalmente pur di non avere a che fare con avvocati, tribunali e perdite di tempo. La mia pace non si tocca.", faction: "I" },
+                        { text: "Cerco un incontro privato e informale con la controparte per capire se c'è stato un malinteso e trovare un punto d'incontro umano prima che burocratico.", faction: "M" }
+                    ]
+                }
+            ],
+            tieBreaker: {
+                text: "Quando morirai, per cosa vuoi essere ricordato?",
+                options: [
+                    { text: "Sul fatto che non sono mai arretrato di fronte alle difficoltà.", faction: "K" },
+                    { text: "Sul fatto che ho lasciato il mondo un pochino meglio di come l'ho trovato.", faction: "V" },
+                    { text: "Sulle cose concrete e materiali che sono riuscito a costruire o accumulare.", faction: "D" },
+                    { text: "Sul mio contributo al successo e alla crescita del mio gruppo o paese.", faction: "N" },
+                    { text: "Per nulla. Preferisco svanire senza lasciare tracce e rimanere in pace.", faction: "I" },
+                    { text: "Sul fatto che ho aiutato chi soffriva, offrendo un porto sicuro nel momento del bisogno.", faction: "M" }
+                ]
+            }
+        }
+    };
+
+    let currentLanguage = 'en'; // Default set to English
+    let currentQuestionIndex = 0;
+    let isTieBreaker = false;
+    let tiedFactions = [];
+
+    const scores = { K: 0, V: 0, D: 0, N: 0, I: 0, M: 0 };
+
+    const titleText = document.getElementById('title-text');
+    const progressIndicator = document.getElementById('progress-indicator');
+    const langSelect = document.getElementById('lang-select');
+    const questionEl = document.getElementById('question-el');
+    const optionsEl = document.getElementById('options-el');
+
+    function initQuiz() {
+        const urlParams = new URLSearchParams(window.location.search);
+        let lang = urlParams.get('ln');
+        if (lang && localization[lang]) {
+            currentLanguage = lang;
+        } else {
+            currentLanguage = 'en';
+        }
+        langSelect.value = currentLanguage;
+        updateLangUI();
+        renderQuestion();
+    }
+
+    function updateLangUI() {
+        titleText.textContent = isTieBreaker ? localization[currentLanguage].tieTitle : localization[currentLanguage].title;
+    }
+
+    langSelect.addEventListener('change', (e) => {
+        currentLanguage = e.target.value;
+        const url = new URL(window.location);
+        url.searchParams.set('ln', currentLanguage);
+        window.history.pushState({}, '', url);
+        updateLangUI();
+        renderQuestion();
+    });
+
+    function renderQuestion() {
+        const langCatalog = localization[currentLanguage];
+        optionsEl.innerHTML = '';
+
+        if (!isTieBreaker) {
+            progressIndicator.textContent = `${langCatalog.progress} ${currentQuestionIndex + 1} / 8`;
+            const qData = langCatalog.questions[currentQuestionIndex];
+            questionEl.textContent = qData.text;
+
+            qData.options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.textContent = opt.text;
+                btn.addEventListener('click', () => handleAnswer(opt.faction));
+                optionsEl.appendChild(btn);
+            });
+        } else {
+            progressIndicator.textContent = langCatalog.tieLabel;
+            const qData = langCatalog.tieBreaker;
+            questionEl.textContent = qData.text;
+
+            qData.options.forEach(opt => {
+                if (tiedFactions.includes(opt.faction)) {
+                    const btn = document.createElement('button');
+                    btn.className = 'option-btn';
+                    btn.textContent = opt.text;
+                    btn.addEventListener('click', () => handleAnswer(opt.faction));
+                    optionsEl.appendChild(btn);
+                }
+            });
+        }
+    }
+
+    function handleAnswer(factionCode) {
+        scores[factionCode]++;
+        
+        if (!isTieBreaker) {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < 8) {
+                renderQuestion();
+            } else {
+                checkResults();
+            }
+        } else {
+            redirectToResults();
+        }
+    }
+
+    function checkResults() {
+        let maxScore = -1;
+        let winners = [];
+
+        for (const [faction, score] of Object.entries(scores)) {
+            if (score > maxScore) {
+                maxScore = score;
+                winners = [faction];
+            } else if (score === maxScore) {
+                winners.push(faction);
+            }
+        }
+
+        if (winners.length === 1) {
+            redirectToResults();
+        } else {
+            isTieBreaker = true;
+            tiedFactions = winners;
+            updateLangUI();
+            renderQuestion();
+        }
+    }
+
+    function redirectToResults() {
+        let targetUrl = "result.html"; 
+        
+        const params = new URLSearchParams();
+        params.set('ln', currentLanguage);
+        
+        for (const [faction, score] of Object.entries(scores)) {
+            if (score > 0) {
+                params.set(faction, score);
+            }
+        }
+        
+        const finalRedirect = `${targetUrl}?${params.toString()}`;
+        
+        window.location.href = finalRedirect;
+    }
+
+    initQuiz();
+</script>
+
+</body>
+</html>
