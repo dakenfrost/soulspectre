@@ -165,118 +165,115 @@
 </div>
 
 <script>
-    Ecco il blocco completo e aggiornato per il tuo test_engine.html. Ho integrato tutte le tue revisioni testuali e le rifiniture di tono che abbiamo discusso, rendendo le risposte più incisive e naturali.
-
-JavaScript
-const localization = {
-    en: {
-        title: "Faction Alignment",
-        tieTitle: "Critical Tie-Breaker",
-        progress: "Question",
-        tieLabel: "Tie-Breaker",
-        questions: [
-            {
-                text: "You are betrayed by your best friend, what do you do?",
+    const localization = {
+        en: {
+            title: "Faction Alignment",
+            tieTitle: "Critical Tie-Breaker",
+            progress: "Question",
+            tieLabel: "Tie-Breaker",
+            questions: [
+                {
+                    text: "You are betrayed by your best friend, what do you do?",
+                    options: [
+                        { text: "Change friends, clearly I chose poorly.", faction: "D" },
+                        { text: "I feel hurt and upset; while they might have had their reasons, I won't seek revenge because it achieves nothing.", faction: "V" },
+                        { text: "I confront them to understand, and eventually attack if they acted maliciously.", faction: "K" },
+                        { text: "I don't have a specific best friend, all my friends are on the same level.", faction: "N" },
+                        { text: "I don't care why they did it, I erase them from my life and withdraw. The fewer people around me, the better.", faction: "I" },
+                        { text: "I try to understand the wound or motive; if they sincerely repent, I'm ready to forgive and welcome them back.", faction: "M" }
+                    ]
+                },
+                {
+                    text: "At work/school you are assigned a group project, but one member is doing absolutely nothing. What do you do?",
+                    options: [
+                        { text: "I'll do their part myself. I have no time for arguments; I just want the project to succeed for the group.", faction: "V" },
+                        { text: "Cut them off immediately. I won't carry dead weight.", faction: "K" },
+                        { text: "Talk to the boss/professor to get them officially excluded or lower their grade. There are rules and they must be applied.", faction: "D" },
+                        { text: "Split tasks into microscopic, equal parts so one person's absence is covered automatically by the assembly line.", faction: "N" },
+                        { text: "Split from the group and ask to do the project completely alone. Faster, better, no dealing with anyone.", faction: "I" },
+                        { text: "Speak with them privately to see if they're going through a hard time, and offer to help them catch up.", faction: "M" }
+                    ]
+                },
+                {
+                    text: "You find a wallet full of money on the ground with the owner's documents inside. What do you do?",
+                    options: [
+                        { text: "Return it immediately with all the money inside. Out of duty and because I hope someone would do the same for me, we must help each other.", faction: "V" },
+                        { text: "Take the money and throw away the wallet. Weakness has a price; they were careless, and that's on them.", faction: "K" },
+                        { text: "Check if there's a reward or if I can claim a legitimate 'ransom' from the owner for finding it.", faction: "D" },
+                        { text: "Turn it in to the authorities. There are procedures for this, and they must be followed.", faction: "N" },
+                        { text: "Leave it exactly where it is. I don't want trouble, reports, or anyone dragging me into this.", faction: "I" },
+                        { text: "Do everything to track down the owner directly, not out of duty, but because I know how painful and destabilizing it is to lose your things.", faction: "M" }
+                    ]
+                },
+                {
+                    text: "Someone heavily insults your way of life or choices in front of other people. How do you react?",
+                    options: [
+                        { text: "Answer back sharply, dismantling their arguments with logic and attacking their weak spots.", faction: "K" },
+                        { text: "Let them talk and smile. Their opinion doesn't change who I am, I don't waste energy on frustrated people.", faction: "V" },
+                        { text: "Find out who they are and leverage the situation to destroy their reputation with those who matter.", faction: "D" },
+                        { text: "Defend myself by shielding behind my group; my circle knows who I am and their opinion means nothing against our community.", faction: "N" },
+                        { text: "Get up and leave without a word. Erase that person and that place from my mental geography forever.", faction: "I" },
+                        { text: "Feel hurt but try not to respond with violence; I prefer to temporarily step away to protect my peace and that of those close to me.", faction: "M" }
+                    ]
+                },
+                {
+                    text: "You are at a dinner and an acquaintance expresses a patently false or ignorant opinion on a topic you know perfectly. What do you do?",
+                    options: [
+                        { text: "Correct them immediately in front of everyone, dismantling their thesis with hard data to prove my competence.", faction: "K" },
+                        { text: "Let it slide; if they are set in their ways, it's not worth fighting to force someone to change their mind.", faction: "V" },
+                        { text: "Play along ironically or mock-agree, amusing myself by seeing how ridiculous they make themselves look.", faction: "D" },
+                        { text: "Only intervene if the opinion harms the group or someone present; otherwise, I conform to the general silence of the table.", faction: "N" },
+                        { text: "Exclude myself from the conversation, pour a drink, and look at my phone waiting for the dinner to end. Not my business.", faction: "I" },
+                        { text: "Try to integrate them into the discussion by asking open questions to lead them to the correct answer themselves.", faction: "M" }
+                    ]
+                },
+                {
+                    text: "You are offered a major promotion at work, but it requires relocating to another city and disrupting your current routine. How do you decide?",
+                    options: [
+                        { text: "Accept immediately. It's the perfect opportunity to test my limits, accumulate power, and evolve my career.", faction: "K" },
+                        { text: "Carefully evaluate the impact on my context and those who depend on me; I only accept if it guarantees greater stability for everyone.", faction: "V" },
+                        { text: "Use the offer as leverage with my current company to demand an immediate raise without moving an inch.", faction: "D" },
+                        { text: "Accept if I feel my relocation serves the common good of the company, otherwise I stay where the machine needs my gear.", faction: "N" },
+                        { text: "Refuse without a second thought. My home, my space, and my daily peace have no price tag.", faction: "I" },
+                        { text: "Accept only if the new reality allows me to bring the people I am bonded with, or if the environment conveys warmth.", faction: "M" }
+                    ]
+                },
+                {
+                    text: "During a heated argument with your partner or a very close person, they burst into tears out of frustration. How do you react?",
+                    options: [
+                        { text: "Stay cold. Crying doesn't change the facts; I demand we return to raw logic to solve the issue.", faction: "K" },
+                        { text: "Take a step back, put pride aside, and try to calm the waters, even if I am convinced I am right. The relationship matters more than the bicker.", faction: "V" },
+                        { text: "Use that moment of emotional breakdown to close the argument in my favor, leveraging their guilt to get what I wanted.", faction: "D" },
+                        { text: "Freeze up and try to recall our established agreements to bring things back to normal.", faction: "N" },
+                        { text: "Feel incredibly drained, retreat to another room, and wait until the emotional storm clears on its own.", faction: "I" },
+                        { text: "Interrupt any discussion instantly, hold them tight, and focus only on comforting their pain, forgetting the reason for the fight.", faction: "M" }
+                    ]
+                },
+                {
+                    text: "A competing company challenges your use of an idea or project you believe is yours, threatening legal action. What do you do?",
+                    options: [
+                        { text: "Go to war. Prepare the most aggressive offensive possible to destroy their market credibility.", faction: "K" },
+                        { text: "Seek a reasonable mediation to avoid a clash that would drain both sides' resources.", faction: "V" },
+                        { text: "Find any leverage or skeletons in their closet to force a profitable deal.", faction: "D" },
+                        { text: "Rely blindly on the legal team of my organization: the structure will defend me as I have always defended it.", faction: "N" },
+                        { text: "Withdraw the project just to avoid dealing with lawyers and waste of time. My peace is non-negotiable.", faction: "I" },
+                        { text: "Seek a private, informal meeting with the counterparty to see if there was a misunderstanding and find a human solution.", faction: "M" }
+                    ]
+                }
+            ],
+            tieBreaker: {
+                text: "When you die, what do you want to be remembered for?",
                 options: [
-                    { text: "Change friends, clearly I chose poorly.", faction: "D" },
-                    { text: "I feel hurt and upset; while they might have had their reasons, I won't seek revenge because it achieves nothing.", faction: "V" },
-                    { text: "I confront them to understand, and eventually attack if they acted maliciously.", faction: "K" },
-                    { text: "I don't have a specific best friend, all my friends are on the same level.", faction: "N" },
-                    { text: "I don't care why they did it, I erase them from my life and withdraw. The fewer people around me, the better.", faction: "I" },
-                    { text: "I try to understand the wound or motive; if they sincerely repent, I'm ready to forgive and welcome them back.", faction: "M" }
-                ]
-            },
-            {
-                text: "At work/school you are assigned a group project, but one member is doing absolutely nothing. What do you do?",
-                options: [
-                    { text: "I'll do their part myself. I have no time for arguments; I just want the project to succeed for the group.", faction: "V" },
-                    { text: "Cut them off immediately. I won't carry dead weight.", faction: "K" },
-                    { text: "Talk to the boss/professor to get them officially excluded or lower their grade. There are rules and they must be applied.", faction: "D" },
-                    { text: "Split tasks into microscopic, equal parts so one person's absence is covered automatically by the assembly line.", faction: "N" },
-                    { text: "Split from the group and ask to do the project completely alone. Faster, better, no dealing with anyone.", faction: "I" },
-                    { text: "Speak with them privately to see if they're going through a hard time, and offer to help them catch up.", faction: "M" }
-                ]
-            },
-            {
-                text: "You find a wallet full of money on the ground with the owner's documents inside. What do you do?",
-                options: [
-                    { text: "Return it immediately with all the money inside. Out of duty and because I hope someone would do the same for me, we must help each other.", faction: "V" },
-                    { text: "Take the money and throw away the wallet. Weakness has a price; they were careless, and that's on them.", faction: "K" },
-                    { text: "Check if there's a reward or if I can claim a legitimate 'ransom' from the owner for finding it.", faction: "D" },
-                    { text: "Turn it in to the authorities. There are procedures for this, and they must be followed.", faction: "N" },
-                    { text: "Leave it exactly where it is. I don't want trouble, reports, or anyone dragging me into this.", faction: "I" },
-                    { text: "Do everything to track down the owner directly, not out of duty, but because I know how painful and destabilizing it is to lose your things.", faction: "M" }
-                ]
-            },
-            {
-                text: "Someone heavily insults your way of life or choices in front of other people. How do you react?",
-                options: [
-                    { text: "Answer back sharply, dismantling their arguments with logic and attacking their weak spots.", faction: "K" },
-                    { text: "Let them talk and smile. Their opinion doesn't change who I am, I don't waste energy on frustrated people.", faction: "V" },
-                    { text: "Find out who they are and leverage the situation to destroy their reputation with those who matter.", faction: "D" },
-                    { text: "Defend myself by shielding behind my group; my circle knows who I am and their opinion means nothing against our community.", faction: "N" },
-                    { text: "Get up and leave without a word. Erase that person and that place from my mental geography forever.", faction: "I" },
-                    { text: "Feel hurt but try not to respond with violence; I prefer to temporarily step away to protect my peace and that of those close to me.", faction: "M" }
-                ]
-            },
-            {
-                text: "You are at a dinner and an acquaintance expresses a patently false or ignorant opinion on a topic you know perfectly. What do you do?",
-                options: [
-                    { text: "Correct them immediately in front of everyone, dismantling their thesis with hard data to prove my competence.", faction: "K" },
-                    { text: "Let it slide; if they are set in their ways, it's not worth fighting to force someone to change their mind.", faction: "V" },
-                    { text: "Play along ironically or mock-agree, amusing myself by seeing how ridiculous they make themselves look.", faction: "D" },
-                    { text: "Only intervene if the opinion harms the group or someone present; otherwise, I conform to the general silence of the table.", faction: "N" },
-                    { text: "Exclude myself from the conversation, pour a drink, and look at my phone waiting for the dinner to end. Not my business.", faction: "I" },
-                    { text: "Try to integrate them into the discussion by asking open questions to lead them to the correct answer themselves.", faction: "M" }
-                ]
-            },
-            {
-                text: "You are offered a major promotion at work, but it requires relocating to another city and disrupting your current routine. How do you decide?",
-                options: [
-                    { text: "Accept immediately. It's the perfect opportunity to test my limits, accumulate power, and evolve my career.", faction: "K" },
-                    { text: "Carefully evaluate the impact on my context and those who depend on me; I only accept if it guarantees greater stability for everyone.", faction: "V" },
-                    { text: "Use the offer as leverage with my current company to demand an immediate raise without moving an inch.", faction: "D" },
-                    { text: "Accept if I feel my relocation serves the common good of the company, otherwise I stay where the machine needs my gear.", faction: "N" },
-                    { text: "Refuse without a second thought. My home, my space, and my daily peace have no price tag.", faction: "I" },
-                    { text: "Accept only if the new reality allows me to bring the people I am bonded with, or if the environment conveys warmth.", faction: "M" }
-                ]
-            },
-            {
-                text: "During a heated argument with your partner or a very close person, they burst into tears out of frustration. How do you react?",
-                options: [
-                    { text: "Stay cold. Crying doesn't change the facts; I demand we return to raw logic to solve the issue.", faction: "K" },
-                    { text: "Take a step back, put pride aside, and try to calm the waters, even if I am convinced I am right. The relationship matters more than the bicker.", faction: "V" },
-                    { text: "Use that moment of emotional breakdown to close the argument in my favor, leveraging their guilt to get what I wanted.", faction: "D" },
-                    { text: "Freeze up and try to recall our established agreements to bring things back to normal.", faction: "N" },
-                    { text: "Feel incredibly drained, retreat to another room, and wait until the emotional storm clears on its own.", faction: "I" },
-                    { text: "Interrupt any discussion instantly, hold them tight, and focus only on comforting their pain, forgetting the reason for the fight.", faction: "M" }
-                ]
-            },
-            {
-                text: "A competing company challenges your use of an idea or project you believe is yours, threatening legal action. What do you do?",
-                options: [
-                    { text: "Go to war. Prepare the most aggressive offensive possible to destroy their market credibility.", faction: "K" },
-                    { text: "Seek a reasonable mediation to avoid a clash that would drain both sides' resources.", faction: "V" },
-                    { text: "Find any leverage or skeletons in their closet to force a profitable deal.", faction: "D" },
-                    { text: "Rely blindly on the legal team of my organization: the structure will defend me as I have always defended it.", faction: "N" },
-                    { text: "Withdraw the project just to avoid dealing with lawyers and waste of time. My peace is non-negotiable.", faction: "I" },
-                    { text: "Seek a private, informal meeting with the counterparty to see if there was a misunderstanding and find a human solution.", faction: "M" }
+                    { text: "That I never backed down in the face of hardship.", faction: "K" },
+                    { text: "That I left the world a little better than I found it.", faction: "V" },
+                    { text: "For the concrete achievements, success, and fame I managed to build.", faction: "D" },
+                    { text: "On my contribution to the success and growth of my group or country.", faction: "N" },
+                    { text: "For nothing. I prefer to vanish without a trace and remain at peace.", faction: "I" },
+                    { text: "That I helped those who suffered, offering a safe haven in times of need.", faction: "M" }
                 ]
             }
-        ],
-        tieBreaker: {
-            text: "When you die, what do you want to be remembered for?",
-            options: [
-                { text: "That I never backed down in the face of hardship.", faction: "K" },
-                { text: "That I left the world a little better than I found it.", faction: "V" },
-                { text: "For the concrete achievements, success, and fame I managed to build.", faction: "D" },
-                { text: "On my contribution to the success and growth of my group or country.", faction: "N" },
-                { text: "For nothing. I prefer to vanish without a trace and remain at peace.", faction: "I" },
-                { text: "That I helped those who suffered, offering a safe haven in times of need.", faction: "M" }
-            ]
-        }
-    },
-      it: {
+        },
+        it: {
             title: "Allineamento Fazione",
             tieTitle: "Spareggio Critico",
             progress: "Domanda",
