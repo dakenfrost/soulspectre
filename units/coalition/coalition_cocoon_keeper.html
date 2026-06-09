@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Cocoon Keeper</title>
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Cocoon Keeper",
+  "subtitle": "Lunar Path | Tier 3",
+  "accent": "#64b5f6",
+  "bgImage": "../../img/coalition/coalition_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/coalition.html",           "label": "The Coalition" },
+    { "href": "../../factions/coalition_roster.html",    "label": "Roster" },
+    { "href": "coalition_order_support.html",            "label": "The Deep Weave" },
+    {                                                    "label": "Cocoon Keeper" }
+  ],
+
+  "combat": ["../../img/coalition/deep_weave/cocoon_keeper_combat.jpg"],
+
+  "bio": {
+    "title": "The Field Glows Silver",
+    "paragraphs": [
+      "She produces silk , not from a single spindle gland, but from specialized glands distributed across her forearms, abdomen, and the leading edge of her wings, each producing a filament with different biological properties.",
+      "In combat, she uses this silk to wrap critically wounded allies in rapid field cocoons: biologically active enclosures that <strong>maintain temperature, suppress infection, accelerate clotting</strong>, and buy hours of recovery in seconds of real time.",
+      "The silk itself is semi-opaque and slightly luminous, so a field wrapped in her work glows faintly silver. She is always surrounded by drifting threads still attached to their glands, each one <em>waiting.</em>"
+    ]
+  },
+
+  "stats": {
+    "hp":  110,
+    "atk": 45,
+    "ini": 55
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Emergency Cocoon",
+      "desc": "Wraps one ally below 25% HP in a silk cocoon. They skip 1 turn but restore 40% of their max HP and have all debuffs removed upon emerging."
+    },
+    {
+      "type": "active",
+      "name": "Silk Salve",
+      "desc": "Heals all allies for 20% of their max HP. Allies below 50% HP are healed for 35% instead."
+    },
+    {
+      "type": "passive",
+      "name": "Luminous Threads",
+      "desc": "At the start of each turn, one random wounded ally within range gains Bio Regeneration (3% HP per turn for 2 turns)."
+    }
+  ],
+
+  "gallery": [
+    "../../img/coalition/deep_weave/cocoon_keeper_portrait.jpg"
+  ],
+
+  "backLink": {
+    "href":  "coalition_order_support.html",
+    "label": "Return to The Deep Weave"
+  }
+}
+</script>
+
+<script src="../../system/unit-renderer.js"></script>
+</body>
+</html>

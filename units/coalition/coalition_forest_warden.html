@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Forest Warden</title>
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Forest Warden",
+  "subtitle": "Nature's Wardens Path | Tier 3",
+  "accent": "#64b5f6",
+  "bgImage": "../../img/coalition/coalition_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/coalition.html",           "label": "The Coalition" },
+    { "href": "../../factions/coalition_roster.html",    "label": "Roster" },
+    { "href": "coalition_order_ranged.html",             "label": "The Echoes" },
+    {                                                    "label": "Forest Warden" }
+  ],
+
+  "combat": ["../../img/coalition/echoes/coalition_forest_warden_f_combat.jpg"],
+
+  "bio": {
+    "title": "The Territory",
+    "paragraphs": [
+      "She does not defend the forest. She is the defense the forest offers. The distinction is her entire identity. She did not join the Echoes , she was recognized by them when they entered her territory and found that the territory had already been <strong>asking about them</strong>.",
+      "Her symbiosis is territorial: the plants within a defined range communicate threat information to her constantly. She always knows where every living thing in her radius is. She always knows what is wrong before she sees it.",
+      "The forest expresses approval in the way forests do: things grow toward her, not away. <em>That is the highest endorsement.</em>"
+    ]
+  },
+
+  "stats": {
+    "hp":  120,
+    "atk": 55,
+    "ini": 50
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Warden's Strike",
+      "desc": "A powerful ranged attack channeled through the local root network. Deals <span class=\"dmg-earth\">Earth</span> damage. If the target is within a zone she controls, damage is increased by 25%."
+    },
+    {
+      "type": "active",
+      "name": "Territorial Claim",
+      "desc": "Designates a zone as her territory. Allies in that zone gain +15% defense and she can redirect incoming attacks against them to herself at will."
+    },
+    {
+      "type": "passive",
+      "name": "Forest Senses",
+      "desc": "Cannot be flanked, ambushed, or surprised. Always knows the exact position of every enemy on the battlefield."
+    }
+  ],
+
+  "gallery": [
+    "../../img/coalition/echoes/coalition_forest_warden_f_portrait.jpg"
+  ],
+
+  "backLink": {
+    "href":  "coalition_order_ranged.html",
+    "label": "Return to The Echoes"
+  }
+}
+</script>
+
+<script src="../../system/unit-renderer.js"></script>
+</body>
+</html>

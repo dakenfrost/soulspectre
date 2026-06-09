@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Stolen Fire</title>
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Stolen Fire",
+  "subtitle": "Nudibranch Path | Tier 4",
+  "accent": "#ba68c8",
+  "bgImage": "../../img/coalition/coalition_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/coalition.html",           "label": "The Coalition" },
+    { "href": "../../factions/coalition_roster.html",    "label": "Roster" },
+    { "href": "coalition_order_support.html",            "label": "The Deep Weave" },
+    {                                                    "label": "Stolen Fire" }
+  ],
+
+  "combat": ["../../img/coalition/deep_weave/stolen_fire_combat.jpg"],
+
+  "bio": {
+    "title": "The More They Bring",
+    "paragraphs": [
+      "The nudibranch ability to steal and repurpose the defenses of whatever it consumes has reached its evolutionary apex. She has absorbed so many different biological systems over her career that her own body is an archive: inside her tissue are dormant copies of every defensive mechanism she has ever encountered , calcification responses, bio-electric pulses, regenerative sequences, venom neutralization libraries, pheromone broadcast arrays.",
+      "In combat, she takes whatever is being directed against the Coalition , toxin, electricity, biological attack, radiation , and <strong>mirrors it outward, amplified and inverted</strong>, as a concentrated healing force.",
+      "She becomes more powerful the more dangerous the enemy is. The more they bring, the more she has to give back. <em>She finds this arrangement perfectly fair.</em>"
+    ]
+  },
+
+  "stats": {
+    "hp":  135,
+    "atk": 55,
+    "ini": 50
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Mirror Defense",
+      "desc": "Absorbs the damage type of the last enemy attack. Heals one ally for the equivalent amount as <span class=\"dmg-bio\">Bio</span> healing. Gains 1 Archive charge."
+    },
+    {
+      "type": "active",
+      "name": "Archive Inversion",
+      "desc": "Converts all stored absorbed material into a targeted burst: restores 50% HP to the most critical ally and 20% HP to all others. Consumes all Archive charges."
+    },
+    {
+      "type": "passive",
+      "name": "Perfect Absorption",
+      "desc": "Each unique damage type absorbed grants +8% to the next Mirror Defense (max 5 stacks). She is immune to any damage type she has previously absorbed this battle."
+    }
+  ],
+
+  "gallery": [
+    "../../img/coalition/deep_weave/stolen_fire_portrait.jpg"
+  ],
+
+  "backLink": {
+    "href":  "coalition_order_support.html",
+    "label": "Return to The Deep Weave"
+  }
+}
+</script>
+
+<script src="../../system/unit-renderer.js"></script>
+</body>
+</html>

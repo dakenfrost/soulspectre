@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Scale Moth</title>
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Scale Moth",
+  "subtitle": "Lunar Path | Tier 2",
+  "accent": "#81c784",
+  "bgImage": "../../img/coalition/coalition_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/coalition.html",           "label": "The Coalition" },
+    { "href": "../../factions/coalition_roster.html",    "label": "Roster" },
+    { "href": "coalition_order_support.html",            "label": "The Deep Weave" },
+    {                                                    "label": "Scale Moth" }
+  ],
+
+  "combat": ["../../img/coalition/deep_weave/scale_moth_combat.jpg"],
+
+  "bio": {
+    "title": "Wings That Change the Air",
+    "paragraphs": [
+      "Her wings emerged in early adolescence and she has never considered them unusual. They are large , three meters tip to tip at full extension , pale grey-white with a cryptic patterning that shifts subtly in dim light, never quite resolving into a clear shape.",
+      "Each wing is covered in microscopic scales that detach in her wake carrying compound payloads: most produce a <strong>gentle healing response in biological tissue</strong>, a few produce progressive drowsiness in enemies who inhale them.",
+      "Her antennae can read biological stress signals , fear, pain, cellular distress , at up to fifty meters. Her compound eyes are large and dark and give her a permanent expression of <em>gentle, all-encompassing attention.</em>"
+    ]
+  },
+
+  "stats": {
+    "hp":  85,
+    "atk": 35,
+    "ini": 55
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Scale Release",
+      "desc": "All allies within range restore 15% of their max HP from passive scale fallout. One enemy in range gains Drowsy (−20% speed for 1 turn)."
+    },
+    {
+      "type": "active",
+      "name": "Stress Reading",
+      "desc": "Identifies the most wounded ally on the field. That unit gains +30% healing received for 2 turns."
+    },
+    {
+      "type": "passive",
+      "name": "Compound Drift",
+      "desc": "At the start of each turn, all nearby allies restore 2% of their max HP from the passive scale compounds drifting in the air around her."
+    }
+  ],
+
+  "gallery": [
+    "../../img/coalition/deep_weave/scale_moth_portrait.jpg"
+  ],
+
+  "backLink": {
+    "href":  "coalition_order_support.html",
+    "label": "Return to The Deep Weave"
+  }
+}
+</script>
+
+<script src="../../system/unit-renderer.js"></script>
+</body>
+</html>

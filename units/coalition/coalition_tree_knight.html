@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Tree Knight</title>
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Tree Knight",
+  "subtitle": "Nature's Wardens Path | Tier 4",
+  "accent": "#ba68c8",
+  "bgImage": "../../img/coalition/coalition_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/coalition.html",           "label": "The Coalition" },
+    { "href": "../../factions/coalition_roster.html",    "label": "Roster" },
+    { "href": "coalition_order_ranged.html",             "label": "The Echoes" },
+    {                                                    "label": "Tree Knight" }
+  ],
+
+  "combat": ["../../img/coalition/echoes/coalition_tree_knight_f_combat.jpg"],
+
+  "bio": {
+    "title": "The Standing Wood",
+    "paragraphs": [
+      "Her symbiosis has crossed the threshold from biological integration to something closer to structural merger. The bark-plating across her shoulders and upper arms is load-bearing. Vascular wood has replaced cartilage in several joints. She is slower than she was, but she was never slow for her size, and her <strong>size has increased</strong>.",
+      "She does not guard the forest from outside threats. She is a mobile extension of it: a tree that walks, that makes decisions, that holds a line. The concept of retreat is not one the forest has ever asked her to model.",
+      "She has been felled before. The trees grew back. <em>So did she.</em>"
+    ]
+  },
+
+  "stats": {
+    "hp":  160,
+    "atk": 65,
+    "ini": 40
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Treestrike",
+      "desc": "A sweeping blow with bark-armored arms. Deals <span class=\"dmg-earth\">Earth</span> damage to all enemies in a frontal arc. Has a 35% chance to Stagger (−25% defense for 1 turn)."
+    },
+    {
+      "type": "active",
+      "name": "Root Anchor",
+      "desc": "Drives roots into the ground and spreads them in a 3-space radius. She is Immobilized but gains +40% defense and regenerates 5% max HP per turn for 2 turns. All enemies in her radius are Slowed."
+    },
+    {
+      "type": "passive",
+      "name": "Living Armor",
+      "desc": "Her bark-plating regenerates. At the start of each turn, she recovers 3% max HP. Taking Fire damage interrupts this for 1 turn."
+    }
+  ],
+
+  "gallery": [
+    "../../img/coalition/echoes/coalition_tree_knight_f_portrait.jpg"
+  ],
+
+  "backLink": {
+    "href":  "coalition_order_ranged.html",
+    "label": "Return to The Echoes"
+  }
+}
+</script>
+
+<script src="../../system/unit-renderer.js"></script>
+</body>
+</html>

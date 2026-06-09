@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Juvenile</title>
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Juvenile",
+  "subtitle": "Apex Predators | Tier 1",
+  "accent": "#b0bec5",
+  "bgImage": "../../img/coalition/coalition_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/coalition.html",           "label": "The Coalition" },
+    { "href": "../../factions/coalition_roster.html",    "label": "Roster" },
+    { "href": "coalition_order_mele.html",               "label": "The Apex Predators" },
+    {                                                    "label": "Juvenile" }
+  ],
+
+  "combat": ["../../img/coalition/the_apex_predators/juvenile_f_combat.jpg"],
+
+  "bio": {
+    "title": "Still Learning What She Is",
+    "paragraphs": [
+      "The instincts arrived before the training did. She was already moving in ways that no one taught her before anyone decided to formalize the education. The Apex Predators recognized the pattern and accelerated it.",
+      "She is fast in a way that reads as reckless but is actually something subtler: she is still calibrating the gap between <strong>what she can do</strong> and what a situation actually requires. That gap is closing quickly.",
+      "The older soldiers watch her with a familiar expression. They remember being that fast. They do not miss the uncertainty that came with it, but they miss the speed. <em>She does not know, yet, that she should enjoy it.</em>"
+    ]
+  },
+
+  "stats": {
+    "hp":  65,
+    "atk": 40,
+    "ini": 65
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Rush Attack",
+      "desc": "Charges a target at high speed. Deals <span class=\"dmg-bio\">Bio</span> melee damage. If she moved at least 3 spaces this turn before attacking, deals +20% bonus damage."
+    },
+    {
+      "type": "passive",
+      "name": "Raw Instinct",
+      "desc": "Whenever she attacks, she may immediately move 1 space without triggering Opportunity Attacks. This cannot be triggered more than once per turn."
+    }
+  ],
+
+  "gallery": [
+    "../../img/coalition/the_apex_predators/juvenile_f_portrait.jpg"
+  ],
+
+  "backLink": {
+    "href":  "coalition_order_mele.html",
+    "label": "Return to The Apex Predators"
+  }
+}
+</script>
+
+<script src="../../system/unit-renderer.js"></script>
+</body>
+</html>

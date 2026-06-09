@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Terrestrial Matriarch</title>
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Terrestrial Matriarch",
+  "subtitle": "Apex Predators | Tier 5 Champion",
+  "accent": "#ffb300",
+  "bgImage": "../../img/coalition/coalition_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/coalition.html",           "label": "The Coalition" },
+    { "href": "../../factions/coalition_roster.html",    "label": "Roster" },
+    { "href": "coalition_order_mele.html",               "label": "The Apex Predators" },
+    {                                                    "label": "Terrestrial Matriarch" }
+  ],
+
+  "combat": ["../../img/coalition/the_apex_predators/matriarch_f_combat.jpg"],
+
+  "bio": {
+    "title": "The Apex of the Apex",
+    "paragraphs": [
+      "She did not reach this rank. She arrived at it the way a river arrives at the sea , not as a destination, but as the natural conclusion of direction. Every path the Apex Predators walk eventually leads here, because every path is a study in what she already embodies.",
+      "She has trained with the Brute path until she could break formations. She has trained with the Stealth path until she could become absent from the awareness of a room she was standing in. Neither was sufficient on its own. She holds both simultaneously, and what emerges from the synthesis is not a compromise but a <strong>third thing that contains both without being reduced to either</strong>.",
+      "She moves like something that has never been prey. Enemies who have faced her and survived , and there are few , describe a single consistent sensation: the certainty, before anything had happened, that the outcome was already decided.",
+      "<em>They were not wrong. She had decided it before she entered the field.</em>"
+    ]
+  },
+
+  "stats": {
+    "hp":  200,
+    "atk": 110,
+    "ini": 60
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Matriarch's Kill",
+      "desc": "A single decisive attack that ends the engagement. Deals catastrophic <span class=\"dmg-bio\">Bio</span> damage to one target. If the target is below 30% HP, this attack is an instant kill."
+    },
+    {
+      "type": "active",
+      "name": "Total Predation",
+      "desc": "For 3 turns, she combines both paths: she is treated as Hidden at all times AND deals Brute damage on every strike (+40% ATK, AoE splash on all attacks). Can be used once per combat."
+    },
+    {
+      "type": "active",
+      "name": "Pack Culmination",
+      "desc": "All Apex Predators on the field execute their best available attack simultaneously against their current targets as an immediate free action. Can be used once per combat."
+    },
+    {
+      "type": "passive",
+      "name": "Synthesis",
+      "desc": "She applies the passive benefits of both Brute and Stealth paths simultaneously. She cannot be targeted while Hidden, and her melee attacks always have AoE splash. She gains +1 action per turn if an enemy was defeated in the previous turn."
+    }
+  ],
+
+  "gallery": [
+    "../../img/coalition/the_apex_predators/matriarch_f_portrait.jpg"
+  ],
+
+  "backLink": {
+    "href":  "coalition_order_mele.html",
+    "label": "Return to The Apex Predators"
+  }
+}
+</script>
+
+<script src="../../system/unit-renderer.js"></script>
+</body>
+</html>

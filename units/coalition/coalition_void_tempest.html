@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Void Tempest</title>
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Void Tempest",
+  "subtitle": "Stormborn Path | Tier 4",
+  "accent": "#ba68c8",
+  "bgImage": "../../img/coalition/coalition_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/coalition.html",           "label": "The Coalition" },
+    { "href": "../../factions/coalition_roster.html",    "label": "Roster" },
+    { "href": "coalition_order_mage.html",               "label": "The Ember Choir" },
+    {                                                    "label": "Void Tempest" }
+  ],
+
+  "combat": ["../../img/coalition/ember_choir/void_tempest_combat.jpg"],
+
+  "bio": {
+    "title": "She Has Learned to Aim",
+    "paragraphs": [
+      "A hurricane-grade entity with no stable form outside of conflict. At rest, she appears as a calm woman with storm-grey skin and an expression of complete boredom, who smells strongly of ozone and causes all weather instruments within range to malfunction.",
+      "At the start of combat, that form dissolves: what remains is a <strong>conscious meteorological event the size of a large building</strong>.",
+      "She has learned to aim. The eye of her storm is a space of perfect, lethal calm. <em>She is inside it at all times.</em>"
+    ]
+  },
+
+  "stats": {
+    "hp":  140,
+    "atk": 80,
+    "ini": 55
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Storm Surge",
+      "desc": "Releases a massive surge of meteorological force. Deals heavy <span class=\"dmg-storm\">Storm</span> damage to all enemies within range."
+    },
+    {
+      "type": "active",
+      "name": "Form Dissolution",
+      "desc": "Dissolves into full hurricane form. Deals <span class=\"dmg-storm\">Storm</span> damage to all enemies on the field and forces each one to move 2 spaces in a random direction."
+    },
+    {
+      "type": "passive",
+      "name": "Eye of the Storm",
+      "desc": "She exists at the permanent center of a lethal atmospheric event. Enemies within 3 spaces are continuously buffeted. All her Storm attacks deal +25% damage."
+    }
+  ],
+
+  "gallery": [
+    "../../img/coalition/ember_choir/void_tempest_portrait.jpg"
+  ],
+
+  "backLink": {
+    "href":  "coalition_order_mage.html",
+    "label": "Return to The Ember Choir"
+  }
+}
+</script>
+
+<script src="../../system/unit-renderer.js"></script>
+</body>
+</html>

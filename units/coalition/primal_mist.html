@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Mist</title>
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Mist",
+  "subtitle": "Stealth Path | Tier 4",
+  "accent": "#ba68c8",
+  "bgImage": "../../img/coalition/coalition_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/coalition.html",           "label": "The Coalition" },
+    { "href": "../../factions/coalition_roster.html",    "label": "Roster" },
+    { "href": "coalition_order_mele.html",               "label": "The Apex Predators" },
+    {                                                    "label": "Mist" }
+  ],
+
+  "combat": ["../../img/coalition/the_apex_predators/mist_f_combat.jpg"],
+
+  "bio": {
+    "title": "Presence Without Form",
+    "paragraphs": [
+      "The Stealth path at its limit does not produce invisibility , invisibility is too simple. What it produces is doubt. She is present. She is perceivable. But the perception does not cohere into threat-recognition until after she has already finished.",
+      "She moves across a battlefield and the enemy's collective attention slides off her the way water slides off sealed wood. There are technical explanations involving movement patterns, visual disruption, and the exploitation of attentional limits. She is not interested in the explanations. <strong>She is interested in the result.</strong>",
+      "She has left three battlefields after what witnesses described as a perfect performance. She does not describe any performance as perfect. <em>There was always something she saw that she could have done earlier.</em>"
+    ]
+  },
+
+  "stats": {
+    "hp":  130,
+    "atk": 95,
+    "ini": 80
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Dissolution Strike",
+      "desc": "Attacks from a direction enemies can not account for. Deals <span class=\"dmg-bio\">Bio</span> damage and applies Perception Break (the target loses the ability to use reaction abilities for 1 turn)."
+    },
+    {
+      "type": "active",
+      "name": "Doubt Cloud",
+      "desc": "Creates a perceptual disruption in a zone. All enemies in the zone have −40% accuracy for 2 turns and cannot make targeted attacks against Hidden units."
+    },
+    {
+      "type": "passive",
+      "name": "Attentional Gap",
+      "desc": "She is never the first target selected by enemy AI or area prioritization. She can only be directly targeted if she has attacked in the last turn or is the last remaining unit."
+    }
+  ],
+
+  "gallery": [
+    "../../img/coalition/the_apex_predators/mist_f_portrait.jpg"
+  ],
+
+  "backLink": {
+    "href":  "coalition_order_mele.html",
+    "label": "Return to The Apex Predators"
+  }
+}
+</script>
+
+<script src="../../system/unit-renderer.js"></script>
+</body>
+</html>

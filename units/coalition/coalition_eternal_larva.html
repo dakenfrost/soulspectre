@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Eternal Larva</title>
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Eternal Larva",
+  "subtitle": "Neotene Path | Tier 4",
+  "accent": "#ba68c8",
+  "bgImage": "../../img/coalition/coalition_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/coalition.html",           "label": "The Coalition" },
+    { "href": "../../factions/coalition_roster.html",    "label": "Roster" },
+    { "href": "coalition_order_support.html",            "label": "The Deep Weave" },
+    {                                                    "label": "Eternal Larva" }
+  ],
+
+  "combat": ["../../img/coalition/deep_weave/eternal_larva_combat.jpg"],
+
+  "bio": {
+    "title": "The Further She Evolves",
+    "paragraphs": [
+      "She should not look like this. The evolutionary logic of the Neotene Path runs toward a paradox: the further she evolves, the younger her body configuration becomes , not the age of the individual, but the developmental stage, held permanently at a state of <strong>maximum biological plasticity</strong>.",
+      "Her gill plumes are enormous, her eyes fill most of her face, her proportions are subtly wrong in the way that creatures with extreme neoteny are always subtly wrong. She is the most precise healer the Coalition fields.",
+      "In her presence, damaged tissue does not just repair , it reverts to an earlier, undamaged cellular template, as though her biological field can <em>rewind the clock</em>. She finds this all very interesting."
+    ]
+  },
+
+  "stats": {
+    "hp":  135,
+    "atk": 55,
+    "ini": 50
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Template Reversion",
+      "desc": "Heals one ally for 35% of their max HP. If the target is below 30% HP, heals for 55% instead and removes all debuffs."
+    },
+    {
+      "type": "active",
+      "name": "Cellular Rollback",
+      "desc": "All allies within range restore 30% of their max HP and have their most recently applied debuff reversed. Effect lasts 1 turn."
+    },
+    {
+      "type": "passive",
+      "name": "Plasticity Field",
+      "desc": "Healing she provides cannot be reduced or blocked by enemy effects. Allies she heals gain +10% max HP for 2 turns."
+    }
+  ],
+
+  "gallery": [
+    "../../img/coalition/deep_weave/eternal_larva_portrait.jpg"
+  ],
+
+  "backLink": {
+    "href":  "coalition_order_support.html",
+    "label": "Return to The Deep Weave"
+  }
+}
+</script>
+
+<script src="../../system/unit-renderer.js"></script>
+</body>
+</html>

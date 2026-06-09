@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Petal Nudis</title>
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Petal Nudis",
+  "subtitle": "Nudibranch Path | Tier 2",
+  "accent": "#81c784",
+  "bgImage": "../../img/coalition/coalition_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/coalition.html",           "label": "The Coalition" },
+    { "href": "../../factions/coalition_roster.html",    "label": "Roster" },
+    { "href": "coalition_order_support.html",            "label": "The Deep Weave" },
+    {                                                    "label": "Petal Nudis" }
+  ],
+
+  "combat": ["../../img/coalition/deep_weave/petal_nudis_combat.jpg"],
+
+  "bio": {
+    "title": "She Eats What Would Kill You",
+    "paragraphs": [
+      "Her skin is extraordinary: electric orange fading to white at the extremities, with short cerata filaments along her shoulders and the backs of her arms , the same structural projections that line the dorsal surface of nudibranch sea slugs, each one tipped with a chemoreceptor cluster.",
+      "She is the Coalition's most effective toxin-cleanse unit. What she does is entirely biological , she identifies harmful compounds in nearby tissue through her dermal receptors and <strong>absorbs them through skin contact</strong>, processing them internally through a specialized gut biome that has never yet encountered a toxin it could not metabolize.",
+      "She does not neutralize what she absorbs so much as <em>eat it</em>. The expression on her face during this process is one of mild concentration."
+    ]
+  },
+
+  "stats": {
+    "hp":  85,
+    "atk": 35,
+    "ini": 55
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Dermal Absorption",
+      "desc": "Removes all Poison and toxic debuffs from one ally through skin contact. Deals <span class=\"dmg-bio\">Bio</span> damage to one enemy equal to half the potency absorbed."
+    },
+    {
+      "type": "active",
+      "name": "Mass Cleanse",
+      "desc": "Removes all Poison and toxic debuffs from every ally on the field simultaneously."
+    },
+    {
+      "type": "passive",
+      "name": "Gut Biome",
+      "desc": "Immune to Poison. Each time she cleanses a debuff from an ally, she gains +5% ATK (stacks up to 3 times, resets each battle)."
+    }
+  ],
+
+  "gallery": [
+    "../../img/coalition/deep_weave/petal_nudis_portrait.jpg"
+  ],
+
+  "backLink": {
+    "href":  "coalition_order_support.html",
+    "label": "Return to The Deep Weave"
+  }
+}
+</script>
+
+<script src="../../system/unit-renderer.js"></script>
+</body>
+</html>

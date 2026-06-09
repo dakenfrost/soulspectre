@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Coalition Spells</title>
+    <link rel="stylesheet" href="../system/shared.css">
+    <style>
+        :root {
+            --accent-color: #a1887f;
+            --accent-glow:  rgb(161, 136, 127, 0.6);
+            --panel-bg:     rgba(18, 10, 4, 0.68);
+        }
+        #bg-image { background-image: url('../img/coalition/coalition_bg.jpg'); }
+        #overlay  { background: linear-gradient(to bottom, rgba(12, 7, 2, 0.90), rgba(8, 4, 1, 0.98)); }
+        h1 { font-size: 2.5rem; }
+        .spell-category { margin-bottom: 40px; background: var(--panel-bg); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .level-header { padding: 15px 25px; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 2px; font-weight: bold; display: flex; align-items: center; border-bottom: 2px solid rgba(255,255,255,0.1); }
+        .lv-1 { background: rgba(176,190,197,0.12); color: #b0bec5; border-bottom-color: #b0bec5; }
+        .lv-2 { background: rgba(200,121,65,0.12);  color: #a1887f; border-bottom-color: #a1887f; }
+        .lv-3 { background: rgba(174,213,129,0.12); color: #aed581; border-bottom-color: #aed581; }
+        .lv-4 { background: rgba(255,112,67,0.12);  color: #ff7043; border-bottom-color: #ff7043; }
+        .lv-5 { background: rgba(255,179,0,0.12);   color: #ffb300; border-bottom-color: #ffb300; }
+        table { width: 100%; border-collapse: collapse; text-align: left; }
+        th { padding: 12px 25px; text-transform: uppercase; font-size: 0.8rem; color: #666; letter-spacing: 1px; background: rgba(0,0,0,0.2); }
+        td { padding: 15px 25px; border-bottom: 1px solid rgba(255,255,255,0.03); vertical-align: middle; }
+        tr:last-child td { border-bottom: none; }
+        tr:hover td { background: rgba(200,121,65,0.05); }
+        .spell-icon-cell { width: 60px; text-align: center; }
+        .spell-icon { width: 40px; height: 40px; border-radius: 4px; border: 1px solid rgba(200,121,65,0.25); background: rgba(0,0,0,0.3); padding: 4px; object-fit: contain; }
+        .mana-cost  { font-family: monospace; color: #aed581; font-weight: bold; font-size: 1.1rem; width: 100px; }
+        .spell-name { color: #fff; font-weight: bold; font-size: 1.05rem; width: 240px; }
+        .spell-effect { color: #ccc; font-size: 0.95rem; }
+        .stack-info { color: var(--accent-color); font-size: 0.8rem; font-style: italic; display: block; margin-top: 4px; }
+        .dmg-fire   { color: #ff7043; font-weight: bold; }
+        .dmg-earth  { color: #a5d6a7; font-weight: bold; }
+        .dmg-nature { color: #aed581; font-weight: bold; }
+        .smolder-tag { color: #a1887f; font-weight: bold; }
+        @media (max-width: 800px) { .mana-cost, .spell-icon-cell { display: none; } .spell-name { width: auto; } }
+    </style>
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+<global-navigation base="../"></global-navigation>
+
+<header>
+    <h1>Coalition Spells</h1>
+    <div class="subtitle">The Language of the Great Cycle</div>
+</header>
+
+<main>
+
+    <div class="intro-block">
+        The spells of the Primal Coalition are not cast , they are <strong>called</strong>. They are not commands issued to a reluctant world, but agreements struck with forces that were already moving. A Coalition caster does not impose fire; she asks it to go somewhere specific. She does not summon roots; she invites them to remember what was buried. These spells are conversations with the Great Cycle, and like all conversations worth having, they require the speaker to mean what they say.
+    </div>
+
+    <!-- LEVEL 1 -->
+    <div class="spell-category">
+        <div class="level-header lv-1">Level 1 Spells</div>
+        <table>
+            <thead>
+                <tr>
+                    <th class="spell-icon-cell">Icon</th>
+                    <th>Mana</th>
+                    <th>Name</th>
+                    <th>Effect</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/coalition/skills/coalition_skill_1.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">200</td>
+                    <td class="spell-name">Wild Mend</td>
+                    <td class="spell-effect">Restores 25 HP to the selected party outside of battle.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/coalition/skills/coalition_skill_2.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">200</td>
+                    <td class="spell-name">Canopy Veil</td>
+                    <td class="spell-effect">The selected party becomes concealed on the world map until it moves or attacks.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/coalition/skills/coalition_skill_3.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">200</td>
+                    <td class="spell-name">Predator's Stride</td>
+                    <td class="spell-effect">The selected party gains 5% dodge chance for the next battle.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/coalition/skills/coalition_skill_4.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">200</td>
+                    <td class="spell-name">Spore Cloud</td>
+                    <td class="spell-effect">The selected party gains 5% Critical Hit chance for the next battle.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/coalition/skills/coalition_skill_5.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">200</td>
+                    <td class="spell-name">Cycle Tether</td>
+                    <td class="spell-effect">Restores 25% HP to one chosen unit in the selected party outside of battle.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/coalition/skills/coalition_skill_6.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">200</td>
+                    <td class="spell-name">Summon Scouts</td>
+                    <td class="spell-effect">Summons a group of animal scouts to survey the surrounding territory. They are dismissed after scouting.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- LEVEL 2 -->
+    <div class="spell-category">
+        <div class="level-header lv-2">Level 2 Spells</div>
+        <table>
+            <tbody>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/coalition/skills/coalition_skill_7.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">400</td>
+                    <td class="spell-name">Root Restoration</td>
+                    <td class="spell-effect">Restores 50 HP to the selected party outside of battle.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/coalition/skills/coalition_skill_8.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">400</td>
+                    <td class="spell-name">Obsidian Skin</td>
+                    <td class="spell-effect">The selected party gains protection against <span class="dmg-earth">Earth</span> damage in the next battle.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/coalition/skills/coalition_skill_9.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">400</td>
+                    <td class="spell-name">Rebirth Ash</td>
+                    <td class="spell-effect">Revives a single fallen unit in the selected party with 25 HP.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/coalition/skills/coalition_skill_10.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">400</td>
+                    <td class="spell-name">Pack March</td>
+                    <td class="spell-effect">The selected party enters the next battle with +10% dodge.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/coalition/skills/coalition_skill_11.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">400</td>
+                    <td class="spell-name">Venomous Thorns</td>
+                    <td class="spell-effect">A nearby enemy party enters their next battle with −5% damage, poisoned by slow-acting toxins.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/coalition/skills/coalition_skill_12.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">400</td>
+                    <td class="spell-name">Living Sap</td>
+                    <td class="spell-effect">Each unit in the selected party recovers 10% HP.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- LEVEL 3 -->
+    <div class="spell-category">
+        <div class="level-header lv-3">Level 3 Spells</div>
+        <table>
+            <tbody>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/coalition/skills/coalition_skill_13.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">800</td>
+                    <td class="spell-name">Verdant Surge</td>
+                    <td class="spell-effect">Restores 80 HP to the selected party outside of battle.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/coalition/skills/coalition_skill_14.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">800</td>
+                    <td class="spell-name">Volcanic Ward</td>
+                    <td class="spell-effect">The selected party gains protection against <span class="dmg-fire">Fire</span> damage in the next battle.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/coalition/skills/coalition_skill_15.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">800</td>
+                    <td class="spell-name">Cycle Armor</td>
+                    <td class="spell-effect">The selected party gains protection against <span class="dmg-nature">Nature</span> damage in the next battle.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/coalition/skills/coalition_skill_16.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">800</td>
+                    <td class="spell-name">Entangling Growth</td>
+                    <td class="spell-effect">A nearby enemy party is rooted by rapid plant growth. They cannot initiate movement this turn.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/coalition/skills/coalition_skill_17.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">800</td>
+                    <td class="spell-name">Khora's Blessing</td>
+                    <td class="spell-effect">Fully restores the HP of one chosen unit in the selected party.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/coalition/skills/coalition_skill_18.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">800</td>
+                    <td class="spell-name">Cycle Return</td>
+                    <td class="spell-effect">Revives the first dead unit in the selected party. The Cycle claims nothing permanently.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- LEVEL 4 -->
+    <div class="spell-category">
+        <div class="level-header lv-4">Level 4 Spells</div>
+        <table>
+            <tbody>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/coalition/skills/coalition_skill_19.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">1400</td>
+                    <td class="spell-name">Smoldering Ground</td>
+                    <td class="spell-effect">The selected territory becomes Scorched: enemy parties moving through it suffer 10 <span class="dmg-fire">Fire</span> damage per turn for 3 turns. Allied units gain +8% ATK while on Scorched terrain.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/coalition/skills/coalition_skill_20.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">1400</td>
+                    <td class="spell-name">Apex Rally</td>
+                    <td class="spell-effect">All Apex Predator units in the selected party immediately take a bonus action this turn. Does not trigger on the turn it is cast.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/coalition/skills/coalition_skill_21.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">1400</td>
+                    <td class="spell-name">Deep Root Network</td>
+                    <td class="spell-effect">All Echo units in three adjacent territories are linked: healing applied to one is distributed equally across all linked units for 2 turns.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/coalition/skills/coalition_skill_22.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">1400</td>
+                    <td class="spell-name">Predator's Verdict</td>
+                    <td class="spell-effect">A single enemy unit below 20% HP is immediately executed. <span class="stack-info">The weak are removed so the strong may thrive.</span></td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/coalition/skills/coalition_skill_23.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">1400</td>
+                    <td class="spell-name">Bioluminescent Pulse</td>
+                    <td class="spell-effect">Reveals all concealed enemy units on the world map in a 2-territory radius. Affected territories cannot conceal units for 3 turns.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/coalition/skills/coalition_skill_24.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">1400</td>
+                    <td class="spell-name">Ash Reborn</td>
+                    <td class="spell-effect">Revives all fallen units in the selected party with 20% HP. Each revived unit starts the next battle with a <span class="smolder-tag">Smolder</span> mark on the nearest enemy.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- LEVEL 5 -->
+    <div class="spell-category">
+        <div class="level-header lv-5">Level 5 Spells</div>
+        <table>
+            <tbody>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/coalition/skills/coalition_skill_25.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">2400</td>
+                    <td class="spell-name">World Tremor</td>
+                    <td class="spell-effect">A catastrophic seismic event strikes a target territory. All enemy units suffer heavy <span class="dmg-earth">Earth</span> damage and are Stunned for 1 turn. All allied units in adjacent territories gain <strong>+25% ATK</strong> for 2 turns from the resonant energy.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/coalition/skills/coalition_skill_26.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">2400</td>
+                    <td class="spell-name">The Cycle Devours</td>
+                    <td class="spell-effect">All enemy units in the target territory lose 15% of their maximum HP per turn for 3 turns as the land itself feeds on them. Each HP consumed restores 5% HP to a random allied unit in the same territory.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/coalition/skills/coalition_skill_27.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">2400</td>
+                    <td class="spell-name">Khora's Ascension</td>
+                    <td class="spell-effect">Khora temporarily manifests in a target territory she is not present in, dealing full <span class="dmg-fire">Fire</span> + <span class="dmg-earth">Earth</span> AoE damage and applying 2 <span class="smolder-tag">Smolder</span> stacks to all enemies. Duration: 1 turn. Cooldown: once per battle.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/coalition/skills/coalition_skill_28.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">2400</td>
+                    <td class="spell-name">Primal Sovereignty</td>
+                    <td class="spell-effect">The Primal Coalition asserts dominion. For 3 turns, no enemy force may move through or occupy any territory adjacent to the Coalition's capital without suffering immediate 30% max HP damage. Enemy spells cast toward Coalition territories have a 40% chance to fail.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <a href="coalition.html" class="back-link">← Return to the Coalition Overview</a>
+</main>
+
+<script src="../system/navigation.js"></script>
+</body>
+</html>

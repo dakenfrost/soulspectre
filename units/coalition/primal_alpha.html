@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Alpha</title>
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Alpha",
+  "subtitle": "Brute Path | Tier 3",
+  "accent": "#64b5f6",
+  "bgImage": "../../img/coalition/coalition_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/coalition.html",           "label": "The Coalition" },
+    { "href": "../../factions/coalition_roster.html",    "label": "Roster" },
+    { "href": "coalition_order_mele.html",               "label": "The Apex Predators" },
+    {                                                    "label": "Alpha" }
+  ],
+
+  "combat": ["../../img/coalition/the_apex_predators/alpha_f_combat.jpg"],
+
+  "bio": {
+    "title": "Top of the Chain",
+    "paragraphs": [
+      "She does not occupy the top of a hierarchy because she defeated the one who was there before her. She occupies it because when she entered the hierarchy, the hierarchy reorganized itself around her without anyone discussing it.",
+      "She is not the largest Brute in the order. She is the one the largest Brutes position themselves near. The distinction is important to her. She is not interested in size. She is interested in <strong>the moment of decision</strong>, and she has spent her entire development sharpening that moment to a point.",
+      "Three soldiers have challenged her rank. She answered the first two. The third one thought better of it before the question fully formed. <em>She considers that a better outcome for everyone.</em>"
+    ]
+  },
+
+  "stats": {
+    "hp":  125,
+    "atk": 80,
+    "ini": 50
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Dominance Strike",
+      "desc": "A defining attack that establishes threat priority. Deals heavy <span class=\"dmg-bio\">Bio</span> damage. The target is Marked as Primary Threat , all Apex Predator allies gain +15% ATK against it for 2 turns."
+    },
+    {
+      "type": "active",
+      "name": "Pack Frenzy",
+      "desc": "Triggers an aggressive advance. All Apex Predator allies within range may move 2 spaces toward the nearest enemy as an immediate reaction and deal a free melee attack."
+    },
+    {
+      "type": "passive",
+      "name": "Apex Presence",
+      "desc": "Enemies within 3 spaces suffer −15% ATK and −10% accuracy from her intimidating presence. This effect is halved if she has not yet attacked this turn."
+    }
+  ],
+
+  "gallery": [
+    "../../img/coalition/the_apex_predators/alpha_f_portrait.jpg"
+  ],
+
+  "backLink": {
+    "href":  "coalition_order_mele.html",
+    "label": "Return to The Apex Predators"
+  }
+}
+</script>
+
+<script src="../../system/unit-renderer.js"></script>
+</body>
+</html>

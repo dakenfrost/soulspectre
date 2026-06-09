@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Dream Spore</title>
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Dream Spore",
+  "subtitle": "Mycelium Path | Tier 3",
+  "accent": "#64b5f6",
+  "bgImage": "../../img/coalition/coalition_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/coalition.html",           "label": "The Coalition" },
+    { "href": "../../factions/coalition_roster.html",    "label": "Roster" },
+    { "href": "coalition_order_mage.html",               "label": "The Ember Choir" },
+    {                                                    "label": "Dream Spore" }
+  ],
+
+  "combat": ["../../img/coalition/ember_choir/dream_spore_combat.jpg"],
+
+  "bio": {
+    "title": "The Most Dangerous Posture Imaginable",
+    "paragraphs": [
+      "Moves in complete silence: no footstep, no breath, no rustle. Their body releases a constant invisible mist of psychotropic compounds that cannot be detected until they take effect.",
+      "Enemies within range begin hallucinating: phantom Coalition allies appear in the enemy formation, friendly fire incidents spike, and commanders begin receiving contradictory orders from officers who <strong>are not there</strong>.",
+      "The Dream Spore herself appears calm, almost gentle. <em>This is the most dangerous posture imaginable.</em>"
+    ]
+  },
+
+  "stats": {
+    "hp":  110,
+    "atk": 60,
+    "ini": 60
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Psychotropic Mist",
+      "desc": "Releases invisible psychotropic compounds. Enemies within range have a 30% chance to attack their own allies instead of their intended target on their next action."
+    },
+    {
+      "type": "active",
+      "name": "Phantom Formation",
+      "desc": "Enemies hallucinate 2 phantom Coalition units for 2 turns. All enemy attacks are redirected toward the phantoms."
+    },
+    {
+      "type": "passive",
+      "name": "Absolute Silence",
+      "desc": "Her movement produces no detectable sound or signal. Enemies cannot target her with single-target attacks until she has attacked first each combat."
+    }
+  ],
+
+  "gallery": [
+    "../../img/coalition/ember_choir/dream_spore_portrait.jpg"
+  ],
+
+  "backLink": {
+    "href":  "coalition_order_mage.html",
+    "label": "Return to The Ember Choir"
+  }
+}
+</script>
+
+<script src="../../system/unit-renderer.js"></script>
+</body>
+</html>

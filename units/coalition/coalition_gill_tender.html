@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Gill Tender</title>
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Gill Tender",
+  "subtitle": "Neotene Path | Tier 2",
+  "accent": "#81c784",
+  "bgImage": "../../img/coalition/coalition_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/coalition.html",           "label": "The Coalition" },
+    { "href": "../../factions/coalition_roster.html",    "label": "Roster" },
+    { "href": "coalition_order_support.html",            "label": "The Deep Weave" },
+    {                                                    "label": "Gill Tender" }
+  ],
+
+  "combat": ["../../img/coalition/deep_weave/gill_tender_combat.jpg"],
+
+  "bio": {
+    "title": "What Grows Where Necks Should Be",
+    "paragraphs": [
+      "Where a neck should be, three pairs of feathery external gills now frame her jaw , long, delicate plumes in pale rose and silver that fan outward when she breathes, each filament lined with receptor cells that read the blood chemistry of whoever is nearby.",
+      "She has not lost her human appearance so much as <strong>added to it</strong>. She breathes for allies who cannot: in situations of smoke, toxin gas, or oxygen deprivation, her gill system can oxygenate the blood of anyone she is in physical contact with through dermal osmosis.",
+      "Her eyes have become slightly larger than human-normal, with the gentle, preoccupied look of someone who is <em>always reading data invisible to everyone else.</em>"
+    ]
+  },
+
+  "stats": {
+    "hp":  85,
+    "atk": 35,
+    "ini": 55
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Osmotic Oxygenation",
+      "desc": "Heals one ally for 20% of their max HP. Also cleanses Suffocation and Stun if present."
+    },
+    {
+      "type": "active",
+      "name": "Blood Chemistry Read",
+      "desc": "The target ally gains Nature Regeneration (4% HP per turn for 3 turns). If the target is below 40% HP, the Regeneration is doubled."
+    },
+    {
+      "type": "passive",
+      "name": "Gill Receptor Array",
+      "desc": "At the start of each turn, she detects all debuffed allies within range. Each detected ally takes −10% damage until her next turn."
+    }
+  ],
+
+  "gallery": [
+    "../../img/coalition/deep_weave/gill_tender_portrait.jpg"
+  ],
+
+  "backLink": {
+    "href":  "coalition_order_support.html",
+    "label": "Return to The Deep Weave"
+  }
+}
+</script>
+
+<script src="../../system/unit-renderer.js"></script>
+</body>
+</html>

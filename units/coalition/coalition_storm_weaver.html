@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Storm Weaver</title>
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Storm Weaver",
+  "subtitle": "Stormborn Path | Tier 2",
+  "accent": "#81c784",
+  "bgImage": "../../img/coalition/coalition_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/coalition.html",           "label": "The Coalition" },
+    { "href": "../../factions/coalition_roster.html",    "label": "Roster" },
+    { "href": "coalition_order_mage.html",               "label": "The Ember Choir" },
+    {                                                    "label": "Storm Weaver" }
+  ],
+
+  "combat": ["../../img/coalition/ember_choir/storm_weaver_combat.jpg"],
+
+  "bio": {
+    "title": "The Gentlest Thing About Her Is the Rain",
+    "paragraphs": [
+      "A being of compressed thundercloud and sinew. Their body is partially translucent — the silhouette of a tall, broad-shouldered creature containing weather. Lightning arcs continuously between their fingers and their temples.",
+      "Their voice carries the sound of distant thunder regardless of volume. Standing near them makes hair stand on end and <strong>metallic objects vibrate</strong>.",
+      "They are always slightly wet, from rain that only falls within a meter of their body. <em>This is the gentlest thing about them.</em>"
+    ]
+  },
+
+  "stats": {
+    "hp":  85,
+    "atk": 55,
+    "ini": 55
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Lightning Arc",
+      "desc": "Deals <span class=\"dmg-storm\">Storm</span> damage to one enemy. Arcs to a second adjacent enemy for 50% of the original damage."
+    },
+    {
+      "type": "active",
+      "name": "Thunderhead Expansion",
+      "desc": "Expands the electrical field outward. All adjacent enemies take <span class=\"dmg-storm\">Storm</span> damage and are pushed back 1 space."
+    },
+    {
+      "type": "passive",
+      "name": "Conductive Field",
+      "desc": "Metal-armored enemies take +20% damage from her Storm attacks. Metallic terrain in range becomes charged, dealing minor Storm damage to enemies who step on it."
+    }
+  ],
+
+  "gallery": [
+    "../../img/coalition/ember_choir/storm_weaver_portrait.jpg"
+  ],
+
+  "backLink": {
+    "href":  "coalition_order_mage.html",
+    "label": "Return to The Ember Choir"
+  }
+}
+</script>
+
+<script src="../../system/unit-renderer.js"></script>
+</body>
+</html>

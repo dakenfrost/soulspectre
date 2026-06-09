@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Chromodoris</title>
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Chromodoris",
+  "subtitle": "Nudibranch Path | Tier 3",
+  "accent": "#64b5f6",
+  "bgImage": "../../img/coalition/coalition_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/coalition.html",           "label": "The Coalition" },
+    { "href": "../../factions/coalition_roster.html",    "label": "Roster" },
+    { "href": "coalition_order_support.html",            "label": "The Deep Weave" },
+    {                                                    "label": "Chromodoris" }
+  ],
+
+  "combat": ["../../img/coalition/deep_weave/chromodoris_combat.jpg"],
+
+  "bio": {
+    "title": "She Is Always Full",
+    "paragraphs": [
+      "The cerata filaments have multiplied and lengthened, covering her from shoulders to wrists in a dense fringe of chemosensory probes, each one a different color , not decorative but structural: different pigments indicate different absorption specializations.",
+      "She has become a biological storage system. Every toxin absorbed, every trauma pulled from an ally's tissue, every harmful compound collected , she holds it all, transformed, inside her own specialized cellular architecture. Then she releases it: a single pulse that <strong>converts everything stored into an area healing wave</strong>.",
+      "What was damage becomes repair. What was poison becomes medicine. She can do this once every few minutes. <em>She is always full.</em>"
+    ]
+  },
+
+  "stats": {
+    "hp":  110,
+    "atk": 45,
+    "ini": 55
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Archive Pulse",
+      "desc": "Releases stored biological material as a healing wave that restores 25% max HP to all allies. Healing scales up by +5% for each charge accumulated since the last use (max 5 charges)."
+    },
+    {
+      "type": "active",
+      "name": "Full Archive Release",
+      "desc": "Massive healing wave restores 40% max HP to all allies. Grants +10% bonus healing for each debuff she has previously absorbed this battle."
+    },
+    {
+      "type": "passive",
+      "name": "Living Storage",
+      "desc": "Each time she absorbs a debuff from an ally or intercepts damage on their behalf, she gains 1 charge (max 5). Each charge adds +5% to the next Archive Pulse."
+    }
+  ],
+
+  "gallery": [
+    "../../img/coalition/deep_weave/chromodoris_portrait.jpg"
+  ],
+
+  "backLink": {
+    "href":  "coalition_order_support.html",
+    "label": "Return to The Deep Weave"
+  }
+}
+</script>
+
+<script src="../../system/unit-renderer.js"></script>
+</body>
+</html>

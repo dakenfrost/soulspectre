@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Seed Queen</title>
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Seed Queen",
+  "subtitle": "Control Path | Tier 2",
+  "accent": "#81c784",
+  "bgImage": "../../img/coalition/coalition_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/coalition.html",           "label": "The Coalition" },
+    { "href": "../../factions/coalition_roster.html",    "label": "Roster" },
+    { "href": "coalition_order_ranged.html",             "label": "The Echoes" },
+    {                                                    "label": "Seed Queen" }
+  ],
+
+  "combat": ["../../img/coalition/echoes/coalition_seed_queen_f_combat.jpg"],
+
+  "bio": {
+    "title": "The Seed Queen",
+    "paragraphs": [
+      "She carries seeds in every pocket, every fold, every seam of her clothing. Not all of them are inert. Some are already in mid-germination, waiting on a signal she has already sent ahead.",
+      "Her control of vegetation growth is surgical in scale and total in effect: she can raise a tree from seed to full canopy in combat time, or spread a field of narcotic blossoms across a chokepoint in a single breath. The plants do not obey her; they <strong>recognize her priorities</strong>.",
+      "She is quiet on the battlefield. She prefers to let the foliage announce her. <em>It always does.</em>"
+    ]
+  },
+
+  "stats": {
+    "hp":  80,
+    "atk": 45,
+    "ini": 50
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Rapid Growth",
+      "desc": "Seeds a zone instantly to full growth. Creates a 2-space area of difficult terrain; enemies entering it take <span class=\"dmg-earth\">Earth</span> damage and are slowed."
+    },
+    {
+      "type": "active",
+      "name": "Narcotic Blossom",
+      "desc": "Spreads a field of soporific flowers across a target zone. Enemies in the zone must pass a resistance check each turn or lose 1 action to drowsiness."
+    },
+    {
+      "type": "passive",
+      "name": "Advance Seeds",
+      "desc": "At the start of battle, she has already seeded the field. Two random zones contain dormant plants that she can activate as a free action on her first turn."
+    }
+  ],
+
+  "backLink": {
+    "href":  "coalition_order_ranged.html",
+    "label": "Return to The Echoes"
+  }
+}
+</script>
+
+<script src="../../system/unit-renderer.js"></script>
+</body>
+</html>

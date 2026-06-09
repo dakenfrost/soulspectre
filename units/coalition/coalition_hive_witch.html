@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Hive Witch</title>
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Hive Witch",
+  "subtitle": "Mycelium Path | Tier 4",
+  "accent": "#ba68c8",
+  "bgImage": "../../img/coalition/coalition_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/coalition.html",           "label": "The Coalition" },
+    { "href": "../../factions/coalition_roster.html",    "label": "Roster" },
+    { "href": "coalition_order_mage.html",               "label": "The Ember Choir" },
+    {                                                    "label": "Hive Witch" }
+  ],
+
+  "combat": ["../../img/coalition/ember_choir/hive_witch_combat.jpg"],
+
+  "bio": {
+    "title": "Grown Backward from the Target, Root-First",
+    "paragraphs": [
+      "No longer a single being. The original body , the queen cell , sits at the center of a slowly moving mass of fungal threads, coordinated organism fragments, and absorbed memories from every creature the network has consumed.",
+      "The queen cell still has the outline of a woman, but her eyes have become distributed across the network: hundreds of small sensory nodes that can see in all directions simultaneously. <strong>She thinks in parallel streams and experiences time non-linearly.</strong>",
+      "Her spells are not cast , they are grown, <em>backward from the target, root-first.</em>"
+    ]
+  },
+
+  "stats": {
+    "hp":  140,
+    "atk": 70,
+    "ini": 50
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Root-First Spell",
+      "desc": "Grows a spell backward from the target, bypassing standard defenses. Deals <span class=\"dmg-mind\">Mind</span> + <span class=\"dmg-bio\">Bio</span> damage that ignores armor."
+    },
+    {
+      "type": "active",
+      "name": "Memory Absorption",
+      "desc": "Absorbs recent tactical memories from one enemy. Copies that enemy's most powerful skill and uses it against them for 2 turns."
+    },
+    {
+      "type": "passive",
+      "name": "Distributed Consciousness",
+      "desc": "Cannot be targeted by single-target attacks (must be struck by AoE). Takes reduced damage from AoE. Perceives all directions simultaneously; immune to flanking."
+    }
+  ],
+
+  "gallery": [
+    "../../img/coalition/ember_choir/hive_witch_portrait.jpg"
+  ],
+
+  "backLink": {
+    "href":  "coalition_order_mage.html",
+    "label": "Return to The Ember Choir"
+  }
+}
+</script>
+
+<script src="../../system/unit-renderer.js"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Symbioleague</title>
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Symbioleague",
+  "subtitle": "Elemental Path | Tier 2",
+  "accent": "#81c784",
+  "bgImage": "../../img/coalition/coalition_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/coalition.html",           "label": "The Coalition" },
+    { "href": "../../factions/coalition_roster.html",    "label": "Roster" },
+    { "href": "coalition_order_ranged.html",             "label": "The Echoes" },
+    {                                                    "label": "Symbioleague" }
+  ],
+
+  "combat": ["../../img/coalition/echoes/coalition_symbioleague_f_combat.jpg"],
+
+  "bio": {
+    "title": "What the Roots Remember",
+    "paragraphs": [
+      "Her symbiosis ran deep, past the surface layers and into the geological substrate , into the rock memory that the older root networks sit on. What she found there was not growth. It was <strong>pressure</strong>.",
+      "She is broader than others of her tier, her feet perpetually bare against the ground, reading vibrations through the soles. When she strikes the earth, stone answers. She does not control rock so much as remind it of what it already wanted to do.",
+      "Her approach to combat is geological: she does not rush. She shifts. <em>Things break under their own weight eventually.</em>"
+    ]
+  },
+
+  "stats": {
+    "hp":  90,
+    "atk": 50,
+    "ini": 45
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Seismic Strike",
+      "desc": "Slams the earth, sending a shockwave in a line. Deals <span class=\"dmg-earth\">Earth</span> damage to all enemies in the path and reduces their movement for 1 turn."
+    },
+    {
+      "type": "active",
+      "name": "Boulder Hurl",
+      "desc": "Tears a boulder from the ground and hurls it at one target. Deals heavy <span class=\"dmg-earth\">Earth</span> damage. On hit, applies Staggered (−20% defense for 2 turns)."
+    },
+    {
+      "type": "passive",
+      "name": "Tremorsense",
+      "desc": "Reads vibrations through the ground. Cannot be surprised by ground-based movement; gains +10% defense against melee attackers."
+    }
+  ],
+
+  "backLink": {
+    "href":  "coalition_order_ranged.html",
+    "label": "Return to The Echoes"
+  }
+}
+</script>
+
+<script src="../../system/unit-renderer.js"></script>
+</body>
+</html>

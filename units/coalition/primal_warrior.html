@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Warrior</title>
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Warrior",
+  "subtitle": "Brute Path | Tier 2",
+  "accent": "#81c784",
+  "bgImage": "../../img/coalition/coalition_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/coalition.html",           "label": "The Coalition" },
+    { "href": "../../factions/coalition_roster.html",    "label": "Roster" },
+    { "href": "coalition_order_mele.html",               "label": "The Apex Predators" },
+    {                                                    "label": "Warrior" }
+  ],
+
+  "combat": ["../../img/coalition/the_apex_predators/warrior_f_combat.jpg"],
+
+  "bio": {
+    "title": "Force Organized",
+    "paragraphs": [
+      "The Brute path is not about size. It is about the decision to apply maximum force before the enemy has finished deciding whether to resist. She made that decision early in her training and has not revisited it.",
+      "She hits first, hardest, and without the performance that sometimes accompanies strength. There is no posturing here. The Apex Predators do not announce themselves. They arrive, and the <strong>arrival settles the question</strong>.",
+      "She has been asked what she thinks about before a fight. She has answered consistently: <em>nothing. The thinking happens after.</em>"
+    ]
+  },
+
+  "stats": {
+    "hp":  100,
+    "atk": 65,
+    "ini": 50
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Overwhelming Force",
+      "desc": "A brutal melee strike that drives the target back. Deals <span class=\"dmg-bio\">Bio</span> damage and pushes the target 1 space. If the target is pushed into a wall or another unit, they take additional impact damage."
+    },
+    {
+      "type": "active",
+      "name": "Predator's Charge",
+      "desc": "Charges in a line up to 4 spaces, attacking all enemies in the path. Each hit deals <span class=\"dmg-bio\">Bio</span> damage. Enemies in the path must pass a check or be knocked prone."
+    },
+    {
+      "type": "passive",
+      "name": "Brute Momentum",
+      "desc": "Each successful melee attack this turn grants +10% ATK to the next attack, stacking up to 3 times. Stacks reset at the end of her turn."
+    }
+  ],
+
+  "gallery": [
+    "../../img/coalition/the_apex_predators/warrior_f_portrait.jpg"
+  ],
+
+  "backLink": {
+    "href":  "coalition_order_mele.html",
+    "label": "Return to The Apex Predators"
+  }
+}
+</script>
+
+<script src="../../system/unit-renderer.js"></script>
+</body>
+</html>

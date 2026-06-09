@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Great Elder</title>
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Great Elder",
+  "subtitle": "Plant-Symbiont | Tier 5 Champion",
+  "accent": "#ffb300",
+  "bgImage": "../../img/coalition/coalition_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/coalition.html",           "label": "The Coalition" },
+    { "href": "../../factions/coalition_roster.html",    "label": "Roster" },
+    { "href": "coalition_order_ranged.html",             "label": "The Echoes" },
+    {                                                    "label": "Great Elder" }
+  ],
+
+  "combat": ["../../img/coalition/echoes/coalition_great_elder_f_combat.jpg"],
+
+  "bio": {
+    "title": "The Forest Is Her Memory",
+    "paragraphs": [
+      "The symbiosis began so long ago that neither she nor the forest remembers a before. The integration is complete in a way that would be terrifying to observe if it were not so obviously natural. Bark and skin have merged at the joints; her hair has long since grown over with moss. The trees in her home territory have learned to breathe in her rhythm.",
+      "She carries the memory of every Echoes soldier who has ever died in her presence. Not as grief , as <strong>data</strong>. The forest remembers everything that has fed it. She is the forest's memory given mobility and decision.",
+      "She does not command. She is the culmination of every intention the Echoes order has ever had. When she moves, the land moves with her. When she speaks , which is rare now , it sounds like something older than language.",
+      "<em>The forest has chosen to act. She is how it acts.</em>"
+    ]
+  },
+
+  "stats": {
+    "hp":  195,
+    "atk": 80,
+    "ini": 45
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Ancient Force",
+      "desc": "Channels the force of centuries through her strike. Deals massive <span class=\"dmg-earth\">Earth</span> damage to one target and applies Root Curse (reduces all stats by 20% for 3 turns)."
+    },
+    {
+      "type": "active",
+      "name": "The Forest Rises",
+      "desc": "The entire battlefield terrain shifts to her advantage. All zones gain dense vegetation, all allies gain +20% to all stats, and all enemies are Slowed for 2 turns. Can be used once per combat."
+    },
+    {
+      "type": "active",
+      "name": "Elder's Remembrance",
+      "desc": "She recalls one fallen ally back to partial function. A defeated ally returns with 30% of max HP for 2 turns. This may only be used once per combat."
+    },
+    {
+      "type": "passive",
+      "name": "The Living Network",
+      "desc": "All Plant-Symbiont allies on the battlefield share her senses. They cannot be surprised or flanked. When any ally takes lethal damage, she can redirect 50% of that damage to herself once per turn."
+    }
+  ],
+
+  "backLink": {
+    "href":  "coalition_order_ranged.html",
+    "label": "Return to The Echoes"
+  }
+}
+</script>
+
+<script src="../../system/unit-renderer.js"></script>
+</body>
+</html>

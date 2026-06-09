@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | The Still Point</title>
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "The Still Point",
+  "subtitle": "Neotene / Pelagic Path | Tier 5 , Champion",
+  "accent": "#ffb300",
+  "bgImage": "../../img/coalition/coalition_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/coalition.html",           "label": "The Coalition" },
+    { "href": "../../factions/coalition_roster.html",    "label": "Roster" },
+    { "href": "coalition_order_support.html",            "label": "The Deep Weave" },
+    {                                                    "label": "The Still Point" }
+  ],
+
+  "combat": ["../../img/coalition/deep_weave/still_point_combat.jpg"],
+
+  "bio": {
+    "title": "She Settles. She Opens. She Radiates.",
+    "paragraphs": [
+      "She is not large. This is the first surprise. The Neotene and Pelagic lines converge in a body that is approximately human-sized and apparently still. Her skin is fully translucent , the bioluminescent network beneath it visible at rest, shifting cool blue to gold as she works. Her gill plumes span nearly a meter on each side, continuously reading the biological state of everything within range. Below her waist: a medusa bell, collapsed at rest, that expands and pulses when she broadcasts. She does not move during combat. She settles, opens, and radiates.",
+      "Every allied nervous system within her field is continuously synchronized. Damaged tissue in range does not just repair , it reverts to an earlier cellular template, as though <strong>time in the wound runs backward</strong>. Enemies find their autonomic systems disrupted in ways that cannot be attributed to any identifiable source.",
+      "She is aware of everything happening biologically within thirty meters at all times. Her expression is one of <em>complete, undivided, slightly unsettling calm.</em>"
+    ]
+  },
+
+  "stats": {
+    "hp":  170,
+    "atk": 65,
+    "ini": 50
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Continuous Synchronization",
+      "desc": "Every turn, all allies on the field restore 8% of their max HP and have active Bleed and Poison effects suppressed for 1 turn. This skill activates automatically at the start of her turn."
+    },
+    {
+      "type": "active",
+      "name": "Temporal Reversion Field",
+      "desc": "All allies within range have their tissue reverted to an earlier undamaged cellular template: restore 50% of their max HP and have all debuffs removed simultaneously."
+    },
+    {
+      "type": "passive",
+      "name": "Biological Omniscience",
+      "desc": "Cannot be surprised. Cannot be disrupted, stunned, or silenced while performing a healing action. Allies within her field cannot receive new Stun or Bleed effects."
+    }
+  ],
+
+  "backLink": {
+    "href":  "coalition_order_support.html",
+    "label": "Return to The Deep Weave"
+  }
+}
+</script>
+
+<script src="../../system/unit-renderer.js"></script>
+</body>
+</html>

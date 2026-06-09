@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Magma Oracle</title>
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Magma Oracle",
+  "subtitle": "Pyroclast Path | Tier 4",
+  "accent": "#ba68c8",
+  "bgImage": "../../img/coalition/coalition_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/coalition.html",           "label": "The Coalition" },
+    { "href": "../../factions/coalition_roster.html",    "label": "Roster" },
+    { "href": "coalition_order_mage.html",               "label": "The Ember Choir" },
+    {                                                    "label": "Magma Oracle" }
+  ],
+
+  "combat": ["../../img/coalition/ember_choir/magma_oracle_combat.jpg"],
+
+  "bio": {
+    "title": "Already Standing Where You'll Wish She Wasn't",
+    "paragraphs": [
+      "The rarest convergence: a being where volcanic and electrical energies have merged rather than competing. Their body sparks continuously where magma meets charge , the surface crack-patterns now conduct electricity, making every fissure a live wire.",
+      "They can see the future in eruption patterns and storm formation. They do not predict the battlefield , they <strong>read it as a geological event already in progress</strong>, and position accordingly long before the first move is made.",
+      "<em>By the time you take your first step, she is already standing where you'll wish she wasn't.</em>"
+    ]
+  },
+
+  "stats": {
+    "hp":  140,
+    "atk": 75,
+    "ini": 55
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Volcanic Arc",
+      "desc": "Deals <span class=\"dmg-fire\">Fire</span> + <span class=\"dmg-storm\">Storm</span> damage to one target. This attack cannot miss , she has already read the trajectory."
+    },
+    {
+      "type": "active",
+      "name": "Geological Positioning",
+      "desc": "Reads the entire remaining battle sequence. All Coalition units gain +30% accuracy and +15% damage for 2 turns."
+    },
+    {
+      "type": "passive",
+      "name": "Future-Read",
+      "desc": "Always acts first within her Initiative tier. Immune to Surprise, flanking, and all misdirection or confusion effects."
+    }
+  ],
+
+  "gallery": [
+    "../../img/coalition/ember_choir/magma_oracle_portrait.jpg"
+  ],
+
+  "backLink": {
+    "href":  "coalition_order_mage.html",
+    "label": "Return to The Ember Choir"
+  }
+}
+</script>
+
+<script src="../../system/unit-renderer.js"></script>
+</body>
+</html>

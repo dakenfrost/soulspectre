@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Pale Novice</title>
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Pale Novice",
+  "subtitle": "Neotene / Pelagic Path | Tier 1",
+  "accent": "#b0bec5",
+  "bgImage": "../../img/coalition/coalition_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/coalition.html",           "label": "The Coalition" },
+    { "href": "../../factions/coalition_roster.html",    "label": "Roster" },
+    { "href": "coalition_order_support.html",            "label": "The Deep Weave" },
+    {                                                    "label": "Pale Novice" }
+  ],
+
+  "combat": ["../../img/coalition/deep_weave/pale_novice_combat.jpg"],
+
+  "bio": {
+    "title": "The First Divergence",
+    "paragraphs": [
+      "A young woman at the earliest stage of aquatic biological divergence. Her skin has taken on a faint translucence at the extremities , not quite visible through, but <strong>suggesting it</strong>. Gill buds are forming along the jaw line: not yet functional, each one a small pearl-smooth swelling.",
+      "She breathes slightly too slowly for her apparent size, as though her respiratory system is already <em>negotiating with something other than air</em>. Two evolutionary paths are viable inside her aquatic genome , one toward gill-based cellular memory, one toward medusozoan bio-electricity.",
+      "Until the pressure selects, she drifts. She is already remarkably difficult to wound."
+    ]
+  },
+
+  "stats": {
+    "hp":  65,
+    "atk": 25,
+    "ini": 55
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Aquatic Mend",
+      "desc": "Heals one ally for 18% of their max HP. If the target has a Bleed or Poison effect, also suppresses that effect for 1 turn."
+    },
+    {
+      "type": "passive",
+      "name": "Cellular Drift",
+      "desc": "At the end of each of her turns, the most wounded ally within range restores 3% of their max HP."
+    }
+  ],
+
+  "gallery": [
+    "../../img/coalition/deep_weave/pale_novice_portrait.jpg"
+  ],
+
+  "backLink": {
+    "href":  "coalition_order_support.html",
+    "label": "Return to The Deep Weave"
+  }
+}
+</script>
+
+<script src="../../system/unit-renderer.js"></script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Vivid Novice</title>
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Vivid Novice",
+  "subtitle": "Lunar / Nudibranch Path | Tier 1",
+  "accent": "#b0bec5",
+  "bgImage": "../../img/coalition/coalition_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/coalition.html",           "label": "The Coalition" },
+    { "href": "../../factions/coalition_roster.html",    "label": "Roster" },
+    { "href": "coalition_order_support.html",            "label": "The Deep Weave" },
+    {                                                    "label": "Vivid Novice" }
+  ],
+
+  "combat": ["../../img/coalition/deep_weave/vivid_novice_combat.jpg"],
+
+  "bio": {
+    "title": "Everything She Probably Shouldn't Touch",
+    "paragraphs": [
+      "A young woman at the earliest stage of chromatic and aerial divergence. Her skin runs warm , patches of electric orange, deep violet, pale gold, shifting slowly as her chromatophore system learns to stabilize.",
+      "Between her shoulder blades, two small wing buds have emerged: not yet functional, barely larger than her hands, already patterned. Along her forearms the first cerata nubs are growing , tiny, bright-tipped, curious. She has discovered she can <strong>absorb trace toxins through her skin without harm</strong>.",
+      "She has not yet discovered what she will eventually do with them. Two evolutionary paths are open: one aerial, one chemical. She moves through the world <em>touching things she probably shouldn't, with perfect impunity.</em>"
+    ]
+  },
+
+  "stats": {
+    "hp":  65,
+    "atk": 25,
+    "ini": 55
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Toxin Graze",
+      "desc": "Removes one Poison or debuff from one ally. If no debuff is present, heals them for 15% of their max HP instead."
+    },
+    {
+      "type": "passive",
+      "name": "Chromatic Skin",
+      "desc": "The first instance of Poison each battle is automatically absorbed. She takes no damage and the effect is negated."
+    }
+  ],
+
+  "gallery": [
+    "../../img/coalition/deep_weave/vivid_novice_portrait.jpg"
+  ],
+
+  "backLink": {
+    "href":  "coalition_order_support.html",
+    "label": "Return to The Deep Weave"
+  }
+}
+</script>
+
+<script src="../../system/unit-renderer.js"></script>
+</body>
+</html>

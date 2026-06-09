@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Sniper</title>
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Sniper",
+  "subtitle": "Assassin Path | Tier 2",
+  "accent": "#81c784",
+  "bgImage": "../../img/coalition/coalition_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/coalition.html",           "label": "The Coalition" },
+    { "href": "../../factions/coalition_roster.html",    "label": "Roster" },
+    { "href": "coalition_order_ranged.html",             "label": "The Echoes" },
+    {                                                    "label": "Sniper" }
+  ],
+
+  "combat": ["../../img/coalition/echoes/coalition_sniper_f_combat.jpg"],
+
+  "bio": {
+    "title": "From the Canopy",
+    "paragraphs": [
+      "She fights from above. The symbiotic acceleration that defines her path expresses itself in speed rather than mass , she moves between canopy positions faster than ground units can track her, pausing only long enough to fire.",
+      "The plant network aids her concealment: bark shifts over exposed skin, leaves rotate to track light, vines adjust her footing without conscious direction. She is never where she was a moment ago. The field <strong>hides her as naturally as it hides anything that belongs there</strong>.",
+      "She does not take precision shots. She takes the only shot that matters. <em>One enough times is the same as perfect.</em>"
+    ]
+  },
+
+  "stats": {
+    "hp":  80,
+    "atk": 55,
+    "ini": 65
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Canopy Shot",
+      "desc": "Fires a precision ranged attack from above. Deals <span class=\"dmg-earth\">Earth</span> damage. If fired from a hidden position, deals +30% bonus damage."
+    },
+    {
+      "type": "active",
+      "name": "Symbiotic Sprint",
+      "desc": "Moves up to 4 spaces without triggering Opportunity Attacks. Becomes Hidden for 1 turn."
+    },
+    {
+      "type": "passive",
+      "name": "Canopy Cover",
+      "desc": "In any environment with vegetation, she always enters combat Hidden. Enemies must pass an accuracy check to target her with single-target attacks."
+    }
+  ],
+
+  "backLink": {
+    "href":  "coalition_order_ranged.html",
+    "label": "Return to The Echoes"
+  }
+}
+</script>
+
+<script src="../../system/unit-renderer.js"></script>
+</body>
+</html>

@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Coalition Infrastructure</title>
+    <link rel="stylesheet" href="../system/shared.css">
+    <style>
+        :root {
+            --accent-color: #a1887f;
+            --accent-glow:  rgb(161, 136, 127, 0.6);
+            --panel-bg:     rgba(18, 10, 4, 0.72);
+        }
+        #bg-image { background-image: url('../img/coalition/coalition_bg.jpg'); }
+        #overlay  { background: linear-gradient(to bottom, rgba(12, 7, 2, 0.90), rgba(8, 4, 1, 0.98)); }
+        header { max-width: 1200px; }
+        h1 { font-size: 2.5rem; }
+        main { max-width: 1200px; }
+        h2.section-title { border-bottom: 2px solid var(--accent-color); padding-bottom: 10px; margin-top: 60px; text-transform: uppercase; letter-spacing: 3px; font-size: 1.8rem; color: #fff; text-shadow: 0 0 10px rgba(200,121,65,0.3); }
+        .level-group { margin-top: 30px; }
+        .level-label { background: rgba(200,121,65,0.12); padding: 6px 18px; border-radius: 20px; font-size: 0.9rem; font-weight: bold; color: var(--accent-color); margin-bottom: 20px; display: inline-block; border: 1px solid rgba(200,121,65,0.25); letter-spacing: 1px; }
+        .building-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 18px; margin-bottom: 40px; }
+        .building-card { background: var(--panel-bg); border: 1px solid rgba(255,255,255,0.05); display: flex; gap: 15px; padding: 15px; border-radius: 4px; transition: all 0.3s ease; backdrop-filter: blur(5px); }
+        .building-card:hover { border-color: rgba(200,121,65,0.4); background: rgba(28,14,4,0.85); transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.5); }
+        .building-img { width: 90px; height: 90px; flex-shrink: 0; border-radius: 4px; object-fit: cover; border: 1px solid rgba(200,121,65,0.2); background: rgba(0,0,0,0.4); }
+        .building-info { flex: 1; }
+        .building-name { display: block; font-size: 1.05rem; font-weight: bold; color: #fff; margin-bottom: 5px; }
+        .building-cost { display: flex; align-items: center; gap: 5px; font-family: monospace; font-size: 1rem; font-weight: bold; margin-bottom: 8px; }
+        .currency-icon { width: 16px; height: 16px; vertical-align: middle; }
+        .cost-gold { color: #ffd700; }
+        .cost-platinum { color: #e5e4e2; }
+        .building-effect { font-size: 0.9rem; color: #aaa; line-height: 1.4; }
+        .building-effect strong { color: #e8c4a0; }
+        .tag-apex     { border-left: 3px solid #a1887f; }
+        .tag-echo     { border-left: 3px solid #aed581; }
+        .tag-ember    { border-left: 3px solid #d4603a; }
+        .tag-weave    { border-left: 3px solid #3ea8a0; }
+        .tag-province { border-left: 4px solid #a5d6a7; }
+        .card-platinum { border: 1px solid rgba(229,228,226,0.25); box-shadow: 0 0 15px rgba(255,255,255,0.04); }
+        .upgrade-note { display: block; margin-top: 5px; font-size: 0.8rem; color: #e5e4e2; font-style: italic; }
+        .label-champion { background: rgba(229,228,226,0.1); color: #e5e4e2; border: 1px solid rgba(229,228,226,0.2); }
+        .branch-legend { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 30px; font-size: 0.85rem; color: #888; }
+        .branch-legend span { display: flex; align-items: center; gap: 8px; }
+        .legend-dot { width: 12px; height: 12px; border-radius: 2px; flex-shrink: 0; }
+        @media (max-width: 700px) { .building-grid { grid-template-columns: 1fr; } .branch-legend { gap: 12px; } }
+    </style>
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+<global-navigation base="../"></global-navigation>
+
+<header>
+    <h1>Coalition Infrastructure</h1>
+    <div class="subtitle">Grown from Stone, Shaped by Fire</div>
+</header>
+
+<main>
+
+    <div class="intro-block">
+        The Coalition does not build , it <strong>cultivates and erupts</strong>. Their structures are either coaxed from the living forest over seasons of patient growth, or forged in a single volcanic surge of pressurized mineral energy. An Apex Den is grown by warriors who sleep alongside the roots for weeks, their bio-obsidian resonating with the soil until the structure forms around them. An Echo Spire is raised in one night by a ring of druids who channel planetary energy upward through connected root systems. To inhabit one is to be part of the planet's own immune response.
+    </div>
+
+    <!-- BRANCH LEGEND -->
+    <div class="branch-legend">
+        <span><div class="legend-dot" style="background:#a1887f;"></div> Apex Predators</span>
+        <span><div class="legend-dot" style="background:#aed581;"></div> Echoes</span>
+        <span><div class="legend-dot" style="background:#d4603a;"></div> Ember Choir</span>
+        <span><div class="legend-dot" style="background:#3ea8a0;"></div> Deep Weave</span>
+    </div>
+
+    <!-- ===================== CAPITAL BUILDINGS ===================== -->
+    <h2 class="section-title">Capital Buildings</h2>
+
+    <!-- LEVEL 1 -->
+    <div class="level-group">
+        <div class="level-label">Feral Stage , First Awakening (Tier 1 → Tier 2)</div>
+        <div class="building-grid">
+
+            <!-- APEX -->
+            <div class="building-card tag-apex">
+                <img src="../img/coalition/building/coalition_building_claw_hollow.jpg" class="building-img" alt="Claw Hollow">
+                <div class="building-info">
+                    <span class="building-name">Claw Hollow</span>
+                    <span class="building-cost cost-gold">400 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Juvenile → <strong>Warrior</strong></span>
+                </div>
+            </div>
+            <div class="building-card tag-apex">
+                <img src="../img/coalition/building/coalition_building_obsidian_pool.jpg" class="building-img" alt="Obsidian Pool">
+                <div class="building-info">
+                    <span class="building-name">Obsidian Pool</span>
+                    <span class="building-cost cost-gold">400 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Juvenile → <strong>Stalker</strong></span>
+                </div>
+            </div>
+
+            <!-- ECHO -->
+            <div class="building-card tag-echo">
+                <img src="../img/coalition/building/coalition_building_spore_garden.jpg" class="building-img" alt="Spore Garden">
+                <div class="building-info">
+                    <span class="building-name">Spore Garden</span>
+                    <span class="building-cost cost-gold">400 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Forest Warden → <strong>Venomous</strong></span>
+                </div>
+            </div>
+            <div class="building-card tag-echo">
+                <img src="../img/coalition/building/coalition_building_root_altar.jpg" class="building-img" alt="Root Altar">
+                <div class="building-info">
+                    <span class="building-name">Root Altar</span>
+                    <span class="building-cost cost-gold">400 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Forest Warden → <strong>Druid</strong></span>
+                </div>
+            </div>
+            <div class="building-card tag-echo">
+                <img src="../img/coalition/building/coalition_building_shadow_hollow.jpg" class="building-img" alt="Shadow Hollow">
+                <div class="building-info">
+                    <span class="building-name">Shadow Hollow</span>
+                    <span class="building-cost cost-gold">400 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Forest Warden → <strong>Sniper</strong></span>
+                </div>
+            </div>
+            <div class="building-card tag-echo">
+                <img src="../img/coalition/building/coalition_building_earth_drum.jpg" class="building-img" alt="Earth Drum">
+                <div class="building-info">
+                    <span class="building-name">Earth Drum</span>
+                    <span class="building-cost cost-gold">400 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Forest Warden → <strong>Symbioleague</strong></span>
+                </div>
+            </div>
+            <div class="building-card tag-echo">
+                <img src="../img/coalition/building/coalition_building_seed_throne.jpg" class="building-img" alt="Seed Throne">
+                <div class="building-info">
+                    <span class="building-name">Seed Throne</span>
+                    <span class="building-cost cost-gold">400 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Forest Warden → <strong>Seed Queen</strong></span>
+                </div>
+            </div>
+
+            <!-- EMBER CHOIR -->
+            <div class="building-card tag-ember">
+                <img src="../img/coalition/building/coalition_building_volcanic_vent.jpg" class="building-img" alt="Volcanic Vent">
+                <div class="building-info">
+                    <span class="building-name">Volcanic Vent</span>
+                    <span class="building-cost cost-gold">400 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Spore Acolyte → <strong>Ash Caster</strong></span>
+                </div>
+            </div>
+            <div class="building-card tag-ember">
+                <img src="../img/coalition/building/coalition_building_mycelium_web.jpg" class="building-img" alt="Mycelium Web">
+                <div class="building-info">
+                    <span class="building-name">Mycelium Web</span>
+                    <span class="building-cost cost-gold">400 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Spore Acolyte → <strong>Myco-Witch</strong></span>
+                </div>
+            </div>
+            <div class="building-card tag-ember">
+                <img src="../img/coalition/building/coalition_building_storm_needle.jpg" class="building-img" alt="Storm Needle">
+                <div class="building-info">
+                    <span class="building-name">Storm Needle</span>
+                    <span class="building-cost cost-gold">400 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Spore Acolyte → <strong>Storm Weaver</strong></span>
+                </div>
+            </div>
+
+            <!-- DEEP WEAVE -->
+            <div class="building-card tag-weave">
+                <img src="../img/coalition/building/coalition_building_gill_spring.jpg" class="building-img" alt="Gill Spring">
+                <div class="building-info">
+                    <span class="building-name">Gill Spring</span>
+                    <span class="building-cost cost-gold">400 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Pale Novice → <strong>Gill Tender</strong></span>
+                </div>
+            </div>
+            <div class="building-card tag-weave">
+                <img src="../img/coalition/building/coalition_building_drift_pool.jpg" class="building-img" alt="Drift Pool">
+                <div class="building-info">
+                    <span class="building-name">Drift Pool</span>
+                    <span class="building-cost cost-gold">400 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Pale Novice → <strong>Bell Drifter</strong></span>
+                </div>
+            </div>
+            <div class="building-card tag-weave">
+                <img src="../img/coalition/building/coalition_building_lunar_perch.jpg" class="building-img" alt="Lunar Perch">
+                <div class="building-info">
+                    <span class="building-name">Lunar Perch</span>
+                    <span class="building-cost cost-gold">400 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Vivid Novice → <strong>Scale Moth</strong></span>
+                </div>
+            </div>
+            <div class="building-card tag-weave">
+                <img src="../img/coalition/building/coalition_building_chromatic_basin.jpg" class="building-img" alt="Chromatic Basin">
+                <div class="building-info">
+                    <span class="building-name">Chromatic Basin</span>
+                    <span class="building-cost cost-gold">400 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Vivid Novice → <strong>Petal Nudis</strong></span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- LEVEL 2 -->
+    <div class="level-group">
+        <div class="level-label">Apex Stage , The Divergence (Tier 2 → Tier 3)</div>
+        <div class="building-grid">
+
+            <!-- APEX -->
+            <div class="building-card tag-apex">
+                <img src="../img/coalition/building/coalition_building_shadow_burrow.jpg" class="building-img" alt="Shadow Burrow">
+                <div class="building-info">
+                    <span class="building-name">Shadow Burrow</span>
+                    <span class="building-cost cost-gold">800 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Stalker → <strong>Shadow</strong>.</span>
+                </div>
+            </div>
+            <div class="building-card tag-apex">
+                <img src="../img/coalition/building/coalition_building_volcanic_forge.jpg" class="building-img" alt="Volcanic Forge">
+                <div class="building-info">
+                    <span class="building-name">Volcanic Forge</span>
+                    <span class="building-cost cost-gold">800 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Warrior → <strong>Alpha</strong></span>
+                </div>
+            </div>
+
+            <!-- ECHO -->
+
+            <div class="building-card tag-echo">
+                <img src="../img/coalition/building/coalition_building_deep_canopy.jpg" class="building-img" alt="Deep Canopy">
+                <div class="building-info">
+                    <span class="building-name">Deep Canopy</span>
+                    <span class="building-cost cost-gold">800 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Druid → <strong>Elder Druid</strong>.</span>
+                </div>
+            </div>
+
+            <!-- ECHO -->
+            <div class="building-card tag-echo">
+                <img src="../img/coalition/building/coalition_building_toxin_warren.jpg" class="building-img" alt="Toxin Warren">
+                <div class="building-info">
+                    <span class="building-name">Toxin Warren</span>
+                    <span class="building-cost cost-gold">800 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Sniper → <strong>Poisoner</strong>.</span>
+                </div>
+            </div>
+            <div class="building-card tag-echo">
+                <img src="../img/coalition/building/coalition_building_tremor_root.jpg" class="building-img" alt="Tremor Root">
+                <div class="building-info">
+                    <span class="building-name">Tremor Root</span>
+                    <span class="building-cost cost-gold">800 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Symbioleague → <strong>Radicalist</strong>.</span>
+                </div>
+            </div>
+            <div class="building-card tag-echo">
+                <img src="../img/coalition/building/coalition_building_bloom_canopy.jpg" class="building-img" alt="Bloom Canopy">
+                <div class="building-info">
+                    <span class="building-name">Bloom Canopy</span>
+                    <span class="building-cost cost-gold">800 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Regina delle Sementi → <strong>Tree Sorceress</strong>.</span>
+                </div>
+            </div>
+
+            <!-- EMBER CHOIR -->
+            <div class="building-card tag-ember">
+                <img src="../img/coalition/building/coalition_building_magma_kiln.jpg" class="building-img" alt="Magma Kiln">
+                <div class="building-info">
+                    <span class="building-name">Magma Kiln</span>
+                    <span class="building-cost cost-gold">800 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Ash Caster → <strong>Pyroclast</strong>.</span>
+                </div>
+            </div>
+            <div class="building-card tag-ember">
+                <img src="../img/coalition/building/coalition_building_dream_vault.jpg" class="building-img" alt="Dream Vault">
+                <div class="building-info">
+                    <span class="building-name">Dream Vault</span>
+                    <span class="building-cost cost-gold">800 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Myco-Witch → <strong>Dream Spore</strong>.</span>
+                </div>
+            </div>
+            <div class="building-card tag-ember">
+                <img src="../img/coalition/building/coalition_building_tempest_ring.jpg" class="building-img" alt="Tempest Ring">
+                <div class="building-info">
+                    <span class="building-name">Tempest Ring</span>
+                    <span class="building-cost cost-gold">800 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Storm Weaver → <strong>Tempest Dancer</strong>.</span>
+                </div>
+            </div>
+
+            <!-- DEEP WEAVE -->
+            <div class="building-card tag-weave">
+                <img src="../img/coalition/building/coalition_building_larval_sanctum.jpg" class="building-img" alt="Larval Sanctum">
+                <div class="building-info">
+                    <span class="building-name">Larval Sanctum</span>
+                    <span class="building-cost cost-gold">800 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Gill Tender → <strong>Neotene Matron</strong>.</span>
+                </div>
+            </div>
+            <div class="building-card tag-weave">
+                <img src="../img/coalition/building/coalition_building_current_arch.jpg" class="building-img" alt="Current Arch">
+                <div class="building-info">
+                    <span class="building-name">Current Arch</span>
+                    <span class="building-cost cost-gold">800 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Bell Drifter → <strong>Phosphor Veil</strong>.</span>
+                </div>
+            </div>
+            <div class="building-card tag-weave">
+                <img src="../img/coalition/building/coalition_building_silk_loom.jpg" class="building-img" alt="Silk Loom">
+                <div class="building-info">
+                    <span class="building-name">Silk Loom</span>
+                    <span class="building-cost cost-gold">800 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Scale Moth → <strong>Cocoon Keeper</strong>.</span>
+                </div>
+            </div>
+            <div class="building-card tag-weave">
+                <img src="../img/coalition/building/coalition_building_archive_reef.jpg" class="building-img" alt="Archive Reef">
+                <div class="building-info">
+                    <span class="building-name">Archive Reef</span>
+                    <span class="building-cost cost-gold">800 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Petal Nudis → <strong>Chromodoris</strong>.</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- LEVEL 3 -->
+    <div class="level-group">
+        <div class="level-label">Pinnacle Stage , Full Evolution (Tier 3 → Tier 4)</div>
+        <div class="building-grid">
+
+            <!-- APEX -->
+            <div class="building-card tag-apex">
+                <img src="../img/coalition/building/coalition_building_mist_throne.jpg" class="building-img" alt="Mist Throne">
+                <div class="building-info">
+                    <span class="building-name">Mist Throne</span>
+                    <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Shadow → <strong>Mist</strong>.</span>
+                </div>
+            </div>
+            <div class="building-card tag-apex">
+                <img src="../img/coalition/building/coalition_building_titan_crucible.jpg" class="building-img" alt="Titan Crucible">
+                <div class="building-info">
+                    <span class="building-name">Titan Crucible</span>
+                    <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Alpha → <strong>Titan</strong></span>
+                </div>
+            </div>
+
+            <!-- ECHO -->
+            <div class="building-card tag-echo">
+                <img src="../img/coalition/building/coalition_building_warden_grove.jpg" class="building-img" alt="Matriarch Grove">
+                <div class="building-info">
+                    <span class="building-name">Warden Grove</span>
+                    <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Forest Warden → <strong>Tree Knight</strong></span>
+                </div>
+            </div>
+
+            <!-- ECHO -->
+            <div class="building-card tag-echo">
+                <img src="../img/coalition/building/coalition_building_blade_leaf_shrine.jpg" class="building-img" alt="Blade Leaf Shrine">
+                <div class="building-info">
+                    <span class="building-name">Blade Leaf Shrine</span>
+                    <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Poisoner → <strong>Leaf Blade</strong>.</span>
+                </div>
+            </div>
+            <div class="building-card tag-echo">
+                <img src="../img/coalition/building/coalition_building_quake_stone.jpg" class="building-img" alt="Quake Stone">
+                <div class="building-info">
+                    <span class="building-name">Quake Stone</span>
+                    <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Radicalist → <strong>EarthQuake</strong>.</span>
+                </div>
+            </div>
+            <div class="building-card tag-echo">
+                <img src="../img/coalition/building/coalition_building_dream_blossom.jpg" class="building-img" alt="Dream Blossom">
+                <div class="building-info">
+                    <span class="building-name">Dream Blossom</span>
+                    <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Tree Sorceress → <strong>Earth Colossus</strong>.</span>
+                </div>
+            </div>
+
+            <!-- EMBER CHOIR -->
+            <div class="building-card tag-ember">
+                <img src="../img/coalition/building/coalition_building_oracle_forge.jpg" class="building-img" alt="Oracle Forge">
+                <div class="building-info">
+                    <span class="building-name">Oracle Forge</span>
+                    <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Pyroclast → <strong>Magma Oracle</strong>.</span>
+                </div>
+            </div>
+            <div class="building-card tag-ember">
+                <img src="../img/coalition/building/coalition_building_hive_nexus.jpg" class="building-img" alt="Hive Nexus">
+                <div class="building-info">
+                    <span class="building-name">Hive Nexus</span>
+                    <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Dream Spore → <strong>Hive Witch</strong>.</span>
+                </div>
+            </div>
+            <div class="building-card tag-ember">
+                <img src="../img/coalition/building/coalition_building_eye_of_the_storm.jpg" class="building-img" alt="Eye of the Storm">
+                <div class="building-info">
+                    <span class="building-name">Eye of the Storm</span>
+                    <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Tempest Dancer → <strong>Void Tempest</strong>.</span>
+                </div>
+            </div>
+
+            <!-- DEEP WEAVE -->
+            <div class="building-card tag-weave">
+                <img src="../img/coalition/building/coalition_building_undying_pool.jpg" class="building-img" alt="Undying Pool">
+                <div class="building-info">
+                    <span class="building-name">Undying Pool</span>
+                    <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Neotene Matron → <strong>Eternal Larva</strong>.</span>
+                </div>
+            </div>
+            <div class="building-card tag-weave">
+                <img src="../img/coalition/building/coalition_building_pelagic_throne.jpg" class="building-img" alt="Pelagic Throne">
+                <div class="building-info">
+                    <span class="building-name">Pelagic Throne</span>
+                    <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Phosphor Veil → <strong>Pelagic Crown</strong>.</span>
+                </div>
+            </div>
+            <div class="building-card tag-weave">
+                <img src="../img/coalition/building/coalition_building_ascension_loom.jpg" class="building-img" alt="Ascension Loom">
+                <div class="building-info">
+                    <span class="building-name">Ascension Loom</span>
+                    <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Cocoon Keeper → <strong>Dust Saint</strong>.</span>
+                </div>
+            </div>
+            <div class="building-card tag-weave">
+                <img src="../img/coalition/building/coalition_building_conversion_vat.jpg" class="building-img" alt="Conversion Vat">
+                <div class="building-info">
+                    <span class="building-name">Conversion Vat</span>
+                    <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Chromodoris → <strong>Stolen Fire</strong>.</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- LEVEL 4 (Platinum) -->
+    <div class="level-group">
+        <div class="level-label">Transcendence Stage , Champion Ascension (Tier 4 → Tier 5)</div>
+        <div class="building-grid">
+
+            <div class="building-card tag-apex card-platinum">
+                <img src="../img/coalition/building/coalition_building_khoras_peak.jpg" class="building-img" alt="Khora's Peak">
+                <div class="building-info">
+                    <span class="building-name">Khora's Peak</span>
+                    <span class="building-cost cost-platinum">2 <img src="../img/icon_platinum.png" class="currency-icon" alt="Platinum"></span>
+                    <span class="building-effect">Alpha → <strong>Apex Champion</strong>.
+                        <span class="upgrade-note">Unique: only one Apex Champion may exist per battle.</span>
+                    </span>
+                </div>
+            </div>
+
+            <div class="building-card tag-echo card-platinum">
+                <img src="../img/coalition/building/coalition_building_world_pulse.jpg" class="building-img" alt="World Pulse Shrine">
+                <div class="building-info">
+                    <span class="building-name">World Pulse Shrine</span>
+                    <span class="building-cost cost-platinum">2 <img src="../img/icon_platinum.png" class="currency-icon" alt="Platinum"></span>
+                    <span class="building-effect">Matriarch → <strong>Grove Sovereign</strong>.
+                        <span class="upgrade-note">Unique: only one Grove Sovereign may exist per battle.</span>
+                    </span>
+                </div>
+            </div>
+
+            <div class="building-card tag-echo card-platinum">
+                <img src="../img/coalition/building/coalition_building_great_elder_altar.jpg" class="building-img" alt="Great Elder Altar">
+                <div class="building-info">
+                    <span class="building-name">Great Elder Altar</span>
+                    <span class="building-cost cost-platinum">2 <img src="../img/icon_platinum.png" class="currency-icon" alt="Platinum"></span>
+                    <span class="building-effect">All Echo paths → <strong>Great Elder</strong>.
+                        <span class="upgrade-note">Unique: only one Great Elder may exist per battle.</span>
+                    </span>
+                </div>
+            </div>
+
+            <div class="building-card tag-ember card-platinum">
+                <img src="../img/coalition/building/coalition_building_eternal_ember.jpg" class="building-img" alt="The Eternal Ember">
+                <div class="building-info">
+                    <span class="building-name">The Eternal Ember</span>
+                    <span class="building-cost cost-platinum">2 <img src="../img/icon_platinum.png" class="currency-icon" alt="Platinum"></span>
+                    <span class="building-effect">All Ember Choir paths → <strong>The Burning Thought</strong>.
+                        <span class="upgrade-note">Unique: only one Burning Thought may exist per battle.</span>
+                    </span>
+                </div>
+            </div>
+
+            <div class="building-card tag-weave card-platinum">
+                <img src="../img/coalition/building/coalition_building_stillwater_shrine.jpg" class="building-img" alt="The Stillwater Shrine">
+                <div class="building-info">
+                    <span class="building-name">The Stillwater Shrine</span>
+                    <span class="building-cost cost-platinum">2 <img src="../img/icon_platinum.png" class="currency-icon" alt="Platinum"></span>
+                    <span class="building-effect">Eternal Larva + Pelagic Crown → <strong>The Still Point</strong>.
+                        <span class="upgrade-note">Unique: only one Still Point may exist per battle.</span>
+                    </span>
+                </div>
+            </div>
+            <div class="building-card tag-weave card-platinum">
+                <img src="../img/coalition/building/coalition_building_living_archive.jpg" class="building-img" alt="The Living Archive">
+                <div class="building-info">
+                    <span class="building-name">The Living Archive</span>
+                    <span class="building-cost cost-platinum">2 <img src="../img/icon_platinum.png" class="currency-icon" alt="Platinum"></span>
+                    <span class="building-effect">Dust Saint + Stolen Fire → <strong>The Gilded Archive</strong>.
+                        <span class="upgrade-note">Unique: only one Gilded Archive may exist per battle.</span>
+                    </span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ===================== PROVINCE BUILDINGS ===================== -->
+    <h2 class="section-title">Province Buildings</h2>
+
+    <div class="level-group">
+        <div class="building-grid">
+
+            <div class="building-card tag-province">
+                <img src="../img/coalition/building/coalition_building_hunting_ground.jpg" class="building-img" alt="Hunting Ground">
+                <div class="building-info">
+                    <span class="building-name">Hunting Ground</span>
+                    <span class="building-cost cost-gold">300 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Province generates <strong>+2 Food</strong> per turn. Apex Predator units recruited in this province cost 10% less.</span>
+                </div>
+            </div>
+
+            <div class="building-card tag-province">
+                <img src="../img/coalition/building/coalition_building_biolum_grove.jpg" class="building-img" alt="Bioluminescent Grove">
+                <div class="building-info">
+                    <span class="building-name">Bioluminescent Grove</span>
+                    <span class="building-cost cost-gold">300 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Province generates <strong>+2 Aether</strong> per turn. Echo units in this province gain +10% healing output.</span>
+                </div>
+            </div>
+
+            <div class="building-card tag-province">
+                <img src="../img/coalition/building/coalition_building_ember_vein.jpg" class="building-img" alt="Ember Vein Tap">
+                <div class="building-info">
+                    <span class="building-name">Ember Vein Tap</span>
+                    <span class="building-cost cost-gold">500 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Province generates <strong>+3 Mineral</strong> per turn. Reduces bio-obsidian armor upgrade cost by 15% for all units.</span>
+                </div>
+            </div>
+
+            <div class="building-card tag-province">
+                <img src="../img/coalition/building/coalition_building_cycle_totem.jpg" class="building-img" alt="Cycle Totem">
+                <div class="building-info">
+                    <span class="building-name">Cycle Totem</span>
+                    <span class="building-cost cost-gold">600 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Province morale cannot drop below 50%. Units stationed here regenerate <strong>5% HP</strong> each turn outside of battle.</span>
+                </div>
+            </div>
+
+            <div class="building-card tag-province">
+                <img src="../img/coalition/building/coalition_building_amber_gate.jpg" class="building-img" alt="Ember Gate">
+                <div class="building-info">
+                    <span class="building-name">Ember Gate</span>
+                    <span class="building-cost cost-gold">450 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Province generates <strong>+1 Intelligence</strong> per turn. Reveals enemy movement in adjacent territories once per turn.</span>
+                </div>
+            </div>
+
+            <div class="building-card tag-province">
+                <img src="../img/coalition/building/coalition_building_ash_nursery.jpg" class="building-img" alt="Ash Nursery">
+                <div class="building-info">
+                    <span class="building-name">Ash Nursery</span>
+                    <span class="building-cost cost-gold">350 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Fallen allied units in province battles have a <strong>20% chance</strong> to be automatically revived at 15% HP after the battle ends.</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <a href="coalition.html" class="back-link">← Return to the Coalition Overview</a>
+</main>
+
+<script src="../system/building-lightbox.js"></script>
+<script src="../system/navigation.js"></script>
+</body>
+</html>

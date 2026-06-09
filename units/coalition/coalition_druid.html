@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Druid</title>
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Druid",
+  "subtitle": "Nature's Wardens Path | Tier 2",
+  "accent": "#81c784",
+  "bgImage": "../../img/coalition/coalition_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/coalition.html",           "label": "The Coalition" },
+    { "href": "../../factions/coalition_roster.html",    "label": "Roster" },
+    { "href": "coalition_order_ranged.html",             "label": "The Echoes" },
+    {                                                    "label": "Druid" }
+  ],
+
+  "combat": ["../../img/coalition/echoes/coalition_druid_f_combat.jpg"],
+
+  "bio": {
+    "title": "The Balance Keeper",
+    "paragraphs": [
+      "She does not fight for victory. She fights to maintain the conditions under which victory is possible. The distinction matters to her, and over time has come to matter to the units she fights alongside.",
+      "Her body has begun a slow integration with the plant network: bark-like patches along the forearms, seed-clusters where the hair parts, a faint chlorophyll scent that intensifies when she is concentrating. When she places her palms on the ground, the earth around her <strong>accelerates</strong>.",
+      "She can read the balance of a battlefield the way a gardener reads soil , what is depleted, what is overgrown, where the wound is. <em>She heals both.</em>"
+    ]
+  },
+
+  "stats": {
+    "hp":  85,
+    "atk": 35,
+    "ini": 50
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Regenerative Bloom",
+      "desc": "Calls natural growth to one ally's position. Heals for 20% of max HP and applies Nature Regeneration (3% HP per turn for 3 turns)."
+    },
+    {
+      "type": "active",
+      "name": "Hazard Growth",
+      "desc": "Accelerates plant growth in target zone. Creates difficult terrain that deals <span class=\"dmg-earth\">Earth</span> damage and slows enemies who enter it."
+    },
+    {
+      "type": "passive",
+      "name": "Balance Sense",
+      "desc": "Automatically detects the most wounded ally each turn and grants them +10% defense until she takes her next action."
+    }
+  ],
+
+  "gallery": [
+    "../../img/coalition/echoes/coalition_druid_f_portrait.jpg"
+  ],
+
+  "backLink": {
+    "href":  "coalition_order_ranged.html",
+    "label": "Return to The Echoes"
+  }
+}
+</script>
+
+<script src="../../system/unit-renderer.js"></script>
+</body>
+</html>

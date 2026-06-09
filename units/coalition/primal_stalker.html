@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Stalker</title>
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Stalker",
+  "subtitle": "Stealth Path | Tier 2",
+  "accent": "#81c784",
+  "bgImage": "../../img/coalition/coalition_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/coalition.html",           "label": "The Coalition" },
+    { "href": "../../factions/coalition_roster.html",    "label": "Roster" },
+    { "href": "coalition_order_mele.html",               "label": "The Apex Predators" },
+    {                                                    "label": "Stalker" }
+  ],
+
+  "combat": ["../../img/coalition/the_apex_predators/stalker_f_combat.jpg"],
+
+  "bio": {
+    "title": "The Approach",
+    "paragraphs": [
+      "The Stealth path within the Apex Predators is not about hiding. It is about the specific discipline of being present without being perceived , of occupying space in the enemy's peripheral vision for as long as it takes.",
+      "She has reduced herself to the minimum observable signature. She breathes differently. She has learned to suppress the microexpressions that register as danger-sense in prey. When she moves through a crowd, no one remembers seeing her. When she moves through a battlefield, <strong>the same principle applies</strong>.",
+      "Her strike is the end of a process that began long before anyone in range was aware of it. <em>The stalker's moment of visibility is already too late.</em>"
+    ]
+  },
+
+  "stats": {
+    "hp":  85,
+    "atk": 60,
+    "ini": 70
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Shadow Strike",
+      "desc": "A fast attack from a flanking position. Deals <span class=\"dmg-bio\">Bio</span> damage. If she attacks from a flanking or rear angle, adds a guaranteed Bleeding effect (3% max HP per turn for 2 turns)."
+    },
+    {
+      "type": "active",
+      "name": "Patient Approach",
+      "desc": "Enters Hidden state and moves up to 3 spaces. For 1 turn, she cannot be detected by passive senses or area-detection abilities."
+    },
+    {
+      "type": "passive",
+      "name": "Threat Minimization",
+      "desc": "Enemies will not target her with single-target abilities unless she is the only valid target or she has dealt damage that turn."
+    }
+  ],
+
+  "gallery": [
+    "../../img/coalition/the_apex_predators/stalker_f_portrait.jpg"
+  ],
+
+  "backLink": {
+    "href":  "coalition_order_mele.html",
+    "label": "Return to The Apex Predators"
+  }
+}
+</script>
+
+<script src="../../system/unit-renderer.js"></script>
+</body>
+</html>

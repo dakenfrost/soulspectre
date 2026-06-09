@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | The Ember Choir</title>
+    <link rel="stylesheet" href="../../system/style_order.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+    <style>
+        :root {
+            --order-accent:      #d4603a;
+            --order-glow:        rgba(212, 96, 58, 0.55);
+            --order-accent-bg:   rgba(212, 96, 58, 0.10);
+            --order-accent-dim:  rgba(212, 96, 58, 0.30);
+            --bg-image-url:      url('../../img/coalition/coalition_bg.jpg');
+        }
+
+        /* Damage type colour helpers */
+        .dmg-fire   { color: #ff7043; font-weight: bold; }
+        .dmg-earth  { color: #a5d6a7; font-weight: bold; }
+        .dmg-storm  { color: #90caf9; font-weight: bold; }
+        .dmg-mind   { color: #f48fb1; font-weight: bold; }
+        .dmg-nature { color: #c5e1a5; font-weight: bold; }
+
+    </style>
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+<global-navigation></global-navigation>
+
+<header>
+    <h1>The Ember Choir</h1>
+    <div class="subtitle">Mages of the Primal Coalition</div>
+</header>
+
+<main>
+    <div class="intro-banner">
+        <img src="../../img/coalition/ember_choir/ember_choir_intro.png" alt="The Ember Choir Banner">
+    </div>
+
+    <div class="lore-section">
+        <h2>Where Fire Thinks, and Spores Dream</h2>
+        <p>The Coalition does not produce mages in towers or academies. It produces them in <strong>volcanic fissures, mycelium networks, and the eye of storms that have been alive for centuries</strong>. The Ember Choir are those whose bodies did not simply adapt to the world's planetary energy , they became conduits for it, shapes through which the raw force of fire, storm, and living fungal intelligence flows outward.</p>
+        <p>They are not humanoid scholars who learned to cast. They are <strong>organisms that evolved toward magic the same way a deep-sea fish evolves toward bioluminescence</strong> , because the environment demanded it, and their bloodline answered. Many members of the Choir no longer eat, breathe, or sleep in ways a biologist would recognize. They run on something older than metabolism.</p>
+        <p>Three distinct evolutionary paths define the Choir: the <strong>Pyroclast Path</strong>, born from volcanic exposure and gravitational stone-heat; the <strong>Stormborn Path</strong>, ionized creatures of compressed electrical weather; and the <strong>Mycelium Path</strong>, beings whose consciousness has partially migrated into the planetary fungal network , living thoughts carried by spores.</p>
+    </div>
+
+    <!-- EVO TREE -->
+    <div id="evo-tree-root"
+         data-bg="../../img/coalition/ember_choir/ember_choir_evo_tree_bg.png"
+         data-labels="Pyroclast Path, Stormborn Path, Mycelium Path">
+    </div>
+
+    <div class="unit-list-header"><h2>Active Roster</h2></div>
+    <div class="unit-list">
+        <div class="unit-row t-1"
+             data-evo-id="spore-acolyte"
+             data-evo-to="ash-caster myco-witch storm-weaver">
+            <div class="portrait-container">
+                <img src="../../img/coalition/ember_choir/spore_acolyte_portrait.jpg" alt="Spore Acolyte">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Spore Acolyte</h3>
+                <div class="unit-tier">Classification: </div>
+                <p class="unit-desc">An androgynous being whose face has been replaced by a ring of chemosensory tendrils. Their skeleton is laced with bioluminescent fungal threads that pulse faintly in the dark. In combat, they exhale dense spore clouds that cause disorientation and mild hallucinations in anyone who inhales them , enemy or ally. The tendrils can taste the emotional state of nearby creatures, making them impossible to ambush.</p>
+            </div>
+            <div class="unit-action"><a href="coalition_spore_acolyte.html" class="btn-tactical">View Data</a></div>
+        </div>
+
+        <!-- PYROCLAST PATH -->
+        <div class="unit-row t-2"
+             data-evo-id="ash-caster"
+             data-evo-to="pyroclast">
+            <div class="portrait-container">
+                <img src="../../img/coalition/ember_choir/ash_caster_portrait.jpg" alt="Ash Caster">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Ash Caster</h3>
+                <div class="unit-tier">Classification: <span class="color-t2">Tier 2</span> , Pyroclast Path</div>
+                <p class="unit-desc">Their skeleton has crystallized into volcanic ash-glass, visible through the semi-translucent skin stretched over it. When they gesture, their joint seams crack open and jets of superheated ash erupt from the fractures , each stream shaped into a precise arcane form rather than a random burst. They cannot fully close their hands; the heat pressure is too great. They wear no gloves because no material survives contact long enough to matter.</p>
+            </div>
+            <div class="unit-action"><a href="coalition_ash_caster.html" class="btn-tactical">View Data</a></div>
+        </div>
+
+        <!-- MYCELIUM PATH -->
+        <div class="unit-row t-2"
+             data-evo-id="myco-witch"
+             data-evo-to="dream-spore">
+            <div class="portrait-container">
+                <img src="../../img/coalition/ember_choir/myco_witch_portrait.jpg" alt="Myco-Witch">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Myco-Witch</h3>
+                <div class="unit-tier">Classification: <span class="color-t2">Tier 2</span> , Mycelium Path</div>
+                <p class="unit-desc">Where a head should be, a massive mushroom cap blooms , iridescent, pulsing with spore-light, its gills reading the air like a weather instrument. Her torso is half-flesh, half-mycelium network: fine white threads visible beneath the skin, running from her fingertips to the edges of her jaw. She can extend her consciousness through any fungal growth she has physically touched, experiencing the world through spore-sense at extreme range. She does not sleep; she propagates.</p>
+            </div>
+            <div class="unit-action"><a href="coalition_myco_witch.html" class="btn-tactical">View Data</a></div>
+        </div>
+
+        <!-- STORMBORN PATH -->
+        <div class="unit-row t-2"
+             data-evo-id="storm-weaver"
+             data-evo-to="tempest-dancer">
+            <div class="portrait-container">
+                <img src="../../img/coalition/ember_choir/storm_weaver_portrait.jpg" alt="Storm Weaver">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Storm Weaver</h3>
+                <div class="unit-tier">Classification: <span class="color-t2">Tier 2</span> , Stormborn Path</div>
+                <p class="unit-desc">A being of compressed thundercloud and sinew. Their body is partially translucent , the silhouette of a tall, broad-shouldered creature containing weather. Lightning arcs continuously between their fingers and their temples. Their voice carries the sound of distant thunder regardless of volume, and standing near them makes hair stand on end and metallic objects vibrate. They are always slightly wet, from rain that only falls within a meter of their body.</p>
+            </div>
+            <div class="unit-action"><a href="coalition_storm_weaver.html" class="btn-tactical">View Data</a></div>
+        </div>
+
+        <!-- PYROCLAST PATH -->
+        <div class="unit-row t-3"
+             data-evo-id="pyroclast"
+             data-evo-to="magma-oracle">
+            <div class="portrait-container">
+                <img src="../../img/coalition/ember_choir/pyroclast_portrait.jpg" alt="Pyroclast">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Pyroclast</h3>
+                <div class="unit-tier">Classification: <span class="color-t3">Tier 3</span> , Pyroclast Path</div>
+                <p class="unit-desc">A pressure vessel of magma wearing the approximate shape of a body. The skin surface is dried lava crust , matte black, fractured into hundreds of plates, each crack glowing orange-red beneath. Every step causes minor seismic tremors. They do not breathe; they vent. The heat radiating from their form is enough to ignite dry wood at three meters. They speak in a low rumble that physically resonates in the chests of listeners. Direct touch is lethal to unprotected flesh within seconds.</p>
+            </div>
+            <div class="unit-action"><a href="coalition_pyroclast.html" class="btn-tactical">View Data</a></div>
+        </div>
+
+        <!-- MYCELIUM PATH , branch A -->
+        <div class="unit-row t-3"
+             data-evo-id="dream-spore"
+             data-evo-to="hive-witch">
+            <div class="portrait-container">
+                <img src="../../img/coalition/ember_choir/dream_spore_portrait.jpg" alt="Dream Spore">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Dream Spore</h3>
+                <div class="unit-tier">Classification: <span class="color-t3">Tier 3</span> , Mycelium Path</div>
+                <p class="unit-desc">Moves in complete silence; no footstep, no breath, no rustle. Their body releases a constant invisible mist of psychotropic compounds that cannot be detected until they take effect. Enemies within range begin hallucinating: phantom coalition allies appear in the enemy formation, friendly fire incidents spike, and commanders begin receiving contradictory orders from officers who are not there. The Dream Spore herself appears calm, almost gentle , the most dangerous posture imaginable.</p>
+            </div>
+            <div class="unit-action"><a href="coalition_dream_spore.html" class="btn-tactical">View Data</a></div>
+        </div>
+
+        <!-- STORMBORN PATH , branch A -->
+        <div class="unit-row t-3"
+             data-evo-id="tempest-dancer"
+             data-evo-to="void-tempest">
+            <div class="portrait-container">
+                <img src="../../img/coalition/ember_choir/tempest_dancer_portrait.jpg" alt="Tempest Dancer">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Tempest Dancer</h3>
+                <div class="unit-tier">Classification: <span class="color-t3">Tier 3</span> , Stormborn Path</div>
+                <p class="unit-desc">Upper body: a muscular woman with storm-blue skin and hair frozen mid-motion in a constant updraft, eyes the color of lightning a second before it hits. Lower body: a perpetual tornado. She never touches the ground. Her movement leaves a trail of debris and pressure damage in a narrow strip behind her. She fights by spinning through enemy formations rather than attacking from range , the rotation itself is the weapon.</p>
+            </div>
+            <div class="unit-action"><a href="coalition_tempest_dancer.html" class="btn-tactical">View Data</a></div>
+        </div>
+
+        <!-- PYROCLAST + STORM HYBRID -->
+        <div class="unit-row t-4"
+             data-evo-id="magma-oracle"
+             data-evo-to="burning-thought">
+            <div class="portrait-container">
+                <img src="../../img/coalition/ember_choir/magma_oracle_portrait.jpg" alt="Magma Oracle">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Magma Oracle</h3>
+                <div class="unit-tier">Classification: <span class="color-t4">Tier 4</span> , Pyroclast Path</div>
+                <p class="unit-desc">The rarest convergence: a being where volcanic and electrical energies have merged rather than competing. Their body sparks continuously where magma meets charge , the surface crack-patterns now conduct electricity, making every fissure a live wire. They can see the future in eruption patterns and storm formation. They do not predict the battlefield , they read it as a geological event already in progress, and position accordingly long before the first move is made.</p>
+            </div>
+            <div class="unit-action"><a href="coalition_magma_oracle.html" class="btn-tactical">View Data</a></div>
+        </div>
+
+        <!-- MYCELIUM APEX -->
+        <div class="unit-row t-4"
+             data-evo-id="hive-witch"
+             data-evo-to="burning-thought">
+            <div class="portrait-container">
+                <img src="../../img/coalition/ember_choir/hive_witch_portrait.jpg" alt="Hive Witch">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Hive Witch</h3>
+                <div class="unit-tier">Classification: <span class="color-t4">Tier 4</span> , Mycelium Path</div>
+                <p class="unit-desc">No longer a single being. The original body , the "queen cell" , sits at the center of a slowly moving mass of fungal threads, coordinated organism fragments, and absorbed memories from every creature the network has consumed. The queen cell still has the outline of a woman, but her eyes have become distributed across the network: hundreds of small sensory nodes that can see in all directions simultaneously. She thinks in parallel streams and experiences time non-linearly. Her spells are not cast , they are grown, backward from the target, root-first.</p>
+            </div>
+            <div class="unit-action"><a href="coalition_hive_witch.html" class="btn-tactical">View Data</a></div>
+        </div>
+
+        <!-- STORMBORN APEX -->
+        <div class="unit-row t-4"
+             data-evo-id="void-tempest"
+             data-evo-to="burning-thought">
+            <div class="portrait-container">
+                <img src="../../img/coalition/ember_choir/void_tempest_portrait.jpg" alt="Void Tempest">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Void Tempest</h3>
+                <div class="unit-tier">Classification: <span class="color-t4">Tier 4</span> , Stormborn Path</div>
+                <p class="unit-desc">A hurricane-grade entity with no stable form outside of conflict. At rest, she appears as a calm woman with storm-grey skin and an expression of complete boredom, who smells strongly of ozone and causes all weather instruments within range to malfunction. At the start of combat, that form dissolves: what remains is a conscious meteorological event the size of a large building. She has learned to aim. The eye of her storm is a space of perfect, lethal calm.</p>
+            </div>
+            <div class="unit-action"><a href="coalition_void_tempest.html" class="btn-tactical">View Data</a></div>
+        </div>
+        <div class="unit-row t-5"
+             data-evo-id="burning-thought">
+            <div class="portrait-container">
+                <img src="../../img/coalition/ember_choir/burning_thought_portrait.jpg" alt="The Burning Thought">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">The Burning Thought</h3>
+                <div class="unit-tier">Classification: <span class="color-t5">Tier 5 , Champion</span></div>
+                <p class="unit-desc">The mage who achieved full bio-obsidian fusion with all three elements simultaneously. Her body is entirely of black volcanic glass shot through with lava veins that arc with constant electricity and exhale spore-laden steam from every crack. She thinks in geological time , perceiving decades as seconds, individual battles as moments in a much longer pattern. Her intelligence is not faster than human: it is simply operating at a different scale entirely. She does not react to the battle in front of her; she responds to the strategic arc of the war she has already fully mapped in her mind. She has been standing at the correct position for this particular engagement for three days before anyone knew the battle would happen here.</p>
+            </div>
+            <div class="unit-action"><a href="coalition_burning_thought.html" class="btn-tactical">View Data</a></div>
+        </div>
+    </div>
+
+    <a href="../../factions/coalition_roster.html" class="back-link">← Return to the Coalition Roster</a>
+</main>
+
+<script src="../../system/evo-tree.js"></script>
+<script src="../../system/navigation.js"></script>
+</body>
+</html>

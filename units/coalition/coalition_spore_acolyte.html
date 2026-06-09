@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Spore Acolyte</title>
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Spore Acolyte",
+  "subtitle": "Common Origin | Tier 1",
+  "accent": "#b0bec5",
+  "bgImage": "../../img/coalition/coalition_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/coalition.html",           "label": "The Coalition" },
+    { "href": "../../factions/coalition_roster.html",    "label": "Roster" },
+    { "href": "coalition_order_mage.html",               "label": "The Ember Choir" },
+    {                                                    "label": "Spore Acolyte" }
+  ],
+
+  "combat": ["../../img/coalition/ember_choir/spore_acolyte_combat.jpg"],
+
+  "bio": {
+    "title": "Before the Path Selects",
+    "paragraphs": [
+      "An androgynous being whose face has been replaced entirely by a ring of chemosensory tendrils , each one reading the air independently, tasting molecular signatures no other species can detect. Their skeleton is laced with bioluminescent fungal threads that pulse faintly in the dark, tracing their veins from the outside.",
+      "In combat, they exhale dense spore clouds that cause disorientation and mild hallucinations in anyone who inhales them , <strong>enemy or ally</strong>. The distinction is less important to them than the effect.",
+      "The tendrils can taste the emotional state of nearby creatures: fear, aggression, deception, grief. They cannot be ambushed. <em>They already know you are angry before you know it yourself.</em>"
+    ]
+  },
+
+  "stats": {
+    "hp":  65,
+    "atk": 30,
+    "ini": 50
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Spore Exhale",
+      "desc": "Deals <span class=\"dmg-mind\">Mind</span> damage to all adjacent enemies and applies Disoriented (−20% accuracy for 1 turn)."
+    },
+    {
+      "type": "passive",
+      "name": "Emotional Tasting",
+      "desc": "Immune to Ambush and Surprise attacks. Cannot be targeted by Stealth-based attacks."
+    }
+  ],
+
+  "gallery": [
+    "../../img/coalition/ember_choir/spore_acolyte_portrait.jpg"
+  ],
+
+  "backLink": {
+    "href":  "coalition_order_mage.html",
+    "label": "Return to The Ember Choir"
+  }
+}
+</script>
+
+<script src="../../system/unit-renderer.js"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | The Gilded Archive</title>
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "The Gilded Archive",
+  "subtitle": "Lunar / Nudibranch Path | Tier 5 , Champion",
+  "accent": "#ffb300",
+  "bgImage": "../../img/coalition/coalition_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/coalition.html",           "label": "The Coalition" },
+    { "href": "../../factions/coalition_roster.html",    "label": "Roster" },
+    { "href": "coalition_order_support.html",            "label": "The Deep Weave" },
+    {                                                    "label": "The Gilded Archive" }
+  ],
+
+  "combat": ["../../img/coalition/deep_weave/gilded_archive_combat.jpg"],
+
+  "bio": {
+    "title": "She Has Already Catalogued It",
+    "paragraphs": [
+      "Where the Still Point settles, the Gilded Archive moves. She is the Lunar and Nudibranch lines at full convergence: wings spanning seven meters when fully extended, every surface dense with pharmacologically loaded scales refined over years of absorbing and cataloguing biological attacks. Her cerata cover her from shoulders to elbows in a layered fringe of dozens of colors , each one a living archive of a different absorbed system.",
+      "Each wing stroke releases a cascade of scales whose payload she selects in real time: clotting agents for the unit currently bleeding, nerve modulators for the one in shock, anti-toxin compounds for whatever the enemy is broadcasting. <strong>She has absorbed enough biological weapons over her career that no new attack surprises her.</strong>",
+      "She has already catalogued it, converted it, and is currently releasing it as medicine. <em>She finds the enemy's best efforts useful.</em>"
+    ]
+  },
+
+  "stats": {
+    "hp":  170,
+    "atk": 65,
+    "ini": 50
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Precision Wing Strike",
+      "desc": "Selects the 2 most wounded allies and heals each for 30% of their max HP with the exact compound each currently requires , clotting, nerve repair, toxin neutralization, or cellular repair."
+    },
+    {
+      "type": "active",
+      "name": "Grand Catalogue Release",
+      "desc": "Releases all stored biologics simultaneously. Heals every ally for 35% of their max HP with a unique compound targeted to their specific condition. Each ally gains a tailored compound buff for 2 turns."
+    },
+    {
+      "type": "passive",
+      "name": "Living Catalogue",
+      "desc": "Immune to all biological and elemental damage types she has encountered at least once in battle. Each new damage type absorbed converts into +10% power on the next Grand Catalogue Release."
+    }
+  ],
+
+  "backLink": {
+    "href":  "coalition_order_support.html",
+    "label": "Return to The Deep Weave"
+  }
+}
+</script>
+
+<script src="../../system/unit-renderer.js"></script>
+</body>
+</html>

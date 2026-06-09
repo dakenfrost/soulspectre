@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Poisoner</title>
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Poisoner",
+  "subtitle": "Assassin Path | Tier 3",
+  "accent": "#64b5f6",
+  "bgImage": "../../img/coalition/coalition_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/coalition.html",           "label": "The Coalition" },
+    { "href": "../../factions/coalition_roster.html",    "label": "Roster" },
+    { "href": "coalition_order_ranged.html",             "label": "The Echoes" },
+    {                                                    "label": "Poisoner" }
+  ],
+
+  "combat": [],
+
+  "bio": {
+    "title": "Patience, Formulated",
+    "paragraphs": [
+      "She has spent more time with plants that kill things than with people who do. This has made her precise, methodical, and slightly difficult to have a casual conversation with. She categorizes people the way she categorizes specimens: by what they are vulnerable to.",
+      "Her poisons are not extracted so much as negotiated , she tends toward symbiotic relationships with the toxic plants she studies, and the plants tend toward unusual productivity in return. Her skin carries a faint greenish tinge in strong light. <strong>A precaution.</strong>",
+      "She does not take contracts. She identifies problems. The distinction has kept her employed. <em>Problems are everywhere.</em>"
+    ]
+  },
+
+  "stats": {
+    "hp":  100,
+    "atk": 65,
+    "ini": 60
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Compound Toxin",
+      "desc": "Applies a layered poison to one target. Deals immediate <span class=\"dmg-bio\">Bio</span> damage and applies Necrotic Poison (stacks up to 3; each stack deals 4% max HP per turn)."
+    },
+    {
+      "type": "active",
+      "name": "Contact Poison",
+      "desc": "Coats a zone with contact poison. Any enemy who enters or passes through takes <span class=\"dmg-bio\">Bio</span> damage and gains 1 stack of Necrotic Poison."
+    },
+    {
+      "type": "passive",
+      "name": "Systemic Knowledge",
+      "desc": "Her attacks always bypass poison resistance. Enemies with 3 stacks of Necrotic Poison take double damage from her attacks."
+    }
+  ],
+
+  "backLink": {
+    "href":  "coalition_order_ranged.html",
+    "label": "Return to The Echoes"
+  }
+}
+</script>
+
+<script src="../../system/unit-renderer.js"></script>
+</body>
+</html>

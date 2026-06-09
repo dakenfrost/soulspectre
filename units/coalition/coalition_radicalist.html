@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Radicalist</title>
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Radicalist",
+  "subtitle": "Elemental Path | Tier 3",
+  "accent": "#64b5f6",
+  "bgImage": "../../img/coalition/coalition_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/coalition.html",           "label": "The Coalition" },
+    { "href": "../../factions/coalition_roster.html",    "label": "Roster" },
+    { "href": "coalition_order_ranged.html",             "label": "The Echoes" },
+    {                                                    "label": "Radicalist" }
+  ],
+
+  "combat": ["../../img/coalition/echoes/coalition_radicalist_f_combat.jpg"],
+
+  "bio": {
+    "title": "The Living Fault Line",
+    "paragraphs": [
+      "The Elemental path typically moves through geological time , slow, massive, inevitable. She has compressed that process into something impatient. Her symbiosis is unstable in ways the older members find alarming and the younger ones find thrilling.",
+      "She does not call stone. She destabilizes it. The ground beneath her feet has a tendency to crack along previously imperceptible fault lines. She has no memory of intentional learning. The earth <strong>taught her by example</strong>.",
+      "Her commanders would describe her as undisciplined. Her commanders have never seen her fight. <em>Fault lines are not undisciplined. They are waiting.</em>"
+    ]
+  },
+
+  "stats": {
+    "hp":  105,
+    "atk": 65,
+    "ini": 50
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Fault Strike",
+      "desc": "Slams the ground to open a fault line between her position and a target. All enemies along the line take <span class=\"dmg-earth\">Earth</span> damage and are pushed sideways 1 space."
+    },
+    {
+      "type": "active",
+      "name": "Unstable Ground",
+      "desc": "Destabilizes a zone, making it collapse over 2 turns. Enemies in the zone take escalating <span class=\"dmg-earth\">Earth</span> damage each turn; on the second turn, they fall through and take full impact damage."
+    },
+    {
+      "type": "passive",
+      "name": "Volatile Symbiosis",
+      "desc": "When she takes damage, there is a 25% chance the impact triggers a seismic pulse, dealing <span class=\"dmg-earth\">Earth</span> damage to all adjacent enemies."
+    }
+  ],
+
+  "backLink": {
+    "href":  "coalition_order_ranged.html",
+    "label": "Return to The Echoes"
+  }
+}
+</script>
+
+<script src="../../system/unit-renderer.js"></script>
+</body>
+</html>

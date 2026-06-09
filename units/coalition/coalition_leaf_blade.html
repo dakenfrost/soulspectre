@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Leaf Blade</title>
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Leaf Blade",
+  "subtitle": "Assassin Path | Tier 4",
+  "accent": "#ba68c8",
+  "bgImage": "../../img/coalition/coalition_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/coalition.html",           "label": "The Coalition" },
+    { "href": "../../factions/coalition_roster.html",    "label": "Roster" },
+    { "href": "coalition_order_ranged.html",             "label": "The Echoes" },
+    {                                                    "label": "Leaf Blade" }
+  ],
+
+  "combat": ["../../img/coalition/echoes/coalition_leaf_blade_f_combat.jpg"],
+
+  "bio": {
+    "title": "The Cut You Did Not See",
+    "paragraphs": [
+      "At full development, the Assassin path becomes less about concealment and more about inevitability. She does not hide because she needs to; she hides because she has learned that the most efficient kill happens before anyone is looking for it.",
+      "The symbiosis has refined her to the point of near-structural transparency , in dense vegetation she does not merely blend, she <strong>becomes part of the visual grammar of the forest</strong>. Enemies looking directly at her position will sometimes see her and think she is part of the canopy.",
+      "She has cultivated one specialty: the first strike. She has had very few opportunities to develop a second. <em>She considers this a success metric.</em>"
+    ]
+  },
+
+  "stats": {
+    "hp":  120,
+    "atk": 85,
+    "ini": 70
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Execution Strike",
+      "desc": "A perfectly timed attack from concealment. Deals <span class=\"dmg-earth\">Earth</span> damage. If she was Hidden when she attacked, this deals triple damage and the target is Silenced for 1 turn."
+    },
+    {
+      "type": "active",
+      "name": "Vanishing Act",
+      "desc": "Immediately becomes Hidden and moves up to 5 spaces without triggering Opportunity Attacks. Her next attack deals +50% damage."
+    },
+    {
+      "type": "passive",
+      "name": "Structural Camouflage",
+      "desc": "In vegetated environments, she is permanently treated as Hidden unless she attacks. Even after attacking, she may spend her movement to re-enter Hidden state."
+    }
+  ],
+
+  "backLink": {
+    "href":  "coalition_order_ranged.html",
+    "label": "Return to The Echoes"
+  }
+}
+</script>
+
+<script src="../../system/unit-renderer.js"></script>
+</body>
+</html>

@@ -21,7 +21,7 @@
         if (bg) bg.style.backgroundImage = "url('" + data.bgImage + "')";
     }
 
-    function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+    function esc(s) { return String(s).replace(/&/g, ',').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
 
     /* ── 2. Global Navigation ( prende lo script navigation.js e cre la sidebar ) ── */
     var _selfSrc = document.currentScript ? document.currentScript.src : '';

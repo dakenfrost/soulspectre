@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Ash Caster</title>
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Ash Caster",
+  "subtitle": "Pyroclast Path | Tier 2",
+  "accent": "#81c784",
+  "bgImage": "../../img/coalition/coalition_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/coalition.html",           "label": "The Coalition" },
+    { "href": "../../factions/coalition_roster.html",    "label": "Roster" },
+    { "href": "coalition_order_mage.html",               "label": "The Ember Choir" },
+    {                                                    "label": "Ash Caster" }
+  ],
+
+  "combat": ["../../img/coalition/ember_choir/ash_caster_combat.jpg"],
+
+  "bio": {
+    "title": "No Gloves Survive Contact",
+    "paragraphs": [
+      "Their skeleton has crystallized into volcanic ash-glass, visible through the semi-translucent skin stretched over it , a lattice of grey-white fracture lines beneath living tissue, never still, always under pressure.",
+      "When they gesture, their joint seams crack open and jets of superheated ash erupt from the fractures , each stream shaped into a precise arcane form rather than a random burst. They cannot fully close their hands; the heat pressure is <strong>too great</strong>.",
+      "They wear no gloves because no material survives contact long enough to matter. <em>This detail does not seem to bother them.</em>"
+    ]
+  },
+
+  "stats": {
+    "hp":  85,
+    "atk": 55,
+    "ini": 50
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Ash Jet",
+      "desc": "Deals <span class=\"dmg-fire\">Fire</span> damage to one enemy. 35% chance to apply Burning (3% HP per turn for 2 turns)."
+    },
+    {
+      "type": "active",
+      "name": "Fracture Burst",
+      "desc": "All joint seams crack simultaneously: deals <span class=\"dmg-fire\">Fire</span> damage to all enemies in close range from a simultaneous eruption of superheated ash."
+    },
+    {
+      "type": "passive",
+      "name": "Pressure Build",
+      "desc": "At the start of each turn, internal pressure increases. The next Ash Jet deals +15% bonus damage. Resets after Ash Jet is used."
+    }
+  ],
+
+  "gallery": [
+    "../../img/coalition/ember_choir/ash_caster_portrait.jpg"
+  ],
+
+  "backLink": {
+    "href":  "coalition_order_mage.html",
+    "label": "Return to The Ember Choir"
+  }
+}
+</script>
+
+<script src="../../system/unit-renderer.js"></script>
+</body>
+</html>

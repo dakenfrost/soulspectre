@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Shadow</title>
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Shadow",
+  "subtitle": "Stealth Path | Tier 3",
+  "accent": "#64b5f6",
+  "bgImage": "../../img/coalition/coalition_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/coalition.html",           "label": "The Coalition" },
+    { "href": "../../factions/coalition_roster.html",    "label": "Roster" },
+    { "href": "coalition_order_mele.html",               "label": "The Apex Predators" },
+    {                                                    "label": "Shadow" }
+  ],
+
+  "combat": ["../../img/coalition/the_apex_predators/shadow_f_combat.jpg"],
+
+  "bio": {
+    "title": "Negative Space",
+    "paragraphs": [
+      "She has learned to read the gaps in a formation's attention , the angles no one watches because watching them would mean acknowledging they exist. She moves through negative space. Not the space between soldiers; the space between their willingness to look.",
+      "Her kills are not dramatic. There is no announcement, no signature. The enemy unit simply loses one member between one moment and the next, and no one present can identify the sequence of events. She has been on twelve operations. <strong>She has never been described by a survivor</strong>.",
+      "The other Apex Predators respect her in the abstract. They do not have conversations with her. She prefers it this way. <em>The best description of her is the one no one can give.</em>"
+    ]
+  },
+
+  "stats": {
+    "hp":  105,
+    "atk": 80,
+    "ini": 75
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Void Strike",
+      "desc": "Attacks from outside the target's perceptual range. Deals <span class=\"dmg-bio\">Bio</span> damage. This attack cannot be blocked, parried, or dodged , only absorbed by armor."
+    },
+    {
+      "type": "active",
+      "name": "Phase Through",
+      "desc": "Moves through up to 3 occupied spaces without triggering any reactions, abilities, or Opportunity Attacks. Can pass through enemies' squares."
+    },
+    {
+      "type": "passive",
+      "name": "Attention Gap",
+      "desc": "After each attack, she automatically returns to Hidden state unless the attack was made in full view of 3 or more enemies. Area attacks cannot target her while she is Hidden."
+    }
+  ],
+
+  "gallery": [
+    "../../img/coalition/the_apex_predators/shadow_f_portrait.jpg"
+  ],
+
+  "backLink": {
+    "href":  "coalition_order_mele.html",
+    "label": "Return to The Apex Predators"
+  }
+}
+</script>
+
+<script src="../../system/unit-renderer.js"></script>
+</body>
+</html>

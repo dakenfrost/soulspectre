@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Predator</title>
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Predator",
+  "subtitle": "Apex Predators | Officer",
+  "accent": "#ffd700",
+  "bgImage": "../../img/coalition/coalition_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/coalition.html",           "label": "The Coalition" },
+    { "href": "../../factions/coalition_roster.html",    "label": "Roster" },
+    { "href": "coalition_order_mele.html",               "label": "The Apex Predators" },
+    {                                                    "label": "Predator" }
+  ],
+
+  "combat": ["../../img/coalition/the_apex_predators/predator_f_combat.jpg"],
+
+  "bio": {
+    "title": "The One Who Sets the Pace",
+    "paragraphs": [
+      "She earned the rank not through seniority but through a simple test: every soldier in the unit was given a single question , <em>who do you follow when there is no plan?</em> Every hand pointed at the same person. She did not look surprised.",
+      "The Apex Predators operate on instinct organized into doctrine. She is the one who translated instinct into something repeatable. The hunt has a grammar; she wrote it. Every ambush position, every strike sequence, every exfiltration route carries the logic of <strong>something that has hunted longer than it has thought</strong>.",
+      "She has never lost a unit to hesitation. The pause before commitment is the only thing she has spent her career eliminating. <em>The predator who deliberates eats last.</em>"
+    ]
+  },
+
+  "stats": {
+    "hp":  130,
+    "atk": 65,
+    "ini": 55
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Pack Directive",
+      "desc": "Issues a coordinated attack order. Target enemy is marked; all Apex Predator allies who attack that target this turn deal +25% damage."
+    },
+    {
+      "type": "active",
+      "name": "Opening Strike",
+      "desc": "Launches a powerful personal attack against a marked target. Deals <span class=\"dmg-bio\">Bio</span> damage. If the target has already been attacked this turn, deals +40% bonus damage."
+    },
+    {
+      "type": "passive",
+      "name": "Alpha Presence",
+      "desc": "All Apex Predator allies within range gain +10% ATK and cannot be affected by Fear or Morale-reducing effects while she is alive."
+    }
+  ],
+
+  "gallery": [
+    "../../img/coalition/the_apex_predators/predator_f_portrait.jpg"
+  ],
+
+  "backLink": {
+    "href":  "coalition_order_mele.html",
+    "label": "Return to The Apex Predators"
+  }
+}
+</script>
+
+<script src="../../system/unit-renderer.js"></script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Venomous</title>
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Venomous",
+  "subtitle": "Plant-Symbiont | Tier 1",
+  "accent": "#b0bec5",
+  "bgImage": "../../img/coalition/coalition_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/coalition.html",           "label": "The Coalition" },
+    { "href": "../../factions/coalition_roster.html",    "label": "Roster" },
+    { "href": "coalition_order_ranged.html",             "label": "The Echoes" },
+    {                                                    "label": "Venomous" }
+  ],
+
+  "combat": ["../../img/coalition/echoes/coalition_venomous_f_combat.jpg"],
+
+  "bio": {
+    "title": "The First Sting",
+    "paragraphs": [
+      "Still developing her symbiotic connection, but the toxin glands have already come in. Clusters of small seed-pods have formed along her forearms and collarbone , not yet under full control, occasionally releasing a fine irritant dust when she is startled.",
+      "She fights at range, plucking seed-thorns from her own skin and flicking them with a snap of the wrist. The delivery is casual. The effect is <strong>not casual</strong>.",
+      "She has not yet developed the deeper root-sense that older Echoes possess, but she knows which plants are edible, which ones will kill, and exactly how fast. <em>That turns out to be most of what you need.</em>"
+    ]
+  },
+
+  "stats": {
+    "hp":  65,
+    "atk": 35,
+    "ini": 55
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Thorn Flick",
+      "desc": "Fires a toxin-coated seed-thorn at one enemy. Deals ranged <span class=\"dmg-bio\">Bio</span> damage with a 40% chance to apply Poisoned (3% HP per turn for 2 turns)."
+    },
+    {
+      "type": "passive",
+      "name": "Irritant Dust",
+      "desc": "When struck in melee, automatically releases a burst of irritant pollen. The attacker has a 30% chance to become Disoriented (−15% accuracy for 1 turn)."
+    }
+  ],
+
+  "gallery": [
+    "../../img/coalition/echoes/coalition_venomous_f_portrait.jpg"
+  ],
+
+  "backLink": {
+    "href":  "coalition_order_ranged.html",
+    "label": "Return to The Echoes"
+  }
+}
+</script>
+
+<script src="../../system/unit-renderer.js"></script>
+</body>
+</html>

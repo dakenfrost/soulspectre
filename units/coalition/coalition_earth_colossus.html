@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Earth Colossus</title>
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Earth Colossus",
+  "subtitle": "Control Path | Tier 4",
+  "accent": "#ba68c8",
+  "bgImage": "../../img/coalition/coalition_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/coalition.html",           "label": "The Coalition" },
+    { "href": "../../factions/coalition_roster.html",    "label": "Roster" },
+    { "href": "coalition_order_ranged.html",             "label": "The Echoes" },
+    {                                                    "label": "Earth Colossus" }
+  ],
+
+  "combat": ["../../img/coalition/echoes/coalition_earth_colossus_f_combat.jpg"],
+
+  "bio": {
+    "title": "The Earth Given Form",
+    "paragraphs": [
+      "At this tier, the Control path diverges from mental manipulation into something heavier. She does not dream; she reshapes. The terrain around her does not merely hinder , it becomes an active participant in the battle, responding to her intent with the slow patience of geological time compressed into combat moments.",
+      "Stone extrudes from the ground at her direction. Walls form, channels open, weight accumulates where she designates. She does not aim. She <strong>redesigns the space</strong>.",
+      "She has not spoken in three years. The earth is more direct. <em>What needs to be said, the ground says.</em>"
+    ]
+  },
+
+  "stats": {
+    "hp":  150,
+    "atk": 70,
+    "ini": 35
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Stone Extrusion",
+      "desc": "Raises stone walls or pillars in a target zone. Creates impassable terrain and deals <span class=\"dmg-earth\">Earth</span> damage to any enemy in the zone when the stone emerges."
+    },
+    {
+      "type": "active",
+      "name": "Terrain Dominance",
+      "desc": "Completely reshapes a large zone for 3 turns: creates chokepoints, raises barriers, and generates cover for allies. All enemies in the zone are slowed and take <span class=\"dmg-earth\">Earth</span> damage per turn."
+    },
+    {
+      "type": "passive",
+      "name": "Geological Will",
+      "desc": "All terrain she has created counts as permanent for purposes of calculating control zones. She gains +1 action whenever she creates a new terrain feature."
+    }
+  ],
+
+  "backLink": {
+    "href":  "coalition_order_ranged.html",
+    "label": "Return to The Echoes"
+  }
+}
+</script>
+
+<script src="../../system/unit-renderer.js"></script>
+</body>
+</html>

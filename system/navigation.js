@@ -217,7 +217,111 @@ function getNavTemplate(base) {
         </div>
         <a href="#" class="inner-link locked">Kharos Dominion</a>
         <a href="#" class="inner-link locked">Devil Syndicate</a>
-        <a href="#" class="inner-link locked">Primal Coalition</a>
+
+        <div class="sub-faction-row">
+            <a href="${base}factions/coalition.html" class="inner-link" style="color: #a1887f;">Primal Coalition</a>
+            <button class="sub-toggle" aria-label="expand branches">▶</button>
+        </div>
+        <div class="sub-accordion-content">
+            <div class="branch-row">
+                <a href="${base}factions/coalition_lore.html" class="menu-link" style="color: #b0bec5">Lore</a>
+            </div>
+            <div class="branch-row">
+                <a href="${base}factions/coalition_culture.html" class="menu-link" style="color: #4db6ac">Culture</a>
+            </div>
+            <div class="branch-row">
+                <a href="${base}factions/coalition_leader.html" class="menu-link" style="color: #d4af37">Leader <br><strong>Khora</strong></a>
+            </div>
+            <div class="branch-row">
+                <a href="${base}factions/coalition_roster.html" class="menu-link" style="color: #ef5350">Unit</a>
+                <button class="branch-toggle" aria-label="expand faction menu">▶</button>
+            </div>
+            <div class="sub-accordion-content">
+                <div class="branch-row">
+                    <a href="${base}units/coalition/coalition_order_mele.html" class="branch-unit-link">The Apex Predators<span class="branch-role role-melee">Melee</span></a>
+                    <button class="branch-toggle" aria-label="expand units">▶</button>
+                </div>
+                <div class="unit-accordion-content">
+                    <a href="${base}units/coalition/primal_predator.html" class="unit-link">Predator</a>
+                    <a href="${base}units/coalition/primal_juvenile.html" class="unit-link">Juvenile</a>
+                    <a href="${base}units/coalition/primal_warrior.html" class="unit-link">Warrior</a>
+                    <a href="${base}units/coalition/primal_stalker.html" class="unit-link">Stalker</a>
+                    <a href="${base}units/coalition/primal_alpha.html" class="unit-link">Alpha</a>
+                    <a href="${base}units/coalition/primal_shadow.html" class="unit-link">Shadow</a>
+                    <a href="${base}units/coalition/primal_titan.html" class="unit-link">Titan</a>
+                    <a href="${base}units/coalition/primal_mist.html" class="unit-link">Mist</a>
+                    <a href="${base}units/coalition/primal_matriarch.html" class="unit-link">Terrestrial Matriarch</a>
+                </div>
+                <div class="branch-row">
+                    <a href="${base}units/coalition/coalition_order_ranged.html" class="branch-unit-link">The Echoes<span class="branch-role role-ranged">Ranged</span></a>
+                    <button class="branch-toggle" aria-label="expand units">▶</button>
+                </div>
+                <div class="unit-accordion-content">
+                    <a href="${base}units/coalition/coalition_matriarch.html" class="unit-link">Matriarch</a>
+                    <a href="${base}units/coalition/coalition_venomous.html" class="unit-link">Venomous</a>
+                    <a href="${base}units/coalition/coalition_druid.html" class="unit-link">Druid</a>
+                    <a href="${base}units/coalition/coalition_sniper.html" class="unit-link">Sniper</a>
+                    <a href="${base}units/coalition/coalition_sebiolega.html" class="unit-link">Sembiolega</a>
+                    <a href="${base}units/coalition/coalition_regina_f.html" class="unit-link">Regina delle Sementi</a>
+                    <a href="${base}units/coalition/coalition_sorceress_f.html" class="unit-link">Sorceress dell'Albero</a>
+                    <a href="${base}units/coalition/coalition_radicalista.html" class="unit-link">Radicalista</a>
+                    <a href="${base}units/coalition/coalition_forest_warden.html" class="unit-link">Forest Warden</a>
+                    <a href="${base}units/coalition/coalition_poisoner.html" class="unit-link">Poisoner</a>
+                    <a href="${base}units/coalition/coalition_terremoto.html" class="unit-link">Terremoto</a>
+                    <a href="${base}units/coalition/coalition_regina_delle_sogni_f.html" class="unit-link">Regina dei Sogni</a>
+                    <a href="${base}units/coalition/coalition_tree_knight.html" class="unit-link">Tree Knight</a>
+                    <a href="${base}units/coalition/coalition_colosso_f.html" class="unit-link">Colosso della Terra</a>
+                    <a href="${base}units/coalition/coalition_leaf_blade.html" class="unit-link">Leaf Blade</a>
+                    <a href="${base}units/coalition/coalition_great_elder.html" class="unit-link">Great Elder</a>
+                </div>
+                <div class="branch-row">
+                    <a href="${base}units/coalition/coalition_order_mage.html" class="branch-unit-link">The Ember Choir<span class="branch-role role-mage">Mage</span></a>
+                    <button class="branch-toggle" aria-label="expand units">▶</button>
+                </div>
+                <div class="unit-accordion-content">
+                    <a href="${base}units/coalition/coalition_spore_acolyte.html" class="unit-link">Spore Acolyte</a>
+                    <a href="${base}units/coalition/coalition_ash_caster.html" class="unit-link">Ash Caster</a>
+                    <a href="${base}units/coalition/coalition_myco_witch.html" class="unit-link">Myco-Witch</a>
+                    <a href="${base}units/coalition/coalition_storm_weaver.html" class="unit-link">Storm Weaver</a>
+                    <a href="${base}units/coalition/coalition_pyroclast.html" class="unit-link">Pyroclast</a>
+                    <a href="${base}units/coalition/coalition_dream_spore.html" class="unit-link">Dream Spore</a>
+                    <a href="${base}units/coalition/coalition_tempest_dancer.html" class="unit-link">Tempest Dancer</a>
+                    <a href="${base}units/coalition/coalition_magma_oracle.html" class="unit-link">Magma Oracle</a>
+                    <a href="${base}units/coalition/coalition_hive_witch.html" class="unit-link">Hive Witch</a>
+                    <a href="${base}units/coalition/coalition_void_tempest.html" class="unit-link">Void Tempest</a>
+                    <a href="${base}units/coalition/coalition_burning_thought.html" class="unit-link">The Burning Thought</a>
+                </div>
+                <div class="branch-row">
+                    <a href="${base}units/coalition/coalition_order_support.html" class="branch-unit-link">The Deep Weave<span class="branch-role role-support">Support</span></a>
+                    <button class="branch-toggle" aria-label="expand units">▶</button>
+                </div>
+                <div class="unit-accordion-content">
+                    <a href="${base}units/coalition/coalition_pale_novice.html" class="unit-link">Pale Novice</a>
+                    <a href="${base}units/coalition/coalition_vivid_novice.html" class="unit-link">Vivid Novice</a>
+                    <a href="${base}units/coalition/coalition_gill_tender.html" class="unit-link">Gill Tender</a>
+                    <a href="${base}units/coalition/coalition_bell_drifter.html" class="unit-link">Bell Drifter</a>
+                    <a href="${base}units/coalition/coalition_scale_moth.html" class="unit-link">Scale Moth</a>
+                    <a href="${base}units/coalition/coalition_petal_nudis.html" class="unit-link">Petal Nudis</a>
+                    <a href="${base}units/coalition/coalition_neotene_matron.html" class="unit-link">Neotene Matron</a>
+                    <a href="${base}units/coalition/coalition_phosphor_veil.html" class="unit-link">Phosphor Veil</a>
+                    <a href="${base}units/coalition/coalition_cocoon_keeper.html" class="unit-link">Cocoon Keeper</a>
+                    <a href="${base}units/coalition/coalition_chromodoris.html" class="unit-link">Chromodoris</a>
+                    <a href="${base}units/coalition/coalition_eternal_larva.html" class="unit-link">Eternal Larva</a>
+                    <a href="${base}units/coalition/coalition_pelagic_crown.html" class="unit-link">Pelagic Crown</a>
+                    <a href="${base}units/coalition/coalition_dust_saint.html" class="unit-link">Dust Saint</a>
+                    <a href="${base}units/coalition/coalition_stolen_fire.html" class="unit-link">Stolen Fire</a>
+                    <a href="${base}units/coalition/coalition_still_point.html" class="unit-link">The Still Point</a>
+                    <a href="${base}units/coalition/coalition_gilded_archive.html" class="unit-link">The Gilded Archive</a>
+                </div>
+            </div>
+            <div class="branch-row">
+                <a href="${base}factions/coalition_spells.html" class="menu-link" style="color: #ab47bc">Spell</a>
+            </div>
+            <div class="branch-row">
+                <a href="${base}factions/coalition_buildings.html" class="menu-link" style="color: #f57c00">Buildings</a>
+            </div>
+        </div>
+
         <a href="#" class="inner-link locked">Iron Brotherhood</a>
         <a href="#" class="inner-link locked">Elven Enclave</a>
     </div>

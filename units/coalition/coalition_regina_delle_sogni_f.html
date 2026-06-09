@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | RQueen of Dreams</title>
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "RQueen of Dreams",
+  "subtitle": "Control Path | Tier 4",
+  "accent": "#ba68c8",
+  "bgImage": "../../img/coalition/coalition_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/coalition.html",           "label": "The Coalition" },
+    { "href": "../../factions/coalition_roster.html",    "label": "Roster" },
+    { "href": "coalition_order_ranged.html",             "label": "The Echoes" },
+    {                                                    "label": "RQueen of Dreams" }
+  ],
+
+  "combat": [],
+
+  "bio": {
+    "title": "The Dream Garden",
+    "paragraphs": [
+      "The narcotic pollens she works with are not sedatives. They are more precise than that. What they induce is a targeted confusion of identity , the target does not sleep, exactly; they become <em>uncertain about what they are supposed to be doing</em> and why they were opposed to the person asking.",
+      "Her garden is extensive and densely curated. She knows the psychoactive profile of every plant she tends, and she tends several hundred. She considers herself a <strong>specialist in possibility</strong>.",
+      "Enemies who have faced her and recovered describe a lasting interval of peace before memory returned. This is the product she is most proud of. The combat incapacitation is a secondary effect. <em>The peace is the point.</em>"
+    ]
+  },
+
+  "stats": {
+    "hp":  125,
+    "atk": 60,
+    "ini": 50
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Dream Pollen",
+      "desc": "Releases a cloud of psychoactive pollen in a zone. Enemies in the zone must pass resistance checks or become Confused (50% chance to act randomly for 2 turns)."
+    },
+    {
+      "type": "active",
+      "name": "Deep Dream",
+      "desc": "Targets one enemy with a concentrated narcotic bloom. On failure, the target becomes Pacified for 2 turns (cannot take offensive actions). Pacified targets do not attack allies either."
+    },
+    {
+      "type": "passive",
+      "name": "Dream Garden Aura",
+      "desc": "A faint psychoactive haze surrounds her at all times. Enemies who begin their turn adjacent to her have −20% to all resistance checks."
+    }
+  ],
+
+  "backLink": {
+    "href":  "coalition_order_ranged.html",
+    "label": "Return to The Echoes"
+  }
+}
+</script>
+
+<script src="../../system/unit-renderer.js"></script>
+</body>
+</html>

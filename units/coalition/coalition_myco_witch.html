@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Myco-Witch</title>
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Myco-Witch",
+  "subtitle": "Mycelium Path | Tier 2",
+  "accent": "#81c784",
+  "bgImage": "../../img/coalition/coalition_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/coalition.html",           "label": "The Coalition" },
+    { "href": "../../factions/coalition_roster.html",    "label": "Roster" },
+    { "href": "coalition_order_mage.html",               "label": "The Ember Choir" },
+    {                                                    "label": "Myco-Witch" }
+  ],
+
+  "combat": ["../../img/coalition/ember_choir/myco_witch_combat.jpg"],
+
+  "bio": {
+    "title": "She Does Not Sleep. She Propagates.",
+    "paragraphs": [
+      "Where a head should be, a massive mushroom cap blooms , iridescent, pulsing with spore-light, its gills reading the air like a weather instrument. Her torso is half-flesh, half-mycelium network: fine white threads visible beneath the skin, running from her fingertips to the edges of her jaw.",
+      "She can extend her consciousness through any fungal growth she has physically touched, experiencing the world through spore-sense at <strong>extreme range</strong>. Observation. Presence. Influence.",
+      "She does not sleep. <em>She propagates.</em>"
+    ]
+  },
+
+  "stats": {
+    "hp":  85,
+    "atk": 50,
+    "ini": 50
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Mycelium Threads",
+      "desc": "Extends fungal threads to one enemy. Deals <span class=\"dmg-bio\">Bio</span> damage and applies Mycelium Slow: the target loses 1 action on their next turn."
+    },
+    {
+      "type": "active",
+      "name": "Network Extension",
+      "desc": "Connects her consciousness to all fungal patches in the area. Enemies in contact with fungal growth are briefly stunned and take <span class=\"dmg-bio\">Bio</span> damage."
+    },
+    {
+      "type": "passive",
+      "name": "Remote Presence",
+      "desc": "Can observe any part of the field through fungal spore-sense. Cannot be flanked; enemies cannot gain positional advantage against her."
+    }
+  ],
+
+  "gallery": [
+    "../../img/coalition/ember_choir/myco_witch_portrait.jpg"
+  ],
+
+  "backLink": {
+    "href":  "coalition_order_mage.html",
+    "label": "Return to The Ember Choir"
+  }
+}
+</script>
+
+<script src="../../system/unit-renderer.js"></script>
+</body>
+</html>

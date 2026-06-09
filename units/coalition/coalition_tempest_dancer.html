@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Tempest Dancer</title>
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Tempest Dancer",
+  "subtitle": "Stormborn Path | Tier 3",
+  "accent": "#64b5f6",
+  "bgImage": "../../img/coalition/coalition_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/coalition.html",           "label": "The Coalition" },
+    { "href": "../../factions/coalition_roster.html",    "label": "Roster" },
+    { "href": "coalition_order_mage.html",               "label": "The Ember Choir" },
+    {                                                    "label": "Tempest Dancer" }
+  ],
+
+  "combat": ["../../img/coalition/ember_choir/tempest_dancer_combat.jpg"],
+
+  "bio": {
+    "title": "The Rotation Itself Is the Weapon",
+    "paragraphs": [
+      "Upper body: a muscular woman with storm-blue skin and hair frozen mid-motion in a constant updraft, eyes the color of lightning a second before it hits.",
+      "Lower body: a perpetual tornado. She never touches the ground. Her movement leaves a trail of debris and pressure damage in a narrow strip behind her.",
+      "She fights by spinning through enemy formations rather than attacking from range , <strong>the rotation itself is the weapon</strong>. <em>She has never learned to be still.</em>"
+    ]
+  },
+
+  "stats": {
+    "hp":  115,
+    "atk": 65,
+    "ini": 60
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Rotation Strike",
+      "desc": "Charges through one enemy's space in a spinning motion, dealing <span class=\"dmg-storm\">Storm</span> damage to all enemies in the path."
+    },
+    {
+      "type": "active",
+      "name": "Full Cyclone",
+      "desc": "Spins through the entire enemy formation in a single sweeping action. Hits every enemy for <span class=\"dmg-storm\">Storm</span> damage and knocks each back 1 space."
+    },
+    {
+      "type": "passive",
+      "name": "Pressure Wake",
+      "desc": "Her movement leaves a debris trail. Enemies who cross the trail take pressure damage and lose 5% of their max HP."
+    }
+  ],
+
+  "gallery": [
+    "../../img/coalition/ember_choir/tempest_dancer_portrait.jpg"
+  ],
+
+  "backLink": {
+    "href":  "coalition_order_mage.html",
+    "label": "Return to The Ember Choir"
+  }
+}
+</script>
+
+<script src="../../system/unit-renderer.js"></script>
+</body>
+</html>

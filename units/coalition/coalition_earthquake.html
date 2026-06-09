@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Earthquake</title>
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Earthquake",
+  "subtitle": "Elemental Path | Tier 4",
+  "accent": "#ba68c8",
+  "bgImage": "../../img/coalition/coalition_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/coalition.html",           "label": "The Coalition" },
+    { "href": "../../factions/coalition_roster.html",    "label": "Roster" },
+    { "href": "coalition_order_ranged.html",             "label": "The Echoes" },
+    {                                                    "label": "Earthquake" }
+  ],
+
+  "combat": ["../../img/coalition/echoes/coalition_earthquake_f_combat.jpg"],
+
+  "bio": {
+    "title": "The Walking Quake",
+    "paragraphs": [
+      "The rock memory she accessed runs deeper than anyone realized. When she finally stopped suppressing it and let it speak, the nearest trees shed their leaves simultaneously. The ground within thirty meters cracked along previously unmapped fault lines. The Matriarch was there and said nothing for a long time.",
+      "What the rock remembers, it turns out, is the weight of everything that has ever stood on it. She carries that knowledge with her. Her walk has changed. The stone <strong>receives her footfall differently now</strong>.",
+      "The Echoes use her when the situation calls for ending something large. She does not ask what it is. <em>The ground already told her.</em>"
+    ]
+  },
+
+  "stats": {
+    "hp":  140,
+    "atk": 75,
+    "ini": 40
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Magnitude Strike",
+      "desc": "Drives her fists into the ground to trigger a localized quake. Deals massive <span class=\"dmg-earth\">Earth</span> damage in a large radius. Enemies near the center are knocked down."
+    },
+    {
+      "type": "active",
+      "name": "Fault Cascade",
+      "desc": "Opens three fault lines radiating from her position. Each line deals <span class=\"dmg-earth\">Earth</span> damage and leaves impassable terrain for 2 turns. Can be used once per combat."
+    },
+    {
+      "type": "passive",
+      "name": "Geological Weight",
+      "desc": "Counts as 3 units for formation effects. Her presence in a zone prevents enemies from using displacement abilities (pushes, pulls, teleports) in the same zone."
+    }
+  ],
+
+  "backLink": {
+    "href":  "coalition_order_ranged.html",
+    "label": "Return to The Echoes"
+  }
+}
+</script>
+
+<script src="../../system/unit-renderer.js"></script>
+</body>
+</html>

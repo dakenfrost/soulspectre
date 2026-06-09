@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Phosphor Veil</title>
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Phosphor Veil",
+  "subtitle": "Pelagic Path | Tier 3",
+  "accent": "#64b5f6",
+  "bgImage": "../../img/coalition/coalition_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/coalition.html",           "label": "The Coalition" },
+    { "href": "../../factions/coalition_roster.html",    "label": "Roster" },
+    { "href": "coalition_order_support.html",            "label": "The Deep Weave" },
+    {                                                    "label": "Phosphor Veil" }
+  ],
+
+  "combat": ["../../img/coalition/deep_weave/phosphor_veil_combat.jpg"],
+
+  "bio": {
+    "title": "The Network Is Visible Now",
+    "paragraphs": [
+      "Her skin has become fully translucent. The bioluminescent network inside her is now a map of her own nervous system, visible from the outside, constantly shifting color with her internal state , cool blue when focused, gold when healing, white when alarmed.",
+      "She exists inside a bio-electric field that extends three meters in all directions, detecting and influencing the nervous activity of every creature within range. Allies experience <strong>accelerated hemostasis</strong> , wounds stop bleeding as though the body has been told, clearly and firmly, that the emergency is being handled.",
+      "Enemies experience micro-seizures in their peripheral nervous system. Neither group can easily <em>identify the source.</em>"
+    ]
+  },
+
+  "stats": {
+    "hp":  110,
+    "atk": 45,
+    "ini": 55
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Hemostatic Field",
+      "desc": "Stops all Bleed effects on allies within range. Each affected ally is healed for 20% of their max HP."
+    },
+    {
+      "type": "active",
+      "name": "Neural Override",
+      "desc": "Deals <span class=\"dmg-light\">Light</span> damage to all enemies within range through bio-electric discharge. Suppresses their next action for 1 turn."
+    },
+    {
+      "type": "passive",
+      "name": "Bio-Electric Aura",
+      "desc": "Enemies adjacent to her suffer Micro-Seizure (−15% accuracy). Allies adjacent to her passively regenerate 3% of their max HP per turn."
+    }
+  ],
+
+  "gallery": [
+    "../../img/coalition/deep_weave/phosphor_veil_portrait.jpg"
+  ],
+
+  "backLink": {
+    "href":  "coalition_order_support.html",
+    "label": "Return to The Deep Weave"
+  }
+}
+</script>
+
+<script src="../../system/unit-renderer.js"></script>
+</body>
+</html>

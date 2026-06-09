@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Bell Drifter</title>
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Bell Drifter",
+  "subtitle": "Pelagic Path | Tier 2",
+  "accent": "#81c784",
+  "bgImage": "../../img/coalition/coalition_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/coalition.html",           "label": "The Coalition" },
+    { "href": "../../factions/coalition_roster.html",    "label": "Roster" },
+    { "href": "coalition_order_support.html",            "label": "The Deep Weave" },
+    {                                                    "label": "Bell Drifter" }
+  ],
+
+  "combat": ["../../img/coalition/deep_weave/bell_drifter_combat.jpg"],
+
+  "bio": {
+    "title": "She Does Not Walk. She Drifts.",
+    "paragraphs": [
+      "From the waist up: a woman with translucent-edged skin through which bioluminescent veins are faintly visible. From the waist down: a pulsing medusa bell, two meters across when fully expanded, that propels her by rhythmic contraction.",
+      "She does not walk. She drifts, with a precision that looks deceptively like floating. The bell's underside trails thin tentacle threads , not for grasping, but for <strong>conducting</strong>: bio-electric impulses she uses to stabilize the nervous systems of nearby allies.",
+      "She suppresses pain signals and resets shock responses in soldiers who would otherwise be incapacitated. Her field is continuous. She does not choose to help , she simply <em>cannot be nearby without helping.</em>"
+    ]
+  },
+
+  "stats": {
+    "hp":  85,
+    "atk": 35,
+    "ini": 55
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Neural Stabilize",
+      "desc": "Removes Shock or Stun from one ally and restores 18% of their max HP. The target also gains +15% damage resistance for 2 turns."
+    },
+    {
+      "type": "active",
+      "name": "Bio-Electric Broadcast",
+      "desc": "All allies within range restore 15% of their max HP and have 1 active debuff suppressed for 1 turn."
+    },
+    {
+      "type": "passive",
+      "name": "Conductive Drift",
+      "desc": "Allies within 2 spaces of her resist the first Stun effect applied to them each combat."
+    }
+  ],
+
+  "gallery": [
+    "../../img/coalition/deep_weave/bell_drifter_portrait.jpg"
+  ],
+
+  "backLink": {
+    "href":  "coalition_order_support.html",
+    "label": "Return to The Deep Weave"
+  }
+}
+</script>
+
+<script src="../../system/unit-renderer.js"></script>
+</body>
+</html>

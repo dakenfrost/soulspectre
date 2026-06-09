@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Pelagic Crown</title>
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Pelagic Crown",
+  "subtitle": "Pelagic Path | Tier 4",
+  "accent": "#ba68c8",
+  "bgImage": "../../img/coalition/coalition_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/coalition.html",           "label": "The Coalition" },
+    { "href": "../../factions/coalition_roster.html",    "label": "Roster" },
+    { "href": "coalition_order_support.html",            "label": "The Deep Weave" },
+    {                                                    "label": "Pelagic Crown" }
+  ],
+
+  "combat": ["../../img/coalition/deep_weave/pelagic_crown_combat.jpg"],
+
+  "bio": {
+    "title": "She Does Not Need to Move. She Radiates.",
+    "paragraphs": [
+      "Her upper body is still recognizably humanoid, but the bell has become vast , six meters in diameter when fully extended, constantly pulsing, the largest single biological structure any individual member of the Deep Weave generates.",
+      "The bioluminescent network has become something between a nervous system and a broadcast array: she can synchronize the autonomic responses of every allied organism on the field simultaneously. <strong>When she pulses, everything heals at once.</strong>",
+      "The electric field she generates at full output is lethal to unprotected enemies within close range. She does not need to move. <em>She radiates.</em>"
+    ]
+  },
+
+  "stats": {
+    "hp":  135,
+    "atk": 55,
+    "ini": 50
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Synchronized Pulse",
+      "desc": "A full-field bio-electric pulse heals every ally on the field for 20% of their max HP simultaneously."
+    },
+    {
+      "type": "active",
+      "name": "Full Radiance",
+      "desc": "Massive field-wide heal restoring 35% max HP to all allies. Enemies in close range take <span class=\"dmg-water\">Water</span> + <span class=\"dmg-light\">Light</span> damage from the discharged bio-electricity."
+    },
+    {
+      "type": "passive",
+      "name": "Broadcast Array",
+      "desc": "At the start of each turn, all allies regenerate 5% of their max HP. Enemies within 2 spaces take residual Electric damage from her ambient field."
+    }
+  ],
+
+  "gallery": [
+    "../../img/coalition/deep_weave/pelagic_crown_portrait.jpg"
+  ],
+
+  "backLink": {
+    "href":  "coalition_order_support.html",
+    "label": "Return to The Deep Weave"
+  }
+}
+</script>
+
+<script src="../../system/unit-renderer.js"></script>
+</body>
+</html>

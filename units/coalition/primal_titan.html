@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Titan</title>
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Titan",
+  "subtitle": "Brute Path | Tier 4",
+  "accent": "#ba68c8",
+  "bgImage": "../../img/coalition/coalition_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/coalition.html",           "label": "The Coalition" },
+    { "href": "../../factions/coalition_roster.html",    "label": "Roster" },
+    { "href": "coalition_order_mele.html",               "label": "The Apex Predators" },
+    {                                                    "label": "Titan" }
+  ],
+
+  "combat": ["../../img/coalition/the_apex_predators/titan_f_combat.jpg"],
+
+  "bio": {
+    "title": "The Fact of Her",
+    "paragraphs": [
+      "There is a point in the Brute path's development where the power stops being something the soldier wields and becomes something the soldier <em>is</em>. She passed that point some time ago. She does not remember exactly when, but the commanders who work with her remember the date precisely.",
+      "She does not take cover. The calculus for cover assumes vulnerability; the calculus does not currently apply to her. She walks through the geometry of a battlefield and the geometry <strong>accommodates her</strong>.",
+      "Enemies who have survived her report two things: the sound, which they describe as geological, and the realization, just before impact, that they were never going to stop her. <em>They were not wrong.</em>"
+    ]
+  },
+
+  "stats": {
+    "hp":  175,
+    "atk": 95,
+    "ini": 40
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Tectonic Impact",
+      "desc": "A strike of such force it registers seismically. Deals massive <span class=\"dmg-bio\">Bio</span> damage to one target and all units adjacent to it. All affected units are knocked prone and cannot stand for 1 turn."
+    },
+    {
+      "type": "active",
+      "name": "Unstoppable",
+      "desc": "For 2 turns, she is immune to all crowd control effects (stagger, immobilize, slow, knockback, fear). Her attacks during this period deal +20% damage."
+    },
+    {
+      "type": "passive",
+      "name": "Geological Mass",
+      "desc": "Counts as 3 units for formation purposes. She cannot be pushed, pulled, or displaced by any means. Enemies who attempt to block her movement take <span class=\"dmg-bio\">Bio</span> damage."
+    }
+  ],
+
+  "gallery": [
+    "../../img/coalition/the_apex_predators/titan_f_portrait.jpg"
+  ],
+
+  "backLink": {
+    "href":  "coalition_order_mele.html",
+    "label": "Return to The Apex Predators"
+  }
+}
+</script>
+
+<script src="../../system/unit-renderer.js"></script>
+</body>
+</html>

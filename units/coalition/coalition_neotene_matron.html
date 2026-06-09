@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Neotene Matron</title>
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Neotene Matron",
+  "subtitle": "Neotene Path | Tier 3",
+  "accent": "#64b5f6",
+  "bgImage": "../../img/coalition/coalition_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/coalition.html",           "label": "The Coalition" },
+    { "href": "../../factions/coalition_roster.html",    "label": "Roster" },
+    { "href": "coalition_order_support.html",            "label": "The Deep Weave" },
+    {                                                    "label": "Neotene Matron" }
+  ],
+
+  "combat": ["../../img/coalition/deep_weave/neotene_matron_combat.jpg"],
+
+  "bio": {
+    "title": "She Has Stopped Aging",
+    "paragraphs": [
+      "The gill plumes now span nearly a meter on each side , impossibly elaborate branching structures that have become her primary sensory organs as well as her healing apparatus. She has stopped aging. Not immortality, exactly, but a biological choice her body made at some point <strong>without consulting her</strong>.",
+      "She looks perpetually young. Her healing is no longer contact-based: she breathes out a fine oxygenated mist that permeates the immediate area, accelerating cellular repair in every allied organism within range.",
+      "Her skin is faintly damp and slightly luminescent. Enemy units with respiratory systems find themselves <em>involuntarily breathing slower</em> in her presence, which is a problem for them."
+    ]
+  },
+
+  "stats": {
+    "hp":  110,
+    "atk": 45,
+    "ini": 55
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Healing Mist",
+      "desc": "Releases an oxygenated mist that heals all allies within 2 spaces for 15% of their max HP."
+    },
+    {
+      "type": "active",
+      "name": "Cellular Accelerant",
+      "desc": "All allies receive double healing for 2 turns. Enemies within range lose 1 action on their next turn due to respiratory suppression."
+    },
+    {
+      "type": "passive",
+      "name": "Neotenic Aura",
+      "desc": "All allies within range regenerate 4% of their max HP at the start of their turn."
+    }
+  ],
+
+  "gallery": [
+    "../../img/coalition/deep_weave/neotene_matron_portrait.jpg"
+  ],
+
+  "backLink": {
+    "href":  "coalition_order_support.html",
+    "label": "Return to The Deep Weave"
+  }
+}
+</script>
+
+<script src="../../system/unit-renderer.js"></script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Pyroclast</title>
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Pyroclast",
+  "subtitle": "Pyroclast Path | Tier 3",
+  "accent": "#64b5f6",
+  "bgImage": "../../img/coalition/coalition_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/coalition.html",           "label": "The Coalition" },
+    { "href": "../../factions/coalition_roster.html",    "label": "Roster" },
+    { "href": "coalition_order_mage.html",               "label": "The Ember Choir" },
+    {                                                    "label": "Pyroclast" }
+  ],
+
+  "combat": ["../../img/coalition/ember_choir/pyroclast_combat.jpg"],
+
+  "bio": {
+    "title": "Direct Touch Is Lethal Within Seconds",
+    "paragraphs": [
+      "A pressure vessel of magma wearing the approximate shape of a body. The skin surface is dried lava crust , matte black, fractured into hundreds of plates, each crack glowing orange-red beneath. Every step causes minor seismic tremors.",
+      "They do not breathe; they vent. The heat radiating from their form is enough to <strong>ignite dry wood at three meters</strong>.",
+      "They speak in a low rumble that physically resonates in the chests of listeners. Direct touch is lethal to unprotected flesh within seconds. <em>They find this unremarkable.</em>"
+    ]
+  },
+
+  "stats": {
+    "hp":  115,
+    "atk": 70,
+    "ini": 45
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Magma Pressure",
+      "desc": "Deals heavy <span class=\"dmg-fire\">Fire</span> damage to one target. Applies Burning (4% HP per turn for 3 turns)."
+    },
+    {
+      "type": "active",
+      "name": "Tectonic Vent",
+      "desc": "Erupts volcanic energy in a line, dealing <span class=\"dmg-fire\">Fire</span> + <span class=\"dmg-earth\">Earth</span> damage to all enemies struck."
+    },
+    {
+      "type": "passive",
+      "name": "Lethal Radiance",
+      "desc": "Enemies adjacent to her take passive Fire damage at the start of their turn. Flammable terrain within 3 spaces ignites automatically when she enters the area."
+    }
+  ],
+
+  "gallery": [
+    "../../img/coalition/ember_choir/pyroclast_portrait.jpg"
+  ],
+
+  "backLink": {
+    "href":  "coalition_order_mage.html",
+    "label": "Return to The Ember Choir"
+  }
+}
+</script>
+
+<script src="../../system/unit-renderer.js"></script>
+</body>
+</html>

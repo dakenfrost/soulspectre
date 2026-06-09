@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Khora, the Eternal Fire</title>
+    <link rel="stylesheet" href="../system/forgotten_units.css">
+    <link rel="stylesheet" href="../system/shared.css">
+    <link rel="stylesheet" href="../system/global_nav.css">
+    <style>
+        :root {
+            --accent: #a1887f;
+            --accent-color: #a1887f;
+        }
+        #bg-image { background-image: url('../img/coalition/coalition_bg.jpg'); }
+        #overlay  { background: linear-gradient(to bottom, rgba(12, 7, 2, 0.85), rgba(8, 4, 1, 0.97)); }
+        .dmg-fire   { color: #ff7043; font-weight: bold; }
+        .dmg-earth  { color: #a5d6a7; font-weight: bold; }
+        .dmg-nature { color: #aed581; font-weight: bold; }
+        .primal-tag { color: #a1887f; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+<global-navigation base="../"></global-navigation>
+
+<header>
+    <h1>Khora</h1>
+    <div class="subtitle">The Eternal Fire of Rebirth &mdash; Voice of the Great Cycle</div>
+</header>
+
+<main>
+    <!-- CINEMATIC INTRO MODULE -->
+    <div class="split-section" style="flex-direction: row; align-items: flex-start; gap: 40px; padding: 35px;">
+        <div style="flex: 1;">
+            <h2 style="margin-bottom: 15px;">Voice of the Ancient Heartbeat</h2>
+            <p style="margin-bottom: 12px;">The sky at dusk burns in shades of gold and crimson. Wind moves through the century-old trees of an immense forest, carrying not the smell of death, but the sharp scent of warm ash and freshly bloomed flowers. From the top of a cliff of black rock, a figure watches the horizon. Immense wings of feather and fire unfurl slowly, reflecting the light on her bio-obsidian armor. Her amber eyes burn with an ancient, implacable intelligence.</p>
+            <div class="quote" style="margin-top: 20px;">
+                "They have forgotten what it means to look into the dark and tremble.<br><br>
+                They build their cities of stone and metal, believing they have chained the world. But stone crumbles. Metal rusts. The arrogance of the scaleless, the rootless, has made them blind and weak.<br><br>
+                We are the reminder they buried. We are the predator waiting in the tall grass, the thorn that poisons the blood, the spark that devours the dead forest to let it rise stronger.<br><br>
+                I am Khora. Fire of the first dawn flows through my veins; in my wings rests the promise of a new beginning. If they seek war, they will not find soldiers waiting for them... they will find evolution itself.<br><br>
+                Let them advance. The earth is hungry."
+                <span class="quote-author">&mdash; Khora's introductory monologue</span>
+            </div>
+        </div>
+        <div style="flex: 0 0 35%; text-align: right;">
+            <img src="../img/coalition/coalition_leader_khora_wings.png" alt="Khora's Wings" style="max-width: 100%; height: auto; opacity: 0.75; border-left: 3px solid #a1887f;">
+        </div>
+    </div>
+
+    <!-- SECTION: Khora as Player Character -->
+    <div class="split-section" style="height: 100%;">
+        <div class="section-image-container" style="aspect-ratio: 9/12; overflow: hidden; max-width: 520px;">
+            <img src="../img/coalition/coalition_leader_khora_combat.jpg" alt="Khora in combat" style="width: 100%; height: 100%; object-fit: cover;">
+            <img src="../img/coalition/coalition_leader_khora_combat_alt.jpg" alt="Khora alternate" class="combat-anim" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div class="section-text">
+            <h2>The Flame That Commands</h2>
+            <p>Khora is not a general. She is a <strong>force of nature that learned patience</strong>. She watched a thousand years of cycles , forests burned and reborn, species extinct and evolved, rivers running dry and then flooding new valleys. Every cataclysm she witnessed, she absorbed. Every lesson the world taught in blood and ash, she memorized.</p>
+            <p>She does not give orders. She sets examples. When she burns something, it is never out of rage , it is because she has already seen what will grow in the cinders. She chooses her battles the way fire chooses its path: following the dry wood, avoiding the stone, leaving the green things alone.</p>
+            <p>On the battlefield, Khora is an <strong>apex predator and a living wildfire simultaneously</strong>. She wields two weapons: the <em>Emberwing</em> , great fire-feather projectiles launched from her wings that ignite on contact , and the <em>Bio-Obsidian Talons</em>, melee weapons that inject volcanic mineral compounds directly into wounds, causing progressive crystallization of enemy tissue.</p>
+            <p>Her presence alone is a tactical asset. The Apex Predators around her fight harder and smarter. The Echoes at her flanks bloom with accelerated growth. She is the eye of the storm: the one point in the chaos where everything is completely, terrifyingly calm.</p>
+            <br><br><br>
+        </div>
+    </div>
+
+    <!-- PORTRAIT GALLERY -->
+    <div class="portrait-gallery-module">
+        <h2 class="gallery-header">Gallery</h2>
+        <div class="carousel-wrap">
+            <div class="carousel-track" id="carouselTrack">
+                <div class="carousel-item"><img src="../img/coalition/coalition_leader_khora_wings.png" alt="Khora Portrait"></div>
+                <div class="carousel-item"><img src="../img/coalition/coalition_leader_khora_portrait.png" alt="Khora Portrait"></div>
+                <div class="carousel-item"><img src="../img/coalition/coalition_leader_khora_combat.jpg" alt="Khora Combat"></div>
+                <div class="carousel-item"><img src="../img/coalition/coalition_leader_khora_combat_alt.jpg" alt="Khora Combat Alt"></div>
+                <div class="carousel-item"><img src="../img/coalition/coalition_leader_khora_combat_2.jpg" alt="Khora Combat 2"></div>
+                <div class="carousel-item"><img src="../img/coalition/coalition_leader_khora_combat_3.jpg" alt="Khora Combat 3"></div>
+            </div>
+        </div>
+        <div class="carousel-nav">
+            <button class="nav-btn" id="prevBtn">&#8592;</button>
+            <button class="nav-btn" id="nextBtn">&#8594;</button>
+        </div>
+    </div>
+
+    <!-- TACTICAL MODULE -->
+    <div class="tactical-module">
+        <div class="tactical-header">
+            <h2>Tactical Data</h2>
+            <div class="subtitle">Entity Registry: Player Character</div>
+        </div>
+        <div class="stats-box">
+            <div class="stat-item"><span class="stat-label">Class</span><span class="stat-value unique">Apex Ruler</span></div>
+            <div class="stat-item"><span class="stat-label">HP</span><span class="stat-value hp">1000</span></div>
+            <div class="stat-item"><span class="stat-label">ATK</span><span class="stat-value atk">120</span></div>
+            <div class="stat-item"><span class="stat-label">INI</span><span class="stat-value">70</span></div>
+            <div class="stat-item"><span class="stat-label">Immunity</span><span class="stat-value res">Fire, Slow, Root</span></div>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-card sk-base">
+                <div class="skill-header">
+                    <img src="../img/coalition/skills/coalition_skill_emberwing.png" alt="" class="skill-icon">
+                    <div class="skill-title-container">
+                        <h3 class="skill-title">Emberwing Strike</h3>
+                        <span class="skill-type base">Base Attack</span>
+                    </div>
+                </div>
+                <div class="skill-desc">Deals <span class="dmg-fire">75% Fire</span> and <span class="dmg-earth">75% Earth</span> damage to all frontline enemies. Each target receives a <span class="primal-tag">Smolder</span> mark. <br> ccumulates up to 3 stacks, each increasing damage taken from Khora by <span class="dmg-phys">8%</span>.</div>
+            </div>
+            <div class="skill-card sk-active">
+                <div class="skill-header">
+                    <img src="../img/coalition/skills/coalition_skill_obsidian_rend.png" alt="" class="skill-icon">
+                    <div class="skill-title-container">
+                        <h3 class="skill-title">Obsidian Rend</h3>
+                        <span class="skill-type active">Active &mdash; Consumes Smolder</span>
+                    </div>
+                </div>
+                <div class="skill-desc">
+                    <p>Khora dives into a single target and detonates all Smolder marks on impact.</p>
+                    <ul>
+                        <li>Consumes all <span class="primal-tag">Smolder</span> stacks on the target.</li>
+                        <li><strong>1 stack:</strong> Armor Break (2 turns).</li>
+                        <li><strong>2 stacks:</strong> Slow &minus;40% (2 turns).</li>
+                        <li><strong>3 stacks:</strong> Petrified &mdash; Stunned (1 turn) + 25% splash to adjacent enemies.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="skill-card sk-passive">
+                <div class="skill-header">
+                    <img src="../img/coalition/skills/coalition_skill_apex_presence.png" alt="" class="skill-icon">
+                    <div class="skill-title-container">
+                        <h3 class="skill-title">Apex Presence</h3>
+                        <span class="skill-type passive">Passive</span>
+                    </div>
+                </div>
+                <div class="skill-desc">Allies gain <span class="dmg-phys">+12% ATK</span> and <span class="dmg-phys">+8% Critical Rate</span>.</div>
+            </div>
+            <div class="skill-card sk-ultimate">
+                <div class="skill-header">
+                    <img src="../img/coalition/skills/coalition_skill_great_cycle.png" alt="" class="skill-icon">
+                    <div class="skill-title-container">
+                        <h3 class="skill-title">The Great Cycle</h3>
+                        <span class="skill-type ultimate">Ultimate</span>
+                    </div>
+                </div>
+                <div class="skill-desc">Deals <span class="dmg-fire"> 150% Fire</span> and <span class="dmg-earth">150% Earth</span> damage to all enemies and slows them for 2 turns. Creates Scorched terrain, enemies lose <span class="dmg-fire">5% HP</span> per turn</div>
+            </div>
+        </div>
+
+        <div class="game-over-warning">
+            &#9888; Warning: Should Khora fall in battle, the Primal Coalition fractures, and the player immediately loses the game.
+        </div>
+    </div>
+
+    <a href="coalition.html" class="back-link">← Return to the Coalition Overview</a>
+</main>
+
+<script>
+    const track = document.getElementById('carouselTrack');
+    const items = track.querySelectorAll('.carousel-item');
+    let current = 0;
+    function update() { track.style.transform = `translateX(-${current * (items[0].offsetWidth + 15)}px)`; }
+    document.getElementById('nextBtn').addEventListener('click', () => { if (current < items.length - 1) { current++; update(); } });
+    document.getElementById('prevBtn').addEventListener('click', () => { if (current > 0) { current--; update(); } });
+</script>
+<script src="../system/navigation.js"></script>
+</body>
+</html>

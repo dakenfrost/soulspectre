@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Matriarch</title>
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Matriarch",
+  "subtitle": "Plant-Symbiont | Officer",
+  "accent": "#ffd700",
+  "bgImage": "../../img/coalition/coalition_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/coalition.html",           "label": "The Coalition" },
+    { "href": "../../factions/coalition_roster.html",    "label": "Roster" },
+    { "href": "coalition_order_ranged.html",             "label": "The Echoes" },
+    {                                                    "label": "Matriarch" }
+  ],
+
+  "combat": [],
+
+  "bio": {
+    "title": "Root Authority",
+    "paragraphs": [
+      "She has been tending the same root network for longer than most of her soldiers have been alive. The symbiosis is no longer something she maintains , it maintains her. Vines move to stabilize her footing before she has shifted her weight. Flowers open toward her when she passes. The forest around her is not a resource; it is an <strong>extension of her intent</strong>.",
+      "She commands the Echoes not through rank but through the understanding that every living thing in her radius is already listening. Her orders travel through the soil before her voice carries them through the air.",
+      "Enemies who have met her on the field report a strange sensation: the certainty, just before combat, that the trees are watching. <em>They are.</em>"
+    ]
+  },
+
+  "stats": {
+    "hp":  120,
+    "atk": 50,
+    "ini": 55
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Root Network Command",
+      "desc": "Channels a tactical order through the root network. Target ally gains +20% ATK and +15% defense for 2 turns."
+    },
+    {
+      "type": "active",
+      "name": "Living Terrain",
+      "desc": "Calls the surrounding forest to act. Creates 2 zones of difficult terrain; enemies in those zones take <span class=\"dmg-earth\">Earth</span> damage and lose 1 action."
+    },
+    {
+      "type": "passive",
+      "name": "Symbiotic Authority",
+      "desc": "All allied Plant-Symbiont units within range gain +10% to all stats from her presence. She cannot be knocked back or displaced by any means."
+    }
+  ],
+
+  "backLink": {
+    "href":  "coalition_order_ranged.html",
+    "label": "Return to The Echoes"
+  }
+}
+</script>
+
+<script src="../../system/unit-renderer.js"></script>
+</body>
+</html>

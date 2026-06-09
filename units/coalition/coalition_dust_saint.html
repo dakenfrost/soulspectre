@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Dust Saint</title>
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Dust Saint",
+  "subtitle": "Lunar Path | Tier 4",
+  "accent": "#ba68c8",
+  "bgImage": "../../img/coalition/coalition_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/coalition.html",           "label": "The Coalition" },
+    { "href": "../../factions/coalition_roster.html",    "label": "Roster" },
+    { "href": "coalition_order_support.html",            "label": "The Deep Weave" },
+    {                                                    "label": "Dust Saint" }
+  ],
+
+  "combat": ["../../img/coalition/deep_weave/dust_saint_combat.jpg"],
+
+  "bio": {
+    "title": "She Always Knows What the Air Needs",
+    "paragraphs": [
+      "Her wings are enormous , five meters tip to tip , and every motion she makes releases a visible cascade of scales into the air. She has spent years learning to control the compound payloads in each scale type: clotting agents, cell-repair accelerants, nerve signal modulators, sleep compounds, pheromone amplifiers.",
+      "In combat, her presence transforms the air chemistry of the entire field. <strong>Allies fight at elevated biological performance</strong>; enemies find their perception narrowing, reflexes slowing, aggression dulling.",
+      "She moves through the battlefield slowly and deliberately, always knowing exactly what the air needs and providing it. Her wing strokes leave trails of faint silver luminescence that <em>linger for several seconds after she has passed.</em>"
+    ]
+  },
+
+  "stats": {
+    "hp":  135,
+    "atk": 55,
+    "ini": 50
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Tailored Compound",
+      "desc": "Identifies the most-needed ally and applies the exact compound required: heals for 30% HP, or removes 1 debuff, or grants Regeneration (4% HP/turn for 3 turns), based on their current condition."
+    },
+    {
+      "type": "active",
+      "name": "Full Wing Storm",
+      "desc": "Releases all compound types simultaneously. Heals every ally for 25% HP and removes 1 debuff from each. Applies Drowsy to all enemies for 2 turns."
+    },
+    {
+      "type": "passive",
+      "name": "Air Chemistry",
+      "desc": "All allies on the field gain +10% healing received and +5% ATK from the ambient scale compounds. All enemies on the field suffer −10% accuracy and −5% speed."
+    }
+  ],
+
+  "gallery": [
+    "../../img/coalition/deep_weave/dust_saint_portrait.jpg"
+  ],
+
+  "backLink": {
+    "href":  "coalition_order_support.html",
+    "label": "Return to The Deep Weave"
+  }
+}
+</script>
+
+<script src="../../system/unit-renderer.js"></script>
+</body>
+</html>

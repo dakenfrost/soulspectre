@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Tree Sorceress</title>
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Tree Sorceress",
+  "subtitle": "Control Path | Tier 3",
+  "accent": "#64b5f6",
+  "bgImage": "../../img/coalition/coalition_bg.jpg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/coalition.html",           "label": "The Coalition" },
+    { "href": "../../factions/coalition_roster.html",    "label": "Roster" },
+    { "href": "coalition_order_ranged.html",             "label": "The Echoes" },
+    {                                                    "label": "Tree Sorceress" }
+  ],
+
+  "combat": ["../../img/coalition/echoes/coalition_sorceress_f_combat.jpg"],
+
+  "bio": {
+    "title": "The Tree's Voice",
+    "paragraphs": [
+      "She can speak to trees the way people speak to old friends , with a single word conveying years of meaning. The largest trees in a territory she has visited remember her passage. This is not metaphor; it is observable. The bark shifts when she returns.",
+      "Her control magic operates on the logic of forest systems: everything is networked, nothing happens in isolation, and the most destructive interventions look small at first. She prefers to work through roots. <strong>What the tree does, it does everywhere it reaches.</strong>",
+      "She is not sentimental about her power. The forest is not gentle. She follows its example. <em>Trees do not apologize for falling.</em>"
+    ]
+  },
+
+  "stats": {
+    "hp":  105,
+    "atk": 55,
+    "ini": 50
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Root Snare",
+      "desc": "Commands roots to seize one enemy. Target is Immobilized for 1 turn and takes <span class=\"dmg-earth\">Earth</span> damage. If the target is already Slowed, duration increases to 2 turns."
+    },
+    {
+      "type": "active",
+      "name": "Arboreal Dominion",
+      "desc": "Takes control of the trees in a zone. For 2 turns, that zone attacks any enemy who enters it, dealing <span class=\"dmg-earth\">Earth</span> damage and pushing them back 1 space."
+    },
+    {
+      "type": "passive",
+      "name": "Root Network Pulse",
+      "desc": "At the end of each turn, every zone she has activated deals 5% max HP in <span class=\"dmg-earth\">Earth</span> damage to any enemy standing inside it."
+    }
+  ],
+
+  "backLink": {
+    "href":  "coalition_order_ranged.html",
+    "label": "Return to The Echoes"
+  }
+}
+</script>
+
+<script src="../../system/unit-renderer.js"></script>
+</body>
+</html>
