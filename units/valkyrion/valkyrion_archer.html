@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SOULSPECTRE | Archer</title>
+    <title>SOULSPECTRE | Archon</title>
     
     <link rel="stylesheet" href="../../system/unit-page.css">
     <link rel="stylesheet" href="../../system/global_nav.css">
-
     <style>
         :root {
             --stat-hp:  #4CAF50;
@@ -22,60 +21,81 @@
 
 <script type="application/json" id="unit-data">
 {
-  "name": "Archer",
+  "name": "Archon",
   "faction": "Valkyrion",
-  "subtitle": "Order of Engineering | Tier 1",
-  "accent": "#b0bec5",
+  "subtitle": "Order of Knowledge | Tier 5 Champion",
+  "accent": "#ffb300",
   "bgImage": "../../img/valkyrion_bg.jpeg",
 
   "breadcrumbs": [
-    { "href": "../../index.html",                 "label": "Home" },
-    { "href": "../../factions/index.html",        "label": "Factions" },
-    { "href": "../../factions/valkyrion.html",    "label": "Valkyrion Empire" },
+    { "href": "../../index.html",              "label": "Home" },
+    { "href": "../../factions/index.html",     "label": "Factions" },
+    { "href": "../../factions/valkyrion.html", "label": "Valkyrion Empire" },
     { "href": "../../factions/valkyrion_roster.html", "label": "Roster" },
-    { "href": "valkyrion_order_engineering.html",  "label": "Order of Engineering" },
-    {                                             "label": "Archer" }
+    { "href": "valkyrion_order_knowledge.html","label": "Order of Knowledge" },
+    {                                          "label": "Archon" }
   ],
 
   "combat": [
-    "../../img/valkyrion_archer_m_combat.jpg",
-    "../../img/valkyrion_archer_f_combat.jpg"
+    "../../img/valkyrion_archon_f_combat.jpg"
   ],
 
   "bio": {
-    "title": "The Engineering Initiate",
+    "title": "The Martial Apex",
+    "quote": "Scholars who have solved the ultimate equation of combat.",
     "paragraphs": [
-      "Recruits of the Order of Engineering are given a basic bow to learn how to shoot, becoming Archers. It is through this fundamental weapon that they first study ballistics and precision target acquisition.",
-      "While not particularly strong individually, they represent the foundation of Valkyrion's ranged firepower, excelling at targeting key enemy units from safe distances."
+      "Masters of any known warfare doctrine and architects of arcane metallurgy, Archons represent the absolute peak of what the Great Library can produce. They are scholars who have solved the ultimate equation of combat.",
+      "Deploying innovative tactics and clad in transcendent armor that warps the laws of physics around them, they do not merely absorb or evade force—they redirect it entirely. Against an Archon, the enemy's greatest weapon inevitably becomes the instrument of their own destruction."
     ]
   },
 
   "stats": {
-    "hp":   45,
-    "atk":  25,
-    "ini":  60
+    "hp":          280,
+    "atk":         120,
+    "ini":         60,
+    "dodge":       "10%"
   },
 
   "skills": [
     {
       "type": "base",
-      "name": "Bow Shot",
-      "icon": "../../img/valkyrion_skill_icon_bow_shot.png",
-      "desc": "A standard projectile attack. Deals <span class=\"dmg-phys\">Physical</span> damage to one enemy at any range."
+      "name": "Piercing Magic Slash",
+      "icon": "../../img/valkyrion_skill_icon_piercing_magic_slash.png",
+      "desc": "Deals <span class=\"highlight\">50% Attack</span> as <span class=\"dmg-phys\">Physical</span> and <span class=\"highlight\">50% Attack</span> as <span class=\"dmg-arcane\">Arcane</span> damage. Ignores up to <span class=\"highlight-armor\">20% Armor</span>."
+    },
+    {
+      "type": "active",
+      "name": "Force Redirection",
+      "icon": "../../img/valkyrion_skill_icon_force_redirection.png",
+      "desc": "Enters the <span class=\"buff-stance\">\"Redirection\"</span> state. Completely prevents damage from the next attack and <span class=\"highlight\">inflicts that exact damage back</span> to the attacker."
+    },
+    {
+      "type": "passive",
+      "name": "Lore Runic Armor",
+      "icon": "../../img/valkyrion_skill_icon_lore_runic_armor.png",
+      "desc": "Reduces damage taken by 10 and deals <span class=\"dmg-arcane\">10 Arcane damage</span> back. Gains <span class=\"buff-energy\">\"Energy\"</span> stacks that increase skill damage."
+    },
+    {
+      "type": "ultimate",
+      "name": "Trascend Reality",
+      "icon": "../../img/valkyrion_skill_icon_trascend_reality.png",
+      "desc": "Bends the fabric of the battlefield. Grants the entire party <span class=\"highlight\">absolute immunity</span> to all attacks and debuffs for 1 turn."
     }
   ],
 
   "gallery": [
-    "../../img/valkyrion_archer_extra_1.jpg",
-    "../../img/valkyrion_archer_extra_2.jpg"
+    "../../img/valkyrion_archon_extra_1.jpg",
+    "../../img/valkyrion_archon_extra_2.jpg"
   ],
 
   "backLink": {
-    "href":  "valkyrion_order_engineering.html",
-    "label": "Return to Order of Engineering"
+    "href":  "valkyrion_order_knowledge.html",
+    "label": "Return to Order of Knowledge"
   }
 }
 </script>
-<script src="../../system/unit-renderer.js" ></script>
+
+<script src="../../system/unit-renderer.js"></script>
+
 </body>
 </html>
