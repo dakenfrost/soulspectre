@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Devil Syndicate</title>
+    <link rel="stylesheet" href="../system/shared.css">
+    <link rel="stylesheet" href="../system/faction.css">
+    <style>
+        :root {
+            --accent-color: #e53935; 
+            --accent-glow:  rgba(229, 57, 53, 0.5);
+            --panel-bg:     rgba(20, 10, 12, 0.8);
+        }
+        #bg-image { background-image: url('../img/valkyrion_bg.jpeg'); }
+        #overlay  { background: linear-gradient(to bottom, rgba(18, 8, 10, 0.85), rgba(10, 4, 5, 0.95)); }
+    </style>
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+<global-navigation base="../"></global-navigation>
+
+<!-- Left: hero video panel -->
+<div class="hero-panel">
+    <video src="../assets/video/syndicate_hero.mp4" autoplay loop muted playsinline></video>
+    <div class="hero-panel-border"></div>
+</div>
+
+<!-- Right: all page content -->
+<div class="page-content">
+    <header>
+        <h1>Devil Syndicate</h1>
+        <div class="tagline">Corporate efficiency meets abyssal corruption.</div>
+    </header>
+
+    <main>
+        <div class="quote">
+            "Virtue is more to be feared than vice, because its excesses are not subject to the regulation of conscience."
+            <span class="quote-author">— Adam Smith</span>
+        </div>
+
+        <div class="split-text">
+            <h2>The Business of Souls</h2>
+            <p>The Devil Syndicate is a society as old as humanity itself, operating from the depths of Hell. Their primary objective is the subtle corruption of mortals, either to recruit them into their ranks or to acquire their souls. Despite their inherently evil and selfish nature, these devils disdain mindless violence, brutality, and death, considering them merely as "wasted resources" in the grand ledger of existence.</p>
+
+            <p>Their culture is deeply fractured. On one side stands the <strong>Ancient Nobility</strong>, clinging to a feudal power structure where Dukes and Barons rule over decadent abyssal courts. On the other side is <strong>Capitalist Innovation</strong>, heavily inspired by human corporate models, which believes that merit, productivity, and measurable results are the only true metrics of power.</p>
+
+            <h2 class="tactics-title">Executive Doctrine</h2>
+            <p>Beneath the seething tensions between the old aristocracy and the new capitalists, the Devil Syndicate is governed with an iron fist by <strong>Chief Executive Officers (CEOs)</strong>. Handpicked by the enigmatic "Abyssal President", these executives manage specific territories and high-stakes missions. In this infernal bureaucracy, efficiency is paramount, and everyone knows the golden rule: those who break the system's order are swiftly and permanently liquidated.</p>
+        </div>
+
+        <div class="p5-menu">
+            <div class="p5-menu-header">
+                <span class="p5-menu-line"></span>
+                <span class="p5-menu-title">Explore the Devil Syndicate</span>
+                <span class="p5-menu-line"></span>
+            </div>
+            <nav class="p5-nav-grid">
+                <a href="syndicate_lore.html" class="p5-card" style="--c:#b0bec5;--cs:rgba(176,190,197,0.6)">
+                    <div class="p5-card-inner">
+                        <img src="../img/icon_lore.png" class="p5-card-icon" alt="">
+                        <span class="p5-card-num">01</span>
+                        <span class="p5-card-label">Lore</span>
+                    </div>
+                </a>
+                <a href="syndicate_culture.html" class="p5-card" style="--c:#e53935;--cs:rgba(229,57,53,0.6)">
+                    <div class="p5-card-inner">
+                        <img src="../img/icon_culture.png" class="p5-card-icon" alt="">
+                        <span class="p5-card-num">02</span>
+                        <span class="p5-card-label">Culture</span>
+                    </div>
+                </a>
+                <a href="syndicate_leader.html" class="p5-card" style="--c:#d4af37;--cs:rgba(212,175,55,0.6)">
+                    <div class="p5-card-inner">
+                        <img src="../img/icon_leader.png" class="p5-card-icon" alt="">
+                        <span class="p5-card-num">03</span>
+                        <span class="p5-card-label">Leader</span>
+                    </div>
+                </a>
+                <a href="syndicate_roster.html" class="p5-card" style="--c:#ef5350;--cs:rgba(239,83,80,0.6)">
+                    <div class="p5-card-inner">
+                        <img src="../img/icon_units.png" class="p5-card-icon" alt="">
+                        <span class="p5-card-num">04</span>
+                        <span class="p5-card-label">Units</span>
+                    </div>
+                </a>
+                <a href="syndicate_spells.html" class="p5-card" style="--c:#ab47bc;--cs:rgba(171,71,188,0.6)">
+                    <div class="p5-card-inner">
+                        <img src="../img/icon_spells.png" class="p5-card-icon" alt="">
+                        <span class="p5-card-num">05</span>
+                        <span class="p5-card-label">Spells</span>
+                    </div>
+                </a>
+                <a href="syndicate_buildings.html" class="p5-card" style="--c:#f57c00;--cs:rgba(245,124,0,0.6)">
+                    <div class="p5-card-inner">
+                        <img src="../img/icon_buildings.png" class="p5-card-icon" alt="">
+                        <span class="p5-card-num">06</span>
+                        <span class="p5-card-label">Buildings</span>
+                    </div>
+                </a>
+            </nav>
+        </div>
+
+        <a href="index.html" class="back-link">&larr; Return to the Factions Archive</a>
+    </main>
+</div>
+
+<script src="../system/navigation.js"></script>
+</body>
+</html>
