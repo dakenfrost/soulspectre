@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Contracted Demons</title>
+    <style>
+    :root {
+        --order-accent: #ffb300;  
+        --order-glow:       rgba(255, 179, 0, 0.3);
+        --order-accent-bg:   rgba(255, 179, 0, 0.1);
+        --order-accent-dim:  rgba(255, 179, 0, 0.3);
+        --bg-image-url:     url('../../img/valkyrion_bg.jpeg'); /* Placeholder da aggiornare in seguito */
+    }
+    </style>
+    <link rel="stylesheet" href="../../system/style_order.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+<global-navigation></global-navigation>
+
+<header>
+    <h1>Contracted Demons</h1>
+    <div class="subtitle">Heavy Assets & Abyssal Rage</div>
+</header>
+
+<main>
+    <div class="intro-banner">
+        <img src="../../img/syndicate/syndicate_contracted_demons_intro.png" alt="Contracted Demons - Banner">
+    </div>
+
+    <div class="lore-section">
+        <h2>Weapons of Pure Chaos</h2>
+        <p>While the Devils of the Syndicate operate on cold logic and corporate efficiency, Demons are the raw, untamed emotional core of the Abyss. They embody greed, rage, hatred, and entropy. Rather than wasting resources trying to "tame" them, the Syndicate employs specialized officers known as <strong>Contractors</strong>—masters of the <em>Submission Path</em>—to bind these colossal entities through airtight metaphysical contracts.</p>
+        <p>Demons are deployed as Heavy Assets (Large Size) to shatter enemy formations. The baseline <strong>Demon</strong> is a brutal physical combatant, but through battlefield exposure and dark energy investments, they evolve into <strong>Greater Demons</strong>.</p>
+        <p>From there, the asset portfolio splits. The natural evolution follows the <em>Physical Path</em>, refining their martial prowess into <strong>Demon Lords</strong> and eventually <strong>Demon Princes</strong>. Those repurposed for psychological warfare branch into the <em>Submission Path</em> as <strong>Overlords</strong>. Alternatively, the Syndicate triggers entropic mutations: the <em>Chaos Path</em> spawns bio-hazardous <strong>Chaos Spawns</strong> and <strong>Dread Lords</strong>, while the most volatile are engineered for the <em>Destruction Path</em>, finalizing as impenetrable <strong>Heralds of Ruin</strong>.</p>
+        <p>Only the most heavily invested contracts can sustain an <strong>Abyssal Tyrant</strong>, a Tier V Champion of unparalleled devastation that unites all paths to bring sheer armageddon to the battlefield.</p>
+    </div>
+
+   <div id="evo-tree-root" data-bg="../../img/syndicate/syndicate_contracted_demons_background.png" data-labels="Physical Path, Submission Path, Chaos Path, Destruction Path"></div>
+
+    <div class="unit-list-header">
+        <h2>Active Roster</h2>
+    </div>
+
+    <div class="unit-list">
+
+        <!-- OFFICER (Size: Normal) -->
+        <div class="unit-row t-officer" data-evo-id="contractor">
+            <div class="portrait-container">
+                <img src="../../img/syndicate/syndicate_contractor_m_portrait.png" alt="Contractor M">
+                <img src="../../img/syndicate/syndicate_contractor_f_portrait.png" alt="Contractor F" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Contractor</h3>
+                <div class="unit-tier">Classification: <span class="color-officer">Officer</span> , Submission Path</div>
+                <p class="unit-desc">Corporate summoners who leverage metaphysical loopholes. They support the frontline by briefly manifesting abyssal horrors—from Cerberus's protection to Cthulhu's maddening gaze—without fully deploying them.</p>
+            </div>
+            <div class="unit-action">
+                <a href="syndicate_contractor.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+        
+        <!-- TIER 1 (Size: Large) -->
+        <div class="unit-row t-1 t-wide" data-evo-id="demon" data-evo-to="greater-demon">
+            <div class="portrait-container wide">
+                <img src="../../img/syndicate/syndicate_demon_portrait.png" alt="Demon">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Demon</h3>
+                <div class="unit-tier">Classification: <span class="color-t1">Tier I</span> , Large Size , Physical Path</div>
+                <p class="unit-desc">Hulking monstrosities driven by raw instinct. They rely on pure physical strength, shredding infantry with massive claw slashes.</p>
+            </div>
+            <div class="unit-action">
+                <a href="syndicate_demon.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <!-- TIER 2 (Size: Large) -->
+        <div class="unit-row t-2 t-wide" data-evo-id="greater-demon" data-evo-to="demon-lord chaos-spawn">
+            <div class="portrait-container wide">
+                <img src="../../img/syndicate/syndicate_greater_demon_portrait.png" alt="Greater Demon">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Greater Demon</h3>
+                <div class="unit-tier">Classification: <span class="color-t2">Tier II</span> , Large Size</div>
+                <p class="unit-desc">Elevated abyssal entities that have unlocked innate pyromancy, allowing them to hurl devastating firebolts alongside their brutal melee assaults.</p>
+            </div>
+            <div class="unit-action">
+                <a href="syndicate_greater_demon.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <!-- TIER 3 (Size: Large) -->
+        <div class="unit-row t-3 t-wide" data-evo-id="demon-lord" data-evo-to="demon-prince overlord">
+            <div class="portrait-container wide">
+                <img src="../../img/syndicate/syndicate_demon_lord_portrait.png" alt="Demon Lord">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Demon Lord</h3>
+                <div class="unit-tier">Classification: <span class="color-t3">Tier III</span> , Large Size , Physical / Submission Path</div>
+                <p class="unit-desc">Highly agile combatants wielding massive swords. They utilize homing firestrikes and possess an uncanny ability to dodge incoming physical attacks.</p>
+            </div>
+            <div class="unit-action">
+                <a href="syndicate_demon_lord.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-3 t-wide" data-evo-id="chaos-spawn" data-evo-to="dread-lord herald-of-ruin">
+            <div class="portrait-container wide">
+                <img src="../../img/syndicate/syndicate_chaos_spawn_portrait.png" alt="Chaos Spawn">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Chaos Spawn</h3>
+                <div class="unit-tier">Classification: <span class="color-t3">Tier III</span> , Large Size , Chaos / Destruction Path</div>
+                <p class="unit-desc">Entropic horrors lashing out with widespread tentacle assaults. They spew bio-hazardous corruption, poisoning entire enemy groups while resisting all debuffs.</p>
+            </div>
+            <div class="unit-action">
+                <a href="syndicate_chaos_spawn.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <!-- TIER 4 (Size: Large) -->
+        <div class="unit-row t-4 t-wide" data-evo-id="demon-prince" data-evo-to="abyssal-tyrant">
+            <div class="portrait-container wide">
+                <img src="../../img/syndicate/syndicate_demon_prince_portrait.png" alt="Demon Prince">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Demon Prince</h3>
+                <div class="unit-tier">Classification: <span class="color-t4">Tier IV</span> , Large Size , Physical Path</div>
+                <p class="unit-desc">Apex swordsmen of the Abyss. They crush infantry with stunning strikes and incinerate targets with homing inferno blasts that leave victims burning.</p>
+            </div>
+            <div class="unit-action">
+                <a href="syndicate_demon_prince.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-4 t-wide" data-evo-id="overlord" data-evo-to="abyssal-tyrant">
+            <div class="portrait-container wide">
+                <img src="../../img/syndicate/syndicate_overlord_portrait.png" alt="Overlord">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Overlord</h3>
+                <div class="unit-tier">Classification: <span class="color-t4">Tier IV</span> , Large Size , Submission Path</div>
+                <p class="unit-desc">Terrifying entities that assault the psyche. They shatter resolve with mindbreaking strikes, paralyzing foes and drastically slowing enemy reaction times.</p>
+            </div>
+            <div class="unit-action">
+                <a href="syndicate_overlord.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-4 t-wide" data-evo-id="dread-lord" data-evo-to="abyssal-tyrant">
+            <div class="portrait-container wide">
+                <img src="../../img/syndicate/syndicate_dread_lord_portrait.png" alt="Dread Lord">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Dread Lord</h3>
+                <div class="unit-tier">Classification: <span class="color-t4">Tier IV</span> , Large Size , Chaos Path</div>
+                <p class="unit-desc">Walking plagues that bypass all resistances. They drown enemy formations in abyssal corruption, returning Dark damage whenever they apply their lethal poisons.</p>
+            </div>
+            <div class="unit-action">
+                <a href="syndicate_dread_lord.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-4 t-wide" data-evo-id="herald-of-ruin" data-evo-to="abyssal-tyrant">
+            <div class="portrait-container wide">
+                <img src="../../img/syndicate/syndicate_herald_of_ruin_portrait.png" alt="Herald of Ruin">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Herald of Ruin</h3>
+                <div class="unit-tier">Classification: <span class="color-t4">Tier IV</span> , Large Size , Destruction Path</div>
+                <p class="unit-desc">Impenetrable living furnaces. They utilize stacks of molten armor to completely nullify direct damage, violently rebuking attackers with explosive fire.</p>
+            </div>
+            <div class="unit-action">
+                <a href="syndicate_herald_of_ruin.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <!-- TIER 5 (CHAMPION UNIT - LARGE) -->
+        <div class="unit-row t-5 t-wide" data-evo-id="abyssal-tyrant">
+            <div class="portrait-container wide">
+                <img src="../../img/syndicate/syndicate_abyssal_tyrant_portrait.png" alt="Abyssal Tyrant">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Abyssal Tyrant</h3>
+                <div class="unit-tier">Classification: <span class="color-t5">Tier V (Champion)</span> , Large Size</div>
+                <p class="unit-desc">An apocalyptic investment. Completely immune to debuffs, it paralyzes with its Doom Blade, amplifies suffering, and unleashes absolute Armageddon upon the enemy.</p>
+            </div>
+            <div class="unit-action">
+                <a href="syndicate_abyssal_tyrant.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+    </div>
+
+    <a href="../../factions/syndicate_roster.html" class="back-link">← Return to Military Roster</a>
+</main>
+
+<script src="../../system/evo-tree.js"></script>
+<script src="../../system/navigation.js"></script>
+</body>
+</html>
