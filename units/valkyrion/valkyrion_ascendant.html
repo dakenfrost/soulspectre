@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Ascendant</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+
+    <style>
+        :root {
+            --stat-hp:  #4CAF50;
+            --stat-atk: #f44336;
+        }
+    </style>
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Ascendant",
+  "faction": "Valkyrion",
+  "subtitle": "Order of Light | Tier 4",
+  "accent": "#ba68c8",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",              "label": "Home" },
+    { "href": "../../factions/index.html",     "label": "Factions" },
+    { "href": "../../factions/valkyrion.html", "label": "Valkyrion Empire" },
+    { "href": "../../factions/valkyrion_roster.html",      "label": "Roster" },
+    { "href": "valkyrion_order_light.html",    "label": "Order of Light" },
+    {                                          "label": "Ascendant" }
+  ],
+
+  "combat": [
+    "../../img/valkyrion_ascendant_m_combat.jpg",
+    "../../img/valkyrion_ascendant_f_combat.jpg"
+  ],
+
+  "bio": {
+    "title": "The Living Weapon",
+    "quote": "Flesh and spirit as one, striking with the weight of heaven.",
+    "paragraphs": [
+      "Ascendants are elite monks who have achieved absolute resonance with the divine, channeling pure celestial energy directly into their strikes.",
+      "This total synchronization grants them superhuman strength and agility. They do not rely on weapons, for their bodies have been forged into the ultimate instruments of God's will."
+    ]
+  },
+
+  "stats": {
+    "hp":          200,
+    "atk":         80,
+    "ini":         50,
+    "armor":       "15%",
+    "immunity":    "Dark/Mind"
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Holy Smite",
+      "icon": "../../img/valkyrion_skill_icon_holy_smite.png",
+      "desc": "Strikes with pure celestial energy. Deals <span class=\"dmg-light\">Light</span> damage to one enemy (melee)."
+    },
+    {
+      "type": "active",
+      "name": "Extirpate Evil",
+      "icon": "../../img/valkyrion_skill_icon_extirpate_evil.png",
+      "desc": "Emits a beam of absolute light. Deals <span class=\"highlight\">200% Attack</span> as <span class=\"dmg-light\">Light</span> damage. <span class=\"dmg-dark\">Devils, Demons and Undead</span> are also blinded for 2 turns."
+    },
+    {
+      "type": "passive",
+      "name": "Evil's Bane",
+      "icon": "../../img/valkyrion_skill_icon_evils_bane.png",
+      "desc": "Damage dealt to Profane entities is <span class=\"highlight\">doubled</span>, damage taken is <span class=\"highlight\">halved</span>. Nullifies Dark debuffs."
+    }
+  ],
+
+  "gallery": [
+    "../../img/valkyrion_ascendant_extra_1.jpg",
+    "../../img/valkyrion_ascendant_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "valkyrion_order_light.html",
+    "label": "Return to Order of Light"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js"></script>
+</body>
+</html>
