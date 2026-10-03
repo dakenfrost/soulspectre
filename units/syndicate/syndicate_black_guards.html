@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | The Black Guards</title>
+    <style>
+    :root {
+        --order-accent: #ffb300;  
+        --order-glow:       rgba(255, 179, 0, 0.3);
+        --order-accent-bg:   rgba(255, 179, 0, 0.1);
+        --order-accent-dim:  rgba(255, 179, 0, 0.3);
+        --bg-image-url:     url('../../img/valkyrion_bg.jpeg');
+    }
+    </style>
+    <link rel="stylesheet" href="../../system/style_order.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+<global-navigation></global-navigation>
+
+<header>
+    <h1>The Black Guards</h1>
+    <div class="subtitle">Executors of Corporate Will</div>
+</header>
+
+<main>
+    <div class="intro-banner">
+        <img src="../../img/syndicate/syndicate_black_guards_intro.png" alt="Black Guards - Banner">
+    </div>
+
+    <div class="lore-section">
+        <h2>Frontline Liquidators</h2>
+        <p>The Black Guards are the brutal yet disciplined frontline infantry of the Devil Syndicate. These forces are strictly compartmentalized and often commanded by a <strong>Noble Scion</strong>—high-ranking aristocrats of established houses who lead their own private armies to expand their corporate portfolios.</p>
+        <p>New recruits enter the ranks as <strong>Soldiers</strong>, baseline operatives equipped for standard engagements. Those who survive their initial performance reviews are promoted to <strong>Legionaries</strong>, where their career path diverges based on their combat metrics.</p>
+        <p>Operatives who excel in asset protection transfer to the Bulwark Path, becoming impenetrable <strong>Hellguards</strong> and eventually <strong>Dark Knights</strong>. Conversely, those who demonstrate a talent for punitive action join the Assault Path as <strong>Enforcers</strong>, tasked with delivering brutal justice to criminals. The most ruthless and unscrupulous of these become <strong>Blood Knights</strong>, specialized in executing syndicate enemies without hesitation.</p>
+        <p>At the apex of this military structure stands the <strong>Arbiter</strong>. These Tier V Champions possess absolute authority on the battlefield, acting as judge, jury, and executioner.</p>
+    </div>
+
+   <div id="evo-tree-root" data-bg="../../img/syndicate/syndicate_black_guards_background.png" data-labels="Bulwark Path, Assault Path"></div>
+
+    <div class="unit-list-header">
+        <h2>Active Roster</h2>
+    </div>
+
+    <div class="unit-list">
+
+        <div class="unit-row t-officer" data-evo-id="noble-scion">
+            <div class="portrait-container">
+                <img src="../../img/syndicate/syndicate_noble_scion_m_portrait.png" alt="Noble Scion M">
+                <img src="../../img/syndicate/syndicate_noble_scion_f_portrait.png" alt="Noble Scion F" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Noble Scion</h3>
+                <div class="unit-tier">Classification: <span class="color-officer">Officer</span></div>
+                <p class="unit-desc">Aristocrats commanding their own private forces. They wield blazing fire magic and reactive demonic barriers, enhancing their subordinates' weapons to shred enemy armor.</p>
+            </div>
+            <div class="unit-action">
+                <a href="syndicate_noble_scion.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+        
+        <div class="unit-row t-1" data-evo-id="soldier" data-evo-to="legionary">
+            <div class="portrait-container">
+                <img src="../../img/syndicate/syndicate_soldier_m_portrait.png" alt="Soldier M">
+                <img src="../../img/syndicate/syndicate_soldier_f_portrait.png" alt="Soldier F" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Soldier</h3>
+                <div class="unit-tier">Classification: <span class="color-t1">Tier I</span></div>
+                <p class="unit-desc">Standard corporate infantry. Reliable and cost-effective frontline fighters deployed to hold the line during initial hostile acquisitions.</p>
+            </div>
+            <div class="unit-action">
+                <a href="syndicate_soldier.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-2" data-evo-id="legionary" data-evo-to="hellguard enforcer">
+            <div class="portrait-container">
+                <img src="../../img/syndicate/syndicate_legionary_m_portrait.png" alt="Legionary M">
+                <img src="../../img/syndicate/syndicate_legionary_f_portrait.png" alt="Legionary F" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Legionary</h3>
+                <div class="unit-tier">Classification: <span class="color-t2">Tier II</span> , Bulwark/Assault Path</div>
+                <p class="unit-desc">Promoted infantry capable of executing steel charges to generate defensive shielding while applying heavy kinetic pressure on priority targets.</p>
+            </div>
+            <div class="unit-action">
+                <a href="syndicate_legionary.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-3" data-evo-id="hellguard" data-evo-to="dark-knight">
+            <div class="portrait-container">
+                <img src="../../img/syndicate/syndicate_hellguard_m_portrait.png" alt="Hellguard M">
+                <img src="../../img/syndicate/syndicate_hellguard_f_portrait.png" alt="Hellguard F" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Hellguard</h3>
+                <div class="unit-tier">Classification: <span class="color-t3">Tier III</span> , Bulwark Path</div>
+                <p class="unit-desc">Heavily armored guards equipped with infernal plates. They absorb incoming damage to generate resilient energy shields, locking down hostile forces.</p>
+            </div>
+            <div class="unit-action">
+                <a href="syndicate_hellguard.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-3" data-evo-id="enforcer" data-evo-to="blood-knight">
+            <div class="portrait-container">
+                <img src="../../img/syndicate/syndicate_enforcer_m_portrait.png" alt="Enforcer M">
+                <img src="../../img/syndicate/syndicate_enforcer_f_portrait.png" alt="Enforcer F" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Enforcer</h3>
+                <div class="unit-tier">Classification: <span class="color-t3">Tier III</span> , Assault Path</div>
+                <p class="unit-desc">Brutal executors of internal justice. They utilize wide cleaving strikes and are trained to mercilessly dispatch criminals and weakened dissidents.</p>
+            </div>
+            <div class="unit-action">
+                <a href="syndicate_enforcer.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-4" data-evo-id="dark-knight" data-evo-to="arbiter">
+            <div class="portrait-container">
+                <img src="../../img/syndicate/syndicate_dark_knight_m_portrait.png" alt="Dark Knight M">
+                <img src="../../img/syndicate/syndicate_dark_knight_f_portrait.png" alt="Dark Knight F" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Dark Knight</h3>
+                <div class="unit-tier">Classification: <span class="color-t4">Tier IV</span> , Bulwark Path</div>
+                <p class="unit-desc">Elite defensive officers clad in obsidian plating. Their rending slashes shred enemy armor, while their devastating charges stun and neutralize severe threats.</p>
+            </div>
+            <div class="unit-action">
+                <a href="syndicate_dark_knight.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-4" data-evo-id="blood-knight" data-evo-to="arbiter">
+            <div class="portrait-container">
+                <img src="../../img/syndicate/syndicate_blood_knight_m_portrait.png" alt="Blood Knight M">
+                <img src="../../img/syndicate/syndicate_blood_knight_f_portrait.png" alt="Blood Knight F" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Blood Knight</h3>
+                <div class="unit-tier">Classification: <span class="color-t4">Tier IV</span> , Assault Path</div>
+                <p class="unit-desc">Unscrupulous warriors specializing in field executions. Their crushing strikes bypass armor entirely, acting as relentless finishers designed to permanently close accounts.</p>
+            </div>
+            <div class="unit-action">
+                <a href="syndicate_blood_knight.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-5" data-evo-id="arbiter">
+            <div class="portrait-container">
+                <img src="../../img/syndicate/syndicate_arbiter_m_portrait.png" alt="Arbiter M">
+                <img src="../../img/syndicate/syndicate_arbiter_f_portrait.png" alt="Arbiter F" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Arbiter</h3>
+                <div class="unit-tier">Classification: <span class="color-t5">Tier V (Champion)</span></div>
+                <p class="unit-desc">The ultimate corporate authorities. They rewrite the rules of engagement with infernal edicts, retaliating with dark energy and punishing all who oppose the Syndicate.</p>
+            </div>
+            <div class="unit-action">
+                <a href="syndicate_arbiter.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+    </div>
+
+    <a href="../../factions/syndicate_roster.html" class="back-link">← Return to Military Roster</a>
+</main>
+
+<script src="../../system/evo-tree.js"></script>
+<script src="../../system/navigation.js"></script>
+</body>
+</html>
