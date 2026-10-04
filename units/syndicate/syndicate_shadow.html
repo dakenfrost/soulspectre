@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Shadow</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Shadow",
+  "faction": "Syndicate",
+  "subtitle": "Command Branch - Tier II (Alternate)",
+  "accent": "#ffb300",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/syndicate.html",           "label": "Devil Syndicate" },
+    { "href": "../../factions/syndicate_roster.html",    "label": "Roster" },
+    { "href": "syndicate_command.html",                  "label": "Command Branch" },
+    {                                                    "label": "Shadow" }
+  ],
+
+  "combat": [
+    "../../img/syndicate/syndicate_shadow_m_combat.png",
+    "../../img/syndicate/syndicate_shadow_f_combat.png"
+  ],
+
+  "bio": {
+    "title": "Covert Infiltration Specialists",
+    "paragraphs": [
+      "Troopers who lean into clandestine tactics and silent elimination are reassigned as Shadows. These covert operatives specialize in striking vulnerable vectors from unexpected angles while remaining completely untracked.",
+      "By closing distances with deceitful backstabs and showering targets with envenomed daggers that inflict lingering bio-toxin damage, they erode enemy lines through untraceable attrition."
+    ]
+  },
+
+  "stats": {
+    "hp": 90,
+    "atk": 40,
+    "ini": 60,
+    "res": "Fire"
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Backstab",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Strikes from concealment, dealing <strong>100% of their attack</strong> as <span class=\"dmg-phys\">Physical</span> damage to a ranged target. Although initiated from distance, this strike <span class=\"highlight-buff\">counts as melee physical damage</span>."
+    },
+    {
+      "type": "active",
+      "name": "Poisoned Daggers",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Hurls venomous blades, dealing <strong>75% of their attack</strong> as <span class=\"dmg-phys\">Physical</span> damage (counts as melee physical damage) and applying the <span class=\"highlight-debuff\">Poisoned</span> bio debuff for 2 turns, causing the target to suffer <strong>25% of attack</strong> as <span class=\"dmg-bio\">Bio</span> damage each turn."
+    }
+  ],
+
+  "gallery": [
+    "../../img/syndicate/syndicate_shadow_extra_1.jpg",
+    "../../img/syndicate/syndicate_shadow_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "syndicate_command.html",
+    "label": "Return to Command Branch"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>
