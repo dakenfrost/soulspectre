@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Greater Demon</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Greater Demon",
+  "faction": "Syndicate",
+  "subtitle": "Contracted Demons - Tier II (Large Asset)",
+  "accent": "#ffb300",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/syndicate.html",           "label": "Devil Syndicate" },
+    { "href": "../../factions/syndicate_roster.html",    "label": "Roster" },
+    { "href": "syndicate_contracted_demons.html",        "label": "Contracted Demons" },
+    {                                                    "label": "Greater Demon" }
+  ],
+
+  "combat": [
+    "../../img/syndicate/syndicate_greater_demon_combat.png"
+  ],
+
+  "bio": {
+    "title": "Awakened Pyromancy",
+    "paragraphs": [
+      "Elevated abyssal entities that have survived frontline deployments and unlocked innate pyromancy. Their massive frames are now surrounded by flickering, destructive heat.",
+      "In addition to devastating close-quarters claw strikes, Greater Demons can hurl volatile firebolts across the battlefield to harass backline targets, bridging raw physical might with long-range elemental bombardment."
+    ]
+  },
+
+  "stats": {
+    "hp": 270,
+    "atk": 80,
+    "ini": 35,
+    "res": "Fire",
+    "size": 2
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Claws Slash",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Lashes out with massive razor-sharp claws, dealing <strong>100% of their attack</strong> as <span class=\"dmg-phys\">Physical</span> damage to a single melee target."
+    },
+    {
+      "type": "active",
+      "name": "Firebolt",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Hurls a concentrated bolt of abyssal flame, dealing <strong>75% of their attack</strong> as <span class=\"dmg-fire\">Fire</span> damage to an enemy unit at any range (direct trajectory, non-homing)."
+    }
+  ],
+
+  "gallery": [
+    "../../img/syndicate/syndicate_greater_demon_extra_1.jpg",
+    "../../img/syndicate/syndicate_greater_demon_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "syndicate_contracted_demons.html",
+    "label": "Return to Contracted Demons"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>
