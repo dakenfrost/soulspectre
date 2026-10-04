@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Torturer</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Torturer",
+  "faction": "Syndicate",
+  "subtitle": "Contracted Demons - Specialized Unit",
+  "accent": "#ffb300",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/syndicate.html",           "label": "Devil Syndicate" },
+    { "href": "../../factions/syndicate_roster.html",    "label": "Roster" },
+    { "href": "syndicate_contracted_demons.html",        "label": "Contracted Demons" },
+    {                                                    "label": "Torturer" }
+  ],
+
+  "combat": [
+    "../../img/syndicate/syndicate_torturer_m_combat.png"
+  ],
+
+  "bio": {
+    "title": "Enforcers of Psychological Breakdown",
+    "paragraphs": [
+      "Contracted operatives specialized in systematic interrogation and cognitive dismantling. Torturers project waves of suffocating shadow that erode enemy sanity and tactical focus over extended engagements.",
+      "By shrouding entire enemy formations in creeping darkness and systematically disorienting targets with residual dark trauma, they ensure that opposition forces collapse under relentless psychological pressure."
+    ]
+  },
+
+  "stats": {
+    "hp": 100,
+    "atk": 45,
+    "ini": 40
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Dark Wave",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Unleashes a sweeping pulse of shadows, dealing <strong>100% of their attack</strong> as <span class=\"dmg-dark\">Dark</span> damage to all units in an enemy group (AoE)."
+    },
+    {
+      "type": "active",
+      "name": "Creeping Shadows",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Unleashes creeping darkness across the enemy team, dealing <strong>50% of their attack</strong> as <span class=\"dmg-dark\">Dark</span> damage. Applies the <span class=\"highlight-debuff\">Creeping Shadow</span> debuff for 2 turns, dealing secondary damage equal to <strong>50% of their attack</strong> each turn."
+    },
+    {
+      "type": "passive",
+      "name": "Crippling Arts",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Infuses dark attacks with cognitive static. Every time an enemy unit takes <span class=\"dmg-dark\">Dark</span> damage originating from this unit, there is a <span class=\"highlight-debuff\">15% chance to inflict Confused</span> as a dark debuff."
+    }
+  ],
+
+  "gallery": [
+    "../../img/syndicate/syndicate_torturer_extra_1.jpg",
+    "../../img/syndicate/syndicate_torturer_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "syndicate_contracted_demons.html",
+    "label": "Return to Contracted Demons"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>
