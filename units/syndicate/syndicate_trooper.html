@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Trooper</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Trooper",
+  "faction": "Syndicate",
+  "subtitle": "Command Branch - Tier I",
+  "accent": "#ffb300",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/syndicate.html",           "label": "Devil Syndicate" },
+    { "href": "../../factions/syndicate_roster.html",    "label": "Roster" },
+    { "href": "syndicate_command.html",                  "label": "Command Branch" },
+    {                                                    "label": "Trooper" }
+  ],
+
+  "combat": [
+    "../../img/syndicate/syndicate_trooper_m_combat.png",
+    "../../img/syndicate/syndicate_trooper_f_combat.png"
+  ],
+
+  "bio": {
+    "title": "Frontline Ranged Initiates",
+    "paragraphs": [
+      "Troopers form the entry-level rank-and-file of the Syndicate's ranged combat divisions. Tasked with maintaining baseline perimeter defense and suppressing hostile units, they undergo rigorous target-acquisition drills.",
+      "Armed with standard-issue cross-bow weaponry, they deliver consistent physical pressure from any distance while remaining highly responsive on the tactical initiative ladder."
+    ]
+  },
+
+  "stats": {
+    "hp": 40,
+    "atk": 25,
+    "ini": 60,
+    "res": "Fire"
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Crossbow Shot",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Fires a standard bolt from distance, dealing <span class=\"dmg-phys\">Physical</span> damage to a target at any range."
+    }
+  ],
+
+  "gallery": [
+    "../../img/syndicate/syndicate_trooper_extra_1.jpg",
+    "../../img/syndicate/syndicate_trooper_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "syndicate_command.html",
+    "label": "Return to Command Branch"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>
