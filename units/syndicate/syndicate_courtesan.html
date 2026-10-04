@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Courtesan</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Courtesan",
+  "faction": "Syndicate",
+  "subtitle": "House of Duty - Tier II",
+  "accent": "#ffb300",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/syndicate.html",           "label": "Devil Syndicate" },
+    { "href": "../../factions/syndicate_roster.html",    "label": "Roster" },
+    { "href": "syndicate_house_of_duty.html",            "label": "House of Duty" },
+    {                                                    "label": "Courtesan" }
+  ],
+
+  "combat": [
+    "../../img/syndicate/syndicate_courtesan_f_combat.png"
+  ],
+
+  "bio": {
+    "title": "Operatives of Influence",
+    "paragraphs": [
+      "Operatives specializing in corporate espionage and high-level psychological infiltration. Courtesans leverage charm and esoteric manipulation to subvert enemy assets from within.",
+      "By combining wide-reaching dark energy waves with hypnotic seduction techniques, they turn hostile combatants against their own ranks, rendering disciplined formations completely self-destructive."
+    ]
+  },
+
+  "stats": {
+    "hp": 80,
+    "atk": 30,
+    "ini": 45
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Dark Wave",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Unleashes a rolling pulse of shadows, dealing <strong>100% of their attack</strong> as <span class=\"dmg-dark\">Dark</span> damage to all units in an enemy group (AoE)."
+    },
+    {
+      "type": "active",
+      "name": "Seduce",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Deploys hypnotic dark resonance, dealing <strong>150% of their attack</strong> as <span class=\"dmg-dark\">Dark</span> damage to a single target with a <span class=\"highlight-debuff\">60% chance to Charm</span> the enemy for 1 turn. Charmed units are controlled by the AI during their turn and will attack their own team or support the opponent."
+    }
+  ],
+
+  "gallery": [
+    "../../img/syndicate/syndicate_courtesan_extra_1.jpg",
+    "../../img/syndicate/syndicate_courtesan_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "syndicate_house_of_duty.html",
+    "label": "Return to House of Duty"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>
