@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Page</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Page",
+  "faction": "Syndicate",
+  "subtitle": "House of Duty - Tier I",
+  "accent": "#ffb300",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/syndicate.html",           "label": "Devil Syndicate" },
+    { "href": "../../factions/syndicate_roster.html",    "label": "Roster" },
+    { "href": "syndicate_house_of_duty.html",            "label": "House of Duty" },
+    {                                                    "label": "Page" }
+  ],
+
+  "combat": [
+    "../../img/syndicate/syndicate_page_m_combat.png",
+    "../../img/syndicate/syndicate_page_f_combat.png"
+  ],
+
+  "bio": {
+    "title": "Administrative Trainees",
+    "paragraphs": [
+      "Pages are the lowest-ranking administrative initiates within the House of Duty, tasked with managing basic paperwork, sorting classified archives, and learning the fundamentals of esoteric combat under strict supervision.",
+      "Though physically fragile, they are equipped with foundational dark-energy training, allowing them to project preliminary dark waves against hostile forces during minor corporate disputes."
+    ]
+  },
+
+  "stats": {
+    "hp": 35,
+    "atk": 15,
+    "ini": 40
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Dark Wave",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Projects a minor pulse of shadowy energy, dealing <strong>100% of their attack</strong> as <span class=\"dmg-dark\">Dark</span> damage to the target."
+    }
+  ],
+
+  "gallery": [
+    "../../img/syndicate/syndicate_page_extra_1.jpg",
+    "../../img/syndicate/syndicate_page_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "syndicate_house_of_duty.html",
+    "label": "Return to House of Duty"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>
