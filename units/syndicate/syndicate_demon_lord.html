@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Demon Lord</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Demon Lord",
+  "faction": "Syndicate",
+  "subtitle": "Contracted Demons - Tier III (Large Asset)",
+  "accent": "#ffb300",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/syndicate.html",           "label": "Devil Syndicate" },
+    { "href": "../../factions/syndicate_roster.html",    "label": "Roster" },
+    { "href": "syndicate_contracted_demons.html",        "label": "Contracted Demons" },
+    {                                                    "label": "Demon Lord" }
+  ],
+
+  "combat": [
+    "../../img/syndicate/syndicate_demon_lord_combat.png"
+  ],
+
+  "bio": {
+    "title": "Agile Abyssal Swordsmen",
+    "paragraphs": [
+      "Demon Lords represent the refinement of the Physical Path. These towering combatants abandon clumsy brutality in favor of exceptional agility, wielding massive blades with terrifying speed and precision.",
+      "Beyond their devastating melee slashes, they project homing firestrikes that track evasive targets across the battlefield, all while maintaining an uncanny ability to sidestep incoming physical strikes."
+    ]
+  },
+
+  "stats": {
+    "hp": 370,
+    "atk": 110,
+    "ini": 35,
+    "res": "Fire",
+    "size": 2
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Slash",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Delivers a heavy blade cut, dealing <strong>100% of their attack</strong> as <span class=\"dmg-phys\">Physical</span> damage to a single melee target."
+    },
+    {
+      "type": "active",
+      "name": "Firestrike",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Conjures a tracking projectile of hellfire, dealing <strong>75% of their attack</strong> as <span class=\"dmg-fire\">Fire</span> damage to an enemy unit at any range (<span class=\"highlight-buff\">Homing</span> trajectory)."
+    },
+    {
+      "type": "passive",
+      "name": "Sword Demon",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Trained in the lethal arts of abyssal blade-fighting. Passively grants an additional <strong>10% chance to dodge</strong> incoming physical attacks."
+    }
+  ],
+
+  "gallery": [
+    "../../img/syndicate/syndicate_demon_lord_extra_1.jpg",
+    "../../img/syndicate/syndicate_demon_lord_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "syndicate_contracted_demons.html",
+    "label": "Return to Contracted Demons"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>
