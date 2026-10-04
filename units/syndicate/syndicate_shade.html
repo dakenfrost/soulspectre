@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Shade</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Shade",
+  "faction": "Syndicate",
+  "subtitle": "Command Branch - Tier III (Alternate)",
+  "accent": "#ffb300",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/syndicate.html",           "label": "Devil Syndicate" },
+    { "href": "../../factions/syndicate_roster.html",    "label": "Roster" },
+    { "href": "syndicate_command.html",                  "label": "Command Branch" },
+    {                                                    "label": "Shade" }
+  ],
+
+  "combat": [
+    "../../img/syndicate/syndicate_shade_m_combat.png",
+    "../../img/syndicate/syndicate_shade_f_combat.png"
+  ],
+
+  "bio": {
+    "title": "Masters of Unseen Attrition",
+    "paragraphs": [
+      "Shadows who survive countless high-profile infiltration contracts achieve the rank of Shade. These elite covert operatives move like phantoms across the battlefield, slipping past frontline hazards with preternatural evasion.",
+      "By combining concealed backstabs, envenomed daggers that rot targets from within, and an elusive shadow framework that drastically reduces incoming physical accuracy, they operate as untraceable executioners."
+    ]
+  },
+
+  "stats": {
+    "hp": 135,
+    "atk": 60,
+    "ini": 60,
+    "res": "Fire"
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Backstab",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Strikes from deep concealment, dealing <strong>100% of their attack</strong> as <span class=\"dmg-phys\">Physical</span> damage to a ranged target. Although initiated from distance, this strike <span class=\"highlight-buff\">counts as melee physical damage</span>."
+    },
+    {
+      "type": "active",
+      "name": "Poisoned Daggers",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Hurls toxic blades, dealing <strong>75% of their attack</strong> as <span class=\"dmg-phys\">Physical</span> damage (counts as melee physical damage) and applying the <span class=\"highlight-debuff\">Poisoned</span> bio debuff for 2 turns, causing the target to suffer <strong>25% of attack</strong> as <span class=\"dmg-bio\">Bio</span> damage each turn."
+    },
+    {
+      "type": "passive",
+      "name": "Elusive Shadow",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Warped physiology and silhouette shifting grant a permanent <span class=\"highlight-buff\">20% increased dodge chance</span> against all incoming physical damage."
+    }
+  ],
+
+  "gallery": [
+    "../../img/syndicate/syndicate_shade_extra_1.jpg",
+    "../../img/syndicate/syndicate_shade_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "syndicate_command.html",
+    "label": "Return to Command Branch"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>
