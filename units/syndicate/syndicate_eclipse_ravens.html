@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Eclipse Ravens</title>
+    <style>
+    :root {
+        --order-accent: #ffb300;  
+        --order-glow:       rgba(255, 179, 0, 0.3);
+        --order-accent-bg:   rgba(255, 179, 0, 0.1);
+        --order-accent-dim:  rgba(255, 179, 0, 0.3);
+        --bg-image-url:     url('../../img/valkyrion_bg.jpeg'); /* Da aggiornare con il bg Syndicate */
+    }
+    </style>
+    <link rel="stylesheet" href="../../system/style_order.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+<global-navigation></global-navigation>
+
+<header>
+    <h1>Eclipse Ravens</h1>
+    <div class="subtitle">Ranged Executions & Black Ops</div>
+</header>
+
+<main>
+    <div class="intro-banner">
+        <img src="../../img/syndicate/syndicate_eclipse_ravens_intro.png" alt="Eclipse Ravens - Banner">
+    </div>
+
+    <div class="lore-section">
+        <h2>The Shadows of the Boardroom</h2>
+        <p>The <strong>Eclipse Ravens</strong> represent the Syndicate's premier ranged executioners and black-ops division. Unlike the frontline brawlers of the Black Guards, the Ravens pride themselves on ruthless efficiency, modern ballistics, and tactical shadow traversal to dismantle enemy lines before a formal engagement even begins.</p>
+        <p>Each operational cell is directed by a highly analytical <strong>Mastermind</strong>, an officer who orchestrates the flow of battle, shielding critical assets while calling in devastating demonic artillery. Standard operatives begin their careers as <strong>Troopers</strong>, armed with corporate-issue crossbows.</p>
+        <p>From there, they specialize. Traditionalists refine their accuracy to become <strong>Archers</strong>, <strong>Magic Archers</strong>, and armor-piercing <strong>Infernal Snipers</strong> (<em>Marksmanship Path</em>). Those who embrace the Syndicate's modern tech trade bows for dual firearms, becoming volatile <strong>Gunslingers</strong> and bullet-hell <strong>Hitmen</strong> (<em>Ballistics Path</em>). A third, highly secretive sect delves into the void: the <strong>Shadows</strong>, <strong>Shades</strong>, and <strong>Nightblades</strong> (<em>Assassination Path</em>) who rely on evasion, backstabs, and debilitating bio-toxins.</p>
+        <p>The absolute pinnacle of this division is the <strong>Endsinger</strong>, a Tier V executioner whose requiem bullets bypass all known physical defenses to bring the final curtain down on the Syndicate's enemies.</p>
+    </div>
+
+   <div id="evo-tree-root" data-bg="../../img/syndicate/syndicate_eclipse_ravens_background.png" data-labels="Marksmanship Path, Ballistics Path, Assassination Path"></div>
+
+    <div class="unit-list-header">
+        <h2>Active Roster</h2>
+    </div>
+
+    <div class="unit-list">
+
+        <!-- OFFICER -->
+        <div class="unit-row t-officer" data-evo-id="mastermind">
+            <div class="portrait-container">
+                <img src="../../img/syndicate/syndicate_mastermind_m_portrait.png" alt="Mastermind M">
+                <img src="../../img/syndicate/syndicate_mastermind_f_portrait.png" alt="Mastermind F" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Mastermind</h3>
+                <div class="unit-tier">Classification: <span class="color-officer">Officer</span> , Ranged Leader</div>
+                <p class="unit-desc">Flawless tactical commanders. They mark priority targets for death, cleanse crowd control from their squad, and bombard the battlefield with overwhelming demonic artillery.</p>
+            </div>
+            <div class="unit-action">
+                <a href="syndicate_mastermind.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+        
+        <!-- TIER 1 -->
+        <div class="unit-row t-1" data-evo-id="trooper" data-evo-to="archer shadow">
+            <div class="portrait-container">
+                <img src="../../img/syndicate/syndicate_trooper_m_portrait.png" alt="Trooper M">
+                <img src="../../img/syndicate/syndicate_trooper_f_portrait.png" alt="Trooper F" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Trooper</h3>
+                <div class="unit-tier">Classification: <span class="color-t1">Tier I</span></div>
+                <p class="unit-desc">Baseline ranged combatants equipped with standard corporate crossbows, providing reliable cover fire from any distance.</p>
+            </div>
+            <div class="unit-action">
+                <a href="syndicate_trooper.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <!-- TIER 2 -->
+        <div class="unit-row t-2" data-evo-id="archer" data-evo-to="magic-archer gunslinger">
+            <div class="portrait-container">
+                <img src="../../img/syndicate/syndicate_archer_m_portrait.png" alt="Archer M">
+                <img src="../../img/syndicate/syndicate_archer_f_portrait.png" alt="Archer F" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Archer</h3>
+                <div class="unit-tier">Classification: <span class="color-t2">Tier II</span> , Marksmanship / Ballistics Path</div>
+                <p class="unit-desc">Refined marksmen capable of unleashing wide arrow volleys to suppress entire rows of enemy infantry.</p>
+            </div>
+            <div class="unit-action">
+                <a href="syndicate_archer.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-2" data-evo-id="shadow" data-evo-to="shade">
+            <div class="portrait-container">
+                <img src="../../img/syndicate/syndicate_shadow_m_portrait.png" alt="Shadow M">
+                <img src="../../img/syndicate/syndicate_shadow_f_portrait.png" alt="Shadow F" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Shadow</h3>
+                <div class="unit-tier">Classification: <span class="color-t2">Tier II</span> , Assassination Path</div>
+                <p class="unit-desc">Covert operatives relying on tactical traversal. They strike from afar with poisoned daggers that mimic the lethality of melee backstabs.</p>
+            </div>
+            <div class="unit-action">
+                <a href="syndicate_shadow.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <!-- TIER 3 -->
+        <div class="unit-row t-3" data-evo-id="magic-archer" data-evo-to="infernal-sniper">
+            <div class="portrait-container">
+                <img src="../../img/syndicate/syndicate_magic_archer_m_portrait.png" alt="Magic Archer M">
+                <img src="../../img/syndicate/syndicate_magic_archer_f_portrait.png" alt="Magic Archer F" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Magic Archer</h3>
+                <div class="unit-tier">Classification: <span class="color-t3">Tier III</span> , Marksmanship Path</div>
+                <p class="unit-desc">Specialists who weave dark magic into their quivers. Their enchanted arrows deal potent supplementary Primal damage with every strike.</p>
+            </div>
+            <div class="unit-action">
+                <a href="syndicate_magic_archer.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-3" data-evo-id="gunslinger" data-evo-to="hitman">
+            <div class="portrait-container">
+                <img src="../../img/syndicate/syndicate_gunslinger_m_portrait.png" alt="Gunslinger M">
+                <img src="../../img/syndicate/syndicate_gunslinger_f_portrait.png" alt="Gunslinger F" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Gunslinger</h3>
+                <div class="unit-tier">Classification: <span class="color-t3">Tier III</span> , Ballistics Path</div>
+                <p class="unit-desc">Modern combatants utilizing dual firearms. They unleash chaotic "Desperado" barrages where bullets physically bounce between nearby targets.</p>
+            </div>
+            <div class="unit-action">
+                <a href="syndicate_gunslinger.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-3" data-evo-id="shade" data-evo-to="nightblade">
+            <div class="portrait-container">
+                <img src="../../img/syndicate/syndicate_shade_m_portrait.png" alt="Shade M">
+                <img src="../../img/syndicate/syndicate_shade_f_portrait.png" alt="Shade F" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Shade</h3>
+                <div class="unit-tier">Classification: <span class="color-t3">Tier III</span> , Assassination Path</div>
+                <p class="unit-desc">Advanced assassins with heightened evasion against physical attacks. Their potent bio-toxins quickly melt through enemy vitality.</p>
+            </div>
+            <div class="unit-action">
+                <a href="syndicate_shade.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <!-- TIER 4 -->
+        <div class="unit-row t-4" data-evo-id="infernal-sniper" data-evo-to="endsinger">
+            <div class="portrait-container">
+                <img src="../../img/syndicate/syndicate_infernal_sniper_m_portrait.png" alt="Infernal Sniper M">
+                <img src="../../img/syndicate/syndicate_infernal_sniper_f_portrait.png" alt="Infernal Sniper F" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Infernal Sniper</h3>
+                <div class="unit-tier">Classification: <span class="color-t4">Tier IV</span> , Marksmanship Path</div>
+                <p class="unit-desc">Elite marksmen whose arcane shots ignore armor completely, allowing them to rain sheer destruction across enemy lines with extreme prejudice.</p>
+            </div>
+            <div class="unit-action">
+                <a href="syndicate_infernal_sniper.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-4" data-evo-id="hitman" data-evo-to="endsinger">
+            <div class="portrait-container">
+                <img src="../../img/syndicate/syndicate_hitman_m_portrait.png" alt="Hitman M">
+                <img src="../../img/syndicate/syndicate_hitman_f_portrait.png" alt="Hitman F" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Hitman</h3>
+                <div class="unit-tier">Classification: <span class="color-t4">Tier IV</span> , Ballistics Path</div>
+                <p class="unit-desc">The ultimate gun-fu specialists. They trigger a localized "Bullet Time," unleashing a storm of bouncing projectiles that shred multiple hostiles at once.</p>
+            </div>
+            <div class="unit-action">
+                <a href="syndicate_hitman.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-4" data-evo-id="nightblade" data-evo-to="endsinger">
+            <div class="portrait-container">
+                <img src="../../img/syndicate/syndicate_nightblade_m_portrait.png" alt="Nightblade M">
+                <img src="../../img/syndicate/syndicate_nightblade_f_portrait.png" alt="Nightblade F" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Nightblade</h3>
+                <div class="unit-tier">Classification: <span class="color-t4">Tier IV</span> , Assassination Path</div>
+                <p class="unit-desc">Apex assassins practically untouchable by physical strikes. They execute sudden, unavoidable backstabs and apply lethal, highly concentrated toxins.</p>
+            </div>
+            <div class="unit-action">
+                <a href="syndicate_nightblade.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <!-- TIER 5 (CHAMPION UNIT) -->
+        <div class="unit-row t-5" data-evo-id="endsinger">
+            <div class="portrait-container">
+                <img src="../../img/syndicate/syndicate_endsinger_m_portrait.png" alt="Endsinger M">
+                <img src="../../img/syndicate/syndicate_endsinger_f_portrait.png" alt="Endsinger F" class="portrait-anim">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Endsinger</h3>
+                <div class="unit-tier">Classification: <span class="color-t5">Tier V (Champion)</span></div>
+                <p class="unit-desc">The orchestrator of the final breath. Their requiem bullets ignore all physical resistance, applying permanent "String" marks to culminate in the devastating Curtain Fall.</p>
+            </div>
+            <div class="unit-action">
+                <a href="syndicate_endsinger.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+    </div>
+
+    <a href="../../factions/syndicate_roster.html" class="back-link">← Return to Military Roster</a>
+</main>
+
+<script src="../../system/evo-tree.js"></script>
+<script src="../../system/navigation.js"></script>
+</body>
+</html>
