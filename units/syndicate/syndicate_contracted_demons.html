@@ -12,6 +12,37 @@
         --order-accent-dim:  rgba(255, 179, 0, 0.3);
         --bg-image-url:     url('../../img/valkyrion_bg.jpeg'); 
     }
+
+    /* CUSTOM FIX: Ridimensionamento card per il Tier 4 (Solo in questa pagina) */
+    #evo-tree-root .node,
+    #evo-tree-root .evo-node,
+    #evo-tree-root .tree-node {
+        width: 220px !important; /* Forza un contenitore più stretto per farne stare 4 */
+        min-width: 200px !important;
+        padding: 5px !important;
+    }
+    
+    /* Scala l'avatar senza distorcerlo (Crop intelligente) */
+    #evo-tree-root .portrait-container.wide {
+        width: 100px !important; 
+        height: 56px !important; /* Mantiene un rapporto di circa 16:9 */
+        flex-shrink: 0;
+    }
+    
+    #evo-tree-root .portrait-container.wide img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important; /* Previene lo stritolamento */
+    }
+    
+    /* Adatta il testo al nuovo spazio */
+    #evo-tree-root .name,
+    #evo-tree-root .node-name,
+    #evo-tree-root h3 {
+        font-size: 0.75rem !important;
+        white-space: normal !important; /* Permette al testo di andare a capo se necessario */
+        line-height: 1.2;
+    }
     </style>
     <link rel="stylesheet" href="../../system/style_order.css">
     <link rel="stylesheet" href="../../system/global_nav.css">
@@ -64,7 +95,7 @@
             </div>
         </div>
         
-        <!-- TIER 1 (Size: Large) -->
+        <!-- TIER 1 -->
         <div class="unit-row t-1 t-wide" data-evo-id="demon" data-evo-to="greater-demon">
             <div class="portrait-container wide">
                 <img src="../../img/syndicate/syndicate_demon_portrait.png" alt="Demon">
@@ -79,7 +110,7 @@
             </div>
         </div>
 
-        <!-- TIER 2 (Size: Large) -->
+        <!-- TIER 2 -->
         <div class="unit-row t-2 t-wide" data-evo-id="greater-demon" data-evo-to="demon-lord chaos-spawn">
             <div class="portrait-container wide">
                 <img src="../../img/syndicate/syndicate_greater_demon_portrait.png" alt="Greater Demon">
@@ -94,7 +125,7 @@
             </div>
         </div>
 
-        <!-- TIER 3 (Size: Large) -->
+        <!-- TIER 3 -->
         <div class="unit-row t-3 t-wide" data-evo-id="demon-lord" data-evo-to="demon-prince overlord">
             <div class="portrait-container wide">
                 <img src="../../img/syndicate/syndicate_demon_lord_portrait.png" alt="Demon Lord">
@@ -123,7 +154,7 @@
             </div>
         </div>
 
-        <!-- TIER 4 (Size: Large) -->
+        <!-- TIER 4 -->
         <div class="unit-row t-4 t-wide" data-evo-id="demon-prince" data-evo-to="abyssal-tyrant">
             <div class="portrait-container wide">
                 <img src="../../img/syndicate/syndicate_demon_prince_portrait.png" alt="Demon Prince">
@@ -180,7 +211,7 @@
             </div>
         </div>
 
-        <!-- TIER 5 (CHAMPION UNIT - Large) -->
+        <!-- TIER 5 -->
         <div class="unit-row t-5 t-wide" data-evo-id="abyssal-tyrant">
             <div class="portrait-container wide">
                 <img src="../../img/syndicate/syndicate_abyssal_tyrant_portrait.png" alt="Abyssal Tyrant">
