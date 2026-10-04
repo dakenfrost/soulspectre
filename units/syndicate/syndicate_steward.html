@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Steward</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Steward",
+  "faction": "Syndicate",
+  "subtitle": "House of Duty - Tier III",
+  "accent": "#ffb300",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/syndicate.html",           "label": "Devil Syndicate" },
+    { "href": "../../factions/syndicate_roster.html",    "label": "Roster" },
+    { "href": "syndicate_house_of_duty.html",            "label": "House of Duty" },
+    {                                                    "label": "Steward" }
+  ],
+
+  "combat": [
+    "../../img/syndicate/syndicate_steward_m_combat.png"
+  ],
+
+  "bio": {
+    "title": "Elite Estate Protectors",
+    "paragraphs": [
+      "Advanced administrative bodyguards of the House of Duty, Stewards combine supreme physical durability with electrified close-combat mastery. They stand as unyielding bastions guarding the executive echelon.",
+      "Beyond projecting heavy thunder barriers to shield key operatives, they leverage uncanny tactical insight to evade incoming melee aggression and instantly punish attackers with lightning-fast electrostatic counterattacks."
+    ]
+  },
+
+  "stats": {
+    "hp": 180,
+    "atk": 75,
+    "ini": 50,
+    "res": "Fire, Air"
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Lightning Punch",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Delivers a heavy crackling blow, dealing <strong>100% of their attack</strong> as <span class=\"dmg-air\">Air</span> damage to a melee enemy."
+    },
+    {
+      "type": "active",
+      "name": "Thunder Barrier",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Projects a powerful electrostatic field, granting an allied target a massive <span class=\"highlight-buff\">Shield</span> equal to <strong>200% of their attack</strong>."
+    },
+    {
+      "type": "passive",
+      "name": "Demonic Butler",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Maintains precise defensive positioning. Gains <span class=\"highlight-buff\">Uncanny Insight</span> at the end of their turn for 1 turn, which <strong>increases melee dodge chance by 20%</strong>. If an attack is dodged this way, instantly counterattacks, dealing <strong>50% of their attack</strong> as <span class=\"dmg-air\">Air</span> damage (consumes stack on trigger)."
+    }
+  ],
+
+  "gallery": [
+    "../../img/syndicate/syndicate_steward_extra_1.jpg",
+    "../../img/syndicate/syndicate_steward_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "syndicate_house_of_duty.html",
+    "label": "Return to House of Duty"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>
