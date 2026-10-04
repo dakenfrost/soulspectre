@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Chamberlain</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Chamberlain",
+  "faction": "Syndicate",
+  "subtitle": "House of Duty - Tier IV",
+  "accent": "#ffb300",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/syndicate.html",           "label": "Devil Syndicate" },
+    { "href": "../../factions/syndicate_roster.html",    "label": "Roster" },
+    { "href": "syndicate_house_of_duty.html",            "label": "House of Duty" },
+    {                                                    "label": "Chamberlain" }
+  ],
+
+  "combat": [
+    "../../img/syndicate/syndicate_chamberlain_m_combat.png"
+  ],
+
+  "bio": {
+    "title": "Grand Wardens of the Estate",
+    "paragraphs": [
+      "Chamberlains represent the peak tier of defensive enforcement and electrostatic mastery within the House of Duty. These senior estate protectors combine impenetrable barriers with volatile, reactive field execution.",
+      "By blasting enemies with paralyzing lightning, shielding allies with explosive fulmination barriers that instantly retaliate against incoming aggression, and leveraging advanced evasion stacks to punish melee attackers, they turn defensive postures into lethal deterrents."
+    ]
+  },
+
+  "stats": {
+    "hp": 230,
+    "atk": 100,
+    "ini": 50,
+    "res": "Fire, Air"
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Lightning Blast",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Unleashes a concentrated electrostatic surge, dealing <strong>100% of their attack</strong> as <span class=\"dmg-air\">Air</span> damage to a melee enemy with a <span class=\"highlight-debuff\">30% chance to paralyze</span> as an air debuff."
+    },
+    {
+      "type": "active",
+      "name": "Fulmination Barrier",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Projects a volatile electrostatic shield, granting an ally a <span class=\"highlight-buff\">Shield</span> equal to <strong>200% of their attack</strong> and the <span class=\"highlight-buff\">Fulmination Barrier</span> buff for 2 turns. If the shielded target loses shield from a direct damage ability, it instantly reflects the exact same damage back to the attacker as <span class=\"dmg-air\">Air</span> damage."
+    },
+    {
+      "type": "passive",
+      "name": "Diabolic Butler",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Mastery of evasive tactical positioning. Gains <strong>2 stacks</strong> of <span class=\"highlight-buff\">Uncanny Insight</span> at the end of their turn for 1 turn, which <strong>increases melee dodge chance by 20%</strong>. If an attack is dodged this way, instantly counterattacks, dealing <strong>50% of their attack</strong> as <span class=\"dmg-air\">Air</span> damage (consumes a stack on successful counterattack)."
+    }
+  ],
+
+  "gallery": [
+    "../../img/syndicate/syndicate_chamberlain_extra_1.jpg",
+    "../../img/syndicate/syndicate_chamberlain_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "syndicate_house_of_duty.html",
+    "label": "Return to House of Duty"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>
