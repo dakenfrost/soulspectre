@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Gunslinger</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Gunslinger",
+  "faction": "Syndicate",
+  "subtitle": "Command Branch - Tier III",
+  "accent": "#ffb300",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/syndicate.html",           "label": "Devil Syndicate" },
+    { "href": "../../factions/syndicate_roster.html",    "label": "Roster" },
+    { "href": "syndicate_command.html",                  "label": "Command Branch" },
+    {                                                    "label": "Gunslinger" }
+  ],
+
+  "combat": [
+    "../../img/syndicate/syndicate_gunslinger_m_combat.png",
+    "../../img/syndicate/syndicate_gunslinger_f_combat.png"
+  ],
+
+  "bio": {
+    "title": "Masters of Ballistic Chaos",
+    "paragraphs": [
+      "Specialized marksmen who trade precision draws for rapid-fire devastation and ricochet kinematics. Gunslingers excel at saturating the battlefield with lead, turning confined spaces into absolute kill zones.",
+      "By discharging synchronized dual shots, unleashing frantic desperado barrages across random enemy coordinates, and utilizing bouncing bullets that chain chaotic hits between targets, they shred enemy lines through sheer volumetric pressure."
+    ]
+  },
+
+  "stats": {
+    "hp": 120,
+    "atk": 35,
+    "ini": 60,
+    "res": "Fire"
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Dual Shot",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Fires synchronized sidearms, dealing <strong>50% of their attack</strong> as <span class=\"dmg-phys\">Physical</span> damage to a ranged target <strong>2 consecutive times</strong> (x2)."
+    },
+    {
+      "type": "active",
+      "name": "Desperado",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Unleashes a wild, high-speed ballistic flurry, dealing <strong>25% of their attack</strong> as <span class=\"dmg-phys\">Physical</span> damage <strong>8 times</strong> distributed across random enemy targets."
+    },
+    {
+      "type": "passive",
+      "name": "Bouncing Bullets",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Ballistic trajectories engineered for maximum collateral disruption. Every instance of skill damage has a <strong>10% chance to bounce</strong> onto a nearby target (up to a maximum of <strong>3 bounces per bullet</strong>)."
+    }
+  ],
+
+  "gallery": [
+    "../../img/syndicate/syndicate_gunslinger_extra_1.jpg",
+    "../../img/syndicate/syndicate_gunslinger_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "syndicate_command.html",
+    "label": "Return to Command Branch"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>
