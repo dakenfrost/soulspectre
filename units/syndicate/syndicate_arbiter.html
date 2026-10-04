@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Arbiter</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Arbiter",
+  "faction": "Syndicate",
+  "subtitle": "The Black Guards - Tier V Champion",
+  "accent": "#ffb300",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/syndicate.html",           "label": "Devil Syndicate" },
+    { "href": "../../factions/syndicate_roster.html",    "label": "Roster" },
+    { "href": "syndicate_black_guards.html",             "label": "The Black Guards" },
+    {                                                    "label": "Arbiter" }
+  ],
+
+  "combat": [
+    "../../img/syndicate/syndicate_arbiter_m_combat.png",
+    "../../img/syndicate/syndicate_arbiter_f_combat.png"
+  ],
+
+  "bio": {
+    "title": "Judge, Jury, and Executioner",
+    "paragraphs": [
+      "The Arbiters stand at the absolute apex of the Black Guards' military hierarchy. Possessing unarguable authority on the battlefield, these Tier V Champions act as living legal instruments of the Devil Syndicate.",
+      "Clad in commanding armor and wielding the power to rewrite the rules of engagement, they shatter enemy rows with shockwave cleaves, punish attackers with dark retaliation, and issue infernal edicts that fundamentally invert the laws of life and death."
+    ]
+  },
+
+  "stats": {
+    "hp": 300,
+    "atk": 130,
+    "ini": 50,
+    "arm": "25%",
+    "res": "Fire"
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Shockwave Cleave",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Unleashes a seismic shockwave, dealing <strong>50% of their attack</strong> as <span class=\"dmg-phys\">Physical</span> damage to all enemies in a row (AoE) and reducing their armor by <strong>10%</strong>. If a target's armor is already at 0, inflicts <span class=\"highlight-debuff\">Bleeding</span> for 1 turn, dealing secondary damage equal to <strong>50% of their attack</strong>."
+    },
+    {
+      "type": "active",
+      "name": "Assaulting Strike",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Delivers a heavy punitive assault. Deals <strong>100% of their attack</strong> as <span class=\"dmg-phys\">Physical</span> damage to a single target, applies <span class=\"highlight-debuff\">Stun</span> for 1 turn, and generates defensive shielding equal to <strong>50% of their attack</strong>."
+    },
+    {
+      "type": "passive",
+      "name": "Judge of Hell",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Executes sentences with absolute finality. The Arbiter deals <strong>25% more damage</strong> to enemies with less than 35% health. Furthermore, when hit by an attack, they gain a <span class=\"highlight-buff\">Shield</span> equal to <strong>25% of the damage taken</strong> and instantly retaliate, dealing the exact same damage back as <span class=\"dmg-dark\">Dark</span> damage."
+    },
+    {
+      "type": "ultimate",
+      "name": "Infernal Edict",
+      "icon": "../../img/base_ultimate_skill.png",
+      "desc": "Decrees an absolute metaphysical mandate on an entire row (ally or enemy) for <strong>2 turns</strong> as the <span class=\"highlight-debuff\">Infernal Edict</span> debuff/buff: all damage dealt is converted into healing, and all healing received is converted into damage."
+    }
+  ],
+
+  "gallery": [
+    "../../img/syndicate/syndicate_arbiter_extra_1.jpg",
+    "../../img/syndicate/syndicate_arbiter_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "syndicate_black_guards.html",
+    "label": "Return to The Black Guards"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>
