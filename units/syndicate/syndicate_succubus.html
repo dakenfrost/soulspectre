@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Succubus</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Succubus",
+  "faction": "Syndicate",
+  "subtitle": "Contracted Demons - Specialized Unit",
+  "accent": "#ffb300",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/syndicate.html",           "label": "Devil Syndicate" },
+    { "href": "../../factions/syndicate_roster.html",    "label": "Roster" },
+    { "href": "syndicate_contracted_demons.html",        "label": "Contracted Demons" },
+    {                                                    "label": "Succubus" }
+  ],
+
+  "combat": [
+    "../../img/syndicate/syndicate_succubus_combat.png"
+  ],
+
+  "bio": {
+    "title": "Manipulators of Desire",
+    "paragraphs": [
+      "Contracted entities specializing in psychological disruption and tactical seduction. Succubi infiltrate enemy lines to dismantle formations from within, turning an opponent's psychological vulnerabilities against them.",
+      "Beyond stripping enemy buffs and turning hostile units into temporary allies, they project illusions that significantly bolster allied combat performance while automatically retaliating against direct aggression with hypnotic charm."
+    ]
+  },
+
+  "stats": {
+    "hp": 110,
+    "atk": 45,
+    "ini": 45
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Seduce",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Deploys hypnotic dark resonance, dealing <strong>150% of their attack</strong> as <span class=\"dmg-dark\">Dark</span> damage to a single target. Has a <span class=\"highlight-debuff\">60% chance to Charm</span> the enemy for 1 turn and a <strong>75% chance to dispel</strong> 1 random buff from the target."
+    },
+    {
+      "type": "active",
+      "name": "Illusion Dream",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Cloaks an ally in empowering illusions, granting the <span class=\"highlight-buff\">Illusion Dream</span> buff for 3 turns. Grants a <strong>25% attack increase</strong>, <strong>25% armor</strong>, and instantly cleanses 1 debuff from the ally."
+    },
+    {
+      "type": "passive",
+      "name": "Feeling Manipulator",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Reflects emotional instability back at aggressors. When hit by an enemy direct attack, there is a <span class=\"highlight-debuff\">15% chance to Charm</span> the unit that dealt the damage."
+    }
+  ],
+
+  "gallery": [
+    "../../img/syndicate/syndicate_succubus_extra_1.jpg",
+    "../../img/syndicate/syndicate_succubus_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "syndicate_contracted_demons.html",
+    "label": "Return to Contracted Demons"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>
