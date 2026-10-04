@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Blood Knight</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Blood Knight",
+  "faction": "Syndicate",
+  "subtitle": "The Black Guards - Tier IV",
+  "accent": "#ffb300",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/syndicate.html",           "label": "Devil Syndicate" },
+    { "href": "../../factions/syndicate_roster.html",    "label": "Roster" },
+    { "href": "syndicate_black_guards.html",             "label": "The Black Guards" },
+    {                                                    "label": "Blood Knight" }
+  ],
+
+  "combat": [
+    "../../img/syndicate/syndicate_blood_knight_m_combat.png",
+    "../../img/syndicate/syndicate_blood_knight_f_combat.png"
+  ],
+
+  "bio": {
+    "title": "Field Executioners",
+    "paragraphs": [
+      "Blood Knights represent the apex of unsparing field executions. Unscrupulous and terrifyingly efficient, these warriors are deployed specifically to permanently close corporate accounts and purge high-value targets.",
+      "Armed with heavy cleaving armaments that bypass structural protections, they excel at breaking clustered formations and systematically executing weakened combatants before they can regroup."
+    ]
+  },
+
+  "stats": {
+    "hp": 250,
+    "atk": 100,
+    "ini": 50,
+    "res": "Fire"
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Crushing Cleave",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Executes a sweeping blow, dealing <strong>50% of their attack</strong> as <span class=\"dmg-phys\">Physical</span> damage to the target and nearby adjacent enemies (AoE). The strikes passively <strong>ignore up to 20% of the target's armor</strong>."
+    },
+    {
+      "type": "active",
+      "name": "Power Strike",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Focuses absolute momentum into a crushing assault. Deals <strong>150% of their attack</strong> as <span class=\"dmg-phys\">Physical</span> damage to a single target, with a <strong>25% chance to <span class=\"highlight-debuff\">Stun</span></strong> the enemy."
+    },
+    {
+      "type": "passive",
+      "name": "Relentless Execution",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Built for terminal liquidations. The Blood Knight deals <strong>40% more damage</strong> to any target whose current HP is below 35%."
+    }
+  ],
+
+  "gallery": [
+    "../../img/syndicate/syndicate_blood_knight_extra_1.jpg",
+    "../../img/syndicate/syndicate_blood_knight_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "syndicate_black_guards.html",
+    "label": "Return to The Black Guards"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>
