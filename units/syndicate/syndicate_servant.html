@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Servant</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Servant",
+  "faction": "Syndicate",
+  "subtitle": "House of Duty - Tier I",
+  "accent": "#ffb300",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/syndicate.html",           "label": "Devil Syndicate" },
+    { "href": "../../factions/syndicate_roster.html",    "label": "Roster" },
+    { "href": "syndicate_house_of_duty.html",            "label": "House of Duty" },
+    {                                                    "label": "Servant" }
+  ],
+
+  "combat": [
+    "../../img/syndicate/syndicate_servant_m_combat.png",
+    "../../img/syndicate/syndicate_servant_f_combat.png"
+  ],
+
+  "bio": {
+    "title": "Domestic and Administrative Aides",
+    "paragraphs": [
+      "Servants form the backbone of domestic and administrative maintenance within the House of Duty. Nimble and highly responsive, they are trained to keep corporate operatives patched up and performing at peak efficiency.",
+      "Though lacking offensive capabilities, their supportive ministrations provide crucial healing and tactical boosts during active operations."
+    ]
+  },
+
+  "stats": {
+    "hp": 45,
+    "atk": 20,
+    "ini": 60,
+    "res": "Fire"
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Boost Strength",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Administers prompt medical or energetic support, healing the target for <strong>25% of their attack</strong> and granting allies in the group the <span class=\"highlight-buff\">Boost Strength</span> buff for 1 turn, which <strong>increases damage done by 10%</strong>."
+    }
+  ],
+
+  "gallery": [
+    "../../img/syndicate/syndicate_servant_extra_1.jpg",
+    "../../img/syndicate/syndicate_servant_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "syndicate_house_of_duty.html",
+    "label": "Return to House of Duty"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>
