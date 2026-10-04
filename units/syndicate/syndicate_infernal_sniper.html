@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Infernal Sniper</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Infernal Sniper",
+  "faction": "Syndicate",
+  "subtitle": "Command Branch - Tier IV",
+  "accent": "#ffb300",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/syndicate.html",           "label": "Devil Syndicate" },
+    { "href": "../../factions/syndicate_roster.html",    "label": "Roster" },
+    { "href": "syndicate_command.html",                  "label": "Command Branch" },
+    {                                                    "label": "Infernal Sniper" }
+  ],
+
+  "combat": [
+    "../../img/syndicate/syndicate_infernal_sniper_m_combat.png",
+    "../../img/syndicate/syndicate_infernal_sniper_f_combat.png"
+  ],
+
+  "bio": {
+    "title": "Elites of Long-Range Annihilation",
+    "paragraphs": [
+      "Magic Archers who master terminal ballistics and arcane convergence achieve the formidable rank of Infernal Sniper. These elite marksmen project devastating lethality across the battlefield, rendering cover and armor entirely obsolete.",
+      "By piercing high-priority targets with armor-igniting arcane shots, saturating enemy formations with cascading arrow rains, and compounding every strike with heavy secondary primal damage, they dismantle hostile units with absolute finality."
+    ]
+  },
+
+  "stats": {
+    "hp": 165,
+    "atk": 80,
+    "ini": 60,
+    "res": "Fire"
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Arcane Shot",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Fires a concentrated high-velocity round, dealing <strong>100% of their attack</strong> as <span class=\"dmg-phys\">Physical</span> damage to a single ranged target. This attack <span class=\"highlight-debuff\">completely ignores armor</span>."
+    },
+    {
+      "type": "active",
+      "name": "Arrow Rain",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Unleashes a devastating cascading bombardment, dealing <strong>75% of their attack</strong> as <span class=\"dmg-phys\">Physical</span> damage to a primary row and <strong>25% of their attack</strong> as <span class=\"dmg-phys\">Physical</span> damage to all other enemy rows (AoE)."
+    },
+    {
+      "type": "passive",
+      "name": "Arcane Arrows",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Infuses all payload ballistics with volatile primordial forces. Deals an additional <strong>30% damage</strong> as <span class=\"dmg-primal\">Primal</span> damage with all skills."
+    }
+  ],
+
+  "gallery": [
+    "../../img/syndicate/syndicate_infernal_sniper_extra_1.jpg",
+    "../../img/syndicate/syndicate_infernal_sniper_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "syndicate_command.html",
+    "label": "Return to Command Branch"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>
