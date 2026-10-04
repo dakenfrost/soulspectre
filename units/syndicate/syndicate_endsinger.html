@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Endsinger</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Endsinger",
+  "faction": "Syndicate",
+  "subtitle": "Command Branch - Tier V (Supreme Champion)",
+  "accent": "#ffb300",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/syndicate.html",           "label": "Devil Syndicate" },
+    { "href": "../../factions/syndicate_roster.html",    "label": "Roster" },
+    { "href": "syndicate_command.html",                  "label": "Command Branch" },
+    {                                                    "label": "Endsinger" }
+  ],
+
+  "combat": [
+    "../../img/syndicate/syndicate_endsinger_combat.png"
+  ],
+
+  "bio": {
+    "title": "Harbingers of Absolute Terminal Nullification",
+    "paragraphs": [
+      "Endsinger represents the supreme apex of ballistic mastery and kinetic execution within the Syndicate's command and ranged divisions. Operating as an unstoppable force of finality, this champion weaves fatal strings that govern the lifespan of entire battlefields.",
+      "Protected by inherent evasion and fire resistance, Endsinger bypasses physical resistance entirely, saturating enemy lines with inescapable sniper rounds, chaotic full-auto ricochet storms, and devastating curtain-fall executions powered by accumulated string stacks."
+    ]
+  },
+
+  "stats": {
+    "hp": 200,
+    "atk": 100,
+    "ini": 60,
+    "res": "Fire",
+    "dodge": "15%"
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Sniper Shot",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Delivers an infallible execution shot, dealing <strong>100% of their attack</strong> as <span class=\"dmg-phys\">Physical</span> damage. This attack <span class=\"highlight-buff\">cannot be dodged</span>."
+    },
+    {
+      "type": "active",
+      "name": "Full Auto",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Unleashes an absolute kinetic deluge, dealing <strong>25% of their attack</strong> as <span class=\"dmg-phys\">Physical</span> damage <strong>15 consecutive times</strong> distributed across random enemies. Each hit has a <span class=\"highlight-buff\">15% chance to bounce</span> onto a random enemy unit (up to a maximum of <strong>5 bounces per bullet</strong>)."
+    },
+    {
+      "type": "passive",
+      "name": "Requiem Bullets",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Ballistics forged in ultimate nullification. Skill damage <span class=\"highlight-debuff\">completely ignores Physical Resistance or Physical Immunity</span>. Targets possessing no physical resistance or immunity suffer an additional <strong>20% damage</strong>. Every skill usage applies a stack of the permanent <span class=\"highlight-buff\">String</span> buff (which cannot be removed)."
+    },
+    {
+      "type": "ultimate",
+      "name": "Curtain Fall",
+      "icon": "../../img/base_ultimate_skill.png",
+      "desc": "Pulls the strings of destiny to execute the doomed. Deals <strong>100% of their attack</strong> as <span class=\"dmg-phys\">Physical</span> damage to a random target, and <span class=\"highlight-buff\">repeats this strike for each stack of the String buff</span> currently active (up to a maximum of 10 repeats)."
+    }
+  ],
+
+  "gallery": [
+    "../../img/syndicate/syndicate_endsinger_extra_1.jpg",
+    "../../img/syndicate/syndicate_endsinger_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "syndicate_command.html",
+    "label": "Return to Command Branch"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>
