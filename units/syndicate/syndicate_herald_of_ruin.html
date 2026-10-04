@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Herald of Ruin</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Herald of Ruin",
+  "faction": "Syndicate",
+  "subtitle": "Contracted Demons - Tier IV (Large Asset)",
+  "accent": "#ffb300",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/syndicate.html",           "label": "Devil Syndicate" },
+    { "href": "../../factions/syndicate_roster.html",    "label": "Roster" },
+    { "href": "syndicate_contracted_demons.html",        "label": "Contracted Demons" },
+    {                                                    "label": "Herald of Ruin" }
+  ],
+
+  "combat": [
+    "../../img/syndicate/syndicate_herald_of_ruin_combat.png"
+  ],
+
+  "bio": {
+    "title": "Impenetrable Living Furnaces",
+    "paragraphs": [
+      "Engineered for the Destruction Path, Heralds of Ruin are walking infernos encased in layers of molten metal. Completely immune to fire and biological hazards, they project blistering heat across the battlefield.",
+      "Their layered defenses allow them to completely nullify incoming direct strikes by consuming stacks of molten armor, while aggressively rebuking attackers with explosive bursts of thermal retaliation."
+    ]
+  },
+
+  "stats": {
+    "hp": 420,
+    "atk": 80,
+    "ini": 30,
+    "immunity": "Bio, Fire",
+    "size": 2
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Inferno",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Unleashes a sweeping wave of destructive heat, dealing <strong>100% of their attack</strong> as <span class=\"dmg-fire\">Fire</span> damage to an entire enemy group (AoE)."
+    },
+    {
+      "type": "active",
+      "name": "Molten Armor",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Hardens thermal plating, generating a <span class=\"highlight-buff\">Shield</span> equal to <strong>100% of their attack</strong> and 2 stacks of <span class=\"highlight-buff\">Molten Armor</span>. Each time this unit is hit by a direct damage ability, it consumes a stack of Molten Armor and <span class=\"highlight-buff\">completely nullifies the incoming damage</span>."
+    },
+    {
+      "type": "passive",
+      "name": "Fire Rebuke",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Maintains an volatile thermal aura. While protected by a shield, if this unit loses a stack of Molten Armor or a portion of its shield, it violently lashes out, dealing damage equal to <strong>50% of its attack</strong> back to the attacker."
+    }
+  ],
+
+  "gallery": [
+    "../../img/syndicate/syndicate_herald_of_ruin_extra_1.jpg",
+    "../../img/syndicate/syndicate_herald_of_ruin_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "syndicate_contracted_demons.html",
+    "label": "Return to Contracted Demons"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>
