@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Noble Scion</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Noble Scion",
+  "faction": "Syndicate",
+  "subtitle": "The Black Guards - Officer",
+  "accent": "#ffb300",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/syndicate.html",           "label": "Devil Syndicate" },
+    { "href": "../../factions/syndicate_roster.html",    "label": "Roster" },
+    { "href": "syndicate_black_guards.html",             "label": "The Black Guards" },
+    {                                                    "label": "Noble Scion" }
+  ],
+
+  "combat": [
+    "../../img/syndicate/syndicate_noble_scion_m_combat.png",
+    "../../img/syndicate/syndicate_noble_scion_f_combat.png"
+  ],
+
+  "bio": {
+    "title": "Aristocrats of the Frontline",
+    "paragraphs": [
+      "High-ranking aristocrats of established Devil houses, the Noble Scions command their own private armies to expand their corporate portfolios. Unlike traditional executives who lead from the boardroom, these officers take directly to the battlefield.",
+      "Naturally resistant to extreme heat and wielding blazing fire magic, they fuse heavy frontline combat with reactive demonic barriers, ensuring their subordinates hit harder and survive longer during hostile acquisitions."
+    ]
+  },
+
+  "stats": {
+    "hp": 145,
+    "atk": 50,
+    "ini": 50,
+    "res": "Fire"
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Blazing Slash",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Executes a scorching melee strike. Deals <strong>60% of their attack</strong> as <span class=\"dmg-phys\">Physical</span> damage and an additional <strong>60% of their attack</strong> as <span class=\"dmg-fire\">Fire</span> damage to a single enemy."
+    },
+    {
+      "type": "active",
+      "name": "Demonic Barrier",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Gains a highly volatile shield equal to <strong>150% of their attack</strong> and the <span class=\"highlight-buff\">Demonic Barrier</span> buff for <strong>3 turns</strong>. While active, every time this unit loses a portion of its shield to an attack, it retaliates, dealing <strong>10% of their attack</strong> as <span class=\"dmg-fire\">Fire</span> damage to all units in the attacker's group."
+    },
+    {
+      "type": "passive",
+      "name": "Enhanced Weapons",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Leverages superior corporate armaments to augment the squad. Attacks from all allied units in the Scion's group passively <strong>ignore up to 10% of the target's armor</strong>."
+    },
+    {
+      "type": "ultimate",
+      "name": "Fiery Blast",
+      "icon": "../../img/base_ultimate_skill.png",
+      "desc": "Unleashes a concentrated explosion of pure infernal heat, dealing <strong>50% of their attack</strong> as <span class=\"dmg-fire\">Fire</span> damage to all enemies within a targeted group."
+    }
+  ],
+
+  "gallery": [
+    "../../img/syndicate/syndicate_noble_scion_extra_1.jpg",
+    "../../img/syndicate/syndicate_noble_scion_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "syndicate_black_guards.html",
+    "label": "Return to The Black Guards"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>
