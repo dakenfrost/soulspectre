@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Chaos Spawn</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Chaos Spawn",
+  "faction": "Syndicate",
+  "subtitle": "Contracted Demons - Tier III (Large Asset)",
+  "accent": "#ffb300",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/syndicate.html",           "label": "Devil Syndicate" },
+    { "href": "../../factions/syndicate_roster.html",    "label": "Roster" },
+    { "href": "syndicate_contracted_demons.html",        "label": "Contracted Demons" },
+    {                                                    "label": "Chaos Spawn" }
+  ],
+
+  "combat": [
+    "../../img/syndicate/syndicate_chaos_spawn_combat.png"
+  ],
+
+  "bio": {
+    "title": "Entropic Horrors",
+    "paragraphs": [
+      "Mutated abominations born from the volatile exposure of abyssal energy. Unlike the disciplined physical combatants of the martial paths, Chaos Spawns embody pure systemic decay.",
+      "Lashing out with widespread tentacle assaults and spewing bio-hazardous corruption across entire enemy formations, they erode hostile defenses from within while remaining remarkably resistant to disruptive debuffs."
+    ]
+  },
+
+  "stats": {
+    "hp": 320,
+    "atk": 50,
+    "ini": 20,
+    "res": "Fire, Bio",
+    "size": 2
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Tentacle Assault",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Llashes out with a barrage of writhing appendages, dealing <span class=\"dmg-phys\">Physical</span> damage to all units in an enemy group (AoE)."
+    },
+    {
+      "type": "active",
+      "name": "Corruption",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Spews volatile biological decay, dealing <strong>25% of their attack</strong> as <span class=\"dmg-poison\">Bio</span> damage to all units in an enemy group (AoE) and applying the <span class=\"highlight-debuff\">Poison</span> bio debuff for 2 turns, dealing secondary damage equal to <strong>25% of their attack</strong> each turn."
+    },
+    {
+      "type": "passive",
+      "name": "Entropy Demon",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Embodies raw, unpredictable mutation. Passively grants robust resistance to all kinds of status ailments and incoming debuffs."
+    }
+  ],
+
+  "gallery": [
+    "../../img/syndicate/syndicate_chaos_spawn_extra_1.jpg",
+    "../../img/syndicate/syndicate_chaos_spawn_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "syndicate_contracted_demons.html",
+    "label": "Return to Contracted Demons"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>
