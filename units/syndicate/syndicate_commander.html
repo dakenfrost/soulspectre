@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Commander</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Commander",
+  "faction": "Syndicate",
+  "subtitle": "Command Branch - Ranged Leader",
+  "accent": "#ffb300",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/syndicate.html",           "label": "Devil Syndicate" },
+    { "href": "../../factions/syndicate_roster.html",    "label": "Roster" },
+    { "href": "syndicate_command.html",                  "label": "Command Branch" },
+    {                                                    "label": "Commander" }
+  ],
+
+  "combat": [
+    "../../img/syndicate/syndicate_commander_m_combat.png",
+    "../../img/syndicate/syndicate_commander_f_combat.png"
+  ],
+
+  "bio": {
+    "title": "Architects of Tactical Suppression",
+    "paragraphs": [
+      "Commanders serve as the supreme tactical leaders of the Syndicate's ranged and specialized divisions. Operating from a position of absolute oversight, they coordinate battlefield assets with ruthless precision.",
+      "Rather than relying on frontline brawls, they eliminate evasive targets with inescapable homing pistol fire, mark high-priority threats for execution, cleanse allied CC afflictions, and unleash devastating demonic artillery bombardments that compound their commanding authority."
+    ]
+  },
+
+  "stats": {
+    "hp": 85,
+    "atk": 40,
+    "ini": 60,
+    "res": "Fire"
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Pistol Homing Shot",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Fires a calculated precision round, dealing <span class=\"dmg-phys\">Physical</span> damage to a ranged target. This attack <span class=\"highlight-buff\">cannot be dodged</span>."
+    },
+    {
+      "type": "active",
+      "name": "Assault Order",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Designates an operational priority, applying the <span class=\"highlight-debuff\">Marked for Death</span> void debuff which <span class=\"highlight-debuff\">cannot be resisted or removed</span> for 2 turns. Damage dealt to the target is increased by <strong>30%</strong> (efficiency is reduced by 50% against Boss enemies)."
+    },
+    {
+      "type": "passive",
+      "name": "Flawless Command",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Maintains unyielding tactical discipline. At the start of the turn, automatically removes one crowd control or stun debuff from a friendly unit. Furthermore, the allied unit with the lowest HP instantly gains a <span class=\"highlight-buff\">Shield</span> equal to <strong>75% of this unit's attack</strong>."
+    },
+    {
+      "type": "ultimate",
+      "name": "Demonic Artillery",
+      "icon": "../../img/base_ultimate_skill.png",
+      "desc": "Calls down heavy fire support, bombarding the enemy with cannons dealing <strong>50% of their attack</strong> as <span class=\"dmg-phys\">Physical</span> damage <strong>3 consecutive times</strong> (AoE). Grants one permanent stack of <span class=\"highlight-buff\">Increased Authority</span>, which increases attack by <strong>50%</strong> and <span class=\"highlight-buff\">cannot be removed</span>."
+    }
+  ],
+
+  "gallery": [
+    "../../img/syndicate/syndicate_commander_extra_1.jpg",
+    "../../img/syndicate/syndicate_commander_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "syndicate_command.html",
+    "label": "Return to Command Branch"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>
