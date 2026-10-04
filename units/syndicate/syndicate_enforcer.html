@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Enforcer</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Enforcer",
+  "faction": "Syndicate",
+  "subtitle": "The Black Guards - Tier III",
+  "accent": "#ffb300",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/syndicate.html",           "label": "Devil Syndicate" },
+    { "href": "../../factions/syndicate_roster.html",    "label": "Roster" },
+    { "href": "syndicate_black_guards.html",             "label": "The Black Guards" },
+    {                                                    "label": "Enforcer" }
+  ],
+
+  "combat": [
+    "../../img/syndicate/syndicate_enforcer_m_combat.png",
+    "../../img/syndicate/syndicate_enforcer_f_combat.png"
+  ],
+
+  "bio": {
+    "title": "Brutal Executors",
+    "paragraphs": [
+      "Operatives who demonstrate a distinct talent for punitive action and relentless aggression are funneled into the Assault Path, becoming Enforcers. They are the Syndicate's heavy-handed response to internal dissidents and external threats alike.",
+      "Foregoing heavy shielding for pure kinetic output, Enforcers utilize wide cleaving strikes to damage multiple adjacent targets. They are specifically trained to identify and mercilessly dispatch wounded or vulnerable enemies without hesitation."
+    ]
+  },
+
+  "stats": {
+    "hp": 175,
+    "atk": 80,
+    "ini": 50,
+    "res": "Fire"
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Axe Cleave",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Swings a massive weapon in a wide arc, dealing <strong>50% of their attack</strong> as <span class=\"dmg-phys\">Physical</span> damage to the target and nearby adjacent enemies (AoE)."
+    },
+    {
+      "type": "active",
+      "name": "Power Strike",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Focuses all momentum into a single, crushing blow. Deals <strong>150% of their attack</strong> as <span class=\"dmg-phys\">Physical</span> damage to a single enemy, with a <strong>25% chance to <span class=\"highlight-debuff\">Stun</span></strong> the target."
+    },
+    {
+      "type": "passive",
+      "name": "Merciless",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Programmed to permanently close accounts. The Enforcer deals <strong>25% more damage</strong> to any enemy whose current HP is below 25%."
+    }
+  ],
+
+  "gallery": [
+    "../../img/syndicate/syndicate_enforcer_extra_1.jpg",
+    "../../img/syndicate/syndicate_enforcer_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "syndicate_black_guards.html",
+    "label": "Return to The Black Guards"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>
