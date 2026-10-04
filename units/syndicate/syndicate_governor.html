@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Governor</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Governor",
+  "faction": "Syndicate",
+  "subtitle": "House of Duty - Tier V (Champion Asset)",
+  "accent": "#ffb300",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/syndicate.html",           "label": "Devil Syndicate" },
+    { "href": "../../factions/syndicate_roster.html",    "label": "Roster" },
+    { "href": "syndicate_house_of_duty.html",            "label": "House of Duty" },
+    {                                                    "label": "Governor" }
+  ],
+
+  "combat": [
+    "../../img/syndicate/syndicate_governor_combat.png"
+  ],
+
+  "bio": {
+    "title": "Supreme Administrative Authority",
+    "paragraphs": [
+      "The Governor represents the ultimate synthesis of administrative oversight, magical mastery, and psychological dominance within the House of Duty. These supreme champions dictate terms across corporate sectors through devastating elemental sweeps and absolute command over subordinates and adversaries alike.",
+      "Protected by multi-elemental resistances, Governors weave dark, wind, and hellfire into catastrophic spells while sustaining allied offensives and instantly turning incoming aggression back against the enemy."
+    ]
+  },
+
+  "stats": {
+    "hp": 250,
+    "atk": 100,
+    "ini": 40,
+    "res": "Fire, Dark, Wind",
+    "size": 1
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Darkwind Blast",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Unleashes a volatile convergence of elements, dealing <strong>50% of their attack</strong> as <span class=\"dmg-dark\">Dark</span> damage and <strong>50% of their attack</strong> as <span class=\"dmg-air\">Wind</span> damage to all enemies in a group (AoE)."
+    },
+    {
+      "type": "active",
+      "name": "Demonic Boost",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Channels executive authority to invigorate the roster, instantly healing the party for <strong>50% of their attack</strong> and granting the team the <span class=\"highlight-buff\">Demonic Boost</span> buff, which increases attack by <strong>30% for 2 turns</strong>."
+    },
+    {
+      "type": "passive",
+      "name": "Hell Magic Weaver",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Mastery over multi-channel esoteric warfare. When dealt direct damage by an enemy, there is a <span class=\"highlight-debuff\">25% chance to Charm</span> that attacker. When dealing <span class=\"dmg-dark\">Dark</span> damage, there is a <strong>20% chance to confuse</strong> the enemy. When dealing <span class=\"dmg-air\">Wind</span> damage, there is a <strong>20% chance to self-heal</strong> for 50% of the damage dealt."
+    },
+    {
+      "type": "ultimate",
+      "name": "Gates of Hell",
+      "icon": "../../img/base_ultimate_skill.png",
+      "desc": "Opens rifts to the underworld, dealing <strong>50% of their attack</strong> as <span class=\"dmg-fire\">Fire</span> damage to all enemies <strong>3 consecutive times</strong> (AoE). Each of these hits simultaneously counts as <span class=\"dmg-dark\">Dark</span> and <span class=\"dmg-air\">Wind</span> damage, triggering respective passive effects."
+    }
+  ],
+
+  "gallery": [
+    "../../img/syndicate/syndicate_governor_extra_1.jpg",
+    "../../img/syndicate/syndicate_governor_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "syndicate_house_of_duty.html",
+    "label": "Return to House of Duty"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>
