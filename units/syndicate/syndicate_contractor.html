@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Contractor</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Contractor",
+  "faction": "Syndicate",
+  "subtitle": "Contracted Demons - Officer",
+  "accent": "#ffb300",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/syndicate.html",           "label": "Devil Syndicate" },
+    { "href": "../../factions/syndicate_roster.html",    "label": "Roster" },
+    { "href": "syndicate_contracted_demons.html",        "label": "Contracted Demons" },
+    {                                                    "label": "Contractor" }
+  ],
+
+  "combat": [
+    "../../img/syndicate/syndicate_contractor_m_combat.png",
+    "../../img/syndicate/syndicate_contractor_f_combat.png"
+  ],
+
+  "bio": {
+    "title": "Masters of the Submission Path",
+    "paragraphs": [
+      "Corporate summoners who leverage metaphysical loopholes, Contractors specialize in binding abyssal entities through airtight legal and magical contracts. Rather than deploying chaotic monsters fully onto the field, they channel localized manifestations of their powers.",
+      "From invoking Cerberus's protective shielding to calling upon Cthulhu's maddening gaze, they control the tempo of battle with calculated precision while safely keeping raw hellfire at their fingertips."
+    ]
+  },
+
+  "stats": {
+    "hp": 60,
+    "atk": 30,
+    "ini": 40,
+    "res": "Fire"
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Call of Flame",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Manifests a burst of corporate hellfire, dealing <strong>100% of their attack</strong> as <span class=\"dmg-fire\">Fire</span> damage to all units in an enemy group (AoE). Has a <strong>10% chance</strong> to apply the <span class=\"highlight-debuff\">Burning</span> fire debuff for 2 turns, dealing secondary damage equal to <strong>50% of their attack</strong>."
+    },
+    {
+      "type": "active",
+      "name": "Call of Behemoth",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Briefly materializes the crushing weight of a Behemoth's strike. Deals <strong>200% of their attack</strong> as <span class=\"dmg-phys\">Physical</span> damage to a single target and applies <span class=\"highlight-debuff\">Stun</span> for 1 turn."
+    },
+    {
+      "type": "passive",
+      "name": "Call of Cerberus",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Channels the protective aura of the three-headed hound. When struck by a direct attack, there is a <strong>20% chance</strong> to reduce the damage taken by <strong>75%</strong>. This protective ward also triggers on party units with a <strong>5% probability</strong>."
+    },
+    {
+      "type": "ultimate",
+      "name": "Call of Cthulhu",
+      "icon": "../../img/base_ultimate_skill.png",
+      "desc": "Unleashes a psychological fragment of the deep void, dealing <strong>100% of their attack</strong> as damage to all enemies in a group and afflicting them with the <span class=\"highlight-debuff\">Madness</span> mind debuff for 1 turn. Targets under Madness are controlled by the AI and forced to use their base or active skill against random targets."
+    }
+  ],
+
+  "gallery": [
+    "../../img/syndicate/syndicate_contractor_extra_1.jpg",
+    "../../img/syndicate/syndicate_contractor_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "syndicate_contracted_demons.html",
+    "label": "Return to Contracted Demons"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>
