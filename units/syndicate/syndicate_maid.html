@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Maid</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Maid",
+  "faction": "Syndicate",
+  "subtitle": "House of Duty - Tier II",
+  "accent": "#ffb300",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/syndicate.html",           "label": "Devil Syndicate" },
+    { "href": "../../factions/syndicate_roster.html",    "label": "Roster" },
+    { "href": "syndicate_house_of_duty.html",            "label": "House of Duty" },
+    {                                                    "label": "Maid" }
+  ],
+
+  "combat": [
+    "../../img/syndicate/syndicate_maid_f_combat.png"
+  ],
+
+  "bio": {
+    "title": "Dedicated Field Assistants",
+    "paragraphs": [
+      "Servants who demonstrate exceptional operational efficiency and logistical reliability are promoted to Maids. Tasked with maintaining peak combat readiness among front-line assets, they provide crucial field support.",
+      "Combining targeted strengthening regimens with sweeping restorative winds, they ensure that allied forces remain patched up and fully mobilized during intense corporate skirmishes."
+    ]
+  },
+
+  "stats": {
+    "hp": 70,
+    "atk": 40,
+    "ini": 60,
+    "res": "Fire"
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Boost Strength",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Administers energetic support, healing the target for <strong>25% of their attack</strong> and granting allies in the group the <span class=\"highlight-buff\">Boost Strength</span> buff for 1 turn, which <strong>increases damage done by 10%</strong>."
+    },
+    {
+      "type": "active",
+      "name": "Healing Winds",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Channels restorative currents across the battlefield, instantly healing the entire team for <strong>50% of their attack</strong>."
+    }
+  ],
+
+  "gallery": [
+    "../../img/syndicate/syndicate_maid_extra_1.jpg",
+    "../../img/syndicate/syndicate_maid_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "syndicate_house_of_duty.html",
+    "label": "Return to House of Duty"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>
