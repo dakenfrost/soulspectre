@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Nightblade</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Nightblade",
+  "faction": "Syndicate",
+  "subtitle": "Command Branch - Tier IV (Alternate)",
+  "accent": "#ffb300",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/syndicate.html",           "label": "Devil Syndicate" },
+    { "href": "../../factions/syndicate_roster.html",    "label": "Roster" },
+    { "href": "syndicate_command.html",                  "label": "Command Branch" },
+    {                                                    "label": "Nightblade" }
+  ],
+
+  "combat": [
+    "../../img/syndicate/syndicate_nightblade_m_combat.png",
+    "../../img/syndicate/syndicate_nightblade_f_combat.png"
+  ],
+
+  "bio": {
+    "title": "Apex Phantoms of the Syndicate",
+    "paragraphs": [
+      "Shades who achieve absolute mastery over silent execution and shadow-weaving attain the apex rank of Nightblade. These elite assassins move completely unseen, striking with lethal, un-dodgeable precision before dissolving back into the dark.",
+      "By closing in with sudden inescapable backstabs, afflicting targets with lethal neurotoxin blades that rot enemy health rapidly, and maintaining an evasive shadow profile that shrugs off physical aggression, they operate as uncounterable instruments of death."
+    ]
+  },
+
+  "stats": {
+    "hp": 165,
+    "atk": 80,
+    "ini": 60,
+    "res": "Fire"
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Sudden Backstab",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Strikes instantly from absolute darkness, dealing <strong>100% of their attack</strong> as <span class=\"dmg-phys\">Physical</span> damage to a ranged target (counts as melee physical damage). This strike <span class=\"highlight-buff\">cannot be dodged</span>."
+    },
+    {
+      "type": "active",
+      "name": "Toxic Blades",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Delivers a virulent envenomed strike, dealing <strong>75% of their attack</strong> as <span class=\"dmg-phys\">Physical</span> damage (counts as melee physical damage) and applying the <span class=\"highlight-debuff\">Toxin</span> bio debuff for 2 turns, causing the target to suffer <strong>50% of attack</strong> as <span class=\"dmg-bio\">Bio</span> damage each turn."
+    },
+    {
+      "type": "passive",
+      "name": "Night Walker",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Complete assimilation into shadow grants a permanent <span class=\"highlight-buff\">30% increased dodge chance</span> against all incoming physical damage."
+    }
+  ],
+
+  "gallery": [
+    "../../img/syndicate/syndicate_nightblade_extra_1.jpg",
+    "../../img/syndicate/syndicate_nightblade_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "syndicate_command.html",
+    "label": "Return to Command Branch"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>
