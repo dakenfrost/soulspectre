@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Judge</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Judge",
+  "faction": "Syndicate",
+  "subtitle": "Control Branch - Tier IV",
+  "accent": "#ffb300",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/syndicate.html",           "label": "Devil Syndicate" },
+    { "href": "../../factions/syndicate_roster.html",    "label": "Roster" },
+    { "href": "syndicate_contracted_demons.html",        "label": "Contracted Demons" },
+    {                                                    "label": "Judge" }
+  ],
+
+  "combat": [
+    "../../img/syndicate/syndicate_judge_m_combat.png",
+    "../../img/syndicate/syndicate_judge_f_combat.png"
+  ],
+
+  "bio": {
+    "title": "Arbiters of Retribution",
+    "paragraphs": [
+      "Judges represent the advanced tier of psychological control and administrative retribution within the Syndicate. These operatives do not merely punish infractions; they weave a web of dark entanglement that makes any hostile action structurally hazardous.",
+      "By blanketing enemy teams in creeping shadows, executing mass shadow bullet bombardments, and automatically reflecting incoming aggression back as dark retaliation, they enforce absolute compliance on the battlefield."
+    ]
+  },
+
+  "stats": {
+    "hp": 130,
+    "atk": 60,
+    "ini": 40
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Creeping Shadows",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Unleashes creeping darkness across the enemy team, dealing <strong>50% of their attack</strong> as <span class=\"dmg-dark\">Dark</span> damage. Applies the <span class=\"highlight-debuff\">Creeping Shadow</span> debuff for 2 turns, dealing secondary damage equal to <strong>50% of their attack</strong> each turn."
+    },
+    {
+      "type": "active",
+      "name": "Dark Execution",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Conjures volatile shadow projectiles that bombard the opposition, dealing <strong>50% of their attack</strong> as <span class=\"dmg-dark\">Dark</span> damage <strong>3 consecutive times</strong> to an entire enemy group (AoE)."
+    },
+    {
+      "type": "passive",
+      "name": "Crime and Punishment",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Systemic enforcement of retaliatory justice. Every time an enemy unit takes <span class=\"dmg-dark\">Dark</span> damage originating from this unit, there is a <span class=\"highlight-debuff\">15% chance to inflict Confused</span> as a dark debuff. Furthermore, each time an enemy deals direct damage with a skill to any ally, instantly reflects <strong>5% of the damage taken</strong> back to the attacker as <span class=\"dmg-dark\">Dark</span> damage."
+    }
+  ],
+
+  "gallery": [
+    "../../img/syndicate/syndicate_judge_extra_1.jpg",
+    "../../img/syndicate/syndicate_judge_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "syndicate_contracted_demons.html",
+    "label": "Return to Contracted Demons"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>
