@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Dread Lord</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Dread Lord",
+  "faction": "Syndicate",
+  "subtitle": "Contracted Demons - Tier IV (Large Asset)",
+  "accent": "#ffb300",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/syndicate.html",           "label": "Devil Syndicate" },
+    { "href": "../../factions/syndicate_roster.html",    "label": "Roster" },
+    { "href": "syndicate_contracted_demons.html",        "label": "Contracted Demons" },
+    {                                                    "label": "Dread Lord" }
+  ],
+
+  "combat": [
+    "../../img/syndicate/syndicate_dread_lord_combat.png"
+  ],
+
+  "bio": {
+    "title": "Walking Plagues of the Abyss",
+    "paragraphs": [
+      "Advanced abominations of the Chaos Path, Dread Lords function as walking plagues that completely bypass standard immunities and defenses. Their massive forms drip with concentrated entropic corruption.",
+      "Drowning entire enemy formations in inescapable biological poison, they viciously compound their victims' suffering by echoing every tick of status damage with an immediate surge of dark retribution."
+    ]
+  },
+
+  "stats": {
+    "hp": 420,
+    "atk": 70,
+    "ini": 20,
+    "res": "Fire",
+    "immunity": "Bio",
+    "size": 2
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Tentacle Assault",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Lashes out with a barrage of crushing appendages, dealing <span class=\"dmg-phys\">Physical</span> damage to all units in an enemy group (AoE)."
+    },
+    {
+      "type": "active",
+      "name": "Abyssal Corruption",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Unleashes a tidal wave of biological decay, dealing <strong>40% of their attack</strong> as <span class=\"dmg-poison\">Bio</span> damage to all units in an enemy group (AoE) that <span class=\"highlight-buff\">ignores resistances</span>. Applies the <span class=\"highlight-debuff\">Poison</span> bio debuff for 2 turns, dealing secondary damage equal to <strong>20% of their attack</strong> each turn."
+    },
+    {
+      "type": "passive",
+      "name": "Corruption Lord",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Mastery over entropic contagion. Passively grants resistance to all kinds of debuffs. Furthermore, whenever this unit inflicts damage via a debuff, it instantly deals the exact same amount of damage back as <span class=\"dmg-dark\">Dark</span> damage."
+    }
+  ],
+
+  "gallery": [
+    "../../img/syndicate/syndicate_dread_lord_extra_1.jpg",
+    "../../img/syndicate/syndicate_dread_lord_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "syndicate_contracted_demons.html",
+    "label": "Return to Contracted Demons"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>
