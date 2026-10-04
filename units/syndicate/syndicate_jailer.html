@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Jailer</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Jailer",
+  "faction": "Syndicate",
+  "subtitle": "House of Duty - Tier II",
+  "accent": "#ffb300",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/syndicate.html",           "label": "Devil Syndicate" },
+    { "href": "../../factions/syndicate_roster.html",    "label": "Roster" },
+    { "href": "syndicate_house_of_duty.html",            "label": "House of Duty" },
+    {                                                    "label": "Jailer" }
+  ],
+
+  "combat": [
+    "../../img/syndicate/syndicate_jailer_m_combat.png",
+    "../../img/syndicate/syndicate_jailer_f_combat.png"
+  ],
+
+  "bio": {
+    "title": "Wardens of the Archives",
+    "paragraphs": [
+      "Pages who demonstrate absolute ruthlessness in silencing corporate leaks are promoted to the role of Jailers. Tasked with lockdown procedures and internal security enforcement, they ensure that hostile variables are immediately neutralized or disoriented.",
+      "Equipped with enhanced dark-energy channeling, they unleash sweeping dark waves and shroud enemy groups in disorienting fogs that completely paralyze tactical coordination."
+    ]
+  },
+
+  "stats": {
+    "hp": 70,
+    "atk": 30,
+    "ini": 40
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Dark Wave",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Unleashes a rolling pulse of shadows, dealing <strong>100% of their attack</strong> as <span class=\"dmg-dark\">Dark</span> damage to all units in an enemy group (AoE)."
+    },
+    {
+      "type": "active",
+      "name": "Confusing Fog",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Discharges a haze of cognitive interference, dealing <strong>50% of their attack</strong> as damage to an enemy group. Has a <strong>20% chance</strong> on each target to apply the <span class=\"highlight-debuff\">Confused</span> dark debuff for 1 turn, preventing them from using any skill."
+    }
+  ],
+
+  "gallery": [
+    "../../img/syndicate/syndicate_jailer_extra_1.jpg",
+    "../../img/syndicate/syndicate_jailer_extra_2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "syndicate_house_of_duty.html",
+    "label": "Return to House of Duty"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>
