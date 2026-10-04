@@ -17,22 +17,22 @@
     #evo-tree-root .node,
     #evo-tree-root .evo-node,
     #evo-tree-root .tree-node {
-        width: 220px !important; /* Forza un contenitore più stretto per farne stare 4 */
-        min-width: 200px !important;
+        width: 235px !important; /* Aumentato per far entrare OVERLORD e CONTRACTOR */
+        min-width: 215px !important;
         padding: 5px !important;
     }
     
     /* Scala l'avatar senza distorcerlo (Crop intelligente) */
     #evo-tree-root .portrait-container.wide {
-        width: 100px !important; 
-        height: 56px !important; /* Mantiene un rapporto di circa 16:9 */
+        width: 90px !important; /* Leggermente ridotto per dare spazio al testo */
+        height: 50px !important; 
         flex-shrink: 0;
     }
     
     #evo-tree-root .portrait-container.wide img {
         width: 100% !important;
         height: 100% !important;
-        object-fit: cover !important; /* Previene lo stritolamento */
+        object-fit: cover !important; 
     }
     
     /* Adatta il testo al nuovo spazio */
@@ -40,8 +40,9 @@
     #evo-tree-root .node-name,
     #evo-tree-root h3 {
         font-size: 0.75rem !important;
-        white-space: normal !important; /* Permette al testo di andare a capo se necessario */
-        line-height: 1.2;
+        white-space: normal !important; 
+        line-height: 1.1 !important;
+        word-break: keep-all !important; /* Forza la parola a non spezzarsi a metà lettera */
     }
     </style>
     <link rel="stylesheet" href="../../system/style_order.css">
