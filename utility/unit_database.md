@@ -88,7 +88,7 @@ Path: Defensive Path · Evolve in: Guardian
 
 Skill:
 - Base: **Slash** – Deals Physical damage to one enemy (melee).
-- Attiva: **Shield Cover** – Heals the target for 40% of his attack. Then if it's another ally Paladin interposes himself between danger and him. Takes all damage intended for a target friendly unit for 2 turns. Effect ends early if the Paladin is Incapacitated.
+- Attiva: **Shield Cover** – Heals the target for 40% of the Paladin's attack. If the target is another ally, the Paladin also interposes himself between them and danger: takes all damage intended for a target friendly unit for 2 turns. Effect ends early if the Paladin is Incapacitated.
 - Passiva: **Knight Resolve** – Deep devotion mends the Paladin's wounds. Restores 10% of maximum HP each turn.
 
 ### Monster Hunter
@@ -110,7 +110,7 @@ Path: Offensive Path · Evolve in: Knight of Dusk
 
 Skill:
 - Base: **Holy Cross Slash** – Deals Physical damage to one enemy (melee) twice in a crushing cross formation.
-- Attiva: **Consacration** – The Holy Avenger calls upon divine power to sanctify the ground. Deals Light damage 200% attack to all enemies around the unit and Heals all friendly units in the same area.
+- Attiva: **Consecration** – The Holy Avenger calls upon divine power to sanctify the ground. Deals Light damage 200% attack to all enemies around the unit and Heals all friendly units in the same area.
 - Passiva: **Eternal Crusade** – An unwavering vow fuels every strike. Deals an additional 30% Light damage whenever the unit deals damage.
 
 ### Guardian
@@ -143,7 +143,7 @@ Skill:
 - Base: **Soulblaze Slash** – Deals Physical damage to all enemies in front of the unit. Additionally deals 50% of the attack as Soul damage.
 - Attiva: **Chains of Despair** – Binds the target with magical chains. Deals Soul damage and Stuns for 2 turns. Target takes 50% Soul damage each turn while bound.
 - Passiva: **Grim Determination** – Debuffs ignore resistances/immunities. Restores 15% HP each turn. Upon defeat, enters Downed state: revives after 2 turns with 30% HP.
-- Ultimate: **Oblivion** – Target Instantly Kills the target (unless Ruler). Against Rulers: Deals 400 Soul damage. Requires target not immune to Soul.
+- Ultimate: **Oblivion** – Target < 50% HP: instantly kills the target (unless Ruler). Against Rulers: Deals 400 Soul damage. Requires target not immune to Soul.
 
 ## Order of Light
 
@@ -197,7 +197,7 @@ Path: Clergy Path · Evolve in: Primarch
 Skill:
 - Base: **Light Heal** – A fundamental restorative prayer. Heals any target for 100% of attack value.
 - Attiva: **Greater Heal** – An advanced communion with the Divine. Heals any target for 300% of attack value.
-- Passiva: **Healing Echos** – Any healing performed by this unit also bounces to up to 2 nearby allied units, carrying the divine resonance forward.
+- Passiva: **Healing Echoes** – Any healing performed by this unit also bounces to up to 2 nearby allied units, carrying the divine resonance forward.
 
 ### Exorcist
 
@@ -456,7 +456,7 @@ Skill:
 - Base: **Piercing Magic Slash** – Deals 50% Attack as Physical and 50% Attack as Arcane damage. Ignores up to 20% Armor.
 - Attiva: **Force Redirection** – Enters the "Redirection" state. Completely prevents damage from the next attack and inflicts that exact damage back to the attacker.
 - Passiva: **Lore Runic Armor** – Reduces damage taken by 10 and deals 10 Arcane damage back. Gains "Energy" stacks that increase skill damage.
-- Ultimate: **Trascend Reality** – Bends the fabric of the battlefield. Grants the entire party absolute immunity to all attacks and debuffs for 1 turn.
+- Ultimate: **Transcend Reality** – Bends the fabric of the battlefield. Grants the entire party absolute immunity to all attacks and debuffs for 1 turn.
 
 ## Order of Engineering
 
@@ -854,7 +854,7 @@ Path: Precision Path · Evolve in: Veteran, Bounty Hunter
 Skill:
 - Base: **Throw Knife** – Hurls a sharpened dagger with practiced accuracy, dealing Physical damage to one enemy (ranged).
 - Attiva: **Throw Dirt** – Throws a handful of blinding debris at the target's eyes. Applies the Physical Debuff Blinded to an enemy (ranged) for 3 turns. While Blinded, the target's chance to hit is lowered by 50%.
-- Passiva: **Expertise** – Their extensive training pays off. Increases Accuracy for all skills by 10%. Veteran.
+- Passiva: **Expertise** – Their extensive training pays off. Increases Accuracy for all skills by 10%.
 
 ### Bomber
 
@@ -917,7 +917,7 @@ Skill:
 
 Skill:
 - Base: **Throw Shrapnel Bomb** – Deals Physical damage to one enemy (ranged) and all units in the immediate area. Has a 20% chance to apply Bleeding for 1 turn, dealing secondary damage equal to 50% of the Overseer's attack.
-- Attiva: **Throw Power-Drug Bomb** – Administers an potent combat cocktail. Heals an ally (ranged) and all targets near them for 50% of attack. Grants the Drugged effect (damage +50% for 2 turns). Warning: When Drugged expires, inflicts Abstinence for 1 turn, reducing damage by 50%.
+- Attiva: **Throw Power-Drug Bomb** – Administers a potent combat cocktail. Heals an ally (ranged) and all targets near them for 50% of attack. Grants the Drugged effect (damage +50% for 2 turns). Warning: When Drugged expires, inflicts Abstinence for 1 turn, reducing damage by 50%.
 - Passiva: **Master of Tools** – The Overseer utilizes every advantage. Passives: When below 50% HP, heals 50% max HP (1/battle). Reduces damage taken by 50% from multi-target active skills. Accuracy increased by 20%. Bleeding damage increased by 10.
 - Ultimate: **Armament L-33T** – Deploys a specialized experimental warhead. Deals 50% Physical damage to one enemy (ranged) and all units near it. Inflicts Bleeding (1 turn, 50% attack) and Poison (1 turn, 50% attack).
 
@@ -1231,7 +1231,7 @@ Skill:
 Evolve in: Legionary
 
 Skill:
-- Base: **Axe Slash** – Strikes the target with a heavy corporate-issue axe, dealing 100% of their attack as Physical damage to a single enemy in melee range.
+- Base: **Sword Slash** – Cuts down the target with a standard-issue corporate blade, dealing 100% of their attack as Physical damage to a single enemy in melee range.
 
 ### Legionary
 
@@ -1240,7 +1240,7 @@ Skill:
 Path: Bulwark/Assault Path · Evolve in: Hellguard, Enforcer
 
 Skill:
-- Base: **Axe Slash** – Strikes the target with a heavy corporate-issue axe, dealing 100% of their attack as Physical damage to a single enemy in melee range.
+- Base: **Sword Slash** – Strikes with a balanced, mass-forged legion sword, dealing 100% of their attack as Physical damage to a single enemy in melee range.
 - Attiva: **Steel Charge** – Rushes the enemy with overwhelming force. Deals 100% of their attack as Physical damage to a single target. Upon impact, the unit generates defensive shielding equal to 100% of their attack.
 
 ### Hellguard
@@ -1250,8 +1250,8 @@ Skill:
 Path: Bulwark Path · Evolve in: Dark Knight
 
 Skill:
-- Base: **Axe Slash** – Strikes the target with a heavy corporate-issue axe, dealing 100% of their attack as Physical damage to a single enemy in melee range.
-- Attiva: **Steel Charge** – Rushes the enemy with overwhelming force. Deals 100% of their attack as Physical damage to a single target. Upon impact, the unit generates defensive shielding equal to 100% of their attack.
+- Base: **Spear Thrust** – Drives a heavy infernal spear into the target, dealing 100% of their attack as Physical damage to a single enemy in melee range.
+- Attiva: **Steel Charge** – Lowers the spear and charges with overwhelming force. Deals 100% of their attack as Physical damage to a single target. Upon impact, the unit generates defensive shielding equal to 100% of their attack.
 - Passiva: **Infernal Plates** – The Hellguard's armor dynamically reacts to trauma. Every time this unit is hit by an attack, it passively generates a Shield equal to 25% of the damage taken.
 
 ### Enforcer
@@ -1272,7 +1272,7 @@ Skill:
 Path: Bulwark Path · Evolve in: Arbiter
 
 Skill:
-- Base: **Rending Slash** – Delivers a brutal cleave, dealing 100% of their attack as Physical damage to a single target and reducing its armor by 10%. If the target's armor is already at 0, inflicts Bleeding for 1 turn, dealing secondary damage equal to 30% of their attack.
+- Base: **Scorching Spear** – Drives a red-hot obsidian spear through the target's plating, dealing 100% of their attack as Physical damage to a single target and reducing its armor by 10%. If the target's armor is already at 0, inflicts Bleeding for 1 turn, dealing secondary damage equal to 30% of their attack.
 - Attiva: **Devastating Charge** – Charges an enemy position with catastrophic force. Deals 100% of their attack as Physical damage, generates a Shield equal to 100% of their attack, and applies Stun to the target for 1 turn.
 - Passiva: **Obsidian Plates** – Enhanced obsidian layers absorb and redirect impact force. Every time this unit is hit by an attack, it passively generates a Shield equal to 35% of the damage taken.
 
@@ -1348,7 +1348,7 @@ Skill:
 Path: Chaos Path · Evolve in: Dread Lord, Herald of Ruin
 
 Skill:
-- Base: **Tentacle Assault** – Llashes out with a barrage of writhing appendages, dealing Physical damage to all units in an enemy group (AoE).
+- Base: **Tentacle Assault** – Lashes out with a barrage of writhing appendages, dealing Physical damage to all units in an enemy group (AoE).
 - Attiva: **Corruption** – Spews volatile biological decay, dealing 25% of their attack as Bio damage to all units in an enemy group (AoE) and applying the Poison bio debuff for 2 turns, dealing secondary damage equal to 25% of their attack each turn.
 - Passiva: **Entropy Demon** – Embodies raw, unpredictable mutation. Passively grants robust resistance to all kinds of status ailments and incoming debuffs.
 
@@ -1394,7 +1394,7 @@ Path: Destruction Path · Evolve in: Abyssal Tyrant
 Skill:
 - Base: **Inferno** – Unleashes a sweeping wave of destructive heat, dealing 100% of their attack as Fire damage to an entire enemy group (AoE).
 - Attiva: **Molten Armor** – Hardens thermal plating, generating a Shield equal to 100% of their attack and 2 stacks of Molten Armor. Each time this unit is hit by a direct damage ability, it consumes a stack of Molten Armor and completely nullifies the incoming damage.
-- Passiva: **Fire Rebuke** – Maintains an volatile thermal aura. While protected by a shield, if this unit loses a stack of Molten Armor or a portion of its shield, it violently lashes out, dealing damage equal to 50% of its attack back to the attacker.
+- Passiva: **Fire Rebuke** – Maintains a volatile thermal aura. While protected by a shield, if this unit loses a stack of Molten Armor or a portion of its shield, it violently lashes out, dealing damage equal to 50% of its attack back to the attacker.
 
 ### Abyssal Tyrant
 
