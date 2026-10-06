@@ -47,7 +47,7 @@ Skill:
 Path: Offensive/Defensive Path · Evolve in: Knight, Witch Hunter
 
 Skill:
-- Base: **Slash** – Deals Physical damage to one enemy (melee).
+- Base: **Slash** – A textbook cut drilled into every recruit of the Order. Deals Physical damage to one enemy (melee).
 
 ### Knight
 
@@ -56,8 +56,8 @@ Skill:
 Path: Offensive/Defensive Path · Evolve in: Crusader, Paladin
 
 Skill:
-- Base: **Slash** – Deals Physical damage to one enemy (melee).
-- Attiva: **Wide Cut** – Deals Physical damage to all enemies in front of the unit.
+- Base: **Slash** – A disciplined sword stroke delivered from behind a raised shield. Deals Physical damage to one enemy (melee).
+- Attiva: **Wide Cut** – A broad, sweeping arc meant to push back an entire line. Deals Physical damage to all enemies in front of the unit.
 
 ### Witch Hunter
 
@@ -66,7 +66,7 @@ Skill:
 Path: Inquisition Path · Evolve in: Monster Hunter
 
 Skill:
-- Base: **Slash** – Deals Physical damage to one enemy (melee).
+- Base: **Slash** – A swift, economical cut aimed at a heretic's guard. Deals Physical damage to one enemy (melee).
 - Attiva: **Silencing Strike** – Deals 150% Physical damage to one enemy (melee). Silences the target for 2 turns (Mind attack).
 
 ### Crusader
@@ -76,8 +76,8 @@ Skill:
 Path: Offensive Path · Evolve in: Holy Avenger
 
 Skill:
-- Base: **Slash** – Deals Physical damage to one enemy (melee).
-- Attiva: **Wide Cut** – Deals Physical damage to all enemies in front of the unit.
+- Base: **Slash** – A zealous blow struck in the Emperor's name. Deals Physical damage to one enemy (melee).
+- Attiva: **Wide Cut** – A burning sweep that drives the wicked back in a single arc. Deals Physical damage to all enemies in front of the unit.
 - Passiva: **Judge and Executioner** – Holy fervor empowers the Crusader’s attacks. Deals an additional 20% Light damage whenever the unit deals damage.
 
 ### Paladin
@@ -87,7 +87,7 @@ Skill:
 Path: Defensive Path · Evolve in: Guardian
 
 Skill:
-- Base: **Slash** – Deals Physical damage to one enemy (melee).
+- Base: **Slash** – A measured strike from behind the Paladin's great shield. Deals Physical damage to one enemy (melee).
 - Attiva: **Shield Cover** – Heals the target for 40% of the Paladin's attack. If the target is another ally, the Paladin also interposes himself between them and danger: takes all damage intended for a target friendly unit for 2 turns. Effect ends early if the Paladin is Incapacitated.
 - Passiva: **Knight Resolve** – Deep devotion mends the Paladin's wounds. Restores 10% of maximum HP each turn.
 
@@ -98,7 +98,7 @@ Skill:
 Path: Inquisition Path · Evolve in: Inquisitor
 
 Skill:
-- Base: **Slash** – Deals Physical damage to one enemy (melee).
+- Base: **Slash** – A silvered blade, sharpened against things that should not exist. Deals Physical damage to one enemy (melee).
 - Attiva: **Silencing Strike** – Deals 150% Physical damage to one enemy (melee). Silences the target for 2 turns (Mind attack).
 - Passiva: **Silver Blades** – The Monster Hunter’s skills (both damage and debuffs) bypass resistances and immunities.
 
@@ -109,7 +109,7 @@ Skill:
 Path: Offensive Path · Evolve in: Knight of Dusk
 
 Skill:
-- Base: **Holy Cross Slash** – Deals Physical damage to one enemy (melee) twice in a crushing cross formation.
+- Base: **Holy Cross Slash** – Brings the sacred blade down in two furious strokes. Deals Physical damage to one enemy (melee) twice in a crushing cross formation.
 - Attiva: **Consecration** – The Holy Avenger calls upon divine power to sanctify the ground. Deals Light damage 200% attack to all enemies around the unit and Heals all friendly units in the same area.
 - Passiva: **Eternal Crusade** – An unwavering vow fuels every strike. Deals an additional 30% Light damage whenever the unit deals damage.
 
@@ -566,7 +566,7 @@ Skill:
 Path: Brute Path · Evolve in: Basher
 
 Skill:
-- Base: **Smash** – Deals Physical damage to one enemy (melee).
+- Base: **Smash** – Swings a crude club with more enthusiasm than technique. Deals Physical damage to one enemy (melee).
 
 ### Fighter
 
@@ -584,7 +584,7 @@ Skill:
 Path: Brute Path · Evolve in: Mauler, Warrior
 
 Skill:
-- Base: **Smash** – Deals Physical damage to one enemy (melee).
+- Base: **Smash** – A heavy, practiced blow from a reinforced club. Deals Physical damage to one enemy (melee).
 - Attiva: **Heavy Blow** – A devastating swing that deals Physical damage equal to 150% of their attack to one enemy (melee).
 
 ### Raider
@@ -594,7 +594,7 @@ Skill:
 Path: Agile Path · Evolve in: Ambusher, Rager
 
 Skill:
-- Base: **Slash** – Deals Physical damage to one enemy (melee).
+- Base: **Slash** – A quick, vicious cut aimed wherever it hurts most. Deals Physical damage to one enemy (melee).
 - Attiva: **Low Blow** – Executes a dirty and unexpected strike. Has an 80% chance to inflict Stun on an enemy for 1 turn.
 
 ### Mauler
@@ -637,7 +637,7 @@ Skill:
 Path: Agile Path · Evolve in: Berserker
 
 Skill:
-- Base: **Slash** – Deals Physical damage to one enemy (melee) twice in rapid succession.
+- Base: **Slash** – A frenzied flurry fueled by rage and adrenaline. Deals Physical damage to one enemy (melee) twice in rapid succession.
 - Attiva: **Frenzy** – Pushes the body beyond its limits to increase attack power by 30% for 2 turns. Upon activation, the Rager immediately uses their Base Skill before their current turn ends.
 - Passiva: **Rage** – Pain fuels the fire. The Rager gains 10% of their missing health as extra base attack power.
 
@@ -714,7 +714,7 @@ Skill:
 Evolve in: Skeleton Fighter, Skeleton Archer
 
 Skill:
-- Base: **Slash** – Deals Physical damage to one enemy (melee).
+- Base: **Slash** – A stiff, mechanical swing from a rusted blade. Deals Physical damage to one enemy (melee).
 
 ### Skeleton Fighter
 
@@ -723,7 +723,7 @@ Skill:
 Path: Melee/Abomination Path · Evolve in: Skeleton Warrior, Zombie
 
 Skill:
-- Base: **Slash** – Deals Physical damage to one enemy (melee).
+- Base: **Slash** – A heavier swing, guided by the echo of a long-dead soldier's training. Deals Physical damage to one enemy (melee).
 - Attiva: **Wide Cut** – Executes a broad, sweeping strike. Deals Physical damage to all enemies in front of the unit.
 
 ### Skeleton Archer
@@ -743,7 +743,7 @@ Skill:
 Path: Melee Path · Evolve in: Skeleton Champion
 
 Skill:
-- Base: **Slash** – Deals Physical damage to one enemy (melee).
+- Base: **Slash** – A cold, relentless strike from shadow-hardened arms. Deals Physical damage to one enemy (melee).
 - Attiva: **Wide Cut** – Executes a broad, sweeping strike. Deals Physical damage to all enemies in front of the unit.
 - Passiva: **Tough Bones** – Their shadow-reinforced skeletal structure passively reduces all incoming damage by 5.
 
@@ -1019,7 +1019,7 @@ Skill:
 
 ### Primal Druid
 
-**Kharos - Primal Druid - T4 - HP 240 - ATK 100 - INI 50**
+**Kharos - Primal Druid - T4 - HP 240 - ATK 100 - INI 50 - Protection Physical**
 
 Path: Primal Path · Evolve in: Incarnation
 
