@@ -865,7 +865,7 @@ Path: Explosives Path · Evolve in: Demolisher, Alchemist
 Skill:
 - Base: **Throw Bomb** – Throws a volatile explosive. Deals Physical damage to one enemy (ranged) and all units positioned near the primary target.
 - Attiva: **Throw Toxic Bomb** – Deploys a chemical payload. Deals Poison damage to one enemy (ranged) and all units near them. Inflicts Poison for 2 turns, dealing secondary damage equal to 50% of the Bomber's attack.
-- Passiva: **Explosion Veteran** – Having spent so much time handling explosives, they have learned how to mitigate blast impacts. Takes only 25% damage from any enemy active skill that hits more than one target at a time.
+- Passiva: **Explosion Veteran** – Having spent so much time handling explosives, they have learned how to mitigate blast impacts. Reduces damage taken by 25% from any enemy active skill that hits more than one target at a time.
 
 ### Veteran
 
@@ -898,7 +898,7 @@ Path: Explosives Path · Evolve in: Overseer
 Skill:
 - Base: **Throw High Explosive Bomb** – Deploys a devastating high-yield explosive. Deals Physical damage to one enemy (ranged) and all units in the immediate area. Has a 10% chance to Stun the targets for 1 turn.
 - Attiva: **Throw Venomous Bomb** – Launches a volatile, toxin-filled payload. Deals Poison damage to one enemy (ranged) and all units near them. Inflicts Poison for 3 turns, dealing secondary damage equal to 50% of the Demolisher's attack.
-- Passiva: **Explosion Master** – Their reinforced armor and experience allow them to shrug off blast waves. Takes only 50% damage from any enemy active skill that hits more than one target at a time.
+- Passiva: **Explosion Master** – Their reinforced armor and experience allow them to shrug off blast waves. Reduces damage taken by 40% from any enemy active skill that hits more than one target at a time.
 
 ### Alchemist
 
@@ -918,7 +918,7 @@ Skill:
 Skill:
 - Base: **Throw Shrapnel Bomb** – Deals Physical damage to one enemy (ranged) and all units in the immediate area. Has a 20% chance to apply Bleeding for 1 turn, dealing secondary damage equal to 50% of the Overseer's attack.
 - Attiva: **Throw Power-Drug Bomb** – Administers an potent combat cocktail. Heals an ally (ranged) and all targets near them for 50% of attack. Grants the Drugged effect (damage +50% for 2 turns). Warning: When Drugged expires, inflicts Abstinence for 1 turn, reducing damage by 50%.
-- Passiva: **Master of Tools** – The Overseer utilizes every advantage. Passives: When below 50% HP, heals 50% max HP (1/battle). Takes only 25% damage from multi-target active skills. Accuracy increased by 20%. Bleeding damage increased by 10.
+- Passiva: **Master of Tools** – The Overseer utilizes every advantage. Passives: When below 50% HP, heals 50% max HP (1/battle). Reduces damage taken by 50% from multi-target active skills. Accuracy increased by 20%. Bleeding damage increased by 10.
 - Ultimate: **Armament L-33T** – Deploys a specialized experimental warhead. Deals 50% Physical damage to one enemy (ranged) and all units near it. Inflicts Bleeding (1 turn, 50% attack) and Poison (1 turn, 50% attack).
 
 ## The Boundless
