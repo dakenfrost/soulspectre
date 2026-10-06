@@ -1132,7 +1132,7 @@ Skill:
 Path: Control Path (Female) · Evolve in: Succubus
 
 Skill:
-- Base: **Seduce** – Deploys hypnotic dark resonance, dealing 150% of their attack as Dark damage to a single target. Has a 60% chance to Charm the enemy for 1 turn and a 75% chance to dispel 1 random buff from the target.
+- Base: **Seduce** – Deploys hypnotic dark resonance, dealing 100% of their attack as Dark damage to a single target. Has a 60% chance to Charm the enemy for 1 turn and a 75% chance to dispel 1 random buff from the target.
 - Attiva: **Illusion Dream** – Cloaks an ally in empowering illusions, granting the Illusion Dream buff for 3 turns. Grants a 25% attack increase, 25% armor, and instantly cleanses 1 debuff from the ally.
 - Passiva: **Feeling Manipulator** – Reflects emotional instability back at aggressors. When hit by an enemy direct attack, there is a 15% chance to Charm the unit that dealt the damage.
 
