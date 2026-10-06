@@ -1176,7 +1176,7 @@ Skill:
 Path: Control Path (Female) · Evolve in: Governor
 
 Skill:
-- Base: **Charming Eyes** – Projects an irresistible dark gaze, dealing 150% of their attack as Dark damage to a single target with an 80% chance to Charm the enemy for 1 turn. Instantly dispels 1 random buff from the target.
+- Base: **Charming Eyes** – Projects an irresistible dark gaze, dealing 100% of their attack as Dark damage to a single target with an 80% chance to Charm the enemy for 1 turn. Instantly dispels 1 random buff from the target.
 - Attiva: **Illusion Nightmare** – Imbues an ally with terrifying, empowering visions, granting the Illusion Nightmare buff for 3 turns. Grants a 50% attack increase, 25% armor, and 10 initiative, while completely removing all debuffs from the ally.
 - Passiva: **Drain Life** – Weaponizes emotional volatility. When hit by an enemy direct attack, there is a 25% chance to Charm the unit that dealt the damage. Furthermore, whenever a target is charmed by this unit, it siphons 10% of their maximum HP as plain damage and heals this unit for that exact amount.
 
