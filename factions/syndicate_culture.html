@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Syndicate Culture</title>
+    <link rel="stylesheet" href="../system/shared.css">
+    <style>
+        :root {
+            /* Colori adattati per il Devil Syndicate */
+            --accent-color: #e53935;
+            --accent-glow:  rgba(229, 57, 53, 0.5);
+            --panel-bg:     rgba(20, 10, 12, 0.8);
+        }
+        body { line-height: 1.8; }
+        #bg-image { background-image: url('../img/valkyrion_bg.jpeg'); }
+        #overlay  { background: linear-gradient(to bottom, rgba(18, 8, 10, 0.88), rgba(10, 4, 5, 0.97)); }
+
+        /* SCHEDE DELLE FORZE DEL SINDACATO */
+        .forces-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .force-card {
+            display: block;
+            padding: 22px 24px;
+            background: rgba(229, 57, 53, 0.05);
+            border: 1px solid rgba(229, 57, 53, 0.25);
+            border-radius: 6px;
+            text-decoration: none;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .force-card:hover {
+            border-color: rgba(229, 57, 53, 0.6);
+            box-shadow: 0 0 18px rgba(229, 57, 53, 0.2);
+        }
+
+        .force-card h3 {
+            margin: 0 0 4px 0;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 1.15rem;
+        }
+
+        .force-card .force-role {
+            display: block;
+            margin-bottom: 12px;
+            color: var(--accent-color);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .force-card p {
+            margin: 0;
+            color: #d0d0d0;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 800px) {
+            .forces-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+<global-navigation base="../"></global-navigation>
+
+<header>
+    <h1>Faction Culture</h1>
+    <div class="subtitle">Souls, Contracts &amp; The Price of Everything</div>
+</header>
+
+<main>
+    <div class="split-section" style="border: none; background: rgba(15,15,15,0.5); backdrop-filter: none; box-shadow: none; margin-bottom: 30px;">
+        <div class="section-text" style="padding: 20px; text-align: center;">
+            <p style="text-align: center; margin: 0;">An in-depth look at the values, economy and hierarchy of the Devil Syndicate, and at the forces that defend its interests.</p>
+        </div>
+    </div>
+
+    <!-- Le immagini mancanti vengono rimosse automaticamente: basta caricare i file con questi nomi in img/ -->
+    <div class="split-section">
+        <div class="section-image">
+            <img src="../img/syndicate_culture_1_souls.png" alt="A devil weighing a glowing soul on a scale" onerror="this.parentElement.remove()">
+        </div>
+        <div class="section-text">
+            <h2>The Currency of Souls</h2>
+            <p>Devils do not enjoy violence. Brutality is messy, death is final, and a corpse cannot sign anything. To a devil, a war that could have been won with a contract is simply a failure of imagination, and every unnecessary death is a <strong>wasted resource</strong>.</p>
+
+            <p>Their true currency is the soul. Every soul acquired through a valid contract becomes the property of the devil or the house that obtained it, and its value depends on its greatness: the soul of a beggar is small change, while the soul of a king, a saint or a legendary hero is a fortune that can make a career. <strong>The nobler the soul, the greater the prestige of its owner.</strong></p>
+        </div>
+    </div>
+
+    <div class="split-section">
+        <div class="section-image">
+            <img src="../img/syndicate_culture_2_marketing.png" alt="A devil offering a contract to a desperate hero" onerror="this.parentElement.remove()">
+        </div>
+        <div class="section-text">
+            <h2>Marketing Damnation</h2>
+            <p>While the noble houses mostly defend Hell's territories and serve as its armed fist, the corporate wing is always looking for new markets. Its agents study mortal societies the way merchants study a trade route: where people are desperate, where pride runs high, where a single offer could change everything.</p>
+
+            <p>Two strategies coexist. Some divisions aim for <strong>quantity</strong>, offering bread, safety or revenge to starving and war-torn populations who will sign anything. Others aim for <strong>quality</strong>, waiting patiently for the intrepid hero who only needs one small push: a dying sister, a lost battle, a wish just out of reach. Souls acquired either way are never wasted. They become pawns, agents and leverage in the Syndicate's larger plans.</p>
+        </div>
+    </div>
+
+    <div class="split-section">
+        <div class="section-image">
+            <img src="../img/syndicate_culture_3_results.png" alt="Devils celebrating a successful acquisition" onerror="this.parentElement.remove()">
+        </div>
+        <div class="section-text">
+            <h2>A Society of Results</h2>
+            <p>The Syndicate is, at its core, a capitalist society. Status is earned by producing results, and those who produce them are rewarded generously: territories, titles, armies and, above all, souls. Even in the Courts, where bloodline still matters, a house that stops delivering soon finds its lands quietly transferred to someone more productive.</p>
+
+            <p>This breeds a culture of ambition and paperwork. Every deal is recorded, every promise is binding and every clause matters. Devils almost never lie outright; they don't need to. <strong>The truth, carefully worded, is far more profitable.</strong></p>
+        </div>
+    </div>
+
+    <div class="split-section">
+        <div class="section-image">
+            <img src="../img/syndicate_culture_4_ceo.png" alt="A CEO studying a battlefield map" onerror="this.parentElement.remove()">
+        </div>
+        <div class="section-text">
+            <h2>The CEOs</h2>
+            <p>For the most important operations, the Abyssal President personally appoints a <strong>Chief Executive Officer</strong>. CEOs are chosen for one quality above all: an analytical mind for which efficiency is everything. They weigh every soldier, every soul and every risk on the same scale, and they never let pride, honor or cruelty distort the numbers.</p>
+
+            <p>Once appointed, a CEO holds authority over all official forces of the Syndicate within their mandate, noble and corporate alike. Even a Duke must obey, a fact the Courts find deeply humiliating and the CEOs find entirely reasonable. A CEO who delivers is celebrated across Hell; one who fails rarely receives a second appointment.</p>
+        </div>
+    </div>
+
+    <div class="full-width-section">
+        <div class="section-text" style="padding: 0;">
+            <h2>The Forces of the Syndicate</h2>
+            <p>When contracts and persuasion are not enough, the Syndicate fields four official forces, each with its own role and its own place in the eternal tug-of-war between the Courts and the corporate wing.</p>
+
+            <div class="forces-grid">
+                <a href="../units/syndicate/syndicate_house_of_duty.html" class="force-card">
+                    <h3>House of Duty</h3>
+                    <span class="force-role">Administration &amp; Control</span>
+                    <p>The administrators, servants and protectors of Hell's great estates and offices. Pages and Keepers guard the archives, Maids and Butlers keep officials alive, while Courtesans, Torturers and Judges handle the delicate business of persuasion. At its peak stand the Governors, who rule entire provinces.</p>
+                </a>
+                <a href="../units/syndicate/syndicate_black_guards.html" class="force-card">
+                    <h3>The Black Guards</h3>
+                    <span class="force-role">Regular Army</span>
+                    <p>The Syndicate's regular army, equipped by the corporate foundries but often led by Noble Scions of the old houses: the place where blood and money meet on the battlefield. Sword-armed Soldiers and Legionaries, spear-wielding Hellguards and Dark Knights, and the Arbiters who settle disputes on the spot.</p>
+                </a>
+                <a href="../units/syndicate/syndicate_contracted_demons.html" class="force-card">
+                    <h3>Contracted Demons</h3>
+                    <span class="force-role">Bound Abyssal Power</span>
+                    <p>Chaotic creatures of the Abyss bound by airtight contracts. The nobility despises them and the executives find them distasteful, but nobody argues with their results. Contractors summon fragments of their power, while Demons grow into Demon Lords, Overlords and, at the very top, the Abyssal Tyrant.</p>
+                </a>
+                <a href="../units/syndicate/syndicate_eclipse_ravens.html" class="force-card">
+                    <h3>Eclipse Ravens</h3>
+                    <span class="force-role">Marksmen &amp; Assassins</span>
+                    <p>The Syndicate's marksmen, spies and assassins, led by Commanders who read the battlefield like a balance sheet. From Troopers and Archers to Shades, Hitmen and the legendary Endsinger, they remove problems before those problems ever reach the negotiating table.</p>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <a href="syndicate.html" class="back-link">← Return to Syndicate Overview</a>
+</main>
+
+<script src="../system/navigation.js"></script>
+</body>
+</html>

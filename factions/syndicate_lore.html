@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Syndicate Lore</title>
+    <link rel="stylesheet" href="../system/shared.css">
+    <style>
+        :root {
+            /* Colori adattati per il Devil Syndicate */
+            --accent-color: #e53935;
+            --accent-glow:  rgba(229, 57, 53, 0.5);
+            --panel-bg:     rgba(20, 10, 12, 0.8);
+        }
+
+        body {
+            line-height: 1.8;
+        }
+
+        #bg-image {
+            background-image: url('../img/valkyrion_bg.jpeg');
+        }
+
+        #overlay  {
+            background: linear-gradient(to bottom, rgba(18, 8, 10, 0.88), rgba(10, 4, 5, 0.97));
+        }
+
+        /* SOVRASCRITTURA LAYOUT PER IMMAGINI PANORAMICHE */
+        .split-section {
+            display: flex;
+            flex-direction: column; /* Forza l'immagine sopra e il testo sotto */
+            background: var(--panel-bg);
+            border: 1px solid rgba(229, 57, 53, 0.2);
+            border-radius: 8px;
+            margin-bottom: 50px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: border-color 0.3s ease;
+        }
+
+        .split-section:hover {
+            border-color: rgba(229, 57, 53, 0.5);
+        }
+
+        .section-image {
+            width: 100%;
+            aspect-ratio: 21 / 9;
+            border-bottom: 1px solid rgba(229, 57, 53, 0.3);
+            overflow: hidden;
+        }
+
+        .section-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .section-text {
+            padding: 40px;
+        }
+
+        .section-text h2 {
+            color: #fff;
+            font-size: 2.2rem;
+            margin-top: 0;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        .section-text p {
+            color: #e0e0e0;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .section-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ELENCO DEI GIRONI */
+        .circle-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px 0;
+        }
+
+        .circle-list li {
+            color: #e0e0e0;
+            font-size: 1.05rem;
+            padding: 12px 0 12px 18px;
+            border-left: 2px solid rgba(229, 57, 53, 0.35);
+            margin-bottom: 8px;
+        }
+
+        .circle-list li strong {
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* STILIZZAZIONE DELLE CITAZIONI (QUOTE) */
+        .quote {
+            border-left: 4px solid var(--accent-color);
+            background: rgba(229, 57, 53, 0.05);
+            padding: 20px 25px;
+            margin: 30px 0;
+            font-style: italic;
+            color: #d0d0d0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .quote-author {
+            display: block;
+            margin-top: 12px;
+            font-weight: bold;
+            color: var(--accent-color);
+            font-style: normal;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: var(--accent-color);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: bold;
+            transition: text-shadow 0.3s;
+        }
+
+        .back-link:hover {
+            text-shadow: 0 0 10px var(--accent-glow);
+        }
+    </style>
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+<global-navigation base="../"></global-navigation>
+
+<header>
+    <h1>Faction Lore</h1>
+    <div class="subtitle">The Infernal Archives of the Devil Syndicate</div>
+</header>
+
+<main>
+    <div class="split-section" style="border: none; background: rgba(15,15,15,0.5); box-shadow: none; margin-bottom: 30px;">
+        <div class="section-text" style="padding: 20px; text-align: center;">
+            <p style="text-align: center; margin: 0; color: #aaa;">In this section, we explore the origins of Hell, the rise of the Infernal Courts and the corporate revolution that turned damnation into an industry.</p>
+        </div>
+    </div>
+
+    <!-- Le immagini mancanti vengono rimosse automaticamente: basta caricare i file con questi nomi in img/ -->
+    <div class="split-section">
+        <div class="section-image">
+            <img src="../img/syndicate_lore_1_president.png" alt="The Abyssal President above the first pit of Hell" onerror="this.parentElement.remove()">
+        </div>
+        <div class="section-text">
+            <h2>The Abyssal President</h2>
+            <p>Before there were contracts, there was the <strong>Abyssal President</strong>. No record states where they came from, and no devil is foolish enough to ask. What every archive agrees on is that Hell is their creation: a realm forged to receive, judge and keep the souls of mortals.</p>
+
+            <p>In the beginning Hell was a crude place, little more than a pit of fire and screaming. Souls were gathered without method, punishments were improvised, and most of the President's subjects were mindless, chaotic creatures. It worked, but it was wasteful. And if there is one thing the President has never tolerated, it is waste.</p>
+        </div>
+    </div>
+
+    <div class="split-section">
+        <div class="section-image">
+            <img src="../img/syndicate_lore_2_courts.png" alt="A Duke presiding over an infernal court" onerror="this.parentElement.remove()">
+        </div>
+        <div class="section-text">
+            <h2>Lessons from Mortals: The Infernal Courts</h2>
+            <p>The President found the solution where they least expected it: in the mortals themselves. Watching human kingdoms rise and fall, they noticed how titles, lands and bloodlines kept millions obedient without the need for constant violence. Hell would have a nobility of its own.</p>
+
+            <p>Thus were born the <strong>Infernal Courts</strong>, noble houses ruled by Dukes and their vassal Barons. Each house was granted dominion over a territory, both within Hell and in the mortal realms beyond it. The great houses became masters of war and sorcery, the sword and shield of the President's domain.</p>
+
+            <p>Pride came with the titles. The nobility looks down on demons as savage beasts and on low-born mortals as livestock. To a Duke, lineage is everything: a devil is worth exactly as much as the blood in their veins and the honor of their name.</p>
+        </div>
+    </div>
+
+    <div class="split-section">
+        <div class="section-image">
+            <img src="../img/syndicate_lore_3_corporate.png" alt="Devils drafting contracts in an infernal office" onerror="this.parentElement.remove()">
+        </div>
+        <div class="section-text">
+            <h2>The Corporate Revolution</h2>
+            <p>Devils are not bound to a single world. Over the ages their agents walked many dimensions, and in one of them they found a breed of mortals unlike any other: people of steel towers and paper money, who had replaced swords with contracts and kings with shareholders, and who measured everything, even their own lives, in profit.</p>
+
+            <p>The idea spread through Hell like wildfire. A new sector rose alongside the Courts: offices that drafted contracts and hid clauses within clauses, archives that tracked every soul ever acquired, foundries that mass-produced weapons, and research divisions that designed entirely new forms of magic. For the first time, Hell had something it had always lacked: <strong>efficiency</strong>.</p>
+
+            <div class="quote">
+                "A Duke conquers a province and calls it glory. We acquire it, and call it a quarterly result."
+                <span class="quote-author">— Anonymous executive, Syndicate archives</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="split-section">
+        <div class="section-image">
+            <img src="../img/syndicate_lore_4_conflict.png" alt="A noble and an executive facing each other across a table" onerror="this.parentElement.remove()">
+        </div>
+        <div class="section-text">
+            <h2>Blood Against Merit</h2>
+            <p>The corporate wing brought with it a wave of meritocracy that the nobility still considers an insult. In the boardrooms a devil of humble birth can climb to the top on results alone, while in the Courts a Baron's heir is a Baron before having done anything at all.</p>
+
+            <p>The two sides despise each other with remarkable politeness. The nobles call the executives "accountants with horns"; the executives call the nobles "legacy costs". Duels of honor and hostile takeovers are fought side by side, and more than one feud has ended with a noble house declared bankrupt, or a company director challenged to a duel they could not refuse.</p>
+
+            <p>Yet neither side can do without the other. The Courts provide armies, sorcerers and centuries of experience; the corporate wing provides weapons, contracts and an endless stream of souls.</p>
+        </div>
+    </div>
+
+    <div class="split-section">
+        <div class="section-image">
+            <img src="../img/syndicate_lore_5_circles.png" alt="The Circles of Hell descending into the abyss" onerror="this.parentElement.remove()">
+        </div>
+        <div class="section-text">
+            <h2>The Circles of Hell</h2>
+            <p>Beyond the Courts and the offices lie the <strong>Circles of Hell</strong>, where the souls of sinners serve their sentence. Each Circle is dedicated to a particular sin and managed like any other asset: punishment is not only justice, but also the slow refinement of raw souls into something useful.</p>
+
+            <ul class="circle-list">
+                <li><strong>I – Limbo</strong> – A grey, endless waiting room for souls whose files are incomplete. Nothing hurts there; nothing ever happens either.</li>
+                <li><strong>II – Lust</strong> – An eternal storm that tosses the lustful against one another, never letting them touch what they desire.</li>
+                <li><strong>III – Gluttony</strong> – A swamp of freezing, rotten rain where gluttons crawl through the mud, forever hungry.</li>
+                <li><strong>IV – Greed</strong> – Misers and spendthrifts push enormous weights against each other in an audit that never balances. The corporate wing considers it the best-run Circle in Hell.</li>
+                <li><strong>V – Wrath</strong> – A boiling marsh where the wrathful tear at each other, while the sullen sink silently beneath the surface.</li>
+                <li><strong>VI – Heresy</strong> – Fields of burning tombs for those who denied every god and every rule.</li>
+                <li><strong>VII – Violence</strong> – Rivers of boiling blood and forests of thorns for murderers, tyrants and those who turned violence against themselves. Devils find these souls crude, but they make excellent raw material.</li>
+                <li><strong>VIII – Fraud</strong> – A maze of ditches for liars, forgers and false counselors. Recruiters visit often: some of the Syndicate's finest employees once lived here.</li>
+                <li><strong>IX – Treachery</strong> – A frozen lake at the very bottom of Hell, where traitors are trapped in ice for eternity. Breaking a contract is the one sin every devil, noble or executive, agrees is unforgivable.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="split-section">
+        <div class="section-image">
+            <img src="../img/syndicate_lore_6_results.png" alt="An empty office with its nameplate removed" onerror="this.parentElement.remove()">
+        </div>
+        <div class="section-text">
+            <h2>Results, Not Methods</h2>
+            <p>Today the President openly favors the corporate wing, whose results speak for themselves. Yet they have never dismantled the Courts. Both sides enjoy full autonomy over their territories, and the President's only demand is simple: <strong>bring results</strong>. How they are achieved is none of the President's concern.</p>
+
+            <p>Failure is another matter. Devils who fail are demoted, stripped of their territories or reassigned to the less pleasant Circles. Some simply disappear: their offices are cleared overnight, their names vanish from the archives, and no one ever asks where they went.</p>
+
+            <div class="quote">
+                "The President does not punish failure. The President simply stops paying for it."
+                <span class="quote-author">— Internal memorandum, Office of the Abyssal President</span>
+            </div>
+        </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 40px; margin-bottom: 40px;">
+        <a href="syndicate.html" class="back-link">← Return to Syndicate Overview</a>
+    </div>
+</main>
+
+<script src="../system/navigation.js"></script>
+</body>
+</html>
