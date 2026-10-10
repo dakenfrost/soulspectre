@@ -1,6 +1,6 @@
 # SOULSPECTRE – Immagini mancanti delle unità
 
-Aggiornato al 2026-10-11. Solo immagini delle unità: combattimento, ritratto nella pagina dell'ordine o degli extra, icone delle skill. Gallerie escluse.
+Aggiornato al 2026-10-11. Solo immagini delle unità: combattimento, ritratto nella pagina dell'ordine o degli extra, icone delle skill (quelle mancanti ora usano i placeholder base). Gallerie escluse.
 
 I percorsi sono relativi alla cartella `img/`.
 
@@ -121,57 +121,4 @@ I percorsi sono relativi alla cartella `img/`.
 
 ## Valkyrion Empire
 
-
-**Hero Anastasia Maid**
-- [ ] `valkyrion_skill_icon_annihilation.png` (skill icon)
-- [ ] `valkyrion_skill_icon_kick_out.png` (skill icon)
-- [ ] `valkyrion_skill_icon_maid_combat.png` (skill icon)
-- [ ] `valkyrion_skill_icon_angry_maid.png` (skill icon)
-
-**Hero Chloe**
-- [ ] `valkyrion_skill_icon_fire_blast.png` (skill icon)
-- [ ] `valkyrion_skill_icon_drain_energy.png` (skill icon)
-- [ ] `valkyrion_skill_icon_absorb_life.png` (skill icon)
-
-**Hero Claire**
-- [ ] `valkyrion_skill_icon_mighty_blow.png` (skill icon)
-- [ ] `valkyrion_skill_icon_earth_divider.png` (skill icon)
-- [ ] `valkyrion_skill_icon_cold_blood.png` (skill icon)
-
-**Hero Erika**
-- [ ] `valkyrion_skill_icon_tracking_shot.png` (skill icon)
-- [ ] `valkyrion_skill_icon_flashbang.png` (skill icon)
-- [ ] `valkyrion_skill_icon_shield_generator.png` (skill icon)
-
-**Hero Founder**
-- [ ] `valkyrion_skill_icon_founder_base.png` (skill icon)
-- [ ] `valkyrion_skill_icon_founder_shatter.png` (skill icon)
-- [ ] `valkyrion_skill_icon_founder_resolve.png` (skill icon)
-- [ ] `valkyrion_skill_icon_founder_ultimate.png` (skill icon)
-
-**Hero Lilibeth**
-- [ ] `valkyrion_skill_icon_fire_grenade.png` (skill icon)
-- [ ] `valkyrion_skill_icon_life_elixir.png` (skill icon)
-- [ ] `valkyrion_skill_icon_adaptive_coat.png` (skill icon)
-- [ ] `valkyrion_skill_icon_catastrophic_reaction.png` (skill icon)
-
-**Hero Luther**
-- [ ] `valkyrion_skill_icon_revify.png` (skill icon)
-- [ ] `valkyrion_skill_icon_chain_heal.png` (skill icon)
-- [ ] `valkyrion_skill_icon_unyielding_spirit.png` (skill icon)
-
-**Hero Paoler**
-- [ ] `valkyrion_skill_icon_flaming_slash.png` (skill icon)
-- [ ] `valkyrion_skill_icon_blazing_tornado.png` (skill icon)
-- [ ] `valkyrion_skill_icon_molten_shield.png` (skill icon)
-- [ ] `valkyrion_skill_icon_phoenix_raise.png` (skill icon)
-
-**Hero Regolus**
-- [ ] `valkyrion_skill_icon_divine_fire.png` (skill icon)
-- [ ] `valkyrion_skill_icon_divine_rebirth.png` (skill icon)
-
-**Hero Xarus**
-- [ ] `valkyrion_skill_icon_tactical_reload.png` (skill icon)
-
-**Wizard**
-- [ ] `valkyrion_skill_icon_mage_armor.png` (skill icon)
+Nessuna immagine mancante.
