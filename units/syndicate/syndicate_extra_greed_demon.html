@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Greed Demon</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Greed Demon",
+  "faction": "Syndicate",
+  "subtitle": "Extra - Tier IV (Large)",
+  "accent": "#ba68c8",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/syndicate.html",           "label": "Devil Syndicate" },
+    { "href": "../../factions/syndicate_roster.html",    "label": "Roster" },
+    { "href": "syndicate_extra.html",                    "label": "Extra Archive" },
+    {                                                    "label": "Greed Demon" }
+  ],
+
+  "combat": [
+    "../../img/syndicate/syndicate_extra_greed_demon_combat.png"
+  ],
+
+  "bio": {
+    "title": "Avaricious Behemoths",
+    "paragraphs": [
+      "Imposing entities from the Fourth Circle. Driven by an insatiable and all-consuming avarice, they have mastered a versatile array of combat disciplines simply because they refuse to specialize, desiring absolute ownership over all forms of power.",
+      "In battle, their greed is both their greatest weapon and their most crippling flaw. While they can effortlessly shred defenses and even steal the very life force and advantages of their superiors, witnessing another entity possess more vitality than themselves drives them into a blinding, uncoordinated envy."
+    ]
+  },
+
+  "stats": {
+    "hp": 350,
+    "atk": 110,
+    "ini": 40,
+    "res": "Fire"
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Rending Slash",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Tears into the target to aggressively strip their defenses, dealing <strong>100% of their attack</strong> as <span class=\"dmg-phys\">Physical</span> damage to a melee enemy. Applies the <span class=\"highlight-debuff\">Armor Sunder</span> debuff, reducing the target's armor by <strong>10%</strong> for 2 turns. This effect can stack up to <strong>5 times</strong>."
+    },
+    {
+      "type": "active",
+      "name": "Avaricious Exchange",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "A supreme act of theft. Can only target a ranged enemy whose current HP is strictly higher than this unit's. Instantly <span class=\"highlight-buff\">swaps the current HP, buffs, and debuffs</span> between the two units. Upon execution, this unit gains the <span class=\"highlight-buff\">Satisfied</span> buff for 3 turns, entirely suppressing the effects of Blind Greed."
+    },
+    {
+      "type": "passive",
+      "name": "Blind Greed",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Consumed by envy. Whenever any unit on the battlefield has more current HP than this demon, it afflicts itself with the <span class=\"highlight-debuff\">Blind Greed</span> debuff, which reduces its accuracy and attack by <strong>5%</strong> for 3 turns. This self-sabotage can stack up to <strong>8 times</strong>."
+    }
+  ],
+
+  "gallery": [
+    "../../img/extra/syndicate_extra_greed_demon_gallery1.jpg",
+    "../../img/extra/syndicate_extra_greed_demon_gallery2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "syndicate_extra.html",
+    "label": "Return to Extra Archive"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+</body>
+</html>
