@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Director</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Director",
+  "faction": "Syndicate",
+  "subtitle": "Extra - Tier IV",
+  "accent": "#ba68c8",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/syndicate.html",           "label": "Devil Syndicate" },
+    { "href": "../../factions/syndicate_roster.html",    "label": "Roster" },
+    { "href": "syndicate_extra.html",                    "label": "Extra Archive" },
+    {                                                    "label": "Director" }
+  ],
+
+  "combat": [
+    "../../img/syndicate/syndicate_extra_director_combat.png"
+  ],
+
+  "bio": {
+    "title": "Executive Overseers",
+    "paragraphs": [
+      "High-ranking executives overseeing entire infernal divisions. Directors sit near the apex of the Syndicate's corporate ladder, wielding formidable arcane authority to dominate the battlefield and maximize their team's output.",
+      "A true Director never bears the full brunt of a crisis. They expertly delegate pain and risk to their subordinates, surviving lethal blows by distributing the damage across their department while aggressively 'motivating' specific employees into immediate, highly productive action."
+    ]
+  },
+
+  "stats": {
+    "hp": 110,
+    "atk": 60,
+    "ini": 40,
+    "res": "Fire"
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Fireblast",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Casts a potent area-of-effect flame spell, dealing <strong>100% of their attack</strong> as <span class=\"dmg-fire\">Fire</span> damage to all enemies in a targeted group."
+    },
+    {
+      "type": "active",
+      "name": "I Chose You!",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Singles out a subordinate for a critical task. Applies the <span class=\"highlight-buff\">Motivated</span> buff to a friendly unit for 1 turn, increasing their attack by <strong>20%</strong>. The targeted unit <span class=\"highlight-buff\">immediately gains an extra turn</span> to act."
+    },
+    {
+      "type": "passive",
+      "name": "Share the Responsibility",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Masterful corporate deflection. Whenever struck by an enemy's direct damaging skill, the incoming damage is reduced by <strong>10% for each other unit currently alive</strong> in their group. Every other allied unit in the group is then forced to suffer <strong>10%</strong> of the original damage."
+    }
+  ],
+
+  "gallery": [
+    "../../img/extra/syndicate_extra_director_gallery1.jpg",
+    "../../img/extra/syndicate_extra_director_gallery2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "syndicate_extra.html",
+    "label": "Return to Extra Archive"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+</body>
+</html>
