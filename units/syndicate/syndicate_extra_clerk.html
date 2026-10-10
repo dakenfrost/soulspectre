@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Clerk</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Clerk",
+  "faction": "Syndicate",
+  "subtitle": "Extra - Tier II",
+  "accent": "#81c784",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/syndicate.html",           "label": "Devil Syndicate" },
+    { "href": "../../factions/syndicate_roster.html",    "label": "Roster" },
+    { "href": "syndicate_extra.html",                    "label": "Extra Archive" },
+    {                                                    "label": "Clerk" }
+  ],
+
+  "combat": [
+    "../../img/syndicate/syndicate_extra_clerk_combat.png"
+  ],
+
+  "bio": {
+    "title": "Administrative Casters",
+    "paragraphs": [
+      "Standard administrative casters of the Syndicate, Clerks handle the endless bureaucracy required to keep the infernal corporate machine running smoothly. Their daily routine is a soul-crushing cycle of paperwork and arcane filing.",
+      "While they wield reliable area-of-effect fire spells as part of their standard skill set, their true destructive potential is unlocked when forced into uncompensated overtime, channeling their sheer corporate frustration into devastating dark magic."
+    ]
+  },
+
+  "stats": {
+    "hp": 65,
+    "atk": 30,
+    "ini": 40,
+    "res": "Fire"
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Fireblast",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Unleashes a sweeping wave of flames, dealing <strong>100% of their attack</strong> as <span class=\"dmg-fire\">Fire</span> damage to all enemies in a targeted group."
+    },
+    {
+      "type": "active",
+      "name": "Overwork Frustration",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Channels intense corporate burnout, granting the <span class=\"highlight-buff\">Overwork Frustration</span> state for 2 turns. The next use of Fireblast consumes this state to deal an <strong>additional 100% damage</strong> as <span class=\"dmg-dark\">Dark</span> damage. Clears immediately upon use."
+    }
+  ],
+
+  "gallery": [
+    "../../img/extra/syndicate_extra_clerk_gallery1.jpg",
+    "../../img/extra/syndicate_extra_clerk_gallery2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "syndicate_extra.html",
+    "label": "Return to Extra Archive"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+</body>
+</html>
