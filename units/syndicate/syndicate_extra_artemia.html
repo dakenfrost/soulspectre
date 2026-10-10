@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Artemia, the Iron Executive Officer</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Artemia, the Iron Executive Officer",
+  "faction": "Syndicate",
+  "subtitle": "Extra - Tier V",
+  "accent": "#d32f2f",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/syndicate.html",           "label": "Devil Syndicate" },
+    { "href": "../../factions/syndicate_roster.html",    "label": "Roster" },
+    { "href": "syndicate_extra.html",                    "label": "Extra Archive" },
+    {                                                    "label": "Artemia" }
+  ],
+
+  "combat": [
+    "../../img/syndicate/syndicate_extra_artemia_combat.png"
+  ],
+
+  "bio": {
+    "title": "The Iron Executive",
+    "paragraphs": [
+      "A terrifying force within the Syndicate's upper management. Artemia treats the battlefield strictly as a corporate balance sheet, where subordinate lives are merely resources to be expended, protected, or detonated entirely based on return on investment.",
+      "She commands through sheer, unadulterated dread. Her tactical doctrines involve stabilizing frontlines through terror, heavily penalizing any breach in her defensive aura, and violently cannibalizing her own vitality to forcibly push a 'crunch time' offensive when corporate targets must be met."
+    ]
+  },
+
+  "stats": {
+    "hp": 250,
+    "atk": 80,
+    "ini": 40
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Hell Bombardment",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Unleashes a relentless barrage of corporate hellfire, dealing <strong>100% of her attack</strong> as <span class=\"dmg-fire\">Fire</span> damage to an enemy group. Has a <strong>20% chance</strong> to apply the <span class=\"highlight-debuff\">Burn</span> debuff, which inflicts <strong>20% of her attack</strong> as damage at the start of each turn for 2 turns."
+    },
+    {
+      "type": "active",
+      "name": "Hold the line or else...",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Threatens a friendly row into absolute submission. Applies the <span class=\"highlight-buff\">Despair Defense</span> mind buff, which increases their armor by <strong>30%</strong> for 2 turns. If any allied unit dies while under this buff, they violently detonate, dealing <strong>100% of Artemia's attack</strong> as <span class=\"dmg-fire\">Fire</span> damage to nearby enemy units."
+    },
+    {
+      "type": "passive",
+      "name": "Reinforced Mana",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Generates a volatile arcane barrier. At the start of her turn, Artemia gains a <span class=\"highlight-buff\">Shield</span> equal to <strong>100% of her attack</strong>. If this shield is completely depleted at any point, the collapsing energy violently arcs, dealing <strong>20% of her attack</strong> as <span class=\"dmg-fire\">Fire</span> damage to one random friendly unit <strong>and</strong> one random enemy unit."
+    },
+    {
+      "type": "ultimate",
+      "name": "Challenge is Opportunity",
+      "icon": "../../img/base_ultimate_skill.png",
+      "desc": "Sacrifices corporate stability for immediate aggressive output. Consumes <strong>50% of her current HP</strong> to gain the <span class=\"highlight-buff\">Crunch Time</span> buff for 2 turns, which directly converts the consumed HP value into bonus Attack. Simultaneously, she generates a <span class=\"highlight-buff\">Shield</span> exactly equal to the amount of HP consumed."
+    }
+  ],
+
+  "gallery": [
+    "../../img/extra/syndicate_extra_artemia_gallery1.jpg",
+    "../../img/extra/syndicate_extra_artemia_gallery2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "syndicate_extra.html",
+    "label": "Return to Extra Archive"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+</body>
+</html>
