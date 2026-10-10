@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Tormentor</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Tormentor",
+  "faction": "Syndicate",
+  "subtitle": "Extra - Tier II",
+  "accent": "#81c784",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/syndicate.html",           "label": "Devil Syndicate" },
+    { "href": "../../factions/syndicate_roster.html",    "label": "Roster" },
+    { "href": "syndicate_extra.html",                    "label": "Extra Archive" },
+    {                                                    "label": "Tormentor" }
+  ],
+
+  "combat": [
+    "../../img/syndicate/syndicate_extra_tormentor_combat.png"
+  ],
+
+  "bio": {
+    "title": "Sadistic Enforcers",
+    "paragraphs": [
+      "Cruel fiends armed with traditional infernal pitchforks, Tormentors are the brutal enforcers of the Syndicate's penal and interrogation divisions. They derive immense satisfaction from relentlessly agonizing their victims without granting the mercy of a quick death.",
+      "In combat, they specialize in inflicting grievous, bleeding wounds that slowly drain the life from their targets. Once an enemy is sufficiently weakened or impaired, the Tormentor executes them with brutal, amplified force."
+    ]
+  },
+
+  "stats": {
+    "hp": 135,
+    "atk": 50,
+    "ini": 50,
+    "res": "Fire"
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Impaling Stab",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Thrusts their pitchfork with malicious intent, dealing <strong>100% of their attack</strong> as <span class=\"dmg-phys\">Physical</span> damage to a melee enemy. Has a <strong>35% chance</strong> to apply the <span class=\"highlight-debuff\">Bleeding</span> bio debuff for 2 turns, which deals <strong>10% of their attack</strong> as <span class=\"dmg-bio\">Bio</span> damage each turn."
+    },
+    {
+      "type": "active",
+      "name": "Cull the Weak",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Ruthlessly capitalizes on a target's suffering, dealing <strong>120% of their attack</strong> as <span class=\"dmg-phys\">Physical</span> damage to a melee enemy. If the target is currently afflicted by any debuff, the damage is amplified to <strong>180%</strong>."
+    }
+  ],
+
+  "gallery": [
+    "../../img/extra/syndicate_extra_tormentor_gallery1.jpg",
+    "../../img/extra/syndicate_extra_tormentor_gallery2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "syndicate_extra.html",
+    "label": "Return to Extra Archive"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+</body>
+</html>
