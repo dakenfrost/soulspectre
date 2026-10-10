@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Enslaved Warrior</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Enslaved Warrior",
+  "faction": "Syndicate",
+  "subtitle": "Extra - Tier III (Summon)",
+  "accent": "#64b5f6",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/syndicate.html",           "label": "Devil Syndicate" },
+    { "href": "../../factions/syndicate_roster.html",    "label": "Roster" },
+    { "href": "syndicate_extra.html",                    "label": "Extra Archive" },
+    {                                                    "label": "Enslaved Warrior" }
+  ],
+
+  "combat": [
+    "../../img/syndicate/syndicate_summon_enslaved_warrior_combat.png"
+  ],
+
+  "bio": {
+    "title": "Bound Legends",
+    "paragraphs": [
+      "The soul of a legendary mortal combatant wielding a massive greatsword. Having signed an infernal contract for power in life, he is now bound to eternal, tragic servitude in the afterlife.",
+      "Summoned directly to the battlefield by Syndicate executives, this giant serves as a relentless shock trooper. Even on the brink of total destruction, the unbreakable martial will that made him a legend allows him to push past death for one final, devastating counter-offensive before his essence shatters."
+    ]
+  },
+
+  "stats": {
+    "hp": 200,
+    "atk": 100,
+    "ini": 50
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Heavy Swing",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Executes a massive, sweeping horizontal strike, dealing <strong>100% of their attack</strong> as <span class=\"dmg-phys\">Physical</span> damage to all enemy units in a targeted <strong>row</strong>."
+    },
+    {
+      "type": "active",
+      "name": "Quaking Slash",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Brings their greatsword crashing down with earth-shattering force, dealing <strong>125% of their attack</strong> as <span class=\"dmg-phys\">Physical</span> damage to all enemy units in a targeted <strong>column</strong>."
+    },
+    {
+      "type": "passive",
+      "name": "Warrior Will",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Defies death through sheer martial stubbornness. When this unit's HP is reduced to 0, it instead remains at <strong>1 HP</strong> and instantly <span class=\"highlight-buff\">gains an extra turn</span>. At the conclusion of this extra turn, the unit perishes definitively."
+    }
+  ],
+
+  "gallery": [
+    "../../img/extra/syndicate_summon_enslaved_warrior_gallery1.jpg",
+    "../../img/extra/syndicate_summon_enslaved_warrior_gallery2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "syndicate_extra.html",
+    "label": "Return to Extra Archive"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+</body>
+</html>
