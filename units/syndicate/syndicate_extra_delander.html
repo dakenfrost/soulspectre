@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Delander, the Heresy Demon</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Delander, the Heresy Demon",
+  "faction": "Syndicate",
+  "subtitle": "Extra - Tier IV (Large)",
+  "accent": "#ba68c8",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/syndicate.html",           "label": "Devil Syndicate" },
+    { "href": "../../factions/syndicate_roster.html",    "label": "Roster" },
+    { "href": "syndicate_extra.html",                    "label": "Extra Archive" },
+    {                                                    "label": "Delander" }
+  ],
+
+  "combat": [
+    "../../img/syndicate/syndicate_extra_delander_combat.png"
+  ],
+
+  "bio": {
+    "title": "The Inquisitorial Warden",
+    "paragraphs": [
+      "A massive demonic warden entrusted with the Syndicate's most extreme disciplinary and containment protocols. Delander drags a colossal iron coffin across the battlefield, utilizing it as both a crushing bludgeon and a mobile isolation cell.",
+      "His tactical utility is entirely centered around this unholy casket. Depending on the corporate directive, he can use it to completely remove high-threat hostiles from reality while crushing them inside, or as an impenetrable recovery pod to violently mend broken corporate assets."
+    ]
+  },
+
+  "stats": {
+    "hp": 550,
+    "atk": 120,
+    "ini": 30,
+    "res": "Fire"
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Coffin Slam",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Swings his massive containment unit with brutal force, dealing <strong>100% of his attack</strong> as <span class=\"dmg-phys\">Physical</span> damage to a melee enemy. If the coffin is currently occupied by any unit, the added mass increases the impact, dealing <strong>150% of his attack</strong> instead."
+    },
+    {
+      "type": "active",
+      "name": "Entomb",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Forces a normal-sized ally or enemy into his iron casket for 2 turns, granting Delander the <span class=\"highlight-buff\">Entombed Unit</span> physical buff (which cannot be dispelled). The entombed target cannot act, cannot be targeted, and is completely immune to all other skills and effects. The containment ends after 2 turns, or immediately if the trapped unit's HP reaches 0."
+    },
+    {
+      "type": "passive",
+      "name": "Heretic Judgement",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "The coffin administers its payload automatically at the start of Delander's turn. If the entombed unit is an <strong>ally</strong>, it <span class=\"highlight-buff\">heals for 25% of its maximum HP</span>. If the entombed unit is an <strong>enemy</strong>, the casket's internal mechanisms activate, dealing <strong>25% of Delander's attack</strong> as <span class=\"dmg-phys\">Physical</span> damage."
+    }
+  ],
+
+  "gallery": [
+    "../../img/extra/syndicate_extra_delander_gallery1.jpg",
+    "../../img/extra/syndicate_extra_delander_gallery2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "syndicate_extra.html",
+    "label": "Return to Extra Archive"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+</body>
+</html>
