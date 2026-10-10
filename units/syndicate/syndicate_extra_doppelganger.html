@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Doppelganger</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Doppelganger",
+  "faction": "Syndicate",
+  "subtitle": "Extra - Tier IV",
+  "accent": "#ba68c8",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/syndicate.html",           "label": "Devil Syndicate" },
+    { "href": "../../factions/syndicate_roster.html",    "label": "Roster" },
+    { "href": "syndicate_extra.html",                    "label": "Extra Archive" },
+    {                                                    "label": "Doppelganger" }
+  ],
+
+  "combat": [
+    "../../img/syndicate/syndicate_extra_doppelganger_combat.png"
+  ],
+
+  "bio": {
+    "title": "Corporate Infiltrators",
+    "paragraphs": [
+      "Highly classified assets utilized by the Syndicate's intelligence and espionage divisions. Doppelgangers possess no true form of their own, existing as unsettling, shifting masses of dark arcane energy until they locate a suitable template to mimic.",
+      "In combat, they act as perfect tactical mirrors. By weaponizing the enemy's own strengths and psychological fears against them, they can perfectly replicate the physical and magical properties of any hostile unit, seamlessly shifting the balance of power."
+    ]
+  },
+
+  "stats": {
+    "hp": 125,
+    "atk": 50,
+    "ini": 60,
+    "res": "Fire"
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Mirror Attack",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Targets a ranged enemy and flawlessly mimics their offensive capability. Uses that specific <span class=\"highlight-buff\">unit's base attack against them</span>. If the copied attack possesses an Area of Effect (AoE) property, it resolves correctly against all valid targets in the group."
+    },
+    {
+      "type": "active",
+      "name": "Copy Shape",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Selects an enemy unit at any range and grants the <span class=\"highlight-buff\">Doppel</span> buff for 2 turns. While active, this unit completely assumes the target's appearance, Maximum HP, Attack, Initiative, Armor, Dodge, Resistances, Immunities, and Skillset. Once the buff ends or is cleansed, this unit reverts to its original baseline stats."
+    },
+    {
+      "type": "passive",
+      "name": "Creepy Figure",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "The Doppelganger's default shifting form severely disorients the psyche. Any enemy targeting this unit that is not immune to <span class=\"dmg-mind\">Mind</span> effects suffers a <strong>30% reduced chance to hit</strong>. This passive is disabled while the unit is under the effects of the Doppel buff."
+    }
+  ],
+
+  "gallery": [
+    "../../img/extra/syndicate_extra_doppelganger_gallery1.jpg",
+    "../../img/extra/syndicate_extra_doppelganger_gallery2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "syndicate_extra.html",
+    "label": "Return to Extra Archive"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+</body>
+</html>
