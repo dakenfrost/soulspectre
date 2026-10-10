@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Gluttony Demon</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Gluttony Demon",
+  "faction": "Syndicate",
+  "subtitle": "Extra - Tier III (Large)",
+  "accent": "#64b5f6",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/syndicate.html",           "label": "Devil Syndicate" },
+    { "href": "../../factions/syndicate_roster.html",    "label": "Roster" },
+    { "href": "syndicate_extra.html",                    "label": "Extra Archive" },
+    {                                                    "label": "Gluttony Demon" }
+  ],
+
+  "combat": [
+    "../../img/syndicate/syndicate_extra_gluttony_demon_combat.png"
+  ],
+
+  "bio": {
+    "title": "Ravagers of the Third Circle",
+    "paragraphs": [
+      "Massive, perpetually starving horrors from the Third Circle. Devoid of any arcane capability or corporate ambition, they are driven entirely by a catastrophic physical strength and an insatiable appetite.",
+      "Within the Syndicate's ranks, they are deployed as heavy shock troops or literal organic garbage disposals. Their ability to consume enemy formations whole and weaponize their own corrosive gastric acids makes them an untidy, yet highly efficient, asset on the battlefield."
+    ]
+  },
+
+  "stats": {
+    "hp": 340,
+    "atk": 100,
+    "ini": 30,
+    "res": "Fire"
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Massive Bite",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Snaps its enormous jaws shut, dealing <strong>100% of their attack</strong> as <span class=\"dmg-phys\">Physical</span> damage to a single melee enemy unit."
+    },
+    {
+      "type": "active",
+      "name": "Toxic Vomit",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Expels a torrent of corrosive gastric fluids, dealing <strong>40% of their attack</strong> as <span class=\"dmg-bio\">Bio</span> damage to all enemies in a row. Applies the <span class=\"highlight-debuff\">Acid</span> physical debuff for 2 turns, which inflicts an additional <strong>40% of their attack</strong> as <span class=\"dmg-phys\">Physical</span> damage each turn."
+    },
+    {
+      "type": "passive",
+      "name": "Endless Gluttony",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Their ravenous hunger sustains them in combat. Whenever this unit deals damage with <strong>Massive Bite</strong>, it <span class=\"highlight-buff\">heals for 30%</span> of the damage dealt. Any healing that exceeds their maximum HP is automatically converted into a protective <span class=\"highlight-buff\">Shield</span>."
+    }
+  ],
+
+  "gallery": [
+    "../../img/extra/syndicate_extra_gluttony_demon_gallery1.jpg",
+    "../../img/extra/syndicate_extra_gluttony_demon_gallery2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "syndicate_extra.html",
+    "label": "Return to Extra Archive"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+</body>
+</html>
