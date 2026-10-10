@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Manager</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Manager",
+  "faction": "Syndicate",
+  "subtitle": "Extra - Tier III",
+  "accent": "#64b5f6",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/syndicate.html",           "label": "Devil Syndicate" },
+    { "href": "../../factions/syndicate_roster.html",    "label": "Roster" },
+    { "href": "syndicate_extra.html",                    "label": "Extra Archive" },
+    {                                                    "label": "Manager" }
+  ],
+
+  "combat": [
+    "../../img/syndicate/syndicate_extra_manager_combat.png"
+  ],
+
+  "bio": {
+    "title": "Mid-Level Supervisors",
+    "paragraphs": [
+      "Mid-level department supervisors wielding advanced corporate spellcraft. Their arcane talent, experience, and ruthless efficiency completely justify their administrative rank within the Syndicate.",
+      "In battle, Managers orchestrate the flow of combat just as they would a fiscal quarter. They bolster their subordinates' output through aggressive rallying and view the death of allied units not as a tragedy, but as a statistical opportunity to push the remaining workforce into a heavily incentivized 'crunch'."
+    ]
+  },
+
+  "stats": {
+    "hp": 90,
+    "atk": 45,
+    "ini": 40,
+    "res": "Fire"
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Fireblast",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Casts a potent area-of-effect flame spell, dealing <strong>100% of their attack</strong> as <span class=\"dmg-fire\">Fire</span> damage to all units in a targeted enemy group."
+    },
+    {
+      "type": "active",
+      "name": "Rally the Workers",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Motivates subordinates with strict corporate mandates, applying the <span class=\"highlight-buff\">Rallied</span> buff to all party members for 2 turns. This state increases their attack by <strong>20%</strong>."
+    },
+    {
+      "type": "passive",
+      "name": "Resources Management",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Ruthlessly capitalizes on workforce attrition. Whenever an allied unit is killed, grants the entire team the <span class=\"highlight-buff\">Crunch</span> buff for 2 turns, which increases attack and maximum HP by <strong>5%</strong>. This effect can stack up to <strong>5 times</strong>."
+    }
+  ],
+
+  "gallery": [
+    "../../img/extra/syndicate_extra_manager_gallery1.jpg",
+    "../../img/extra/syndicate_extra_manager_gallery2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "syndicate_extra.html",
+    "label": "Return to Extra Archive"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+</body>
+</html>
