@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Army Captain</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Army Captain",
+  "faction": "Syndicate",
+  "subtitle": "Extra - Tier III",
+  "accent": "#64b5f6",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/syndicate.html",           "label": "Devil Syndicate" },
+    { "href": "../../factions/syndicate_roster.html",    "label": "Roster" },
+    { "href": "syndicate_extra.html",                    "label": "Extra Archive" },
+    {                                                    "label": "Army Captain" }
+  ],
+
+  "combat": [
+    "../../img/syndicate/syndicate_extra_army_captain_combat.png"
+  ],
+
+  "bio": {
+    "title": "Frontline Commanders",
+    "paragraphs": [
+      "Hardened frontline commanders of the demonic military. Serving directly under infernal nobility, Army Captains lead their assigned squadrons with brutal tactical efficiency and unwavering discipline.",
+      "In combat, they act as the unyielding anchor of the Syndicate's infantry formations. Relying on advanced swordsmanship to shred enemy lines, their very presence on the battlefield bolsters the defensive capabilities of the troops stationed immediately beside them."
+    ]
+  },
+
+  "stats": {
+    "hp": 165,
+    "atk": 70,
+    "ini": 50,
+    "res": "Fire"
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Sword Slash",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Delivers a heavy, calculated strike with their officer's blade, dealing <strong>100% of their attack</strong> as <span class=\"dmg-phys\">Physical</span> damage to a single melee enemy."
+    },
+    {
+      "type": "active",
+      "name": "Sword Combo",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Executes a relentless and rapid sequence of strikes, dealing <strong>50% of their attack</strong> as <span class=\"dmg-phys\">Physical</span> damage to a single melee enemy. This attack strikes <strong>three times</strong> in quick succession."
+    },
+    {
+      "type": "passive",
+      "name": "Sturdy Captain",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Provides an unwavering frontline presence that anchors the squad. The allied units positioned directly to their left and right gain a permanent passive <strong>5% increase to their armor</strong>."
+    }
+  ],
+
+  "gallery": [
+    "../../img/extra/syndicate_extra_army_captain_gallery1.jpg",
+    "../../img/extra/syndicate_extra_army_captain_gallery2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "syndicate_extra.html",
+    "label": "Return to Extra Archive"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+</body>
+</html>
