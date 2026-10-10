@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Maurice, the Lost Paladin</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Maurice, the Lost Paladin",
+  "faction": "Syndicate",
+  "subtitle": "Extra - Tier V",
+  "accent": "#d32f2f",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/syndicate.html",           "label": "Devil Syndicate" },
+    { "href": "../../factions/syndicate_roster.html",    "label": "Roster" },
+    { "href": "syndicate_extra.html",                    "label": "Extra Archive" },
+    {                                                    "label": "Maurice" }
+  ],
+
+  "combat": [
+    "../../img/syndicate/syndicate_extra_maurice_combat.png"
+  ],
+
+  "bio": {
+    "title": "The Ticking Martyr",
+    "paragraphs": [
+      "A once-glorious champion of light whose soul was systematically broken and weaponized by the Syndicate. Maurice exists in a perpetual state of agonizing decay, his holy vows twisted into necrotic manifestations.",
+      "On the battlefield, he operates as an immensely powerful ticking time bomb. While he can temporarily project absolute invulnerability to shield those behind him, his corrupted essence devours his own maximum vitality turn after turn until his inevitable demise. His ultimate act of despair forcefully implants a phantom reflection into the enemy ranks, spreading his suffering to those around it."
+    ]
+  },
+
+  "stats": {
+    "hp": 300,
+    "arm": "30%",
+    "atk": 125,
+    "ini": 50
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Bitter Blade",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Strikes with a tainted greatsword, dealing <strong>100% of his attack</strong> as <span class=\"dmg-dark\">Dark</span> damage to a melee enemy. Inflicts the <span class=\"highlight-debuff\">Corrupting Fire</span> dark debuff for 5 turns, which reduces the target's maximum HP and attack by <strong>5%</strong>. This debuff intensifies over time, gaining <strong>one stack each turn</strong> (up to a maximum of <strong>5 stacks</strong>)."
+    },
+    {
+      "type": "active",
+      "name": "Hallowed Soul",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Channels a fractured remnant of his divine protection. Grants the <span class=\"highlight-buff\">Hallowed Soul</span> status to himself and the allied unit positioned directly behind him for 2 turns. While active, this flawless barrier completely <span class=\"highlight-buff\">negates all incoming damage and debuffs</span>."
+    },
+    {
+      "type": "passive",
+      "name": "Raising Corruption",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "His internal rot compounds relentlessly. At the start of each turn, Maurice gains one stack of the <span class=\"highlight-debuff\">Raising Corruption</span> debuff (which cannot be dispelled). Each stack increases his attack by <strong>10%</strong> but reduces his maximum HP by <strong>10%</strong>. Upon reaching exactly <strong>8 stacks</strong>, the corruption overwhelms his physical form and he instantly dies."
+    },
+    {
+      "type": "ultimate",
+      "name": "Ghost of Regret",
+      "icon": "../../img/base_ultimate_skill.png",
+      "desc": "Projects his trauma into the enemy formation. Selects an available summon spot on the enemy team to spawn a <span class=\"highlight-buff\">Ghost of Regret</span>. The Ghost shares Maurice's Base Skill, Active Skill, and Initiative, but operates with only <strong>50%</strong> of his maximum HP and Attack. <br><br>The Ghost possesses the exclusive passive <strong>Echoing Pain</strong>: Whenever the Ghost receives damage or healing, it broadcasts the exact same effect—reduced to <strong>50% efficacy</strong>—to the rest of the enemy group it occupies."
+    }
+  ],
+
+  "gallery": [
+    "../../img/extra/syndicate_extra_maurice_gallery1.jpg",
+    "../../img/extra/syndicate_extra_maurice_gallery2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "syndicate_extra.html",
+    "label": "Return to Extra Archive"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+</body>
+</html>
