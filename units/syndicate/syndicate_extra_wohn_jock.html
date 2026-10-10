@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Wohn Jock, the Professional</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Wohn Jock, the Professional",
+  "faction": "Syndicate",
+  "subtitle": "Extra - Tier III",
+  "accent": "#64b5f6",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/syndicate.html",           "label": "Devil Syndicate" },
+    { "href": "../../factions/syndicate_roster.html",    "label": "Roster" },
+    { "href": "syndicate_extra.html",                    "label": "Extra Archive" },
+    {                                                    "label": "Wohn Jock" }
+  ],
+
+  "combat": [
+    "../../img/syndicate/syndicate_extra_wohn_jock_combat.png"
+  ],
+
+  "bio": {
+    "title": "Corporate Hitman",
+    "paragraphs": [
+      "A highly specialized assassin retained by the Syndicate for operations requiring extreme prejudice and pinpoint accuracy. Stripped of his past and operating strictly on an executive retainer, his reputation is built on an impossibly flawless execution rate.",
+      "In combat, he relies on dual firearms, supernatural reflexes, and an absolute mastery of ballistics. Entering a heightened state of perception, he routinely dodges incoming kinetic strikes while ricocheting shots off the environment to clear out hostiles with unerring precision."
+    ]
+  },
+
+  "stats": {
+    "hp": 170,
+    "atk": 30,
+    "ini": 60,
+    "res": "Fire"
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Aimed Twinshot",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Fires a rapid, unerring double tap. Deals <strong>100% of their attack</strong> as <span class=\"dmg-phys\">Physical</span> damage <strong>twice</strong> to any ranged target. This attack possesses absolute accuracy and <span class=\"highlight-buff\">cannot miss</span>."
+    },
+    {
+      "type": "active",
+      "name": "Bullet Time",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Enters a hyper-focused state of perception, granting the <span class=\"highlight-buff\">Bullet Time</span> buff for 2 turns. This state maximizes their Dodge chance and grants every bullet fired a <strong>100% chance to ricochet</strong> onto one additional nearby enemy. (The ricochet effect will not trigger if no other valid enemy is present; limited to 1 ricochet per bullet)."
+    },
+    {
+      "type": "passive",
+      "name": "Expert Gunfighter",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Punishes any failed attempt on his life. Whenever this unit successfully dodges an incoming direct <span class=\"dmg-phys\">Physical</span> skill, he instantly <span class=\"highlight-buff\">retaliates</span> against the attacker, firing a counter-shot that deals <strong>100% of his attack</strong> as damage."
+    }
+  ],
+
+  "gallery": [
+    "../../img/extra/syndicate_extra_wohn_jock_gallery1.jpg",
+    "../../img/extra/syndicate_extra_wohn_jock_gallery2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "syndicate_extra.html",
+    "label": "Return to Extra Archive"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+</body>
+</html>
