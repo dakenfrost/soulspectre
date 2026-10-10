@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Fallen Angel</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Fallen Angel",
+  "faction": "Syndicate",
+  "subtitle": "Extra - Tier V (Large, Summon)",
+  "accent": "#d32f2f",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/syndicate.html",           "label": "Devil Syndicate" },
+    { "href": "../../factions/syndicate_roster.html",    "label": "Roster" },
+    { "href": "syndicate_extra.html",                    "label": "Extra Archive" },
+    {                                                    "label": "Fallen Angel" }
+  ],
+
+  "combat": [
+    "../../img/syndicate/syndicate_summon_fallen_angel_combat.png"
+  ],
+
+  "bio": {
+    "title": "Exiled Divinities",
+    "paragraphs": [
+      "A transcendent celestial entity cast down from the heavens and bound to the Syndicate through blasphemous summoning rituals. Despite their corrupted nature, they retain a fraction of their divine radiance, twisted into a devastating necrotic force.",
+      "The mere presence of a Fallen Angel shatters the resolve of lesser beings. Their residual celestial beauty is weaponized to mesmerize and incapacitate mortal adversaries, while their combat doctrines focus entirely on executing their former angelic kin and eclipsing the light they once served."
+    ]
+  },
+
+  "stats": {
+    "hp": 300,
+    "atk": 160,
+    "ini": 70,
+    "res": "Light, Fire",
+    "imm": "Dark, Bio, Stun, Knockdown"
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Eclipse Slash",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Strikes with a blade forged from absence, dealing <strong>100% of their attack</strong> as <span class=\"dmg-phys\">Physical</span> damage to an enemy. Applies the <span class=\"highlight-debuff\">Eclipse</span> dark debuff for 2 turns. When this debuff naturally expires, it instantly inflicts an additional <strong>100% of their attack</strong> as <span class=\"dmg-dark\">Dark</span> damage to the victim."
+    },
+    {
+      "type": "active",
+      "name": "Eden Fall",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Calls down the weight of their own damnation, dealing <strong>50% of their attack</strong> as <span class=\"dmg-dark\">Dark</span> damage to all enemies in a targeted group. Driven by profound bitterness, this attack inflicts an <strong>additional 100% damage</strong> against units typed as <span class=\"highlight-buff\">Angel</span>."
+    },
+    {
+      "type": "passive",
+      "name": "Echoes of Endless Beauty",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Their lingering, tragic majesty overwhelms fragile minds. <span class=\"highlight-buff\">Mortal</span> units have their accuracy lowered by <strong>10%</strong> when attempting to target this unit. Furthermore, any Mortal that successfully deals direct damage to the Fallen Angel has a <strong>20% chance</strong> to be inflicted with Mind <span class=\"highlight-debuff\">Paralyze</span> for 1 turn."
+    }
+  ],
+
+  "gallery": [
+    "../../img/extra/syndicate_summon_fallen_angel_gallery1.jpg",
+    "../../img/extra/syndicate_summon_fallen_angel_gallery2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "syndicate_extra.html",
+    "label": "Return to Extra Archive"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+</body>
+</html>
