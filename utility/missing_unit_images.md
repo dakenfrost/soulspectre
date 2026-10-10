@@ -121,10 +121,6 @@ I percorsi sono relativi alla cartella `img/`.
 
 ## Valkyrion Empire
 
-**Skirmisher**
-- [ ] `icons/base_base_skill.png` (skill icon)
-- [ ] `icons/base_active_skill.png` (skill icon)
-- [ ] `icons/base_passive_skill.png` (skill icon)
 
 **Hero Anastasia Maid**
 - [ ] `valkyrion_skill_icon_annihilation.png` (skill icon)
