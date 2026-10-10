@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Wrath Demon</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Wrath Demon",
+  "faction": "Syndicate",
+  "subtitle": "Extra - Tier V (Large)",
+  "accent": "#ffb300",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/syndicate.html",           "label": "Devil Syndicate" },
+    { "href": "../../factions/syndicate_roster.html",    "label": "Roster" },
+    { "href": "syndicate_extra.html",                    "label": "Extra Archive" },
+    {                                                    "label": "Wrath Demon" }
+  ],
+
+  "combat": [
+    "../../img/syndicate/syndicate_extra_wrath_demon_combat.png"
+  ],
+
+  "bio": {
+    "title": "Engines of Annihilation",
+    "paragraphs": [
+      "Apex engines of destruction from the Fifth Circle of Hell. Consumed by pure, unadulterated fury, Wrath Demons possess absolutely no capacity to follow complex corporate directives or tactical orders.",
+      "The Syndicate utilizes them strictly under 'last resort' deployment protocols. Once unleashed, their rage perpetually compounds, transforming them into blind, frenzied forces of nature that shatter enemy frontlines with zero regard for precision or self-preservation."
+    ]
+  },
+
+  "stats": {
+    "hp": 1000,
+    "atk": 200,
+    "ini": 35,
+    "imm": "Fire"
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Rending Slashes",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Unleashes a flurry of savage strikes, dealing <strong>50% of their attack</strong> as <span class=\"dmg-phys\">Physical</span> damage to a melee target <strong>three times</strong>. The sheer ferocity of the assault rattles the victim, reducing the hit target's accuracy by <strong>5%</strong>."
+    },
+    {
+      "type": "active",
+      "name": "Pillar of Destruction",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Erupts the ground beneath a ranged target, inflicting <strong>50% of their attack</strong> as <span class=\"dmg-fire\">Fire</span> damage and applying the <span class=\"highlight-debuff\">Imminent Explosion</span> debuff for 2 turn. When this debuff naturally expires, it detonates, dealing a secondary blast of <strong>75% of their attack</strong> as <span class=\"dmg-fire\">Fire</span> damage to the afflicted unit."
+    },
+    {
+      "type": "passive",
+      "name": "Rising Rage",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Their anger endlessly compounds in battle. At the end of every turn, this unit gains one stack of the <span class=\"highlight-buff\">Rising Rage</span> state, increasing their initiative by <strong>5</strong> and their attack by <strong>5%</strong>, but concurrently dropping their accuracy by <strong>5%</strong> as they succumb to blind fury. This effect stacks up to <strong>5 times</strong>."
+    },
+    {
+      "type": "ultimate",
+      "name": "Blind Carnage",
+      "icon": "../../img/base_ultimate_skill.png",
+      "desc": "Succumbs entirely to violent madness. Must explicitly target the enemy <strong>frontrow</strong> (if the frontrow is empty, it may target the backrow). Delivers <strong>6 rapid strikes</strong>, each dealing <strong>50% of their attack</strong> as <span class=\"dmg-phys\">Physical</span> damage, distributed randomly among all available targets in that specific row."
+    }
+  ],
+
+  "gallery": [
+    "../../img/extra/syndicate_extra_wrath_demon_gallery1.jpg",
+    "../../img/extra/syndicate_extra_wrath_demon_gallery2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "syndicate_extra.html",
+    "label": "Return to Extra Archive"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+</body>
+</html>
