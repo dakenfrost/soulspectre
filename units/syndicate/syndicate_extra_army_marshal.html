@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Army Marshal</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Army Marshal",
+  "faction": "Syndicate",
+  "subtitle": "Extra - Tier IV",
+  "accent": "#ba68c8",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/syndicate.html",           "label": "Devil Syndicate" },
+    { "href": "../../factions/syndicate_roster.html",    "label": "Roster" },
+    { "href": "syndicate_extra.html",                    "label": "Extra Archive" },
+    {                                                    "label": "Army Marshal" }
+  ],
+
+  "combat": [
+    "../../img/syndicate/syndicate_extra_army_marshal_combat.png"
+  ],
+
+  "bio": {
+    "title": "Supreme Military Tacticians",
+    "paragraphs": [
+      "Supreme military tacticians commanding the private armies of Hell's nobility. Army Marshals blend masterful personal combat skills with brilliant strategic oversight, ensuring the Syndicate's assets are protected and deployed with maximum lethality.",
+      "Veterans of countless corporate wars, they anchor the entire battlefield. Their signature explosive weaponry shatters heavy plating, while their unyielding defensive formations create an impenetrable phalanx that turns the tide of any major engagement."
+    ]
+  },
+
+  "stats": {
+    "hp": 230,
+    "atk": 100,
+    "ini": 50,
+    "res": "Fire"
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Explosive Slash",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Delivers a heavy kinetic strike, dealing <strong>75% of their attack</strong> as <span class=\"dmg-phys\">Physical</span> damage to an enemy. The impact triggers a point-blank detonation, dealing an additional <strong>50% of their attack</strong> as <span class=\"dmg-fire\">Fire</span> damage that <span class=\"highlight-buff\">ignores armor</span>."
+    },
+    {
+      "type": "active",
+      "name": "Martial Mastery",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Enters a disciplined <span class=\"highlight-buff\">Counterattack Stance</span> for 2 turns. If targeted by an enemy skill while in this stance, the Marshal will automatically <span class=\"highlight-buff\">dodge</span> the attack (unless it has the Homing property) and instantly counterattack, dealing <strong>180% of their attack</strong> as <span class=\"dmg-phys\">Physical</span> damage."
+    },
+    {
+      "type": "passive",
+      "name": "Phalanx of Steel",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Establishes a hardened defensive perimeter. Grants all allied units a permanent passive <strong>5% increase to armor</strong>. The units positioned immediately to their left and right receive an additional <strong>5% armor</strong> bonus. <em>Note: This effect does not stack with other auras that grant percentage-based armor.</em>"
+    }
+  ],
+
+  "gallery": [
+    "../../img/extra/syndicate_extra_army_marshal_gallery1.jpg",
+    "../../img/extra/syndicate_extra_army_marshal_gallery2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "syndicate_extra.html",
+    "label": "Return to Extra Archive"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+</body>
+</html>
