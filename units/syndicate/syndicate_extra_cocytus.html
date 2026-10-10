@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Cocytus, the Demon of Depths</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Cocytus, the Demon of Depths",
+  "faction": "Syndicate",
+  "subtitle": "Extra - Tier VI",
+  "accent": "#0277bd",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/syndicate.html",           "label": "Devil Syndicate" },
+    { "href": "../../factions/syndicate_roster.html",    "label": "Roster" },
+    { "href": "syndicate_extra.html",                    "label": "Extra Archive" },
+    {                                                    "label": "Cocytus" }
+  ],
+
+  "combat": [
+    "../../img/syndicate/syndicate_extra_cocytus_combat.png"
+  ],
+
+  "bio": {
+    "title": "Lord of the Frozen Abyss",
+    "paragraphs": [
+      "A primordial entity residing in the absolute depths of the demonic hierarchy, far below the standard corporate infrastructure. Cocytus governs the frozen lake of treachery, punishing betrayal while actively cultivating it on the battlefield.",
+      "His presence warps the environment into a sub-zero nightmare, severely crippling enemy mobility and coordination. As the ultimate arbiter of betrayal, he thrives on chaos: whenever a mind-controlled or confused combatant strikes a fellow ally, Cocytus mercilessly reaps their soul from the icy depths."
+    ]
+  },
+
+  "stats": {
+    "hp": 1400,
+    "atk": 200,
+    "ini": 30,
+    "imm": "Dark, Mind, Water"
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Coldbite Assault",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Unleashes a sweeping glacial strike, dealing <strong>50% of his attack</strong> as damage to all units in the enemy <strong>frontrow</strong> (if the frontrow is empty, targets the backrow instead). Has a <strong>30% chance</strong> to apply the <span class=\"highlight-debuff\">Freeze</span> water debuff for 1 turn."
+    },
+    {
+      "type": "active",
+      "name": "Frozen Hell",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Plunges the battlefield into a sudden, deep freeze. Deals <strong>25% of his attack</strong> as damage to all units in the enemy team and applies the <span class=\"highlight-debuff\">Slipping Ground</span> water debuff for 2 turns. While this debuff is active, any unit attempting to use a melee attack suffers a <strong>40% chance to fall</strong>, completely wasting their action."
+    },
+    {
+      "type": "passive",
+      "name": "Treachery Overlord",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "The ultimate judge of betrayal. Whenever <strong>any unit</strong> (friend or foe) successfully deals damage to another friendly unit within their own team, Cocytus instantly retaliates, dealing <strong>100% of his attack</strong> as <span class=\"dmg-soul\">Soul</span> damage directly to the traitor."
+    },
+    {
+      "type": "ultimate",
+      "name": "Fog of Despair",
+      "icon": "../../img/base_ultimate_skill.png",
+      "desc": "Conjures a dense, mind-altering freezing mist. Applies the <span class=\"highlight-debuff\">Fog of Despair</span> water debuff to all enemies in a targeted group for 1 turn. Any unit attempting to use a skill while under this effect will have their target forcibly randomized among all valid entities on the battlefield (both allies and enemies). If Cocytus himself is struck by an attack randomized by this mist, the debuff instantly clears from the entire group."
+    }
+  ],
+
+  "gallery": [
+    "../../img/extra/syndicate_extra_cocytus_gallery1.jpg",
+    "../../img/extra/syndicate_extra_cocytus_gallery2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "syndicate_extra.html",
+    "label": "Return to Extra Archive"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+</body>
+</html>
