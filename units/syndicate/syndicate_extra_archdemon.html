@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Archdemon</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Archdemon",
+  "faction": "Syndicate",
+  "subtitle": "Extra - Tier V (Large)",
+  "accent": "#d32f2f",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/syndicate.html",           "label": "Devil Syndicate" },
+    { "href": "../../factions/syndicate_roster.html",    "label": "Roster" },
+    { "href": "syndicate_extra.html",                    "label": "Extra Archive" },
+    {                                                    "label": "Archdemon" }
+  ],
+
+  "combat": [
+    "../../img/syndicate/syndicate_extra_archdemon_combat.png"
+  ],
+
+  "bio": {
+    "title": "Sadistic Overlords",
+    "paragraphs": [
+      "Monolithic overlords of the infernal hierarchy, Archdemons possess authority and raw arcane power matched only by the Dukes. They are entirely immune to conventional demonic elements and project an aura of suffocating dread.",
+      "To an Archdemon, combat is not a struggle for survival, but a theatrical performance for their own amusement. They possess the terrifying habit of mending their enemies' wounds, intentionally prolonging the slaughter to ensure the psychological devastation of their prey is absolute."
+    ]
+  },
+
+  "stats": {
+    "hp": 320,
+    "atk": 85,
+    "ini": 60,
+    "imm": "Dark, Fire"
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Hellfire",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Unleashes a torrent of necrotic ignition, dealing <strong>100% of their attack</strong> as <span class=\"dmg-dark\">Dark</span> damage across an entire enemy group simultaneously."
+    },
+    {
+      "type": "active",
+      "name": "Ruinous Blast",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Projects a wave of debilitating energy across a targeted row, dealing <strong>50% of their attack</strong> as <span class=\"dmg-dark\">Dark</span> damage. Applies the <span class=\"highlight-debuff\">Dark Enfeeble</span> dark debuff for 3 turns, which drastically reduces the affected units' attack by <strong>50%</strong>."
+    },
+    {
+      "type": "passive",
+      "name": "Entertain Me",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Prolongs the conflict for sheer amusement. At the start of each turn, this unit <span class=\"highlight-buff\">heals itself for 100% of its attack</span>. Simultaneously, it actively patches up its prey, <span class=\"highlight-buff\">healing all enemy units for 20%</span> of its attack."
+    }
+  ],
+
+  "gallery": [
+    "../../img/extra/syndicate_extra_archdemon_gallery1.jpg",
+    "../../img/extra/syndicate_extra_archdemon_gallery2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "syndicate_extra.html",
+    "label": "Return to Extra Archive"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+</body>
+</html>
