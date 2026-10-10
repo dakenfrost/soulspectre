@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Duke</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Duke",
+  "faction": "Syndicate",
+  "subtitle": "Extra - Tier V",
+  "accent": "#d32f2f",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/syndicate.html",           "label": "Devil Syndicate" },
+    { "href": "../../factions/syndicate_roster.html",    "label": "Roster" },
+    { "href": "syndicate_extra.html",                    "label": "Extra Archive" },
+    {                                                    "label": "Duke" }
+  ],
+
+  "combat": [
+    "../../img/syndicate/syndicate_extra_duke_combat.png"
+  ],
+
+  "bio": {
+    "title": "Infernal Aristocracy",
+    "paragraphs": [
+      "Occupying the absolute highest echelons of the Syndicate's corporate and arcane hierarchy, Dukes are the board members of Hell. Their raw magical output dwarfs entire demonic battalions, requiring zero martial prowess to utterly decimate any opposition.",
+      "A Duke's presence on the battlefield signifies a catastrophic failure in diplomatic negotiations. They weave catastrophic storms of fire and darkness, constantly amplifying their own magical resonance as the engagement continues, inevitably culminating in an overwhelming display of dual-elemental annihilation."
+    ]
+  },
+
+  "stats": {
+    "hp": 700,
+    "atk": 80,
+    "ini": 40
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Explosion",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Detonates the area around the targets, dealing <strong>100% of their attack</strong> as <span class=\"dmg-fire\">Fire</span> damage to all units in an enemy group. Applies the <span class=\"highlight-debuff\">Burning</span> fire debuff for 2 turns, which inflicts an additional <strong>20% of their attack</strong> at the start of every turn."
+    },
+    {
+      "type": "active",
+      "name": "Diabolic Invocation",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Unleashes a relentless barrage of abyssal magic, dealing <strong>100% of their attack</strong> as <span class=\"dmg-dark\">Dark</span> damage to a random enemy. This devastating process is repeated <strong>8 times</strong>."
+    },
+    {
+      "type": "passive",
+      "name": "Demonic Magic Ruler",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Mastery over the chaotic elements constantly feeds their power. Using the base skill (Explosion) grants the <span class=\"highlight-buff\">Raising Heat</span> buff, increasing Fire damage by <strong>10%</strong> for 2 turns (stacks up to <strong>5 times</strong>). Using the active skill (Diabolic Invocation) grants the <span class=\"highlight-buff\">Raising Darkness</span> buff, increasing Dark damage by <strong>20%</strong> for 4 turns (stacks up to <strong>3 times</strong>)."
+    },
+    {
+      "type": "ultimate",
+      "name": "Shadowflame",
+      "icon": "../../img/base_ultimate_skill.png",
+      "desc": "Fuses the absolute extremes of their arcane mastery into a singular cataclysmic strike. Inflicts <strong>100% of their attack</strong> as <span class=\"dmg-fire\">Fire</span> damage and an additional <strong>100% of their attack</strong> as <span class=\"dmg-dark\">Dark</span> damage to the target."
+    }
+  ],
+
+  "gallery": [
+    "../../img/extra/syndicate_extra_duke_gallery1.jpg",
+    "../../img/extra/syndicate_extra_duke_gallery2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "syndicate_extra.html",
+    "label": "Return to Extra Archive"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+</body>
+</html>
