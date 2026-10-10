@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Xuriath, The Assassin</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Xuriath, The Assassin",
+  "faction": "Syndicate",
+  "subtitle": "Extra - Tier II",
+  "accent": "#81c784",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/syndicate.html",           "label": "Devil Syndicate" },
+    { "href": "../../factions/syndicate_roster.html",    "label": "Roster" },
+    { "href": "syndicate_extra.html",                    "label": "Extra Archive" },
+    {                                                    "label": "Xuriath" }
+  ],
+
+  "combat": [
+    "../../img/syndicate/syndicate_extra_xuriath_combat.png"
+  ],
+
+  "bio": {
+    "title": "Corporate Liquidator",
+    "paragraphs": [
+      "A specialized operative functioning outside the standard Syndicate corporate ladder. Xuriath handles discrete liquidations, silencing high-profile targets and internal liabilities with absolute prejudice.",
+      "In combat, he bypasses frontlines entirely using spatial distortions. Xuriath is completely devoid of loyalty to his squadmates, readily using adjacent Syndicate personnel as disposable meat shields to ensure his own survival and complete his contract."
+    ]
+  },
+
+  "stats": {
+    "hp": 130,
+    "atk": 40,
+    "ini": 60,
+    "res": "Fire"
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Backstab",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Teleports directly behind the target, dealing <strong>100% of their attack</strong> as <span class=\"dmg-phys\">Physical</span> damage to a ranged target. Although the attack is initiated from a distance, it mechanically counts as a <strong>melee</strong> strike."
+    },
+    {
+      "type": "active",
+      "name": "Muting Poison",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Blinks behind a target at any range, dealing <strong>75% of their attack</strong> as damage and applying the <span class=\"highlight-debuff\">Silenced</span> physical debuff for 3 turns. A silenced unit is entirely prevented from casting Active or Ultimate skills."
+    },
+    {
+      "type": "passive",
+      "name": "Shadow Decoy",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Uses allies as expendable cover. When targeted by a direct damage skill, if a friendly unit is within range 1, there is a <strong>50% chance</strong> the skill redirects to that allied unit instead, with the incoming damage reduced by <strong>50%</strong>. Additionally, whenever Xuriath kills an enemy unit, his damage output permanently increases by <strong>10%</strong> (this buff cannot be dispelled)."
+    }
+  ],
+
+  "gallery": [
+    "../../img/extra/syndicate_extra_xuriath_gallery1.jpg",
+    "../../img/extra/syndicate_extra_xuriath_gallery2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "syndicate_extra.html",
+    "label": "Return to Extra Archive"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+</body>
+</html>
