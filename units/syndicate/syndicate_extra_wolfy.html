@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Wolfy, the Puppy</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Wolfy, the Puppy",
+  "faction": "Syndicate",
+  "subtitle": "Extra - Tier III (Large)",
+  "accent": "#64b5f6",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/syndicate.html",           "label": "Devil Syndicate" },
+    { "href": "../../factions/syndicate_roster.html",    "label": "Roster" },
+    { "href": "syndicate_extra.html",                    "label": "Extra Archive" },
+    {                                                    "label": "Wolfy" }
+  ],
+
+  "combat": [
+    "../../img/syndicate/syndicate_extra_wolfy_combat.png"
+  ],
+
+  "bio": {
+    "title": "The Infernal Guard Dog",
+    "paragraphs": [
+      "Despite the deceptively affectionate moniker bestowed upon it by high-ranking Syndicate executives, 'Wolfy' is a massive, highly aggressive infernal beast. Bred specifically for corporate facility defense and tracking down high-value targets.",
+      "In combat, its sheer size allows it to bowl over entire defensive formations, knocking adversaries to the ground. Above all, it possesses an unbreakable, supernatural loyalty to its masters, viciously punishing any attempt to subvert its mind with arcane manipulation."
+    ]
+  },
+
+  "stats": {
+    "hp": 420,
+    "atk": 120,
+    "ini": 30
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Ravaging Bite",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Sinks massive fangs into the target, dealing <strong>100% of their attack</strong> as <span class=\"dmg-phys\">Physical</span> damage to a melee enemy. Has a <strong>30% chance</strong> to apply the <span class=\"highlight-debuff\">Bleed</span> bio debuff, which inflicts <strong>25% of their attack</strong> as <span class=\"dmg-bio\">Bio</span> damage each turn for 2 turns."
+    },
+    {
+      "type": "active",
+      "name": "Body Tackle",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Throws its enormous mass forward, dealing <strong>50% of their attack</strong> as <span class=\"dmg-phys\">Physical</span> damage to the entire enemy <strong>frontrow</strong> (if the frontrow is empty, targets the backrow). Has a <strong>35% chance</strong> to apply the <span class=\"highlight-debuff\">Fell to Ground</span> debuff, which reduces the affected unit's initiative by <strong>20</strong> for 1 turn."
+    },
+    {
+      "type": "passive",
+      "name": "Loyal Hound",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Its unwavering devotion renders it completely immune to <span class=\"highlight-debuff\">Charm</span> and any other mind-control effects that would turn it against its own party. Whenever such an effect is nullified by this passive, Wolfy instantly retaliates by charging the source of the effect, dealing <strong>50% of its attack</strong> as <span class=\"dmg-phys\">Physical</span> damage."
+    }
+  ],
+
+  "gallery": [
+    "../../img/extra/syndicate_extra_wolfy_gallery1.jpg",
+    "../../img/extra/syndicate_extra_wolfy_gallery2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "syndicate_extra.html",
+    "label": "Return to Extra Archive"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+</body>
+</html>
