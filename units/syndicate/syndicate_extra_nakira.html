@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Nakira, The Female Butler</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Nakira, The Female Butler",
+  "faction": "Syndicate",
+  "subtitle": "Extra - Tier II",
+  "accent": "#81c784",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/syndicate.html",           "label": "Devil Syndicate" },
+    { "href": "../../factions/syndicate_roster.html",    "label": "Roster" },
+    { "href": "syndicate_extra.html",                    "label": "Extra Archive" },
+    {                                                    "label": "Nakira" }
+  ],
+
+  "combat": [
+    "../../img/syndicate/syndicate_extra_nakira_combat.png"
+  ],
+
+  "bio": {
+    "title": "Elite Corporate Escort",
+    "paragraphs": [
+      "Serving directly under the Syndicate's highest-ranking executives, Nakira acts as both a flawless domestic administrator and a lethal personal bodyguard. Her poised, immaculate exterior hides highly advanced electrostatic combat capabilities.",
+      "In the heat of battle, Nakira's sole priority is the preservation of corporate assets. She projects volatile defensive fields around VIPs to deter aggression and becomes progressively harder to break as long as there are allies relying on her protection."
+    ]
+  },
+
+  "stats": {
+    "hp": 160,
+    "atk": 50,
+    "ini": 50,
+    "res": "Fire, Air"
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Shocking Punch",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Delivers a precise, crackling blow, dealing <strong>100% of their attack</strong> as <span class=\"dmg-air\">Air</span> damage to a melee enemy. Has a <strong>30% chance</strong> to inflict <span class=\"highlight-debuff\">Stun</span> (an Air debuff) on the target."
+    },
+    {
+      "type": "active",
+      "name": "Shock Barrier",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Projects a dynamic electrostatic field around an ally, granting them a <span class=\"highlight-buff\">Shield</span> equal to <strong>200% of Nakira's attack</strong> and the <span class=\"highlight-buff\">Shocking Barrier</span> air buff for 3 turns. While the barrier holds, any enemy that strikes this unit with a damage-dealing skill has a <strong>30% chance</strong> to be inflicted with the <span class=\"highlight-debuff\">Paralyzed</span> air debuff for 1 turn."
+    },
+    {
+      "type": "passive",
+      "name": "Determination to Protect",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Bolstered by the presence of those she serves. Nakira permanently gains a <strong>5% increase to her armor</strong> for every friendly unit currently alive on the battlefield."
+    }
+  ],
+
+  "gallery": [
+    "../../img/extra/syndicate_extra_nakira_gallery1.jpg",
+    "../../img/extra/syndicate_extra_nakira_gallery2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "syndicate_extra.html",
+    "label": "Return to Extra Archive"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+</body>
+</html>
