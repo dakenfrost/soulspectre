@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Altelsa, Witch of Envy</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Altelsa, Witch of Envy",
+  "faction": "Syndicate",
+  "subtitle": "Extra - Tier VI",
+  "accent": "#6a1b9a",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/syndicate.html",           "label": "Devil Syndicate" },
+    { "href": "../../factions/syndicate_roster.html",    "label": "Roster" },
+    { "href": "syndicate_extra.html",                    "label": "Extra Archive" },
+    {                                                    "label": "Altelsa" }
+  ],
+
+  "combat": [
+    "../../img/syndicate/syndicate_extra_altelsa_combat.png"
+  ],
+
+  "bio": {
+    "title": "The Apex Plagiarist",
+    "paragraphs": [
+      "A Tier VI anomaly within the Syndicate, Altelsa represents the absolute pinnacle of corporate espionage and intellectual property theft. Driven by an all-consuming, spiteful envy, she views the unique strengths of others as assets rightfully belonging to her.",
+      "In combat, she systematically dismantles the enemy's tactical repertoire. Rather than relying on static weaponry, she forcibly extracts the signature techniques and ultimate capabilities of her adversaries, simultaneously locking them out of their own skillsets while hoarding stolen vitality to render herself virtually immortal."
+    ]
+  },
+
+  "stats": {
+    "hp": 750,
+    "atk": 160,
+    "ini": 50,
+    "res": "Soul",
+    "imm": "Dark, Mind"
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Crushing Darkness",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Projects a wave of heavy, oppressive shadows across a targeted <strong>row</strong>, dealing <strong>100% of her attack</strong> as <span class=\"dmg-dark\">Dark</span> damage. Has a <strong>30% chance</strong> to apply the <span class=\"highlight-debuff\">Down</span> physical debuff for 1 turn, which drastically reduces the targets' initiative by <strong>20</strong>."
+    },
+    {
+      "type": "active",
+      "name": "Skill Theft",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Violently plagiarizes an opponent's combat paradigm. Selects a target unit not immune to <span class=\"dmg-dark\">Dark</span>. Inflicts the <span class=\"highlight-debuff\">Stolen Skill</span> dark debuff on the target for 30 turns, completely preventing them from using their Active skill. Altelsa gains the <span class=\"highlight-buff\">Stolen Skill</span> dark buff for 2 turns, temporarily <strong>transforming this ability into the victim's Active skill</strong>. Once her buff expires, this slot reverts to Skill Theft."
+    },
+    {
+      "type": "passive",
+      "name": "The Witch of the End",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Every instance of theft fuels her survival. Whenever Altelsa steals a skill, she generates a <span class=\"highlight-buff\">Shield</span> equal to <strong>50% of her attack</strong> and gains one stack of the <span class=\"highlight-buff\">Hoard</span> physical buff (which lasts indefinitely). Each Hoard stack increases her Attack and Maximum HP by <strong>15%</strong> (stacking up to <strong>4 times</strong>). If she suffers fatal damage, she consumes one Hoard stack to evade death and restores <strong>10% of her maximum HP</strong>. If she suffers fatal damage with 0 stacks, she perishes."
+    },
+    {
+      "type": "ultimate",
+      "name": "Extirpate Talent",
+      "icon": "../../img/base_ultimate_skill.png",
+      "desc": "The ultimate act of corporate sabotage. Targets an enemy possessing an Ultimate skill who is not immune to <span class=\"dmg-soul\">Soul</span> damage. Applies the <span class=\"highlight-debuff\">Talentless</span> dark debuff for 30 turns, locking out the target's Ultimate. Altelsa gains the <span class=\"highlight-buff\">Stolen Talent</span> buff for 30 turns, replacing this slot with the stolen Ultimate. Additionally grants her <strong>2 Hoard stacks</strong> immediately. Reverts back to Extirpate Talent when the buff expires."
+    }
+  ],
+
+  "gallery": [
+    "../../img/extra/syndicate_extra_altelsa_gallery1.jpg",
+    "../../img/extra/syndicate_extra_altelsa_gallery2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "syndicate_extra.html",
+    "label": "Return to Extra Archive"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+</body>
+</html>
