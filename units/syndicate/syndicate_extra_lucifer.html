@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Lucifer, the Infernal President</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Lucifer, the Infernal President",
+  "faction": "Syndicate",
+  "subtitle": "Extra - Tier VII (President)",
+  "accent": "#b71c1c",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/syndicate.html",           "label": "Devil Syndicate" },
+    { "href": "../../factions/syndicate_roster.html",    "label": "Roster" },
+    { "href": "syndicate_extra.html",                    "label": "Extra Archive" },
+    {                                                    "label": "Lucifer" }
+  ],
+
+  "combat": [
+    "../../img/syndicate/syndicate_extra_lucifer_combat.png"
+  ],
+
+  "bio": {
+    "title": "CEO of the Damned",
+    "paragraphs": [
+      "The absolute apex of the Devil Syndicate. Lucifer operates beyond the confines of standard corporate logic or magical limitations. His existence is a universal constant of control, blending primordial light with abyssal darkness to enforce his undisputed authority.",
+      "Engaging the President is not a tactical battle; it is an apocalyptic DPS check. He feeds endlessly on the attrition of both armies, effortlessly corrupts the very souls of those who oppose him, and possesses the singular authority to unilaterally terminate reality if he finds the opposition lacking."
+    ]
+  },
+
+  "stats": {
+    "hp": 1666,
+    "atk": 180,
+    "ini": 40,
+    "imm": "Dark, Soul, Mind, Fire"
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Genesis Beam",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Unleashes a primordial convergence of contradictory energies. Deals <strong>50% of his attack</strong> as <span class=\"dmg-dark\">Dark</span> damage and <strong>50% of his attack</strong> as <span class=\"dmg-light\">Light</span> damage to all units in a targeted <strong>row</strong>."
+    },
+    {
+      "type": "active",
+      "name": "Corrupting Souls",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Projects his absolute authority to rewrite the loyalties of an entire <strong>row</strong> of units. Applies the <span class=\"highlight-debuff\">Corrupting Soul</span> soul debuff for 2 turns. If this debuff is allowed to expire naturally without being cleansed, the affected units gain the <span class=\"highlight-debuff\">Corrupted</span> status indefinitely. This final status cannot be dispelled and forces the units to act as if permanently <span class=\"highlight-debuff\">Charmed</span>."
+    },
+    {
+      "type": "passive",
+      "name": "Soul Eater",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Lucifer is completely <strong>immune to all Crowd Control (CC)</strong> effects and any skills with Bypass properties. Furthermore, he passively harvests the life force of the fallen: every time <strong>any unit dies</strong> on the battlefield (friendly or hostile), Lucifer restores his own health by an amount equal to <strong>50% of that fallen unit's maximum HP</strong>."
+    },
+    {
+      "type": "ultimate",
+      "name": "World Reset",
+      "icon": "../../img/base_ultimate_skill.png",
+      "desc": "<em>'Clearly not the right heroes.'</em><br><br>The ultimate severance package. Lucifer executes an administrative override on reality itself. The world fades to black. <strong>The game immediately ends.</strong>"
+    }
+  ],
+
+  "gallery": [
+    "../../img/extra/syndicate_extra_lucifer_gallery1.jpg",
+    "../../img/extra/syndicate_extra_lucifer_gallery2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "syndicate_extra.html",
+    "label": "Return to Extra Archive"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+</body>
+</html>
