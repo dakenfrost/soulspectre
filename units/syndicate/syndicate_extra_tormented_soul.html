@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Tormented Soul</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Tormented Soul",
+  "faction": "Syndicate",
+  "subtitle": "Extra - Tier III",
+  "accent": "#64b5f6",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/syndicate.html",           "label": "Devil Syndicate" },
+    { "href": "../../factions/syndicate_roster.html",    "label": "Roster" },
+    { "href": "syndicate_extra.html",                    "label": "Extra Archive" },
+    {                                                    "label": "Tormented Soul" }
+  ],
+
+  "combat": [
+    "../../img/syndicate/syndicate_extra_tormented_soul_combat.png"
+  ],
+
+  "bio": {
+    "title": "Contractual Apparitions",
+    "paragraphs": [
+      "The bound spirit of a mortal who foolishly traded their soul to the Syndicate. Stripped of their humanity and denied eternal rest, they are deployed as highly specialized, expendable assets for the corporative war machine.",
+      "Due to their ethereal nature, Tormented Souls can bypass standard physical defenses and formations, phasing through frontlines to assassinate high-value targets while resisting physical harm through sheer incorporeality."
+    ]
+  },
+
+  "stats": {
+    "hp": 80,
+    "atk": 40,
+    "ini": 45,
+    "res": "Mind"
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Phase",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Phases directly through enemy frontlines to strike a target, dealing <strong>150% of their attack</strong> as <span class=\"dmg-phys\">Physical</span> damage to any enemy (can target backline units, but mechanically counts as a melee attack). Has a <strong>20% chance</strong> to inflict the <span class=\"highlight-debuff\">Paralyze</span> mind debuff for 1 turn."
+    },
+    {
+      "type": "active",
+      "name": "Scream of Pain",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Unleashes a horrifying, soul-rending wail, dealing <strong>100% of their attack</strong> as <span class=\"dmg-phys\">Physical</span> damage to all enemies in a targeted group. Has a <strong>20% chance</strong> to inflict the <span class=\"highlight-debuff\">Paralyze</span> mind debuff for 1 turn."
+    },
+    {
+      "type": "passive",
+      "name": "Phasing Ghost",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Their ethereal form constantly flickers between planes of existence. Any incoming <span class=\"dmg-phys\">Physical</span> attacks have a <span class=\"highlight-buff\">40% chance to be completely negated</span>."
+    }
+  ],
+
+  "gallery": [
+    "../../img/extra/syndicate_extra_tormented_soul_gallery1.jpg",
+    "../../img/extra/syndicate_extra_tormented_soul_gallery2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "syndicate_extra.html",
+    "label": "Return to Extra Archive"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+</body>
+</html>
