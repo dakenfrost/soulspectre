@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Lust Demon</title>
+    
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Lust Demon",
+  "faction": "Syndicate",
+  "subtitle": "Extra - Tier II",
+  "accent": "#81c784",
+  "bgImage": "../../img/valkyrion_bg.jpeg",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                        "label": "Home" },
+    { "href": "../../factions/index.html",               "label": "Factions" },
+    { "href": "../../factions/syndicate.html",           "label": "Devil Syndicate" },
+    { "href": "../../factions/syndicate_roster.html",    "label": "Roster" },
+    { "href": "syndicate_extra.html",                    "label": "Extra Archive" },
+    {                                                    "label": "Lust Demon" }
+  ],
+
+  "combat": [
+    "../../img/syndicate/syndicate_extra_lust_demon_combat.png"
+  ],
+
+  "bio": {
+    "title": "Seducers of the Second Circle",
+    "paragraphs": [
+      "Denizens of the Second Circle of Hell who have found highly lucrative employment within the Syndicate's psychological warfare and infiltration divisions. They are absolute masters of mortal seduction.",
+      "While lacking the raw kinetic power of their brute counterparts, they excel in turning hostile forces against one another. By layering pheromone-laced projectiles to lower psychic resistance, they follow up with hypnotic gazes that completely override enemy allegiances."
+    ]
+  },
+
+  "stats": {
+    "hp": 80,
+    "atk": 40,
+    "ini": 40,
+    "res": "Fire"
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Tempting Blast",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Fires a beguiling arcane projectile, dealing <strong>100% of their attack</strong> as damage to a ranged enemy unit. Applies the <span class=\"highlight-debuff\">Pheromones</span> debuff, which increases the success chance of Seduce Gaze by <strong>15%</strong> (can stack up to <strong>3 times</strong>)."
+    },
+    {
+      "type": "active",
+      "name": "Seduce Gaze",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Deploys hypnotic dark resonance, dealing <strong>100% of their attack</strong> as <span class=\"dmg-dark\">Dark</span> damage to a single target with a <span class=\"highlight-debuff\">60% chance to Charm</span> the enemy for 1 turn. Charmed units are temporarily controlled by the AI during their turn, forcing them to attack their own team or support the opponent."
+    }
+  ],
+
+  "gallery": [
+    "../../img/extra/syndicate_extra_lust_demon_gallery1.jpg",
+    "../../img/extra/syndicate_extra_lust_demon_gallery2.jpg"
+  ],
+
+  "backLink": {
+    "href":  "syndicate_extra.html",
+    "label": "Return to Extra Archive"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+</body>
+</html>
