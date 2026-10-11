@@ -215,8 +215,202 @@ function getNavTemplate(base) {
                 <a href="${base}factions/forgotten_buildings.html" class="menu-link" style="color: #f57c00">Buildings</a>
             </div>
         </div>
-        <a href="#" class="inner-link locked">Kharos Dominion</a>
-        <a href="#" class="inner-link locked">Devil Syndicate</a>
+        <div class="sub-faction-row">
+            <a href="${base}factions/kharos.html" class="inner-link" style="color: #e53935;">Kharos Dominion</a>
+            <button class="sub-toggle" aria-label="expand branches">▶</button>
+        </div>
+        <div class="sub-accordion-content">
+            <div class="branch-row">
+                <a href="${base}factions/kharos_lore.html" class="menu-link" style="color: #b0bec5">Lore</a>
+            </div>
+            <div class="branch-row">
+                <a href="${base}factions/kharos_culture.html" class="menu-link" style="color: #4db6ac">Culture</a>
+            </div>
+            <div class="branch-row">
+                <a href="${base}factions/kharos_leader.html" class="menu-link" style="color: #d4af37">Leader<br><strong style="color: #e53935;"> The Warchief</strong></a>
+            </div>
+            <div class="branch-row">
+                <a href="${base}factions/kharos_roster.html" class="menu-link" style="color: #ef5350">Unit</a>
+                <button class="branch-toggle" aria-label="expand faction menu">▶</button>
+            </div>
+            <div class="sub-accordion-content">
+                <div class="branch-row">
+                    <a href="${base}units/kharos/kharos_tribe_warriors.html" class="branch-unit-link">Tribe Warriors<span class="branch-role role-melee">Melee</span></a>
+                    <button class="branch-toggle" aria-label="expand units">▶</button>
+                </div>
+                <div class="unit-accordion-content">
+                    <a href="${base}units/kharos/kharos_chieftain.html" class="unit-link">Chieftain</a>
+                    <a href="${base}units/kharos/kharos_thug.html" class="unit-link">Thug</a>
+                    <a href="${base}units/kharos/kharos_fighter.html" class="unit-link">Fighter</a>
+                    <a href="${base}units/kharos/kharos_basher.html" class="unit-link">Basher</a>
+                    <a href="${base}units/kharos/kharos_raider.html" class="unit-link">Raider</a>
+                    <a href="${base}units/kharos/kharos_mauler.html" class="unit-link">Mauler</a>
+                    <a href="${base}units/kharos/kharos_warrior.html" class="unit-link">Warrior</a>
+                    <a href="${base}units/kharos/kharos_ambusher.html" class="unit-link">Ambusher</a>
+                    <a href="${base}units/kharos/kharos_rager.html" class="unit-link">Rager</a>
+                    <a href="${base}units/kharos/kharos_destroyer.html" class="unit-link">Destroyer</a>
+                    <a href="${base}units/kharos/kharos_champion.html" class="unit-link">Champion</a>
+                    <a href="${base}units/kharos/kharos_assassin.html" class="unit-link">Assassin</a>
+                    <a href="${base}units/kharos/kharos_berserker.html" class="unit-link">Berserker</a>
+                    <a href="${base}units/kharos/kharos_conqueror.html" class="unit-link">Conqueror</a>
+                </div>
+                <div class="branch-row">
+                    <a href="${base}units/kharos/kharos_reapers.html" class="branch-unit-link">The Reapers<span class="branch-role role-support">Support</span></a>
+                    <button class="branch-toggle" aria-label="expand units">▶</button>
+                </div>
+                <div class="unit-accordion-content">
+                    <a href="${base}units/kharos/kharos_necromancer.html" class="unit-link">Necromancer</a>
+                    <a href="${base}units/kharos/kharos_skeleton.html" class="unit-link">Skeleton</a>
+                    <a href="${base}units/kharos/kharos_skeleton_fighter.html" class="unit-link">Skeleton Fighter</a>
+                    <a href="${base}units/kharos/kharos_skeleton_archer.html" class="unit-link">Skeleton Archer</a>
+                    <a href="${base}units/kharos/kharos_skeleton_warrior.html" class="unit-link">Skeleton Warrior</a>
+                    <a href="${base}units/kharos/kharos_zombie.html" class="unit-link">Zombie</a>
+                    <a href="${base}units/kharos/kharos_skeleton_bowman.html" class="unit-link">Skeleton Bowman</a>
+                    <a href="${base}units/kharos/kharos_skeleton_champion.html" class="unit-link">Skeleton Champion</a>
+                    <a href="${base}units/kharos/kharos_flesh_golem.html" class="unit-link">Flesh Golem</a>
+                    <a href="${base}units/kharos/kharos_skeleton_sniper.html" class="unit-link">Skeleton Sniper</a>
+                    <a href="${base}units/kharos/kharos_death_dragon.html" class="unit-link">Death Dragon</a>
+                </div>
+                <div class="branch-row">
+                    <a href="${base}units/kharos/kharos_boundless.html" class="branch-unit-link">The Boundless<span class="branch-role role-mage">Mage</span></a>
+                    <button class="branch-toggle" aria-label="expand units">▶</button>
+                </div>
+                <div class="unit-accordion-content">
+                    <a href="${base}units/kharos/kharos_arcanist.html" class="unit-link">Arcanist</a>
+                    <a href="${base}units/kharos/kharos_cultist.html" class="unit-link">Cultist</a>
+                    <a href="${base}units/kharos/kharos_warlock.html" class="unit-link">Warlock</a>
+                    <a href="${base}units/kharos/kharos_druid.html" class="unit-link">Druid</a>
+                    <a href="${base}units/kharos/kharos_demonologist.html" class="unit-link">Demonologist</a>
+                    <a href="${base}units/kharos/kharos_possessed.html" class="unit-link">Possessed</a>
+                    <a href="${base}units/kharos/kharos_feral_druid.html" class="unit-link">Feral Druid</a>
+                    <a href="${base}units/kharos/kharos_doom_caller.html" class="unit-link">Doom Caller</a>
+                    <a href="${base}units/kharos/kharos_demon_host.html" class="unit-link">Demon Host</a>
+                    <a href="${base}units/kharos/kharos_primal_druid.html" class="unit-link">Primal Druid</a>
+                    <a href="${base}units/kharos/kharos_incarnation.html" class="unit-link">Incarnation</a>
+                </div>
+                <div class="branch-row">
+                    <a href="${base}units/kharos/kharos_outsiders.html" class="branch-unit-link">The Outsiders<span class="branch-role role-ranged">Ranged</span></a>
+                    <button class="branch-toggle" aria-label="expand units">▶</button>
+                </div>
+                <div class="unit-accordion-content">
+                    <a href="${base}units/kharos/kharos_rogue.html" class="unit-link">Rogue</a>
+                    <a href="${base}units/kharos/kharos_thief.html" class="unit-link">Thief</a>
+                    <a href="${base}units/kharos/kharos_bandit.html" class="unit-link">Bandit</a>
+                    <a href="${base}units/kharos/kharos_mercenary.html" class="unit-link">Mercenary</a>
+                    <a href="${base}units/kharos/kharos_bomber.html" class="unit-link">Bomber</a>
+                    <a href="${base}units/kharos/kharos_veteran.html" class="unit-link">Veteran</a>
+                    <a href="${base}units/kharos/kharos_bounty_hunter.html" class="unit-link">Bounty Hunter</a>
+                    <a href="${base}units/kharos/kharos_demolisher.html" class="unit-link">Demolisher</a>
+                    <a href="${base}units/kharos/kharos_alchemist.html" class="unit-link">Alchemist</a>
+                    <a href="${base}units/kharos/kharos_overseer.html" class="unit-link">Overseer</a>
+                </div>
+                <a href="${base}units/kharos/kharos_extra.html" class="branch-unit-link">Others</a>
+            </div>
+            <div class="branch-row">
+                <a href="${base}factions/kharos_spells.html" class="menu-link" style="color: #ab47bc">Spell</a>
+            </div>
+            <div class="branch-row">
+                <a href="${base}factions/kharos_buildings.html" class="menu-link" style="color: #f57c00">Buildings</a>
+            </div>
+        </div>
+
+        <div class="sub-faction-row">
+            <a href="${base}factions/syndicate.html" class="inner-link" style="color: #d4af37;">Devil Syndicate</a>
+            <button class="sub-toggle" aria-label="expand branches">▶</button>
+        </div>
+        <div class="sub-accordion-content">
+            <div class="branch-row">
+                <a href="${base}factions/syndicate_lore.html" class="menu-link" style="color: #b0bec5">Lore</a>
+            </div>
+            <div class="branch-row">
+                <a href="${base}factions/syndicate_culture.html" class="menu-link" style="color: #4db6ac">Culture</a>
+            </div>
+            <div class="branch-row">
+                <a href="${base}factions/syndicate_leader.html" class="menu-link" style="color: #d4af37">Leader<br><strong style="color: #d4af37;"> The CEO</strong></a>
+            </div>
+            <div class="branch-row">
+                <a href="${base}factions/syndicate_roster.html" class="menu-link" style="color: #ef5350">Unit</a>
+                <button class="branch-toggle" aria-label="expand faction menu">▶</button>
+            </div>
+            <div class="sub-accordion-content">
+                <div class="branch-row">
+                    <a href="${base}units/syndicate/syndicate_black_guards.html" class="branch-unit-link">The Black Guards<span class="branch-role role-melee">Melee</span></a>
+                    <button class="branch-toggle" aria-label="expand units">▶</button>
+                </div>
+                <div class="unit-accordion-content">
+                    <a href="${base}units/syndicate/syndicate_noble_scion.html" class="unit-link">Noble Scion</a>
+                    <a href="${base}units/syndicate/syndicate_soldier.html" class="unit-link">Soldier</a>
+                    <a href="${base}units/syndicate/syndicate_legionary.html" class="unit-link">Legionary</a>
+                    <a href="${base}units/syndicate/syndicate_hellguard.html" class="unit-link">Hellguard</a>
+                    <a href="${base}units/syndicate/syndicate_enforcer.html" class="unit-link">Enforcer</a>
+                    <a href="${base}units/syndicate/syndicate_dark_knight.html" class="unit-link">Dark Knight</a>
+                    <a href="${base}units/syndicate/syndicate_blood_knight.html" class="unit-link">Blood Knight</a>
+                    <a href="${base}units/syndicate/syndicate_arbiter.html" class="unit-link">Arbiter</a>
+                </div>
+                <div class="branch-row">
+                    <a href="${base}units/syndicate/syndicate_contracted_demons.html" class="branch-unit-link">Contracted Demons<span class="branch-role role-support">Support</span></a>
+                    <button class="branch-toggle" aria-label="expand units">▶</button>
+                </div>
+                <div class="unit-accordion-content">
+                    <a href="${base}units/syndicate/syndicate_contractor.html" class="unit-link">Contractor</a>
+                    <a href="${base}units/syndicate/syndicate_demon.html" class="unit-link">Demon</a>
+                    <a href="${base}units/syndicate/syndicate_greater_demon.html" class="unit-link">Greater Demon</a>
+                    <a href="${base}units/syndicate/syndicate_demon_lord.html" class="unit-link">Demon Lord</a>
+                    <a href="${base}units/syndicate/syndicate_chaos_spawn.html" class="unit-link">Chaos Spawn</a>
+                    <a href="${base}units/syndicate/syndicate_demon_prince.html" class="unit-link">Demon Prince</a>
+                    <a href="${base}units/syndicate/syndicate_overlord.html" class="unit-link">Overlord</a>
+                    <a href="${base}units/syndicate/syndicate_dread_lord.html" class="unit-link">Dread Lord</a>
+                    <a href="${base}units/syndicate/syndicate_herald_of_ruin.html" class="unit-link">Herald of Ruin</a>
+                    <a href="${base}units/syndicate/syndicate_abyssal_tyrant.html" class="unit-link">Abyssal Tyrant</a>
+                </div>
+                <div class="branch-row">
+                    <a href="${base}units/syndicate/syndicate_house_of_duty.html" class="branch-unit-link">House of Duty<span class="branch-role role-mage">Mage</span></a>
+                    <button class="branch-toggle" aria-label="expand units">▶</button>
+                </div>
+                <div class="unit-accordion-content">
+                    <a href="${base}units/syndicate/syndicate_keeper.html" class="unit-link">Keeper</a>
+                    <a href="${base}units/syndicate/syndicate_page.html" class="unit-link">Page</a>
+                    <a href="${base}units/syndicate/syndicate_servant.html" class="unit-link">Servant</a>
+                    <a href="${base}units/syndicate/syndicate_jailer.html" class="unit-link">Jailer</a>
+                    <a href="${base}units/syndicate/syndicate_courtesan.html" class="unit-link">Courtesan</a>
+                    <a href="${base}units/syndicate/syndicate_maid.html" class="unit-link">Maid</a>
+                    <a href="${base}units/syndicate/syndicate_butler.html" class="unit-link">Butler</a>
+                    <a href="${base}units/syndicate/syndicate_torturer.html" class="unit-link">Torturer</a>
+                    <a href="${base}units/syndicate/syndicate_temptress.html" class="unit-link">Temptress</a>
+                    <a href="${base}units/syndicate/syndicate_head_maid.html" class="unit-link">Head Maid</a>
+                    <a href="${base}units/syndicate/syndicate_steward.html" class="unit-link">Steward</a>
+                    <a href="${base}units/syndicate/syndicate_judge.html" class="unit-link">Judge</a>
+                    <a href="${base}units/syndicate/syndicate_succubus.html" class="unit-link">Succubus</a>
+                    <a href="${base}units/syndicate/syndicate_mistress.html" class="unit-link">Mistress</a>
+                    <a href="${base}units/syndicate/syndicate_chamberlain.html" class="unit-link">Chamberlain</a>
+                    <a href="${base}units/syndicate/syndicate_governor.html" class="unit-link">Governor</a>
+                </div>
+                <div class="branch-row">
+                    <a href="${base}units/syndicate/syndicate_eclipse_ravens.html" class="branch-unit-link">Eclipse Ravens<span class="branch-role role-ranged">Ranged</span></a>
+                    <button class="branch-toggle" aria-label="expand units">▶</button>
+                </div>
+                <div class="unit-accordion-content">
+                    <a href="${base}units/syndicate/syndicate_commander.html" class="unit-link">Commander</a>
+                    <a href="${base}units/syndicate/syndicate_trooper.html" class="unit-link">Trooper</a>
+                    <a href="${base}units/syndicate/syndicate_archer.html" class="unit-link">Archer</a>
+                    <a href="${base}units/syndicate/syndicate_shadow.html" class="unit-link">Shadow</a>
+                    <a href="${base}units/syndicate/syndicate_magic_archer.html" class="unit-link">Magic Archer</a>
+                    <a href="${base}units/syndicate/syndicate_gunslinger.html" class="unit-link">Gunslinger</a>
+                    <a href="${base}units/syndicate/syndicate_shade.html" class="unit-link">Shade</a>
+                    <a href="${base}units/syndicate/syndicate_infernal_sniper.html" class="unit-link">Infernal Sniper</a>
+                    <a href="${base}units/syndicate/syndicate_hitman.html" class="unit-link">Hitman</a>
+                    <a href="${base}units/syndicate/syndicate_nightblade.html" class="unit-link">Nightblade</a>
+                    <a href="${base}units/syndicate/syndicate_endsinger.html" class="unit-link">Endsinger</a>
+                </div>
+                <a href="${base}units/syndicate/syndicate_extra.html" class="branch-unit-link">Others</a>
+            </div>
+            <div class="branch-row">
+                <a href="${base}factions/syndicate_spells.html" class="menu-link" style="color: #ab47bc">Spell</a>
+            </div>
+            <div class="branch-row">
+                <a href="${base}factions/syndicate_buildings.html" class="menu-link" style="color: #f57c00">Buildings</a>
+            </div>
+        </div>
 
         <div class="sub-faction-row">
             <a href="${base}factions/coalition.html" class="inner-link" style="color: #a1887f;">Primal Coalition</a>
