@@ -1054,7 +1054,7 @@ Skill:
 - Base: **Darkness Wave** – Unleashes a sweeping pulse of shadowy energy, dealing 100% of their attack as Dark damage to all enemies in a group (AoE). Has a 10% chance to apply Blind for 2 turns, which reduces accuracy by 20%.
 - Attiva: **Protection of the Void** – Envelops all allies in a protective shroud, granting the Protection of the Void dark buff which increases dodge by 10% for 2 turns and instantly heals them for 50% of their attack.
 - Passiva: **Keeper of Secrets** – Channeling incoming trauma into corporate assets. When struck by a direct damage ability, gains Secret of Doom, increasing the damage of the next base skill used by 20%. When struck by a debuff, gains Secrets of Renewal, increasing the healing of the next ability by 50%. Furthermore, whenever any allied unit in the team is hit by a direct skill, passively heals them for 5 HP.
-- Ultimate: **Pandora Box** – Unlocks forbidden corporate archives, dealing 150% of their attack as damage to all enemy units (AoE) and applying Blind on them for 2 turns. Fully heals all allies in the group by 100% and generates a massive Shield equal to 100% of their own maximum HP.
+- Ultimate: **Pandora Box** – Unlocks forbidden corporate archives, dealing 150% of their attack as damage to all enemy units (AoE) and applying Blind on them for 2 turns. Then releases 6 healing rays distributed among allies, each healing for 100% of their attack. Any overhealing is converted into a Shield.
 
 ### Page
 
