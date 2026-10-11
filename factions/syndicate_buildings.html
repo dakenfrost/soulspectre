@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Syndicate Infrastructure</title>
+    <link rel="stylesheet" href="../system/shared.css">
+    <style>
+        :root {
+            --accent-color: #e53935;
+            --accent-glow:  rgba(229, 57, 53, 0.6);
+            --panel-bg:     rgba(20, 10, 10, 0.85);
+        }
+        #bg-image { background-image: url('../img/banners/syndicate-bg.png'); }
+        #overlay  { background: linear-gradient(to bottom, rgba(15, 5, 5, 0.90), rgba(8, 2, 2, 0.98)); }
+        header { max-width: 1200px; }
+        h1 { font-size: 2.5rem; }
+        main { max-width: 1200px; }
+        h2.section-title { border-bottom: 2px solid var(--accent-color); padding-bottom: 10px; margin-top: 60px; text-transform: uppercase; letter-spacing: 3px; font-size: 1.8rem; color: #fff; text-shadow: 0 0 10px rgba(229,57,53,0.3); }
+        .level-group { margin-top: 30px; }
+        .level-label { background: rgba(229,57,53,0.12); padding: 6px 18px; border-radius: 20px; font-size: 0.9rem; font-weight: bold; color: var(--accent-color); margin-bottom: 20px; display: inline-block; border: 1px solid rgba(229,57,53,0.25); letter-spacing: 1px; }
+        .building-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 18px; margin-bottom: 40px; }
+        .building-card { background: var(--panel-bg); border: 1px solid rgba(255,255,255,0.05); display: flex; gap: 15px; padding: 15px; border-radius: 4px; transition: all 0.3s ease; backdrop-filter: blur(5px); }
+        .building-card:hover { border-color: rgba(229,57,53,0.4); background: rgba(30,15,15,0.95); transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.5); }
+        .building-img { width: 90px; height: 90px; flex-shrink: 0; border-radius: 4px; object-fit: cover; border: 1px solid rgba(229,57,53,0.2); background: rgba(0,0,0,0.4); }
+        .building-info { flex: 1; }
+        .building-name { display: block; font-size: 1.05rem; font-weight: bold; color: #fff; margin-bottom: 5px; }
+        .building-cost { display: flex; align-items: center; gap: 5px; font-family: monospace; font-size: 1rem; font-weight: bold; margin-bottom: 8px; }
+        .currency-icon { width: 16px; height: 16px; vertical-align: middle; }
+        .cost-gold { color: #ffd700; }
+        .cost-platinum { color: #e5e4e2; }
+        .building-effect { font-size: 0.9rem; color: #aaa; line-height: 1.4; }
+        .building-effect strong { color: #ff8a80; }
+        
+        /* Faction Tags */
+        .tag-unbound    { border-left: 3px solid #e53935; } /* Red */
+        .tag-undead     { border-left: 3px solid #ba68c8; } /* Purple */
+        .tag-boundless  { border-left: 3px solid #4dd0e1; } /* Blue/Teal */
+        .tag-outsiders  { border-left: 3px solid #ffb300; } /* Gold/Yellow */
+        .tag-province   { border-left: 4px solid #8d6e63; } /* Brown */
+        
+        .card-platinum  { border: 1px solid rgba(229,228,226,0.25); box-shadow: 0 0 15px rgba(255,255,255,0.04); }
+        .upgrade-note   { display: block; margin-top: 5px; font-size: 0.8rem; color: #e5e4e2; font-style: italic; }
+        .label-champion { background: rgba(229,228,226,0.1); color: #e5e4e2; border: 1px solid rgba(229,228,226,0.2); }
+        .branch-legend  { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 30px; font-size: 0.85rem; color: #888; }
+        .branch-legend span { display: flex; align-items: center; gap: 8px; }
+        .legend-dot { width: 12px; height: 12px; border-radius: 2px; flex-shrink: 0; }
+        @media (max-width: 700px) { .building-grid { grid-template-columns: 1fr; } .branch-legend { gap: 12px; } }
+    </style>
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+<global-navigation base="../"></global-navigation>
+
+<header>
+    <h1>Syndicate Infrastructure</h1>
+    <div class="subtitle">Offices, Manors &amp; Infernal Foundries</div>
+</header>
+
+<main>
+
+    <div class="intro-block">
+        The Devil Syndicate builds the way it does business: with precision, paperwork and a price for everything. Its capitals combine the gilded manors of the Infernal Courts with the offices, foundries and archives of the corporate wing, and every structure exists for one purpose: to turn raw recruits, bound demons and ambitious operatives into assets worth investing in.
+    </div>
+
+    <!-- BRANCH LEGEND -->
+    <div class="branch-legend">
+        <span><div class="legend-dot" style="background:#e53935;"></div> The Black Guards (Melee)</span>
+        <span><div class="legend-dot" style="background:#ba68c8;"></div> Contracted Demons (Support)</span>
+        <span><div class="legend-dot" style="background:#4dd0e1;"></div> House of Duty (Caster)</span>
+        <span><div class="legend-dot" style="background:#ffb300;"></div> Eclipse Ravens (Ranged)</span>
+    </div>
+
+    <!-- ===================== CAPITAL BUILDINGS ===================== -->
+    <h2 class="section-title">Capital Buildings</h2>
+
+    <div class="level-group">
+        <div class="level-label">Foundation Stage (Tier 1 → Tier 2)</div>
+        <div class="building-grid">
+
+            <div class="building-card tag-unbound">
+                <img src="../img/kharos_leatherworking_station.png" class="building-img" alt="Legion Barracks">
+                <div class="building-info">
+                    <span class="building-name">Legion Barracks</span>
+                    <span class="building-cost cost-gold">400 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Soldier → <strong>Legionary</strong></span>
+                </div>
+            </div>
+
+            <div class="building-card tag-undead">
+                <img src="../img/kharos_training_ground.png" class="building-img" alt="Kindling Pit">
+                <div class="building-info">
+                    <span class="building-name">Kindling Pit</span>
+                    <span class="building-cost cost-gold">400 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Demon → <strong>Greater Demon</strong></span>
+                </div>
+            </div>
+
+            <div class="building-card tag-boundless">
+                <img src="../img/kharos_necro_basic_smith.png" class="building-img" alt="Archive of Silence">
+                <div class="building-info">
+                    <span class="building-name">Archive of Silence</span>
+                    <span class="building-cost cost-gold">400 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Page → <strong>Jailer</strong></span>
+                </div>
+            </div>
+
+            <div class="building-card tag-boundless">
+                <img src="../img/kharos_necro_basic_archery.png" class="building-img" alt="Velvet Salon">
+                <div class="building-info">
+                    <span class="building-name">Velvet Salon</span>
+                    <span class="building-cost cost-gold">400 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Page → <strong>Courtesan</strong></span>
+                </div>
+            </div>
+
+            <div class="building-card tag-boundless">
+                <img src="../img/kharos_demonic_library.png" class="building-img" alt="Servants' Quarters">
+                <div class="building-info">
+                    <span class="building-name">Servants' Quarters</span>
+                    <span class="building-cost cost-gold">400 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Servant → <strong>Maid</strong></span>
+                </div>
+            </div>
+
+            <div class="building-card tag-boundless">
+                <img src="../img/kharos_nature_altar.png" class="building-img" alt="Valet Academy">
+                <div class="building-info">
+                    <span class="building-name">Valet Academy</span>
+                    <span class="building-cost cost-gold">400 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Servant → <strong>Butler</strong></span>
+                </div>
+            </div>
+
+            <div class="building-card tag-outsiders">
+                <img src="../img/kharos_thief_guild.png" class="building-img" alt="Shooting Range">
+                <div class="building-info">
+                    <span class="building-name">Shooting Range</span>
+                    <span class="building-cost cost-gold">400 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Trooper → <strong>Archer</strong></span>
+                </div>
+            </div>
+
+            <div class="building-card tag-outsiders">
+                <img src="../img/kharos_blacksmith.png" class="building-img" alt="Den of Whispers">
+                <div class="building-info">
+                    <span class="building-name">Den of Whispers</span>
+                    <span class="building-cost cost-gold">400 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Trooper → <strong>Shadow</strong></span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="level-group">
+        <div class="level-label">Specialization Stage (Tier 2 → Tier 3)</div>
+        <div class="building-grid">
+
+            <div class="building-card tag-unbound">
+                <img src="../img/kharos_sparring_grounds.png" class="building-img" alt="Infernal Forge">
+                <div class="building-info">
+                    <span class="building-name">Infernal Forge</span>
+                    <span class="building-cost cost-gold">800 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Legionary → <strong>Hellguard</strong></span>
+                </div>
+            </div>
+
+            <div class="building-card tag-unbound">
+                <img src="../img/kharos_isolated_caravan.png" class="building-img" alt="Debt Collection Agency">
+                <div class="building-info">
+                    <span class="building-name">Debt Collection Agency</span>
+                    <span class="building-cost cost-gold">800 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Legionary → <strong>Enforcer</strong></span>
+                </div>
+            </div>
+
+            <div class="building-card tag-undead">
+                <img src="../img/kharos_tribal_totem.png" class="building-img" alt="Abyssal Dueling Grounds">
+                <div class="building-info">
+                    <span class="building-name">Abyssal Dueling Grounds</span>
+                    <span class="building-cost cost-gold">800 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Greater Demon → <strong>Demon Lord</strong></span>
+                </div>
+            </div>
+
+            <div class="building-card tag-undead">
+                <img src="../img/kharos_necro_advanced_smith.png" class="building-img" alt="Mutation Vats">
+                <div class="building-info">
+                    <span class="building-name">Mutation Vats</span>
+                    <span class="building-cost cost-gold">800 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Greater Demon → <strong>Chaos Spawn</strong></span>
+                </div>
+            </div>
+
+            <div class="building-card tag-boundless">
+                <img src="../img/kharos_unholy_altar.png" class="building-img" alt="Interrogation Chambers">
+                <div class="building-info">
+                    <span class="building-name">Interrogation Chambers</span>
+                    <span class="building-cost cost-gold">800 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Jailer → <strong>Torturer</strong></span>
+                </div>
+            </div>
+
+            <div class="building-card tag-boundless">
+                <img src="../img/kharos_necro_advanced_archery.png" class="building-img" alt="Dream Parlor">
+                <div class="building-info">
+                    <span class="building-name">Dream Parlor</span>
+                    <span class="building-cost cost-gold">800 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Courtesan → <strong>Temptress</strong></span>
+                </div>
+            </div>
+
+            <div class="building-card tag-boundless">
+                <img src="../img/kharos_demonic_contracts.png" class="building-img" alt="Housekeeper's Office">
+                <div class="building-info">
+                    <span class="building-name">Housekeeper's Office</span>
+                    <span class="building-cost cost-gold">800 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Maid → <strong>Head Maid</strong></span>
+                </div>
+            </div>
+
+            <div class="building-card tag-boundless">
+                <img src="../img/kharos_binding_circle.png" class="building-img" alt="Storm Conduit Hall">
+                <div class="building-info">
+                    <span class="building-name">Storm Conduit Hall</span>
+                    <span class="building-cost cost-gold">800 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Butler → <strong>Steward</strong></span>
+                </div>
+            </div>
+
+            <div class="building-card tag-outsiders">
+                <img src="../img/kharos_altar_of_the_wilds.png" class="building-img" alt="Rune Fletchery">
+                <div class="building-info">
+                    <span class="building-name">Rune Fletchery</span>
+                    <span class="building-cost cost-gold">800 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Archer → <strong>Magic Archer</strong></span>
+                </div>
+            </div>
+
+            <div class="building-card tag-outsiders">
+                <img src="../img/kharos_mercenary_guild.png" class="building-img" alt="Gunpowder Workshop">
+                <div class="building-info">
+                    <span class="building-name">Gunpowder Workshop</span>
+                    <span class="building-cost cost-gold">800 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Archer → <strong>Gunslinger</strong></span>
+                </div>
+            </div>
+
+            <div class="building-card tag-outsiders">
+                <img src="../img/kharos_chemist_station.png" class="building-img" alt="Veil Sanctum">
+                <div class="building-info">
+                    <span class="building-name">Veil Sanctum</span>
+                    <span class="building-cost cost-gold">800 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Shadow → <strong>Shade</strong></span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="level-group">
+        <div class="level-label">Elite Stage (Tier 3 → Tier 4)</div>
+        <div class="building-grid">
+
+            <div class="building-card tag-unbound">
+                <img src="../img/kharos_heavy_metalwork_smith.png" class="building-img" alt="Obsidian Foundry">
+                <div class="building-info">
+                    <span class="building-name">Obsidian Foundry</span>
+                    <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Hellguard → <strong>Dark Knight</strong></span>
+                </div>
+            </div>
+
+            <div class="building-card tag-unbound">
+                <img src="../img/kharos_arena.png" class="building-img" alt="Liquidation Office">
+                <div class="building-info">
+                    <span class="building-name">Liquidation Office</span>
+                    <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Enforcer → <strong>Blood Knight</strong></span>
+                </div>
+            </div>
+
+            <div class="building-card tag-undead">
+                <img src="../img/kharos_assassin_guild.png" class="building-img" alt="Throne of Blades">
+                <div class="building-info">
+                    <span class="building-name">Throne of Blades</span>
+                    <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Demon Lord → <strong>Demon Prince</strong></span>
+                </div>
+            </div>
+
+            <div class="building-card tag-undead">
+                <img src="../img/kharos_valhalla_statue.png" class="building-img" alt="Chamber of Dread">
+                <div class="building-info">
+                    <span class="building-name">Chamber of Dread</span>
+                    <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Demon Lord → <strong>Overlord</strong></span>
+                </div>
+            </div>
+
+            <div class="building-card tag-undead">
+                <img src="../img/kharos_necro_master_smith.png" class="building-img" alt="Plague Cistern">
+                <div class="building-info">
+                    <span class="building-name">Plague Cistern</span>
+                    <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Chaos Spawn → <strong>Dread Lord</strong></span>
+                </div>
+            </div>
+
+            <div class="building-card tag-undead">
+                <img src="../img/kharos_abomination_catalyst.png" class="building-img" alt="Molten Crucible">
+                <div class="building-info">
+                    <span class="building-name">Molten Crucible</span>
+                    <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Chaos Spawn → <strong>Herald of Ruin</strong></span>
+                </div>
+            </div>
+
+            <div class="building-card tag-boundless">
+                <img src="../img/kharos_necro_master_archery.png" class="building-img" alt="Tribunal of Shadows">
+                <div class="building-info">
+                    <span class="building-name">Tribunal of Shadows</span>
+                    <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Torturer → <strong>Judge</strong></span>
+                </div>
+            </div>
+
+            <div class="building-card tag-boundless">
+                <img src="../img/kharos_demonic_portal.png" class="building-img" alt="Garden of Desire">
+                <div class="building-info">
+                    <span class="building-name">Garden of Desire</span>
+                    <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Temptress → <strong>Succubus</strong></span>
+                </div>
+            </div>
+
+            <div class="building-card tag-boundless">
+                <img src="../img/kharos_advanced_binding_circle.png" class="building-img" alt="Grand Manor">
+                <div class="building-info">
+                    <span class="building-name">Grand Manor</span>
+                    <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Head Maid → <strong>Mistress</strong></span>
+                </div>
+            </div>
+
+            <div class="building-card tag-boundless">
+                <img src="../img/kharos_druiding_stones.png" class="building-img" alt="Hall of Keys">
+                <div class="building-info">
+                    <span class="building-name">Hall of Keys</span>
+                    <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Steward → <strong>Chamberlain</strong></span>
+                </div>
+            </div>
+
+            <div class="building-card tag-outsiders">
+                <img src="../img/kharos_officers_lounge.png" class="building-img" alt="Eclipse Observatory">
+                <div class="building-info">
+                    <span class="building-name">Eclipse Observatory</span>
+                    <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Magic Archer → <strong>Infernal Sniper</strong></span>
+                </div>
+            </div>
+
+            <div class="building-card tag-outsiders">
+                <img src="../img/kharos_bounty_board.png" class="building-img" alt="Contract Board">
+                <div class="building-info">
+                    <span class="building-name">Contract Board</span>
+                    <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Gunslinger → <strong>Hitman</strong></span>
+                </div>
+            </div>
+
+            <div class="building-card tag-outsiders">
+                <img src="../img/kharos_chemical_tanks.png" class="building-img" alt="House of Silence">
+                <div class="building-info">
+                    <span class="building-name">House of Silence</span>
+                    <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Shade → <strong>Nightblade</strong></span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="level-group">
+        <div class="level-label">Champion Stage (Tier 4 → Tier 5)</div>
+        <div class="building-grid">
+
+            <div class="building-card tag-unbound">
+                <img src="../img/kharos_laboratory.png" class="building-img" alt="Court of Final Judgment">
+                <div class="building-info">
+                    <span class="building-name">Court of Final Judgment</span>
+                    <span class="building-cost cost-platinum">10 <img src="../img/icon_platinum.png" class="currency-icon" alt="Platinum"></span>
+                    <span class="building-effect">Unlocks T5 → <strong>Arbiter</strong></span>
+                    <span class="upgrade-note">Upgrade: 5 Platinum <img src="../img/icon_platinum.png" class="currency-icon" alt="Platinum"></span>
+                </div>
+            </div>
+
+            <div class="building-card tag-undead">
+                <img src="../img/kharos_hall_of_fame.png" class="building-img" alt="Vault of Forbidden Contracts">
+                <div class="building-info">
+                    <span class="building-name">Vault of Forbidden Contracts</span>
+                    <span class="building-cost cost-platinum">10 <img src="../img/icon_platinum.png" class="currency-icon" alt="Platinum"></span>
+                    <span class="building-effect">Unlocks T5 → <strong>Abyssal Tyrant</strong></span>
+                    <span class="upgrade-note">Upgrade: 5 Platinum <img src="../img/icon_platinum.png" class="currency-icon" alt="Platinum"></span>
+                </div>
+            </div>
+
+            <div class="building-card tag-boundless">
+                <img src="../img/kharos_draconic_bones.png" class="building-img" alt="Provincial Palace">
+                <div class="building-info">
+                    <span class="building-name">Provincial Palace</span>
+                    <span class="building-cost cost-platinum">10 <img src="../img/icon_platinum.png" class="currency-icon" alt="Platinum"></span>
+                    <span class="building-effect">Unlocks T5 → <strong>Governor</strong></span>
+                    <span class="upgrade-note">Upgrade: 5 Platinum <img src="../img/icon_platinum.png" class="currency-icon" alt="Platinum"></span>
+                </div>
+            </div>
+
+            <div class="building-card tag-outsiders">
+                <img src="../img/kharos_spirit_shrine.png" class="building-img" alt="Opera of the Last Note">
+                <div class="building-info">
+                    <span class="building-name">Opera of the Last Note</span>
+                    <span class="building-cost cost-platinum">10 <img src="../img/icon_platinum.png" class="currency-icon" alt="Platinum"></span>
+                    <span class="building-effect">Unlocks T5 → <strong>Endsinger</strong></span>
+                    <span class="upgrade-note">Upgrade: 5 Platinum <img src="../img/icon_platinum.png" class="currency-icon" alt="Platinum"></span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ===================== CAPITAL UTILITY ===================== -->
+    <h2 class="section-title">Capital Utility</h2>
+    <div class="building-grid">
+
+            <div class="building-card ">
+                <img src="../img/kharos_city_hall.png" class="building-img" alt="Recruitment Office">
+                <div class="building-info">
+                    <span class="building-name">Recruitment Office</span>
+                    <span class="building-cost cost-gold">800 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Decrease gold to recruit or upgrade units by <strong>20%</strong>.</span>
+                </div>
+            </div>
+
+            <div class="building-card ">
+                <img src="../img/kharos_recruiting_post.png" class="building-img" alt="Brimstone Express">
+                <div class="building-info">
+                    <span class="building-name">Brimstone Express</span>
+                    <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Increase Movement Speed for turn by <strong>20%</strong>.</span>
+                </div>
+            </div>
+
+            <div class="building-card ">
+                <img src="../img/kharos_logistics_station.png" class="building-img" alt="Arcane Patent Office">
+                <div class="building-info">
+                    <span class="building-name">Arcane Patent Office</span>
+                    <span class="building-cost cost-gold">3200 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Decrease cost to study magic by <strong>20%</strong>.</span>
+                </div>
+            </div>
+
+    </div>
+
+    <!-- ===================== PROVINCE BUILDINGS ===================== -->
+    <h2 class="section-title">Province Buildings</h2>
+    <div class="building-grid">
+
+            <div class="building-card tag-province">
+                <img src="../img/kharos_arcane_catalyst.png" class="building-img" alt="Hellfire Mines">
+                <div class="building-info">
+                    <span class="building-name">Hellfire Mines</span>
+                    <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Deals <strong>10</strong> Damage to enemy units at start of first turn when in battle in the province.</span>
+                </div>
+            </div>
+
+            <div class="building-card tag-province">
+                <img src="../img/kharos_spiked_walls.png" class="building-img" alt="Propaganda Office">
+                <div class="building-info">
+                    <span class="building-name">Propaganda Office</span>
+                    <span class="building-cost cost-gold">1600 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Increase Damage done your first turn in province by <strong>20%</strong>.</span>
+                </div>
+            </div>
+
+            <div class="building-card tag-province">
+                <img src="../img/kharos_hidden_spots.png" class="building-img" alt="Infernal Garrison">
+                <div class="building-info">
+                    <span class="building-name">Infernal Garrison</span>
+                    <span class="building-cost cost-gold">3200 <img src="../img/icon_gold.png" class="currency-icon" alt="Gold"></span>
+                    <span class="building-effect">Increase Damage done by a flat <strong>10</strong> to your units in the province.</span>
+                </div>
+            </div>
+
+    </div>
+
+    <a href="syndicate.html" class="back-link">← Return to Devil Syndicate Overview</a>
+</main>
+
+<script src="../system/building-lightbox.js"></script>
+<script src="../system/navigation.js"></script>
+
+</body>
+</html>

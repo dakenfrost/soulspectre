@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Syndicate Spells</title>
+    <link rel="stylesheet" href="../system/shared.css">
+    <style>
+        :root {
+            /* Colori adattati per il Kharos Dominion */
+            --accent-color: #e53935;
+            --accent-glow:  rgba(229, 57, 53, 0.3);
+            --panel-bg:     rgba(15, 10, 10, 0.6);
+        }
+        #bg-image { background-image: url('../img/banners/syndicate-bg.png'); }
+        #overlay  { background: linear-gradient(to bottom, rgba(12, 8, 8, 0.90), rgba(5, 3, 3, 0.98)); }
+        h1 { font-size: 2.5rem; }
+        .spell-category { margin-bottom: 50px; background: var(--panel-bg); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .level-header { padding: 15px 25px; font-size: 1.3rem; text-transform: uppercase; letter-spacing: 2px; font-weight: bold; display: flex; align-items: center; border-bottom: 2px solid rgba(255,255,255,0.1); }
+        
+        /* Tier colors kept for RPG familiarity */
+        .lv-1 { background: rgba(176,190,197,0.15); color: #b0bec5; border-bottom-color: #b0bec5; }
+        .lv-2 { background: rgba(129,199,132,0.15); color: #81c784; border-bottom-color: #81c784; }
+        .lv-3 { background: rgba(100,181,246,0.15); color: #64b5f6; border-bottom-color: #64b5f6; }
+        .lv-4 { background: rgba(186,104,200,0.15); color: #ba68c8; border-bottom-color: #ba68c8; }
+        .lv-5 { background: rgba(255,179,0,0.15);   color: #ffb300; border-bottom-color: #ffb300; }
+        
+        table { width: 100%; border-collapse: collapse; text-align: left; }
+        th { padding: 12px 25px; text-transform: uppercase; font-size: 0.8rem; color: #888; letter-spacing: 1px; background: rgba(0,0,0,0.2); }
+        td { padding: 15px 25px; border-bottom: 1px solid rgba(255,255,255,0.03); vertical-align: middle; }
+        tr:last-child td { border-bottom: none; }
+        tr:hover td { background: rgba(229,57,53,0.05); }
+        .spell-icon-cell { width: 60px; text-align: center; }
+        .spell-icon { width: 40px; height: 40px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.1); }
+        .mana-cost  { font-family: monospace; color: #ef5350; font-weight: bold; font-size: 1.1rem; width: 100px; }
+        .spell-name { color: #fff; font-weight: bold; font-size: 1.1rem; width: 250px; }
+        .spell-effect { color: #ccc; font-size: 0.95rem; }
+        .stack-info { color: #e53935; font-size: 0.8rem; font-style: italic; display: block; margin-top: 4px; }
+        @media (max-width: 800px) { .mana-cost, .spell-icon-cell { display: none; } .spell-name { width: auto; } }
+    </style>
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+<global-navigation base="../"></global-navigation>
+
+<header>
+    <h1>Syndicate Spells</h1>
+    <div class="subtitle">Hellfire, Illusions &amp; Binding Clauses</div>
+</header>
+
+<main>
+    <div class="spell-category">
+        <div class="level-header lv-1">Level 1 Spells</div>
+        <table>
+            <thead>
+                <tr>
+                    <th class="spell-icon-cell">Icon</th>
+                    <th>Mana</th>
+                    <th>Name</th>
+                    <th>Effect</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/lv1_spell_icon.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">200</td>
+                    <td class="spell-name">Hellspark</td>
+                    <td class="spell-effect">Deals 15 Fire damage to target enemy party and inflicts <strong>Burning</strong> (5 Fire damage per turn) for 2 turns.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/lv1_spell_icon.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">200</td>
+                    <td class="spell-name">Smoke and Mirrors</td>
+                    <td class="spell-effect">Selected enemy party is <strong>Blinded</strong>: -5% accuracy this turn.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/lv1_spell_icon.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">200</td>
+                    <td class="spell-name">Retainer's Ward</td>
+                    <td class="spell-effect">Grants selected party a <strong>Shield</strong> of 20 HP this turn.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/lv1_spell_icon.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">200</td>
+                    <td class="spell-name">Signing Bonus</td>
+                    <td class="spell-effect">Selected party gains +5% damage this turn.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/lv1_spell_icon.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">200</td>
+                    <td class="spell-name">Fine Print</td>
+                    <td class="spell-effect">Selected enemy party suffers -5% armor this turn.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/lv1_spell_icon.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">200</td>
+                    <td class="spell-name">Summon Imps</td>
+                    <td class="spell-effect">Calls a swarm of 6 Imps. They vanish at the end of the turn.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="spell-category">
+        <div class="level-header lv-2">Level 2 Spells</div>
+        <table>
+            <tbody>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/lv2_spell_icon.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">400</td>
+                    <td class="spell-name">Brimstone Rain</td>
+                    <td class="spell-effect">Deals 25 Fire damage to target enemy party and inflicts <strong>Burning</strong> (10 Fire damage per turn) for 2 turns.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/lv2_spell_icon.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">400</td>
+                    <td class="spell-name">Veil of Ash</td>
+                    <td class="spell-effect">Selected enemy party is <strong>Blinded</strong>: -10% accuracy this turn. <em>Stackable with Smoke and Mirrors.</em></td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/lv2_spell_icon.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">400</td>
+                    <td class="spell-name">Infernal Barrier</td>
+                    <td class="spell-effect">Grants selected party a <strong>Shield</strong> of 50 HP this turn.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/lv2_spell_icon.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">400</td>
+                    <td class="spell-name">Whispered Doubt</td>
+                    <td class="spell-effect">Selected enemy party deals -5% damage this turn.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/lv2_spell_icon.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">400</td>
+                    <td class="spell-name">Mark of Debt</td>
+                    <td class="spell-effect">Selected enemy party takes +5% damage from all sources this turn.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/lv2_spell_icon.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">400</td>
+                    <td class="spell-name">Contracted Haste</td>
+                    <td class="spell-effect">Adds 20% movement to selected party.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="spell-category">
+        <div class="level-header lv-3">Level 3 Spells</div>
+        <table>
+            <tbody>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/lv3_spell_icon.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">800</td>
+                    <td class="spell-name">Inferno</td>
+                    <td class="spell-effect">Deals 35 Fire damage to target enemy party and inflicts <strong>Burning</strong> (15 Fire damage per turn) for 2 turns.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/lv3_spell_icon.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">800</td>
+                    <td class="spell-name">Eclipse</td>
+                    <td class="spell-effect">Selected enemy party is <strong>Blinded</strong>: -15% accuracy this turn.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/lv3_spell_icon.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">800</td>
+                    <td class="spell-name">Obsidian Aegis</td>
+                    <td class="spell-effect">Grants selected party a <strong>Shield</strong> of 100 HP this turn. While the Shield holds, 10% of the damage it absorbs is returned to the attacker as Fire damage.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/lv3_spell_icon.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">800</td>
+                    <td class="spell-name">Hypnotic Decree</td>
+                    <td class="spell-effect">Each unit in target enemy party has a 15% chance to be <strong>Charmed</strong> this turn.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/lv3_spell_icon.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">800</td>
+                    <td class="spell-name">Liquidity Injection</td>
+                    <td class="spell-effect">Heals 75 HP to selected party.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/lv3_spell_icon.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">800</td>
+                    <td class="spell-name">Summon Greater Demon</td>
+                    <td class="spell-effect">A Contractor binds a Greater Demon to the battlefield. It is dismissed at the end of the turn.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="spell-category">
+        <div class="level-header lv-4">Level 4 Spells</div>
+        <table>
+            <tbody>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/lv4_spell_icon.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">1600</td>
+                    <td class="spell-name">Hellstorm</td>
+                    <td class="spell-effect">Deals 45 Fire damage to target enemy party. Units already <strong>Burning</strong> take an additional 20 Fire damage.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/lv4_spell_icon.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">1600</td>
+                    <td class="spell-name">Total Eclipse</td>
+                    <td class="spell-effect">Selected enemy party is <strong>Blinded</strong>: -20% accuracy this turn. <em>Stackable with Veil of Ash.</em></td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/lv4_spell_icon.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">1600</td>
+                    <td class="spell-name">Bulwark of the Damned</td>
+                    <td class="spell-effect">Grants selected party a <strong>Shield</strong> of 200 HP this turn. While the Shield holds, the party is immune to debuffs.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/lv4_spell_icon.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">1600</td>
+                    <td class="spell-name">Hostile Takeover</td>
+                    <td class="spell-effect">Steals one buff from target enemy party and transfers it to selected party.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/lv4_spell_icon.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">1600</td>
+                    <td class="spell-name">Confusing Fog</td>
+                    <td class="spell-effect">Each unit in target enemy party has a 20% chance to be <strong>Confused</strong> this turn, preventing the use of skills.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/lv4_spell_icon.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">1600</td>
+                    <td class="spell-name">Cancellation Clause</td>
+                    <td class="spell-effect">Removes all debuffs from selected party.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="spell-category">
+        <div class="level-header lv-5">Level 5 Spells</div>
+        <table>
+            <tbody>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/lv5_spell_icon.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">3200</td>
+                    <td class="spell-name">Gates of Hell</td>
+                    <td class="spell-effect">Deals 80 Fire damage to target enemy party and inflicts <strong>Burning</strong> (25 Fire damage per turn) for 3 turns.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/lv5_spell_icon.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">3200</td>
+                    <td class="spell-name">Blinding Edict</td>
+                    <td class="spell-effect">Every enemy party is <strong>Blinded</strong>: -30% accuracy this turn.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/lv5_spell_icon.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">3200</td>
+                    <td class="spell-name">Absolute Ward</td>
+                    <td class="spell-effect">Grants every allied party a <strong>Shield</strong> equal to 30% of their maximum HP this turn.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/lv5_spell_icon.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">3200</td>
+                    <td class="spell-name">Mass Seduction</td>
+                    <td class="spell-effect">Each unit in target enemy party has a 30% chance to be <strong>Charmed</strong> this turn.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/lv5_spell_icon.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">3200</td>
+                    <td class="spell-name">Binding Contract</td>
+                    <td class="spell-effect">Target enemy party cannot cast spells or use Ultimate skills during their next turn.</td>
+                </tr>
+                <tr>
+                    <td class="spell-icon-cell"><img src="../img/lv5_spell_icon.png" class="spell-icon" alt=""></td>
+                    <td class="mana-cost">3200</td>
+                    <td class="spell-name">Summon Archdemon</td>
+                    <td class="spell-effect">Fulfills a costly contract, summoning an Archdemon. It is dismissed at the end of the turn.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <a href="syndicate.html" class="back-link">← Return to Devil Syndicate</a>
+</main>
+
+<script src="../system/navigation.js"></script>
+</body>
+</html>
