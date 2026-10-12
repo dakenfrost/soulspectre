@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Hunter</title>
+
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Hunter",
+  "faction": "Iron Brotherhood",
+  "subtitle": "Enforcers - Officer",
+  "accent": "#ffd700",
+  "bgImage": "../../img/banners/banner_brotherhood.png",
+  "breadcrumbs": [
+    {
+      "href": "../../index.html",
+      "label": "Home"
+    },
+    {
+      "href": "../../factions/index.html",
+      "label": "Factions"
+    },
+    {
+      "href": "../../factions/brotherhood.html",
+      "label": "Iron Brotherhood"
+    },
+    {
+      "href": "../../factions/brotherhood_roster.html",
+      "label": "Roster"
+    },
+    {
+      "href": "brotherhood_enforcers.html",
+      "label": "Enforcers"
+    },
+    {
+      "label": "Hunter"
+    }
+  ],
+  "combat": [
+    "../../img/banners/banner_faction_brotherhood.png"
+  ],
+  "bio": {
+    "title": "Placeholder",
+    "paragraphs": [
+      "Biography of the Hunter coming soon."
+    ]
+  },
+  "stats": {
+    "hp": 135,
+    "atk": 40,
+    "ini": 50
+  },
+  "skills": [
+    {
+      "type": "base",
+      "name": "Hunter Shot",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Deals 100% physical damage to a target at range and applies the \"Hunter Mark\" physical debuff for 1 turn. Marked targets cannot go stealth or hidden and take 20% additional damage from hunter skills and summons. Stacks up to 3 times."
+    },
+    {
+      "type": "active",
+      "name": "Call Trisha",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Summons Trisha the Bear in an available slot. Trisha has 100% of the Hunter's HP and attack and 25 initiative. Skills: Claw Attack (100% physical damage to a target) or Body Slam (150% damage to a target, 50% chance to stun)."
+    },
+    {
+      "type": "passive",
+      "name": "Advanced Tracking",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "At the start of its turn, reveals one hidden or stealthed enemy. If none is present, applies Hunter Mark to the enemy with the lowest current HP. Damage against Large units is increased by 50%."
+    },
+    {
+      "type": "ultimate",
+      "name": "Scattershot",
+      "icon": "../../img/base_ultimate_skill.png",
+      "desc": "Deals 100% damage to all enemy units. Large units take an additional 50% damage, up to 100% total with the passive."
+    }
+  ],
+  "backLink": {
+    "href": "brotherhood_enforcers.html",
+    "label": "Return to Enforcers"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>

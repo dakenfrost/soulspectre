@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Mastersmith</title>
+
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Mastersmith",
+  "faction": "Iron Brotherhood",
+  "subtitle": "The United Workers - Tier IV",
+  "accent": "#ba68c8",
+  "bgImage": "../../img/banners/banner_brotherhood.png",
+  "breadcrumbs": [
+    {
+      "href": "../../index.html",
+      "label": "Home"
+    },
+    {
+      "href": "../../factions/index.html",
+      "label": "Factions"
+    },
+    {
+      "href": "../../factions/brotherhood.html",
+      "label": "Iron Brotherhood"
+    },
+    {
+      "href": "../../factions/brotherhood_roster.html",
+      "label": "Roster"
+    },
+    {
+      "href": "brotherhood_united_workers.html",
+      "label": "The United Workers"
+    },
+    {
+      "label": "Mastersmith"
+    }
+  ],
+  "combat": [
+    "../../img/banners/banner_faction_brotherhood.png"
+  ],
+  "bio": {
+    "title": "Placeholder",
+    "paragraphs": [
+      "Biography of the Mastersmith coming soon."
+    ]
+  },
+  "stats": {
+    "hp": 300,
+    "atk": 80,
+    "ini": 60
+  },
+  "skills": [
+    {
+      "type": "base",
+      "name": "Upgrade Gear",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Applies the \"Upgraded Gear\" buff to an ally for 2 turns. Physical damage dealt by that ally is increased by 20% and armor is increased by 5%. Does not stack with \"Upgraded Weapon\"."
+    },
+    {
+      "type": "active",
+      "name": "Resonating Hammer",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Deals 100% of attack as physical damage. Ignores armor and deals additional damage equal to the target's armor percentage."
+    },
+    {
+      "type": "passive",
+      "name": "Master Blacksmith",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Every time it uses \"Upgrade Gear\", gains one stack of \"Mastersmith Experience\". Each stack increases the physical damage bonus of \"Upgrade Gear\" by 5% and its armor bonus by 2% (max 5 stacks)."
+    }
+  ],
+  "backLink": {
+    "href": "brotherhood_united_workers.html",
+    "label": "Return to The United Workers"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>

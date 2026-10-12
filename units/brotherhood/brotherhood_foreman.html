@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Foreman</title>
+
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Foreman",
+  "faction": "Iron Brotherhood",
+  "subtitle": "The United Workers - Officer",
+  "accent": "#ffd700",
+  "bgImage": "../../img/banners/banner_brotherhood.png",
+  "breadcrumbs": [
+    {
+      "href": "../../index.html",
+      "label": "Home"
+    },
+    {
+      "href": "../../factions/index.html",
+      "label": "Factions"
+    },
+    {
+      "href": "../../factions/brotherhood.html",
+      "label": "Iron Brotherhood"
+    },
+    {
+      "href": "../../factions/brotherhood_roster.html",
+      "label": "Roster"
+    },
+    {
+      "href": "brotherhood_united_workers.html",
+      "label": "The United Workers"
+    },
+    {
+      "label": "Foreman"
+    }
+  ],
+  "combat": [
+    "../../img/banners/banner_faction_brotherhood.png"
+  ],
+  "bio": {
+    "title": "Placeholder",
+    "paragraphs": [
+      "Biography of the Foreman coming soon."
+    ]
+  },
+  "stats": {
+    "hp": 200,
+    "atk": 55,
+    "ini": 40
+  },
+  "skills": [
+    {
+      "type": "base",
+      "name": "Violent Slash",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Deals 100% physical damage to a melee target. 50% chance to apply the \"Stagger\" debuff for 1 turn, which reduces initiative by 10."
+    },
+    {
+      "type": "active",
+      "name": "Back to Work!",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Targets an ally below 50% of maximum HP and/or with at least one debuff. Cleanses all debuffs and grants a shield equal to 30% of their maximum HP."
+    },
+    {
+      "type": "passive",
+      "name": "Peerless Supervisor",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Every time an ally misses with a direct damage skill, gains one stack of \"Accuracy Insight\", which increases accuracy by 5% (max 5 stacks). Every time it uses a skill and hits at least one target, gains \"Bonus\", which increases attack by 2% (max 5 stacks)."
+    },
+    {
+      "type": "ultimate",
+      "name": "Teamwork Assault",
+      "icon": "../../img/base_ultimate_skill.png",
+      "desc": "Deals physical damage to the whole enemy group equal to the sum of 20% of the attack of each party member."
+    }
+  ],
+  "backLink": {
+    "href": "brotherhood_united_workers.html",
+    "label": "Return to The United Workers"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>

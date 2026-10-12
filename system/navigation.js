@@ -516,7 +516,84 @@ function getNavTemplate(base) {
             </div>
         </div>
 
-        <a href="#" class="inner-link locked">Iron Brotherhood</a>
+        <div class="sub-faction-row">
+            <a href="${base}factions/brotherhood.html" class="inner-link" style="color: #90a4ae;">Iron Brotherhood</a>
+            <button class="sub-toggle" aria-label="expand branches">▶</button>
+        </div>
+        <div class="sub-accordion-content">
+            <div class="branch-row">
+                <a href="${base}factions/brotherhood_roster.html" class="menu-link" style="color: #ef5350">Unit</a>
+                <button class="branch-toggle" aria-label="expand faction menu">▶</button>
+            </div>
+            <div class="sub-accordion-content">
+                <div class="branch-row">
+                    <a href="${base}units/brotherhood/brotherhood_dulkhuz.html" class="branch-unit-link">The DulKhuz<span class="branch-role role-melee">Melee</span></a>
+                    <button class="branch-toggle" aria-label="expand units">▶</button>
+                </div>
+                <div class="unit-accordion-content">
+                    <a href="${base}units/brotherhood/brotherhood_commissar.html" class="unit-link">Commissar</a>
+                    <a href="${base}units/brotherhood/brotherhood_fighter.html" class="unit-link">Fighter</a>
+                    <a href="${base}units/brotherhood/brotherhood_warrior.html" class="unit-link">Warrior</a>
+                    <a href="${base}units/brotherhood/brotherhood_veteran.html" class="unit-link">Veteran</a>
+                    <a href="${base}units/brotherhood/brotherhood_honor_guard.html" class="unit-link">Honor Guard</a>
+                    <a href="${base}units/brotherhood/brotherhood_slayer.html" class="unit-link">Slayer</a>
+                    <a href="${base}units/brotherhood/brotherhood_winter_soldier.html" class="unit-link">Winter Soldier</a>
+                    <a href="${base}units/brotherhood/brotherhood_hermit.html" class="unit-link">Hermit</a>
+                    <a href="${base}units/brotherhood/brotherhood_storm_lord.html" class="unit-link">Storm Lord</a>
+                    <a href="${base}units/brotherhood/brotherhood_dwarf_lord.html" class="unit-link">Dwarf Lord</a>
+                </div>
+                <div class="branch-row">
+                    <a href="${base}units/brotherhood/brotherhood_united_workers.html" class="branch-unit-link">The United Workers<span class="branch-role role-support">Support</span></a>
+                    <button class="branch-toggle" aria-label="expand units">▶</button>
+                </div>
+                <div class="unit-accordion-content">
+                    <a href="${base}units/brotherhood/brotherhood_foreman.html" class="unit-link">Foreman</a>
+                    <a href="${base}units/brotherhood/brotherhood_worker.html" class="unit-link">Worker</a>
+                    <a href="${base}units/brotherhood/brotherhood_woodcutter.html" class="unit-link">Woodcutter</a>
+                    <a href="${base}units/brotherhood/brotherhood_lumberjack.html" class="unit-link">LumberJack</a>
+                    <a href="${base}units/brotherhood/brotherhood_timber_reaper.html" class="unit-link">Timber Reaper</a>
+                    <a href="${base}units/brotherhood/brotherhood_woodworker.html" class="unit-link">Woodworker</a>
+                    <a href="${base}units/brotherhood/brotherhood_carpenter.html" class="unit-link">Carpenter</a>
+                    <a href="${base}units/brotherhood/brotherhood_miner.html" class="unit-link">Miner</a>
+                    <a href="${base}units/brotherhood/brotherhood_driller.html" class="unit-link">Driller</a>
+                    <a href="${base}units/brotherhood/brotherhood_demolisher.html" class="unit-link">Demolisher</a>
+                    <a href="${base}units/brotherhood/brotherhood_blacksmith.html" class="unit-link">Blacksmith</a>
+                    <a href="${base}units/brotherhood/brotherhood_mastersmith.html" class="unit-link">Mastersmith</a>
+                    <a href="${base}units/brotherhood/brotherhood_stakhanovite.html" class="unit-link">Stakhanovite</a>
+                </div>
+                <div class="branch-row">
+                    <a href="${base}units/brotherhood/brotherhood_shamans.html" class="branch-unit-link">Shamans of Nature<span class="branch-role role-mage">Mage</span></a>
+                    <button class="branch-toggle" aria-label="expand units">▶</button>
+                </div>
+                <div class="unit-accordion-content">
+                    <a href="${base}units/brotherhood/brotherhood_scholar.html" class="unit-link">Scholar</a>
+                    <a href="${base}units/brotherhood/brotherhood_novice.html" class="unit-link">Novice</a>
+                    <a href="${base}units/brotherhood/brotherhood_enhancer.html" class="unit-link">Enhancer</a>
+                    <a href="${base}units/brotherhood/brotherhood_snow_druid.html" class="unit-link">Snow Druid</a>
+                    <a href="${base}units/brotherhood/brotherhood_archdruid.html" class="unit-link">Archdruid</a>
+                    <a href="${base}units/brotherhood/brotherhood_snow_invoker.html" class="unit-link">Snow Invoker</a>
+                    <a href="${base}units/brotherhood/brotherhood_rune_mage.html" class="unit-link">Rune Mage</a>
+                    <a href="${base}units/brotherhood/brotherhood_rune_master.html" class="unit-link">Rune Master</a>
+                    <a href="${base}units/brotherhood/brotherhood_rune_lord.html" class="unit-link">Rune Lord</a>
+                    <a href="${base}units/brotherhood/brotherhood_rune_giant.html" class="unit-link">Rune Giant</a>
+                    <a href="${base}units/brotherhood/brotherhood_loremaster.html" class="unit-link">Loremaster</a>
+                </div>
+                <div class="branch-row">
+                    <a href="${base}units/brotherhood/brotherhood_enforcers.html" class="branch-unit-link">Enforcers<span class="branch-role role-ranged">Ranged</span></a>
+                    <button class="branch-toggle" aria-label="expand units">▶</button>
+                </div>
+                <div class="unit-accordion-content">
+                    <a href="${base}units/brotherhood/brotherhood_hunter.html" class="unit-link">Hunter</a>
+                    <a href="${base}units/brotherhood/brotherhood_axe_thrower.html" class="unit-link">Axe Thrower</a>
+                    <a href="${base}units/brotherhood/brotherhood_crossbowman.html" class="unit-link">Crossbowman</a>
+                    <a href="${base}units/brotherhood/brotherhood_scout.html" class="unit-link">Scout</a>
+                    <a href="${base}units/brotherhood/brotherhood_deadeye.html" class="unit-link">Deadeye</a>
+                    <a href="${base}units/brotherhood/brotherhood_artilleryman.html" class="unit-link">Artilleryman</a>
+                    <a href="${base}units/brotherhood/brotherhood_purger.html" class="unit-link">Purger</a>
+                    <a href="${base}units/brotherhood/brotherhood_t72_suppressive_tank.html" class="unit-link">T72 Suppressive Tank</a>
+                </div>
+            </div>
+        </div>
         <a href="#" class="inner-link locked">Elven Enclave</a>
     </div>
 

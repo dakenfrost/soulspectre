@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Enforcers</title>
+    <style>
+    :root {
+        --order-accent: #90a4ae;  
+        --order-glow:       rgba(144, 164, 174, 0.3);
+        --order-accent-bg:   rgba(144, 164, 174, 0.1);
+        --order-accent-dim:  rgba(144, 164, 174, 0.3);
+        --bg-image-url:     url('../img/banners/banner_brotherhood.png');
+    }
+    html:root { --overlay-top: rgba(10, 13, 16, 0.6); --overlay-bottom: rgba(5, 7, 9, 0.88); --panel-bg: rgba(16, 20, 24, 0.75); }
+    body .unit-row { background: linear-gradient(to right, rgba(18, 23, 28, 0.9), rgba(9, 12, 15, 0.8)); }
+    </style>
+    <link rel="stylesheet" href="../../system/style_order.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+<global-navigation></global-navigation>
+
+<header>
+    <h1>Enforcers</h1>
+    <div class="subtitle">Order at Any Range</div>
+</header>
+
+<main>
+    <div class="lore-section">
+        <h2>Enforcers</h2>
+        <p>Marksmen, artillery crews and the war machines of the Brotherhood, enforcing order from a safe distance.</p>
+        <p><em>Full order lore coming soon.</em></p>
+    </div>
+
+   <div id="evo-tree-root" data-labels="Gunner Path, Artillery Path"></div>
+
+    <div class="unit-list-header">
+        <h2>Active Roster</h2>
+    </div>
+
+    <div class="unit-list">
+
+        <div class="unit-row t-officer" data-evo-id="hunter">
+            <div class="portrait-container">
+                <img src="../../img/banners/banner_faction_brotherhood.png" alt="Hunter">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Hunter</h3>
+                <div class="unit-tier">Classification: <span class="color-officer">Officer</span></div>
+                <p class="unit-desc">Description coming soon.</p>
+            </div>
+            <div class="unit-action">
+                <a href="brotherhood_hunter.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-1" data-evo-id="axe-thrower" data-evo-to="crossbowman">
+            <div class="portrait-container">
+                <img src="../../img/banners/banner_faction_brotherhood.png" alt="Axe Thrower">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Axe Thrower</h3>
+                <div class="unit-tier">Classification: <span class="color-t1">Tier I</span></div>
+                <p class="unit-desc">Description coming soon.</p>
+            </div>
+            <div class="unit-action">
+                <a href="brotherhood_axe_thrower.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-2" data-evo-id="crossbowman" data-evo-to="scout artilleryman">
+            <div class="portrait-container">
+                <img src="../../img/banners/banner_faction_brotherhood.png" alt="Crossbowman">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Crossbowman</h3>
+                <div class="unit-tier">Classification: <span class="color-t2">Tier II</span> , Gunner/Artillery Path</div>
+                <p class="unit-desc">Description coming soon.</p>
+            </div>
+            <div class="unit-action">
+                <a href="brotherhood_crossbowman.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-3" data-evo-id="scout" data-evo-to="deadeye">
+            <div class="portrait-container">
+                <img src="../../img/banners/banner_faction_brotherhood.png" alt="Scout">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Scout</h3>
+                <div class="unit-tier">Classification: <span class="color-t3">Tier III</span> , Gunner Path</div>
+                <p class="unit-desc">Description coming soon.</p>
+            </div>
+            <div class="unit-action">
+                <a href="brotherhood_scout.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-4" data-evo-id="deadeye" data-evo-to="t72-suppressive-tank">
+            <div class="portrait-container">
+                <img src="../../img/banners/banner_faction_brotherhood.png" alt="Deadeye">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Deadeye</h3>
+                <div class="unit-tier">Classification: <span class="color-t4">Tier IV</span> , Gunner Path</div>
+                <p class="unit-desc">Description coming soon.</p>
+            </div>
+            <div class="unit-action">
+                <a href="brotherhood_deadeye.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-3" data-evo-id="artilleryman" data-evo-to="purger">
+            <div class="portrait-container">
+                <img src="../../img/banners/banner_faction_brotherhood.png" alt="Artilleryman">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Artilleryman</h3>
+                <div class="unit-tier">Classification: <span class="color-t3">Tier III</span> , Artillery Path</div>
+                <p class="unit-desc">Description coming soon.</p>
+            </div>
+            <div class="unit-action">
+                <a href="brotherhood_artilleryman.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-4" data-evo-id="purger" data-evo-to="t72-suppressive-tank">
+            <div class="portrait-container">
+                <img src="../../img/banners/banner_faction_brotherhood.png" alt="Purger">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">Purger</h3>
+                <div class="unit-tier">Classification: <span class="color-t4">Tier IV</span> , Artillery Path</div>
+                <p class="unit-desc">Description coming soon.</p>
+            </div>
+            <div class="unit-action">
+                <a href="brotherhood_purger.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+        <div class="unit-row t-5 t-wide" data-evo-id="t72-suppressive-tank">
+            <div class="portrait-container">
+                <img src="../../img/banners/banner_faction_brotherhood.png" alt="T72 Suppressive Tank">
+            </div>
+            <div class="unit-info">
+                <h3 class="unit-name">T72 Suppressive Tank</h3>
+                <div class="unit-tier">Classification: <span class="color-t5">Tier V (Champion)</span></div>
+                <p class="unit-desc">Description coming soon.</p>
+            </div>
+            <div class="unit-action">
+                <a href="brotherhood_t72_suppressive_tank.html" class="btn-tactical">View Data</a>
+            </div>
+        </div>
+
+    </div>
+
+    <a href="../../factions/brotherhood_roster.html" class="back-link">← Return to Military Roster</a>
+</main>
+
+<script src="../../system/evo-tree.js"></script>
+<script src="../../system/navigation.js"></script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Scout</title>
+
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Scout",
+  "faction": "Iron Brotherhood",
+  "subtitle": "Enforcers - Tier III",
+  "accent": "#64b5f6",
+  "bgImage": "../../img/banners/banner_brotherhood.png",
+  "breadcrumbs": [
+    {
+      "href": "../../index.html",
+      "label": "Home"
+    },
+    {
+      "href": "../../factions/index.html",
+      "label": "Factions"
+    },
+    {
+      "href": "../../factions/brotherhood.html",
+      "label": "Iron Brotherhood"
+    },
+    {
+      "href": "../../factions/brotherhood_roster.html",
+      "label": "Roster"
+    },
+    {
+      "href": "brotherhood_enforcers.html",
+      "label": "Enforcers"
+    },
+    {
+      "label": "Scout"
+    }
+  ],
+  "combat": [
+    "../../img/banners/banner_faction_brotherhood.png"
+  ],
+  "bio": {
+    "title": "Placeholder",
+    "paragraphs": [
+      "Biography of the Scout coming soon."
+    ]
+  },
+  "stats": {
+    "hp": 155,
+    "atk": 70,
+    "ini": 40
+  },
+  "skills": [
+    {
+      "type": "base",
+      "name": "Gun Shot",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Deals 100% physical damage to an enemy at any range."
+    },
+    {
+      "type": "active",
+      "name": "Special Bullets",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Does not end the turn and has no cooldown. Cycles between \"Fire Bullet\", \"Penetration Bullet\" and \"None\".<br>• Fire Bullet: changes the bullet damage type to fire and applies the \"Burning\" fire debuff for 2 turns, dealing 20% of attack at the start of the turn.<br>• Penetration Bullet: ignores up to 30% of target armor."
+    },
+    {
+      "type": "passive",
+      "name": "Defensive Cover",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "At the end of its turn, if it did not shoot a special bullet, reduces damage taken by 30% until the start of its next turn."
+    }
+  ],
+  "backLink": {
+    "href": "brotherhood_enforcers.html",
+    "label": "Return to Enforcers"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>

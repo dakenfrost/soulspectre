@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | Loremaster</title>
+
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "Loremaster",
+  "faction": "Iron Brotherhood",
+  "subtitle": "Shamans of Nature - Tier V",
+  "accent": "#ffb300",
+  "bgImage": "../../img/banners/banner_brotherhood.png",
+  "breadcrumbs": [
+    {
+      "href": "../../index.html",
+      "label": "Home"
+    },
+    {
+      "href": "../../factions/index.html",
+      "label": "Factions"
+    },
+    {
+      "href": "../../factions/brotherhood.html",
+      "label": "Iron Brotherhood"
+    },
+    {
+      "href": "../../factions/brotherhood_roster.html",
+      "label": "Roster"
+    },
+    {
+      "href": "brotherhood_shamans.html",
+      "label": "Shamans of Nature"
+    },
+    {
+      "label": "Loremaster"
+    }
+  ],
+  "combat": [
+    "../../img/banners/banner_faction_brotherhood.png"
+  ],
+  "bio": {
+    "title": "Placeholder",
+    "paragraphs": [
+      "Biography of the Loremaster coming soon."
+    ]
+  },
+  "stats": {
+    "hp": 300,
+    "atk": 75,
+    "ini": 40,
+    "res": "Water"
+  },
+  "skills": [
+    {
+      "type": "base",
+      "name": "Evercold",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Deals 100% water damage to enemy units. 50% chance to dispel one buff on each, and 20% chance to apply \"Frostbitten\" for 2 turns."
+    },
+    {
+      "type": "active",
+      "name": "Control Potential",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Pick a friendly or enemy unit. Friendly: applies \"Unleash Power\" for 1 turn, increasing the next damage dealt by 100% if it is a dwarf, otherwise by 50%, and \"Unleash Resilience\" for 2 turns, granting +50% armor (max armor 95%), healing 30% of maximum HP and immunity to debuffs. Enemy: applies \"Sapped Potential\" for 2 turns, reducing attack by 50% and silencing it (cannot use active skills)."
+    },
+    {
+      "type": "passive",
+      "name": "Energy Redirect",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Gains 5 shield for each buff or debuff applied on any unit."
+    },
+    {
+      "type": "ultimate",
+      "name": "Gates of Valhalla",
+      "icon": "../../img/base_ultimate_skill.png",
+      "desc": "Applies \"Valhalla Chosen\" to all other friendly units for 2 turns. If a unit dies, it resurrects with 30% of maximum HP and all cooldowns reset. If the buff expires naturally, the unit heals for 30% of its maximum HP."
+    }
+  ],
+  "backLink": {
+    "href": "brotherhood_shamans.html",
+    "label": "Return to Shamans of Nature"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>

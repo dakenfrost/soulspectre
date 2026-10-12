@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | T72 Suppressive Tank</title>
+
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "T72 Suppressive Tank",
+  "faction": "Iron Brotherhood",
+  "subtitle": "Enforcers - Tier V (Large)",
+  "accent": "#ffb300",
+  "bgImage": "../../img/banners/banner_brotherhood.png",
+  "breadcrumbs": [
+    {
+      "href": "../../index.html",
+      "label": "Home"
+    },
+    {
+      "href": "../../factions/index.html",
+      "label": "Factions"
+    },
+    {
+      "href": "../../factions/brotherhood.html",
+      "label": "Iron Brotherhood"
+    },
+    {
+      "href": "../../factions/brotherhood_roster.html",
+      "label": "Roster"
+    },
+    {
+      "href": "brotherhood_enforcers.html",
+      "label": "Enforcers"
+    },
+    {
+      "label": "T72 Suppressive Tank"
+    }
+  ],
+  "combat": [
+    "../../img/banners/banner_faction_brotherhood.png"
+  ],
+  "bio": {
+    "title": "Placeholder",
+    "paragraphs": [
+      "Biography of the T72 Suppressive Tank coming soon."
+    ]
+  },
+  "stats": {
+    "size": 2,
+    "hp": 350,
+    "atk": 150,
+    "ini": 30,
+    "armor": "30%",
+    "immunity": "Mind, Soul, Bio"
+  },
+  "skills": [
+    {
+      "type": "base",
+      "name": "Explosive Shell",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "Deals 50% physical and 50% fire damage to enemies in a row."
+    },
+    {
+      "type": "active",
+      "name": "Piercing Shell",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "Deals 100% damage to enemies in a column. Ignores armor."
+    },
+    {
+      "type": "passive",
+      "name": "Warfare Plating",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "Reduces damage from physical ranged attacks by 50%."
+    },
+    {
+      "type": "ultimate",
+      "name": "Overheat",
+      "icon": "../../img/base_ultimate_skill.png",
+      "desc": "Gains \"Overheat\" for 1 turn, reducing armor to 0% and increasing the damage of the next skill by 100%. When Overheat expires, gains a shield equal to 30% of maximum HP."
+    }
+  ],
+  "backLink": {
+    "href": "brotherhood_enforcers.html",
+    "label": "Return to Enforcers"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+
+</body>
+</html>
