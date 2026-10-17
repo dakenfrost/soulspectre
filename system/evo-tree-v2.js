@@ -41,6 +41,9 @@
         '.evo2-pic{position:relative;width:100%;aspect-ratio:1/1;border-radius:4px;overflow:hidden;background:#000;}',
         '.evo2-pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;}',
         '.evo2-pic img.evo2-alt{animation:evo2fade 6s ease-in-out infinite;}',
+        '.evo2-pic.evo2-wide{aspect-ratio:2/1;}',
+        '.evo2-card.evo2-wide-card{width:340px;}',
+        '.evo2-pair{position:absolute!important;top:0;width:50%!important;}',
         '.evo2-card h4{margin:2px 0 2px;color:#fff;font-size:1rem;letter-spacing:1px;text-transform:uppercase;}',
         '.evo2-card .evo2-cls{font-size:0.68rem;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:6px;}',
         '.evo2-more{font-size:0.7rem;color:rgba(255,255,255,0.5);letter-spacing:0.5px;margin-top:2px;}',
@@ -68,6 +71,7 @@
                 cls: tierEl ? tierEl.textContent.replace(/^\s*Classification:\s*/i, '').replace(/\s+,/g, ',').trim() : '',
                 desc: ((row.querySelector('.unit-desc') || {}).textContent || '').trim(),
                 imgs: imgs, href: link ? link.getAttribute('href') : null,
+                wide: /\bt-wide\b/.test(row.className),   // Large unit: double-width portrait (panorama, or two side by side)
                 // Name shown where a line forks into this unit: data-evo-path, else the "… Path" in its classification.
                 branch: row.getAttribute('data-evo-path') || (function () {
                     var m = (tierEl ? tierEl.textContent : '').match(/,\s*([^,]*\bPath)\s*$/i);
@@ -118,6 +122,16 @@
         return { nCols: nCols, leaves: leaves };
     }
 
+    // Square: male + female cross-fading. Large (t-wide): one panorama across the double width, or the two
+    // images side by side (no fade).
+    function portraitHTML(u) {
+        var i0 = u.imgs[0], i1 = u.imgs[1];
+        if (u.wide && i1) return '<img class="evo2-pair" style="left:0" src="' + i0 + '" alt="" loading="lazy">' +
+                                 '<img class="evo2-pair" style="left:50%" src="' + i1 + '" alt="" loading="lazy">';
+        return (i0 ? '<img src="' + i0 + '" alt="" loading="lazy">' : '') +
+               (i1 ? '<img class="evo2-alt" src="' + i1 + '" alt="" loading="lazy">' : '');
+    }
+
     var statCache = {};
     function loadStats(href, cb) {
         if (!href) return cb(null);
@@ -135,8 +149,8 @@
         var color = TC[u.tier];
         card.style.borderLeftColor = color;
         // Portrait alternates male/female (same cross-fade as the tile) — both genders without any click.
-        card.innerHTML = '<div class="evo2-pic"><img src="' + (u.imgs[0] || '') + '" alt="">' +
-            (u.imgs[1] ? '<img class="evo2-alt" src="' + u.imgs[1] + '" alt="">' : '') + '</div>' +
+        card.className = 'evo2-card' + (u.wide ? ' evo2-wide-card' : '');
+        card.innerHTML = '<div class="evo2-pic' + (u.wide ? ' evo2-wide' : '') + '">' + portraitHTML(u) + '</div>' +
             '<div><h4>' + u.name + '</h4><div class="evo2-cls" style="color:' + color + '">' + (u.cls || TN[u.tier]) + '</div>' +
             '<div class="evo2-stats">…</div>' + (u.href ? '<div class="evo2-more">Click for more info</div>' : '') + '</div>';
         card.style.display = 'flex';
@@ -219,9 +233,8 @@
             a.className = 'evo2-node';
             if (u.href) a.href = u.href;
             a.setAttribute('aria-label', u.name + ' — ' + (u.cls || TN[u.tier]));
-            a.style.cssText = 'left:' + X(u) + 'px;top:' + Y(u) + 'px;width:' + D + 'px;height:' + D + 'px;border-color:' + TC[u.tier] + ';box-shadow:0 0 14px ' + TC[u.tier] + '55;';
-            a.innerHTML = (u.imgs[0] ? '<img src="' + u.imgs[0] + '" alt="" loading="lazy">' : '') +
-                          (u.imgs[1] ? '<img class="evo2-alt" src="' + u.imgs[1] + '" alt="" loading="lazy">' : '');
+            a.style.cssText = 'left:' + X(u) + 'px;top:' + Y(u) + 'px;width:' + (u.wide ? 2 * D : D) + 'px;height:' + D + 'px;border-color:' + TC[u.tier] + ';box-shadow:0 0 14px ' + TC[u.tier] + '55;';
+            a.innerHTML = portraitHTML(u);
             a.addEventListener('mouseenter', function () { showCard(u, a); });
             a.addEventListener('mouseleave', hideCard);
             a.addEventListener('focus', function () { showCard(u, a); });
