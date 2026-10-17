@@ -208,6 +208,8 @@
         // at the child's end — e.g. Squire › "Knight Path" / "Inquisition Path".
         units.forEach(function (u) {
             if (u.kids.length < 2) return;
+            var names = u.kids.map(function (v) { return v.branch; }).filter(Boolean);
+            if (names.length && names.every(function (n) { return n === names[0]; })) return;   // same name on every branch says nothing
             var my = (Y(u) + D + Y(u.kids[0]) - 4) / 2;
             u.kids.forEach(function (v) {
                 if (!v.branch) return;
