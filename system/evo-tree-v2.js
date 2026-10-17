@@ -136,12 +136,12 @@
         var x = r.right + 12; if (x + cw > window.innerWidth - 8) x = r.left - cw - 12; if (x < 8) x = Math.max(8, (window.innerWidth - cw) / 2);
         var y = r.top + r.height / 2 - ch / 2; y = Math.max(8, Math.min(window.innerHeight - ch - 8, y));
         card.style.left = x + 'px'; card.style.top = y + 'px';
+        card._for = u;   // BEFORE loadStats: a cached unit answers synchronously
         loadStats(u.href, function (s) {
             if (!card || card._for !== u) return;
             var box = card.querySelector('.evo2-stats');
             box.innerHTML = s ? '<span>HP<b>' + s.hp + '</b></span><span>ATK<b>' + s.atk + '</b></span><span>INI<b>' + s.ini + '</b></span>' : '';
         });
-        card._for = u;
     }
     function hideCard() { if (card) { card.style.display = 'none'; card._for = null; } }
 
