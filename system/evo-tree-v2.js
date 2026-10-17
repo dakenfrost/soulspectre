@@ -36,9 +36,11 @@
         '.evo2-node img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;}',
         '.evo2-node img.evo2-alt{animation:evo2fade 8s ease-in-out infinite;}',
         '@keyframes evo2fade{0%,40%{opacity:0}50%,90%{opacity:1}100%{opacity:0}}',
-        '@media (prefers-reduced-motion:reduce){.evo2-node img.evo2-alt{animation:none;opacity:0}.evo2-node{transition:none}}',
+        '@media (prefers-reduced-motion:reduce){.evo2-node img.evo2-alt,.evo2-pic img.evo2-alt{animation:none;opacity:0}.evo2-node{transition:none}}',
         '.evo2-card{position:fixed;z-index:9999;width:220px;max-width:calc(100vw - 24px);display:none;flex-direction:column;gap:8px;padding:10px;border-radius:6px;background:rgba(8,12,20,0.97);border:1px solid rgba(255,255,255,0.12);border-left:3px solid;box-shadow:0 10px 30px rgba(0,0,0,0.8);pointer-events:none;color:#ddd;}',
-        '.evo2-card img{width:100%;aspect-ratio:1/1;height:auto;object-fit:cover;object-position:top center;border-radius:4px;display:block;}',
+        '.evo2-pic{position:relative;width:100%;aspect-ratio:1/1;border-radius:4px;overflow:hidden;background:#000;}',
+        '.evo2-pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;}',
+        '.evo2-pic img.evo2-alt{animation:evo2fade 6s ease-in-out infinite;}',
         '.evo2-card h4{margin:2px 0 2px;color:#fff;font-size:1rem;letter-spacing:1px;text-transform:uppercase;}',
         '.evo2-card .evo2-cls{font-size:0.68rem;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:6px;}',
         '.evo2-more{font-size:0.7rem;color:rgba(255,255,255,0.5);letter-spacing:0.5px;margin-top:2px;}',
@@ -128,7 +130,9 @@
         if (!card) { card = document.createElement('div'); card.className = 'evo2-card'; document.body.appendChild(card); }
         var color = TC[u.tier];
         card.style.borderLeftColor = color;
-        card.innerHTML = '<img src="' + (u.imgs[0] || '') + '" alt="">' +
+        // Portrait alternates male/female (same cross-fade as the tile) — both genders without any click.
+        card.innerHTML = '<div class="evo2-pic"><img src="' + (u.imgs[0] || '') + '" alt="">' +
+            (u.imgs[1] ? '<img class="evo2-alt" src="' + u.imgs[1] + '" alt="">' : '') + '</div>' +
             '<div><h4>' + u.name + '</h4><div class="evo2-cls" style="color:' + color + '">' + (u.cls || TN[u.tier]) + '</div>' +
             '<div class="evo2-stats">…</div>' + (u.href ? '<div class="evo2-more">Click for more info</div>' : '') + '</div>';
         card.style.display = 'flex';
