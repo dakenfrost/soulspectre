@@ -68,7 +68,11 @@
                 cls: tierEl ? tierEl.textContent.replace(/^\s*Classification:\s*/i, '').replace(/\s+,/g, ',').trim() : '',
                 desc: ((row.querySelector('.unit-desc') || {}).textContent || '').trim(),
                 imgs: imgs, href: link ? link.getAttribute('href') : null,
-                branch: row.getAttribute('data-evo-path') || '',
+                // Name shown where a line forks into this unit: data-evo-path, else the "… Path" in its classification.
+                branch: row.getAttribute('data-evo-path') || (function () {
+                    var m = (tierEl ? tierEl.textContent : '').match(/,\s*([^,]*\bPath)\s*$/i);
+                    return m && m[1].indexOf('/') < 0 ? m[1].trim() : '';
+                })(),
             };
         });
     }
