@@ -135,7 +135,7 @@
         }
 
         /* Hover dinamico */
-        .shard:hover { flex: 6; }
+        .shard:hover { flex: 6; max-width: 50%; }   /* cap: with fewer factions the open shard got huge and the video zoomed past the face */
         .shard:hover .shard-video { filter: grayscale(0%) brightness(0.7); transform: scale(1.05); }
         .shard:hover .shard-overlay { opacity: 0.3; }
         .shard:hover .shard-content { opacity: 1; transform: translateY(0); }
