@@ -173,7 +173,20 @@
         var gutter = narrow ? 46 : 96, right = narrow ? 10 : 30;
         var colW = (W - gutter - right) / info.nCols;
         var D = Math.round(Math.max(54, Math.min(108, colW * 0.62)));
-        var rowH = D + (narrow ? 40 : 52);
+        // Large units (double width) side by side in a row (the Syndicate's Contracted Demons): shrink the tiles
+        // until neighbours no longer touch — gap of 14% of a column between any two tiles of the same row.
+        var rows = {};
+        units.forEach(function (u) { (rows[u.tier] = rows[u.tier] || []).push(u); });
+        Object.keys(rows).forEach(function (t) {
+            var r = rows[t].slice().sort(function (a, b) { return a.col - b.col; });
+            for (var i = 1; i < r.length; i++) {
+                var dx = (r[i].col - r[i - 1].col) * colW;
+                var k = ((r[i].wide ? 2 : 1) + (r[i - 1].wide ? 2 : 1)) / 2;   // half-widths in tile units
+                if (dx > 0) D = Math.min(D, Math.floor((dx - colW * 0.14) / k));
+            }
+        });
+        D = Math.max(40, D);
+        var rowH = D + (narrow ? 50 : 70);   // room for a fork label between the rows, clear of a wide parent tile
         var hasOff = units.some(function (u) { return u.tier === 0; });
         var top = 16;
         var tiers = units.map(function (u) { return u.tier; });
