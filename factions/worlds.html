@@ -11,20 +11,23 @@
                 --algoria-color: #f2b54a; --algoria-glow: rgba(242, 181, 74, 0.7); }
         #bg-image { background-image: url('../img/world_shadowar.jpg'); filter: blur(6px) grayscale(0.4); }
         .shadowar-mode {
-            background-image: linear-gradient(135deg, rgba(8, 10, 14, 0.80), rgba(20, 22, 28, 0.35)), url('../img/world_shadowar.jpg');
+            background-image: linear-gradient(135deg, rgba(8, 10, 14, 0.55), rgba(20, 22, 28, 0.05) 60%), url('../img/world_shadowar.jpg');
             background-blend-mode: normal;
             clip-path: polygon(0 0, 100% 0, 0 100%); z-index: 2;
             padding: 50px; align-items: flex-start; justify-content: flex-start;
         }
         .algoria-mode {
-            background-image: linear-gradient(315deg, rgba(14, 10, 4, 0.75), rgba(30, 20, 5, 0.15)), url('../img/world_algoria.jpg');
+            background-image: linear-gradient(315deg, rgba(14, 10, 4, 0.55), rgba(30, 20, 5, 0.0) 60%), url('../img/world_algoria.jpg');
             background-blend-mode: normal;
             clip-path: polygon(100% 0, 100% 100%, 0 100%); z-index: 1;
             padding: 50px; align-items: flex-end; justify-content: flex-end; text-align: right;
         }
-        .shadowar-mode .content-wrapper { max-width: 46%; }   /* stays inside its triangle, clear of the diagonal */
-        .algoria-mode .content-wrapper { max-width: 55%; }
-        .mode-desc { text-shadow: 0 1px 4px #000; }
+        .shadowar-mode .content-wrapper, .algoria-mode .content-wrapper { max-width: 40%; }   /* inside its triangle */
+        .shadowar-mode .mode-title, .algoria-mode .mode-title { font-size: 2.2rem; letter-spacing: 6px; text-shadow: 0 2px 10px #000; }
+        .shadowar-mode .mode-desc, .algoria-mode .mode-desc { font-size: 1rem; line-height: 1.6; text-shadow: 0 1px 4px #000;
+            opacity: 0; transform: translateY(8px); transition: opacity 0.3s ease, transform 0.3s ease; }
+        .shadowar-mode:hover .mode-desc, .algoria-mode:hover .mode-desc, .mode-panel:focus-visible .mode-desc { opacity: 1; transform: none; }
+        @media (hover: none) { .shadowar-mode .mode-desc, .algoria-mode .mode-desc { opacity: 1; transform: none; } }   /* phones: no hover */
         .shadowar-mode .mode-title { color: var(--shadowar-color); }
         .algoria-mode .mode-title  { color: var(--algoria-color); }
         .shadowar-mode:hover { box-shadow: inset 0 0 80px var(--shadowar-glow); clip-path: polygon(0 0, 100% 0, 0 105%); z-index: 10; }
@@ -34,7 +37,6 @@
         .shadowar-mode:hover .mode-desc, .algoria-mode:hover .mode-desc { opacity: 1; color: #fff; }
         .campaign-selector:has(.shadowar-mode:hover)::after { transform: rotate(26.5deg) translate(10px, -10px); background: var(--shadowar-color); box-shadow: 0 0 20px var(--shadowar-glow); }
         .campaign-selector:has(.algoria-mode:hover)::after  { transform: rotate(26.5deg) translate(-10px, 10px); background: var(--algoria-color); box-shadow: 0 0 20px var(--algoria-glow); }
-        .world-factions { margin-top: 14px; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.65); }
         @media (max-width: 900px) {
             .algoria-mode { text-align: center; }
             .shadowar-mode:hover, .algoria-mode:hover { transform: scale(1.02); z-index: 2; }
@@ -59,7 +61,6 @@
             <div class="content-wrapper">
                 <h2 class="mode-title">Shadowar</h2>
                 <p class="mode-desc">Once an advanced world built on cooperation, it collapsed into an endless war of ideologies. Now it is a grimdark land where only one question matters: what is the price of survival?</p>
-                <div class="world-factions">Valkyrion · Kharos · Devil Syndicate · Iron Brotherhood · Elven Enclave</div>
             </div>
         </a>
 
@@ -67,7 +68,6 @@
             <div class="content-wrapper">
                 <h2 class="mode-title">Algoria</h2>
                 <p class="mode-desc">A world brimming with color, where we are all mortals beneath the same sky. But what is your goal?</p>
-                <div class="world-factions">The Forgotten · Primal Coalition</div>
             </div>
         </a>
 
