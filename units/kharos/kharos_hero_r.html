@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULSPECTRE | R</title>
+
+    <link rel="stylesheet" href="../../system/unit-page.css">
+    <link rel="stylesheet" href="../../system/global_nav.css">
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div id="overlay"></div>
+
+<script type="application/json" id="unit-data">
+{
+  "name": "R",
+  "faction": "Kharos",
+  "subtitle": "The Price of Victory | Tier 6 Hero",
+  "accent": "#ef5350",
+  "bgImage": "../../img/banners/kharos-bg.png",
+
+  "breadcrumbs": [
+    { "href": "../../index.html",                  "label": "Home" },
+    { "href": "../../factions/index.html",         "label": "Factions" },
+    { "href": "../../factions/kharos.html",        "label": "Kharos Dominion" },
+    { "href": "../../factions/kharos_roster.html", "label": "Roster" },
+    { "href": "kharos_extra.html",                 "label": "Others" },
+    {                                              "label": "R" }
+  ],
+
+  "combat": [
+    "../../img/kharos_hero_r_combat.png"
+  ],
+
+  "bio": {
+    "title": "Victory, Whatever the Cost",
+    "paragraphs": [
+      "A mercenary who has served the Kharos Dominion for longer than most can remember, R carries almost no past with him. The only story anyone tells is the Siege of Marston, a heavily garrisoned Valkyrion city ruled by a Captain who was among the Emperor's most trusted confidants. R's contract was simple and considered impossible: seize the relic kept within the Captain's keep.",
+      "He split his company in two and told each half the same lie: while the other group created a diversion, they would strike the city's true weak point. When the siege began, both groups breached the walls and charged, each believing the other was the bait. Neither knew the truth: both were the diversion. While the garrison turned to face them, R slipped alone through the old tunnels beneath the city, carved his way through the Captain's personal guard, killed him and vanished underground with the relic.",
+      "When he returned to the field to sound the retreat, he found exactly what he had expected: his entire company lay dead. The mission had succeeded; every one of his men had paid for it. The guilt tore at him, yet he kept repeating that it had been for the greater good, until, years later, his conscience finally fell silent. The relic, a sword and shield able to fuse into a single great axe, was later granted to him by the Warchief himself in recognition of a mission no one believed could be done. Since that day, when asked his name, he answers only \"R\". No one knows what the letter stands for, and he has never offered to explain, yet it is the only name he answers to. Those who see him on the battlefield soon understand why it is all he needs: to win, at any cost."
+    ]
+  },
+
+  "stats": {
+    "tier": "Tier 6",
+    "hp": 1200,
+    "atk": 200,
+    "ini": 50,
+    "immunity": "Crowd Control"
+  },
+
+  "skills": [
+    {
+      "type": "base",
+      "name": "Precise Slash / Axe Cleave",
+      "icon": "../../img/base_base_skill.png",
+      "desc": "<strong>Protector Mode:</strong> a disciplined sword strike. Deals <strong>100% of attack</strong> as <span class=\"dmg-phys\">Physical</span> damage to a melee target. This attack <strong>cannot be dodged</strong>.<br><strong>Avenger Mode:</strong> a brutal, sweeping axe swing. Deals <strong>50% of attack</strong> as <span class=\"dmg-phys\">Physical</span> damage to <strong>all enemies in a row</strong>."
+    },
+    {
+      "type": "active",
+      "name": "Loyal Defender / Merciless Slaughter",
+      "icon": "../../img/base_active_skill.png",
+      "desc": "<strong>Protector Mode:</strong> selects an ally and shields them for <strong>3 turns</strong>, taking all damage intended for that ally. Debuffs still affect the ally.<br><strong>Avenger Mode:</strong> unleashes a relentless flurry on a melee enemy, striking <strong>3 times</strong> for <strong>50% of attack</strong> as <span class=\"dmg-phys\">Physical</span> damage each."
+    },
+    {
+      "type": "passive",
+      "name": "Dual Face Commander",
+      "icon": "../../img/base_passive_skill.png",
+      "desc": "R begins every battle in <strong>Protector Mode</strong> and is <strong>Immune to Crowd Control</strong> effects.<br><strong>Protector Mode:</strong> gains <span class=\"highlight-buff\">+30% Armor</span> and <span class=\"highlight-buff\">+10 Initiative</span>.<br><strong>Avenger Mode:</strong> gains <span class=\"highlight-buff\">+2 attack</span> for every <strong>1% of missing health</strong> and <span class=\"highlight-buff\">+10% attack</span> for every <strong>dead ally</strong>."
+    },
+    {
+      "type": "ultimate",
+      "name": "Mode Change",
+      "icon": "../../img/base_ultimate_skill.png",
+      "desc": "Fuses or splits the relic, switching between <strong>Protector Mode</strong> (sword and shield) and <strong>Avenger Mode</strong> (great axe). This skill is <strong>always available</strong>, has <strong>no cooldown</strong> and <strong>does not consume the turn</strong>."
+    }
+  ],
+
+  "backLink": {
+    "href":  "kharos_extra.html",
+    "label": "Return to Others"
+  }
+}
+</script>
+<script src="../../system/unit-renderer.js" ></script>
+</body>
+</html>
